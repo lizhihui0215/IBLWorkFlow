@@ -15,6 +15,9 @@
 		264EBB711D2E023D00FF8373 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 264EBB6F1D2E023D00FF8373 /* LaunchScreen.storyboard */; };
 		264EBB7C1D2E023D00FF8373 /* IBLWorkFlowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB7B1D2E023D00FF8373 /* IBLWorkFlowTests.m */; };
 		264EBB871D2E023D00FF8373 /* IBLWorkFlowUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB861D2E023D00FF8373 /* IBLWorkFlowUITests.m */; };
+		916C3F0C4BE6724553A38E60 /* libPods-IBLWorkFlowUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBB83F272FFCA67F7EB540F /* libPods-IBLWorkFlowUITests.a */; };
+		A65A0C0791A2265EA181E5F9 /* libPods-IBLWorkFlowTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */; };
+		C29699C982E6C6E8F36F7C33 /* libPods-IBLWorkFlow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75ECACC7C53EB3B0DA024790 /* libPods-IBLWorkFlow.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,15 @@
 		264EBB821D2E023D00FF8373 /* IBLWorkFlowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IBLWorkFlowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		264EBB861D2E023D00FF8373 /* IBLWorkFlowUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBLWorkFlowUITests.m; sourceTree = "<group>"; };
 		264EBB881D2E023D00FF8373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3827AAE8534D1CF41CA1D789 /* Pods-IBLWorkFlowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3BC523A9AC89C5F1273C45C7 /* Pods-IBLWorkFlowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4421433E1B53EEC5E521C458 /* Pods-IBLWorkFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.release.xcconfig"; sourceTree = "<group>"; };
+		565A3BAEBC81E00A178005D9 /* Pods-IBLWorkFlow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.debug.xcconfig"; sourceTree = "<group>"; };
+		6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IBLWorkFlowTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71CE4008BC85C8F72C9CAFDA /* Pods-IBLWorkFlowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowTests/Pods-IBLWorkFlowTests.debug.xcconfig"; sourceTree = "<group>"; };
+		75ECACC7C53EB3B0DA024790 /* libPods-IBLWorkFlow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IBLWorkFlow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		913F6EEE4C94B3F5A9F26D48 /* Pods-IBLWorkFlowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowTests/Pods-IBLWorkFlowTests.release.xcconfig"; sourceTree = "<group>"; };
+		EDBB83F272FFCA67F7EB540F /* libPods-IBLWorkFlowUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IBLWorkFlowUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C29699C982E6C6E8F36F7C33 /* libPods-IBLWorkFlow.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A65A0C0791A2265EA181E5F9 /* libPods-IBLWorkFlowTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				916C3F0C4BE6724553A38E60 /* libPods-IBLWorkFlowUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +100,8 @@
 				264EBB7A1D2E023D00FF8373 /* IBLWorkFlowTests */,
 				264EBB851D2E023D00FF8373 /* IBLWorkFlowUITests */,
 				264EBB5F1D2E023C00FF8373 /* Products */,
+				E05F88B3EA69C1FB17D8BF1C /* Pods */,
+				C6505BA9493FBCA3FC914E33 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +157,29 @@
 			path = IBLWorkFlowUITests;
 			sourceTree = "<group>";
 		};
+		C6505BA9493FBCA3FC914E33 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75ECACC7C53EB3B0DA024790 /* libPods-IBLWorkFlow.a */,
+				6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */,
+				EDBB83F272FFCA67F7EB540F /* libPods-IBLWorkFlowUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E05F88B3EA69C1FB17D8BF1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				565A3BAEBC81E00A178005D9 /* Pods-IBLWorkFlow.debug.xcconfig */,
+				4421433E1B53EEC5E521C458 /* Pods-IBLWorkFlow.release.xcconfig */,
+				71CE4008BC85C8F72C9CAFDA /* Pods-IBLWorkFlowTests.debug.xcconfig */,
+				913F6EEE4C94B3F5A9F26D48 /* Pods-IBLWorkFlowTests.release.xcconfig */,
+				3827AAE8534D1CF41CA1D789 /* Pods-IBLWorkFlowUITests.debug.xcconfig */,
+				3BC523A9AC89C5F1273C45C7 /* Pods-IBLWorkFlowUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 264EBB8B1D2E023D00FF8373 /* Build configuration list for PBXNativeTarget "IBLWorkFlow" */;
 			buildPhases = (
+				BA5427A1F16C122684614035 /* 📦 Check Pods Manifest.lock */,
 				264EBB5A1D2E023C00FF8373 /* Sources */,
 				264EBB5B1D2E023C00FF8373 /* Frameworks */,
 				264EBB5C1D2E023C00FF8373 /* Resources */,
+				0B5B0E85BB9C47B7FA7D0F1C /* 📦 Embed Pods Frameworks */,
+				DA973EA62A1941872D4F0FDD /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 264EBB8E1D2E023D00FF8373 /* Build configuration list for PBXNativeTarget "IBLWorkFlowTests" */;
 			buildPhases = (
+				6F5C8E104898C1F5C4D8BAE8 /* 📦 Check Pods Manifest.lock */,
 				264EBB731D2E023D00FF8373 /* Sources */,
 				264EBB741D2E023D00FF8373 /* Frameworks */,
 				264EBB751D2E023D00FF8373 /* Resources */,
+				4EE10C6DB5613F40F6708116 /* 📦 Embed Pods Frameworks */,
+				27C2016761B3FC171C186EB4 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 264EBB911D2E023D00FF8373 /* Build configuration list for PBXNativeTarget "IBLWorkFlowUITests" */;
 			buildPhases = (
+				772F7886837CD4FD16C697BC /* 📦 Check Pods Manifest.lock */,
 				264EBB7E1D2E023D00FF8373 /* Sources */,
 				264EBB7F1D2E023D00FF8373 /* Frameworks */,
 				264EBB801D2E023D00FF8373 /* Resources */,
+				2F592ED61006BF532835A2EE /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +312,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B5B0E85BB9C47B7FA7D0F1C /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		27C2016761B3FC171C186EB4 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IBLWorkFlowTests/Pods-IBLWorkFlowTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F592ED61006BF532835A2EE /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4EE10C6DB5613F40F6708116 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IBLWorkFlowTests/Pods-IBLWorkFlowTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F5C8E104898C1F5C4D8BAE8 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		772F7886837CD4FD16C697BC /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BA5427A1F16C122684614035 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DA973EA62A1941872D4F0FDD /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		264EBB5A1D2E023C00FF8373 /* Sources */ = {
@@ -413,6 +584,7 @@
 		};
 		264EBB8C1D2E023D00FF8373 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 565A3BAEBC81E00A178005D9 /* Pods-IBLWorkFlow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = IBLWorkFlow/Info.plist;
@@ -424,6 +596,7 @@
 		};
 		264EBB8D1D2E023D00FF8373 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4421433E1B53EEC5E521C458 /* Pods-IBLWorkFlow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = IBLWorkFlow/Info.plist;
@@ -435,6 +608,7 @@
 		};
 		264EBB8F1D2E023D00FF8373 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71CE4008BC85C8F72C9CAFDA /* Pods-IBLWorkFlowTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = IBLWorkFlowTests/Info.plist;
@@ -447,6 +621,7 @@
 		};
 		264EBB901D2E023D00FF8373 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 913F6EEE4C94B3F5A9F26D48 /* Pods-IBLWorkFlowTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = IBLWorkFlowTests/Info.plist;
@@ -459,6 +634,7 @@
 		};
 		264EBB921D2E023D00FF8373 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3827AAE8534D1CF41CA1D789 /* Pods-IBLWorkFlowUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = IBLWorkFlowUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -470,6 +646,7 @@
 		};
 		264EBB931D2E023D00FF8373 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BC523A9AC89C5F1273C45C7 /* Pods-IBLWorkFlowUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = IBLWorkFlowUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -498,6 +675,7 @@
 				264EBB8D1D2E023D00FF8373 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		264EBB8E1D2E023D00FF8373 /* Build configuration list for PBXNativeTarget "IBLWorkFlowTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +684,7 @@
 				264EBB901D2E023D00FF8373 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		264EBB911D2E023D00FF8373 /* Build configuration list for PBXNativeTarget "IBLWorkFlowUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +693,7 @@
 				264EBB931D2E023D00FF8373 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
