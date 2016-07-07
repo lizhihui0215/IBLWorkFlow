@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  IBLAppDelegate.h
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 7/7/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface IBLAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

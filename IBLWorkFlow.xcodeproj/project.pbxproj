@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		264EBB631D2E023D00FF8373 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB621D2E023D00FF8373 /* main.m */; };
-		264EBB661D2E023D00FF8373 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB651D2E023D00FF8373 /* AppDelegate.m */; };
-		264EBB691D2E023D00FF8373 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB681D2E023D00FF8373 /* ViewController.m */; };
+		264EBB661D2E023D00FF8373 /* IBLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB651D2E023D00FF8373 /* IBLAppDelegate.m */; };
 		264EBB6C1D2E023D00FF8373 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 264EBB6A1D2E023D00FF8373 /* Main.storyboard */; };
 		264EBB6E1D2E023D00FF8373 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 264EBB6D1D2E023D00FF8373 /* Assets.xcassets */; };
 		264EBB711D2E023D00FF8373 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 264EBB6F1D2E023D00FF8373 /* LaunchScreen.storyboard */; };
 		264EBB7C1D2E023D00FF8373 /* IBLWorkFlowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB7B1D2E023D00FF8373 /* IBLWorkFlowTests.m */; };
 		264EBB871D2E023D00FF8373 /* IBLWorkFlowUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB861D2E023D00FF8373 /* IBLWorkFlowUITests.m */; };
+		264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB951D2E2A3600FF8373 /* IBLNetworkServices.m */; };
+		264EBB991D2E2BC200FF8373 /* IBLRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB981D2E2BC200FF8373 /* IBLRepository.m */; };
+		264EBB9C1D2E2BD400FF8373 /* IBLUserRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB9B1D2E2BD400FF8373 /* IBLUserRepository.m */; };
+		264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB9E1D2E2BE200FF8373 /* IBLUseCase.m */; };
+		264EBBA21D2E2C1300FF8373 /* IBLFetchUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA11D2E2C1300FF8373 /* IBLFetchUser.m */; };
+		5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875FB5811336EE05248DB0 /* IBLRootViewController.m */; };
 		916C3F0C4BE6724553A38E60 /* libPods-IBLWorkFlowUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBB83F272FFCA67F7EB540F /* libPods-IBLWorkFlowUITests.a */; };
 		A65A0C0791A2265EA181E5F9 /* libPods-IBLWorkFlowTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */; };
 		C29699C982E6C6E8F36F7C33 /* libPods-IBLWorkFlow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75ECACC7C53EB3B0DA024790 /* libPods-IBLWorkFlow.a */; };
@@ -40,10 +45,8 @@
 /* Begin PBXFileReference section */
 		264EBB5E1D2E023C00FF8373 /* IBLWorkFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IBLWorkFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		264EBB621D2E023D00FF8373 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		264EBB641D2E023D00FF8373 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		264EBB651D2E023D00FF8373 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		264EBB671D2E023D00FF8373 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		264EBB681D2E023D00FF8373 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		264EBB641D2E023D00FF8373 /* IBLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBLAppDelegate.h; sourceTree = "<group>"; };
+		264EBB651D2E023D00FF8373 /* IBLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBLAppDelegate.m; sourceTree = "<group>"; };
 		264EBB6B1D2E023D00FF8373 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		264EBB6D1D2E023D00FF8373 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		264EBB701D2E023D00FF8373 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,10 +57,22 @@
 		264EBB821D2E023D00FF8373 /* IBLWorkFlowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IBLWorkFlowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		264EBB861D2E023D00FF8373 /* IBLWorkFlowUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBLWorkFlowUITests.m; sourceTree = "<group>"; };
 		264EBB881D2E023D00FF8373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		264EBB941D2E2A3600FF8373 /* IBLNetworkServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLNetworkServices.h; sourceTree = "<group>"; };
+		264EBB951D2E2A3600FF8373 /* IBLNetworkServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLNetworkServices.m; sourceTree = "<group>"; };
+		264EBB971D2E2BC200FF8373 /* IBLRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRepository.h; sourceTree = "<group>"; };
+		264EBB981D2E2BC200FF8373 /* IBLRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRepository.m; sourceTree = "<group>"; };
+		264EBB9A1D2E2BD400FF8373 /* IBLUserRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUserRepository.h; sourceTree = "<group>"; };
+		264EBB9B1D2E2BD400FF8373 /* IBLUserRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLUserRepository.m; sourceTree = "<group>"; };
+		264EBB9D1D2E2BE200FF8373 /* IBLUseCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUseCase.h; sourceTree = "<group>"; };
+		264EBB9E1D2E2BE200FF8373 /* IBLUseCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLUseCase.m; sourceTree = "<group>"; };
+		264EBBA01D2E2C1300FF8373 /* IBLFetchUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLFetchUser.h; sourceTree = "<group>"; };
+		264EBBA11D2E2C1300FF8373 /* IBLFetchUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFetchUser.m; sourceTree = "<group>"; };
 		3827AAE8534D1CF41CA1D789 /* Pods-IBLWorkFlowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BC523A9AC89C5F1273C45C7 /* Pods-IBLWorkFlowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4421433E1B53EEC5E521C458 /* Pods-IBLWorkFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.release.xcconfig"; sourceTree = "<group>"; };
 		565A3BAEBC81E00A178005D9 /* Pods-IBLWorkFlow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.debug.xcconfig"; sourceTree = "<group>"; };
+		5B87572F5D7F00B76DFCC5CD /* IBLRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRootViewController.h; sourceTree = "<group>"; };
+		5B875FB5811336EE05248DB0 /* IBLRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRootViewController.m; sourceTree = "<group>"; };
 		6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IBLWorkFlowTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CE4008BC85C8F72C9CAFDA /* Pods-IBLWorkFlowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowTests/Pods-IBLWorkFlowTests.debug.xcconfig"; sourceTree = "<group>"; };
 		75ECACC7C53EB3B0DA024790 /* libPods-IBLWorkFlow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IBLWorkFlow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,10 +133,15 @@
 		264EBB601D2E023D00FF8373 /* IBLWorkFlow */ = {
 			isa = PBXGroup;
 			children = (
-				264EBB641D2E023D00FF8373 /* AppDelegate.h */,
-				264EBB651D2E023D00FF8373 /* AppDelegate.m */,
-				264EBB671D2E023D00FF8373 /* ViewController.h */,
-				264EBB681D2E023D00FF8373 /* ViewController.m */,
+				264EBB641D2E023D00FF8373 /* IBLAppDelegate.h */,
+				264EBB651D2E023D00FF8373 /* IBLAppDelegate.m */,
+				5B875E9D723F8984F0BCE45E /* Data */,
+				5B8756393D8832BC27E843E8 /* Domain */,
+				5B8759707A174B6EF9CD682D /* Views */,
+				5B8755A968BB28708B32E32F /* ViewModels */,
+				5B87540258EE7F5BCE66BC19 /* Models */,
+				5B8753A10C9EEFD98D1ED3D5 /* Services */,
+				5B875B3E9B520BF0A0F77607 /* Extensions */,
 				264EBB6A1D2E023D00FF8373 /* Main.storyboard */,
 				264EBB6D1D2E023D00FF8373 /* Assets.xcassets */,
 				264EBB6F1D2E023D00FF8373 /* LaunchScreen.storyboard */,
@@ -155,6 +175,99 @@
 				264EBB881D2E023D00FF8373 /* Info.plist */,
 			);
 			path = IBLWorkFlowUITests;
+			sourceTree = "<group>";
+		};
+		5B875135C2C0645AA45CAB6D /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Segues;
+			sourceTree = "<group>";
+		};
+		5B8753A10C9EEFD98D1ED3D5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5B875D7A6750DCFD07DEE941 /* Network */,
+				5B87599E28A6F8521A8C2515 /* Local */,
+				5B87558483DFA968DEE92C1A /* Manager */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5B87540258EE7F5BCE66BC19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5B87558483DFA968DEE92C1A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		5B8755A968BB28708B32E32F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5B8756393D8832BC27E843E8 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				264EBB9D1D2E2BE200FF8373 /* IBLUseCase.h */,
+				264EBB9E1D2E2BE200FF8373 /* IBLUseCase.m */,
+				264EBBA01D2E2C1300FF8373 /* IBLFetchUser.h */,
+				264EBBA11D2E2C1300FF8373 /* IBLFetchUser.m */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		5B8759707A174B6EF9CD682D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5B87572F5D7F00B76DFCC5CD /* IBLRootViewController.h */,
+				5B875FB5811336EE05248DB0 /* IBLRootViewController.m */,
+				5B875135C2C0645AA45CAB6D /* Segues */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5B87599E28A6F8521A8C2515 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		5B875B3E9B520BF0A0F77607 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5B875D7A6750DCFD07DEE941 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				264EBB941D2E2A3600FF8373 /* IBLNetworkServices.h */,
+				264EBB951D2E2A3600FF8373 /* IBLNetworkServices.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		5B875E9D723F8984F0BCE45E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				264EBB971D2E2BC200FF8373 /* IBLRepository.h */,
+				264EBB981D2E2BC200FF8373 /* IBLRepository.m */,
+				264EBB9A1D2E2BD400FF8373 /* IBLUserRepository.h */,
+				264EBB9B1D2E2BD400FF8373 /* IBLUserRepository.m */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		C6505BA9493FBCA3FC914E33 /* Frameworks */ = {
@@ -250,6 +363,7 @@
 		264EBB561D2E023C00FF8373 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = IBL;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = IBL;
 				TargetAttributes = {
@@ -441,9 +555,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				264EBB691D2E023D00FF8373 /* ViewController.m in Sources */,
-				264EBB661D2E023D00FF8373 /* AppDelegate.m in Sources */,
+				264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */,
+				264EBBA21D2E2C1300FF8373 /* IBLFetchUser.m in Sources */,
+				264EBB9C1D2E2BD400FF8373 /* IBLUserRepository.m in Sources */,
+				264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */,
+				264EBB661D2E023D00FF8373 /* IBLAppDelegate.m in Sources */,
 				264EBB631D2E023D00FF8373 /* main.m in Sources */,
+				264EBB991D2E2BC200FF8373 /* IBLRepository.m in Sources */,
+				5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,18 +1,18 @@
 //
-//  AppDelegate.m
+//  IBLAppDelegate.m
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 7/7/16.
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "IBLAppDelegate.h"
 
-@interface AppDelegate ()
+@interface IBLAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation IBLAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
