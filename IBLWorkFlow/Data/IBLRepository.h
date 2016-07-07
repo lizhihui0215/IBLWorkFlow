@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "IBLNetworkServices.h"
 @interface IBLRepository : NSObject
+
+@property (nonatomic, readonly) IBLNetworkServices *networkServices;
 
 @end

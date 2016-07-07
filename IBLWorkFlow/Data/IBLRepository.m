@@ -10,4 +10,8 @@
 
 @implementation IBLRepository
 
+- (IBLNetworkServices *)networkServices{
+    return [IBLNetworkServices sharedServices];
+}
+
 @end

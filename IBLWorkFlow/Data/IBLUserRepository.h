@@ -7,7 +7,9 @@
 //
 
 #import "IBLRepository.h"
+#import "IBLUser.h"
 
 @interface IBLUserRepository : IBLRepository
 
+- (void)fetchWithCompleteHandler:(void (^)(IBLUser *, NSError *))handler;
 @end

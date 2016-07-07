@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612E1611D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m */; };
+		2612E1661D2E9DDF00CA76BC /* User.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2612E1651D2E9DDF00CA76BC /* User.xml */; };
+		2612E16A1D2E9EC900CA76BC /* DDXMLElement+WSDL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612E1691D2E9EC900CA76BC /* DDXMLElement+WSDL.m */; };
 		264EBB631D2E023D00FF8373 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB621D2E023D00FF8373 /* main.m */; };
 		264EBB661D2E023D00FF8373 /* IBLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB651D2E023D00FF8373 /* IBLAppDelegate.m */; };
 		264EBB6C1D2E023D00FF8373 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 264EBB6A1D2E023D00FF8373 /* Main.storyboard */; };
@@ -22,6 +25,11 @@
 		264EBBA51D2E2F8B00FF8373 /* IBLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA41D2E2F8B00FF8373 /* IBLViewController.m */; };
 		264EBBA81D2E2FD200FF8373 /* IBLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA71D2E2FD200FF8373 /* IBLTableViewController.m */; };
 		264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBAA1D2E328B00FF8373 /* IBLExchangeRootSegue.m */; };
+		26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */; };
+		26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1381D2E844C000950F6 /* IBLViewModel.m */; };
+		26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D13B1D2E8458000950F6 /* IBLLoginViewModel.m */; };
+		26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D13E1D2E847C000950F6 /* IBLModel.m */; };
+		26A9D1421D2E8487000950F6 /* IBLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1411D2E8487000950F6 /* IBLUser.m */; };
 		5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875FB5811336EE05248DB0 /* IBLRootViewController.m */; };
 		916C3F0C4BE6724553A38E60 /* libPods-IBLWorkFlowUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBB83F272FFCA67F7EB540F /* libPods-IBLWorkFlowUITests.a */; };
 		A65A0C0791A2265EA181E5F9 /* libPods-IBLWorkFlowTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */; };
@@ -46,6 +54,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2612E1601D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLWebServiceRequestSerializer.h; path = IBLWorkFlow/Views/IBLWebServiceRequestSerializer.h; sourceTree = SOURCE_ROOT; };
+		2612E1611D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBLWebServiceRequestSerializer.m; path = IBLWorkFlow/Views/IBLWebServiceRequestSerializer.m; sourceTree = SOURCE_ROOT; };
+		2612E1651D2E9DDF00CA76BC /* User.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = User.xml; sourceTree = "<group>"; };
+		2612E1681D2E9EC900CA76BC /* DDXMLElement+WSDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DDXMLElement+WSDL.h"; path = "IBLWorkFlow/Data/DDXMLElement+WSDL.h"; sourceTree = SOURCE_ROOT; };
+		2612E1691D2E9EC900CA76BC /* DDXMLElement+WSDL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DDXMLElement+WSDL.m"; path = "IBLWorkFlow/Data/DDXMLElement+WSDL.m"; sourceTree = SOURCE_ROOT; };
 		264EBB5E1D2E023C00FF8373 /* IBLWorkFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IBLWorkFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		264EBB621D2E023D00FF8373 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		264EBB641D2E023D00FF8373 /* IBLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBLAppDelegate.h; sourceTree = "<group>"; };
@@ -77,6 +90,16 @@
 		264EBBA91D2E328B00FF8373 /* IBLExchangeRootSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLExchangeRootSegue.h; sourceTree = "<group>"; };
 		264EBBAA1D2E328B00FF8373 /* IBLExchangeRootSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLExchangeRootSegue.m; sourceTree = "<group>"; };
 		264EBBAC1D2E32DB00FF8373 /* IBLWorkFlow-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IBLWorkFlow-prefix.pch"; sourceTree = "<group>"; };
+		26A9D1341D2E7E3E000950F6 /* IBLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLoginViewController.h; sourceTree = "<group>"; };
+		26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLoginViewController.m; sourceTree = "<group>"; };
+		26A9D1371D2E844C000950F6 /* IBLViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLViewModel.h; path = IBLWorkFlow/Views/IBLViewModel.h; sourceTree = SOURCE_ROOT; };
+		26A9D1381D2E844C000950F6 /* IBLViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBLViewModel.m; path = IBLWorkFlow/Views/IBLViewModel.m; sourceTree = SOURCE_ROOT; };
+		26A9D13A1D2E8458000950F6 /* IBLLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLLoginViewModel.h; path = IBLWorkFlow/Views/IBLLoginViewModel.h; sourceTree = SOURCE_ROOT; };
+		26A9D13B1D2E8458000950F6 /* IBLLoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBLLoginViewModel.m; path = IBLWorkFlow/Views/IBLLoginViewModel.m; sourceTree = SOURCE_ROOT; };
+		26A9D13D1D2E847C000950F6 /* IBLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLModel.h; path = IBLWorkFlow/Views/IBLModel.h; sourceTree = SOURCE_ROOT; };
+		26A9D13E1D2E847C000950F6 /* IBLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBLModel.m; path = IBLWorkFlow/Views/IBLModel.m; sourceTree = SOURCE_ROOT; };
+		26A9D1401D2E8487000950F6 /* IBLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLUser.h; path = IBLWorkFlow/Views/IBLUser.h; sourceTree = SOURCE_ROOT; };
+		26A9D1411D2E8487000950F6 /* IBLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBLUser.m; path = IBLWorkFlow/Views/IBLUser.m; sourceTree = SOURCE_ROOT; };
 		3827AAE8534D1CF41CA1D789 /* Pods-IBLWorkFlowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BC523A9AC89C5F1273C45C7 /* Pods-IBLWorkFlowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4421433E1B53EEC5E521C458 /* Pods-IBLWorkFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.release.xcconfig"; sourceTree = "<group>"; };
@@ -210,6 +233,10 @@
 		5B87540258EE7F5BCE66BC19 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				26A9D13D1D2E847C000950F6 /* IBLModel.h */,
+				26A9D13E1D2E847C000950F6 /* IBLModel.m */,
+				26A9D1401D2E8487000950F6 /* IBLUser.h */,
+				26A9D1411D2E8487000950F6 /* IBLUser.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,6 +251,10 @@
 		5B8755A968BB28708B32E32F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				26A9D1371D2E844C000950F6 /* IBLViewModel.h */,
+				26A9D1381D2E844C000950F6 /* IBLViewModel.m */,
+				26A9D13A1D2E8458000950F6 /* IBLLoginViewModel.h */,
+				26A9D13B1D2E8458000950F6 /* IBLLoginViewModel.m */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -248,6 +279,8 @@
 				264EBBA71D2E2FD200FF8373 /* IBLTableViewController.m */,
 				5B87572F5D7F00B76DFCC5CD /* IBLRootViewController.h */,
 				5B875FB5811336EE05248DB0 /* IBLRootViewController.m */,
+				26A9D1341D2E7E3E000950F6 /* IBLLoginViewController.h */,
+				26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */,
 				5B875135C2C0645AA45CAB6D /* Segues */,
 			);
 			path = Views;
@@ -263,6 +296,10 @@
 		5B875B3E9B520BF0A0F77607 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2612E1601D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.h */,
+				2612E1611D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m */,
+				2612E1681D2E9EC900CA76BC /* DDXMLElement+WSDL.h */,
+				2612E1691D2E9EC900CA76BC /* DDXMLElement+WSDL.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -283,6 +320,7 @@
 				264EBB981D2E2BC200FF8373 /* IBLRepository.m */,
 				264EBB9A1D2E2BD400FF8373 /* IBLUserRepository.h */,
 				264EBB9B1D2E2BD400FF8373 /* IBLUserRepository.m */,
+				2612E1651D2E9DDF00CA76BC /* User.xml */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -424,6 +462,7 @@
 			files = (
 				264EBB711D2E023D00FF8373 /* LaunchScreen.storyboard in Resources */,
 				264EBB6E1D2E023D00FF8373 /* Assets.xcassets in Resources */,
+				2612E1661D2E9DDF00CA76BC /* User.xml in Resources */,
 				264EBB6C1D2E023D00FF8373 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,16 +611,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */,
 				264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */,
 				264EBBA81D2E2FD200FF8373 /* IBLTableViewController.m in Sources */,
+				26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */,
+				26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */,
 				264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */,
 				264EBBA21D2E2C1300FF8373 /* IBLFetchUser.m in Sources */,
 				264EBB9C1D2E2BD400FF8373 /* IBLUserRepository.m in Sources */,
 				264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */,
 				264EBB661D2E023D00FF8373 /* IBLAppDelegate.m in Sources */,
+				26A9D1421D2E8487000950F6 /* IBLUser.m in Sources */,
 				264EBB631D2E023D00FF8373 /* main.m in Sources */,
+				2612E16A1D2E9EC900CA76BC /* DDXMLElement+WSDL.m in Sources */,
+				26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */,
 				264EBBA51D2E2F8B00FF8373 /* IBLViewController.m in Sources */,
 				264EBB991D2E2BC200FF8373 /* IBLRepository.m in Sources */,
+				2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */,
 				5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

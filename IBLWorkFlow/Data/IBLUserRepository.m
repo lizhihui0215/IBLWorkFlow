@@ -10,4 +10,14 @@
 
 @implementation IBLUserRepository
 
+- (void)fetchWithCompleteHandler:(void (^)(IBLUser *, NSError *))handler {
+    [self.networkServices POST:@""
+                    parameters:nil
+                      progress:nil
+                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                           
+                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                           
+                       }];
+}
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "IBLUseCase.h"
+#import "IBLUser.h"
 
 @interface IBLFetchUser : IBLUseCase
 
+- (void)startFetchWithCompleteHandler:(void (^)(IBLUser *, NSError *))handler;
 @end

@@ -7,7 +7,12 @@
 //
 
 #import "IBLExchangeRootSegue.h"
+#import "IBLAppDelegate.h"
 
 @implementation IBLExchangeRootSegue
+
+- (void)perform{
+    [IBLAppDelegate sharedDelegate].window.rootViewController = self.destinationViewController;
+}
 
 @end

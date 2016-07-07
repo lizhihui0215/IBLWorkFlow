@@ -8,6 +8,8 @@
 
 #import "IBLRootViewController.h"
 
+static NSString * const NavigationToLoginIdentifier = @"NavigationToLogin";
+
 @interface IBLRootViewController ()
 
 @end
@@ -17,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self performSegueWithIdentifier:NavigationToLoginIdentifier sender:self];
 }
 
 - (void)didReceiveMemoryWarning {

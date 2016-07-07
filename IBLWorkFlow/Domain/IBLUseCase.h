@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IBLUseCase : NSObject
+@protocol IBLUseCaseProtocol <NSObject>
+
+@optional
+- (BOOL)validateWithHandler:(void (^)(NSError *error))handler;
+
+@end
+
+@interface IBLUseCase : NSObject<IBLUseCaseProtocol>
 
 @end

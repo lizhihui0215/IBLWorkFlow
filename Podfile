@@ -32,6 +32,8 @@ target 'IBLWorkFlow' do
   
   # https://github.com/forkingdog/UITableView-FDTemplateLayoutCell
   pod 'UITableView+FDTemplateLayoutCell'
+  
+  pod 'KissXML'
 
   target 'IBLWorkFlowTests' do
     inherit! :search_paths

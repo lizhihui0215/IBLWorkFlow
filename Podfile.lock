@@ -17,12 +17,17 @@ PODS:
   - DZNEmptyDataSet (1.8.1)
   - IQKeyboardManager (3.3.7)
   - JSONModel (1.2.0)
-  - Masonry (1.0.1)
+  - KissXML (5.0.3):
+    - KissXML/Standard (= 5.0.3)
+  - KissXML/Core (5.0.3)
+  - KissXML/Standard (5.0.3):
+    - KissXML/Core
+  - Masonry (1.0.0)
   - MBProgressHUD (0.9.2)
-  - MJRefresh (3.1.10)
-  - SDWebImage (3.8.1):
-    - SDWebImage/Core (= 3.8.1)
-  - SDWebImage/Core (3.8.1)
+  - MJRefresh (3.1.0)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
   - UITableView+FDTemplateLayoutCell (1.4)
 
 DEPENDENCIES:
@@ -30,6 +35,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - IQKeyboardManager
   - JSONModel
+  - KissXML
   - Masonry
   - MBProgressHUD
   - MJRefresh
@@ -41,12 +47,13 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
-  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  KissXML: d19dd6dc65e0dc721ba92b3077b8ebdd240f1c1e
+  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
-  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
 
-PODFILE CHECKSUM: 20219d264e750301c767ec8cd5651925e5bab165
+PODFILE CHECKSUM: f78d87a6d23444c68f95eae746d8c1b67191b421
 
 COCOAPODS: 1.0.0

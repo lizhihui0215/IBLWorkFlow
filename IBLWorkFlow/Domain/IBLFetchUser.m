@@ -7,7 +7,21 @@
 //
 
 #import "IBLFetchUser.h"
+#import "IBLUserRepository.h"
 
 @implementation IBLFetchUser
 
+- (BOOL)validateWithHandler:(void (^)(NSError *))handler{
+    
+    return YES;
+}
+
+- (void)startFetchWithCompleteHandler:(void (^)(IBLUser *, NSError *))handler {
+    IBLUserRepository *user = [[IBLUserRepository alloc] init];
+    
+    [user fetchWithCompleteHandler:^(IBLUser *user, NSError *error){
+        
+    }];
+    
+}
 @end
