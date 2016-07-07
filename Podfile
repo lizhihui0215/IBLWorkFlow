@@ -26,6 +26,12 @@ target 'IBLWorkFlow' do
   
   # https://github.com/SnapKit/Masonry
   pod 'Masonry'
+  
+  # https://github.com/dzenbot/DZNEmptyDataSet
+  pod 'DZNEmptyDataSet'
+  
+  # https://github.com/forkingdog/UITableView-FDTemplateLayoutCell
+  pod 'UITableView+FDTemplateLayoutCell'
 
   target 'IBLWorkFlowTests' do
     inherit! :search_paths
