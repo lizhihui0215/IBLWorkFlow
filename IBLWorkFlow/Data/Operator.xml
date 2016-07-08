@@ -1,0 +1,30 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://workorder.webserver.module.miniboss.com/" name="OperatorInterface" targetNamespace="http://workorder.webserver.module.miniboss.com/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.workorder.webserver.module.miniboss.com/" xmlns="http://workorder.webserver.module.miniboss.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://workorder.webserver.module.miniboss.com/">
+            <xsd:element name="auth" type="auth"/>
+            <xsd:complexType name="auth">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="authResponse" type="authResponse"/>
+            <xsd:complexType name="authResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="auth">
+        <wsdl:part element="ns1:auth" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="authResponse">
+        <wsdl:part element="ns1:authResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="OperatorInterface">
+        <wsdl:operation name="auth">
+            <wsdl:input message="ns1:auth" name="auth"></wsdl:input>
+            <wsdl:output message="ns1:authResponse" name="authResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

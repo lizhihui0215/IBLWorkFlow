@@ -29,9 +29,9 @@
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
     
-    IBLWSDLServices *services = [[IBLWSDLServices alloc] initWithFilename:@"User"];
+    IBLWSDLServices *services = [[IBLWSDLServices alloc] initWithFilename:@"Operator"];
     
-    NSString *xml = [services buildSOAPWithMethodName:@"openAccount" parameters:@{@"arg0" : @"xxxxxxxxx"}];
+    NSString *xml = [services buildSOAPWithMethodName:@"auth" parameters:@{@"arg0" : @"xxxxxxxxx"}];
     
     NSLog(@"xml %@",xml);
 }
