@@ -25,6 +25,7 @@
 		264EBBA51D2E2F8B00FF8373 /* IBLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA41D2E2F8B00FF8373 /* IBLViewController.m */; };
 		264EBBA81D2E2FD200FF8373 /* IBLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA71D2E2FD200FF8373 /* IBLTableViewController.m */; };
 		264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBAA1D2E328B00FF8373 /* IBLExchangeRootSegue.m */; };
+		2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650AC391D2F571200421C78 /* IBLWSDLServices.m */; };
 		26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */; };
 		26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1381D2E844C000950F6 /* IBLViewModel.m */; };
 		26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D13B1D2E8458000950F6 /* IBLLoginViewModel.m */; };
@@ -90,6 +91,8 @@
 		264EBBA91D2E328B00FF8373 /* IBLExchangeRootSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLExchangeRootSegue.h; sourceTree = "<group>"; };
 		264EBBAA1D2E328B00FF8373 /* IBLExchangeRootSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLExchangeRootSegue.m; sourceTree = "<group>"; };
 		264EBBAC1D2E32DB00FF8373 /* IBLWorkFlow-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IBLWorkFlow-prefix.pch"; sourceTree = "<group>"; };
+		2650AC381D2F571200421C78 /* IBLWSDLServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWSDLServices.h; sourceTree = "<group>"; };
+		2650AC391D2F571200421C78 /* IBLWSDLServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWSDLServices.m; sourceTree = "<group>"; };
 		26A9D1341D2E7E3E000950F6 /* IBLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLoginViewController.h; sourceTree = "<group>"; };
 		26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLoginViewController.m; sourceTree = "<group>"; };
 		26A9D1371D2E844C000950F6 /* IBLViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLViewModel.h; path = IBLWorkFlow/Views/IBLViewModel.h; sourceTree = SOURCE_ROOT; };
@@ -298,6 +301,8 @@
 			children = (
 				2612E1601D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.h */,
 				2612E1611D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m */,
+				2650AC381D2F571200421C78 /* IBLWSDLServices.h */,
+				2650AC391D2F571200421C78 /* IBLWSDLServices.m */,
 				2612E1681D2E9EC900CA76BC /* DDXMLElement+WSDL.h */,
 				2612E1691D2E9EC900CA76BC /* DDXMLElement+WSDL.m */,
 			);
@@ -621,6 +626,7 @@
 				264EBB9C1D2E2BD400FF8373 /* IBLUserRepository.m in Sources */,
 				264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */,
 				264EBB661D2E023D00FF8373 /* IBLAppDelegate.m in Sources */,
+				2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */,
 				26A9D1421D2E8487000950F6 /* IBLUser.m in Sources */,
 				264EBB631D2E023D00FF8373 /* main.m in Sources */,
 				2612E16A1D2E9EC900CA76BC /* DDXMLElement+WSDL.m in Sources */,

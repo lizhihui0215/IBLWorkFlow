@@ -12,4 +12,7 @@
 
 + (instancetype)elementWithFileName:(NSString *)fileName;
 
++ (instancetype)childWithName:(NSString *)name parent:(DDXMLElement *)parent;
+
++ (NSArray<DDXMLElement *> *)chindsWithName:(NSString *)name parent:(DDXMLElement *)parent;
 @end

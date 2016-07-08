@@ -8,21 +8,6 @@
 
 #import "DDXMLElement+WSDL.h"
 
-@interface Schema : NSObject
-
-@property (nonatomic, strong) DDXMLElement *schema;
-
-@property (nonatomic, readonly) NSString *targetNamespace;
-
-@property (nonatomic, readonly) NSArray *elements;
-
-@end
-
-@implementation Schema
-
-
-
-@end
 
 @implementation DDXMLElement (WSDL)
 
@@ -33,11 +18,11 @@
     return document.rootElement;
 }
 
-- (instancetype)childWithName:(NSString *)name parent:(DDXMLElement *)parent{
++ (instancetype)childWithName:(NSString *)name parent:(DDXMLElement *)parent{
     return [parent elementsForName:name].firstObject;
 }
 
-- (NSArray<DDXMLElement *> *)chindsWithName:(NSString *)name parent:(DDXMLElement *)parent{
++ (NSArray<DDXMLElement *> *)chindsWithName:(NSString *)name parent:(DDXMLElement *)parent{
     
     NSArray *elements = [parent elementsForName:name];
     
@@ -46,28 +31,8 @@
     return nil;
 }
 
-- (instancetype)type{
-    return [self childWithName:@"types" parent:self];
-}
-
-- (instancetype)schema{
-    return [self childWithName:@"schema" parent:self];
-}
-
-- (NSString *)schemaTargetNamespace{
-    DDXMLElement *schema = [self schema];
-    
-    if (!schema) return nil;
-    
-    return [[schema attributeForName:@"targetNamespace"] stringValue];
-}
-
-
-- (instancetype)schemaElements{
-    return [self childWithName:@"element" parent:self];
-}
-
 @end
+
 
 
 

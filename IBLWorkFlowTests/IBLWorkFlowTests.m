@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "IBLWSDLServices.h"
 
 @interface IBLWorkFlowTests : XCTestCase
 
@@ -27,6 +28,12 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    IBLWSDLServices *services = [[IBLWSDLServices alloc] initWithFilename:@"User"];
+    
+    NSString *xml = [services buildSOAPWithMethodName:@"openAccount" parameters:@{@"arg0" : @"xxxxxxxxx"}];
+    
+    NSLog(@"xml %@",xml);
 }
 
 - (void)testPerformanceExample {

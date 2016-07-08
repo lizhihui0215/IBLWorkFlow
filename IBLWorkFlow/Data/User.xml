@@ -1,65 +1,140 @@
-<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://impl.webserver.module.miniboss.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://webserver.module.miniboss.com/" name="UserImplService" targetNamespace="http://impl.webserver.module.miniboss.com/">
-    <wsdl:import location="http://115.28.0.62:8081/nodeibilling/services/UserInterface?wsdl=UserInterface.wsdl" namespace="http://webserver.module.miniboss.com/"></wsdl:import>
-    <wsdl:binding name="UserImplServiceSoapBinding" type="ns1:UserInterface">
-        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-        <wsdl:operation name="getUserInfo">
-            <soap:operation soapAction="" style="document"/>
-            <wsdl:input name="getUserInfo">
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="getUserInfoResponse">
-                <soap:body use="literal"/>
-            </wsdl:output>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://webserver.module.miniboss.com/" name="UserInterface" targetNamespace="http://webserver.module.miniboss.com/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.webserver.module.miniboss.com/" xmlns="http://webserver.module.miniboss.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webserver.module.miniboss.com/">
+            <xsd:element name="renew" type="renew"/>
+            <xsd:complexType name="renew">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="renewResponse" type="renewResponse"/>
+            <xsd:complexType name="renewResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="openAccount" type="openAccount"/>
+            <xsd:complexType name="openAccount">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="openAccountResponse" type="openAccountResponse"/>
+            <xsd:complexType name="openAccountResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getUserInfo" type="getUserInfo"/>
+            <xsd:complexType name="getUserInfo">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getUserInfoResponse" type="getUserInfoResponse"/>
+            <xsd:complexType name="getUserInfoResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="delay" type="delay"/>
+            <xsd:complexType name="delay">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="delayResponse" type="delayResponse"/>
+            <xsd:complexType name="delayResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="change" type="change"/>
+            <xsd:complexType name="change">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="changeResponse" type="changeResponse"/>
+            <xsd:complexType name="changeResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getUserList" type="getUserList"/>
+            <xsd:complexType name="getUserList">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getUserListResponse" type="getUserListResponse"/>
+            <xsd:complexType name="getUserListResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="change">
+        <wsdl:part element="ns1:change" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="delayResponse">
+        <wsdl:part element="ns1:delayResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUserInfoResponse">
+        <wsdl:part element="ns1:getUserInfoResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="renewResponse">
+        <wsdl:part element="ns1:renewResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="openAccountResponse">
+        <wsdl:part element="ns1:openAccountResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="openAccount">
+        <wsdl:part element="ns1:openAccount" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUserList">
+        <wsdl:part element="ns1:getUserList" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="delay">
+        <wsdl:part element="ns1:delay" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUserListResponse">
+        <wsdl:part element="ns1:getUserListResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="renew">
+        <wsdl:part element="ns1:renew" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="changeResponse">
+        <wsdl:part element="ns1:changeResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getUserInfo">
+        <wsdl:part element="ns1:getUserInfo" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="UserInterface">
+        <wsdl:operation name="renew">
+            <wsdl:input message="ns1:renew" name="renew"></wsdl:input>
+            <wsdl:output message="ns1:renewResponse" name="renewResponse"></wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="openAccount">
-            <soap:operation soapAction="" style="document"/>
-            <wsdl:input name="openAccount">
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="openAccountResponse">
-                <soap:body use="literal"/>
-            </wsdl:output>
+            <wsdl:input message="ns1:openAccount" name="openAccount"></wsdl:input>
+            <wsdl:output message="ns1:openAccountResponse" name="openAccountResponse"></wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="renew">
-            <soap:operation soapAction="" style="document"/>
-            <wsdl:input name="renew">
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="renewResponse">
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="change">
-            <soap:operation soapAction="" style="document"/>
-            <wsdl:input name="change">
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="changeResponse">
-                <soap:body use="literal"/>
-            </wsdl:output>
+        <wsdl:operation name="getUserInfo">
+            <wsdl:input message="ns1:getUserInfo" name="getUserInfo"></wsdl:input>
+            <wsdl:output message="ns1:getUserInfoResponse" name="getUserInfoResponse"></wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="delay">
-            <soap:operation soapAction="" style="document"/>
-            <wsdl:input name="delay">
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="delayResponse">
-                <soap:body use="literal"/>
-            </wsdl:output>
+            <wsdl:input message="ns1:delay" name="delay"></wsdl:input>
+            <wsdl:output message="ns1:delayResponse" name="delayResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="change">
+            <wsdl:input message="ns1:change" name="change"></wsdl:input>
+            <wsdl:output message="ns1:changeResponse" name="changeResponse"></wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getUserList">
-            <soap:operation soapAction="" style="document"/>
-            <wsdl:input name="getUserList">
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output name="getUserListResponse">
-                <soap:body use="literal"/>
-            </wsdl:output>
+            <wsdl:input message="ns1:getUserList" name="getUserList"></wsdl:input>
+            <wsdl:output message="ns1:getUserListResponse" name="getUserListResponse"></wsdl:output>
         </wsdl:operation>
-    </wsdl:binding>
-    <wsdl:service name="UserImplService">
-        <wsdl:port binding="tns:UserImplServiceSoapBinding" name="UserImplPort">
-            <soap:address location="http://115.28.0.62:8081/nodeibilling/services/UserInterface"/>
-        </wsdl:port>
-    </wsdl:service>
+    </wsdl:portType>
 </wsdl:definitions>
