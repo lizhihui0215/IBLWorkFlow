@@ -8,6 +8,8 @@
 
 #import "IBLLoginViewController.h"
 
+static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
+
 @interface IBLLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -29,6 +31,8 @@
                           
                       }];
     
+    [self performSegueWithIdentifier:NavigationToMainIdentifier sender:self];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,7 +40,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -44,6 +48,5 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
 @end
