@@ -11,5 +11,7 @@
 
 @interface IBLUserRepository : IBLRepository
 
-- (void)fetchWithCompleteHandler:(void (^)(IBLUser *, NSError *))handler;
+- (void)fetchWithUsername:(NSString *)username
+                 password:(NSString *)password
+          completeHandler:(void (^)(IBLUser *, NSError *))handler;
 @end

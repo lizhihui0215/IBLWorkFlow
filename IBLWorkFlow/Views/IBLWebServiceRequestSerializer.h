@@ -9,7 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 
 @interface IBLWebServiceRequestSerializer : AFHTTPRequestSerializer
-+ (instancetype)serializerWithWritingOptions:(NSString *)fileName;
 
++ (instancetype)serializerWithFilename:(NSString *)fileName methodName:(NSString *)methodName;
 
 @end

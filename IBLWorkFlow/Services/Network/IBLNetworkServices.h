@@ -6,8 +6,8 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <AFNetworking/AFNetworking.h>
+#import "IBLWebServiceRequestSerializer.h"
+#import "IBLWebServiceResponseSerializer.h"
 
 @interface IBLNetworkServices : AFHTTPSessionManager
 

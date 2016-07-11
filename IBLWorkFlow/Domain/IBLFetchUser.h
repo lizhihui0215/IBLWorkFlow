@@ -11,5 +11,7 @@
 
 @interface IBLFetchUser : IBLUseCase
 
-- (void)startFetchWithCompleteHandler:(void (^)(IBLUser *, NSError *))handler;
+- (void)startFetchWithUsername:(NSString *)username
+                      password:(NSString *)password
+               completeHandler:(void (^)(IBLUser *, NSError *))handler;
 @end

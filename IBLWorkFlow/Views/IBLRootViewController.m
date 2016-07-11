@@ -7,7 +7,7 @@
 //
 
 #import "IBLRootViewController.h"
-
+#import "IBLLoginViewController.h"
 static NSString * const NavigationToLoginIdentifier = @"NavigationToLogin";
 
 @interface IBLRootViewController ()
@@ -26,5 +26,18 @@ static NSString * const NavigationToLoginIdentifier = @"NavigationToLogin";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+     IBLLoginViewController *loginViewController = [segue destinationViewController];
+     
+     loginViewController.viewModel = [[IBLLoginViewModel alloc] init];
+     
+ }
 
 @end

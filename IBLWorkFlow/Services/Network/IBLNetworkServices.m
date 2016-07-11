@@ -7,7 +7,7 @@
 //
 
 #import "IBLNetworkServices.h"
-static NSString * const IBLAPIBaseURLString = @"https://api.app.net/";
+static NSString * const IBLAPIBaseURLString = @"http://115.28.0.62:8081/nodeibilling/services/";
 
 @implementation IBLNetworkServices
 + (instancetype)sharedServices {
@@ -15,11 +15,7 @@ static NSString * const IBLAPIBaseURLString = @"https://api.app.net/";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedServices = [[IBLNetworkServices alloc] initWithBaseURL:[NSURL URLWithString:IBLAPIBaseURLString]];
-        
-        _sharedServices.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
-        
-        _sharedServices.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingMutableContainers];
-        
+                
         _sharedServices.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     });
     

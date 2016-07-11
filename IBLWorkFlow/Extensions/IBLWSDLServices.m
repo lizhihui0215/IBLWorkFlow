@@ -184,6 +184,23 @@
     return [[[self class] alloc] initWithFilename:filename];
 }
 
++ (NSString *)SOAPResultWithMethodName:(NSString *)methodName data:(NSString *)data{
+    
+    NSError *error = nil;
+    DDXMLElement *root = [[DDXMLElement alloc] initWithXMLString:data error:&error];
+    
+    DDXMLElement *body = [DDXMLElement childWithName:@"Body" parent:root];
+    
+    DDXMLElement *responseMessage = [DDXMLElement childWithName:methodName parent:body];
+    
+    DDXMLElement *content = [DDXMLElement childWithName:@"return" parent:responseMessage];
+    
+    NSString *contentString = [content stringValue];
+    
+    
+    return  contentString;
+}
+
 - (NSString *)buildSOAPWithMethodName:(NSString *)methodName
                            parameters:(NSDictionary *)aParameters{
 //    <?xml version="1.0" encoding="utf-8"?>

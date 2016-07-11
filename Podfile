@@ -33,7 +33,14 @@ target 'IBLWorkFlow' do
   # https://github.com/forkingdog/UITableView-FDTemplateLayoutCell
   pod 'UITableView+FDTemplateLayoutCell'
   
+  # https://github.com/robbiehanson/KissXML
   pod 'KissXML'
+  
+  # https://github.com/kelp404/CocoaSecurity
+  pod 'CocoaSecurity'
+  
+  # https://github.com/romaonthego/RESideMenu
+  pod 'RESideMenu'
 
   target 'IBLWorkFlowTests' do
     inherit! :search_paths

@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "IBLWSDLServices.h"
+#import "IBLRepository.h"
 
 @interface IBLWorkFlowTests : XCTestCase
 
@@ -33,7 +34,25 @@
     
     NSString *xml = [services buildSOAPWithMethodName:@"auth" parameters:@{@"arg0" : @"xxxxxxxxx"}];
     
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"xml"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSString *stringData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSString *test = [IBLWSDLServices SOAPResultWithMethodName:@"authResponse" data:stringData];
+    
+    IBLRepository *ib = [[IBLRepository alloc] init];
+//    NSString *signa = [ib siginWithParameters:@{@"appid" : @"asddasdasd",
+//                              @"mch_id" : @"asddsad",
+//                              @"aaa" : @"asddas",
+//                              @"qqq" : @"asddasd",
+//                              @"fff" : @"asddasda",} key:@"asddsad"];
+    
+//    NSLog(@"signa %@",signa);
+    
+    
     NSLog(@"xml %@",xml);
+    
+    NSLog(@"test %@",test);
 }
 
 - (void)testPerformanceExample {

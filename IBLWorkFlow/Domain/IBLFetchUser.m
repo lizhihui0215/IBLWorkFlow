@@ -16,12 +16,15 @@
     return YES;
 }
 
-- (void)startFetchWithCompleteHandler:(void (^)(IBLUser *, NSError *))handler {
+- (void)startFetchWithUsername:(NSString *)username
+                      password:(NSString *)password
+               completeHandler:(void (^)(IBLUser *, NSError *))handler {
     IBLUserRepository *user = [[IBLUserRepository alloc] init];
     
-    [user fetchWithCompleteHandler:^(IBLUser *user, NSError *error){
-        
-    }];
-    
+    [user fetchWithUsername:username
+                   password:password
+            completeHandler:^(IBLUser *user, NSError *error) {
+                
+            }];
 }
 @end

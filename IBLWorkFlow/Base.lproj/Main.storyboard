@@ -103,5 +103,117 @@
             </objects>
             <point key="canvasLocation" x="521" y="378"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ff6-Td-Okb">
+            <objects>
+                <navigationController storyboardIdentifier="contentViewController" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Qy-Aa-MF0" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ze9-u9-3XI">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="uT7-Xo-xIi">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6dW-b6-txL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="923" y="298"/>
+        </scene>
+        <!--Left Menu View Controller-->
+        <scene sceneID="cFZ-u7-aDa">
+            <objects>
+                <viewController restorationIdentifier="leftMenuViewController" storyboardIdentifier="leftMenuViewController" id="cya-nh-l7G" customClass="IBLLeftMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1sp-1p-3g6"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lby-lY-XFl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u4p-Sv-YEy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s0m-PW-25X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="929" y="991"/>
+        </scene>
+        <!--Home Controller-->
+        <scene sceneID="wcu-Cv-GO2">
+            <objects>
+                <viewController storyboardIdentifier="firstViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ttn-LK-U0s" customClass="IBLMineWorkFlowViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cg7-Kw-kJh"/>
+                        <viewControllerLayoutGuide type="bottom" id="wq6-K9-2F7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l3v-T9-cfk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Balloon" translatesAutoresizingMaskIntoConstraints="NO" id="GJ6-GU-nCu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home Controller" id="f5P-Tv-i8C">
+                        <barButtonItem key="leftBarButtonItem" title="Left" id="5re-Q5-VZm">
+                            <connections>
+                                <action selector="presentLeftMenuViewController:" destination="Ttn-LK-U0s" id="jal-gP-BQ8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Right" id="j3Y-nF-oiL">
+                            <connections>
+                                <action selector="presentRightMenuViewController:" destination="Ttn-LK-U0s" id="NF8-5N-nBS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NTT-sP-azV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1313" y="298"/>
+        </scene>
+        <!--Second Controller-->
+        <scene sceneID="3Tv-Mp-GZy">
+            <objects>
+                <viewController restorationIdentifier="secondViewController" storyboardIdentifier="secondViewController" id="Uhs-i1-LAb" customClass="IBLWorkFlowManagerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y6F-Pj-piq"/>
+                        <viewControllerLayoutGuide type="bottom" id="HEu-we-d4B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yFd-BZ-PFr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYW-7v-Rke">
+                                <rect key="frame" x="79" y="117" width="162" height="30"/>
+                                <state key="normal" title="Push View Controller">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pushViewController:" destination="Uhs-i1-LAb" eventType="touchUpInside" id="nBd-Ai-yz2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.79024568979999998" blue="0.39722655649999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Second Controller" id="uyH-qN-EXY">
+                        <barButtonItem key="leftBarButtonItem" title="Left" id="1F5-jX-9Yu">
+                            <connections>
+                                <action selector="presentLeftMenuViewController:" destination="Uhs-i1-LAb" id="fPt-zA-wnP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Right" id="hBH-Sq-Amc">
+                            <connections>
+                                <action selector="presentRightMenuViewController:" destination="Uhs-i1-LAb" id="lGj-8O-fum"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6jv-Nc-zFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1313" y="983"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Balloon" width="320" height="568"/>
+    </resources>
 </document>

@@ -21,12 +21,12 @@
     
     IBLFetchUser *fetchUser = [[IBLFetchUser alloc] init];
     
-    if([fetchUser validateWithHandler:handler]) return;
+    if(![fetchUser validateWithHandler:handler]) return;
     
-    [fetchUser startFetchWithCompleteHandler:^(IBLUser *user, NSError *error){
-        
-    }];
-    
-    
+    [fetchUser startFetchWithUsername:username
+                             password:password
+                      completeHandler:^(IBLUser *user, NSError *error) {
+                          
+                      }];
 }
 @end

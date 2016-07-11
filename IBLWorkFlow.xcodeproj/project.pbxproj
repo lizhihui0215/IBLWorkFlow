@@ -26,6 +26,13 @@
 		264EBBA81D2E2FD200FF8373 /* IBLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA71D2E2FD200FF8373 /* IBLTableViewController.m */; };
 		264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBAA1D2E328B00FF8373 /* IBLExchangeRootSegue.m */; };
 		2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650AC391D2F571200421C78 /* IBLWSDLServices.m */; };
+		269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D571D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m */; };
+		269B7D5A1D33453200D52DF0 /* Test.xml in Resources */ = {isa = PBXBuildFile; fileRef = 269B7D591D33453200D52DF0 /* Test.xml */; };
+		269B7D5D1D335A9F00D52DF0 /* NSString+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D5C1D335A9F00D52DF0 /* NSString+IBLExtension.m */; };
+		269B7D601D338F1C00D52DF0 /* IBLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D5F1D338F1C00D52DF0 /* IBLMainViewController.m */; };
+		269B7D691D33A38400D52DF0 /* IBLMineWorkFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D621D33A38400D52DF0 /* IBLMineWorkFlowViewController.m */; };
+		269B7D6A1D33A38400D52DF0 /* IBLLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D641D33A38400D52DF0 /* IBLLeftMenuViewController.m */; };
+		269B7D6C1D33A38400D52DF0 /* IBLWorkFlowManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D681D33A38400D52DF0 /* IBLWorkFlowManagerViewController.m */; };
 		26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */; };
 		26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1381D2E844C000950F6 /* IBLViewModel.m */; };
 		26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D13B1D2E8458000950F6 /* IBLLoginViewModel.m */; };
@@ -94,6 +101,19 @@
 		264EBBAC1D2E32DB00FF8373 /* IBLWorkFlow-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IBLWorkFlow-prefix.pch"; sourceTree = "<group>"; };
 		2650AC381D2F571200421C78 /* IBLWSDLServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWSDLServices.h; sourceTree = "<group>"; };
 		2650AC391D2F571200421C78 /* IBLWSDLServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWSDLServices.m; sourceTree = "<group>"; };
+		269B7D561D333BA200D52DF0 /* IBLWebServiceResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWebServiceResponseSerializer.h; sourceTree = "<group>"; };
+		269B7D571D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWebServiceResponseSerializer.m; sourceTree = "<group>"; };
+		269B7D591D33453200D52DF0 /* Test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test.xml; sourceTree = "<group>"; };
+		269B7D5B1D335A9F00D52DF0 /* NSString+IBLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IBLExtension.h"; sourceTree = "<group>"; };
+		269B7D5C1D335A9F00D52DF0 /* NSString+IBLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IBLExtension.m"; sourceTree = "<group>"; };
+		269B7D5E1D338F1C00D52DF0 /* IBLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMainViewController.h; sourceTree = "<group>"; };
+		269B7D5F1D338F1C00D52DF0 /* IBLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMainViewController.m; sourceTree = "<group>"; };
+		269B7D611D33A38400D52DF0 /* IBLMineWorkFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMineWorkFlowViewController.h; sourceTree = "<group>"; };
+		269B7D621D33A38400D52DF0 /* IBLMineWorkFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMineWorkFlowViewController.m; sourceTree = "<group>"; };
+		269B7D631D33A38400D52DF0 /* IBLLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLeftMenuViewController.h; sourceTree = "<group>"; };
+		269B7D641D33A38400D52DF0 /* IBLLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLeftMenuViewController.m; sourceTree = "<group>"; };
+		269B7D671D33A38400D52DF0 /* IBLWorkFlowManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWorkFlowManagerViewController.h; sourceTree = "<group>"; };
+		269B7D681D33A38400D52DF0 /* IBLWorkFlowManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWorkFlowManagerViewController.m; sourceTree = "<group>"; };
 		26A9D1341D2E7E3E000950F6 /* IBLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLoginViewController.h; sourceTree = "<group>"; };
 		26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLoginViewController.m; sourceTree = "<group>"; };
 		26A9D1371D2E844C000950F6 /* IBLViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLViewModel.h; path = IBLWorkFlow/Views/IBLViewModel.h; sourceTree = SOURCE_ROOT; };
@@ -286,6 +306,14 @@
 				5B875FB5811336EE05248DB0 /* IBLRootViewController.m */,
 				26A9D1341D2E7E3E000950F6 /* IBLLoginViewController.h */,
 				26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */,
+				269B7D5E1D338F1C00D52DF0 /* IBLMainViewController.h */,
+				269B7D5F1D338F1C00D52DF0 /* IBLMainViewController.m */,
+				269B7D611D33A38400D52DF0 /* IBLMineWorkFlowViewController.h */,
+				269B7D621D33A38400D52DF0 /* IBLMineWorkFlowViewController.m */,
+				269B7D631D33A38400D52DF0 /* IBLLeftMenuViewController.h */,
+				269B7D641D33A38400D52DF0 /* IBLLeftMenuViewController.m */,
+				269B7D671D33A38400D52DF0 /* IBLWorkFlowManagerViewController.h */,
+				269B7D681D33A38400D52DF0 /* IBLWorkFlowManagerViewController.m */,
 				5B875135C2C0645AA45CAB6D /* Segues */,
 			);
 			path = Views;
@@ -303,10 +331,14 @@
 			children = (
 				2612E1601D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.h */,
 				2612E1611D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m */,
+				269B7D561D333BA200D52DF0 /* IBLWebServiceResponseSerializer.h */,
+				269B7D571D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m */,
 				2650AC381D2F571200421C78 /* IBLWSDLServices.h */,
 				2650AC391D2F571200421C78 /* IBLWSDLServices.m */,
 				2612E1681D2E9EC900CA76BC /* DDXMLElement+WSDL.h */,
 				2612E1691D2E9EC900CA76BC /* DDXMLElement+WSDL.m */,
+				269B7D5B1D335A9F00D52DF0 /* NSString+IBLExtension.h */,
+				269B7D5C1D335A9F00D52DF0 /* NSString+IBLExtension.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -329,6 +361,7 @@
 				264EBB9B1D2E2BD400FF8373 /* IBLUserRepository.m */,
 				2612E1651D2E9DDF00CA76BC /* User.xml */,
 				26F620191D2FB6B500B49065 /* Operator.xml */,
+				269B7D591D33453200D52DF0 /* Test.xml */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -469,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				264EBB711D2E023D00FF8373 /* LaunchScreen.storyboard in Resources */,
+				269B7D5A1D33453200D52DF0 /* Test.xml in Resources */,
 				26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */,
 				264EBB6E1D2E023D00FF8373 /* Assets.xcassets in Resources */,
 				2612E1661D2E9DDF00CA76BC /* User.xml in Resources */,
@@ -622,21 +656,27 @@
 			files = (
 				26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */,
 				264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */,
+				269B7D691D33A38400D52DF0 /* IBLMineWorkFlowViewController.m in Sources */,
+				269B7D6A1D33A38400D52DF0 /* IBLLeftMenuViewController.m in Sources */,
 				264EBBA81D2E2FD200FF8373 /* IBLTableViewController.m in Sources */,
 				26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */,
 				26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */,
+				269B7D601D338F1C00D52DF0 /* IBLMainViewController.m in Sources */,
 				264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */,
+				269B7D6C1D33A38400D52DF0 /* IBLWorkFlowManagerViewController.m in Sources */,
 				264EBBA21D2E2C1300FF8373 /* IBLFetchUser.m in Sources */,
 				264EBB9C1D2E2BD400FF8373 /* IBLUserRepository.m in Sources */,
 				264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */,
 				264EBB661D2E023D00FF8373 /* IBLAppDelegate.m in Sources */,
 				2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */,
+				269B7D5D1D335A9F00D52DF0 /* NSString+IBLExtension.m in Sources */,
 				26A9D1421D2E8487000950F6 /* IBLUser.m in Sources */,
 				264EBB631D2E023D00FF8373 /* main.m in Sources */,
 				2612E16A1D2E9EC900CA76BC /* DDXMLElement+WSDL.m in Sources */,
 				26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */,
 				264EBBA51D2E2F8B00FF8373 /* IBLViewController.m in Sources */,
 				264EBB991D2E2BC200FF8373 /* IBLRepository.m in Sources */,
+				269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */,
 				2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */,
 				5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */,
 			);

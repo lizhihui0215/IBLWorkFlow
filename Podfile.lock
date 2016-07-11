@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - CocoaSecurity (1.2.4)
   - DZNEmptyDataSet (1.8.1)
   - IQKeyboardManager (3.3.7)
   - JSONModel (1.2.0)
@@ -23,6 +24,7 @@ PODS:
   - Masonry (1.0.1)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.10)
+  - RESideMenu (4.0.7)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
@@ -30,6 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - CocoaSecurity
   - DZNEmptyDataSet
   - IQKeyboardManager
   - JSONModel
@@ -37,11 +40,13 @@ DEPENDENCIES:
   - Masonry
   - MBProgressHUD
   - MJRefresh
+  - RESideMenu
   - SDWebImage
   - UITableView+FDTemplateLayoutCell
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
@@ -49,9 +54,10 @@ SPEC CHECKSUMS:
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
+  RESideMenu: f24c508404b49c667344c54aba7e590883533958
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
 
-PODFILE CHECKSUM: f78d87a6d23444c68f95eae746d8c1b67191b421
+PODFILE CHECKSUM: 9de68f79e51c2c1b98125eee385903b01ee4edae
 
 COCOAPODS: 1.0.0

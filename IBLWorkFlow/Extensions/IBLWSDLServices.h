@@ -22,4 +22,6 @@
 
 - (NSString *)buildSOAPWithMethodName:(NSString *)methodName
                            parameters:(NSDictionary *)aParameters;
+
++ (NSString *)SOAPResultWithMethodName:(NSString *)methodName data:(NSString *)data;
 @end

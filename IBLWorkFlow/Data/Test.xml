@@ -1,0 +1,7 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns1:authResponse xmlns:ns1="http://workorder.webserver.module.miniboss.com/">
+            <return>{"resourceList":[{"resKey":"OPEN_USER","resName":"开户","resDesc":"开户","resType":"1"},{"resKey":"WORK_ORDER_MANAGE","resName":"工单管理","resDesc":"工单管理","resType":"1"},{"resKey":"MY_WORK_ORDER","resName":"我的工单","resDesc":"我的工单","resType":"1"},{"resKey":"RENEW","resName":"续费","resDesc":"续费","resType":"1"},{"resKey":"CHANGE","resName":"换销售品","resDesc":"换销售品","resType":"1"},{"resKey":"ISUUE","resName":"派单","resDesc":"派单","resType":"2"},{"resKey":"TRAN","resName":"转发","resDesc":"转发","resType":"2"},{"resKey":"CANCEL_ORDER","resName":"作废","resDesc":"作废","resType":"2"},{"resKey":"ADD_ORDER","resName":"新增","resDesc":"新增","resType":"1"},{"resKey":"DEL_ORDER","resName":"删除","resDesc":"删除","resType":"2"},{"resKey":"VIEW_ORDER","resName":"查看工单","resDesc":"查看工单","resType":"2"},{"resKey":"HANDLE","resName":"处理","resDesc":"处理工单","resType":"2"},{"resKey":"PREFERENTIALPAYMENT_cfield","resName":"优惠金额","resDesc":"优惠金额","resType":"3"},{"resKey":"EXTRAMONTHLENGTH_cfield","resName":"临时赠送","resDesc":"临时赠送","resType":"3"},{"resKey":"FINISH_ORDER","resName":"完成","resDesc":"完成工单","resType":"3"}],"resultCode":0,"userName":"sysadmin","roleName":"超级管理员","allocId":111111111110021}</return>
+        </ns1:authResponse>
+    </soap:Body>
+</soap:Envelope>
