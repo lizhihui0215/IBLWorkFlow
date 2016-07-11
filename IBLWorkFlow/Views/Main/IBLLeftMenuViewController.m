@@ -22,6 +22,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.sideMenuViewController.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
+
     self.tableView = ({
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
@@ -35,8 +38,6 @@
         tableView.scrollsToTop = NO;
         tableView;
     });
-    self.tableView.layer.borderColor = [UIColor redColor].CGColor;
-    self.tableView.layer.borderWidth = 40;
     [self.view addSubview:self.tableView];
 }
 
@@ -48,8 +49,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
         case 0:
-            [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"firstViewController"]]
-                                                         animated:YES];
+            self.sideMenuViewController.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
             [self.sideMenuViewController hideMenuViewController];
             break;
         case 1:

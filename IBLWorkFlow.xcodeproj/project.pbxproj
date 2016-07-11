@@ -22,24 +22,26 @@
 		264EBB9C1D2E2BD400FF8373 /* IBLUserRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB9B1D2E2BD400FF8373 /* IBLUserRepository.m */; };
 		264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB9E1D2E2BE200FF8373 /* IBLUseCase.m */; };
 		264EBBA21D2E2C1300FF8373 /* IBLFetchUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA11D2E2C1300FF8373 /* IBLFetchUser.m */; };
-		264EBBA51D2E2F8B00FF8373 /* IBLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA41D2E2F8B00FF8373 /* IBLViewController.m */; };
-		264EBBA81D2E2FD200FF8373 /* IBLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA71D2E2FD200FF8373 /* IBLTableViewController.m */; };
 		264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBAA1D2E328B00FF8373 /* IBLExchangeRootSegue.m */; };
 		2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650AC391D2F571200421C78 /* IBLWSDLServices.m */; };
 		269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D571D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m */; };
 		269B7D5A1D33453200D52DF0 /* Test.xml in Resources */ = {isa = PBXBuildFile; fileRef = 269B7D591D33453200D52DF0 /* Test.xml */; };
 		269B7D5D1D335A9F00D52DF0 /* NSString+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D5C1D335A9F00D52DF0 /* NSString+IBLExtension.m */; };
-		269B7D601D338F1C00D52DF0 /* IBLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D5F1D338F1C00D52DF0 /* IBLMainViewController.m */; };
-		269B7D691D33A38400D52DF0 /* IBLMineWorkFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D621D33A38400D52DF0 /* IBLMineWorkFlowViewController.m */; };
-		269B7D6A1D33A38400D52DF0 /* IBLLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D641D33A38400D52DF0 /* IBLLeftMenuViewController.m */; };
-		269B7D6C1D33A38400D52DF0 /* IBLWorkFlowManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D681D33A38400D52DF0 /* IBLWorkFlowManagerViewController.m */; };
 		26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */; };
 		26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1381D2E844C000950F6 /* IBLViewModel.m */; };
 		26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D13B1D2E8458000950F6 /* IBLLoginViewModel.m */; };
 		26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D13E1D2E847C000950F6 /* IBLModel.m */; };
 		26A9D1421D2E8487000950F6 /* IBLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1411D2E8487000950F6 /* IBLUser.m */; };
 		26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26F620191D2FB6B500B49065 /* Operator.xml */; };
+		5B87514A474323FC60AD3B9A /* IBLWorkFlowManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8750798AE62DE7EB7B8144 /* IBLWorkFlowManagerViewController.m */; };
+		5B8752353A6DB84830C5F1CA /* IBLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8758BB5B46F169393FE2D7 /* IBLTableViewCell.m */; };
+		5B8754AC25CDAC1FA27E0231 /* IBLMineWorkFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8758BBA9729641CC5F291D /* IBLMineWorkFlowViewController.m */; };
+		5B8757182B593FAE81750768 /* IBLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875CF33E2F3DB3FED110D4 /* IBLViewController.m */; };
 		5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875FB5811336EE05248DB0 /* IBLRootViewController.m */; };
+		5B8757FCBA803A3DCB4C50B2 /* IBLMineWorkFlowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B2890782FCCC77AB904 /* IBLMineWorkFlowCell.m */; };
+		5B875ABCE8A1815B62EDC2A3 /* IBLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875A477581D17ADD3212A9 /* IBLTableViewController.m */; };
+		5B875BA76456459E9F3FA8BA /* IBLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */; };
+		5B875F35EE4AEFAF69A69881 /* IBLLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */; };
 		916C3F0C4BE6724553A38E60 /* libPods-IBLWorkFlowUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBB83F272FFCA67F7EB540F /* libPods-IBLWorkFlowUITests.a */; };
 		A65A0C0791A2265EA181E5F9 /* libPods-IBLWorkFlowTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */; };
 		C29699C982E6C6E8F36F7C33 /* libPods-IBLWorkFlow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75ECACC7C53EB3B0DA024790 /* libPods-IBLWorkFlow.a */; };
@@ -92,10 +94,6 @@
 		264EBB9E1D2E2BE200FF8373 /* IBLUseCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLUseCase.m; sourceTree = "<group>"; };
 		264EBBA01D2E2C1300FF8373 /* IBLFetchUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLFetchUser.h; sourceTree = "<group>"; };
 		264EBBA11D2E2C1300FF8373 /* IBLFetchUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFetchUser.m; sourceTree = "<group>"; };
-		264EBBA31D2E2F8B00FF8373 /* IBLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLViewController.h; sourceTree = "<group>"; };
-		264EBBA41D2E2F8B00FF8373 /* IBLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLViewController.m; sourceTree = "<group>"; };
-		264EBBA61D2E2FD200FF8373 /* IBLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLTableViewController.h; sourceTree = "<group>"; };
-		264EBBA71D2E2FD200FF8373 /* IBLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLTableViewController.m; sourceTree = "<group>"; };
 		264EBBA91D2E328B00FF8373 /* IBLExchangeRootSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLExchangeRootSegue.h; sourceTree = "<group>"; };
 		264EBBAA1D2E328B00FF8373 /* IBLExchangeRootSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLExchangeRootSegue.m; sourceTree = "<group>"; };
 		264EBBAC1D2E32DB00FF8373 /* IBLWorkFlow-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IBLWorkFlow-prefix.pch"; sourceTree = "<group>"; };
@@ -106,14 +104,6 @@
 		269B7D591D33453200D52DF0 /* Test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test.xml; sourceTree = "<group>"; };
 		269B7D5B1D335A9F00D52DF0 /* NSString+IBLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IBLExtension.h"; sourceTree = "<group>"; };
 		269B7D5C1D335A9F00D52DF0 /* NSString+IBLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IBLExtension.m"; sourceTree = "<group>"; };
-		269B7D5E1D338F1C00D52DF0 /* IBLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMainViewController.h; sourceTree = "<group>"; };
-		269B7D5F1D338F1C00D52DF0 /* IBLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMainViewController.m; sourceTree = "<group>"; };
-		269B7D611D33A38400D52DF0 /* IBLMineWorkFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMineWorkFlowViewController.h; sourceTree = "<group>"; };
-		269B7D621D33A38400D52DF0 /* IBLMineWorkFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMineWorkFlowViewController.m; sourceTree = "<group>"; };
-		269B7D631D33A38400D52DF0 /* IBLLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLeftMenuViewController.h; sourceTree = "<group>"; };
-		269B7D641D33A38400D52DF0 /* IBLLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLeftMenuViewController.m; sourceTree = "<group>"; };
-		269B7D671D33A38400D52DF0 /* IBLWorkFlowManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWorkFlowManagerViewController.h; sourceTree = "<group>"; };
-		269B7D681D33A38400D52DF0 /* IBLWorkFlowManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWorkFlowManagerViewController.m; sourceTree = "<group>"; };
 		26A9D1341D2E7E3E000950F6 /* IBLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLoginViewController.h; sourceTree = "<group>"; };
 		26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLoginViewController.m; sourceTree = "<group>"; };
 		26A9D1371D2E844C000950F6 /* IBLViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLViewModel.h; path = IBLWorkFlow/Views/IBLViewModel.h; sourceTree = SOURCE_ROOT; };
@@ -129,7 +119,23 @@
 		3BC523A9AC89C5F1273C45C7 /* Pods-IBLWorkFlowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4421433E1B53EEC5E521C458 /* Pods-IBLWorkFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.release.xcconfig"; sourceTree = "<group>"; };
 		565A3BAEBC81E00A178005D9 /* Pods-IBLWorkFlow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.debug.xcconfig"; sourceTree = "<group>"; };
+		5B8750798AE62DE7EB7B8144 /* IBLWorkFlowManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWorkFlowManagerViewController.m; sourceTree = "<group>"; };
+		5B8751501161A3D21DFE40EF /* IBLMineWorkFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMineWorkFlowViewController.h; sourceTree = "<group>"; };
+		5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLeftMenuViewController.m; sourceTree = "<group>"; };
+		5B8753BEE41EFC83BCC1A897 /* IBLLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLeftMenuViewController.h; sourceTree = "<group>"; };
+		5B875517E4AEDED23890788A /* IBLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLTableViewCell.h; sourceTree = "<group>"; };
+		5B8755217F90CFB700C44EAD /* IBLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLTableViewController.h; sourceTree = "<group>"; };
+		5B875648DBF736BC2589E501 /* IBLWorkFlowManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWorkFlowManagerViewController.h; sourceTree = "<group>"; };
 		5B87572F5D7F00B76DFCC5CD /* IBLRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRootViewController.h; sourceTree = "<group>"; };
+		5B8758BB5B46F169393FE2D7 /* IBLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLTableViewCell.m; sourceTree = "<group>"; };
+		5B8758BBA9729641CC5F291D /* IBLMineWorkFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMineWorkFlowViewController.m; sourceTree = "<group>"; };
+		5B8758F5509F16FDE270112B /* IBLMineWorkFlowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMineWorkFlowCell.h; sourceTree = "<group>"; };
+		5B875A477581D17ADD3212A9 /* IBLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLTableViewController.m; sourceTree = "<group>"; };
+		5B875B2890782FCCC77AB904 /* IBLMineWorkFlowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMineWorkFlowCell.m; sourceTree = "<group>"; };
+		5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMainViewController.m; sourceTree = "<group>"; };
+		5B875CF33E2F3DB3FED110D4 /* IBLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLViewController.m; sourceTree = "<group>"; };
+		5B875F49C01D81C5D5902304 /* IBLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMainViewController.h; sourceTree = "<group>"; };
+		5B875FA0896D4BEFF18C1576 /* IBLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLViewController.h; sourceTree = "<group>"; };
 		5B875FB5811336EE05248DB0 /* IBLRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRootViewController.m; sourceTree = "<group>"; };
 		6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IBLWorkFlowTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71CE4008BC85C8F72C9CAFDA /* Pods-IBLWorkFlowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowTests/Pods-IBLWorkFlowTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -245,6 +251,17 @@
 			path = Segues;
 			sourceTree = "<group>";
 		};
+		5B8751CB1BB061B531EF2030 /* MineWorkFlow */ = {
+			isa = PBXGroup;
+			children = (
+				5B8758F5509F16FDE270112B /* IBLMineWorkFlowCell.h */,
+				5B875B2890782FCCC77AB904 /* IBLMineWorkFlowCell.m */,
+				5B8758BBA9729641CC5F291D /* IBLMineWorkFlowViewController.m */,
+				5B8751501161A3D21DFE40EF /* IBLMineWorkFlowViewController.h */,
+			);
+			path = MineWorkFlow;
+			sourceTree = "<group>";
+		};
 		5B8753A10C9EEFD98D1ED3D5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +281,15 @@
 				26A9D1411D2E8487000950F6 /* IBLUser.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5B8754DD9382D759A0651CB1 /* MineWorkFlowManager */ = {
+			isa = PBXGroup;
+			children = (
+				5B875648DBF736BC2589E501 /* IBLWorkFlowManagerViewController.h */,
+				5B8750798AE62DE7EB7B8144 /* IBLWorkFlowManagerViewController.m */,
+			);
+			path = MineWorkFlowManager;
 			sourceTree = "<group>";
 		};
 		5B87558483DFA968DEE92C1A /* Manager */ = {
@@ -298,22 +324,14 @@
 		5B8759707A174B6EF9CD682D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				264EBBA31D2E2F8B00FF8373 /* IBLViewController.h */,
-				264EBBA41D2E2F8B00FF8373 /* IBLViewController.m */,
-				264EBBA61D2E2FD200FF8373 /* IBLTableViewController.h */,
-				264EBBA71D2E2FD200FF8373 /* IBLTableViewController.m */,
 				5B87572F5D7F00B76DFCC5CD /* IBLRootViewController.h */,
 				5B875FB5811336EE05248DB0 /* IBLRootViewController.m */,
 				26A9D1341D2E7E3E000950F6 /* IBLLoginViewController.h */,
 				26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */,
-				269B7D5E1D338F1C00D52DF0 /* IBLMainViewController.h */,
-				269B7D5F1D338F1C00D52DF0 /* IBLMainViewController.m */,
-				269B7D611D33A38400D52DF0 /* IBLMineWorkFlowViewController.h */,
-				269B7D621D33A38400D52DF0 /* IBLMineWorkFlowViewController.m */,
-				269B7D631D33A38400D52DF0 /* IBLLeftMenuViewController.h */,
-				269B7D641D33A38400D52DF0 /* IBLLeftMenuViewController.m */,
-				269B7D671D33A38400D52DF0 /* IBLWorkFlowManagerViewController.h */,
-				269B7D681D33A38400D52DF0 /* IBLWorkFlowManagerViewController.m */,
+				5B875E4CC1EFDA34428374D3 /* Base */,
+				5B875BCCE75E905BA2CBDEC5 /* Main */,
+				5B8751CB1BB061B531EF2030 /* MineWorkFlow */,
+				5B8754DD9382D759A0651CB1 /* MineWorkFlowManager */,
 				5B875135C2C0645AA45CAB6D /* Segues */,
 			);
 			path = Views;
@@ -343,6 +361,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		5B875BCCE75E905BA2CBDEC5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5B875F49C01D81C5D5902304 /* IBLMainViewController.h */,
+				5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */,
+				5B8753BEE41EFC83BCC1A897 /* IBLLeftMenuViewController.h */,
+				5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		5B875D7A6750DCFD07DEE941 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +379,19 @@
 				264EBB951D2E2A3600FF8373 /* IBLNetworkServices.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		5B875E4CC1EFDA34428374D3 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5B875CF33E2F3DB3FED110D4 /* IBLViewController.m */,
+				5B875FA0896D4BEFF18C1576 /* IBLViewController.h */,
+				5B8755217F90CFB700C44EAD /* IBLTableViewController.h */,
+				5B875A477581D17ADD3212A9 /* IBLTableViewController.m */,
+				5B875517E4AEDED23890788A /* IBLTableViewCell.h */,
+				5B8758BB5B46F169393FE2D7 /* IBLTableViewCell.m */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		5B875E9D723F8984F0BCE45E /* Data */ = {
@@ -656,14 +698,9 @@
 			files = (
 				26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */,
 				264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */,
-				269B7D691D33A38400D52DF0 /* IBLMineWorkFlowViewController.m in Sources */,
-				269B7D6A1D33A38400D52DF0 /* IBLLeftMenuViewController.m in Sources */,
-				264EBBA81D2E2FD200FF8373 /* IBLTableViewController.m in Sources */,
 				26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */,
 				26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */,
-				269B7D601D338F1C00D52DF0 /* IBLMainViewController.m in Sources */,
 				264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */,
-				269B7D6C1D33A38400D52DF0 /* IBLWorkFlowManagerViewController.m in Sources */,
 				264EBBA21D2E2C1300FF8373 /* IBLFetchUser.m in Sources */,
 				264EBB9C1D2E2BD400FF8373 /* IBLUserRepository.m in Sources */,
 				264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */,
@@ -674,11 +711,18 @@
 				264EBB631D2E023D00FF8373 /* main.m in Sources */,
 				2612E16A1D2E9EC900CA76BC /* DDXMLElement+WSDL.m in Sources */,
 				26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */,
-				264EBBA51D2E2F8B00FF8373 /* IBLViewController.m in Sources */,
 				264EBB991D2E2BC200FF8373 /* IBLRepository.m in Sources */,
 				269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */,
 				2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */,
 				5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */,
+				5B875BA76456459E9F3FA8BA /* IBLMainViewController.m in Sources */,
+				5B875F35EE4AEFAF69A69881 /* IBLLeftMenuViewController.m in Sources */,
+				5B8757182B593FAE81750768 /* IBLViewController.m in Sources */,
+				5B875ABCE8A1815B62EDC2A3 /* IBLTableViewController.m in Sources */,
+				5B8754AC25CDAC1FA27E0231 /* IBLMineWorkFlowViewController.m in Sources */,
+				5B8757FCBA803A3DCB4C50B2 /* IBLMineWorkFlowCell.m in Sources */,
+				5B8752353A6DB84830C5F1CA /* IBLTableViewCell.m in Sources */,
+				5B87514A474323FC60AD3B9A /* IBLWorkFlowManagerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Roman Efimov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "IBLTableViewController.h"
 #import "RESideMenu.h"
 
-@interface IBLMineWorkFlowViewController : UIViewController
+@interface IBLMineWorkFlowViewController : IBLTableViewController
 
 @end

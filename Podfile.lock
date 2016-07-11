@@ -16,24 +16,28 @@ PODS:
     - AFNetworking/NSURLSession
   - CocoaSecurity (1.2.4)
   - DZNEmptyDataSet (1.8.1)
+  - HMSegmentedControl (1.5.2)
   - IQKeyboardManager (3.3.7)
   - JSONModel (1.2.0)
-  - KissXML (5.1.1):
-    - KissXML/Core (= 5.1.1)
-  - KissXML/Core (5.1.1)
-  - Masonry (1.0.1)
+  - KissXML (5.0.3):
+    - KissXML/Standard (= 5.0.3)
+  - KissXML/Core (5.0.3)
+  - KissXML/Standard (5.0.3):
+    - KissXML/Core
+  - Masonry (1.0.0)
   - MBProgressHUD (0.9.2)
-  - MJRefresh (3.1.10)
+  - MJRefresh (3.1.0)
   - RESideMenu (4.0.7)
-  - SDWebImage (3.8.1):
-    - SDWebImage/Core (= 3.8.1)
-  - SDWebImage/Core (3.8.1)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
   - UITableView+FDTemplateLayoutCell (1.4)
 
 DEPENDENCIES:
   - AFNetworking
   - CocoaSecurity
   - DZNEmptyDataSet
+  - HMSegmentedControl
   - IQKeyboardManager
   - JSONModel
   - KissXML
@@ -48,16 +52,17 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
-  KissXML: 399becf3fd59b126ff35749acf3ad2b4c5d13c40
-  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  KissXML: d19dd6dc65e0dc721ba92b3077b8ebdd240f1c1e
+  Masonry: b529bb169217897b6354d4b56b1fada6d475b13d
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
-  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
 
-PODFILE CHECKSUM: 9de68f79e51c2c1b98125eee385903b01ee4edae
+PODFILE CHECKSUM: 744000678d4df9366c6d7e806b1b7e4421596275
 
 COCOAPODS: 1.0.0
