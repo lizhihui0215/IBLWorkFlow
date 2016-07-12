@@ -28,6 +28,10 @@ static NSString * const kSignKey = @"48e5be901c6692bf46fd2bba3b04d56b";
 /** 登录后分配ID */
 static NSString * const kAllocID = @"allocId";
 
+static NSString * const kCode = @"resultCode";
+
+static NSString * const kMessage = @"respMsg";
+
 @interface IBLRepository ()
 
 @end
@@ -77,6 +81,23 @@ static NSString * const kAllocID = @"allocId";
     CocoaSecurityResult *securityResult = [CocoaSecurity md5:result];
     
     return securityResult.hex.uppercaseString;
+}
+
+- (NSError *)handleErrorWithResponseObject:(id)responseObject{
+    NSInteger code = [responseObject[kCode] integerValue];
+    
+    NSError *error = nil;
+    
+    if (code != 0) {
+        NSString *message = responseObject[kMessage] ? : @"";
+        
+        error = [NSError errorWithDomain:@""
+                                    code:0
+                                userInfo:@{kExceptionCode : [@(code) stringValue],
+                                           kExceptionMessage: message}];
+    }
+    
+    return error;
 }
 
 - (IBLNetworkServices *)networkServices{

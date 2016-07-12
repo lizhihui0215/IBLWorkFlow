@@ -56,9 +56,15 @@ static IBLUser *_user = nil;
                     parameters:parameters
                       progress:nil
                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                           NSError *error = [self handleErrorWithResponseObject:responseObject];
                            
+                           if (error) { handler(nil,error); return; }
+                           
+                           IBLUser *user = [[IBLUser alloc] initWithDictionary:responseObject error:nil];
+                           
+                           handler(user, nil);
                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                           
+                           handler(nil, error);
                        }];
 }
 @end

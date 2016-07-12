@@ -10,4 +10,9 @@
 
 @implementation IBLUser
 
++ (JSONKeyMapper *)keyMapper{
+    return [[JSONKeyMapper alloc] initWithDictionary:@{@"allocId" : @"identifier",
+                                                       @"resourceList" : @"permissions"}];
+}
+
 @end

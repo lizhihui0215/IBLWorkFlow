@@ -11,9 +11,25 @@
 
 @implementation IBLFetchUser
 
-- (BOOL)validateWithHandler:(void (^)(NSError *))handler{
+- (NSError *)validateWithUsername:(NSString *)username
+                         password:(NSString *)password{
+    NSError *error = nil;
     
-    return YES;
+    if ([NSString isNull:username]) {
+        error = [NSError errorWithDomain:@""
+                                    code:0
+                                userInfo:@{kExceptionCode : @"-1",
+                                           kExceptionMessage: @"用户名不能为空！"}];
+    }
+    
+    if ([NSString isNull:password]) {
+        error = [NSError errorWithDomain:@""
+                                    code:0
+                                userInfo:@{kExceptionCode : @"-1",
+                                           kExceptionMessage: @"密码不能为空！"}];
+    }
+    
+    return error;
 }
 
 - (void)startFetchWithUsername:(NSString *)username
@@ -21,10 +37,15 @@
                completeHandler:(void (^)(IBLUser *, NSError *))handler {
     IBLUserRepository *user = [[IBLUserRepository alloc] init];
     
+    NSError *error = [self validateWithUsername:username password:password];
+    
+    if (error) { handler(nil, error); return; }
+    
     [user fetchWithUsername:username
                    password:password
             completeHandler:^(IBLUser *user, NSError *error) {
-                
+                [IBLUserRepository setUser:user];
+                handler(user, error);
             }];
 }
 @end

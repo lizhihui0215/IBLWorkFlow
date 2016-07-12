@@ -6,8 +6,8 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <JSONModel/JSONModel.h>
 
-@interface IBLModel : NSObject
+@interface IBLModel : JSONModel
 
 @end

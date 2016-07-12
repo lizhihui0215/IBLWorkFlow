@@ -9,9 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "IBLNetworkServices.h"
 
+FOUNDATION_EXPORT NSString * const kExceptionCode;
+
+FOUNDATION_EXPORT NSString * const kExceptionMessage;
+
 @interface IBLRepository : NSObject
 
 @property (nonatomic, readonly) IBLNetworkServices *networkServices;
 
 - (NSDictionary *)signedParametersWithPatameters:(NSDictionary * (^)(NSDictionary *))parameters;
+
+- (NSError *)handleErrorWithResponseObject:(id)responseObject;
+
 @end
