@@ -15,9 +15,17 @@ static NSString * const kPhoneModel = @"phoneModel";
 
 static NSString * const kOSVersion = @"osVersion";
 
-
+static IBLUser *_user = nil;
 
 @implementation IBLUserRepository
+
++ (IBLUser *)user{
+    return _user;
+}
+
++ (void)setUser:(IBLUser *)user{
+    _user = user;
+}
 
 - (instancetype)init
 {

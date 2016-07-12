@@ -11,6 +11,10 @@
 
 @interface IBLUserRepository : IBLRepository
 
++ (IBLUser *)user;
+
++ (void)setUser:(IBLUser *)user;
+
 - (void)fetchWithUsername:(NSString *)username
                  password:(NSString *)password
           completeHandler:(void (^)(IBLUser *, NSError *))handler;
