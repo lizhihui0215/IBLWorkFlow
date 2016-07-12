@@ -8,6 +8,11 @@
 
 #import "IBLTableViewCell.h"
 
+static NSString * const MineWorkFlowCellIdentifier = @"IBLMineWorkFlowCell";
+
+static NSString * const MineWorkFlowCellNibName = @"IBLMineWorkFlowCell";
+
 @interface IBLMineWorkFlowCell : IBLTableViewCell
+
 
 @end

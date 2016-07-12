@@ -35,12 +35,12 @@ static NSString * const kOSVersion = @"osVersion";
           completeHandler:(void (^)(IBLUser *, NSError *))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
-        
+        NSString *deviceModel = DeviceVersionNames[[SDVersion deviceVersion]];
+        NSString *OSVersion = [[UIDevice currentDevice] systemVersion];
         [parameters addEntriesFromDictionary:@{kUsername : username,
                                                kPassword : password,
-                                               kPhoneModel : @"",
-                                               kOSVersion : @""}];
-        
+                                               kPhoneModel : deviceModel,
+                                               kOSVersion : OSVersion}];
         return parameters;
     }];
     

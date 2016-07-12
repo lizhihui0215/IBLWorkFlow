@@ -9,14 +9,96 @@
 #import "IBLTableViewController.h"
 
 @interface IBLTableViewController ()
-
+@property (nonatomic, weak) id<IBLTableViewControllerDelegate> delegate;
 @end
 
 @implementation IBLTableViewController
 
+- (UITableView *)tableView{
+    return self.tableViews[0];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.headerRefresh = NO;
+    self.fotterRefresh = NO;
+    
+    for (UITableView *tableView in self.tableViews) {
+        
+        if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+            [tableView setSeparatorInset: UIEdgeInsetsZero];
+        }
+        if ([tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+            [tableView setLayoutMargins: UIEdgeInsetsZero];
+        }
+    }
+    
+    [self removeTableFooterView];
+}
+
+- (MJRefreshStateHeader *)defaultRefreshHeader {
+    return [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(tableViewHeaderWillRefresh:)];
+}
+
+- (MJRefreshBackStateFooter *)defaultRefreshFooter{
+    return [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(tableViewFooterWillRefresh:)];
+}
+
+- (void)setHeaderRefresh:(BOOL)headerRefresh{
+    _headerRefresh = headerRefresh;
+    for (UITableView *tableView in self.tableViews) {
+        tableView.mj_header = _headerRefresh ? [self defaultRefreshHeader] : nil;
+    }
+}
+
+- (void)setFotterRefresh:(BOOL)fotterRefresh{
+    _fotterRefresh = fotterRefresh;
+    for (UITableView *tableView in self.tableViews) {
+        tableView.mj_footer = _fotterRefresh ? [self defaultRefreshFooter] : nil;
+    }
+}
+
+- (void)tableViewFooterWillRefresh:(MJRefreshBackNormalFooter *)footer{
+    UITableView *theTableView = nil;
+    for (UITableView *tableView in self.tableViews) {
+        if (tableView.mj_footer == footer){
+            theTableView = tableView;
+            break;
+        }
+    }
+    [self.delegate tableView:theTableView footerBeginRefresh:footer];
+}
+
+- (void)tableViewHeaderWillRefresh:(MJRefreshNormalHeader *)header{
+    UITableView *theTableView = nil;
+    for (UITableView *tableView in self.tableViews) {
+        if (tableView.mj_header == header){
+            theTableView = tableView;
+            break;
+        }
+    }
+    [self.delegate tableView:theTableView headerBeginRefresh:header];
+}
+
+- (void)removeTableFooterView {
+    for (UITableView *tableView in self.tableViews) {
+        UIView *view = [[UIView alloc] init];
+        
+        view.backgroundColor = [UIColor whiteColor];
+        
+        tableView.tableFooterView = view;
+    }
+}
+
+#pragma mark - TableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return nil;
 }
 
 - (void)didReceiveMemoryWarning {

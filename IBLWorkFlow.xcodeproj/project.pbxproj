@@ -24,6 +24,19 @@
 		264EBBA21D2E2C1300FF8373 /* IBLFetchUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA11D2E2C1300FF8373 /* IBLFetchUser.m */; };
 		264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBAA1D2E328B00FF8373 /* IBLExchangeRootSegue.m */; };
 		2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650AC391D2F571200421C78 /* IBLWSDLServices.m */; };
+		26846F4D1D34935B001F9C73 /* UIDevice+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F4C1D34935B001F9C73 /* UIDevice+IBLExtension.m */; };
+		26846F501D349F0B001F9C73 /* IBLException.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F4F1D349F0B001F9C73 /* IBLException.m */; };
+		26846F531D34A2F6001F9C73 /* IBLAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F521D34A2F6001F9C73 /* IBLAlertController.m */; };
+		26846F561D34A34A001F9C73 /* IBLButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F551D34A34A001F9C73 /* IBLButtonItem.m */; };
+		26846F611D34A405001F9C73 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F5E1D34A405001F9C73 /* UIActionSheet+Blocks.m */; };
+		26846F621D34A405001F9C73 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F601D34A405001F9C73 /* UIAlertView+Blocks.m */; };
+		26846F651D34BB35001F9C73 /* IBLHUDHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F641D34BB35001F9C73 /* IBLHUDHandler.m */; };
+		26846F681D34BC3F001F9C73 /* UIViewController+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F671D34BC3F001F9C73 /* UIViewController+IBLExtension.m */; };
+		26846F6A1D34C1E9001F9C73 /* IBLMineWorkFlowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26846F691D34C1E9001F9C73 /* IBLMineWorkFlowCell.xib */; };
+		26846F6D1D34C4C0001F9C73 /* IBLLeftMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F6C1D34C4C0001F9C73 /* IBLLeftMenuCell.m */; };
+		26846F701D34D238001F9C73 /* IBLTableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F6F1D34D238001F9C73 /* IBLTableViewHeaderFooterView.m */; };
+		26846F731D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F721D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.m */; };
+		26846F751D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26846F741D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib */; };
 		269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D571D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m */; };
 		269B7D5A1D33453200D52DF0 /* Test.xml in Resources */ = {isa = PBXBuildFile; fileRef = 269B7D591D33453200D52DF0 /* Test.xml */; };
 		269B7D5D1D335A9F00D52DF0 /* NSString+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D5C1D335A9F00D52DF0 /* NSString+IBLExtension.m */; };
@@ -99,6 +112,30 @@
 		264EBBAC1D2E32DB00FF8373 /* IBLWorkFlow-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IBLWorkFlow-prefix.pch"; sourceTree = "<group>"; };
 		2650AC381D2F571200421C78 /* IBLWSDLServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWSDLServices.h; sourceTree = "<group>"; };
 		2650AC391D2F571200421C78 /* IBLWSDLServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWSDLServices.m; sourceTree = "<group>"; };
+		26846F4B1D34935B001F9C73 /* UIDevice+IBLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IBLExtension.h"; sourceTree = "<group>"; };
+		26846F4C1D34935B001F9C73 /* UIDevice+IBLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IBLExtension.m"; sourceTree = "<group>"; };
+		26846F4E1D349F0B001F9C73 /* IBLException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLException.h; sourceTree = "<group>"; };
+		26846F4F1D349F0B001F9C73 /* IBLException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLException.m; sourceTree = "<group>"; };
+		26846F511D34A2F6001F9C73 /* IBLAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAlertController.h; sourceTree = "<group>"; };
+		26846F521D34A2F6001F9C73 /* IBLAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAlertController.m; sourceTree = "<group>"; };
+		26846F541D34A34A001F9C73 /* IBLButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLButtonItem.h; sourceTree = "<group>"; };
+		26846F551D34A34A001F9C73 /* IBLButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLButtonItem.m; sourceTree = "<group>"; };
+		26846F5D1D34A405001F9C73 /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		26846F5E1D34A405001F9C73 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		26846F5F1D34A405001F9C73 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		26846F601D34A405001F9C73 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		26846F631D34BB35001F9C73 /* IBLHUDHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLHUDHandler.h; sourceTree = "<group>"; };
+		26846F641D34BB35001F9C73 /* IBLHUDHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLHUDHandler.m; sourceTree = "<group>"; };
+		26846F661D34BC3F001F9C73 /* UIViewController+IBLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IBLExtension.h"; sourceTree = "<group>"; };
+		26846F671D34BC3F001F9C73 /* UIViewController+IBLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IBLExtension.m"; sourceTree = "<group>"; };
+		26846F691D34C1E9001F9C73 /* IBLMineWorkFlowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IBLMineWorkFlowCell.xib; sourceTree = "<group>"; };
+		26846F6B1D34C4C0001F9C73 /* IBLLeftMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLeftMenuCell.h; sourceTree = "<group>"; };
+		26846F6C1D34C4C0001F9C73 /* IBLLeftMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLeftMenuCell.m; sourceTree = "<group>"; };
+		26846F6E1D34D238001F9C73 /* IBLTableViewHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLTableViewHeaderFooterView.h; sourceTree = "<group>"; };
+		26846F6F1D34D238001F9C73 /* IBLTableViewHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLTableViewHeaderFooterView.m; sourceTree = "<group>"; };
+		26846F711D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLeftMenuTableHeaderView.h; sourceTree = "<group>"; };
+		26846F721D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLeftMenuTableHeaderView.m; sourceTree = "<group>"; };
+		26846F741D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IBLLeftMenuTableHeaderView.xib; sourceTree = "<group>"; };
 		269B7D561D333BA200D52DF0 /* IBLWebServiceResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWebServiceResponseSerializer.h; sourceTree = "<group>"; };
 		269B7D571D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWebServiceResponseSerializer.m; sourceTree = "<group>"; };
 		269B7D591D33453200D52DF0 /* Test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test.xml; sourceTree = "<group>"; };
@@ -206,6 +243,7 @@
 				5B87540258EE7F5BCE66BC19 /* Models */,
 				5B8753A10C9EEFD98D1ED3D5 /* Services */,
 				5B875B3E9B520BF0A0F77607 /* Extensions */,
+				5B8759D37A52C720177A0495 /* Exception */,
 				264EBB6A1D2E023D00FF8373 /* Main.storyboard */,
 				264EBB6D1D2E023D00FF8373 /* Assets.xcassets */,
 				264EBB6F1D2E023D00FF8373 /* LaunchScreen.storyboard */,
@@ -256,8 +294,9 @@
 			children = (
 				5B8758F5509F16FDE270112B /* IBLMineWorkFlowCell.h */,
 				5B875B2890782FCCC77AB904 /* IBLMineWorkFlowCell.m */,
-				5B8758BBA9729641CC5F291D /* IBLMineWorkFlowViewController.m */,
+				26846F691D34C1E9001F9C73 /* IBLMineWorkFlowCell.xib */,
 				5B8751501161A3D21DFE40EF /* IBLMineWorkFlowViewController.h */,
+				5B8758BBA9729641CC5F291D /* IBLMineWorkFlowViewController.m */,
 			);
 			path = MineWorkFlow;
 			sourceTree = "<group>";
@@ -333,6 +372,7 @@
 				5B8751CB1BB061B531EF2030 /* MineWorkFlow */,
 				5B8754DD9382D759A0651CB1 /* MineWorkFlowManager */,
 				5B875135C2C0645AA45CAB6D /* Segues */,
+				5B875E7F67203C8BE2825219 /* Common */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,9 +384,22 @@
 			path = Local;
 			sourceTree = "<group>";
 		};
+		5B8759D37A52C720177A0495 /* Exception */ = {
+			isa = PBXGroup;
+			children = (
+				26846F4E1D349F0B001F9C73 /* IBLException.h */,
+				26846F4F1D349F0B001F9C73 /* IBLException.m */,
+			);
+			path = Exception;
+			sourceTree = "<group>";
+		};
 		5B875B3E9B520BF0A0F77607 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				26846F5D1D34A405001F9C73 /* UIActionSheet+Blocks.h */,
+				26846F5E1D34A405001F9C73 /* UIActionSheet+Blocks.m */,
+				26846F5F1D34A405001F9C73 /* UIAlertView+Blocks.h */,
+				26846F601D34A405001F9C73 /* UIAlertView+Blocks.m */,
 				2612E1601D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.h */,
 				2612E1611D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m */,
 				269B7D561D333BA200D52DF0 /* IBLWebServiceResponseSerializer.h */,
@@ -357,6 +410,10 @@
 				2612E1691D2E9EC900CA76BC /* DDXMLElement+WSDL.m */,
 				269B7D5B1D335A9F00D52DF0 /* NSString+IBLExtension.h */,
 				269B7D5C1D335A9F00D52DF0 /* NSString+IBLExtension.m */,
+				26846F4B1D34935B001F9C73 /* UIDevice+IBLExtension.h */,
+				26846F4C1D34935B001F9C73 /* UIDevice+IBLExtension.m */,
+				26846F661D34BC3F001F9C73 /* UIViewController+IBLExtension.h */,
+				26846F671D34BC3F001F9C73 /* UIViewController+IBLExtension.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -368,6 +425,11 @@
 				5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */,
 				5B8753BEE41EFC83BCC1A897 /* IBLLeftMenuViewController.h */,
 				5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */,
+				26846F711D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.h */,
+				26846F721D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.m */,
+				26846F741D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib */,
+				26846F6B1D34C4C0001F9C73 /* IBLLeftMenuCell.h */,
+				26846F6C1D34C4C0001F9C73 /* IBLLeftMenuCell.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -384,14 +446,29 @@
 		5B875E4CC1EFDA34428374D3 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				5B875CF33E2F3DB3FED110D4 /* IBLViewController.m */,
 				5B875FA0896D4BEFF18C1576 /* IBLViewController.h */,
+				5B875CF33E2F3DB3FED110D4 /* IBLViewController.m */,
 				5B8755217F90CFB700C44EAD /* IBLTableViewController.h */,
 				5B875A477581D17ADD3212A9 /* IBLTableViewController.m */,
 				5B875517E4AEDED23890788A /* IBLTableViewCell.h */,
 				5B8758BB5B46F169393FE2D7 /* IBLTableViewCell.m */,
+				26846F6E1D34D238001F9C73 /* IBLTableViewHeaderFooterView.h */,
+				26846F6F1D34D238001F9C73 /* IBLTableViewHeaderFooterView.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		5B875E7F67203C8BE2825219 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				26846F631D34BB35001F9C73 /* IBLHUDHandler.h */,
+				26846F641D34BB35001F9C73 /* IBLHUDHandler.m */,
+				26846F541D34A34A001F9C73 /* IBLButtonItem.h */,
+				26846F551D34A34A001F9C73 /* IBLButtonItem.m */,
+				26846F511D34A2F6001F9C73 /* IBLAlertController.h */,
+				26846F521D34A2F6001F9C73 /* IBLAlertController.m */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		5B875E9D723F8984F0BCE45E /* Data */ = {
@@ -544,6 +621,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				264EBB711D2E023D00FF8373 /* LaunchScreen.storyboard in Resources */,
+				26846F6A1D34C1E9001F9C73 /* IBLMineWorkFlowCell.xib in Resources */,
+				26846F751D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib in Resources */,
 				269B7D5A1D33453200D52DF0 /* Test.xml in Resources */,
 				26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */,
 				264EBB6E1D2E023D00FF8373 /* Assets.xcassets in Resources */,
@@ -698,22 +777,30 @@
 			files = (
 				26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */,
 				264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */,
+				26846F681D34BC3F001F9C73 /* UIViewController+IBLExtension.m in Sources */,
 				26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */,
 				26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */,
 				264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */,
 				264EBBA21D2E2C1300FF8373 /* IBLFetchUser.m in Sources */,
+				26846F621D34A405001F9C73 /* UIAlertView+Blocks.m in Sources */,
 				264EBB9C1D2E2BD400FF8373 /* IBLUserRepository.m in Sources */,
+				26846F4D1D34935B001F9C73 /* UIDevice+IBLExtension.m in Sources */,
+				26846F701D34D238001F9C73 /* IBLTableViewHeaderFooterView.m in Sources */,
 				264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */,
 				264EBB661D2E023D00FF8373 /* IBLAppDelegate.m in Sources */,
 				2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */,
 				269B7D5D1D335A9F00D52DF0 /* NSString+IBLExtension.m in Sources */,
 				26A9D1421D2E8487000950F6 /* IBLUser.m in Sources */,
 				264EBB631D2E023D00FF8373 /* main.m in Sources */,
+				26846F531D34A2F6001F9C73 /* IBLAlertController.m in Sources */,
+				26846F611D34A405001F9C73 /* UIActionSheet+Blocks.m in Sources */,
 				2612E16A1D2E9EC900CA76BC /* DDXMLElement+WSDL.m in Sources */,
 				26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */,
 				264EBB991D2E2BC200FF8373 /* IBLRepository.m in Sources */,
+				26846F731D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.m in Sources */,
 				269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */,
 				2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */,
+				26846F561D34A34A001F9C73 /* IBLButtonItem.m in Sources */,
 				5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */,
 				5B875BA76456459E9F3FA8BA /* IBLMainViewController.m in Sources */,
 				5B875F35EE4AEFAF69A69881 /* IBLLeftMenuViewController.m in Sources */,
@@ -721,8 +808,11 @@
 				5B875ABCE8A1815B62EDC2A3 /* IBLTableViewController.m in Sources */,
 				5B8754AC25CDAC1FA27E0231 /* IBLMineWorkFlowViewController.m in Sources */,
 				5B8757FCBA803A3DCB4C50B2 /* IBLMineWorkFlowCell.m in Sources */,
+				26846F651D34BB35001F9C73 /* IBLHUDHandler.m in Sources */,
 				5B8752353A6DB84830C5F1CA /* IBLTableViewCell.m in Sources */,
+				26846F501D349F0B001F9C73 /* IBLException.m in Sources */,
 				5B87514A474323FC60AD3B9A /* IBLWorkFlowManagerViewController.m in Sources */,
+				26846F6D1D34C4C0001F9C73 /* IBLLeftMenuCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

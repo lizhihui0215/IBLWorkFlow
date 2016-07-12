@@ -10,4 +10,17 @@
 
 @interface IBLViewController : UIViewController
 
+- (BOOL)showAlertWithError:(NSError *)error;
+
+- (void)showAlertWithError:(NSError *)error
+           completeHandler:(void (^)(BOOL isShowError, NSError *error)) handler;
+
+- (void)showHUDWithMessage:(NSString *)message;
+
+- (void)hidHUD;
+
+- (void)hidHUDForView:(UIView *)view;
+
+- (void)showHUDWithMessage:(NSString *)message forView:(UIView *)view;
+
 @end

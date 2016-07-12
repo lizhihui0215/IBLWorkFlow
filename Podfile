@@ -44,7 +44,18 @@ target 'IBLWorkFlow' do
   
   # https://github.com/HeshamMegid/HMSegmentedControl
   pod 'HMSegmentedControl'
-
+  
+  # https://github.com/jspahrsummers/libextobjc
+  pod 'libextobjc'
+  
+  # https://github.com/thisandagain/color
+  pod 'EDColor'
+  
+  # https://github.com/sebyddd/SDVersion
+  pod 'SDVersion'
+  
+  # https://github.com/soffes/sskeychain
+  pod 'SSKeychain'
   target 'IBLWorkFlowTests' do
     inherit! :search_paths
     # Pods for testing

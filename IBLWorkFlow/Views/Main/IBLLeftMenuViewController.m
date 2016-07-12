@@ -10,10 +10,10 @@
 #import "IBLMineWorkFlowViewController.h"
 #import "IBLWorkFlowManagerViewController.h"
 #import "UIViewController+RESideMenu.h"
+#import "IBLLeftMenuCell.h"
+#import "IBLLeftMenuTableHeaderView.h"
 
 @interface IBLLeftMenuViewController ()
-
-@property (strong, readwrite, nonatomic) UITableView *tableView;
 
 @end
 
@@ -23,22 +23,11 @@
 {
     [super viewDidLoad];
     
+    UINib *nib = [UINib nibWithNibName:IBLLeftMenuTableHeaderNibName bundle:nil];
+    
+    [self.tableView registerNib:nib forHeaderFooterViewReuseIdentifier:IBLLeftMenuTableHeaderIdentifier];
+    
     self.sideMenuViewController.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
-
-    self.tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
-        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        tableView.opaque = NO;
-        tableView.backgroundColor = [UIColor clearColor];
-        tableView.backgroundView = nil;
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        tableView.bounces = NO;
-        tableView.scrollsToTop = NO;
-        tableView;
-    });
-    [self.view addSubview:self.tableView];
 }
 
 #pragma mark -
@@ -70,9 +59,16 @@
     return 54;
 }
 
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    IBLLeftMenuTableHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:IBLLeftMenuTableHeaderIdentifier];
+    
+    return header;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
@@ -82,24 +78,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        cell.backgroundColor = [UIColor clearColor];
-        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
-        cell.selectedBackgroundView = [[UIView alloc] init];
-    }
+    IBLLeftMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:LeftMenuCellIdentifier forIndexPath:indexPath];
     
     NSArray *titles = @[@"Home", @"Calendar", @"Profile", @"Settings", @"Log Out"];
     NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile", @"IconSettings", @"IconEmpty"];
-    cell.textLabel.text = titles[indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
-    
+    cell.titleLabel.text = titles[indexPath.row];
+    cell.iconImageView.image = [UIImage imageNamed:images[indexPath.row]];
     return cell;
 }
 

@@ -9,6 +9,6 @@
 #import "IBLTableViewController.h"
 #import "RESideMenu.h"
 
-@interface IBLLeftMenuViewController : IBLTableViewController <UITableViewDataSource, UITableViewDelegate, RESideMenuDelegate>
+@interface IBLLeftMenuViewController : IBLTableViewController <RESideMenuDelegate>
 
 @end

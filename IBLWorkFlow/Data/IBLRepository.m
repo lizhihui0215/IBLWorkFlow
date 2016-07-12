@@ -7,6 +7,7 @@
 //
 
 #import "IBLRepository.h"
+#import "UIDevice+IBLExtension.h"
 
 /** 时间戳 */
 static NSString * const kSessionID = @"sessionId";
@@ -37,7 +38,7 @@ static NSString * const kAllocID = @"allocId";
     NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000;
     
     NSDictionary *dictionary = parameters(@{kSessionID : [@(interval) stringValue],
-                                            kMCode : @"",
+                                            kMCode : [UIDevice UUID],
                                             kAuthID : AuthID});
     NSMutableDictionary *signedParameters = [dictionary mutableCopy];
     

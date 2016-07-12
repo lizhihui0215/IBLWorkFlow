@@ -8,6 +8,7 @@
 
 #import "IBLMineWorkFlowViewController.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
+#import "IBLMineWorkFlowCell.h"
 
 @interface IBLMineWorkFlowViewController ()
 
@@ -19,6 +20,11 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [self setupSegmentControl];
+    [self setupTableViews];
+}
+
+- (void)setupSegmentControl{
     self.segmentedControl.sectionTitles = @[@"已派单",@"处理中",@"转发中",@"已完成",@"作废"];
     self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
     [self.segmentedControl setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
@@ -33,7 +39,48 @@
     self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
     self.segmentedControl.selectionIndicatorHeight = 2.0f;
 
+}
+
+- (void)setupTableViews{
+    UINib *nib = [UINib nibWithNibName:MineWorkFlowCellIdentifier bundle:nil];
     
+    for (UITableView *tableView in self.tableViews) {
+        [tableView registerNib:nib forCellReuseIdentifier:MineWorkFlowCellIdentifier];
+    }
+}
+
+#pragma mark -
+#pragma mark UITableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+
+#pragma mark -
+#pragma mark UITableView Datasource
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 130;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
+{
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    IBLMineWorkFlowCell *cell = [tableView dequeueReusableCellWithIdentifier:MineWorkFlowCellIdentifier forIndexPath:indexPath];
+    
+    return cell;
 }
 
 @end

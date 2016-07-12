@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Pn1-0G-Oi7" customClass="IBLLeftMenuTableHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TpZ-c5-mvY">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+                            <rect key="frame" x="0.0" y="10" width="320" height="50"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Balloon" translatesAutoresizingMaskIntoConstraints="NO" id="Yn5-Pj-PdL">
+                                    <rect key="frame" x="10" y="5" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="GYK-xX-QZS"/>
+                                        <constraint firstAttribute="height" constant="40" id="LN5-Ge-8Xs"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="资产照片" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYC-4m-XVX">
+                                    <rect key="frame" x="60" y="17" width="52" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oYf-4D-cd8">
+                                    <rect key="frame" x="300" y="5" width="10" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="10" id="dMr-w2-XnR"/>
+                                        <constraint firstAttribute="height" constant="40" id="eMX-s5-DAA"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="oYf-4D-cd8" secondAttribute="trailing" constant="10" id="3OY-Ob-30V"/>
+                                <constraint firstItem="NYC-4m-XVX" firstAttribute="leading" secondItem="Yn5-Pj-PdL" secondAttribute="trailing" constant="10" id="6dE-8n-AyM"/>
+                                <constraint firstItem="NYC-4m-XVX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7nV-Fz-GVE"/>
+                                <constraint firstItem="Yn5-Pj-PdL" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BaG-ba-FTJ"/>
+                                <constraint firstItem="oYf-4D-cd8" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EdX-ka-Oga"/>
+                                <constraint firstItem="Yn5-Pj-PdL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="JC8-TX-Ggq"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.92156862745098034" green="0.92549019607843142" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="TpZ-c5-mvY" secondAttribute="top" constant="10" id="Dbg-Uf-LKl"/>
+                        <constraint firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="GAx-QQ-45p"/>
+                        <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="TpZ-c5-mvY" secondAttribute="leading" id="moW-ZD-ECT"/>
+                        <constraint firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="rfM-n0-4UH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="TpZ-c5-mvY" secondAttribute="trailing" id="3Id-Qx-CAz"/>
+                <constraint firstAttribute="bottom" secondItem="TpZ-c5-mvY" secondAttribute="bottom" id="qH9-4j-XDN"/>
+                <constraint firstItem="TpZ-c5-mvY" firstAttribute="top" secondItem="Pn1-0G-Oi7" secondAttribute="top" id="v7q-FB-M3L"/>
+                <constraint firstItem="TpZ-c5-mvY" firstAttribute="leading" secondItem="Pn1-0G-Oi7" secondAttribute="leading" id="zHs-lU-phx"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="iconImageView" destination="Yn5-Pj-PdL" id="7pI-O2-RjC"/>
+                <outlet property="titleLabel" destination="NYC-4m-XVX" id="H2l-AR-agh"/>
+            </connections>
+            <point key="canvasLocation" x="248" y="359"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Balloon" width="320" height="568"/>
+    </resources>
+</document>
