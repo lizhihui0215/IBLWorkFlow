@@ -8,6 +8,7 @@
 
 #import "IBLFetchUser.h"
 #import "IBLUserRepository.h"
+#import "IBLAppRepository.h"
 
 @implementation IBLFetchUser
 
@@ -37,15 +38,23 @@
                completeHandler:(void (^)(IBLUser *, NSError *))handler {
     IBLUserRepository *user = [[IBLUserRepository alloc] init];
     
+    IBLAppRepository *appRepository = [[IBLAppRepository alloc] init];
+    
+    
+    
     NSError *error = [self validateWithUsername:username password:password];
     
     if (error) { handler(nil, error); return; }
     
+    
+    
     [user fetchWithUsername:username
                    password:password
             completeHandler:^(IBLUser *user, NSError *error) {
-                [IBLUserRepository setUser:user];
-                handler(user, error);
+                [appRepository fetchWithConfigurationWithCompleteHandler:^(id xxx, NSError *error) {
+                    [IBLUserRepository setUser:user];
+                    handler(user, error);
+                }];                
             }];
 }
 @end

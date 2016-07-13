@@ -58,7 +58,6 @@
 		26D56E481D361A7E0091A940 /* IBLBusinessRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D56E471D361A7E0091A940 /* IBLBusinessRepository.m */; };
 		26D56E4B1D3629E20091A940 /* IBLMineOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D56E4A1D3629E20091A940 /* IBLMineOrderViewModel.m */; };
 		26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26F620191D2FB6B500B49065 /* Operator.xml */; };
-		26FFA9221D368F7300DF8D4E /* IBLFetchConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA9211D368F7300DF8D4E /* IBLFetchConfiguration.m */; };
 		26FFA9251D36936200DF8D4E /* IBLAppRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA9241D36936200DF8D4E /* IBLAppRepository.m */; };
 		5B87514A474323FC60AD3B9A /* IBLOrderManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8750798AE62DE7EB7B8144 /* IBLOrderManagerViewController.m */; };
 		5B8752353A6DB84830C5F1CA /* IBLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8758BB5B46F169393FE2D7 /* IBLTableViewCell.m */; };
@@ -188,8 +187,6 @@
 		26D56E491D3629E20091A940 /* IBLMineOrderViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMineOrderViewModel.h; sourceTree = "<group>"; };
 		26D56E4A1D3629E20091A940 /* IBLMineOrderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMineOrderViewModel.m; sourceTree = "<group>"; };
 		26F620191D2FB6B500B49065 /* Operator.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Operator.xml; sourceTree = "<group>"; };
-		26FFA9201D368F7300DF8D4E /* IBLFetchConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLFetchConfiguration.h; sourceTree = "<group>"; };
-		26FFA9211D368F7300DF8D4E /* IBLFetchConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFetchConfiguration.m; sourceTree = "<group>"; };
 		26FFA9231D36936200DF8D4E /* IBLAppRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAppRepository.h; sourceTree = "<group>"; };
 		26FFA9241D36936200DF8D4E /* IBLAppRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAppRepository.m; sourceTree = "<group>"; };
 		3827AAE8534D1CF41CA1D789 /* Pods-IBLWorkFlowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -415,8 +412,6 @@
 				26D56E3F1D35D8E70091A940 /* IBLGenerateLeftMenu.m */,
 				26CA04871D3676320044C81B /* IBLFetchOrder.h */,
 				26CA04881D3676320044C81B /* IBLFetchOrder.m */,
-				26FFA9201D368F7300DF8D4E /* IBLFetchConfiguration.h */,
-				26FFA9211D368F7300DF8D4E /* IBLFetchConfiguration.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -893,7 +888,6 @@
 				269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */,
 				2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */,
 				26846F561D34A34A001F9C73 /* IBLButtonItem.m in Sources */,
-				26FFA9221D368F7300DF8D4E /* IBLFetchConfiguration.m in Sources */,
 				5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */,
 				26D56E3A1D35D1B70091A940 /* IBLListViewModel.m in Sources */,
 				5B875BA76456459E9F3FA8BA /* IBLMainViewController.m in Sources */,
