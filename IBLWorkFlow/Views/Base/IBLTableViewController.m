@@ -7,8 +7,9 @@
 //
 
 #import "IBLTableViewController.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
-@interface IBLTableViewController ()
+@interface IBLTableViewController ()<DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property (nonatomic, weak) id<IBLTableViewControllerDelegate> delegate;
 @end
 
@@ -34,7 +35,17 @@
         }
     }
     
+    for (UITableView *tableView in self.tableViews) {
+        tableView.emptyDataSetSource = self;
+        tableView.emptyDataSetDelegate = self;
+    }
+    
     [self removeTableFooterView];
+}
+
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [UIImage imageNamed:@"test1"];
 }
 
 - (MJRefreshStateHeader *)defaultRefreshHeader {

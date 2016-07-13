@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.headerRefresh = YES;
     [self setupSegmentControl];
     [self setupTableViews];
 }
@@ -46,6 +47,9 @@
     
     for (UITableView *tableView in self.tableViews) {
         [tableView registerNib:nib forCellReuseIdentifier:MineWorkFlowCellIdentifier];
+//        tableView.mj_header.lastupdatedtimeLabel.backgroundColor = [UIColor redColor];
+        MJRefreshNormalHeader *header = (MJRefreshNormalHeader *)tableView.mj_header;
+        header.backgroundColor = [UIColor redColor];
     }
 }
 
@@ -54,7 +58,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 
@@ -73,7 +76,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 5;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
