@@ -37,14 +37,20 @@ static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
 
 @implementation IBLOrderRepository
 
+- (void)setupSerializerWithRequestMethodName:(NSString *)requestMethodName
+                          responseMethodName:(NSString *)responseMethodName{
+    self.networkServices.requestSerializer = [IBLWebServiceRequestSerializer serializerWithFilename:IBLWorkOrderSOAPFileName
+                                                                                         methodName:requestMethodName];
+    
+    self.networkServices.responseSerializer = [IBLWebServiceResponseSerializer serializerWithMethodName:responseMethodName];
+}
+
 - (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
                                   fetch:(IBLFetchMineOrderList *)fetch
                         completeHandler:(void (^)(NSArray *orderList, NSError *error))handler{
-    self.networkServices.requestSerializer = [IBLWebServiceRequestSerializer serializerWithFilename:IBLWorkOrderSOAPFileName
-                                                                                         methodName:IBLMethodOfFetchMineOrderList];
     
-    self.networkServices.responseSerializer = [IBLWebServiceResponseSerializer serializerWithMethodName:IBLMethodOfOrderMineOrderListResponse];
-
+    [self setupSerializerWithRequestMethodName:IBLMethodOfFetchMineOrderList
+                            responseMethodName:IBLMethodOfOrderMineOrderListResponse];
     
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
