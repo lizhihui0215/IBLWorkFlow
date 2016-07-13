@@ -7,6 +7,7 @@
 //
 
 #import "IBLMainViewController.h"
+#import "IBLLeftMenuViewController.h"
 
 @interface IBLMainViewController ()
 
@@ -19,6 +20,10 @@
     self.contentViewShadowEnabled = YES;
     self.contentViewInPortraitOffsetCenterX = 80;
     self.leftMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"leftMenuViewController"];
+    
+    IBLLeftMenuViewController *leftMenuViewController = (IBLLeftMenuViewController *)self.leftMenuViewController;
+    leftMenuViewController.viewModel = [[IBLLeftMenuViewModel alloc] init];
+    
     self.backgroundImage = [UIImage imageNamed:@"Stars"];
     self.delegate = self;
 }

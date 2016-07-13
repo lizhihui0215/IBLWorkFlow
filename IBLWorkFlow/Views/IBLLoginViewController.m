@@ -28,11 +28,10 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
     [self.viewModel loginWithUsername:self.usernameTextField.text
                              password:self.passwordTextField.text
                       completeHandler:^(NSError *error){
-                          
+                          if (![self showAlertWithError:error]) {
+                              [self performSegueWithIdentifier:NavigationToMainIdentifier sender:self];
+                          }
                       }];
-    
-    [self performSegueWithIdentifier:NavigationToMainIdentifier sender:self];
-    
 }
 
 - (void)didReceiveMemoryWarning {

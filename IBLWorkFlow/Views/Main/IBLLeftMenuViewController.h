@@ -8,7 +8,10 @@
 
 #import "IBLTableViewController.h"
 #import "RESideMenu.h"
+#import "IBLLeftMenuViewModel.h"
 
 @interface IBLLeftMenuViewController : IBLTableViewController <RESideMenuDelegate>
+
+@property (nonatomic, strong) IBLLeftMenuViewModel *viewModel;
 
 @end

@@ -24,7 +24,7 @@
     [fetchUser startFetchWithUsername:username
                              password:password
                       completeHandler:^(IBLUser *user, NSError *error) {
-                          
+                          handler(error);
                       }];
 }
 @end

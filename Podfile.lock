@@ -20,9 +20,9 @@ PODS:
   - HMSegmentedControl (1.5.2)
   - IQKeyboardManager (3.3.7)
   - JSONModel (1.2.0)
-  - KissXML (5.1.1):
-    - KissXML/Core (= 5.1.1)
-  - KissXML/Core (5.1.1)
+  - KissXML (5.1.2):
+    - KissXML/Core (= 5.1.2)
+  - KissXML/Core (5.1.2)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
     - libextobjc/EXTConcreteProtocol (= 0.4.1)
@@ -96,7 +96,7 @@ SPEC CHECKSUMS:
   HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
-  KissXML: 399becf3fd59b126ff35749acf3ad2b4c5d13c40
+  KissXML: 246c842586bb77110e04fb88e19376d96245c856
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1

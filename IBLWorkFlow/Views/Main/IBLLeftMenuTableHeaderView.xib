@@ -38,7 +38,7 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="oYf-4D-cd8" secondAttribute="trailing" constant="10" id="3OY-Ob-30V"/>
                                 <constraint firstItem="NYC-4m-XVX" firstAttribute="leading" secondItem="Yn5-Pj-PdL" secondAttribute="trailing" constant="10" id="6dE-8n-AyM"/>
@@ -49,7 +49,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.92156862745098034" green="0.92549019607843142" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="TpZ-c5-mvY" secondAttribute="top" constant="10" id="Dbg-Uf-LKl"/>
                         <constraint firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="GAx-QQ-45p"/>
@@ -58,6 +58,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="TpZ-c5-mvY" secondAttribute="trailing" id="3Id-Qx-CAz"/>
                 <constraint firstAttribute="bottom" secondItem="TpZ-c5-mvY" secondAttribute="bottom" id="qH9-4j-XDN"/>

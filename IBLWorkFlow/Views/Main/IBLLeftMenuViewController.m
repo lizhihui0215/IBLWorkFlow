@@ -14,6 +14,8 @@
 #import "IBLLeftMenuTableHeaderView.h"
 
 @interface IBLLeftMenuViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 
 @end
 
@@ -26,6 +28,10 @@
     UINib *nib = [UINib nibWithNibName:IBLLeftMenuTableHeaderNibName bundle:nil];
     
     [self.tableView registerNib:nib forHeaderFooterViewReuseIdentifier:IBLLeftMenuTableHeaderIdentifier];
+    
+    self.nameLabel.text = [self.viewModel username];
+    
+    self.roleLabel.text = [self.viewModel roleOfUser];
     
     self.sideMenuViewController.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
 }
@@ -58,27 +64,33 @@
     return 54;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectio{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex{
     IBLLeftMenuTableHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:IBLLeftMenuTableHeaderIdentifier];
+    
+    IBLSection *section = [self.viewModel sectionAt:sectionIndex];
+    
+    IBLLeftMenu *menu = section.info;
+    
+    header.titleLabel.text = menu.title;
+    
+    header.iconImageView.image = menu.icon;
     
     return header;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return [self.viewModel numberOfSections];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex{
-    return 5;
+    return [self.viewModel numberOfRowsInSection:sectionIndex];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     IBLLeftMenuCell *cell = [tableView dequeueReusableCellWithIdentifier:LeftMenuCellIdentifier forIndexPath:indexPath];
     
-    NSArray *titles = @[@"Home", @"Calendar", @"Profile", @"Settings", @"Log Out"];
-    NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile", @"IconSettings", @"IconEmpty"];
-    cell.titleLabel.text = titles[indexPath.row];
-    cell.iconImageView.image = [UIImage imageNamed:images[indexPath.row]];
+    cell.titleLabel.text = [self.viewModel titleAtIndexPath:indexPath];;
+    cell.iconImageView.image = [self.viewModel imageAtIndexPath:indexPath];
     return cell;
 }
 

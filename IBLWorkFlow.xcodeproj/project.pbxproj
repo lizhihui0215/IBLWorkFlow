@@ -46,6 +46,9 @@
 		26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D13B1D2E8458000950F6 /* IBLLoginViewModel.m */; };
 		26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D13E1D2E847C000950F6 /* IBLModel.m */; };
 		26A9D1421D2E8487000950F6 /* IBLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1411D2E8487000950F6 /* IBLUser.m */; };
+		26D56E3A1D35D1B70091A940 /* IBLListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D56E391D35D1B70091A940 /* IBLListViewModel.m */; };
+		26D56E3D1D35D1CC0091A940 /* IBLLeftMenuViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D56E3C1D35D1CC0091A940 /* IBLLeftMenuViewModel.m */; };
+		26D56E401D35D8E70091A940 /* IBLGenerateLeftMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D56E3F1D35D8E70091A940 /* IBLGenerateLeftMenu.m */; };
 		26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26F620191D2FB6B500B49065 /* Operator.xml */; };
 		5B87514A474323FC60AD3B9A /* IBLWorkFlowManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8750798AE62DE7EB7B8144 /* IBLWorkFlowManagerViewController.m */; };
 		5B8752353A6DB84830C5F1CA /* IBLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8758BB5B46F169393FE2D7 /* IBLTableViewCell.m */; };
@@ -154,6 +157,12 @@
 		26A9D13E1D2E847C000950F6 /* IBLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBLModel.m; path = IBLWorkFlow/Views/IBLModel.m; sourceTree = SOURCE_ROOT; };
 		26A9D1401D2E8487000950F6 /* IBLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLUser.h; path = IBLWorkFlow/Views/IBLUser.h; sourceTree = SOURCE_ROOT; };
 		26A9D1411D2E8487000950F6 /* IBLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBLUser.m; path = IBLWorkFlow/Views/IBLUser.m; sourceTree = SOURCE_ROOT; };
+		26D56E381D35D1B70091A940 /* IBLListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLListViewModel.h; sourceTree = "<group>"; };
+		26D56E391D35D1B70091A940 /* IBLListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLListViewModel.m; sourceTree = "<group>"; };
+		26D56E3B1D35D1CC0091A940 /* IBLLeftMenuViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLeftMenuViewModel.h; sourceTree = "<group>"; };
+		26D56E3C1D35D1CC0091A940 /* IBLLeftMenuViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLeftMenuViewModel.m; sourceTree = "<group>"; };
+		26D56E3E1D35D8E70091A940 /* IBLGenerateLeftMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLGenerateLeftMenu.h; sourceTree = "<group>"; };
+		26D56E3F1D35D8E70091A940 /* IBLGenerateLeftMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLGenerateLeftMenu.m; sourceTree = "<group>"; };
 		26F620191D2FB6B500B49065 /* Operator.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Operator.xml; sourceTree = "<group>"; };
 		3827AAE8534D1CF41CA1D789 /* Pods-IBLWorkFlowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3BC523A9AC89C5F1273C45C7 /* Pods-IBLWorkFlowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -348,8 +357,11 @@
 			children = (
 				26A9D1371D2E844C000950F6 /* IBLViewModel.h */,
 				26A9D1381D2E844C000950F6 /* IBLViewModel.m */,
+				26D56E381D35D1B70091A940 /* IBLListViewModel.h */,
+				26D56E391D35D1B70091A940 /* IBLListViewModel.m */,
 				26A9D13A1D2E8458000950F6 /* IBLLoginViewModel.h */,
 				26A9D13B1D2E8458000950F6 /* IBLLoginViewModel.m */,
+				5B875B645EE096A20AC9EE91 /* Main */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -361,6 +373,8 @@
 				264EBB9E1D2E2BE200FF8373 /* IBLUseCase.m */,
 				264EBBA01D2E2C1300FF8373 /* IBLFetchUser.h */,
 				264EBBA11D2E2C1300FF8373 /* IBLFetchUser.m */,
+				26D56E3E1D35D8E70091A940 /* IBLGenerateLeftMenu.h */,
+				26D56E3F1D35D8E70091A940 /* IBLGenerateLeftMenu.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -423,6 +437,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		5B875B645EE096A20AC9EE91 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				26D56E3B1D35D1CC0091A940 /* IBLLeftMenuViewModel.h */,
+				26D56E3C1D35D1CC0091A940 /* IBLLeftMenuViewModel.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		5B875BCCE75E905BA2CBDEC5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,11 +453,11 @@
 				5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */,
 				5B8753BEE41EFC83BCC1A897 /* IBLLeftMenuViewController.h */,
 				5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */,
+				26846F6B1D34C4C0001F9C73 /* IBLLeftMenuCell.h */,
+				26846F6C1D34C4C0001F9C73 /* IBLLeftMenuCell.m */,
 				26846F711D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.h */,
 				26846F721D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.m */,
 				26846F741D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib */,
-				26846F6B1D34C4C0001F9C73 /* IBLLeftMenuCell.h */,
-				26846F6C1D34C4C0001F9C73 /* IBLLeftMenuCell.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -780,6 +803,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D56E3D1D35D1CC0091A940 /* IBLLeftMenuViewModel.m in Sources */,
 				26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */,
 				264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */,
 				26846F681D34BC3F001F9C73 /* UIViewController+IBLExtension.m in Sources */,
@@ -797,6 +821,7 @@
 				2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */,
 				269B7D5D1D335A9F00D52DF0 /* NSString+IBLExtension.m in Sources */,
 				26A9D1421D2E8487000950F6 /* IBLUser.m in Sources */,
+				26D56E401D35D8E70091A940 /* IBLGenerateLeftMenu.m in Sources */,
 				264EBB631D2E023D00FF8373 /* main.m in Sources */,
 				26846F531D34A2F6001F9C73 /* IBLAlertController.m in Sources */,
 				26846F611D34A405001F9C73 /* UIActionSheet+Blocks.m in Sources */,
@@ -808,6 +833,7 @@
 				2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */,
 				26846F561D34A34A001F9C73 /* IBLButtonItem.m in Sources */,
 				5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */,
+				26D56E3A1D35D1B70091A940 /* IBLListViewModel.m in Sources */,
 				5B875BA76456459E9F3FA8BA /* IBLMainViewController.m in Sources */,
 				5B875F35EE4AEFAF69A69881 /* IBLLeftMenuViewController.m in Sources */,
 				5B8757182B593FAE81750768 /* IBLViewController.m in Sources */,
