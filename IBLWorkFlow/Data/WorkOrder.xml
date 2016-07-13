@@ -1,0 +1,272 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://workorder.webserver.module.miniboss.com/" name="WorkOrderInterface" targetNamespace="http://workorder.webserver.module.miniboss.com/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.workorder.webserver.module.miniboss.com/" xmlns="http://workorder.webserver.module.miniboss.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://workorder.webserver.module.miniboss.com/">
+            <xsd:element name="viewOrderFlow" type="viewOrderFlow"/>
+            <xsd:complexType name="viewOrderFlow">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="viewOrderFlowResponse" type="viewOrderFlowResponse"/>
+            <xsd:complexType name="viewOrderFlowResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderFeed" type="orderFeed"/>
+            <xsd:complexType name="orderFeed">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderFeedResponse" type="orderFeedResponse"/>
+            <xsd:complexType name="orderFeedResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getMyOrderList" type="getMyOrderList"/>
+            <xsd:complexType name="getMyOrderList">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getMyOrderListResponse" type="getMyOrderListResponse"/>
+            <xsd:complexType name="getMyOrderListResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderTrans" type="orderTrans"/>
+            <xsd:complexType name="orderTrans">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderTransResponse" type="orderTransResponse"/>
+            <xsd:complexType name="orderTransResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderComp" type="orderComp"/>
+            <xsd:complexType name="orderComp">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderCompResponse" type="orderCompResponse"/>
+            <xsd:complexType name="orderCompResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getOperList" type="getOperList"/>
+            <xsd:complexType name="getOperList">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getOperListResponse" type="getOperListResponse"/>
+            <xsd:complexType name="getOperListResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderCancel" type="orderCancel"/>
+            <xsd:complexType name="orderCancel">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderCancelResponse" type="orderCancelResponse"/>
+            <xsd:complexType name="orderCancelResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getOrderList" type="getOrderList"/>
+            <xsd:complexType name="getOrderList">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getOrderListResponse" type="getOrderListResponse"/>
+            <xsd:complexType name="getOrderListResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderHandle" type="orderHandle"/>
+            <xsd:complexType name="orderHandle">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderHandleResponse" type="orderHandleResponse"/>
+            <xsd:complexType name="orderHandleResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderDelete" type="orderDelete"/>
+            <xsd:complexType name="orderDelete">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderDeleteResponse" type="orderDeleteResponse"/>
+            <xsd:complexType name="orderDeleteResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderAdd" type="orderAdd"/>
+            <xsd:complexType name="orderAdd">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderAddResponse" type="orderAddResponse"/>
+            <xsd:complexType name="orderAddResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderIssue" type="orderIssue"/>
+            <xsd:complexType name="orderIssue">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="orderIssueResponse" type="orderIssueResponse"/>
+            <xsd:complexType name="orderIssueResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="orderIssue">
+        <wsdl:part element="ns1:orderIssue" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderAddResponse">
+        <wsdl:part element="ns1:orderAddResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="viewOrderFlow">
+        <wsdl:part element="ns1:viewOrderFlow" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="viewOrderFlowResponse">
+        <wsdl:part element="ns1:viewOrderFlowResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderHandle">
+        <wsdl:part element="ns1:orderHandle" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderAdd">
+        <wsdl:part element="ns1:orderAdd" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOrderListResponse">
+        <wsdl:part element="ns1:getOrderListResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderCompResponse">
+        <wsdl:part element="ns1:orderCompResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderFeedResponse">
+        <wsdl:part element="ns1:orderFeedResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderHandleResponse">
+        <wsdl:part element="ns1:orderHandleResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderComp">
+        <wsdl:part element="ns1:orderComp" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOperListResponse">
+        <wsdl:part element="ns1:getOperListResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOrderList">
+        <wsdl:part element="ns1:getOrderList" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderCancelResponse">
+        <wsdl:part element="ns1:orderCancelResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderTrans">
+        <wsdl:part element="ns1:orderTrans" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderTransResponse">
+        <wsdl:part element="ns1:orderTransResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderIssueResponse">
+        <wsdl:part element="ns1:orderIssueResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getMyOrderListResponse">
+        <wsdl:part element="ns1:getMyOrderListResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderDelete">
+        <wsdl:part element="ns1:orderDelete" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderCancel">
+        <wsdl:part element="ns1:orderCancel" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderDeleteResponse">
+        <wsdl:part element="ns1:orderDeleteResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="orderFeed">
+        <wsdl:part element="ns1:orderFeed" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getMyOrderList">
+        <wsdl:part element="ns1:getMyOrderList" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOperList">
+        <wsdl:part element="ns1:getOperList" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="WorkOrderInterface">
+        <wsdl:operation name="viewOrderFlow">
+            <wsdl:input message="ns1:viewOrderFlow" name="viewOrderFlow"></wsdl:input>
+            <wsdl:output message="ns1:viewOrderFlowResponse" name="viewOrderFlowResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="orderFeed">
+            <wsdl:input message="ns1:orderFeed" name="orderFeed"></wsdl:input>
+            <wsdl:output message="ns1:orderFeedResponse" name="orderFeedResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getMyOrderList">
+            <wsdl:input message="ns1:getMyOrderList" name="getMyOrderList"></wsdl:input>
+            <wsdl:output message="ns1:getMyOrderListResponse" name="getMyOrderListResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="orderTrans">
+            <wsdl:input message="ns1:orderTrans" name="orderTrans"></wsdl:input>
+            <wsdl:output message="ns1:orderTransResponse" name="orderTransResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="orderComp">
+            <wsdl:input message="ns1:orderComp" name="orderComp"></wsdl:input>
+            <wsdl:output message="ns1:orderCompResponse" name="orderCompResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOperList">
+            <wsdl:input message="ns1:getOperList" name="getOperList"></wsdl:input>
+            <wsdl:output message="ns1:getOperListResponse" name="getOperListResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="orderCancel">
+            <wsdl:input message="ns1:orderCancel" name="orderCancel"></wsdl:input>
+            <wsdl:output message="ns1:orderCancelResponse" name="orderCancelResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOrderList">
+            <wsdl:input message="ns1:getOrderList" name="getOrderList"></wsdl:input>
+            <wsdl:output message="ns1:getOrderListResponse" name="getOrderListResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="orderHandle">
+            <wsdl:input message="ns1:orderHandle" name="orderHandle"></wsdl:input>
+            <wsdl:output message="ns1:orderHandleResponse" name="orderHandleResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="orderDelete">
+            <wsdl:input message="ns1:orderDelete" name="orderDelete"></wsdl:input>
+            <wsdl:output message="ns1:orderDeleteResponse" name="orderDeleteResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="orderAdd">
+            <wsdl:input message="ns1:orderAdd" name="orderAdd"></wsdl:input>
+            <wsdl:output message="ns1:orderAddResponse" name="orderAddResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="orderIssue">
+            <wsdl:input message="ns1:orderIssue" name="orderIssue"></wsdl:input>
+            <wsdl:output message="ns1:orderIssueResponse" name="orderIssueResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

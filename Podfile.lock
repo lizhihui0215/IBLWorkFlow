@@ -1,4 +1,6 @@
 PODS:
+  - AFNetworkActivityLogger (3.0.0):
+    - AFNetworking/NSURLSession (~> 3.0)
   - AFNetworking (3.1.0):
     - AFNetworking/NSURLSession (= 3.1.0)
     - AFNetworking/Reachability (= 3.1.0)
@@ -70,6 +72,7 @@ PODS:
   - UITableView+FDTemplateLayoutCell (1.4)
 
 DEPENDENCIES:
+  - AFNetworkActivityLogger (from `https://github.com/AFNetworking/AFNetworkActivityLogger.git`, branch `3_0_0`)
   - AFNetworking
   - CocoaSecurity
   - DZNEmptyDataSet
@@ -88,7 +91,18 @@ DEPENDENCIES:
   - SSKeychain
   - UITableView+FDTemplateLayoutCell
 
+EXTERNAL SOURCES:
+  AFNetworkActivityLogger:
+    :branch: '3_0_0'
+    :git: https://github.com/AFNetworking/AFNetworkActivityLogger.git
+
+CHECKOUT OPTIONS:
+  AFNetworkActivityLogger:
+    :commit: abc565fe804f210dfda3b028c9a64e7c32e44600
+    :git: https://github.com/AFNetworking/AFNetworkActivityLogger.git
+
 SPEC CHECKSUMS:
+  AFNetworkActivityLogger: e77f68d014becb33c4306a23f56a64906ff72670
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
@@ -107,6 +121,6 @@ SPEC CHECKSUMS:
   SSKeychain: c71293fa57216a40ab06c23f4085387583293de4
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
 
-PODFILE CHECKSUM: b58ce53a816c87aa8c889291237ade854186d562
+PODFILE CHECKSUM: 23086072067fc6e4137fe7d21bab36eff8fe8646
 
 COCOAPODS: 1.0.0

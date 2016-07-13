@@ -1,5 +1,5 @@
 //
-//  IBLWorkFlowManagerViewController.h
+//  IBLOrderManagerViewController.h
 //  RESideMenuStoryboards
 //
 //  Created by Roman Efimov on 10/9/13.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
 
-@interface IBLWorkFlowManagerViewController : UIViewController
+@interface IBLOrderManagerViewController : UIViewController
 
 - (IBAction)pushViewController:(id)sender;
 

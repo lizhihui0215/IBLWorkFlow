@@ -255,7 +255,7 @@
         <!--我的工单-->
         <scene sceneID="wcu-Cv-GO2">
             <objects>
-                <viewController storyboardIdentifier="mineWorkFlowViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ttn-LK-U0s" customClass="IBLMineWorkFlowViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mineWorkFlowViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ttn-LK-U0s" customClass="IBLMineOrderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cg7-Kw-kJh"/>
                         <viewControllerLayoutGuide type="bottom" id="wq6-K9-2F7"/>
@@ -356,7 +356,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTT-sP-azV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IBLMineWorkFlowCell" rowHeight="70" id="JwC-Da-kyS">
+                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IBLMineOrderCell" rowHeight="70" id="JwC-Da-kyS">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JwC-Da-kyS" id="4GI-dT-85g">
@@ -370,7 +370,7 @@
         <!--工单管理-->
         <scene sceneID="3Tv-Mp-GZy">
             <objects>
-                <viewController restorationIdentifier="secondViewController" storyboardIdentifier="secondViewController" id="Uhs-i1-LAb" customClass="IBLWorkFlowManagerViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="secondViewController" storyboardIdentifier="secondViewController" id="Uhs-i1-LAb" customClass="IBLOrderManagerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y6F-Pj-piq"/>
                         <viewControllerLayoutGuide type="bottom" id="HEu-we-d4B"/>

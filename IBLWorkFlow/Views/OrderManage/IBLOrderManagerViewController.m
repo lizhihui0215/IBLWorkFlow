@@ -1,18 +1,18 @@
 //
-//  IBLWorkFlowManagerViewController.m
+//  IBLOrderManagerViewController.m
 //  RESideMenuStoryboards
 //
 //  Created by Roman Efimov on 10/9/13.
 //  Copyright (c) 2013 Roman Efimov. All rights reserved.
 //
 
-#import "IBLWorkFlowManagerViewController.h"
+#import "IBLOrderManagerViewController.h"
 
-@interface IBLWorkFlowManagerViewController ()
+@interface IBLOrderManagerViewController ()
 
 @end
 
-@implementation IBLWorkFlowManagerViewController
+@implementation IBLOrderManagerViewController
 - (void)viewDidLoad{
     [super viewDidLoad];
 }

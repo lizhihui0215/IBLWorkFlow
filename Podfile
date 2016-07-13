@@ -57,6 +57,9 @@ target 'IBLWorkFlow' do
   # https://github.com/soffes/sskeychain
   pod 'SSKeychain'
   
+  # https://github.com/AFNetworking/AFNetworkActivityLogger/tree/3_0_0
+  pod 'AFNetworkActivityLogger', git: 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', branch: '3_0_0'
+  
   target 'IBLWorkFlowTests' do
     inherit! :search_paths
     # Pods for testing

@@ -25,8 +25,6 @@ static NSString * const AuthID = @"a05e74898131bd1c";
 
 static NSString * const kSignKey = @"48e5be901c6692bf46fd2bba3b04d56b";
 
-/** 登录后分配ID */
-static NSString * const kAllocID = @"allocId";
 
 static NSString * const kCode = @"resultCode";
 

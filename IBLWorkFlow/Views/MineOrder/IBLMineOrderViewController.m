@@ -1,22 +1,22 @@
 //
-//  IBLMineWorkFlowViewController.m
+//  IBLMineOrderViewController.m
 //  RESideMenuStoryboards
 //
 //  Created by Roman Efimov on 10/9/13.
 //  Copyright (c) 2013 Roman Efimov. All rights reserved.
 //
 
-#import "IBLMineWorkFlowViewController.h"
+#import "IBLMineOrderViewController.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
-#import "IBLMineWorkFlowCell.h"
+#import "IBLMineOrderCell.h"
 
-@interface IBLMineWorkFlowViewController ()
+@interface IBLMineOrderViewController ()
 
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *segmentedControl;
 
 @end
 
-@implementation IBLMineWorkFlowViewController
+@implementation IBLMineOrderViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -81,7 +81,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    IBLMineWorkFlowCell *cell = [tableView dequeueReusableCellWithIdentifier:MineWorkFlowCellIdentifier forIndexPath:indexPath];
+    IBLMineOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:MineWorkFlowCellIdentifier forIndexPath:indexPath];
+    
     
     return cell;
 }

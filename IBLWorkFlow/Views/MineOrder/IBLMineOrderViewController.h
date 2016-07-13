@@ -1,5 +1,5 @@
 //
-//  IBLMineWorkFlowViewController.h
+//  IBLMineOrderViewController.h
 //  RESideMenuStoryboards
 //
 //  Created by Roman Efimov on 10/9/13.
@@ -8,7 +8,10 @@
 
 #import "IBLTableViewController.h"
 #import "RESideMenu.h"
+#import "IBLMineOrderViewModel.h"
 
-@interface IBLMineWorkFlowViewController : IBLTableViewController
+@interface IBLMineOrderViewController : IBLTableViewController
+
+@property (nonatomic, strong) IBLMineOrderViewModel *viewModel;
 
 @end
