@@ -14,40 +14,6 @@ static NSString *const IBLMethodOfFetchMineOrderList = @"getMyOrderList";
 static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListResponse";
 
 /**
- *  工单状态
- */
-typedef NS_ENUM(NSInteger, IBLOrderStatus) {
-    /**
-     *  未派单
-     */
-    IBLOrderStatusUnsend = 1,
-    /**
-     *  已派单
-     */
-    IBLOrderStatusSended,
-    /**
-     *  转发中
-     */
-    IBLOrderStatusForwarding,
-    /**
-     *  处理中
-     */
-    IBLOrderStatusHandling,
-    /**
-     *  作废
-     */
-    IBLOrderStatusInvalid,
-    /**
-     *  完成
-     */
-    IBLOrderStatusFinished,
-    /**
-     *  反馈中
-     */
-    IBLOrderStatusFeedback,
-};
-
-/**
  *  the info for fetch mine order list
  */
 @interface IBLFetchMineOrderList : NSObject

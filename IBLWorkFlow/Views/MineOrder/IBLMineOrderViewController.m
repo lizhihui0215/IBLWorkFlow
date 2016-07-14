@@ -9,8 +9,11 @@
 #import "IBLMineOrderViewController.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 #import "IBLMineOrderCell.h"
+#import "IBLOrderSearchViewController.h"
 
-@interface IBLMineOrderViewController ()
+static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSearch";
+
+@interface IBLMineOrderViewController () <IBLOrderSearchDelegate>
 
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *segmentedControl;
 
@@ -128,7 +131,26 @@
 {
     IBLMineOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:MineWorkFlowCellIdentifier forIndexPath:indexPath];
     
-    
     return cell;
 }
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:NavigationToOrderSearchIdentifier]){
+        IBLOrderSearchViewController *orderSearchViewController = [segue destinationViewController];
+        orderSearchViewController.viewModel = [[IBLOrderSearchViewModel alloc] init];
+        orderSearchViewController.delegate = self;
+    }
+}
+
+- (void)orderSearchViewController:(IBLOrderSearchViewController *)searchViewController
+                  didSearchResult:(IBLOrderSearchResult *)searchResult {
+
+}
+
+
 @end

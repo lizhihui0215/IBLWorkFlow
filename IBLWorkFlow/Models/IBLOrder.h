@@ -8,6 +8,40 @@
 
 #import "IBLModel.h"
 
+/**
+ *  工单状态
+ */
+typedef NS_ENUM(NSInteger, IBLOrderStatus) {
+    /**
+     *  未派单
+     */
+    IBLOrderStatusUnsend = 1,
+    /**
+     *  已派单
+     */
+    IBLOrderStatusSended,
+    /**
+     *  转发中
+     */
+    IBLOrderStatusForwarding,
+    /**
+     *  处理中
+     */
+    IBLOrderStatusHandling,
+    /**
+     *  作废
+     */
+    IBLOrderStatusInvalid,
+    /**
+     *  完成
+     */
+    IBLOrderStatusFinished,
+    /**
+     *  反馈中
+     */
+    IBLOrderStatusFeedback,
+};
+
 @interface IBLOrder : IBLModel
 
 /// 工单ID
@@ -26,7 +60,7 @@
 @property (nonatomic, assign) NSString *content;
 
 /// 工单状态
-@property (nonatomic, assign) NSString *status;
+@property (nonatomic, assign) IBLOrderStatus status;
 
 /// 工单优先级
 @property (nonatomic, assign) NSInteger priority;
