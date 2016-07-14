@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "IBLWSDLServices.h"
 #import "IBLRepository.h"
+#import "IBLOrderRepository.h"
 
 @interface IBLWorkFlowTests : XCTestCase
 
@@ -48,6 +49,19 @@
 //                              @"fff" : @"asddasda",} key:@"asddsad"];
     
 //    NSLog(@"signa %@",signa);
+    
+    IBLOrderRepository *o = [[IBLOrderRepository alloc] init];
+    
+    IBLFetchMineOrderList *fetch = [IBLFetchMineOrderList listWithDateRange:@""
+                                                                     status:@""
+                                                                    account:@""
+                                                                   username:@""
+                                                                      phone:@""
+                                                                       type:@""
+                                                                    bizType:@""];
+    
+    [o fetchMineOrderListWithIsRefresh:YES
+                                 fetch:fetch];
     
     
     NSLog(@"xml %@",xml);
