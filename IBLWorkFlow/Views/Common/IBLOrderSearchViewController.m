@@ -16,6 +16,7 @@
     if ([self.delegate respondsToSelector:@selector(orderSearchViewController:didSearchResult:)]) {
         [self.delegate orderSearchViewController:self didSearchResult:self.viewModel.searchResult];
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
