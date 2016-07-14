@@ -26,9 +26,6 @@ static NSString * const AuthID = @"a05e74898131bd1c";
 static NSString * const kSignKey = @"48e5be901c6692bf46fd2bba3b04d56b";
 
 
-static NSString * const kCode = @"resultCode";
-
-static NSString * const kMessage = @"respMsg";
 
 @interface IBLRepository ()
 
@@ -81,22 +78,7 @@ static NSString * const kMessage = @"respMsg";
     return securityResult.hex.uppercaseString;
 }
 
-- (NSError *)handleErrorWithResponseObject:(id)responseObject{
-    NSInteger code = [responseObject[kCode] integerValue];
-    
-    NSError *error = nil;
-    
-    if (code != 0) {
-        NSString *message = responseObject[kMessage] ? : @"";
-        
-        error = [NSError errorWithDomain:@""
-                                    code:0
-                                userInfo:@{kExceptionCode : [@(code) stringValue],
-                                           kExceptionMessage: message}];
-    }
-    
-    return error;
-}
+
 
 - (IBLNetworkServices *)networkServices{
     return [IBLNetworkServices sharedServices];

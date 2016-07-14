@@ -24,7 +24,7 @@
     IBLLeftMenuViewController *leftMenuViewController = (IBLLeftMenuViewController *)self.leftMenuViewController;
     leftMenuViewController.viewModel = [[IBLLeftMenuViewModel alloc] init];
     
-    self.backgroundImage = [UIImage imageNamed:@"Stars"];
+    self.backgroundImage = [UIImage imageNamed:@"background"];
     self.delegate = self;
 }
 

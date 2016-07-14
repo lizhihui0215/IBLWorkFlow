@@ -7,6 +7,9 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
+FOUNDATION_EXPORT NSString * const kExceptionCode;
+
+FOUNDATION_EXPORT NSString * const kExceptionMessage;
 
 @interface IBLWebServiceResponseSerializer : AFHTTPResponseSerializer
 + (instancetype)serializerWithMethodName:(NSString *)methodName;

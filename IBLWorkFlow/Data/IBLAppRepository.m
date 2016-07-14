@@ -29,6 +29,9 @@
 }
 
 - (void)fetchWithConfigurationWithCompleteHandler:(void (^)(id, NSError *))handler {
+    
+    handler(nil,nil); return;
+    
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         return aParameters;
     }];
@@ -37,10 +40,7 @@
                     parameters:parameters
                       progress:nil
                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                           NSError *error = [self handleErrorWithResponseObject:responseObject];
-                           
-                           if (error) { handler(nil,error); return; }
-                           
+                           //TODO: implement
 //                           IBLUser *user = [[IBLUser alloc] initWithDictionary:responseObject error:nil];
                            
 //                           handler(user, nil);

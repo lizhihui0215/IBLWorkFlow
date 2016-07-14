@@ -14,6 +14,8 @@ static NSString * const IBLLeftMenuTableHeaderIdentifier = @"IBLLeftMenuTableHea
 
 @interface IBLLeftMenuTableHeaderView : IBLTableViewHeaderFooterView
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;

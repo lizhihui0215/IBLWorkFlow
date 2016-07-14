@@ -31,6 +31,8 @@ static NSString *const IBLWorkOrderInterface = @"WorkOrderInterface";
 static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
 
 
+static NSString *const kOrderList = @"orderList";
+
 @interface IBLOrderRepository()
 
 @end
@@ -45,24 +47,25 @@ static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
     self.networkServices.responseSerializer = [IBLWebServiceResponseSerializer serializerWithMethodName:responseMethodName];
 }
 
-- (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
-                                  fetch:(IBLFetchMineOrderList *)fetch
-                        completeHandler:(void (^)(NSArray *orderList, NSError *error))handler{
+- (void)fetchMineOrderListWithFetch:(IBLFetchMineOrderList *)fetch
+                              start:(NSInteger)start
+                           pageSize:(NSInteger)pageSize
+                    completeHandler:(void (^)(NSArray *orderList, NSError *error))handler {
     
     [self setupSerializerWithRequestMethodName:IBLMethodOfFetchMineOrderList
                             responseMethodName:IBLMethodOfOrderMineOrderListResponse];
     
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
-        [parameters addEntriesFromDictionary:@{kOrderStatus : fetch.status,
+        [parameters addEntriesFromDictionary:@{kOrderStatus : @(fetch.status),
                                                kAccount : fetch.account,
                                                kUsername : fetch.username,
                                                kPhone : fetch.phone,
                                                kType : fetch.type,
                                                kBizType : fetch.bizType,
                                                kDateRange : fetch.dateRange,
-                                               kStart : @"",
-                                               kPageSize: @""}];
+                                               kStart : @(start),
+                                               kPageSize: @(pageSize)}];
         return parameters;
     }];
     
@@ -70,9 +73,16 @@ static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
                     parameters:parameters
                       progress:nil
                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                           NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderList];
                            
+                           NSMutableArray<IBLOrder *> *orders = [NSMutableArray array];
+                           for (NSDictionary *orderDictionary in ordersDictionary) {
+                               IBLOrder *order = [[IBLOrder alloc] initWithDictionary:orderDictionary error:nil];
+                               [orders addObject:order];
+                           }
+                           handler(orders, nil);
                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                           
+                           handler(nil, error);
                        }];
 }
 
@@ -86,7 +96,7 @@ static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
 @implementation IBLFetchMineOrderList
 
 - (instancetype)initWithDateRange:(NSString *)dateRange
-                           status:(NSString *)status
+                           status:(IBLOrderStatus)status
                           account:(NSString *)account
                          username:(NSString *)username
                             phone:(NSString *)phone
@@ -107,7 +117,7 @@ static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
 }
 
 + (instancetype)listWithDateRange:(NSString *)dateRange
-                           status:(NSString *)status
+                           status:(IBLOrderStatus)status
                           account:(NSString *)account
                          username:(NSString *)username
                             phone:(NSString *)phone

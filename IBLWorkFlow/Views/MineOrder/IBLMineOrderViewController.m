@@ -18,9 +18,14 @@
 
 @implementation IBLMineOrderViewController
 
+- (UITableView *)tableView{
+    return self.tableViews[self.segmentedControl.selectedSegmentIndex];
+}
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.headerRefresh = YES;
+    self.fotterRefresh = YES;
     [self setupSegmentControl];
     [self setupTableViews];
 }
@@ -30,7 +35,11 @@
     self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
     [self.segmentedControl setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
         
-        NSDictionary *fontAttributes = @{NSForegroundColorAttributeName : [UIColor blueColor],
+        UIColor *titleColor = [UIColor blackColor];
+        
+        if (selected) titleColor = [UIColor colorWithHex:0x62A3EA];
+        
+        NSDictionary *fontAttributes = @{NSForegroundColorAttributeName : titleColor,
                                          NSFontAttributeName : [UIFont systemFontOfSize:13]};
         
         NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title
@@ -39,7 +48,17 @@
     }];
     self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
     self.segmentedControl.selectionIndicatorHeight = 2.0f;
+    self.segmentedControl.selectionIndicatorColor = [UIColor colorWithHex:0x107BE0];
+    
+    self.segmentedControl.indexChangeBlock = ^(NSInteger index){
+        [self switchTableWithIndex:index];
+    };
+}
 
+- (void)switchTableWithIndex:(NSInteger)index{
+    if([self.viewModel numberOfRowsInSection:0] <= 0){
+        [self.tableView.mj_header beginRefreshing];
+    }
 }
 
 - (void)setupTableViews{
@@ -47,10 +66,32 @@
     
     for (UITableView *tableView in self.tableViews) {
         [tableView registerNib:nib forCellReuseIdentifier:MineWorkFlowCellIdentifier];
-//        tableView.mj_header.lastupdatedtimeLabel.backgroundColor = [UIColor redColor];
         MJRefreshNormalHeader *header = (MJRefreshNormalHeader *)tableView.mj_header;
         header.backgroundColor = [UIColor redColor];
     }
+}
+
+- (void)tableView:(UITableView *)tableView footerBeginRefresh:(MJRefreshBackStateFooter *)footer{
+    
+}
+
+- (void)tableView:(UITableView *)tableView headerBeginRefresh:(MJRefreshStateHeader *)header{
+    IBLOrderStatus status = [self.viewModel statusWithIndex:self.segmentedControl.selectedSegmentIndex];
+
+    IBLFetchMineOrderList *fetch = [IBLFetchMineOrderList listWithDateRange:@""
+                                                                     status:status
+                                                                    account:@""
+                                                                   username:@""
+                                                                      phone:@""
+                                                                       type:@""
+                                                                    bizType:@""];
+    [self.viewModel fetchMineOrderListWithIsRefresh:YES
+                                              fetch:fetch
+                                    completeHandler:^(NSError *error) {
+                                        if (![self showAlertWithError:error]) {
+                                            [tableView reloadData];
+                                        }
+                                    }];
 }
 
 #pragma mark -
@@ -86,5 +127,4 @@
     
     return cell;
 }
-
 @end

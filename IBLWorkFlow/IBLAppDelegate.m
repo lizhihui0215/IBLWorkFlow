@@ -8,6 +8,7 @@
 
 #import "IBLAppDelegate.h"
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
+#import "UINavigationBar+IBLExtension.h"
 
 @interface IBLAppDelegate ()
 
@@ -19,12 +20,14 @@
     return [UIApplication sharedApplication].delegate;
 }
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[AFNetworkActivityLogger sharedLogger] startLogging];
     
     [[[AFNetworkActivityLogger sharedLogger].loggers anyObject] setLevel:AFLoggerLevelDebug];
+    
+    [UINavigationBar setupAppearance];
+    
     return YES;
 }
 

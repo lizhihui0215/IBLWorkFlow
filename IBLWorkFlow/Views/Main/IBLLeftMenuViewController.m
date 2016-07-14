@@ -12,6 +12,9 @@
 #import "UIViewController+RESideMenu.h"
 #import "IBLLeftMenuCell.h"
 #import "IBLLeftMenuTableHeaderView.h"
+#import "IBLLoginViewController.h"
+
+static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 
 @interface IBLLeftMenuViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -61,7 +64,22 @@
 #pragma mark UITableView Datasource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 54;
+    return 30;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex{
+    IBLSection *section = [self.viewModel sectionAt:sectionIndex];
+    IBLLeftMenu *menu = section.info;
+
+    if (menu.index == 2 || menu.index == 4) {
+        return 50;
+    }
+    
+    return 40;
+
+}
+- (IBAction)logoutTaped:(UITapGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:NavigationToLoginIdentifier sender:nil];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex{
@@ -72,6 +90,10 @@
     IBLLeftMenu *menu = section.info;
     
     header.titleLabel.text = menu.title;
+    
+    if (menu.index == 2 || menu.index == 4) {
+        header.topConstraint.constant = 20;
+    }
     
     header.iconImageView.image = menu.icon;
     
@@ -92,6 +114,19 @@
     cell.titleLabel.text = [self.viewModel titleAtIndexPath:indexPath];;
     cell.iconImageView.image = [self.viewModel imageAtIndexPath:indexPath];
     return cell;
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:NavigationToLoginIdentifier]){
+        IBLLoginViewController *loginViewController = [segue destinationViewController];
+
+        loginViewController.viewModel = [[IBLLoginViewModel alloc] init];
+    }     
 }
 
 @end

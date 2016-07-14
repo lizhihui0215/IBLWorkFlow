@@ -11,6 +11,12 @@
 
 @interface IBLFetchOrder : IBLUseCase
 
+/**
+ *  fetch mine order list from server
+ *
+ *  @param isRefresh YES fetch from the beginning, or NO fetch the next page
+ *  @param fetch     the info used to fetch
+ */
 - (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
                                   fetch:(IBLFetchMineOrderList *)fetch
                         completeHandler:(void (^)(NSArray *orderList, NSError *error))handler;

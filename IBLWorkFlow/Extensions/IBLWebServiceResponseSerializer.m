@@ -8,6 +8,9 @@
 
 #import "IBLWebServiceResponseSerializer.h"
 #import "IBLWSDLServices.h"
+static NSString * const kCode = @"resultCode";
+
+static NSString * const kMessage = @"respMsg";
 
 static NSError * AFErrorWithUnderlyingError(NSError *error, NSError *underlyingError) {
     if (!error) {
@@ -88,6 +91,10 @@ static BOOL AFErrorOrUnderlyingErrorHasCodeInDomain(NSError *error, NSInteger co
         
         responseObject = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:&serializationError];
         
+        *error = [self handleErrorWithResponseObject:responseObject];
+        
+        if (*error) responseObject = nil;
+        
     } else {
         return nil;
     }
@@ -97,5 +104,22 @@ static BOOL AFErrorOrUnderlyingErrorHasCodeInDomain(NSError *error, NSInteger co
     }
     
     return responseObject;
+}
+
+- (NSError *)handleErrorWithResponseObject:(id)responseObject{
+    NSInteger code = [responseObject[kCode] integerValue];
+    
+    NSError *error = nil;
+    
+    if (code != 0) {
+        NSString *message = responseObject[kMessage] ? : @"";
+        
+        error = [NSError errorWithDomain:@""
+                                    code:0
+                                userInfo:@{kExceptionCode : [@(code) stringValue],
+                                           kExceptionMessage: message}];
+    }
+    
+    return error;
 }
 @end

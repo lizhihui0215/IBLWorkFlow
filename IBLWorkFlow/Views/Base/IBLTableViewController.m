@@ -78,7 +78,10 @@
             break;
         }
     }
-    [self.delegate tableView:theTableView footerBeginRefresh:footer];
+    
+    if ([self.delegate respondsToSelector:@selector(tableView:footerBeginRefresh:)]) {
+        [self.delegate tableView:theTableView footerBeginRefresh:footer];
+    }
 }
 
 - (void)tableViewHeaderWillRefresh:(MJRefreshNormalHeader *)header{
@@ -89,7 +92,10 @@
             break;
         }
     }
-    [self.delegate tableView:theTableView headerBeginRefresh:header];
+    
+    if ([self.delegate respondsToSelector:@selector(tableView:headerBeginRefresh:)]) {
+        [self.delegate tableView:theTableView headerBeginRefresh:header];
+    }
 }
 
 - (void)removeTableFooterView {

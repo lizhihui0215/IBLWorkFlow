@@ -40,13 +40,9 @@
     
     IBLAppRepository *appRepository = [[IBLAppRepository alloc] init];
     
-    
-    
     NSError *error = [self validateWithUsername:username password:password];
     
     if (error) { handler(nil, error); return; }
-    
-    
     
     [user fetchWithUsername:username
                    password:password

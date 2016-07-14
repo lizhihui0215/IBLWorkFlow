@@ -7,7 +7,14 @@
 //
 
 #import "IBLListViewModel.h"
+#import "IBLFetchOrder.h"
+
 
 @interface IBLMineOrderViewModel : IBLListViewModel
 
+- (IBLOrderStatus)statusWithIndex:(NSInteger)index;
+
+- (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
+                                  fetch:(IBLFetchMineOrderList *)fetch
+                        completeHandler:(IBLViewModelCompleteHandler)handler;
 @end

@@ -52,14 +52,14 @@ static NSString const * kRenew = @"RENEW";
     
     if (secondLevel.count > 0) {
         IBLLeftMenu *menu = [IBLLeftMenu menuWithTitle:@"营业管理"
-                                                   icon:[UIImage imageNamed:@"Icon"]
+                                                   icon:[UIImage imageNamed:@"management"]
                                             parentIndex:NSNotFound
                                                   index:2];
         [menus addObject:menu];
     }
     
     IBLLeftMenu *about = [IBLLeftMenu menuWithTitle:@"关于我们"
-                                               icon:[UIImage imageNamed:@"Icon"]
+                                               icon:[UIImage imageNamed:@"about"]
                                         parentIndex:NSNotFound
                                               index:4];
     [menus addObject:about];
@@ -70,33 +70,33 @@ static NSString const * kRenew = @"RENEW";
 - (NSDictionary *)menuMaps{
     
     IBLLeftMenu *menu1 = [IBLLeftMenu menuWithTitle:@"我的工单"
-                                               icon:[UIImage imageNamed:@"Icon"]
+                                               icon:[UIImage imageNamed:@"my-order"]
                                         parentIndex:NSNotFound
                                               index:0];
     
     IBLLeftMenu *menu2 = [IBLLeftMenu menuWithTitle:@"工单管理"
-                                               icon:[UIImage imageNamed:@"Icon"]
+                                               icon:[UIImage imageNamed:@"work-order"]
                                         parentIndex:NSNotFound
                                               index:1];
     
     IBLLeftMenu *menu3 = [IBLLeftMenu menuWithTitle:@"新增工单"
-                                               icon:[UIImage imageNamed:@"Icon"]
+                                               icon:[UIImage imageNamed:@"increase"]
                                         parentIndex:2
                                               index:0];
     
     IBLLeftMenu *menu4 = [IBLLeftMenu menuWithTitle:@"开户"
-                                               icon:[UIImage imageNamed:@"Icon"]
+                                               icon:[UIImage imageNamed:@"open-an-account"]
                                         parentIndex:2
                                               index:1];
     
     
     IBLLeftMenu *menu5 = [IBLLeftMenu menuWithTitle:@"续费"
-                                               icon:[UIImage imageNamed:@"Icon"]
+                                               icon:[UIImage imageNamed:@"renew"]
                                         parentIndex:2
                                               index:2];
     
     IBLLeftMenu *menu6 = [IBLLeftMenu menuWithTitle:@"换销售品"
-                                               icon:[UIImage imageNamed:@"Icon"]
+                                               icon:[UIImage imageNamed:@"swap"]
                                         parentIndex:2
                                               index:3];
     
