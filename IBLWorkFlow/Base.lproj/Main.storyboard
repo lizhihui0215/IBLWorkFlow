@@ -747,6 +747,9 @@
                                 <state key="normal" title="搜索" backgroundImage="searchButtonBackground">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="searchButtonPressed:" destination="vuV-zv-Hog" eventType="touchUpInside" id="fi4-QK-cZJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
