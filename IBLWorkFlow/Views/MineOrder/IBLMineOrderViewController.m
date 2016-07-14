@@ -19,7 +19,11 @@
 @implementation IBLMineOrderViewController
 
 - (UITableView *)tableView{
-    return self.tableViews[self.segmentedControl.selectedSegmentIndex];
+    UITableView *theTableView = self.tableViews[self.segmentedControl.selectedSegmentIndex];
+    
+    for (UITableView *tableView in self.tableViews) tableView.hidden = theTableView != tableView;
+
+    return theTableView;
 }
 
 - (void)viewDidLoad{
