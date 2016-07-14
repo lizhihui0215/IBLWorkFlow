@@ -14,25 +14,22 @@ static NSString const * kAccount = @"userAccount";
 
 static NSString const * kUsername = @"userName";
 
-static NSString const * kPhone = @"userPhone";
+static NSString *const kPhone = @"userPhone";
 
-static NSString const * kType = @"orderType";
+static NSString *const kType = @"orderType";
 
-static NSString const * kBizType = @"bizType";
+static NSString *const kBizType = @"bizType";
 
-static NSString const * kDateRange = @"dateRange";
+static NSString *const kDateRange = @"dateRange";
 
-static NSString const * kStart = @"start";
+static NSString *const kStart = @"start";
 
-static NSString const * kPageSize = @"pageSize";
+static NSString *const kPageSize = @"pageSize";
 
 static NSString *const IBLWorkOrderInterface = @"WorkOrderInterface";
 
 static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
 
-static NSString *const IBLMethodOfFetchMineOrderList = @"getMyOrderList";
-
-static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListResponse";
 
 @interface IBLOrderRepository()
 
@@ -40,20 +37,21 @@ static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListR
 
 @implementation IBLOrderRepository
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.networkServices.requestSerializer = [IBLWebServiceRequestSerializer serializerWithFilename:IBLWorkOrderSOAPFileName
-                                                                                             methodName:IBLMethodOfFetchMineOrderList];
-        
-        self.networkServices.responseSerializer = [IBLWebServiceResponseSerializer serializerWithMethodName:IBLMethodOfOrderMineOrderListResponse];
-    }
-    return self;
+- (void)setupSerializerWithRequestMethodName:(NSString *)requestMethodName
+                          responseMethodName:(NSString *)responseMethodName{
+    self.networkServices.requestSerializer = [IBLWebServiceRequestSerializer serializerWithFilename:IBLWorkOrderSOAPFileName
+                                                                                         methodName:requestMethodName];
+    
+    self.networkServices.responseSerializer = [IBLWebServiceResponseSerializer serializerWithMethodName:responseMethodName];
 }
 
 - (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
-                                  fetch:(IBLFetchMineOrderList *)fetch {
+                                  fetch:(IBLFetchMineOrderList *)fetch
+                        completeHandler:(void (^)(NSArray *orderList, NSError *error))handler{
+    
+    [self setupSerializerWithRequestMethodName:IBLMethodOfFetchMineOrderList
+                            responseMethodName:IBLMethodOfOrderMineOrderListResponse];
+    
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         [parameters addEntriesFromDictionary:@{kOrderStatus : fetch.status,

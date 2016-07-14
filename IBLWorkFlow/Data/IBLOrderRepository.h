@@ -8,6 +8,11 @@
 
 #import "IBLBusinessRepository.h"
 
+static NSString *const IBLMethodOfFetchMineOrderList = @"getMyOrderList";
+
+static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListResponse";
+
+
 /**
  *  the info for fetch mine order list
  */
@@ -60,5 +65,6 @@
  *  @param fetch     the info used to fetch
  */
 - (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
-                                  fetch:(IBLFetchMineOrderList *)fetch;
+                                  fetch:(IBLFetchMineOrderList *)fetch
+                        completeHandler:(void (^)(NSArray *orderList, NSError *error))handler;
 @end
