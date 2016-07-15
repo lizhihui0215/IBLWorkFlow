@@ -80,6 +80,7 @@
 		5B875ABCE8A1815B62EDC2A3 /* IBLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875A477581D17ADD3212A9 /* IBLTableViewController.m */; };
 		5B875BA76456459E9F3FA8BA /* IBLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */; };
 		5B875F35EE4AEFAF69A69881 /* IBLLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */; };
+		5B875F608C49341C02D1E7F4 /* IBLOrderSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8758B18A41A5D65E5AA2E0 /* IBLOrderSearchResult.m */; };
 		916C3F0C4BE6724553A38E60 /* libPods-IBLWorkFlowUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBB83F272FFCA67F7EB540F /* libPods-IBLWorkFlowUITests.a */; };
 		A65A0C0791A2265EA181E5F9 /* libPods-IBLWorkFlowTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */; };
 		C29699C982E6C6E8F36F7C33 /* libPods-IBLWorkFlow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75ECACC7C53EB3B0DA024790 /* libPods-IBLWorkFlow.a */; };
@@ -236,12 +237,14 @@
 		5B8755217F90CFB700C44EAD /* IBLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLTableViewController.h; sourceTree = "<group>"; };
 		5B875648DBF736BC2589E501 /* IBLOrderManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderManagerViewController.h; sourceTree = "<group>"; };
 		5B87572F5D7F00B76DFCC5CD /* IBLRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRootViewController.h; sourceTree = "<group>"; };
+		5B8758B18A41A5D65E5AA2E0 /* IBLOrderSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderSearchResult.m; sourceTree = "<group>"; };
 		5B8758BB5B46F169393FE2D7 /* IBLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLTableViewCell.m; sourceTree = "<group>"; };
 		5B8758BBA9729641CC5F291D /* IBLMineOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMineOrderViewController.m; sourceTree = "<group>"; };
 		5B8758F5509F16FDE270112B /* IBLMineOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMineOrderCell.h; sourceTree = "<group>"; };
 		5B875A477581D17ADD3212A9 /* IBLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLTableViewController.m; sourceTree = "<group>"; };
 		5B875B2890782FCCC77AB904 /* IBLMineOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMineOrderCell.m; sourceTree = "<group>"; };
 		5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMainViewController.m; sourceTree = "<group>"; };
+		5B875C62F23D441DE986C86A /* IBLOrderSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderSearchResult.h; sourceTree = "<group>"; };
 		5B875CF33E2F3DB3FED110D4 /* IBLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLViewController.m; sourceTree = "<group>"; };
 		5B875F49C01D81C5D5902304 /* IBLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMainViewController.h; sourceTree = "<group>"; };
 		5B875FA0896D4BEFF18C1576 /* IBLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLViewController.h; sourceTree = "<group>"; };
@@ -444,6 +447,8 @@
 				26D56E4A1D3629E20091A940 /* IBLMineOrderViewModel.m */,
 				269CD3901D37BF3400603A83 /* IBLOrderSearchViewModel.h */,
 				269CD3911D37BF3400603A83 /* IBLOrderSearchViewModel.m */,
+				5B8758B18A41A5D65E5AA2E0 /* IBLOrderSearchResult.m */,
+				5B875C62F23D441DE986C86A /* IBLOrderSearchResult.h */,
 			);
 			path = MineOrder;
 			sourceTree = "<group>";
@@ -974,6 +979,7 @@
 				26846F501D349F0B001F9C73 /* IBLException.m in Sources */,
 				5B87514A474323FC60AD3B9A /* IBLOrderManagerViewController.m in Sources */,
 				26846F6D1D34C4C0001F9C73 /* IBLLeftMenuCell.m in Sources */,
+				5B875F608C49341C02D1E7F4 /* IBLOrderSearchResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

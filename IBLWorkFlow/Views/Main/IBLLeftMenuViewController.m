@@ -14,6 +14,7 @@
 #import "IBLLeftMenuTableHeaderView.h"
 #import "IBLLoginViewController.h"
 
+
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 
 @interface IBLLeftMenuViewController ()
@@ -37,6 +38,9 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     self.roleLabel.text = [self.viewModel roleOfUser];
     
     self.sideMenuViewController.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
+    UINavigationController *navi = self.sideMenuViewController.contentViewController;
+    IBLMineOrderViewController *mineOrderViewController = navi.topViewController;
+    mineOrderViewController.viewModel = [[IBLMineOrderViewModel alloc] init];
 }
 
 #pragma mark -

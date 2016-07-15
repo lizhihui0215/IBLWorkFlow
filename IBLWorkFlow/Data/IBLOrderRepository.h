@@ -8,6 +8,8 @@
 
 #import "IBLBusinessRepository.h"
 #import "IBLOrder.h"
+#import "IBLWorkOrderType.h"
+#import "IBLWorkOrderBussinessType.h"
 
 static NSString *const IBLMethodOfFetchMineOrderList = @"getMyOrderList";
 
@@ -26,9 +28,9 @@ static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListR
 
 @property (nonatomic, copy) NSString *phone;
 
-@property (nonatomic, copy) NSString *type;
+@property (nonatomic, assign) IBLWorkOrderStatus type;
 
-@property (nonatomic, copy) NSString *bizType;
+@property (nonatomic, assign) IBLWorkOrderBizStatus bizType;
 
 @property (nonatomic, copy) NSString *dateRange;
 
@@ -50,8 +52,8 @@ static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListR
                           account:(NSString *)account
                          username:(NSString *)username
                             phone:(NSString *)phone
-                             type:(NSString *)type
-                          bizType:(NSString *)bizType;
+                             type:(IBLWorkOrderStatus)type
+                          bizType:(IBLWorkOrderBizStatus)bizType;
 
 @end
 

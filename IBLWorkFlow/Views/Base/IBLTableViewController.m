@@ -22,9 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.delegate = self;
     self.headerRefresh = NO;
     self.fotterRefresh = NO;
-    
     for (UITableView *tableView in self.tableViews) {
         
         if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
@@ -41,6 +41,7 @@
     }
     
     [self removeTableFooterView];
+    
 }
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView

@@ -83,22 +83,15 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 }
 
 - (void)tableView:(UITableView *)tableView headerBeginRefresh:(MJRefreshStateHeader *)header{
-    IBLOrderStatus status = [self.viewModel statusWithIndex:self.segmentedControl.selectedSegmentIndex];
-
-    IBLFetchMineOrderList *fetch = [IBLFetchMineOrderList listWithDateRange:@""
-                                                                     status:status
-                                                                    account:@""
-                                                                   username:@""
-                                                                      phone:@""
-                                                                       type:@""
-                                                                    bizType:@""];
-    [self.viewModel fetchMineOrderListWithIsRefresh:YES
-                                              fetch:fetch
-                                    completeHandler:^(NSError *error) {
-                                        if (![self showAlertWithError:error]) {
-                                            [tableView reloadData];
-                                        }
-                                    }];
+    
+    [self.viewModel fetchMineOrderListWithIndex:self.segmentedControl.selectedSegmentIndex
+                                      isRefresh:YES
+                                completeHandler:^(NSError *error) {
+                                    [header endRefreshing];
+                                    if (![self showAlertWithError:error]) {
+                                        [tableView reloadData];
+                                    }
+                                }];
 }
 
 #pragma mark -
@@ -142,14 +135,17 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:NavigationToOrderSearchIdentifier]){
         IBLOrderSearchViewController *orderSearchViewController = [segue destinationViewController];
-        orderSearchViewController.viewModel = [[IBLOrderSearchViewModel alloc] initWithSearchResult:nil];
+        IBLOrderSearchResult *result = [self.viewModel searchResultWithIndex:self.segmentedControl.selectedSegmentIndex];
+        orderSearchViewController.viewModel = [[IBLOrderSearchViewModel alloc] initWithSearchResult:result];
+        
         orderSearchViewController.delegate = self;
     }
 }
 
 - (void)orderSearchViewController:(IBLOrderSearchViewController *)searchViewController
                   didSearchResult:(IBLOrderSearchResult *)searchResult {
-
+    [self.viewModel setSearchResult:searchResult
+                              index:self.segmentedControl.selectedSegmentIndex];
 }
 
 

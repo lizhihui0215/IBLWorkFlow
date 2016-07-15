@@ -12,6 +12,10 @@
  */
 typedef NS_ENUM(NSInteger, IBLWorkOrderBizStatus) {
     /**
+     *  未知
+     */
+    IBLWorkOrderBizStatusUnknow = -1,
+    /**
      *  报修
      */
     IBLWorkOrderBizStatusRepair = 11,

@@ -12,7 +12,9 @@
 + (BOOL)isNull:(NSString *)string{
     if(!string) return YES;
     
-    if ([string isEqualToString:@""]) return YES;
+    if([string isKindOfClass:[NSString class]]){
+        if ([string isEqualToString:@""]) return YES;
+    }
     
     return NO;
 }

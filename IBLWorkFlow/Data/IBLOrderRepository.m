@@ -55,16 +55,21 @@ static NSString *const kOrderList = @"orderList";
                               start:(NSInteger)start
                            pageSize:(NSInteger)pageSize
                     completeHandler:(void (^)(NSArray *orderList, NSError *error))handler {
-    
-    
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
+
+        if (fetch.bizType !=  IBLWorkOrderBizStatusUnknow) {
+            parameters[kType] = @(fetch.bizType);
+        }
+        
+        if(fetch.type != IBLWorkOrderStatusUnknow){
+            parameters[kType] = @(fetch.type);
+        }
+        
         [parameters addEntriesFromDictionary:@{kOrderStatus : @(fetch.status),
                                                kAccount : fetch.account,
                                                kUsername : fetch.username,
                                                kPhone : fetch.phone,
-                                               kType : fetch.type,
-                                               kBizType : fetch.bizType,
                                                kDateRange : fetch.dateRange,
                                                kStart : @(start),
                                                kPageSize: @(pageSize)}];
@@ -102,8 +107,8 @@ static NSString *const kOrderList = @"orderList";
                           account:(NSString *)account
                          username:(NSString *)username
                             phone:(NSString *)phone
-                             type:(NSString *)type
-                          bizType:(NSString *)bizType {
+                             type:(IBLWorkOrderStatus)type
+                          bizType:(IBLWorkOrderBizStatus)bizType {
     self = [super init];
     if (self) {
         self.dateRange = dateRange;
@@ -123,8 +128,8 @@ static NSString *const kOrderList = @"orderList";
                           account:(NSString *)account
                          username:(NSString *)username
                             phone:(NSString *)phone
-                             type:(NSString *)type
-                          bizType:(NSString *)bizType {
+                             type:(IBLWorkOrderStatus)type
+                          bizType:(IBLWorkOrderBizStatus)bizType {
     return [[self alloc] initWithDateRange:dateRange
                                     status:status
                                    account:account

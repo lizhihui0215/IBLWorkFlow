@@ -51,10 +51,6 @@
     
     if (!fetch.phone) fetch.phone = @"";
     
-    if (!fetch.type) fetch.type = @"";
-    
-    if (!fetch.bizType) fetch.bizType = @"";
-    
     return YES;
 }
 

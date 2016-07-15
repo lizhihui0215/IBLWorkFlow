@@ -8,33 +8,8 @@
 
 #import "IBLListViewModel.h"
 #import "IBLOrder.h"
+#include "IBLOrderSearchResult.h"
 
-
-@interface IBLOrderSearchResult : NSObject;
-
-@property (nonatomic, assign) IBLOrderStatus status;
-
-@property (nonatomic, copy) NSString *account;
-
-@property (nonatomic, copy) NSString *username;
-
-@property (nonatomic, copy) NSString *phone;
-
-@property (nonatomic, copy) IBLWorkOrderType *type;
-
-@property (nonatomic, copy) IBLWorkOrderBussinessType *bizType;
-
-@property (nonatomic, copy) NSString *dateRange;
-
-+ (instancetype)initWithStatus:(IBLOrderStatus)status
-             resultWithAccount:(NSString *)account
-                      username:(NSString *)username
-                         phone:(NSString *)phone
-                          type:(IBLWorkOrderType *)type
-                       bizType:(IBLWorkOrderBussinessType *)bizType
-                     dateRange:(NSString *)dateRange;
-
-@end
 
 @interface IBLOrderSearchViewModel : IBLListViewModel
 

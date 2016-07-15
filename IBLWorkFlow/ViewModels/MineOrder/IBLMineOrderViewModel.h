@@ -8,13 +8,16 @@
 
 #import "IBLListViewModel.h"
 #import "IBLFetchOrder.h"
-
+#import "IBLOrderSearchResult.h"
 
 @interface IBLMineOrderViewModel : IBLListViewModel
 
 - (IBLOrderStatus)statusWithIndex:(NSInteger)index;
 
-- (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
-                                  fetch:(IBLFetchMineOrderList *)fetch
-                        completeHandler:(IBLViewModelCompleteHandler)handler;
+- (void)fetchMineOrderListWithIndex:(NSInteger)index isRefresh:(BOOL)isRefresh completeHandler:(IBLViewModelCompleteHandler)handler;
+
+- (void)setSearchResult:(IBLOrderSearchResult *)searchResult index:(NSInteger)index;
+
+- (IBLOrderSearchResult *)searchResultWithIndex:(NSInteger)index;
+
 @end
