@@ -69,10 +69,33 @@
         #pragma clang diagnostic ignored"-Wdeprecated-declarations"
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:inTitle
                                                             message:inMessage
-                                                   cancelButtonItem:inCancelButtonItem otherButtonItem:otherButtonItem
+                                                   cancelButtonItem:inCancelButtonItem
+                                                    otherButtonItem:otherButtonItem
                                                    otherButtonItems:otherButtonItems];
         #pragma clang diagnostic pop
         self.alertView = alertView;
+    }
+}
+
+- (void)addButtonItem:(IBLButtonItem *)buttonItem{
+    if ([UIAlertController class]){
+        UIAlertAction *action = [UIAlertAction actionWithTitle:buttonItem.label
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * _Nonnull action) {
+                                                           if (buttonItem.action)
+                                                               buttonItem.action(buttonItem);
+                                                       }];
+        [self.alertView addAction:action];
+    }else{
+        
+        if ([self.alertView isKindOfClass:[UIActionSheet class]]) {
+            UIActionSheet *actionSheet = self.alertView;
+            [actionSheet addButtonItem:buttonItem];
+
+        }else{
+            UIAlertView *alertView = self.alertView;
+            [alertView addButtonItem:buttonItem];
+        }
     }
 }
 

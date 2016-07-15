@@ -87,14 +87,21 @@ static BOOL AFErrorOrUnderlyingErrorHasCodeInDomain(NSError *error, NSInteger co
         
         NSString *resultString = [IBLWSDLServices SOAPResultWithMethodName:self.methodName data:stringData];
         
-        NSData *JSONData = [resultString dataUsingEncoding:NSUTF8StringEncoding];
-        
-        responseObject = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:&serializationError];
-        
-        *error = [self handleErrorWithResponseObject:responseObject];
+        if (resultString) {
+            NSData *JSONData = [resultString dataUsingEncoding:NSUTF8StringEncoding];
+            
+            responseObject = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:&serializationError];
+            
+            *error = [self handleErrorWithResponseObject:responseObject];
+        }else{
+           NSString *message = [NSString stringWithFormat:@"Message part %@ was not recognized.  (Does it exist in service WSDL?)",self.methodName];
+            *error = [NSError errorWithDomain:@""
+                                         code:0
+                                     userInfo:@{kExceptionCode : [@(-1) stringValue],
+                                                kExceptionMessage: message}];
+        }
         
         if (*error) responseObject = nil;
-        
     } else {
         return nil;
     }

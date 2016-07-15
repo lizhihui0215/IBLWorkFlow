@@ -19,4 +19,5 @@ typedef NS_ENUM(NSInteger, IBLAlertStyle){
          cancleButtonItem:(IBLButtonItem *)cancleButtonItem
          otherButtonItems:(IBLButtonItem *)inOtherButtonItems, ... NS_REQUIRES_NIL_TERMINATION;
 - (void)showInController:(UIViewController *)viewController;
+- (void)addButtonItem:(IBLButtonItem *)buttonItem;
 @end

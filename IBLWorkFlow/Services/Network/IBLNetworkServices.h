@@ -11,6 +11,8 @@
 
 @interface IBLNetworkServices : AFHTTPSessionManager
 
-+ (instancetype)sharedServices;
++ (instancetype)networkServicesWithFileName:(NSString *)fileName
+                          requestMethodName:(NSString *)requestMethodName
+                         responseMethodName:(NSString *)responseMethodName;
 
 @end

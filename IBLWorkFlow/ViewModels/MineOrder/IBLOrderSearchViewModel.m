@@ -68,4 +68,45 @@
     return [[self alloc] initWithSearchResult:searchResult];
 }
 
+- (void)setUsername:(NSString *)username {
+    self.searchResult.username = username;
+}
+
+- (void)setUserAccount:(NSString *)userAccount {
+    self.searchResult.account = userAccount;
+}
+
+- (void)setBusinessType:(NSString *)businessType {
+    self.searchResult.bizType = businessType;
+}
+
+- (void)setWorkOrderType:(NSString *)workOrderType {
+    self.searchResult.type = workOrderType;
+}
+
+- (void)setStartDate:(NSString *)startDate {
+    NSMutableArray *components = [[self.searchResult.dateRange componentsSeparatedByString:@"-"] mutableCopy];
+    
+    if ([components lastObject]) {
+        components[0] = startDate;
+        self.searchResult.dateRange = [components componentsJoinedByString:@"-"];
+    }else{
+        self.searchResult.dateRange = [NSString stringWithFormat:@"%@-",startDate];
+    }
+}
+
+- (void)setEndDate:(NSString *)endDate {
+    NSMutableArray *components = [[self.searchResult.dateRange componentsSeparatedByString:@"-"] mutableCopy];
+    
+    if ([components lastObject]) {
+        components[1] = endDate;
+        self.searchResult.dateRange = [components componentsJoinedByString:@"-"];
+    }else{
+        self.searchResult.dateRange = [NSString stringWithFormat:@"-%@",endDate];
+    }
+}
+
+- (void)setUserPhone:(NSString *)userPhone {
+    self.searchResult.phone = userPhone;
+}
 @end

@@ -12,6 +12,8 @@
 		2612E1661D2E9DDF00CA76BC /* User.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2612E1651D2E9DDF00CA76BC /* User.xml */; };
 		2612E16A1D2E9EC900CA76BC /* DDXMLElement+WSDL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612E1691D2E9EC900CA76BC /* DDXMLElement+WSDL.m */; };
 		261F40221D3720D50068F502 /* IBLOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 261F40211D3720D50068F502 /* IBLOrder.m */; };
+		26469BE11D3882A40000285D /* NSDate+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26469BE01D3882A40000285D /* NSDate+IBLExtension.m */; };
+		26469BE31D388F880000285D /* Configuration.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26469BE21D388F880000285D /* Configuration.xml */; };
 		264EBB631D2E023D00FF8373 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB621D2E023D00FF8373 /* main.m */; };
 		264EBB661D2E023D00FF8373 /* IBLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB651D2E023D00FF8373 /* IBLAppDelegate.m */; };
 		264EBB6C1D2E023D00FF8373 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 264EBB6A1D2E023D00FF8373 /* Main.storyboard */; };
@@ -104,6 +106,9 @@
 		2612E1691D2E9EC900CA76BC /* DDXMLElement+WSDL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DDXMLElement+WSDL.m"; path = "IBLWorkFlow/Data/DDXMLElement+WSDL.m"; sourceTree = SOURCE_ROOT; };
 		261F40201D3720D50068F502 /* IBLOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrder.h; sourceTree = "<group>"; };
 		261F40211D3720D50068F502 /* IBLOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrder.m; sourceTree = "<group>"; };
+		26469BDF1D3882A40000285D /* NSDate+IBLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IBLExtension.h"; sourceTree = "<group>"; };
+		26469BE01D3882A40000285D /* NSDate+IBLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IBLExtension.m"; sourceTree = "<group>"; };
+		26469BE21D388F880000285D /* Configuration.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Configuration.xml; sourceTree = "<group>"; };
 		264EBB5E1D2E023C00FF8373 /* IBLWorkFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IBLWorkFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		264EBB621D2E023D00FF8373 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		264EBB641D2E023D00FF8373 /* IBLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBLAppDelegate.h; sourceTree = "<group>"; };
@@ -488,6 +493,8 @@
 				26846F671D34BC3F001F9C73 /* UIViewController+IBLExtension.m */,
 				2609232F1D3769F2004F31BE /* UINavigationBar+IBLExtension.h */,
 				260923301D3769F2004F31BE /* UINavigationBar+IBLExtension.m */,
+				26469BDF1D3882A40000285D /* NSDate+IBLExtension.h */,
+				26469BE01D3882A40000285D /* NSDate+IBLExtension.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -578,6 +585,7 @@
 				26F620191D2FB6B500B49065 /* Operator.xml */,
 				269B7D591D33453200D52DF0 /* Test.xml */,
 				26D56E411D3618870091A940 /* WorkOrder.xml */,
+				26469BE21D388F880000285D /* Configuration.xml */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -726,6 +734,7 @@
 				269B7D5A1D33453200D52DF0 /* Test.xml in Resources */,
 				26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */,
 				264EBB6E1D2E023D00FF8373 /* Assets.xcassets in Resources */,
+				26469BE31D388F880000285D /* Configuration.xml in Resources */,
 				2612E1661D2E9DDF00CA76BC /* User.xml in Resources */,
 				264EBB6C1D2E023D00FF8373 /* Main.storyboard in Resources */,
 			);
@@ -907,6 +916,7 @@
 				2612E16A1D2E9EC900CA76BC /* DDXMLElement+WSDL.m in Sources */,
 				26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */,
 				264EBB991D2E2BC200FF8373 /* IBLRepository.m in Sources */,
+				26469BE11D3882A40000285D /* NSDate+IBLExtension.m in Sources */,
 				26846F731D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.m in Sources */,
 				269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */,
 				2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */,

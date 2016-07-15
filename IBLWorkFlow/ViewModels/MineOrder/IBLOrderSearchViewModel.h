@@ -43,5 +43,18 @@
 
 + (instancetype)modelWithSearchResult:(IBLOrderSearchResult *)searchResult;
 
+- (void)setUsername:(NSString *)username;
 
+
+- (void)setUserAccount:(NSString *)userAccount;
+
+- (void)setBusinessType:(NSString *)businessType;
+
+- (void)setWorkOrderType:(NSString *)workOrderType;
+
+- (void)setStartDate:(NSString *)startDate;
+
+- (void)setEndDate:(NSString *)endDate;
+
+- (void)setUserPhone:(NSString *)userPhone;
 @end

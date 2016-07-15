@@ -35,16 +35,20 @@ static NSString *const kOrderList = @"orderList";
 
 @interface IBLOrderRepository()
 
+@property (nonatomic, strong) IBLSOAPMethod *fetchMineOrderMethod;
+
 @end
 
 @implementation IBLOrderRepository
 
-- (void)setupSerializerWithRequestMethodName:(NSString *)requestMethodName
-                          responseMethodName:(NSString *)responseMethodName{
-    self.networkServices.requestSerializer = [IBLWebServiceRequestSerializer serializerWithFilename:IBLWorkOrderSOAPFileName
-                                                                                         methodName:requestMethodName];
-    
-    self.networkServices.responseSerializer = [IBLWebServiceResponseSerializer serializerWithMethodName:responseMethodName];
+- (instancetype)init
+{
+    self = [super initWithSOAPFileName:IBLWorkOrderSOAPFileName];
+    if (self) {
+        self.fetchMineOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFetchMineOrderList
+                                                            responseMethodName:IBLMethodOfOrderMineOrderListResponse];
+    }
+    return self;
 }
 
 - (void)fetchMineOrderListWithFetch:(IBLFetchMineOrderList *)fetch
@@ -52,8 +56,6 @@ static NSString *const kOrderList = @"orderList";
                            pageSize:(NSInteger)pageSize
                     completeHandler:(void (^)(NSArray *orderList, NSError *error))handler {
     
-    [self setupSerializerWithRequestMethodName:IBLMethodOfFetchMineOrderList
-                            responseMethodName:IBLMethodOfOrderMineOrderListResponse];
     
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
@@ -69,21 +71,21 @@ static NSString *const kOrderList = @"orderList";
         return parameters;
     }];
     
-    [self.networkServices POST:IBLWorkOrderInterface
-                    parameters:parameters
-                      progress:nil
-                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                           NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderList];
-                           
-                           NSMutableArray<IBLOrder *> *orders = [NSMutableArray array];
-                           for (NSDictionary *orderDictionary in ordersDictionary) {
-                               IBLOrder *order = [[IBLOrder alloc] initWithDictionary:orderDictionary error:nil];
-                               [orders addObject:order];
-                           }
-                           handler(orders, nil);
-                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                           handler(nil, error);
-                       }];
+    [[self networkServicesMethods:self.fetchMineOrderMethod] POST:IBLWorkOrderInterface
+                                                       parameters:parameters
+                                                         progress:nil
+                                                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                              NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderList];
+                                                              
+                                                              NSMutableArray<IBLOrder *> *orders = [NSMutableArray array];
+                                                              for (NSDictionary *orderDictionary in ordersDictionary) {
+                                                                  IBLOrder *order = [[IBLOrder alloc] initWithDictionary:orderDictionary error:nil];
+                                                                  [orders addObject:order];
+                                                              }
+                                                              handler(orders, nil);
+                                                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                              handler(nil, error);
+                                                          }];
 }
 
 

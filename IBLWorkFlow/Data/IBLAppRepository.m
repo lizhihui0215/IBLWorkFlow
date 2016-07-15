@@ -8,6 +8,11 @@
 
 #import "IBLAppRepository.h"
 
+@interface IBLAppRepository ()
+@property (nonatomic, strong) IBLSOAPMethod *fetchAppConfiguration;
+
+@end
+
 @implementation IBLAppRepository
 //+ (IBLUser *)user{
 //    return _user;
@@ -19,34 +24,31 @@
 
 - (instancetype)init
 {
-    self = [super init];
+    self = [super initWithSOAPFileName:@"Configuration"];
     if (self) {
-        self.networkServices.requestSerializer = [IBLWebServiceRequestSerializer serializerWithFilename:@"Operator" methodName:@"auth"];
-        
-        self.networkServices.responseSerializer = [IBLWebServiceResponseSerializer serializerWithMethodName:@"authResponse"];
+        self.fetchAppConfiguration = [IBLSOAPMethod methodWithRequestMethodName:@"getAPPConfig" responseMethodName:@"getAPPConfigResponse"];
+
     }
     return self;
 }
 
 - (void)fetchWithConfigurationWithCompleteHandler:(void (^)(id, NSError *))handler {
     
-    handler(nil,nil); return;
-    
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
-        return aParameters;
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        [parameters removeObjectForKey:kMCode];
+        [parameters removeObjectForKey:kSessionID];
+        return parameters;
     }];
     
-    [self.networkServices POST:@"OperatorInterface"
-                    parameters:parameters
-                      progress:nil
-                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                           //TODO: implement
-//                           IBLUser *user = [[IBLUser alloc] initWithDictionary:responseObject error:nil];
-                           
-//                           handler(user, nil);
-                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                           handler(nil, error);
-                       }];
+    [[self networkServicesMethods:self.fetchAppConfiguration] POST:@"ConfigInterface"
+                                                        parameters:parameters
+                                                          progress:nil
+                                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                               
+                                                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                               handler(nil, error);
+                                                           }];
 }
 
 @end

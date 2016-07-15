@@ -1,0 +1,30 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://workorder.webserver.module.miniboss.com/" name="ConfigInterface" targetNamespace="http://workorder.webserver.module.miniboss.com/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.workorder.webserver.module.miniboss.com/" xmlns="http://workorder.webserver.module.miniboss.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://workorder.webserver.module.miniboss.com/">
+            <xsd:element name="getAPPConfig" type="getAPPConfig"/>
+            <xsd:complexType name="getAPPConfig">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getAPPConfigResponse" type="getAPPConfigResponse"/>
+            <xsd:complexType name="getAPPConfigResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="getAPPConfigResponse">
+        <wsdl:part element="ns1:getAPPConfigResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getAPPConfig">
+        <wsdl:part element="ns1:getAPPConfig" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="ConfigInterface">
+        <wsdl:operation name="getAPPConfig">
+            <wsdl:input message="ns1:getAPPConfig" name="getAPPConfig"></wsdl:input>
+            <wsdl:output message="ns1:getAPPConfigResponse" name="getAPPConfigResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

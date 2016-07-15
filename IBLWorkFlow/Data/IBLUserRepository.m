@@ -17,6 +17,10 @@ static NSString * const kOSVersion = @"osVersion";
 
 static IBLUser *_user = nil;
 
+@interface IBLUserRepository ()
+@property (nonatomic, strong) IBLSOAPMethod *fetchUserMethod;
+@end
+
 @implementation IBLUserRepository
 
 + (IBLUser *)user{
@@ -29,11 +33,10 @@ static IBLUser *_user = nil;
 
 - (instancetype)init
 {
-    self = [super init];
+    self = [super initWithSOAPFileName:@"Operator"];
     if (self) {
-        self.networkServices.requestSerializer = [IBLWebServiceRequestSerializer serializerWithFilename:@"Operator" methodName:@"auth"];
-        
-        self.networkServices.responseSerializer = [IBLWebServiceResponseSerializer serializerWithMethodName:@"authResponse"];
+        self.fetchUserMethod = [IBLSOAPMethod methodWithRequestMethodName:@"auth" responseMethodName:@"authResponse"];
+
     }
     return self;
 }
@@ -52,7 +55,7 @@ static IBLUser *_user = nil;
         return parameters;
     }];
     
-    [self.networkServices POST:@"OperatorInterface"
+    [[self networkServicesMethods:self.fetchUserMethod] POST:@"OperatorInterface"
                     parameters:parameters
                       progress:nil
                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

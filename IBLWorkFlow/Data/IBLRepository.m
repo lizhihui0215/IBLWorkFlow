@@ -9,14 +9,9 @@
 #import "IBLRepository.h"
 #import "UIDevice+IBLExtension.h"
 
-/** 时间戳 */
-static NSString * const kSessionID = @"sessionId";
 
 /** 签名 */
 static NSString * const kSign = @"sign";
-
-/** 唯一标识 */
-static NSString * const kMCode = @"mCode";
 
 /** 服务器API认证ID */
 static NSString * const kAuthID = @"authId";
@@ -29,9 +24,44 @@ static NSString * const kSignKey = @"48e5be901c6692bf46fd2bba3b04d56b";
 
 @interface IBLRepository ()
 
+@property (nonatomic, strong) NSString *SOAPFileName;
+
+@end
+
+@implementation IBLSOAPMethod
+- (instancetype)initWithRequestMethodName:(NSString *)requestMethodName responseMethodName:(NSString *)responseMethodName {
+    self = [super init];
+    if (self) {
+        self.requestMethodName = requestMethodName;
+        self.responseMethodName = responseMethodName;
+    }
+
+    return self;
+}
+
++ (instancetype)methodWithRequestMethodName:(NSString *)requestMethodName responseMethodName:(NSString *)responseMethodName {
+    return [[self alloc] initWithRequestMethodName:requestMethodName responseMethodName:responseMethodName];
+}
+
+
 @end
 
 @implementation IBLRepository
+
+- (instancetype)initWithSOAPFileName:(NSString *)SOAPFileName {
+    self = [super init];
+    if (self) {
+        self.SOAPFileName = SOAPFileName;
+    }
+
+    return self;
+}
+
+- (IBLNetworkServices *)networkServicesMethods:(IBLSOAPMethod *)SOAPmethod{
+    return [self networkServicesWithFileName:self.SOAPFileName
+                           requestMethodName:SOAPmethod.requestMethodName
+                          responseMethodName:SOAPmethod.responseMethodName];
+}
 
 - (NSDictionary *)signedParametersWithPatameters:(NSDictionary * (^)(NSDictionary *))parameters{
     NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000;
@@ -80,8 +110,12 @@ static NSString * const kSignKey = @"48e5be901c6692bf46fd2bba3b04d56b";
 
 
 
-- (IBLNetworkServices *)networkServices{
-    return [IBLNetworkServices sharedServices];
+- (IBLNetworkServices *)networkServicesWithFileName:(NSString *)fileName
+                                  requestMethodName:(NSString *)requestMethodName
+                                 responseMethodName:(NSString *)responseMethodName{
+    return [IBLNetworkServices networkServicesWithFileName:fileName
+                                         requestMethodName:requestMethodName
+                                        responseMethodName:responseMethodName];
 }
 
 @end

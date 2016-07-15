@@ -38,7 +38,6 @@
                completeHandler:(void (^)(IBLUser *, NSError *))handler {
     IBLUserRepository *user = [[IBLUserRepository alloc] init];
     
-    IBLAppRepository *appRepository = [[IBLAppRepository alloc] init];
     
     NSError *error = [self validateWithUsername:username password:password];
     
@@ -47,6 +46,7 @@
     [user fetchWithUsername:username
                    password:password
             completeHandler:^(IBLUser *user, NSError *error) {
+                IBLAppRepository *appRepository = [[IBLAppRepository alloc] init];
                 [appRepository fetchWithConfigurationWithCompleteHandler:^(id xxx, NSError *error) {
                     [IBLUserRepository setUser:user];
                     handler(user, error);

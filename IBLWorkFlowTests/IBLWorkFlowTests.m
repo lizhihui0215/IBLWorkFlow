@@ -50,23 +50,29 @@
     
 //    NSLog(@"signa %@",signa);
     
-    IBLOrderRepository *o = [[IBLOrderRepository alloc] init];
-    
-    IBLFetchMineOrderList *fetch = [IBLFetchMineOrderList listWithDateRange:@""
-                                                                     status:@""
-                                                                    account:@""
-                                                                   username:@""
-                                                                      phone:@""
-                                                                       type:@""
-                                                                    bizType:@""];
-    
-    [o fetchMineOrderListWithIsRefresh:YES
-                                 fetch:fetch];
-    
-    
-    NSLog(@"xml %@",xml);
-    
+//    IBLOrderRepository *o = [[IBLOrderRepository alloc] init];
+//    
+//    IBLFetchMineOrderList *fetch = [IBLFetchMineOrderList listWithDateRange:@""
+//                                                                     status:@""
+//                                                                    account:@""
+//                                                                   username:@""
+//                                                                      phone:@""
+//                                                                       type:@""
+//                                                                    bizType:@""];
+//    
+//    [o fetchMineOrderListWithIsRefresh:YES
+//                                 fetch:fetch];
+//    
+//    
+//    NSLog(@"xml %@",xml);
+//    
     NSLog(@"test %@",test);
+    
+    
+    NSArray *aa = [@"1-" componentsSeparatedByString:@"-"];
+    
+    NSLog(@"%@",aa);
+    
 }
 
 - (void)testPerformanceExample {

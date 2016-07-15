@@ -10,17 +10,19 @@
 static NSString * const IBLAPIBaseURLString = @"http://115.28.0.62:8081/nodeibilling/services/";
 
 @implementation IBLNetworkServices
-+ (instancetype)sharedServices {
-    static IBLNetworkServices *_sharedServices = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedServices = [[IBLNetworkServices alloc] initWithBaseURL:[NSURL URLWithString:IBLAPIBaseURLString]];
-                
-        _sharedServices.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-    });
-    
-    return _sharedServices;
-}
 
++ (instancetype)networkServicesWithFileName:(NSString *)fileName
+                          requestMethodName:(NSString *)requestMethodName
+                         responseMethodName:(NSString *)responseMethodName {
+    IBLNetworkServices *networkServices = [[IBLNetworkServices alloc] initWithBaseURL:[NSURL URLWithString:IBLAPIBaseURLString]];
+    
+    networkServices.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    
+    networkServices.requestSerializer = [IBLWebServiceRequestSerializer serializerWithFilename:fileName methodName:requestMethodName];
+    
+    networkServices.responseSerializer = [IBLWebServiceResponseSerializer serializerWithMethodName:responseMethodName];
+    
+    return networkServices;
+}
 
 @end
