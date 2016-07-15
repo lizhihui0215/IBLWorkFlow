@@ -8,19 +8,22 @@
 
 #import "IBLAppRepository.h"
 
+static IBLAppConfiguration *_appConfiguration;
+
 @interface IBLAppRepository ()
 @property (nonatomic, strong) IBLSOAPMethod *fetchAppConfiguration;
 
 @end
 
 @implementation IBLAppRepository
-//+ (IBLUser *)user{
-//    return _user;
-//}
-//
-//+ (void)setUser:(IBLUser *)user{
-//    _user = user;
-//}
+
++ (IBLAppConfiguration *)appConfiguration{
+    return _appConfiguration;
+}
+
++ (void)setAppConfiguration:(IBLAppConfiguration *)appConfiguration{
+    _appConfiguration = appConfiguration;
+}
 
 - (instancetype)init
 {
@@ -32,7 +35,7 @@
     return self;
 }
 
-- (void)fetchWithConfigurationWithCompleteHandler:(void (^)(id, NSError *))handler {
+- (void)fetchWithConfigurationWithCompleteHandler:(void (^)(IBLAppConfiguration *, NSError *))handler {
     
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
@@ -45,7 +48,10 @@
                                                         parameters:parameters
                                                           progress:nil
                                                            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                               
+                                                               NSError *error = nil;
+                                                               IBLAppConfiguration *configuration = [[IBLAppConfiguration alloc] initWithDictionary:responseObject error:&error];
+                                                               [IBLAppRepository setAppConfiguration:configuration];
+                                                               handler(configuration, error);
                                                            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                                handler(nil, error);
                                                            }];

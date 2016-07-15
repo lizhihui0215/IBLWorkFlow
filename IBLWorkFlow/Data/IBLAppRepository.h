@@ -7,9 +7,14 @@
 //
 
 #import "IBLRepository.h"
+#import "IBLAppConfiguration.h"
 
 @interface IBLAppRepository : IBLRepository
 
-- (void)fetchWithConfigurationWithCompleteHandler:(void (^)(id, NSError *))handler;
++ (IBLAppConfiguration *)appConfiguration;
+
++ (void)setAppConfiguration:(IBLAppConfiguration *)appConfiguration;
+
+- (void)fetchWithConfigurationWithCompleteHandler:(void (^)(IBLAppConfiguration *, NSError *))handler;
 
 @end

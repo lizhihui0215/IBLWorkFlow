@@ -142,7 +142,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:NavigationToOrderSearchIdentifier]){
         IBLOrderSearchViewController *orderSearchViewController = [segue destinationViewController];
-        orderSearchViewController.viewModel = [[IBLOrderSearchViewModel alloc] init];
+        orderSearchViewController.viewModel = [[IBLOrderSearchViewModel alloc] initWithSearchResult:nil];
         orderSearchViewController.delegate = self;
     }
 }

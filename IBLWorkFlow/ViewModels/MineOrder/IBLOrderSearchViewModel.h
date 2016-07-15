@@ -9,6 +9,7 @@
 #import "IBLListViewModel.h"
 #import "IBLOrder.h"
 
+
 @interface IBLOrderSearchResult : NSObject;
 
 @property (nonatomic, assign) IBLOrderStatus status;
@@ -19,9 +20,9 @@
 
 @property (nonatomic, copy) NSString *phone;
 
-@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) IBLWorkOrderType *type;
 
-@property (nonatomic, copy) NSString *bizType;
+@property (nonatomic, copy) IBLWorkOrderBussinessType *bizType;
 
 @property (nonatomic, copy) NSString *dateRange;
 
@@ -29,8 +30,8 @@
              resultWithAccount:(NSString *)account
                       username:(NSString *)username
                          phone:(NSString *)phone
-                          type:(NSString *)type
-                       bizType:(NSString *)bizType
+                          type:(IBLWorkOrderType *)type
+                       bizType:(IBLWorkOrderBussinessType *)bizType
                      dateRange:(NSString *)dateRange;
 
 @end
@@ -48,13 +49,17 @@
 
 - (void)setUserAccount:(NSString *)userAccount;
 
-- (void)setBusinessType:(NSString *)businessType;
+- (void)setWorkOrderBizType:(IBLWorkOrderBussinessType *)businessType;
 
-- (void)setWorkOrderType:(NSString *)workOrderType;
+- (void)setWorkOrderType:(IBLWorkOrderType *)workOrderType;
 
 - (void)setStartDate:(NSString *)startDate;
 
 - (void)setEndDate:(NSString *)endDate;
 
 - (void)setUserPhone:(NSString *)userPhone;
+
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes;
+
+- (NSArray<IBLWorkOrderType *> *)workOrderTypes;
 @end

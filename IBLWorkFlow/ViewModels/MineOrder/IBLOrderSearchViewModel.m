@@ -7,13 +7,16 @@
 //
 
 #import "IBLOrderSearchViewModel.h"
+#import "IBLGenerateAppConfiguration.h"
+
 @implementation IBLOrderSearchResult
+
 - (instancetype)initWithStatus:(IBLOrderStatus)status
                        account:(NSString *)account
                       username:(NSString *)username
                          phone:(NSString *)phone
-                          type:(NSString *)type
-                       bizType:(NSString *)bizType
+                          type:(IBLWorkOrderType *)type
+                       bizType:(IBLWorkOrderBussinessType *)bizType
                      dateRange:(NSString *)dateRange {
     self = [super init];
     if (self) {
@@ -33,8 +36,8 @@
              resultWithAccount:(NSString *)account
                       username:(NSString *)username
                          phone:(NSString *)phone
-                          type:(NSString *)type
-                       bizType:(NSString *)bizType
+                          type:(IBLWorkOrderType *)type
+                       bizType:(IBLWorkOrderBussinessType *)bizType
                      dateRange:(NSString *)dateRange {
     return [[self alloc] initWithStatus:status
                                 account:account
@@ -51,6 +54,8 @@
 
 @property  (nonatomic, strong, readwrite) IBLOrderSearchResult *searchResult;
 
+@property (nonatomic, strong) IBLGenerateAppConfiguration *generateAppConfiguration;
+
 @end
 
 @implementation IBLOrderSearchViewModel
@@ -59,6 +64,7 @@
     self = [super init];
     if (self) {
         self.searchResult = searchResult;
+        self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
     }
 
     return self;
@@ -76,11 +82,11 @@
     self.searchResult.account = userAccount;
 }
 
-- (void)setBusinessType:(NSString *)businessType {
+- (void)setWorkOrderBizType:(IBLWorkOrderBussinessType *)businessType {
     self.searchResult.bizType = businessType;
 }
 
-- (void)setWorkOrderType:(NSString *)workOrderType {
+- (void)setWorkOrderType:(IBLWorkOrderType *)workOrderType {
     self.searchResult.type = workOrderType;
 }
 
@@ -108,5 +114,13 @@
 
 - (void)setUserPhone:(NSString *)userPhone {
     self.searchResult.phone = userPhone;
+}
+
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes {
+    return [self.generateAppConfiguration workOrderBizTypes];
+}
+
+- (NSArray<IBLWorkOrderType *> *)workOrderTypes {
+    return [self.generateAppConfiguration workOrderTypes];
 }
 @end

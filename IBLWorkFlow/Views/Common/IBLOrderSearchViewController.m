@@ -9,6 +9,7 @@
 #import "IBLOrderSearchViewController.h"
 #import "IBLMineOrderViewController.h"
 #import "IBLOrderSearchViewModel.h"
+#import "IBLPickerView.h"
 #import <RMDateSelectionViewController/RMDateSelectionViewController.h>
 
 @interface IBLOrderSearchViewController ()<UITextFieldDelegate>
@@ -19,7 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *userPhoneTextField;
 
-@property (weak, nonatomic) IBOutlet UITextField *businessTypeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *workOrderBizTypeTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *workOrderTypeTextField;
 
@@ -38,49 +39,42 @@
     [RMDateSelectionViewController setLocalizedTitleForSelectButton:@"选择"];
     self.usernameTextField.delegate = self;
     self.userAccountTextField.delegate = self;
-    self.businessTypeTextField.delegate = self;
+    self.workOrderBizTypeTextField.delegate = self;
     self.workOrderTypeTextField.delegate = self;
 }
 
 - (IBAction)businessTypeTaped:(UITapGestureRecognizer *)sender {
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.viewModel workOrderBizTypes];
     
-//    [self.viewModel setBusinessType:textField.text];
+    [IBLPickerView showPickerViewInView:self.view
+                            withObjects:businessTypes
+                            withOptions:nil
+                objectToStringConverter:^NSString *(IBLWorkOrderBussinessType *workOrderBizType) {
+                    return workOrderBizType.name;
+                } completion:^(IBLWorkOrderBussinessType *workOrderBizType) {
+                    [self.viewModel setWorkOrderBizType:workOrderBizType];
+                    self.workOrderBizTypeTextField.text = workOrderBizType.name;
+                }];
+    
 
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                    title:@"请选择业务类型"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                          otherButtonItems:nil];
-    [alert showInController:self];
 }
 
 - (IBAction)workOrderTypeTaped:(UITapGestureRecognizer *)sender {
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+    NSArray<IBLWorkOrderType *> *workOrderTypes = [self.viewModel workOrderTypes];
     
-//    [self.viewModel setWorkOrderType:textField.text];
-
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                    title:@"请选工单类型"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                         otherButtonItems:nil];
-    [alert showInController:self];
+    [IBLPickerView showPickerViewInView:self.view
+                            withObjects:workOrderTypes
+                            withOptions:nil
+                objectToStringConverter:^NSString *(IBLWorkOrderType *workOrderType) {
+                    return workOrderType.name;
+                } completion:^(IBLWorkOrderType *businessType) {
+                    [self.viewModel setWorkOrderType:businessType];
+                    self.workOrderTypeTextField.text = businessType.name;
+                }];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    if (self.usernameTextField == textField) {
-        [self.viewModel setUsername:textField.text];
-    }
     
-    if (self.userAccountTextField == textField) {
-        [self.viewModel setUserAccount:textField.text];
-    }
-    if (self.userPhoneTextField == textField) {
-        [self.viewModel setUserPhone:textField.text];
-    }
    
 }
 
@@ -117,7 +111,13 @@
     }];
 }
 
+- (void)saveUserOfSearchResult{
+    [self.viewModel setUsername:self.usernameTextField.text];
+    [self.viewModel setUserAccount:self.userAccountTextField.text];
+    [self.viewModel setUserPhone:self.userPhoneTextField.text];
+}
 - (IBAction)searchButtonPressed:(UIButton *)sender {
+    [self saveUserOfSearchResult];
     if ([self.delegate respondsToSelector:@selector(orderSearchViewController:didSearchResult:)]) {
         [self.delegate orderSearchViewController:self didSearchResult:self.viewModel.searchResult];
     }

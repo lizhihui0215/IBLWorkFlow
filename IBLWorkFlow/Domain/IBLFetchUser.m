@@ -46,8 +46,11 @@
     [user fetchWithUsername:username
                    password:password
             completeHandler:^(IBLUser *user, NSError *error) {
+                
+                if (error) { handler(nil, error); return; }
+                
                 IBLAppRepository *appRepository = [[IBLAppRepository alloc] init];
-                [appRepository fetchWithConfigurationWithCompleteHandler:^(id xxx, NSError *error) {
+                [appRepository fetchWithConfigurationWithCompleteHandler:^(IBLAppConfiguration *configuration, NSError *error) {
                     [IBLUserRepository setUser:user];
                     handler(user, error);
                 }];                
