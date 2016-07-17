@@ -14,4 +14,5 @@
 
 @property (nonatomic, strong) IBLMineOrderViewModel *viewModel;
 
+- (void)segmentControlTappedWithAction:(IBLOrderAction)action;
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "IBLModel.h"
+#import "IBLWorkOrderBussinessType.h"
+#import "IBLWorkOrderType.h"
 
 /**
  *  工单状态
@@ -42,6 +44,26 @@ typedef NS_ENUM(NSInteger, IBLOrderStatus) {
     IBLOrderStatusFeedback,
 };
 
+/**
+ *  工单优先级
+ */
+typedef NS_ENUM(NSInteger, IBLPriorityStatus) {
+    /**
+     *  紧急
+     */
+    IBLPriorityStatusEmergency,
+    /**
+     *  一般
+     */
+    IBLPriorityStatusGeneral,
+    /**
+     *  不紧急
+     */
+    IBLPriorityStatusNoEmergency,
+};
+
+
+
 @interface IBLOrder : IBLModel
 
 /// 工单ID
@@ -51,54 +73,56 @@ typedef NS_ENUM(NSInteger, IBLOrderStatus) {
 @property (nonatomic, copy) NSString *title;
 
 /// 工单类型
-@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, assign) IBLWorkOrderStatus type;
 
 /// 工单业务类型
-@property (nonatomic, assign) NSInteger bizType;
+@property (nonatomic, assign) IBLWorkOrderBizStatus bizType;
 
 /// 工单内容
-@property (nonatomic, assign) NSString *content;
+@property (nonatomic, copy) NSString *content;
 
 /// 工单状态
 @property (nonatomic, assign) IBLOrderStatus status;
 
 /// 工单优先级
-@property (nonatomic, assign) NSInteger priority;
+@property (nonatomic, assign) IBLPriorityStatus priority;
 
 /// 处理说明
-@property (nonatomic, assign) NSString *note;
+@property (nonatomic, copy) NSString *note;
 
 /// 处理建议
-@property (nonatomic, assign) NSString *suggest;
+@property (nonatomic, copy) NSString *suggest;
 
 /// 创建时间 格式为 yyyy-MM-dd HH:mm:ss
-@property (nonatomic, assign) NSString *createTime;
+@property (nonatomic, copy) NSString *createTime;
 
 /// 时效时间 格式为 yyyy-MM-dd HH:mm:ss
-@property (nonatomic, assign) NSString *expireTime;
+@property (nonatomic, copy) NSString *expireTime;
 
 /// 最近更新时间 格式为 yyyy-MM-dd HH:mm:ss
-@property (nonatomic, assign) NSString *lastModifyTime;
+@property (nonatomic, copy) NSString *lastModifyTime;
 
 /// 关联用户ID
 @property (nonatomic, assign) NSInteger userIdentifier;
 
 /// 关联用户登录帐号
-@property (nonatomic, assign) NSString *userAccount;
+@property (nonatomic, copy) NSString *userAccount;
 
 /// 创建人员姓名
-@property (nonatomic, assign) NSString *creatorName;
+@property (nonatomic, copy) NSString *creatorName;
 
 /// 创建者联系电话
-@property (nonatomic, assign) NSString *creatorPhone;
+@property (nonatomic, copy) NSString *creatorPhone;
 
 /// 所属校区ID （报装工单特有）
-@property (nonatomic, assign) NSString *residentialIdentifier;
+@property (nonatomic, copy) NSString *residentialIdentifier;
 
 /// 订购的销售品ID （报装工单特有）
-@property (nonatomic, assign) NSString *productIdentifier;
+@property (nonatomic, copy) NSString *productIdentifier;
 
 /// 用户姓名 （报装工单特有）
-@property (nonatomic, assign) NSString *username;
+@property (nonatomic, copy) NSString *username;
+
+@property (nonatomic, strong) NSMutableArray<NSNumber *> *actions;
 
 @end

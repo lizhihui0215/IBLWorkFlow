@@ -69,5 +69,5 @@ static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListR
 - (void)fetchMineOrderListWithFetch:(IBLFetchMineOrderList *)fetch
                               start:(NSInteger)start
                            pageSize:(NSInteger)pageSize
-                    completeHandler:(void (^)(NSArray *orderList, NSError *error))handler;
+                    completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler;
 @end

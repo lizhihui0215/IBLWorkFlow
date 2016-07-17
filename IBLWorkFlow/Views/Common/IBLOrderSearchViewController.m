@@ -37,10 +37,15 @@
     [RMDateSelectionViewController setLocalizedTitleForNowButton:@"现在"];
     [RMDateSelectionViewController setLocalizedTitleForCancelButton:@"取消"];
     [RMDateSelectionViewController setLocalizedTitleForSelectButton:@"选择"];
-    self.usernameTextField.delegate = self;
-    self.userAccountTextField.delegate = self;
-    self.workOrderBizTypeTextField.delegate = self;
-    self.workOrderTypeTextField.delegate = self;
+    
+    self.userAccountTextField.text = [self.viewModel userAccount];
+    self.usernameTextField.text = [self.viewModel username];
+    self.userPhoneTextField.text = [self.viewModel userPhone];
+    self.workOrderTypeTextField.text = [self.viewModel workOrderType];
+    self.workOrderBizTypeTextField.text = [self.viewModel workOrderBizType];
+    self.startDateLabel.text = [self.viewModel startDate];
+    self.endDateLabel.text = [self.viewModel endDate];
+    
 }
 
 - (IBAction)businessTypeTaped:(UITapGestureRecognizer *)sender {

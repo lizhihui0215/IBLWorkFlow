@@ -20,4 +20,15 @@
 
 - (IBLOrderSearchResult *)searchResultWithIndex:(NSInteger)index;
 
+- (NSString *)workOrderTypAtIndexPath:(NSIndexPath *)idnexPath;
+
+- (NSString *)usernameAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSString *)dateAtIndexPath:(NSIndexPath *)indexPath;
+
+- (IBLPriorityStatus)orderPriorityAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSArray *)orderOperationTitlesAtIndexPath:(NSIndexPath *)indexPath;
+
+- (IBLOrderAction)actionAtIndex:(NSInteger)index;
 @end

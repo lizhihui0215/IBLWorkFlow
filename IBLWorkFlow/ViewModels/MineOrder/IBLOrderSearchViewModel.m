@@ -82,4 +82,35 @@
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes {
     return [self.generateAppConfiguration workOrderTypes];
 }
+
+- (NSString *)userAccount {
+    return self.searchResult.account;
+}
+
+- (NSString *)username {
+    return self.searchResult.username;
+}
+
+- (NSString *)userPhone {
+    return self.searchResult.phone;
+}
+
+- (NSString *)workOrderType {
+    return self.searchResult.type.name;
+}
+
+- (NSString *)workOrderBizType {
+    return self.searchResult.bizType.name;
+}
+
+- (NSString *)startDate {
+    NSArray *dates = [self.searchResult.dateRange componentsSeparatedByString:@"-"];
+    
+    return dates.firstObject;
+}
+
+- (NSString *)endDate {
+    NSArray *dates = [self.searchResult.dateRange componentsSeparatedByString:@"-"];
+    return dates.lastObject;
+}
 @end

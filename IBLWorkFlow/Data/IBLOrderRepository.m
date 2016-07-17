@@ -54,7 +54,7 @@ static NSString *const kOrderList = @"orderList";
 - (void)fetchMineOrderListWithFetch:(IBLFetchMineOrderList *)fetch
                               start:(NSInteger)start
                            pageSize:(NSInteger)pageSize
-                    completeHandler:(void (^)(NSArray *orderList, NSError *error))handler {
+                    completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
 

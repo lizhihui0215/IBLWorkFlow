@@ -7,11 +7,15 @@
 //
 
 #import "IBLUseCase.h"
+#import "IBLOrder.h"
+
+
 
 @interface IBLGenerateAppConfiguration : IBLUseCase
-
 
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes;
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes;
+
+- (NSArray<NSNumber *> *)orderOperationButtonsWithStatus:(IBLOrderStatus)status;
 @end

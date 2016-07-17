@@ -37,4 +37,18 @@
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes;
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes;
+
+- (NSString *)userAccount;
+
+- (NSString *)username;
+
+- (NSString *)userPhone;
+
+- (NSString *)workOrderType;
+
+- (NSString *)workOrderBizType;
+
+- (NSString *)startDate;
+
+- (NSString *)endDate;
 @end

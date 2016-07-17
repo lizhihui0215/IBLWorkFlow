@@ -56,7 +56,7 @@
 
 - (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
                                   fetch:(IBLFetchMineOrderList *)fetch
-                        completeHandler:(void (^)(NSArray *orderList, NSError *error))handler{
+                        completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler{
     [self validateWithFetch:fetch];
     
     __block NSInteger start = [self startWithStatus:fetch.status];
@@ -66,7 +66,7 @@
     [self.orderRepository fetchMineOrderListWithFetch:fetch
                                                 start:start
                                              pageSize:20
-                                      completeHandler:^(NSArray *orderList, NSError *error) {
+                                      completeHandler:^(NSMutableArray<IBLOrder *> *orderList, NSError *error) {
                                           if(!error) [self setStart:start status:fetch.status];
                                           handler(orderList,error);
                                       }];

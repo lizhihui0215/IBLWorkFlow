@@ -112,19 +112,38 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [self.viewModel numberOfSections];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 1;
+    return [self.viewModel numberOfRowsInSection:sectionIndex];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IBLMineOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:MineWorkFlowCellIdentifier forIndexPath:indexPath];
     
+    cell.workOrderTypeLabel.text = [self.viewModel workOrderTypAtIndexPath:indexPath];
+    cell.orderUserLabel.text = [self.viewModel usernameAtIndexPath:indexPath];
+    cell.dateLabel.text = [self.viewModel dateAtIndexPath:indexPath];
+    [cell setPriority:[self.viewModel orderPriorityAtIndexPath:indexPath]];
+    
+    NSArray *titles = [self.viewModel orderOperationTitlesAtIndexPath:indexPath];
+    
+    cell.segmentControl.sectionTitles = titles;
+    
+    @weakify(self);
+    cell.segmentControl.indexChangeBlock = ^(NSInteger index){
+        @strongify(self);
+        [self segmentControlTappedWithAction:[self.viewModel actionAtIndex:index]];
+    };
+    
     return cell;
+}
+
+- (void)segmentControlTappedWithAction:(IBLOrderAction)action {
+
 }
 
 #pragma mark - Navigation

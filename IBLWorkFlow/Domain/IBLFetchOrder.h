@@ -19,6 +19,6 @@
  */
 - (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
                                   fetch:(IBLFetchMineOrderList *)fetch
-                        completeHandler:(void (^)(NSArray *orderList, NSError *error))handler;
+                        completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler;
 
 @end
