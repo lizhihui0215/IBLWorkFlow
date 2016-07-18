@@ -42,32 +42,6 @@ typedef NS_ENUM(NSInteger, IBLPayModel) {
     IBLPayModelCash
 };
 
-/**
- *  工单操作类型
- */
-typedef NS_ENUM(NSInteger, IBLOrderAction) {
-    /**
-     *  处理
-     */
-    IBLOrderActionHandling,
-    /**
-     *  转发
-     */
-    IBLOrderActionForward,
-    /**
-     *  反馈
-     */
-    IBLOrderActionReplay,
-    /**
-     *  查看
-     */
-    IBLOrderActionCheck,
-    /**
-     *  开户
-     */
-    IBLOrderActionCreate
-};
-
 @interface IBLAppConfiguration : IBLModel
 
 /// 工单业务类型

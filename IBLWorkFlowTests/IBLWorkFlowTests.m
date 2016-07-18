@@ -52,7 +52,7 @@
     
 //    IBLOrderRepository *o = [[IBLOrderRepository alloc] init];
 //    
-//    IBLFetchMineOrderList *fetch = [IBLFetchMineOrderList listWithDateRange:@""
+//    IBLFetchOrderList *fetch = [IBLFetchOrderList listWithDateRange:@""
 //                                                                     status:@""
 //                                                                    account:@""
 //                                                                   username:@""

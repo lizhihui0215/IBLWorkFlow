@@ -8,6 +8,50 @@
 
 #import "IBLUseCase.h"
 
+/**
+ *  TableViewHeader Actions
+ */
+typedef NS_ENUM(NSInteger, IBLLeftMenuSectionAction) {
+    /**
+     *  我的工单
+     */
+    IBLLeftMenuSectionActionMineOrder = 1,
+    /**
+     *  工单管理
+     */
+    IBLLeftMenuSectionActionManagedOrder,
+    /**
+     *  营业管理
+     */
+    IBLLeftMenuSectionActionBusinessManaged,
+    /**
+     *  关于我们
+     */
+    IBLLeftMenuSectionActionAbout
+};
+
+/**
+ *  TableViewCell Actions
+ */
+typedef NS_ENUM(NSInteger, IBLLeftMenuItemAction) {
+    /**
+     *  新增工单
+     */
+    IBLLeftMenuItemActionAddOrder = 101,
+    /**
+     *  开户
+     */
+    IBLLeftMenuItemActionAddCreateAccount,
+    /**
+     *  续费
+     */
+    IBLLeftMenuItemActionAddRenew,
+    /**
+     *  换销售品
+     */
+    IBLLeftMenuItemActionAddChangeProduct,
+};
+
 @interface IBLLeftMenu : NSObject
 
 @property (nonatomic, copy) NSString *title;

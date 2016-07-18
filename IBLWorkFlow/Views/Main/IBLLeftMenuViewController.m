@@ -7,7 +7,7 @@
 //
 
 #import "IBLLeftMenuViewController.h"
-#import "IBLMineOrderViewController.h"
+#import "IBLOrderViewController.h"
 #import "IBLOrderManagerViewController.h"
 #import "UIViewController+RESideMenu.h"
 #import "IBLLeftMenuCell.h"
@@ -17,13 +17,47 @@
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 
-@interface IBLLeftMenuViewController ()
+@interface IBLLeftMenuViewController () <IBLLeftMenuTableHeaderViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
+
+@property (nonatomic, strong) NSDictionary *viewControllers;
 
 @end
 
 @implementation IBLLeftMenuViewController
+
+- (void)setupViewControllers{
+    UINavigationController *mineOrderContentViewController = [self mineOrderViewController];
+
+    UINavigationController *managedOrderContentViewController = [self managedOrderController];
+    
+    //FIXME: 添加功能
+    self.viewControllers = @{@(IBLLeftMenuSectionActionMineOrder) : mineOrderContentViewController,
+                             @(IBLLeftMenuSectionActionManagedOrder) : managedOrderContentViewController,
+                             @(IBLLeftMenuSectionActionBusinessManaged) : @"",
+                             @(IBLLeftMenuSectionActionAbout) : @"",
+                             @(IBLLeftMenuItemActionAddOrder) : @"",
+                             @(IBLLeftMenuItemActionAddCreateAccount) : @"",
+                             @(IBLLeftMenuItemActionAddRenew) : @"",
+                             @(IBLLeftMenuItemActionAddChangeProduct) : @"",};
+}
+
+- (UINavigationController *)managedOrderController {
+    UINavigationController *managedOrderContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
+    IBLOrderViewController *managedOrderViewController = (IBLOrderViewController *)managedOrderContentViewController.topViewController;
+    managedOrderViewController.viewModel = [[IBLMineOrderViewModel alloc] initWithOrderType:IBLOrderTypeManage];
+    return managedOrderContentViewController;
+}
+
+- (UINavigationController *)mineOrderViewController {
+    UINavigationController *mineOrderContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
+    IBLOrderViewController *mineOrderViewController = (IBLOrderViewController *)mineOrderContentViewController.topViewController;
+    mineOrderViewController.viewModel = [[IBLMineOrderViewModel alloc] initWithOrderType:IBLOrderTypeMine];
+    return mineOrderContentViewController;
+}
 
 - (void)viewDidLoad
 {
@@ -37,10 +71,9 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     
     self.roleLabel.text = [self.viewModel roleOfUser];
     
-    self.sideMenuViewController.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
-    UINavigationController *navi = self.sideMenuViewController.contentViewController;
-    IBLMineOrderViewController *mineOrderViewController = navi.topViewController;
-    mineOrderViewController.viewModel = [[IBLMineOrderViewModel alloc] init];
+    [self setupViewControllers];
+    
+    self.sideMenuViewController.contentViewController = self.viewControllers[@(IBLLeftMenuSectionActionMineOrder)];
 }
 
 #pragma mark -
@@ -48,20 +81,10 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.row) {
-        case 0:
-            self.sideMenuViewController.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
-            [self.sideMenuViewController hideMenuViewController];
-            break;
-        case 1:
-            [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"secondViewController"]]
-                                                         animated:YES];
-            [self.sideMenuViewController hideMenuViewController];
-            break;
-        default:
-            break;
-    }
+    IBLSectionItem *item = [self.viewModel sectionItemAtIndexPath:indexPath];
+    IBLLeftMenu *menu = item.info;
+    self.sideMenuViewController.contentViewController = self.viewControllers[@(menu.index)];
+    [self.sideMenuViewController hideMenuViewController];
 }
 
 #pragma mark -
@@ -74,7 +97,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex{
     IBLSection *section = [self.viewModel sectionAt:sectionIndex];
     IBLLeftMenu *menu = section.info;
-
+    
     if (menu.index == 2 || menu.index == 4) {
         return 50;
     }
@@ -95,6 +118,10 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     
     header.titleLabel.text = menu.title;
     
+    header.sectionIndex = sectionIndex;
+    
+    header.delegate = self;
+    
     if (menu.index == 2 || menu.index == 4) {
         header.topConstraint.constant = 20;
     }
@@ -103,6 +130,14 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     
     return header;
 }
+
+- (void)headerView:(IBLLeftMenuTableHeaderView *)headerView tappedAtSection:(NSInteger)sectionIndex {
+    IBLSection *section = [self.viewModel sectionAt:sectionIndex];
+    IBLLeftMenu *menu = section.info;
+    self.sideMenuViewController.contentViewController = self.viewControllers[@(menu.index)];
+    [self.sideMenuViewController hideMenuViewController];
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [self.viewModel numberOfSections];
@@ -132,5 +167,8 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
         loginViewController.viewModel = [[IBLLoginViewModel alloc] init];
     }     
 }
+
+
+
 
 @end

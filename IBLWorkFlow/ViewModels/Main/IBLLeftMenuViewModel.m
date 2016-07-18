@@ -55,7 +55,7 @@
     
     NSArray *firstMenus = [menus filteredArrayUsingPredicate:predicate];
     
-    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"SELF.parentIndex = %@",@(2)];
+    NSPredicate *predicate1 = [NSPredicate predicateWithFormat:@"SELF.parentIndex = %@",@(IBLLeftMenuSectionActionBusinessManaged)];
     
     NSMutableArray<IBLLeftMenu *> *secondMenus = [[menus filteredArrayUsingPredicate:predicate1] mutableCopy];
     
@@ -63,7 +63,7 @@
 
     for (IBLLeftMenu *menu in orderedFirstMenus) {
         IBLSection *section = nil;
-        if (menu.index == 2) {
+        if (menu.index == IBLLeftMenuSectionActionBusinessManaged) {
             section = [IBLSection sectionWithInfo:menu items:[self sectionItemWithMenus:[secondMenus sortedArrayUsingSelector:@selector(compare:)]]];
         }else{
             section = [IBLSection sectionWithInfo:menu items:nil];

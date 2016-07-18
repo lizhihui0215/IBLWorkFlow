@@ -42,7 +42,7 @@
     return self;
 }
 
-- (BOOL)validateWithFetch:(IBLFetchMineOrderList *)fetch{
+- (BOOL)validateWithFetch:(IBLFetchOrderList *)fetch{
     if (!fetch.dateRange) fetch.dateRange = @"";
     
     if (!fetch.username) fetch.username = @"";
@@ -54,9 +54,9 @@
     return YES;
 }
 
-- (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
-                                  fetch:(IBLFetchMineOrderList *)fetch
-                        completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler{
+- (void)fetchOrderListWithIsRefresh:(BOOL)isRefresh
+                              fetch:(IBLFetchOrderList *)fetch
+                    completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler{
     [self validateWithFetch:fetch];
     
     __block NSInteger start = [self startWithStatus:fetch.status];

@@ -12,12 +12,25 @@ static NSString * const IBLLeftMenuTableHeaderNibName = @"IBLLeftMenuTableHeader
 
 static NSString * const IBLLeftMenuTableHeaderIdentifier = @"IBLLeftMenuTableHeaderView";
 
+@class IBLLeftMenuTableHeaderView;
+
+@protocol IBLLeftMenuTableHeaderViewDelegate <NSObject>
+
+- (void)headerView:(IBLLeftMenuTableHeaderView *)headerView tappedAtSection:(NSInteger)sectionIndex;
+
+@end
+
 @interface IBLLeftMenuTableHeaderView : IBLTableViewHeaderFooterView
+
+@property (nonatomic, assign) NSInteger sectionIndex;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+@property (weak, nonatomic) id<IBLLeftMenuTableHeaderViewDelegate> delegate;
+
 
 @end

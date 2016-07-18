@@ -9,13 +9,31 @@
 #import "IBLUseCase.h"
 #import "IBLOrder.h"
 
-
-
 @interface IBLGenerateAppConfiguration : IBLUseCase
 
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes;
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes;
 
-- (NSArray<NSNumber *> *)orderOperationButtonsWithStatus:(IBLOrderStatus)status;
+/**
+ *  获取我的工单按钮操作
+ *
+ *  @param status  工单状态
+ *  @param bizType 工单业务状态
+ *
+ *  @return 按钮操作
+ */
+- (NSArray<NSNumber *> *)mineOrderActionsWithStatus:(IBLOrderStatus)status
+                                            bizType:(IBLWorkOrderBizStatus)bizType;
+
+/**
+ *  获取工单管理按钮操作
+ *
+ *  @param status  工单状态
+ *  @param bizType 工单业务状态
+ *
+ *  @return 按钮操作
+ */
+- (NSArray<NSNumber *> *)managedOrderActionsWithStatus:(IBLOrderStatus)status
+                                               bizType:(IBLWorkOrderBizStatus)bizType;
 @end

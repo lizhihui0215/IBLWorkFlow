@@ -46,7 +46,7 @@ static NSString const * kRenew = @"RENEW";
         [menus addObject:menu];
     }
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.parentIndex = %@",@(2)];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.parentIndex = %@",@(IBLLeftMenuSectionActionBusinessManaged)];
     
     NSArray *secondLevel = [menus filteredArrayUsingPredicate:predicate];
     
@@ -54,14 +54,14 @@ static NSString const * kRenew = @"RENEW";
         IBLLeftMenu *menu = [IBLLeftMenu menuWithTitle:@"营业管理"
                                                    icon:[UIImage imageNamed:@"management"]
                                             parentIndex:NSNotFound
-                                                  index:2];
+                                                  index:IBLLeftMenuSectionActionBusinessManaged];
         [menus addObject:menu];
     }
     
     IBLLeftMenu *about = [IBLLeftMenu menuWithTitle:@"关于我们"
                                                icon:[UIImage imageNamed:@"about"]
                                         parentIndex:NSNotFound
-                                              index:4];
+                                              index:IBLLeftMenuSectionActionAbout];
     [menus addObject:about];
     
     return menus;
@@ -72,33 +72,33 @@ static NSString const * kRenew = @"RENEW";
     IBLLeftMenu *menu1 = [IBLLeftMenu menuWithTitle:@"我的工单"
                                                icon:[UIImage imageNamed:@"my-order"]
                                         parentIndex:NSNotFound
-                                              index:0];
+                                              index:IBLLeftMenuSectionActionMineOrder];
     
     IBLLeftMenu *menu2 = [IBLLeftMenu menuWithTitle:@"工单管理"
                                                icon:[UIImage imageNamed:@"work-order"]
                                         parentIndex:NSNotFound
-                                              index:1];
+                                              index:IBLLeftMenuSectionActionManagedOrder];
     
     IBLLeftMenu *menu3 = [IBLLeftMenu menuWithTitle:@"新增工单"
                                                icon:[UIImage imageNamed:@"increase"]
-                                        parentIndex:2
-                                              index:0];
+                                        parentIndex:IBLLeftMenuSectionActionBusinessManaged
+                                              index:IBLLeftMenuItemActionAddOrder];
     
     IBLLeftMenu *menu4 = [IBLLeftMenu menuWithTitle:@"开户"
                                                icon:[UIImage imageNamed:@"open-an-account"]
-                                        parentIndex:2
-                                              index:1];
+                                        parentIndex:IBLLeftMenuSectionActionBusinessManaged
+                                              index:IBLLeftMenuItemActionAddCreateAccount];
     
     
     IBLLeftMenu *menu5 = [IBLLeftMenu menuWithTitle:@"续费"
                                                icon:[UIImage imageNamed:@"renew"]
-                                        parentIndex:2
-                                              index:2];
+                                        parentIndex:IBLLeftMenuSectionActionBusinessManaged
+                                              index:IBLLeftMenuItemActionAddRenew];
     
     IBLLeftMenu *menu6 = [IBLLeftMenu menuWithTitle:@"换销售品"
                                                icon:[UIImage imageNamed:@"swap"]
-                                        parentIndex:2
-                                              index:3];
+                                        parentIndex:IBLLeftMenuSectionActionBusinessManaged
+                                              index:IBLLeftMenuItemActionAddChangeProduct];
     
     return @{kMineWorkOrder : menu1,
              kMineWorkOrderManage : menu2,

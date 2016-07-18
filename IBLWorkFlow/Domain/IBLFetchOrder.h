@@ -17,8 +17,8 @@
  *  @param isRefresh YES fetch from the beginning, or NO fetch the next page
  *  @param fetch     the info used to fetch
  */
-- (void)fetchMineOrderListWithIsRefresh:(BOOL)isRefresh
-                                  fetch:(IBLFetchMineOrderList *)fetch
-                        completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler;
+- (void)fetchOrderListWithIsRefresh:(BOOL)isRefresh
+                              fetch:(IBLFetchOrderList *)fetch
+                    completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler;
 
 @end

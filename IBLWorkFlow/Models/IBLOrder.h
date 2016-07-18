@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, IBLOrderStatus) {
      */
     IBLOrderStatusUnsend = 1,
     /**
-     *  已派单
+     *  已派单 （我的工单未处理）
      */
     IBLOrderStatusSended,
     /**
@@ -51,7 +51,7 @@ typedef NS_ENUM(NSInteger, IBLPriorityStatus) {
     /**
      *  紧急
      */
-    IBLPriorityStatusEmergency,
+    IBLPriorityStatusEmergency = 1,
     /**
      *  一般
      */
@@ -62,7 +62,57 @@ typedef NS_ENUM(NSInteger, IBLPriorityStatus) {
     IBLPriorityStatusNoEmergency,
 };
 
+/**
+ *  工单操作类型
+ */
+typedef NS_ENUM(NSInteger, IBLOrderAction) {
+    /**
+     *  处理
+     */
+    IBLOrderActionHandling,
+    /**
+     *  派单
+     */
+    IBLOrderActionSend,
+    /**
+     *  转发
+     */
+    IBLOrderActionForward,
+    /**
+     *  反馈
+     */
+    IBLOrderActionReplay,
+    
+    /**
+     *  开户
+     */
+    IBLOrderActionCreate,
+    
+    /**
+     *  作废
+     */
+    IBLOrderActionTrash,
+    
+    /**
+     *  查看单个
+     */
+    IBLOrderActionViewSingle,
+    /**
+     *  完成
+     */
+    IBLOrderActionFinish,
+    /**
+     *  查看
+     */
+    IBLOrderActionView,
 
+    /**
+     *  删除
+     */
+    IBLOrderActionDelete,
+    
+    
+};
 
 @interface IBLOrder : IBLModel
 
@@ -123,6 +173,7 @@ typedef NS_ENUM(NSInteger, IBLPriorityStatus) {
 /// 用户姓名 （报装工单特有）
 @property (nonatomic, copy) NSString *username;
 
+/// 工单操作按钮
 @property (nonatomic, strong) NSMutableArray<NSNumber *> *actions;
 
 @end

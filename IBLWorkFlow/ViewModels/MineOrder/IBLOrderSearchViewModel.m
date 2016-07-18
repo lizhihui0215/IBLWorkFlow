@@ -52,7 +52,7 @@
 - (void)setStartDate:(NSString *)startDate {
     NSMutableArray *components = [[self.searchResult.dateRange componentsSeparatedByString:@"-"] mutableCopy];
     
-    if ([components lastObject]) {
+    if (![NSString isNull:[components lastObject]]) {
         components[0] = startDate;
         self.searchResult.dateRange = [components componentsJoinedByString:@"-"];
     }else{
@@ -63,7 +63,7 @@
 - (void)setEndDate:(NSString *)endDate {
     NSMutableArray *components = [[self.searchResult.dateRange componentsSeparatedByString:@"-"] mutableCopy];
     
-    if ([components lastObject]) {
+    if (![NSString isNull:[components lastObject]]) {
         components[1] = endDate;
         self.searchResult.dateRange = [components componentsJoinedByString:@"-"];
     }else{

@@ -10,15 +10,26 @@
 #import "IBLFetchOrder.h"
 #import "IBLOrderSearchResult.h"
 
+typedef NS_ENUM(NSInteger, IBLOrderType) {
+    IBLOrderTypeMine,
+    IBLOrderTypeManage
+};
+
 @interface IBLMineOrderViewModel : IBLListViewModel
 
-- (IBLOrderStatus)statusWithIndex:(NSInteger)index;
+@property (assign, nonatomic) IBLOrderType type;
 
-- (void)fetchMineOrderListWithIndex:(NSInteger)index isRefresh:(BOOL)isRefresh completeHandler:(IBLViewModelCompleteHandler)handler;
+@property (assign, nonatomic) NSInteger index;
 
-- (void)setSearchResult:(IBLOrderSearchResult *)searchResult index:(NSInteger)index;
+- (instancetype)initWithOrderType:(IBLOrderType)type;
 
-- (IBLOrderSearchResult *)searchResultWithIndex:(NSInteger)index;
+- (IBLOrderStatus)status;
+
+- (void)fetchOrderListWithIndex:(NSInteger)index isRefresh:(BOOL)isRefresh completeHandler:(IBLViewModelCompleteHandler)handler;
+
+- (void)setSearchResult:(IBLOrderSearchResult *)searchResult;
+
+- (IBLOrderSearchResult *)searchResult;
 
 - (NSString *)workOrderTypAtIndexPath:(NSIndexPath *)idnexPath;
 
@@ -28,7 +39,9 @@
 
 - (IBLPriorityStatus)orderPriorityAtIndexPath:(NSIndexPath *)indexPath;
 
-- (NSArray *)orderOperationTitlesAtIndexPath:(NSIndexPath *)indexPath;
+- (NSArray<NSString *> *)orderActionsTitlesAtIndexPath:(NSIndexPath *)indexPath;
 
-- (IBLOrderAction)actionAtIndex:(NSInteger)index;
+- (IBLOrderAction)actionInIndexPath:(NSIndexPath *)indexPath atIndex:(NSInteger)index;
+
+- (NSArray<NSString *> *)segmentedControlTitles;
 @end

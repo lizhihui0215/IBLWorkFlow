@@ -29,7 +29,7 @@
                                                        @"CREATE_OPER_PHONE" : @"creatorPhone",
                                                        @"NODE_ID" : @"residentialIdentifier",
                                                        @"OFFER_ID" : @"productIdentifier",
-                                                       @"User_Name" : @"username"}];
+                                                       @"USER_NAME" : @"username"}];
 }
 
 @end

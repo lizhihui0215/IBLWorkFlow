@@ -30,12 +30,21 @@ static NSString *const IBLWorkOrderInterface = @"WorkOrderInterface";
 
 static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
 
-
 static NSString *const kOrderList = @"orderList";
+
+static NSString *const IBLMethodOfFetchMineOrderList = @"getMyOrderList";
+
+static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListResponse";
+
+static NSString *const IBLMethodOfFetchManagedOrderList = @"getOrderList";
+
+static NSString *const IBLMethodOfFetchManagedOrderListResponse = @"getOrderListResponse";
 
 @interface IBLOrderRepository()
 
 @property (nonatomic, strong) IBLSOAPMethod *fetchMineOrderMethod;
+
+@property (nonatomic, strong) IBLSOAPMethod *fetchManagedOrderMethod;
 
 @end
 
@@ -47,17 +56,39 @@ static NSString *const kOrderList = @"orderList";
     if (self) {
         self.fetchMineOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFetchMineOrderList
                                                             responseMethodName:IBLMethodOfOrderMineOrderListResponse];
+        
+        self.fetchManagedOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFetchManagedOrderList
+                                                               responseMethodName:IBLMethodOfFetchManagedOrderListResponse];
     }
     return self;
 }
 
-- (void)fetchMineOrderListWithFetch:(IBLFetchMineOrderList *)fetch
+- (IBLSOAPMethod *)methodWithFetchType:(IBLFetchOrderType)fetchType{
+    IBLSOAPMethod *method = nil;
+    switch (fetchType) {
+        case IBLFetchOrderTypeUnknow: {
+            
+            break;
+        }
+        case IBLFetchOrderTypeMine: {
+            method = self.fetchMineOrderMethod;
+            break;
+        }
+        case IBLFetchOrderTypeManaged: {
+            method = self.fetchManagedOrderMethod;
+            break;
+        }
+    }
+    return method;
+}
+
+- (void)fetchMineOrderListWithFetch:(IBLFetchOrderList *)fetch
                               start:(NSInteger)start
                            pageSize:(NSInteger)pageSize
                     completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
-
+        
         if (fetch.bizType !=  IBLWorkOrderBizStatusUnknow) {
             parameters[kType] = @(fetch.bizType);
         }
@@ -76,33 +107,36 @@ static NSString *const kOrderList = @"orderList";
         return parameters;
     }];
     
-    [[self networkServicesMethods:self.fetchMineOrderMethod] POST:IBLWorkOrderInterface
-                                                       parameters:parameters
-                                                         progress:nil
-                                                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                              NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderList];
-                                                              
-                                                              NSMutableArray<IBLOrder *> *orders = [NSMutableArray array];
-                                                              for (NSDictionary *orderDictionary in ordersDictionary) {
-                                                                  IBLOrder *order = [[IBLOrder alloc] initWithDictionary:orderDictionary error:nil];
-                                                                  [orders addObject:order];
-                                                              }
-                                                              handler(orders, nil);
-                                                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                              handler(nil, error);
-                                                          }];
+    IBLSOAPMethod *method = [self methodWithFetchType:fetch.fetchType];
+    
+    [[self networkServicesMethods:method] POST:IBLWorkOrderInterface
+                                    parameters:parameters
+                                      progress:nil
+                                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                           NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderList];
+                                           
+                                           NSMutableArray<IBLOrder *> *orders = [NSMutableArray array];
+                                           for (NSDictionary *orderDictionary in ordersDictionary) {
+                                               IBLOrder *order = [[IBLOrder alloc] initWithDictionary:orderDictionary error:nil];
+                                               [orders addObject:order];
+                                           }
+                                           handler(orders, nil);
+                                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                           handler(nil, error);
+                                       }];
 }
 
 
 @end
 
-@interface IBLFetchMineOrderList ()
+@interface IBLFetchOrderList ()
 
 @end
 
-@implementation IBLFetchMineOrderList
+@implementation IBLFetchOrderList
 
-- (instancetype)initWithDateRange:(NSString *)dateRange
+- (instancetype)initWithFetchType:(IBLFetchOrderType)fetchType
+                        dateRange:(NSString *)dateRange
                            status:(IBLOrderStatus)status
                           account:(NSString *)account
                          username:(NSString *)username
@@ -118,19 +152,22 @@ static NSString *const kOrderList = @"orderList";
         self.phone = phone;
         self.type = type;
         self.bizType = bizType;
+        self.fetchType = fetchType;
     }
 
     return self;
 }
 
-+ (instancetype)listWithDateRange:(NSString *)dateRange
++ (instancetype)initWithFetchType:(IBLFetchOrderType)fetchType
+                listWithDateRange:(NSString *)dateRange
                            status:(IBLOrderStatus)status
                           account:(NSString *)account
                          username:(NSString *)username
                             phone:(NSString *)phone
                              type:(IBLWorkOrderStatus)type
                           bizType:(IBLWorkOrderBizStatus)bizType {
-    return [[self alloc] initWithDateRange:dateRange
+    return [[self alloc] initWithFetchType:fetchType
+                                 dateRange:dateRange
                                     status:status
                                    account:account
                                   username:username

@@ -8,6 +8,11 @@
 
 #import "IBLLeftMenuTableHeaderView.h"
 
+@interface IBLLeftMenuTableHeaderView ()
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@end
+
 @implementation IBLLeftMenuTableHeaderView
 
 /*
@@ -17,5 +22,19 @@
     // Drawing code
 }
 */
+
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(sectionHeaderTapped:)];
+    
+    [self.containerView addGestureRecognizer:tap];
+}
+
+- (IBAction)sectionHeaderTapped:(UITapGestureRecognizer *)sender {
+    if([self.delegate respondsToSelector:@selector(headerView:tappedAtSection:)]){
+        [self.delegate headerView:self tappedAtSection:self.sectionIndex];
+    }
+}
 
 @end

@@ -1,25 +1,25 @@
 //
-//  IBLMineOrderViewController.m
+//  IBLOrderViewController.m
 //  RESideMenuStoryboards
 //
 //  Created by Roman Efimov on 10/9/13.
 //  Copyright (c) 2013 Roman Efimov. All rights reserved.
 //
 
-#import "IBLMineOrderViewController.h"
+#import "IBLOrderViewController.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
-#import "IBLMineOrderCell.h"
+#import "IBLOrderCell.h"
 #import "IBLOrderSearchViewController.h"
 
 static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSearch";
 
-@interface IBLMineOrderViewController () <IBLOrderSearchDelegate>
+@interface IBLOrderViewController () <IBLOrderSearchDelegate>
 
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *segmentedControl;
 
 @end
 
-@implementation IBLMineOrderViewController
+@implementation IBLOrderViewController
 
 - (UITableView *)tableView{
     UITableView *theTableView = self.tableViews[self.segmentedControl.selectedSegmentIndex];
@@ -35,10 +35,12 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     self.fotterRefresh = YES;
     [self setupSegmentControl];
     [self setupTableViews];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)setupSegmentControl{
-    self.segmentedControl.sectionTitles = @[@"已派单",@"处理中",@"转发中",@"已完成",@"作废"];
+    self.segmentedControl.sectionTitles = [self.viewModel segmentedControlTitles];
+    
     self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
     [self.segmentedControl setTitleFormatter:^NSAttributedString *(HMSegmentedControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected) {
         
@@ -63,9 +65,11 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 }
 
 - (void)switchTableWithIndex:(NSInteger)index{
+    [self.viewModel setIndex:index];
     if([self.viewModel numberOfRowsInSection:0] <= 0){
         [self.tableView.mj_header beginRefreshing];
     }
+    [self.tableView reloadData];
 }
 
 - (void)setupTableViews{
@@ -74,24 +78,32 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     for (UITableView *tableView in self.tableViews) {
         [tableView registerNib:nib forCellReuseIdentifier:MineWorkFlowCellIdentifier];
         MJRefreshNormalHeader *header = (MJRefreshNormalHeader *)tableView.mj_header;
-        header.backgroundColor = [UIColor redColor];
+        header.backgroundColor = [UIColor colorWithHex:0xCECFCE];
+        tableView.backgroundColor = [UIColor colorWithHex:0xCECFCE];
     }
 }
 
 - (void)tableView:(UITableView *)tableView footerBeginRefresh:(MJRefreshBackStateFooter *)footer{
-    
+    [self.viewModel fetchOrderListWithIndex:self.segmentedControl.selectedSegmentIndex
+                                  isRefresh:NO
+                            completeHandler:^(NSError *error) {
+                                [footer endRefreshing];
+                                if (![self showAlertWithError:error]) {
+                                    [tableView reloadData];
+                                }
+                            }];
 }
 
 - (void)tableView:(UITableView *)tableView headerBeginRefresh:(MJRefreshStateHeader *)header{
-    
-    [self.viewModel fetchMineOrderListWithIndex:self.segmentedControl.selectedSegmentIndex
-                                      isRefresh:YES
-                                completeHandler:^(NSError *error) {
-                                    [header endRefreshing];
-                                    if (![self showAlertWithError:error]) {
-                                        [tableView reloadData];
-                                    }
-                                }];
+
+    [self.viewModel fetchOrderListWithIndex:self.segmentedControl.selectedSegmentIndex
+                                  isRefresh:YES
+                            completeHandler:^(NSError *error) {
+                                [header endRefreshing];
+                                if (![self showAlertWithError:error]) {
+                                    [tableView reloadData];
+                                }
+                            }];
 }
 
 #pragma mark -
@@ -122,21 +134,19 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    IBLMineOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:MineWorkFlowCellIdentifier forIndexPath:indexPath];
+    IBLOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:MineWorkFlowCellIdentifier forIndexPath:indexPath];
     
     cell.workOrderTypeLabel.text = [self.viewModel workOrderTypAtIndexPath:indexPath];
     cell.orderUserLabel.text = [self.viewModel usernameAtIndexPath:indexPath];
     cell.dateLabel.text = [self.viewModel dateAtIndexPath:indexPath];
     [cell setPriority:[self.viewModel orderPriorityAtIndexPath:indexPath]];
-    
-    NSArray *titles = [self.viewModel orderOperationTitlesAtIndexPath:indexPath];
-    
-    cell.segmentControl.sectionTitles = titles;
+    NSArray *titles = [self.viewModel orderActionsTitlesAtIndexPath:indexPath];
+    [cell setActionTitles:titles];
     
     @weakify(self);
     cell.segmentControl.indexChangeBlock = ^(NSInteger index){
         @strongify(self);
-        [self segmentControlTappedWithAction:[self.viewModel actionAtIndex:index]];
+        [self segmentControlTappedWithAction:[self.viewModel actionInIndexPath:indexPath atIndex:index]];
     };
     
     return cell;
@@ -154,7 +164,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:NavigationToOrderSearchIdentifier]){
         IBLOrderSearchViewController *orderSearchViewController = [segue destinationViewController];
-        IBLOrderSearchResult *result = [self.viewModel searchResultWithIndex:self.segmentedControl.selectedSegmentIndex];
+        IBLOrderSearchResult *result = [self.viewModel searchResult];
         orderSearchViewController.viewModel = [[IBLOrderSearchViewModel alloc] initWithSearchResult:result];
         
         orderSearchViewController.delegate = self;
@@ -163,8 +173,8 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 
 - (void)orderSearchViewController:(IBLOrderSearchViewController *)searchViewController
                   didSearchResult:(IBLOrderSearchResult *)searchResult {
-    [self.viewModel setSearchResult:searchResult
-                              index:self.segmentedControl.selectedSegmentIndex];
+    [self.viewModel setSearchResult:searchResult];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 

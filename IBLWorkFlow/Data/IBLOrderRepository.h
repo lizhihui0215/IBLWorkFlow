@@ -11,14 +11,16 @@
 #import "IBLWorkOrderType.h"
 #import "IBLWorkOrderBussinessType.h"
 
-static NSString *const IBLMethodOfFetchMineOrderList = @"getMyOrderList";
-
-static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListResponse";
+typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
+    IBLFetchOrderTypeUnknow,
+    IBLFetchOrderTypeMine,
+    IBLFetchOrderTypeManaged,
+};
 
 /**
  *  the info for fetch mine order list
  */
-@interface IBLFetchMineOrderList : NSObject
+@interface IBLFetchOrderList : NSObject
 
 @property (nonatomic, assign) IBLOrderStatus status;
 
@@ -34,8 +36,10 @@ static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListR
 
 @property (nonatomic, copy) NSString *dateRange;
 
+@property (nonatomic, assign) IBLFetchOrderType fetchType;
+
 /**
- *  create IBLFetchMineOrderList
+ *  create IBLFetchOrderList
  *
  *  @param dateRange 工单更新时间段，格式为：YYYY/MM/DD HH:mm:ss- YYYY/MM/DD HH:mm:ss，起始或者结束可为空
  *  @param status    工单状态
@@ -45,9 +49,10 @@ static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListR
  *  @param type      工单类型
  *  @param bizType   工单业务类型
  *
- *  @return IBLFetchMineOrderList
+ *  @return IBLFetchOrderList
  */
-+ (instancetype)listWithDateRange:(NSString *)dateRange
++ (instancetype)initWithFetchType:(IBLFetchOrderType)fetchType
+                listWithDateRange:(NSString *)dateRange
                            status:(IBLOrderStatus)status
                           account:(NSString *)account
                          username:(NSString *)username
@@ -66,7 +71,7 @@ static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListR
  *  @param pageSize the count to be fetch
  *  @param fetch    the info used to fetch
  */
-- (void)fetchMineOrderListWithFetch:(IBLFetchMineOrderList *)fetch
+- (void)fetchMineOrderListWithFetch:(IBLFetchOrderList *)fetch
                               start:(NSInteger)start
                            pageSize:(NSInteger)pageSize
                     completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler;

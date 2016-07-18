@@ -19,7 +19,7 @@
 
 @end
 
-@interface IBLOrderSearchViewController : IBLTableViewController
+@interface IBLOrderSearchViewController : IBLViewController
 
 @property (nonatomic, strong) IBLOrderSearchViewModel *viewModel;
 

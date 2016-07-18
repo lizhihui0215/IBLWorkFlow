@@ -1,5 +1,5 @@
 //
-//  IBLMineOrderCell.h
+//  IBLOrderCell.h
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 7/12/16.
@@ -11,11 +11,13 @@
 #import "IBLOrder.h"
 
 
-static NSString * const MineWorkFlowCellIdentifier = @"IBLMineOrderCell";
+static NSString * const MineWorkFlowCellIdentifier = @"IBLOrderCell";
 
-static NSString * const MineWorkFlowCellNibName = @"IBLMineOrderCell";
+static NSString * const MineWorkFlowCellNibName = @"IBLOrderCell";
 
-@interface IBLMineOrderCell : IBLTableViewCell
+@interface IBLOrderCell : IBLTableViewCell
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *segmentControlWidthConstraint;
 
 @property (weak, nonatomic) IBOutlet UILabel *workOrderTypeLabel;
 
@@ -26,5 +28,7 @@ static NSString * const MineWorkFlowCellNibName = @"IBLMineOrderCell";
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *segmentControl;
 
 - (void)setPriority:(IBLPriorityStatus)priority;
+
+- (void)setActionTitles:(NSArray<NSString *> *)titles;
 
 @end

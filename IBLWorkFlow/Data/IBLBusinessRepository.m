@@ -22,12 +22,13 @@ static NSString * const kAllocID = @"allocId";
     return [IBLUserRepository user];
 }
 
-- (NSDictionary *)signedParametersWithPatameters:(NSDictionary *(^)(NSDictionary *))parameters{
-    NSMutableDictionary *dic = [[super signedParametersWithPatameters:parameters] mutableCopy];
-    
-    [dic addEntriesFromDictionary:@{kAllocID : self.user.identifier}];
-    
-    return dic;
+- (NSDictionary *)signedParametersWithPatameters:(NSDictionary *(^)(NSDictionary *))aParameters{
+    return [super signedParametersWithPatameters:^(NSDictionary *parameters){
+        NSMutableDictionary *allocIdParameters = [aParameters(parameters) mutableCopy];
+        
+        [allocIdParameters addEntriesFromDictionary:@{kAllocID : self.user.identifier}];
+        return allocIdParameters;
+    }];
 }
 
 @end

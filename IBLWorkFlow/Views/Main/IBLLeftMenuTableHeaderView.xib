@@ -31,6 +31,7 @@
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="oYf-4D-cd8" secondAttribute="trailing" constant="20" id="3OY-Ob-30V"/>
                                 <constraint firstItem="NYC-4m-XVX" firstAttribute="leading" secondItem="Yn5-Pj-PdL" secondAttribute="trailing" constant="20" id="6dE-8n-AyM"/>
@@ -42,6 +43,7 @@
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="TpZ-c5-mvY" secondAttribute="top" constant="10" id="Dbg-Uf-LKl"/>
                         <constraint firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="GAx-QQ-45p"/>
@@ -59,6 +61,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="containerView" destination="iN0-l3-epB" id="OUH-7f-EG6"/>
                 <outlet property="iconImageView" destination="Yn5-Pj-PdL" id="7pI-O2-RjC"/>
                 <outlet property="titleLabel" destination="NYC-4m-XVX" id="H2l-AR-agh"/>
                 <outlet property="topConstraint" destination="Dbg-Uf-LKl" id="LYR-NX-lD1"/>

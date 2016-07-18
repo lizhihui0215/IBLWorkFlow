@@ -7,7 +7,7 @@
 //
 
 #import "IBLOrderSearchViewController.h"
-#import "IBLMineOrderViewController.h"
+#import "IBLOrderViewController.h"
 #import "IBLOrderSearchViewModel.h"
 #import "IBLPickerView.h"
 #import <RMDateSelectionViewController/RMDateSelectionViewController.h>
@@ -92,7 +92,7 @@
     
     dateSelectionVC.hideNowButton = YES;
     [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
-       self.startDateLabel.text = [aDate stringFromFormatter:@"yyyy-MM-dd HH:mm:ss"];
+       self.startDateLabel.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
         [self.viewModel setStartDate:self.startDateLabel.text];
     } andCancelHandler:^(RMDateSelectionViewController *vc) {
         
@@ -109,7 +109,7 @@
     dateSelectionVC.hideNowButton = YES;
 
     [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
-        self.endDateLabel.text = [aDate stringFromFormatter:@"yyyy-MM-dd HH:mm:ss"];
+        self.endDateLabel.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
         [self.viewModel setEndDate:self.endDateLabel.text];
     } andCancelHandler:^(RMDateSelectionViewController *vc) {
         
