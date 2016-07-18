@@ -7,9 +7,12 @@
 //
 
 #import "IBLOrderViewController.h"
-#import <HMSegmentedControl/HMSegmentedControl.h>
+#import "HMSegmentedControl.h"
 #import "IBLOrderCell.h"
 #import "IBLOrderSearchViewController.h"
+#import "IBLMineOrderViewModel.h"
+#import "IBLBusinessAlertViewController.h"
+#import "IBLSearchViewController.h"
 
 static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSearch";
 
@@ -31,6 +34,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.title = [self.viewModel title];
     self.headerRefresh = YES;
     self.fotterRefresh = YES;
     [self setupSegmentControl];
@@ -146,14 +150,34 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     @weakify(self);
     cell.segmentControl.indexChangeBlock = ^(NSInteger index){
         @strongify(self);
-        [self segmentControlTappedWithAction:[self.viewModel actionInIndexPath:indexPath atIndex:index]];
+        [self segmentControlTappedWithAction:[self.viewModel actionInIndexPath:indexPath atIndex:index] indexPath:indexPath];
     };
     
     return cell;
 }
 
-- (void)segmentControlTappedWithAction:(IBLOrderAction)action {
-
+- (void)segmentControlTappedWithAction:(IBLOrderAction)action
+                             indexPath:(NSIndexPath *)indexPath{
+    switch (action) {
+        case IBLOrderActionForward: {
+            [self performSegueWithIdentifier:OrderActionForwardIdentifier sender:indexPath];
+                break;
+        }
+        case IBLOrderActionDelete:
+        case IBLOrderActionTrash:
+        case IBLOrderActionFinish: {
+            NSString *title = [self.viewModel actionTitleWith:action atIndexPath:indexPath];
+            
+            UIImage *image = [self.viewModel actionImageWith:action];
+            
+            IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title image:image];
+            
+            [alertView show];
+            break;
+        }
+        default:break;
+    }
+    
 }
 
 #pragma mark - Navigation
@@ -168,6 +192,11 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
         orderSearchViewController.viewModel = [[IBLOrderSearchViewModel alloc] initWithSearchResult:result];
         
         orderSearchViewController.delegate = self;
+    }else if ([segue.identifier isEqualToString:OrderActionForwardIdentifier]){
+        IBLSearchViewController *forwardSearchViewController = [segue destinationViewController];
+        forwardSearchViewController.title = @"转发";
+        
+        
     }
 }
 

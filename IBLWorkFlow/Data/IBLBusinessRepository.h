@@ -9,6 +9,10 @@
 #import "IBLRepository.h"
 #import "IBLUser.h"
 
+static NSString *const IBLWorkOrderInterface = @"WorkOrderInterface";
+
+static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
+
 @interface IBLBusinessRepository : IBLRepository
 
 @property (nonatomic, readonly) IBLUser *user;

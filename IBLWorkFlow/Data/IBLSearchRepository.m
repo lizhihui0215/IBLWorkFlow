@@ -1,0 +1,54 @@
+//
+//  IBLSearchRepository.m
+//  IBLWorkFlow
+//
+//  Created by 李智慧 on 7/18/16.
+//  Copyright © 2016 IBL. All rights reserved.
+//
+
+#import "IBLSearchRepository.h"
+
+static NSString *const IBLMethodOfFetchOperatorList = @"getOperList";
+
+static NSString *const IBLMethodOfFetchOperatorListReponse = @"getOperListResponse";
+
+
+static NSString *const kOperatorName = @"operName";
+
+@interface IBLSearchRepository ()
+
+@property (nonatomic, strong) IBLSOAPMethod *fetchOperator;
+
+@end
+
+@implementation IBLSearchRepository
+
+- (instancetype)init
+{
+    self = [super initWithSOAPFileName:IBLWorkOrderSOAPFileName];
+    if (self) {
+        self.fetchOperator = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFetchOperatorList
+                                                     responseMethodName:IBLMethodOfFetchOperatorListReponse];
+    }
+    return self;
+}
+
+- (void)fetchOperatorsWithOperatorName:(NSString *)operatorName{
+    
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+       NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[kOperatorName] = operatorName;
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.fetchOperator] POST:IBLWorkOrderInterface
+                                                parameters:parameters
+                                                  progress:nil
+                                                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                       
+                                                   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                       
+                                                   }];
+}
+
+@end

@@ -309,4 +309,75 @@
     }
     return titles;
 }
+
+- (NSString *)actionTitleWith:(IBLOrderAction)action
+                  atIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    NSString *title = @"";
+    switch (action) {
+        case IBLOrderActionDelete: {
+            title = @"确定删除工单？";
+            break;
+        }
+        case IBLOrderActionTrash: {
+            title = @"确定作废工单？";
+            break;
+        }
+        case IBLOrderActionFinish: {
+            title = @"完成工单";
+            break;
+        }
+        case IBLOrderActionForward:{
+            //FIXME: 转发最后一步。
+//            IBLOrder *order = [self orderAtIndexPath:indexPath];
+//            title = [NSString stringWithFormat:@"转发给：开户%@号"];
+            break;
+        }
+            
+        default: break;
+    }
+    
+    return title;
+}
+
+- (UIImage *)actionImageWith:(IBLOrderAction)action {
+    UIImage *image = nil;
+    switch (action) {
+        case IBLOrderActionDelete: {
+            image = [UIImage imageNamed:@"alert"];
+            break;
+        }
+        case IBLOrderActionTrash: {
+            image = [UIImage imageNamed:@"alert"];
+            break;
+        }
+        case IBLOrderActionFinish: {
+            image = [UIImage imageNamed:@"finished"];
+            break;
+        }
+        case IBLOrderActionForward:{
+            image = [UIImage imageNamed:@"alert"];
+            break;
+        }
+        default: break;
+    }
+
+    return image;
+}
+
+- (NSString *)title {
+    NSString *title = @"";
+    switch (self.type) {
+        case IBLOrderTypeMine: {
+            title = @"我的工单";
+            break;
+        }
+        case IBLOrderTypeManage: {
+            title = @"工单管理";
+            break;
+        }
+    }
+    return title;
+}
 @end

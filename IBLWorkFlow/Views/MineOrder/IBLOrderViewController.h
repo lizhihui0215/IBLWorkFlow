@@ -10,9 +10,10 @@
 #import "RESideMenu.h"
 #import "IBLMineOrderViewModel.h"
 
+static NSString *const OrderActionForwardIdentifier = @"ForwardForSearch";
+
 @interface IBLOrderViewController : IBLTableViewController
 
 @property (nonatomic, strong) IBLMineOrderViewModel *viewModel;
 
-- (void)segmentControlTappedWithAction:(IBLOrderAction)action;
 @end

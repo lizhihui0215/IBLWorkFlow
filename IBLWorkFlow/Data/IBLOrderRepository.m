@@ -26,9 +26,6 @@ static NSString *const kStart = @"start";
 
 static NSString *const kPageSize = @"pageSize";
 
-static NSString *const IBLWorkOrderInterface = @"WorkOrderInterface";
-
-static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
 
 static NSString *const kOrderList = @"orderList";
 

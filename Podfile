@@ -42,9 +42,9 @@ target 'IBLWorkFlow' do
   # https://github.com/romaonthego/RESideMenu
   pod 'RESideMenu'
   
-  # https://github.com/HeshamMegid/HMSegmentedControl
-  pod 'HMSegmentedControl'
-  
+#  # https://github.com/HeshamMegid/HMSegmentedControl
+#  pod 'HMSegmentedControl'
+
   # https://github.com/jspahrsummers/libextobjc
   pod 'libextobjc'
   

@@ -44,4 +44,11 @@ typedef NS_ENUM(NSInteger, IBLOrderType) {
 - (IBLOrderAction)actionInIndexPath:(NSIndexPath *)indexPath atIndex:(NSInteger)index;
 
 - (NSArray<NSString *> *)segmentedControlTitles;
+
+- (NSString *)actionTitleWith:(IBLOrderAction)action
+                  atIndexPath:(NSIndexPath *)indexPath;
+
+- (UIImage *)actionImageWith:(IBLOrderAction)action;
+
+- (NSString *)title;
 @end

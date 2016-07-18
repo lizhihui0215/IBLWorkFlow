@@ -19,7 +19,6 @@ PODS:
   - CocoaSecurity (1.2.4)
   - DZNEmptyDataSet (1.8.1)
   - EDColor (1.0.0)
-  - HMSegmentedControl (1.5.2)
   - IQKeyboardManager (3.3.7)
   - JSONModel (1.2.0)
   - KissXML (5.1.2):
@@ -78,7 +77,6 @@ DEPENDENCIES:
   - CocoaSecurity
   - DZNEmptyDataSet
   - EDColor
-  - HMSegmentedControl
   - IQKeyboardManager
   - JSONModel
   - KissXML
@@ -109,7 +107,6 @@ SPEC CHECKSUMS:
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
-  HMSegmentedControl: 83b9686022d2176fb6457d2bdb61e5d6393fed7d
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
   KissXML: 246c842586bb77110e04fb88e19376d96245c856
@@ -124,6 +121,6 @@ SPEC CHECKSUMS:
   SSKeychain: c71293fa57216a40ab06c23f4085387583293de4
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
 
-PODFILE CHECKSUM: dc56abcfe165f4bf46e19775ae8348cea610a43c
+PODFILE CHECKSUM: ea876d26482677eefce69a8728fce35668e49589
 
 COCOAPODS: 1.0.0

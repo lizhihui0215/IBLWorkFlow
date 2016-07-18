@@ -44,9 +44,16 @@
     
 }
 
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
 {
-    return [UIImage imageNamed:@"test1"];
+    return [UIImage imageNamed:@"emptyTableView"];
+}
+
+- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
+{
+    if (!self.tableView.mj_header.isRefreshing) {
+        [self.tableView.mj_header beginRefreshing];
+    }
 }
 
 - (MJRefreshStateHeader *)defaultRefreshHeader {

@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class IBLBusinessAlertViewController;
+
+typedef void (^OnButtonTouchUpInside)(IBLBusinessAlertViewController *alertView, int buttonIndex);
+
 @interface IBLBusinessAlertViewController : UIViewController
 - (void)show;
 + (instancetype)alertWithTitle:(NSString *)title image:(UIImage *)image;
+
+@property (nonatomic,copy) OnButtonTouchUpInside buttonTapped;
+
 @end

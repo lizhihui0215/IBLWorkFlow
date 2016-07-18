@@ -26,8 +26,10 @@
     
     // Add some custom content to the alert view
     [controller.alertView setContainerView:controller.view];
-    controller.titleLabel.text = @"确定作废工单？";
+    controller.titleLabel.text = title;
     [controller.titleLabel sizeToFit];
+    
+    controller.iconImageView.image = image;
 
     controller.titleContainerWidthConstraint.constant = CGRectGetWidth(controller.titleLabel.frame) + CGRectGetWidth(controller.iconImageView.frame) + 10;
 
@@ -35,8 +37,12 @@
     [controller.alertView setButtonTitles:@[@"确认", @"取消"]];
     
     // You may use a Block, rather than a delegate.
+    @weakify(controller)
     [controller.alertView setOnButtonTouchUpInside:^(CustomIOSAlertView *alertView, int buttonIndex) {
-        NSLog(@"Block: Button at position %d is clicked on alertView %d.", buttonIndex, (int)[alertView tag]);
+        @strongify(controller)
+        if (controller.buttonTapped) {
+            controller.buttonTapped(controller, buttonIndex);
+        }
         [alertView close];
     }];
     
