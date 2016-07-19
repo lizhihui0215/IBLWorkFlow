@@ -33,7 +33,8 @@ static NSString *const kOperatorName = @"operName";
     return self;
 }
 
-- (void)fetchOperatorsWithOperatorName:(NSString *)operatorName{
+- (void)fetchOperatorsWithOperatorName:(NSString *)operatorName
+                       completeHandler:(void (^)(NSArray<IBLOperator *>*, NSError *))handler{
     
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
        NSMutableDictionary *parameters = [aParameters mutableCopy];
@@ -45,9 +46,18 @@ static NSString *const kOperatorName = @"operName";
                                                 parameters:parameters
                                                   progress:nil
                                                    success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                       NSArray<NSDictionary *> *operatorListDictionarys = responseObject[@"operList"];
                                                        
+                                                       NSMutableArray<IBLOperator *> *operators = [NSMutableArray array];
+                                                       
+                                                       for (NSDictionary *operatorDictionary in operatorListDictionarys) {
+                                                           IBLOperator *operator = [[IBLOperator alloc] initWithDictionary:operatorDictionary error:nil];
+                                                           [operators addObject:operator];
+                                                       }
+                                                       
+                                                       handler(operators, nil);
                                                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                       
+                                                       handler(nil, error);
                                                    }];
 }
 

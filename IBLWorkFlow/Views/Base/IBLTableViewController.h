@@ -30,6 +30,6 @@
 
 @property (nonatomic, assign, getter=isHeaderRefresh) BOOL headerRefresh;
 
-@property (nonatomic, assign, getter=isFotterRefresh) BOOL fotterRefresh;
+@property (nonatomic, assign, getter=isFotterRefresh) BOOL footerRefresh;
 
 @end

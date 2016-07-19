@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view.
     self.delegate = self;
     self.headerRefresh = NO;
-    self.fotterRefresh = NO;
+    self.footerRefresh = NO;
     for (UITableView *tableView in self.tableViews) {
         
         if ([tableView respondsToSelector:@selector(setSeparatorInset:)]) {
@@ -71,10 +71,10 @@
     }
 }
 
-- (void)setFotterRefresh:(BOOL)fotterRefresh{
-    _fotterRefresh = fotterRefresh;
+- (void)setFooterRefresh:(BOOL)footerRefresh {
+    _footerRefresh = footerRefresh;
     for (UITableView *tableView in self.tableViews) {
-        tableView.mj_footer = _fotterRefresh ? [self defaultRefreshFooter] : nil;
+        tableView.mj_footer = _footerRefresh ? [self defaultRefreshFooter] : nil;
     }
 }
 

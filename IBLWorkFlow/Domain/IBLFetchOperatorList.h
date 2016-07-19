@@ -7,7 +7,12 @@
 //
 
 #import "IBLUseCase.h"
+#import "IBLSearchRepository.h"
 
 @interface IBLFetchOperatorList : IBLUseCase
+
+- (void)fetchOperatorsWithIsRefresh:(BOOL)isRefresh
+                       operatorName:(NSString *)operatorName
+                    completeHandler:(void (^)(NSArray<IBLOperator *>*, NSError *error))handler;
 
 @end

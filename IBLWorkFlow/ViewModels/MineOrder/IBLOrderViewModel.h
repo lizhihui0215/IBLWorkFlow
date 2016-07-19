@@ -1,5 +1,5 @@
 //
-//  IBLMineOrderViewModel.h
+//  IBLOrderViewModel.h
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 7/13/16.
@@ -9,13 +9,14 @@
 #import "IBLListViewModel.h"
 #import "IBLFetchOrder.h"
 #import "IBLOrderSearchResult.h"
+@class IBLOperator;
 
 typedef NS_ENUM(NSInteger, IBLOrderType) {
     IBLOrderTypeMine,
     IBLOrderTypeManage
 };
 
-@interface IBLMineOrderViewModel : IBLListViewModel
+@interface IBLOrderViewModel : IBLListViewModel
 
 @property (assign, nonatomic) IBLOrderType type;
 
@@ -51,4 +52,11 @@ typedef NS_ENUM(NSInteger, IBLOrderType) {
 - (UIImage *)actionImageWith:(IBLOrderAction)action;
 
 - (NSString *)title;
+
+- (IBLOrder *)orderAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)forwardWithOrder:(IBLOrder *)order
+                operator:(IBLOperator *)operator
+                 content:(NSString *)content
+         completehandler:(void (^) (NSError *error))handler;
 @end

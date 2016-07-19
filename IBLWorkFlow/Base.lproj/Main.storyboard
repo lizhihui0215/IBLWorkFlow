@@ -485,7 +485,7 @@
                                 <rect key="frame" x="0.0" y="50" width="320" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="35" id="7kW-E5-XXt" customClass="IBLSearchFieldCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IBLSearchFieldCell" rowHeight="35" id="7kW-E5-XXt" customClass="IBLSearchFieldCell">
                                         <rect key="frame" x="0.0" y="28" width="320" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7kW-E5-XXt" id="6my-hU-t1b">
@@ -520,26 +520,33 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttd-VY-2bl">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="searchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="suz-ly-m4r">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="J5C-yG-RGM">
                                         <rect key="frame" x="5" y="10" width="290" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="wcN-Bh-khv"/>
+                                            <constraint firstAttribute="height" constant="30" id="WUn-2z-xDs"/>
                                         </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="suz-ly-m4r">
+                                        <rect key="frame" x="15" y="10" width="270" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="PaI-Ra-9kG">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="PaI-Ra-9kG">
                                         <rect key="frame" x="300" y="18" width="15" height="15"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="suz-ly-m4r" firstAttribute="leading" secondItem="Ttd-VY-2bl" secondAttribute="leading" constant="5" id="9nA-dW-Zdy"/>
                                     <constraint firstAttribute="trailing" secondItem="PaI-Ra-9kG" secondAttribute="trailing" constant="5" id="Faf-JA-loV"/>
+                                    <constraint firstItem="suz-ly-m4r" firstAttribute="leading" secondItem="J5C-yG-RGM" secondAttribute="leading" constant="10" id="GN9-r7-Isb"/>
                                     <constraint firstItem="PaI-Ra-9kG" firstAttribute="centerY" secondItem="Ttd-VY-2bl" secondAttribute="centerY" id="KkC-UX-6km"/>
-                                    <constraint firstItem="PaI-Ra-9kG" firstAttribute="leading" secondItem="suz-ly-m4r" secondAttribute="trailing" constant="5" id="M5X-B8-KSa"/>
-                                    <constraint firstItem="suz-ly-m4r" firstAttribute="centerY" secondItem="Ttd-VY-2bl" secondAttribute="centerY" id="j14-nr-v86"/>
+                                    <constraint firstItem="suz-ly-m4r" firstAttribute="trailing" secondItem="J5C-yG-RGM" secondAttribute="trailing" constant="-10" id="NnU-cF-lv8"/>
+                                    <constraint firstItem="PaI-Ra-9kG" firstAttribute="leading" secondItem="J5C-yG-RGM" secondAttribute="trailing" constant="5" id="Ynv-6O-jxX"/>
+                                    <constraint firstItem="J5C-yG-RGM" firstAttribute="centerY" secondItem="Ttd-VY-2bl" secondAttribute="centerY" id="bL8-Zx-qDV"/>
+                                    <constraint firstItem="suz-ly-m4r" firstAttribute="bottom" secondItem="J5C-yG-RGM" secondAttribute="bottom" id="hql-4G-Yd9"/>
+                                    <constraint firstItem="J5C-yG-RGM" firstAttribute="leading" secondItem="Ttd-VY-2bl" secondAttribute="leading" constant="5" id="qxj-Yg-NaF"/>
                                     <constraint firstAttribute="height" constant="50" id="u6o-d7-N1f"/>
+                                    <constraint firstItem="suz-ly-m4r" firstAttribute="top" secondItem="J5C-yG-RGM" secondAttribute="top" id="xI8-cd-9SI"/>
                                 </constraints>
                             </view>
                         </subviews>

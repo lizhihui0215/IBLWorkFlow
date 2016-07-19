@@ -37,11 +37,23 @@ static NSString *const IBLMethodOfFetchManagedOrderList = @"getOrderList";
 
 static NSString *const IBLMethodOfFetchManagedOrderListResponse = @"getOrderListResponse";
 
+static NSString *const IBLForwardOrder = @"orderTrans";
+
+static NSString *const IBLForwardOrderResponse = @"orderTransResponse";
+
+static NSString *const kOrderIdentifier = @"orderId";
+
+static NSString *const kOperatorIdentifier = @"handleOperId";
+
+static NSString *const kForwardOrderContent = @"content";
+
 @interface IBLOrderRepository()
 
 @property (nonatomic, strong) IBLSOAPMethod *fetchMineOrderMethod;
 
 @property (nonatomic, strong) IBLSOAPMethod *fetchManagedOrderMethod;
+
+@property (nonatomic, strong) IBLSOAPMethod *forwardOrderMethod;
 
 @end
 
@@ -56,6 +68,12 @@ static NSString *const IBLMethodOfFetchManagedOrderListResponse = @"getOrderList
         
         self.fetchManagedOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFetchManagedOrderList
                                                                responseMethodName:IBLMethodOfFetchManagedOrderListResponse];
+        
+        
+        self.forwardOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLForwardOrder
+                                                          responseMethodName:IBLForwardOrderResponse];
+        
+        
     }
     return self;
 }
@@ -86,13 +104,10 @@ static NSString *const IBLMethodOfFetchManagedOrderListResponse = @"getOrderList
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         
-        if (fetch.bizType !=  IBLWorkOrderBizStatusUnknow) {
-            parameters[kType] = @(fetch.bizType);
-        }
+        if (fetch.bizType !=  IBLWorkOrderBizStatusUnknow) parameters[kType] = @(fetch.bizType);
         
-        if(fetch.type != IBLWorkOrderStatusUnknow){
-            parameters[kType] = @(fetch.type);
-        }
+        if(fetch.type != IBLWorkOrderStatusUnknow) parameters[kType] = @(fetch.type);
+        
         
         [parameters addEntriesFromDictionary:@{kOrderStatus : @(fetch.status),
                                                kAccount : fetch.account,
@@ -123,7 +138,28 @@ static NSString *const IBLMethodOfFetchManagedOrderListResponse = @"getOrderList
                                        }];
 }
 
+- (void)forwardOrderWithId:(NSInteger)orderId
+                operatorId:(NSInteger)operatorId
+                   content:(NSString *)content
+           completeHandler:(void (^)(NSError *))handler {
+    
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[kOrderIdentifier] = @(orderId);
+        parameters[kOperatorIdentifier] = @(operatorId);
+        parameters[kForwardOrderContent] = content;
+        return parameters;
+    }];
 
+    [[self networkServicesMethods:self.forwardOrderMethod] POST:IBLWorkOrderInterface
+                                                     parameters:parameters
+                                                       progress:nil
+                                                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                            handler(nil);
+                                                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                            handler(error);
+                                                        }];
+}
 @end
 
 @interface IBLFetchOrderList ()

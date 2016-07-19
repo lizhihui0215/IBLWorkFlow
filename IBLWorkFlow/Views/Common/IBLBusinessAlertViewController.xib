@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IBLBusinessAlertViewController">
             <connections>
+                <outlet property="contentTextField" destination="WZA-c5-lkQ" id="P96-aO-tR2"/>
                 <outlet property="iconImageView" destination="Cia-kS-5xi" id="UAm-hQ-fn6"/>
                 <outlet property="titleContainerWidthConstraint" destination="DzE-6i-HBQ" id="0jY-AL-Taz"/>
                 <outlet property="titleLabel" destination="bwP-2O-gY6" id="WqZ-bD-N8z"/>
@@ -21,15 +22,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bqr-Di-JGC">
                     <rect key="frame" x="0.0" y="0.0" width="267" height="56"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="demo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cia-kS-5xi">
-                            <rect key="frame" x="0.0" y="11" width="35" height="35"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="35" id="pFy-fE-ybA"/>
-                                <constraint firstAttribute="width" constant="35" id="uNv-Zr-iLY"/>
-                            </constraints>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="alert" translatesAutoresizingMaskIntoConstraints="NO" id="Cia-kS-5xi">
+                            <rect key="frame" x="0.0" y="17" width="23" height="23"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwP-2O-gY6">
-                            <rect key="frame" x="45" y="18" width="42" height="21"/>
+                            <rect key="frame" x="33" y="18" width="229" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -41,6 +38,7 @@
                         <constraint firstAttribute="width" constant="267" id="DzE-6i-HBQ"/>
                         <constraint firstAttribute="height" constant="56" id="O9S-BA-v40"/>
                         <constraint firstItem="bwP-2O-gY6" firstAttribute="leading" secondItem="Cia-kS-5xi" secondAttribute="trailing" constant="10" id="caJ-aL-v5Q"/>
+                        <constraint firstAttribute="trailing" secondItem="bwP-2O-gY6" secondAttribute="trailing" constant="5" id="hcA-sV-ZdY"/>
                         <constraint firstItem="Cia-kS-5xi" firstAttribute="centerY" secondItem="Bqr-Di-JGC" secondAttribute="centerY" id="pKx-y8-JNp"/>
                         <constraint firstItem="bwP-2O-gY6" firstAttribute="centerY" secondItem="Bqr-Di-JGC" secondAttribute="centerY" id="xgp-u2-SRu"/>
                     </constraints>
@@ -66,6 +64,6 @@
         </view>
     </objects>
     <resources>
-        <image name="demo.png" width="640" height="432"/>
+        <image name="alert" width="23" height="23"/>
     </resources>
 </document>

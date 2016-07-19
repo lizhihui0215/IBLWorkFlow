@@ -1,16 +1,18 @@
 //
-//  IBLMineOrderViewModel.m
+//  IBLOrderViewModel.m
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 7/13/16.
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLMineOrderViewModel.h"
+#import "IBLOrderViewModel.h"
 #import "IBLOrderSearchViewModel.h"
 #import "IBLGenerateAppConfiguration.h"
+#import "IBLOperator.h"
+#import "IBLForwardOrder.h"
 
-@interface IBLMineOrderViewModel ()
+@interface IBLOrderViewModel ()
 {
     NSMutableArray *_dataSource;
 }
@@ -19,11 +21,13 @@
 
 @property (nonatomic, strong) IBLFetchOrder *fetchOrder;
 
+@property (nonatomic, strong) IBLForwardOrder *forwardOrder;
+
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, IBLOrderSearchResult *> *searchResults;
 
 @end
 
-@implementation IBLMineOrderViewModel
+@implementation IBLOrderViewModel
 
 
 
@@ -96,6 +100,8 @@
         [self setIndex:0];
         
         self.fetchOrder = [[IBLFetchOrder alloc] init];
+        
+        self.forwardOrder = [[IBLForwardOrder alloc] init];
 
         self.searchResults = [@{@(0) : [IBLOrderSearchResult defaultSearchResult],
                                 @(1) : [IBLOrderSearchResult defaultSearchResult] ,
@@ -207,8 +213,7 @@
 }
 
 - (IBLOrder *)orderAtIndexPath:(NSIndexPath *)indexPath{
-    IBLSection *section = [self sectionAt:indexPath.section];
-    IBLSectionItem *sectionItem = section.items[indexPath.row];
+    IBLSectionItem *sectionItem = [self sectionItemAtIndexPath:indexPath];;
     return sectionItem.info;
 }
 
@@ -379,5 +384,16 @@
         }
     }
     return title;
+}
+
+- (void)forwardWithOrder:(IBLOrder *)order
+                operator:(IBLOperator *)operator
+                 content:(NSString *)content
+         completehandler:(void (^) (NSError *error))handler{
+    [self.forwardOrder forwardOrderWith:order
+                             operator:operator
+                      completeHandler:^(NSError *error){
+        
+    }];
 }
 @end

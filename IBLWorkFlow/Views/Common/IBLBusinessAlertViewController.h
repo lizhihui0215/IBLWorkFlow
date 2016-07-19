@@ -10,12 +10,18 @@
 
 @class IBLBusinessAlertViewController;
 
-typedef void (^OnButtonTouchUpInside)(IBLBusinessAlertViewController *alertView, int buttonIndex);
+typedef void (^OnButtonTouchUpInside)(IBLBusinessAlertViewController *alertView, NSInteger buttonIndex);
 
 @interface IBLBusinessAlertViewController : UIViewController
-- (void)show;
-+ (instancetype)alertWithTitle:(NSString *)title image:(UIImage *)image;
+
+@property (weak, nonatomic) IBOutlet UITextField *contentTextField;
 
 @property (nonatomic,copy) OnButtonTouchUpInside buttonTapped;
+
++ (instancetype)alertWithTitle:(NSString *)title
+                   placeholder:(NSString *)placeholder
+                         image:(UIImage *)image;
+
+- (void)show;
 
 @end

@@ -7,8 +7,10 @@
 //
 
 #import "IBLBusinessRepository.h"
-
+#import "IBLOperator.h"
 
 @interface IBLSearchRepository : IBLBusinessRepository
 
+- (void)fetchOperatorsWithOperatorName:(NSString *)operatorName
+                       completeHandler:(void (^)(NSArray<IBLOperator *>*, NSError *))handler;
 @end

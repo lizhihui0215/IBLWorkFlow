@@ -8,6 +8,8 @@
 
 #import "IBLTableViewCell.h"
 
+static NSString *const IBLSearchFieldCellIdentifier = @"IBLSearchFieldCell";
+
 @interface IBLSearchFieldCell : IBLTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;

@@ -19,36 +19,50 @@
 
 @implementation IBLBusinessAlertViewController
 
-+ (instancetype)alertWithTitle:(NSString *)title image:(UIImage *)image{
-    
-    IBLBusinessAlertViewController *controller =  [[IBLBusinessAlertViewController alloc] initWithNibName:@"IBLBusinessAlertViewController" bundle:nil];
-    controller.alertView = [[CustomIOSAlertView alloc] init];
-    
-    // Add some custom content to the alert view
-    [controller.alertView setContainerView:controller.view];
-    controller.titleLabel.text = title;
-    [controller.titleLabel sizeToFit];
-    
-    controller.iconImageView.image = image;
++ (instancetype)alertWithTitle:(NSString *)title
+                   placeholder:(NSString *)placeholder
+                         image:(UIImage *)image{
+    return [[self alloc] initWithTitle:title placeholder:placeholder image:image];;
+}
 
-    controller.titleContainerWidthConstraint.constant = CGRectGetWidth(controller.titleLabel.frame) + CGRectGetWidth(controller.iconImageView.frame) + 10;
+- (instancetype)initWithTitle:(NSString *)title
+                  placeholder:(NSString *)placeholder
+                        image:(UIImage *)image
+{
+    self = [super initWithNibName:@"IBLBusinessAlertViewController" bundle:nil];
+    if (self) {
+        self.alertView = [[CustomIOSAlertView alloc] init];
+        
+        // Add some custom content to the alert view
+        [self.alertView setContainerView:self.view];
+        self.titleLabel.text = title;
+        [self.titleLabel sizeToFit];
+        
+        self.iconImageView.image = image;
+        
+        self.contentTextField.placeholder = placeholder;
+        
+        self.titleContainerWidthConstraint.constant = CGRectGetWidth(self.titleLabel.frame) + CGRectGetWidth(self.iconImageView.frame) + 10;
+        
+        // Modify the parameters
+        [self.alertView setButtonTitles:@[@"确认", @"取消"]];
+        
+        // You may use a Block, rather than a delegate.
+        
+        [self.alertView setUseMotionEffects:false];
+    }
+    return self;
+}
 
-    // Modify the parameters
-    [controller.alertView setButtonTitles:@[@"确认", @"取消"]];
-    
-    // You may use a Block, rather than a delegate.
-    @weakify(controller)
-    [controller.alertView setOnButtonTouchUpInside:^(CustomIOSAlertView *alertView, int buttonIndex) {
-        @strongify(controller)
-        if (controller.buttonTapped) {
-            controller.buttonTapped(controller, buttonIndex);
+- (void)setButtonTapped:(OnButtonTouchUpInside)buttonTapped{
+    @weakify(self)
+    [self.alertView setOnButtonTouchUpInside:^(CustomIOSAlertView *alertView, int buttonIndex) {
+        @strongify(self)
+        if (buttonTapped) {
+            buttonTapped(self, buttonIndex);
         }
         [alertView close];
     }];
-    
-    [controller.alertView setUseMotionEffects:false];
-    
-    return controller;
 }
 
 - (void)viewDidLoad {
@@ -58,10 +72,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    
-    
-
 }
 
 - (void)updateViewConstraints{

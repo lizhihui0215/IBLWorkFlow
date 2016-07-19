@@ -8,6 +8,7 @@
 
 #import "IBLTableViewController.h"
 #import "IBLSearchViewModel.h"
+#import "IBLForwardSearchViewModel.h"
 
 @class IBLSearchViewController;
 
@@ -20,7 +21,7 @@
 
 @interface IBLSearchViewController : IBLTableViewController
 
-@property (nonatomic, weak) id<IBLSearchViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<IBLSearchViewControllerDelegate> searchDelegate;
 
 @property (nonatomic, strong) IBLSearchViewModel *viewModel;
 

@@ -31,7 +31,6 @@
 {
     self = [super init];
     if (self) {
-        self.dataSource = [NSMutableArray array];
         self.generateLeftMenu = [[IBLGenerateLeftMenu alloc] init];
         [self setupMenus];
     }

@@ -9,6 +9,7 @@
 #import "IBLUseCase.h"
 #import "IBLOrderRepository.h"
 
+@class IBLOperator;
 @interface IBLFetchOrder : IBLUseCase
 
 /**

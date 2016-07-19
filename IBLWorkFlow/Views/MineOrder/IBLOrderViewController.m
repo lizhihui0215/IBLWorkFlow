@@ -10,7 +10,7 @@
 #import "HMSegmentedControl.h"
 #import "IBLOrderCell.h"
 #import "IBLOrderSearchViewController.h"
-#import "IBLMineOrderViewModel.h"
+#import "IBLOrderViewModel.h"
 #import "IBLBusinessAlertViewController.h"
 #import "IBLSearchViewController.h"
 
@@ -36,7 +36,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     [super viewDidLoad];
     self.title = [self.viewModel title];
     self.headerRefresh = YES;
-    self.fotterRefresh = YES;
+    self.footerRefresh = YES;
     [self setupSegmentControl];
     [self setupTableViews];
     [self.tableView.mj_header beginRefreshing];
@@ -170,7 +170,9 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
             
             UIImage *image = [self.viewModel actionImageWith:action];
             
-            IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title image:image];
+            IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title
+                                                                                           placeholder:@"xxx"
+                                                                                                 image:image];
             
             [alertView show];
             break;
@@ -195,8 +197,8 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     }else if ([segue.identifier isEqualToString:OrderActionForwardIdentifier]){
         IBLSearchViewController *forwardSearchViewController = [segue destinationViewController];
         forwardSearchViewController.title = @"转发";
-        
-        
+        forwardSearchViewController.viewModel = [IBLForwardSearchViewModel forwardSearchModelWithOrder:[self.viewModel orderAtIndexPath:sender]];
+        forwardSearchViewController.searchDelegate = self;
     }
 }
 
@@ -204,6 +206,36 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                   didSearchResult:(IBLOrderSearchResult *)searchResult {
     [self.viewModel setSearchResult:searchResult];
     [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)searchViewController:(IBLSearchViewController *)searchViewController
+           didSelectedResult:(id)searchResult {
+    switch (searchViewController.viewModel.searchType) {
+        case IBLSearchTypeForward: {
+            IBLForwardSearchViewModel *forwardViewModel = (IBLForwardSearchViewModel *)searchViewController.viewModel;
+            IBLOperator *operator = searchResult;
+            NSString *title = [NSString stringWithFormat:@"转发给：%@", operator.name];
+            
+            IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title
+                                                                                           placeholder:@"转发说明"
+                                                                                                 image:[UIImage imageNamed:@"alert"]];
+            [alertView show];
+            [self showHUDWithMessage:@"转发中..."];
+            @weakify(self)
+            alertView.buttonTapped = ^(IBLBusinessAlertViewController *alert, NSInteger buttonIndex){
+                @strongify(self)
+                [self.viewModel forwardWithOrder:forwardViewModel.order
+                                        operator:operator
+                                         content:alert.contentTextField.text
+                                 completehandler:^(NSError *error) {
+                                     [self hidHUD];
+                                     
+                                 }];
+            };
+            break;
+        }
+    }
+
 }
 
 

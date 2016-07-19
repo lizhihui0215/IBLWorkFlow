@@ -16,6 +16,7 @@
     self = [super init];
     if (self) {
         self.delegate = self;
+        self.dataSource = [NSMutableArray array];
     }
     return self;
 }

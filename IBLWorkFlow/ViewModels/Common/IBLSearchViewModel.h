@@ -8,6 +8,8 @@
 
 #import "IBLListViewModel.h"
 
+static NSString *const kSearchOperatorName = @"operatorName";
+
 typedef NS_ENUM(NSInteger, IBLSearchType) {
     IBLSearchTypeForward,
 };
@@ -17,9 +19,11 @@ typedef NS_ENUM(NSInteger, IBLSearchType) {
 @protocol IBLSearchViewModelDelegate <NSObject>
 
 @optional
-- (void)fetchSearchContentWith:(IBLViewModelCompleteHandler)handle;
+- (void)fetchSearchContentWithSearchInfo:(id)searchInfo
+                               isRefresh:(BOOL)isRefresh
+                         completeHandler:(IBLViewModelCompleteHandler)handler;
 
-
+- (id)searchResultAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @interface IBLSearchViewModel : IBLListViewModel<IBLSearchViewModelDelegate>

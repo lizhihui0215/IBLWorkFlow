@@ -48,14 +48,14 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 - (UINavigationController *)managedOrderController {
     UINavigationController *managedOrderContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
     IBLOrderViewController *managedOrderViewController = (IBLOrderViewController *)managedOrderContentViewController.topViewController;
-    managedOrderViewController.viewModel = [[IBLMineOrderViewModel alloc] initWithOrderType:IBLOrderTypeManage];
+    managedOrderViewController.viewModel = [[IBLOrderViewModel alloc] initWithOrderType:IBLOrderTypeManage];
     return managedOrderContentViewController;
 }
 
 - (UINavigationController *)mineOrderViewController {
     UINavigationController *mineOrderContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
     IBLOrderViewController *mineOrderViewController = (IBLOrderViewController *)mineOrderContentViewController.topViewController;
-    mineOrderViewController.viewModel = [[IBLMineOrderViewModel alloc] initWithOrderType:IBLOrderTypeMine];
+    mineOrderViewController.viewModel = [[IBLOrderViewModel alloc] initWithOrderType:IBLOrderTypeMine];
     return mineOrderContentViewController;
 }
 

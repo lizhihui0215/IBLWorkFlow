@@ -7,7 +7,14 @@
 //
 
 #import "IBLSearchViewModel.h"
+#import "IBLFetchOperatorList.h"
+#import "IBLOrder.h"
 
 @interface IBLForwardSearchViewModel : IBLSearchViewModel
 
+@property (nonatomic, strong, readonly) IBLOrder *order;
+
+- (NSString *)nameAtIndexPath:(NSIndexPath *)indexPath;
+
++ (instancetype)forwardSearchModelWithOrder:(IBLOrder *)order;
 @end

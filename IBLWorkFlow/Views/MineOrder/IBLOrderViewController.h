@@ -8,12 +8,13 @@
 
 #import "IBLTableViewController.h"
 #import "RESideMenu.h"
-#import "IBLMineOrderViewModel.h"
+#import "IBLOrderViewModel.h"
+#import "IBLSearchViewController.h"
 
 static NSString *const OrderActionForwardIdentifier = @"ForwardForSearch";
 
-@interface IBLOrderViewController : IBLTableViewController
+@interface IBLOrderViewController : IBLTableViewController <IBLSearchViewControllerDelegate>
 
-@property (nonatomic, strong) IBLMineOrderViewModel *viewModel;
+@property (nonatomic, strong) IBLOrderViewModel *viewModel;
 
 @end
