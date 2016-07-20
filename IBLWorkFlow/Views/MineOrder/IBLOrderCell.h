@@ -21,14 +21,17 @@ static NSString * const MineWorkFlowCellNibName = @"IBLOrderCell";
 
 @property (weak, nonatomic) IBOutlet UILabel *workOrderTypeLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *orderUserLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *orderUserLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *segmentControl;
+@property (weak, nonatomic) IBOutlet UIButton *orderUserButton;
 
 - (void)setPriority:(IBLPriorityStatus)priority;
 
 - (void)setActionTitles:(NSArray<NSString *> *)titles;
+
+- (void)setUserTitle:(NSString *)title;
 
 @end

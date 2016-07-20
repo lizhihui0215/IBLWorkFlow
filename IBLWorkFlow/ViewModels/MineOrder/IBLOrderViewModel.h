@@ -59,4 +59,9 @@ typedef NS_ENUM(NSInteger, IBLOrderType) {
                 operator:(IBLOperator *)operator
                  content:(NSString *)content
          completehandler:(void (^) (NSError *error))handler;
+
+- (NSString *)placeHolderWith:(IBLOrderAction)action
+                  atIndexPath:(NSIndexPath *)indexPath;
+
+- (void)handlerWithAction:(IBLOrderAction)action indexPath:(NSIndexPath *)indexPath completeHandler:(void (^)(NSError *))handler;
 @end

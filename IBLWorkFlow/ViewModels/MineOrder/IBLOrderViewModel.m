@@ -11,6 +11,9 @@
 #import "IBLGenerateAppConfiguration.h"
 #import "IBLOperator.h"
 #import "IBLForwardOrder.h"
+#import "IBLDeleteOrder.h"
+#import "IBLFinishOrder.h"
+#import "IBLTrashOrder.h"
 
 @interface IBLOrderViewModel ()
 {
@@ -22,6 +25,12 @@
 @property (nonatomic, strong) IBLFetchOrder *fetchOrder;
 
 @property (nonatomic, strong) IBLForwardOrder *forwardOrder;
+
+@property (nonatomic, strong) IBLDeleteOrder *deleteOrder;
+
+@property (nonatomic, strong) IBLFinishOrder *finishOrder;
+
+@property (nonatomic, strong) IBLTrashOrder *trashOrder;
 
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, IBLOrderSearchResult *> *searchResults;
 
@@ -102,6 +111,8 @@
         self.fetchOrder = [[IBLFetchOrder alloc] init];
         
         self.forwardOrder = [[IBLForwardOrder alloc] init];
+        
+        self.deleteOrder = [[IBLDeleteOrder alloc] init];
 
         self.searchResults = [@{@(0) : [IBLOrderSearchResult defaultSearchResult],
                                 @(1) : [IBLOrderSearchResult defaultSearchResult] ,
@@ -391,9 +402,65 @@
                  content:(NSString *)content
          completehandler:(void (^) (NSError *error))handler{
     [self.forwardOrder forwardOrderWith:order
-                             operator:operator
-                      completeHandler:^(NSError *error){
-        
-    }];
+                               operator:operator
+                                content:content
+                        completeHandler:handler];
+}
+
+- (NSString *)placeHolderWith:(IBLOrderAction)action atIndexPath:(NSIndexPath *)indexPath {
+    NSString *placeHolder = @"";
+    switch (action) {
+        case IBLOrderActionTrash: {
+            placeHolder = @"作废说明";
+            break;
+        }
+        case IBLOrderActionFinish: {
+            placeHolder = @"完成说明填写";
+            break;
+        }
+        case IBLOrderActionDelete: {
+            placeHolder = @"删除说明填写";
+            break;
+        }
+        default: break;
+    }
+    
+    return placeHolder;
+}
+
+- (void)deleteOrderAtIndexPath:(NSIndexPath *)indexPath{
+    IBLSection *section = [self sectionAt:indexPath.section];
+    [section.items removeObjectAtIndex:indexPath.row];
+}
+
+- (void)handlerWithAction:(IBLOrderAction)action
+                indexPath:(NSIndexPath *)indexPath
+          completeHandler:(void (^)(NSError *))handler {
+    IBLOrder *order = [self orderAtIndexPath:indexPath];
+    //!!!: can be refine
+    switch (action) {
+        case IBLOrderActionTrash: {
+            [self.trashOrder trashOrderWith:order completeHandler:^(NSError *error) {
+                [self deleteOrderAtIndexPath:indexPath];
+                handler(error);
+            }];
+            break;
+        }
+        case IBLOrderActionFinish: {
+            [self.finishOrder finishOrderWith:order completeHandler:^(NSError *error) {
+                [self deleteOrderAtIndexPath:indexPath];
+                handler(error);
+            }];
+            break;
+        }
+        case IBLOrderActionDelete: {
+            [self.deleteOrder deleteOrderWithOrder:order completeHandler:^(NSError *error) {
+                [self deleteOrderAtIndexPath:indexPath];
+                handler(error);
+            }];
+            break;
+        }
+        default: break;
+    }
 }
 @end

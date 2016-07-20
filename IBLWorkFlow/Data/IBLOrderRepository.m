@@ -37,15 +37,23 @@ static NSString *const IBLMethodOfFetchManagedOrderList = @"getOrderList";
 
 static NSString *const IBLMethodOfFetchManagedOrderListResponse = @"getOrderListResponse";
 
-static NSString *const IBLForwardOrder = @"orderTrans";
+static NSString *const IBLMethodOfForwardOrder = @"orderTrans";
 
-static NSString *const IBLForwardOrderResponse = @"orderTransResponse";
+static NSString *const IBLMethodOfForwardOrderResponse = @"orderTransResponse";
 
 static NSString *const kOrderIdentifier = @"orderId";
 
 static NSString *const kOperatorIdentifier = @"handleOperId";
 
 static NSString *const kForwardOrderContent = @"content";
+
+static NSString *const IBLMethodOfDeleteOrder = @"";
+
+static NSString *const IBLMethodOfDeleteOrderReponse = @"";
+
+static NSString *const IBLMethodOfFinishOrder = @"";
+
+static NSString *const IBLMethodOfFinishOrderResponse = @"";
 
 @interface IBLOrderRepository()
 
@@ -55,6 +63,11 @@ static NSString *const kForwardOrderContent = @"content";
 
 @property (nonatomic, strong) IBLSOAPMethod *forwardOrderMethod;
 
+@property (nonatomic, strong) IBLSOAPMethod *deleteOrderMethod;
+
+@property (nonatomic, strong) IBLSOAPMethod *finishMethod;
+
+@property (nonatomic, strong) IBLSOAPMethod *trashMethod;
 @end
 
 @implementation IBLOrderRepository
@@ -70,9 +83,17 @@ static NSString *const kForwardOrderContent = @"content";
                                                                responseMethodName:IBLMethodOfFetchManagedOrderListResponse];
         
         
-        self.forwardOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLForwardOrder
-                                                          responseMethodName:IBLForwardOrderResponse];
+        self.forwardOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfForwardOrder
+                                                          responseMethodName:IBLMethodOfForwardOrderResponse];
+
+        self.deleteOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfDeleteOrder
+                                                         responseMethodName:IBLMethodOfDeleteOrderReponse];
         
+        self.finishMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFinishOrder
+                                                    responseMethodName:IBLMethodOfFinishOrderResponse];
+        
+        self.trashMethod = [IBLSOAPMethod methodWithRequestMethodName:@""
+                                                   responseMethodName:@""];
         
     }
     return self;
@@ -159,6 +180,63 @@ static NSString *const kForwardOrderContent = @"content";
                                                         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                             handler(error);
                                                         }];
+}
+
+- (void)deleteOrderWithOrderId:(NSInteger)identifier
+               completeHandler:(void (^)(NSError *))handler {
+
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[kOrderIdentifier] = @(identifier);
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.deleteOrderMethod] POST:IBLWorkOrderInterface
+                                                    parameters:parameters
+                                                      progress:nil
+                                                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                           handler(nil);
+                                                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                           handler(error);
+                                                       }];
+
+}
+
+- (void)finishOrderWithId:(NSInteger)identifier
+          completeHandler:(void (^)(NSError *))handler {
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[kOrderIdentifier] = @(identifier);
+        return parameters;
+    }];
+
+    [[self networkServicesMethods:self.finishMethod] POST:IBLWorkOrderInterface
+                                               parameters:nil
+                                                 progress:nil
+                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                      handler(nil);
+                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                      handler(error);
+                                                  }];
+}
+
+- (void)trashOrderWithId:(NSInteger)identifier
+         completeHandler:(void (^)(NSError *))handler {
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[kOrderIdentifier] = @(identifier);
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.trashMethod] POST:IBLWorkOrderInterface
+                                              parameters:parameters
+                                                progress:nil
+                                                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                     handler(nil);
+                                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                     handler(error);
+                                                 }];
+
 }
 @end
 

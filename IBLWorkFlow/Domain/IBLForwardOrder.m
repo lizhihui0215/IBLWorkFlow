@@ -1,5 +1,5 @@
 //
-//  IBLForwardOrder.m
+//  IBLMethodOfForwardOrder.m
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 7/19/16.
@@ -30,10 +30,18 @@
 
 - (void)forwardOrderWith:(IBLOrder *)order
                 operator:(IBLOperator *)operator
+                 content:(NSString *)content
          completeHandler:(void (^)(NSError *))handler {
-    [self.orderRepository forwardOrderWithId:order.identifier operatorId:operator.identifier content:nil completeHandler:^(NSError *error) {
-
-    }];
+    [self.orderRepository forwardOrderWithId:order.identifier
+                                  operatorId:operator.identifier
+                                     content:content
+                             completeHandler:^(NSError *error) {
+                                 [self.orderRepository forwardOrderWithId:order.identifier
+                                                               operatorId:operator.identifier
+                                                                  content:content
+                                                          completeHandler:handler];
+                                 
+                             }];
     
 }
 @end

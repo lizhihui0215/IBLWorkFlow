@@ -57,7 +57,10 @@ static NSInteger const IBLOrderSegmentControlTitleWidth = 40;
     self.segmentControl.sectionTitles = titles;
     self.segmentControl.selectedIndexTouchable = YES;
     self.segmentControlWidthConstraint.constant = [titles count] * IBLOrderSegmentControlTitleWidth;
-    
+}
+
+- (void)setUserTitle:(NSString *)title{
+    [self.orderUserButton setTitle:title forState:UIControlStateNormal];
 }
 
 

@@ -76,5 +76,17 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
                            pageSize:(NSInteger)pageSize
                     completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler;
 
-- (void)forwardOrderWithId:(NSInteger)orderId operatorId:(NSInteger)operatorId content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
+- (void)forwardOrderWithId:(NSInteger)orderId
+                operatorId:(NSInteger)operatorId
+                   content:(NSString *)content
+           completeHandler:(void (^)(NSError *))handler;
+
+- (void)deleteOrderWithOrderId:(NSInteger)identifier
+               completeHandler:(void (^)(NSError *))handler;
+
+- (void)finishOrderWithId:(NSInteger)identifier
+          completeHandler:(void (^)(NSError *))handler;
+
+- (void)trashOrderWithId:(NSInteger)identifier
+         completeHandler:(void (^)(NSError *))handler;
 @end

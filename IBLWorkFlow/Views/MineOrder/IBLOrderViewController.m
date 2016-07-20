@@ -136,23 +136,26 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     return [self.viewModel numberOfRowsInSection:sectionIndex];
 }
 
+- (IBAction)orderUserButtonPressed:(UIButton *)button{
+    NSIndexPath *indexPath = nil;
+    
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IBLOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:MineWorkFlowCellIdentifier forIndexPath:indexPath];
-    
     cell.workOrderTypeLabel.text = [self.viewModel workOrderTypAtIndexPath:indexPath];
-    cell.orderUserLabel.text = [self.viewModel usernameAtIndexPath:indexPath];
+    [cell setUserTitle:[self.viewModel usernameAtIndexPath:indexPath]];
     cell.dateLabel.text = [self.viewModel dateAtIndexPath:indexPath];
     [cell setPriority:[self.viewModel orderPriorityAtIndexPath:indexPath]];
     NSArray *titles = [self.viewModel orderActionsTitlesAtIndexPath:indexPath];
     [cell setActionTitles:titles];
-    
     @weakify(self);
     cell.segmentControl.indexChangeBlock = ^(NSInteger index){
         @strongify(self);
         [self segmentControlTappedWithAction:[self.viewModel actionInIndexPath:indexPath atIndex:index] indexPath:indexPath];
     };
-    
     return cell;
 }
 
@@ -170,9 +173,23 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
             
             UIImage *image = [self.viewModel actionImageWith:action];
             
+            NSString *placeholder = [self.viewModel placeHolderWith:action atIndexPath:indexPath];
+            
             IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title
-                                                                                           placeholder:@"xxx"
+                                                                                           placeholder:placeholder
                                                                                                  image:image];
+            @weakify(self)
+            alertView.buttonTapped = ^(IBLBusinessAlertViewController *alert, NSInteger buttonIndex){
+                @strongify(self)
+                [self.viewModel handlerWithAction:action
+                                        indexPath:indexPath
+                                  completeHandler:^(NSError *error) {
+                                      if (![self showAlertWithError:error]) {
+                                          [self.tableView reloadData];
+                                      }
+                                  }];
+            };
+
             
             [alertView show];
             break;
@@ -229,7 +246,9 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                          content:alert.contentTextField.text
                                  completehandler:^(NSError *error) {
                                      [self hidHUD];
-                                     
+                                     if (![self showAlertWithError:error]) {
+                                         //FIXME: 提交成功
+                                     }
                                  }];
             };
             break;
