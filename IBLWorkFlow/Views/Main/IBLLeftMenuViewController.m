@@ -13,6 +13,8 @@
 #import "IBLLeftMenuCell.h"
 #import "IBLLeftMenuTableHeaderView.h"
 #import "IBLLoginViewController.h"
+#import "IBLCreateAccountViewController.h"
+
 
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
@@ -34,15 +36,25 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 
     UINavigationController *managedOrderContentViewController = [self managedOrderController];
     
+    UINavigationController *createAccountViewController = [self createAccountViewController];
+    
     //FIXME: 添加功能
     self.viewControllers = @{@(IBLLeftMenuSectionActionMineOrder) : mineOrderContentViewController,
                              @(IBLLeftMenuSectionActionManagedOrder) : managedOrderContentViewController,
                              @(IBLLeftMenuSectionActionBusinessManaged) : @"",
                              @(IBLLeftMenuSectionActionAbout) : @"",
                              @(IBLLeftMenuItemActionAddOrder) : @"",
-                             @(IBLLeftMenuItemActionAddCreateAccount) : @"",
+                             @(IBLLeftMenuItemActionAddCreateAccount) : createAccountViewController,
                              @(IBLLeftMenuItemActionAddRenew) : @"",
                              @(IBLLeftMenuItemActionAddChangeProduct) : @"",};
+}
+
+- (UINavigationController *)createAccountViewController {
+    IBLCreateAccountViewController * createAccountViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLCreateAccountViewController"];
+    
+    createAccountViewController.viewModel = [IBLCreateAccountViewModel modelWithCreateAccountType:IBLCreateAccountTypeFromLeftMenu order:nil];
+    
+    return [[UINavigationController alloc] initWithRootViewController:createAccountViewController];
 }
 
 - (UINavigationController *)managedOrderController {

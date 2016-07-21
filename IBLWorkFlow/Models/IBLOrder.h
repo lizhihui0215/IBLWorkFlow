@@ -79,11 +79,6 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
      */
     IBLOrderActionForward,
     /**
-     *  反馈
-     */
-    IBLOrderActionReplay,
-    
-    /**
      *  开户
      */
     IBLOrderActionCreate,
@@ -172,6 +167,33 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
 
 /// 用户姓名 （报装工单特有）
 @property (nonatomic, copy) NSString *username;
+
+/// 小区名称 (报装工单特有)
+@property (nonatomic, copy) NSString *regionName;
+
+/// 销售品名称 (报装工单特有)
+@property (nonatomic, copy) NSString *productName;
+
+/// 身份证号 (报装工单特有)
+@property (nonatomic, copy) NSString *identifierNumber;
+
+/// 备注 (报装工单特有)
+@property (nonatomic, copy) NSString *remark;
+
+/// 生效方式 (报装工单特有)
+@property (nonatomic, copy) NSString *effectType;
+
+/// 生效日期 (报装工单特有)
+@property (nonatomic, copy) NSString *effectDate;
+
+/// 用户联系电话 (报装工单特有)
+@property (nonatomic, copy) NSString *phone;
+
+/// 用户联系地址 (报装工单特有)
+@property (nonatomic, copy) NSString *address;
+
+/// 是否标记处理 (报装工单特有)
+@property (nonatomic, copy) NSString *handleMark;
 
 /// 工单操作按钮
 @property (nonatomic, strong) NSMutableArray<NSNumber *> *actions;

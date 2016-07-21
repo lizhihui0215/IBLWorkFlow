@@ -19,7 +19,7 @@
                                                        @"ORDER_STATUS" : @"status",
                                                        @"ORDER_PRIORITY" : @"priority",
                                                        @"NOTE" : @"note",
-                                                       @"op_suggest" : @"suggest",
+                                                       @"OP_SUGGEST" : @"suggest",
                                                        @"CREATE_TIME" : @"createTime",
                                                        @"EXPIRE_TIME" : @"expireTime",
                                                        @"LAST_MODIFY_TIMESTAMP" : @"lastModifyTime",
@@ -29,7 +29,16 @@
                                                        @"CREATE_OPER_PHONE" : @"creatorPhone",
                                                        @"NODE_ID" : @"residentialIdentifier",
                                                        @"OFFER_ID" : @"productIdentifier",
-                                                       @"USER_NAME" : @"username"}];
+                                                       @"USER_NAME" : @"username",
+                                                       @"NODE_NAME" : @"regionName",
+                                                       @"OFFER_NAME" : @"productName",
+                                                       @"IDNO" : @"identifierNumber",
+                                                       @"REMARK" : @"remark",
+                                                       @"EFF_TYPE": @"effectType",
+                                                       @"EFF_DATE" : @"effectDate",
+                                                       @"PHONE" : @"phone",
+                                                       @"ADDR" : @"address",
+                                                       @"HANDLE_MARK" : @"handleMark"}];
 }
 
 @end

@@ -18,9 +18,17 @@
 
 @implementation IBLDeleteOrder
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.orderRepository = [[IBLOrderRepository alloc] init];
+    }
+    return self;
+}
+
 - (void)deleteOrderWithOrder:(IBLOrder *)order
              completeHandler:(void (^)(NSError *))handler {
     [self.orderRepository deleteOrderWithOrderId:order.identifier completeHandler:handler];
-
 }
 @end

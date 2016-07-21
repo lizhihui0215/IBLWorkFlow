@@ -1,36 +1,29 @@
 //
-//  IBLForwardSearchViewModel.m
+//  IBLOperatorSearchViewModel.m
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 7/18/16.
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLForwardSearchViewModel.h"
+#import "IBLOperatorSearchViewModel.h"
 
-@interface IBLForwardSearchViewModel ()
-{
-    NSMutableArray *_dataSource;
-}
+@interface IBLOperatorSearchViewModel ()
+
 @property (nonatomic, strong) IBLFetchOperatorList *fetchOperator;
 
 @property (nonatomic, strong, readwrite) IBLOrder *order;
+
 @end
 
-@implementation IBLForwardSearchViewModel
+@implementation IBLOperatorSearchViewModel
 
-- (NSMutableArray *)dataSource{
-    return _dataSource;
-}
-
-- (void)setDataSource:(NSMutableArray *)dataSource{
-    _dataSource = dataSource;
-}
-
-- (instancetype)initWithWorkOrder:(IBLOrder *)order
-{
+- (instancetype)initWithWorkOrder:(IBLOrder *)order searchType:(IBLSearchType)searchType {
     self = [super init];
     if (self) {
+        
+        self.searchType = searchType;
+        
         self.order = order;
         
         self.fetchOperator = [[IBLFetchOperatorList alloc] init];
@@ -42,12 +35,9 @@
     return self;
 }
 
-- (IBLSearchType)searchType{
-    return IBLSearchTypeForward;
-}
 
-+ (instancetype)forwardSearchModelWithOrder:(IBLOrder *)order {
-    return [[self alloc] initWithWorkOrder:order];
++ (instancetype)operatorSearchModelWithOrder:(IBLOrder *)order searchType:(IBLSearchType)searchType {
+    return [[self alloc] initWithWorkOrder:order searchType:searchType];
 }
 
 - (void)fetchSearchContentWithSearchInfo:(id)searchInfo
@@ -58,10 +48,15 @@
     [self.fetchOperator fetchOperatorsWithIsRefresh:isRefresh
                                        operatorName:operatorName
                                     completeHandler:^(NSArray<IBLOperator *> *operators, NSError *error) {
+                                        IBLSection *section = [self sectionAt:0];
+                                        NSMutableArray<IBLSectionItem *> * sectionItems =[self sectionItemsWithOperators:operators];
+
                                         if (isRefresh) {
-                                            IBLSection *section = [self sectionAt:0];
-                                            section.items = [self sectionItemsWithOperators:operators];
+                                            section.items = sectionItems;
+                                        }else{
+                                            [section.items addObjectsFromArray:sectionItems];
                                         }
+                                        
                                         handler(error);
                                     }];
 }

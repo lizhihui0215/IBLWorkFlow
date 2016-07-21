@@ -8,7 +8,21 @@
 
 #import "IBLSearchViewModel.h"
 
+@interface IBLSearchViewModel ()
+{
+    NSMutableArray *_dataSource;
+}
+@end
+
 @implementation IBLSearchViewModel
+
+- (NSMutableArray *)dataSource{
+    return _dataSource;
+}
+
+- (void)setDataSource:(NSMutableArray *)dataSource{
+    _dataSource = dataSource;
+}
 
 - (instancetype)init
 {

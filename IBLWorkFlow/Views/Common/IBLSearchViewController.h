@@ -8,7 +8,7 @@
 
 #import "IBLTableViewController.h"
 #import "IBLSearchViewModel.h"
-#import "IBLForwardSearchViewModel.h"
+#import "IBLOperatorSearchViewModel.h"
 
 @class IBLSearchViewController;
 

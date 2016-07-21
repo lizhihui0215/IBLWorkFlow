@@ -13,6 +13,13 @@
 
 static NSString *const OrderActionForwardIdentifier = @"ForwardForSearch";
 
+static NSString *const OrderActionSendIdentifier = @"SendForSearch";
+
+static NSString *const NavigationToCreateAccountIdentifier = @"NavigationToCreateAccount";
+
+
+
+
 @interface IBLOrderViewController : IBLTableViewController <IBLSearchViewControllerDelegate>
 
 @property (nonatomic, strong) IBLOrderViewModel *viewModel;

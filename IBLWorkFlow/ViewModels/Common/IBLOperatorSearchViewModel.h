@@ -1,5 +1,5 @@
 //
-//  IBLForwardSearchViewModel.h
+//  IBLOperatorSearchViewModel.h
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 7/18/16.
@@ -10,11 +10,11 @@
 #import "IBLFetchOperatorList.h"
 #import "IBLOrder.h"
 
-@interface IBLForwardSearchViewModel : IBLSearchViewModel
+@interface IBLOperatorSearchViewModel : IBLSearchViewModel
 
 @property (nonatomic, strong, readonly) IBLOrder *order;
 
 - (NSString *)nameAtIndexPath:(NSIndexPath *)indexPath;
 
-+ (instancetype)forwardSearchModelWithOrder:(IBLOrder *)order;
++ (instancetype)operatorSearchModelWithOrder:(IBLOrder *)order searchType:(IBLSearchType)searchType;
 @end

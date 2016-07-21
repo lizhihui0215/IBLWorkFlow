@@ -14,6 +14,8 @@
 #import "IBLDeleteOrder.h"
 #import "IBLFinishOrder.h"
 #import "IBLTrashOrder.h"
+#import "IBLHandleOrder.h"
+#import "IBLSendOrder.h"
 
 @interface IBLOrderViewModel ()
 {
@@ -28,9 +30,13 @@
 
 @property (nonatomic, strong) IBLDeleteOrder *deleteOrder;
 
+@property (nonatomic, strong) IBLHandleOrder *handleOrder;
+
 @property (nonatomic, strong) IBLFinishOrder *finishOrder;
 
 @property (nonatomic, strong) IBLTrashOrder *trashOrder;
+
+@property (nonatomic, strong) IBLSendOrder *sendOrder;
 
 @property (nonatomic, strong) NSMutableDictionary <NSNumber *, IBLOrderSearchResult *> *searchResults;
 
@@ -113,6 +119,8 @@
         self.forwardOrder = [[IBLForwardOrder alloc] init];
         
         self.deleteOrder = [[IBLDeleteOrder alloc] init];
+        
+        self.handleOrder = [[IBLHandleOrder alloc] init];
 
         self.searchResults = [@{@(0) : [IBLOrderSearchResult defaultSearchResult],
                                 @(1) : [IBLOrderSearchResult defaultSearchResult] ,
@@ -397,15 +405,7 @@
     return title;
 }
 
-- (void)forwardWithOrder:(IBLOrder *)order
-                operator:(IBLOperator *)operator
-                 content:(NSString *)content
-         completehandler:(void (^) (NSError *error))handler{
-    [self.forwardOrder forwardOrderWith:order
-                               operator:operator
-                                content:content
-                        completeHandler:handler];
-}
+
 
 - (NSString *)placeHolderWith:(IBLOrderAction)action atIndexPath:(NSIndexPath *)indexPath {
     NSString *placeHolder = @"";
@@ -460,7 +460,33 @@
             }];
             break;
         }
+        case IBLOrderActionHandling:{
+            [self.handleOrder handleOrderWithOrder:order completeHandler:^(NSError *error){
+                
+            }];
+            break;
+        }
         default: break;
     }
+}
+
+- (void)forwardWithOrder:(IBLOrder *)order
+                operator:(IBLOperator *)operator
+                 content:(NSString *)content
+         completehandler:(void (^) (NSError *error))handler{
+    [self.forwardOrder forwardOrderWith:order
+                               operator:operator
+                                content:content
+                        completeHandler:handler];
+}
+
+- (void)sendWithOrder:(IBLOrder *)order
+             operator:(IBLOperator *)operator
+              content:(NSString *)content
+      completehandler:(void (^)(NSError *))handler {
+    [self.sendOrder sendOrderWith:order
+                         operator:operator
+                          content:content
+                  completeHandler:handler];
 }
 @end

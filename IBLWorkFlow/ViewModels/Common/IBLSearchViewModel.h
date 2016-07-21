@@ -9,9 +9,12 @@
 #import "IBLListViewModel.h"
 
 static NSString *const kSearchOperatorName = @"operatorName";
+static NSString *const kSearchAreaName = @"areaName";
 
 typedef NS_ENUM(NSInteger, IBLSearchType) {
     IBLSearchTypeForward,
+    IBLSearchTypeSend,
+    IBLSearchTypeCreateAccountArea,
 };
 
 @class IBLSearchViewModel;
@@ -28,6 +31,6 @@ typedef NS_ENUM(NSInteger, IBLSearchType) {
 
 @interface IBLSearchViewModel : IBLListViewModel<IBLSearchViewModelDelegate>
 
-@property (nonatomic, assign, readonly) IBLSearchType searchType;
+@property (nonatomic, assign) IBLSearchType searchType;
 
 @end

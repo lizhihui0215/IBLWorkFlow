@@ -45,15 +45,19 @@ static NSString *const kOrderIdentifier = @"orderId";
 
 static NSString *const kOperatorIdentifier = @"handleOperId";
 
-static NSString *const kForwardOrderContent = @"content";
+static NSString *const kContent = @"content";
 
-static NSString *const IBLMethodOfDeleteOrder = @"";
+static NSString *const IBLMethodOfDeleteOrder = @"orderDelete";
 
-static NSString *const IBLMethodOfDeleteOrderReponse = @"";
+static NSString *const IBLMethodOfDeleteOrderReponse = @"orderDeleteResponse";
 
-static NSString *const IBLMethodOfFinishOrder = @"";
+static NSString *const IBLMethodOfFinishOrder = @"orderComp";
 
-static NSString *const IBLMethodOfFinishOrderResponse = @"";
+static NSString *const IBLMethodOfFinishOrderResponse = @"orderCompResponse";
+
+static NSString *const IBLMethodOfTrashOrder = @"orderCancel";
+
+static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
 
 @interface IBLOrderRepository()
 
@@ -68,6 +72,10 @@ static NSString *const IBLMethodOfFinishOrderResponse = @"";
 @property (nonatomic, strong) IBLSOAPMethod *finishMethod;
 
 @property (nonatomic, strong) IBLSOAPMethod *trashMethod;
+
+@property (nonatomic, strong) IBLSOAPMethod *handleMethod;
+
+@property (nonatomic, strong) IBLSOAPMethod *sendOrderMethod;
 @end
 
 @implementation IBLOrderRepository
@@ -85,15 +93,21 @@ static NSString *const IBLMethodOfFinishOrderResponse = @"";
         
         self.forwardOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfForwardOrder
                                                           responseMethodName:IBLMethodOfForwardOrderResponse];
-
+        
         self.deleteOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfDeleteOrder
                                                          responseMethodName:IBLMethodOfDeleteOrderReponse];
         
         self.finishMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFinishOrder
                                                     responseMethodName:IBLMethodOfFinishOrderResponse];
         
-        self.trashMethod = [IBLSOAPMethod methodWithRequestMethodName:@""
-                                                   responseMethodName:@""];
+        self.trashMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfTrashOrder
+                                                   responseMethodName:IBLMethodOfTrashOrderResponse];
+        
+        self.handleMethod = [IBLSOAPMethod methodWithRequestMethodName:@""
+                                                    responseMethodName:@""];
+        
+        self.sendOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@""
+                                                       responseMethodName:@""];
         
     }
     return self;
@@ -168,11 +182,33 @@ static NSString *const IBLMethodOfFinishOrderResponse = @"";
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[kOrderIdentifier] = @(orderId);
         parameters[kOperatorIdentifier] = @(operatorId);
-        parameters[kForwardOrderContent] = content;
+        parameters[kContent] = content;
         return parameters;
     }];
-
+    
     [[self networkServicesMethods:self.forwardOrderMethod] POST:IBLWorkOrderInterface
+                                                     parameters:parameters
+                                                       progress:nil
+                                                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                            handler(nil);
+                                                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                            handler(error);
+                                                        }];
+}
+
+- (void)sendOrderWithId:(NSInteger)identifier
+             operatorId:(NSInteger)operatorId
+                content:(NSString *)content
+        completeHandler:(void (^)(NSError *))handler {
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[kOrderIdentifier] = @(identifier);
+        parameters[kOperatorIdentifier] = @(operatorId);
+        parameters[kContent] = content;
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.sendOrderMethod] POST:IBLWorkOrderInterface
                                                      parameters:parameters
                                                        progress:nil
                                                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -184,7 +220,7 @@ static NSString *const IBLMethodOfFinishOrderResponse = @"";
 
 - (void)deleteOrderWithOrderId:(NSInteger)identifier
                completeHandler:(void (^)(NSError *))handler {
-
+    
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[kOrderIdentifier] = @(identifier);
@@ -199,7 +235,7 @@ static NSString *const IBLMethodOfFinishOrderResponse = @"";
                                                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                            handler(error);
                                                        }];
-
+    
 }
 
 - (void)finishOrderWithId:(NSInteger)identifier
@@ -209,9 +245,9 @@ static NSString *const IBLMethodOfFinishOrderResponse = @"";
         parameters[kOrderIdentifier] = @(identifier);
         return parameters;
     }];
-
+    
     [[self networkServicesMethods:self.finishMethod] POST:IBLWorkOrderInterface
-                                               parameters:nil
+                                               parameters:parameters
                                                  progress:nil
                                                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                                       handler(nil);
@@ -236,8 +272,28 @@ static NSString *const IBLMethodOfFinishOrderResponse = @"";
                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                      handler(error);
                                                  }];
-
+    
 }
+
+- (void)handleOrderWithId:(NSInteger)identifier
+          completeHandler:(void (^)(NSError *))handler {
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[kOrderIdentifier] = @(identifier);
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.handleMethod] POST:IBLWorkOrderInterface
+                                               parameters:parameters
+                                                 progress:nil
+                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                      handler(nil);
+                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                      handler(error);
+                                                  }];
+}
+
+
 @end
 
 @interface IBLFetchOrderList ()
@@ -265,7 +321,7 @@ static NSString *const IBLMethodOfFinishOrderResponse = @"";
         self.bizType = bizType;
         self.fetchType = fetchType;
     }
-
+    
     return self;
 }
 

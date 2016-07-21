@@ -19,6 +19,7 @@ static NSString *const kOperatorName = @"operName";
 
 @property (nonatomic, strong) IBLSOAPMethod *fetchOperator;
 
+
 @end
 
 @implementation IBLSearchRepository
@@ -29,6 +30,7 @@ static NSString *const kOperatorName = @"operName";
     if (self) {
         self.fetchOperator = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFetchOperatorList
                                                      responseMethodName:IBLMethodOfFetchOperatorListReponse];
+        
     }
     return self;
 }
@@ -60,5 +62,6 @@ static NSString *const kOperatorName = @"operName";
                                                        handler(nil, error);
                                                    }];
 }
+
 
 @end

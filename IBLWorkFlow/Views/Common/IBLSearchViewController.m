@@ -53,6 +53,7 @@
 - (id)searchInfoWithKeyword:(NSString *)keyword{
     id searchInfo = nil;
     switch (self.viewModel.searchType) {
+        case IBLSearchTypeSend:
         case IBLSearchTypeForward: {
             searchInfo = @{kSearchOperatorName : keyword};
             break;
@@ -99,6 +100,7 @@
 {
     UITableViewCell *cell = nil;
     switch (self.viewModel.searchType) {
+        case IBLSearchTypeSend:
         case IBLSearchTypeForward: {
             cell = [self configurationForwardCellWithTableView:tableView indexPath:indexPath];
             break;
@@ -110,7 +112,7 @@
 - (UITableViewCell *)configurationForwardCellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     IBLSearchFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:IBLSearchFieldCellIdentifier forIndexPath:indexPath];
     
-    IBLForwardSearchViewModel *fowardSearchViewModel = (IBLForwardSearchViewModel *)self.viewModel;
+    IBLOperatorSearchViewModel *fowardSearchViewModel = (IBLOperatorSearchViewModel *)self.viewModel;
     
     cell.nameLabel.text = [fowardSearchViewModel nameAtIndexPath:indexPath];
     

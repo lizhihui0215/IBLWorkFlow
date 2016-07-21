@@ -4,7 +4,6 @@
 //
 
 #import "IBLTrashOrder.h"
-#import "IBLOrder.h"
 #import "IBLOrderRepository.h"
 
 @interface IBLTrashOrder ()
@@ -15,7 +14,18 @@
 
 @implementation IBLTrashOrder
 
-- (void)trashOrderWith:(IBLOrder *)order completeHandler:(void (^)(NSError *))handler {
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.orderRepository = [[IBLOrderRepository alloc] init];
+    }
+    return self;
+}
+
+
+- (void)trashOrderWith:(IBLOrder *)order
+       completeHandler:(void (^)(NSError *))handler {
     [self.orderRepository trashOrderWithId:order.identifier completeHandler:handler];
 }
 

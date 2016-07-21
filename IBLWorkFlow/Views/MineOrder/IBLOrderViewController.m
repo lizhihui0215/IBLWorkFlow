@@ -13,6 +13,7 @@
 #import "IBLOrderViewModel.h"
 #import "IBLBusinessAlertViewController.h"
 #import "IBLSearchViewController.h"
+#import "IBLCreateAccountViewController.h"
 
 static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSearch";
 
@@ -159,16 +160,25 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     return cell;
 }
 
+- (NSDictionary *)segueIdentifierMapForSearch{
+    return @{@(IBLOrderActionForward) : OrderActionForwardIdentifier,
+             @(IBLOrderActionSend) : OrderActionSendIdentifier,
+             @(IBLOrderActionCreate) : NavigationToCreateAccountIdentifier};
+}
+
 - (void)segmentControlTappedWithAction:(IBLOrderAction)action
                              indexPath:(NSIndexPath *)indexPath{
     switch (action) {
-        case IBLOrderActionForward: {
-            [self performSegueWithIdentifier:OrderActionForwardIdentifier sender:indexPath];
+        case IBLOrderActionForward:
+        case IBLOrderActionSend:
+        case IBLOrderActionCreate:{
+            [self performSegueWithIdentifier:[self segueIdentifierMapForSearch][@(action)] sender:indexPath];
                 break;
         }
         case IBLOrderActionDelete:
         case IBLOrderActionTrash:
-        case IBLOrderActionFinish: {
+        case IBLOrderActionFinish:
+        case IBLOrderActionHandling:{
             NSString *title = [self.viewModel actionTitleWith:action atIndexPath:indexPath];
             
             UIImage *image = [self.viewModel actionImageWith:action];
@@ -185,11 +195,10 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                         indexPath:indexPath
                                   completeHandler:^(NSError *error) {
                                       if (![self showAlertWithError:error]) {
-                                          [self.tableView reloadData];
+                                          [self.tableView.mj_header beginRefreshing];
                                       }
                                   }];
             };
-
             
             [alertView show];
             break;
@@ -198,6 +207,8 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     }
     
 }
+
+
 
 #pragma mark - Navigation
 
@@ -214,8 +225,16 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     }else if ([segue.identifier isEqualToString:OrderActionForwardIdentifier]){
         IBLSearchViewController *forwardSearchViewController = [segue destinationViewController];
         forwardSearchViewController.title = @"转发";
-        forwardSearchViewController.viewModel = [IBLForwardSearchViewModel forwardSearchModelWithOrder:[self.viewModel orderAtIndexPath:sender]];
+        forwardSearchViewController.viewModel = [IBLOperatorSearchViewModel operatorSearchModelWithOrder:[self.viewModel orderAtIndexPath:sender] searchType:IBLSearchTypeForward];
         forwardSearchViewController.searchDelegate = self;
+    }else if ([segue.identifier isEqualToString:OrderActionSendIdentifier]){
+        IBLSearchViewController *forwardSearchViewController = [segue destinationViewController];
+        forwardSearchViewController.title = @"派发";
+        forwardSearchViewController.viewModel = [IBLOperatorSearchViewModel operatorSearchModelWithOrder:[self.viewModel orderAtIndexPath:sender] searchType:IBLSearchTypeSend];
+        forwardSearchViewController.searchDelegate = self;
+    }else if ([segue.identifier isEqualToString:NavigationToCreateAccountIdentifier]){
+        IBLCreateAccountViewController *createAccountViewController = [segue destinationViewController];
+        createAccountViewController.viewModel = [IBLCreateAccountViewModel modelWithCreateAccountType:IBLCreateAccountTypeFromOrder order:[self.viewModel orderAtIndexPath:sender]];
     }
 }
 
@@ -227,35 +246,65 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 
 - (void)searchViewController:(IBLSearchViewController *)searchViewController
            didSelectedResult:(id)searchResult {
+    IBLOperatorSearchViewModel *forwardViewModel = (IBLOperatorSearchViewModel *)searchViewController.viewModel;
+    IBLOperator *operator = searchResult;
+    NSString *title = @"";
+    NSString *placeholder = @"";
+    
     switch (searchViewController.viewModel.searchType) {
         case IBLSearchTypeForward: {
-            IBLForwardSearchViewModel *forwardViewModel = (IBLForwardSearchViewModel *)searchViewController.viewModel;
-            IBLOperator *operator = searchResult;
-            NSString *title = [NSString stringWithFormat:@"转发给：%@", operator.name];
-            
-            IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title
-                                                                                           placeholder:@"转发说明"
-                                                                                                 image:[UIImage imageNamed:@"alert"]];
-            [alertView show];
-            [self showHUDWithMessage:@"转发中..."];
-            @weakify(self)
-            alertView.buttonTapped = ^(IBLBusinessAlertViewController *alert, NSInteger buttonIndex){
-                @strongify(self)
+            title = [NSString stringWithFormat:@"转发给：%@", operator.name];
+            placeholder = @"转发说明";
+            break;
+        }
+        case IBLSearchTypeSend:{
+            title = [NSString stringWithFormat:@"派发给：%@", operator.name];
+            placeholder = @"派发说明";
+            break;
+        }
+    }
+    
+    IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title
+                                                                                   placeholder:placeholder
+                                                                                         image:[UIImage imageNamed:@"alert"]];
+    [alertView show];
+    @weakify(self)
+    alertView.buttonTapped = ^(IBLBusinessAlertViewController *alert, NSInteger buttonIndex){
+        @strongify(self)
+        [self showHUDWithMessage:@"处理中..."];
+        switch (searchViewController.viewModel.searchType) {
+            case IBLSearchTypeForward:
+            {
                 [self.viewModel forwardWithOrder:forwardViewModel.order
                                         operator:operator
                                          content:alert.contentTextField.text
                                  completehandler:^(NSError *error) {
                                      [self hidHUD];
                                      if (![self showAlertWithError:error]) {
-                                         //FIXME: 提交成功
+                                         [self.tableView.mj_header beginRefreshing];
                                      }
                                  }];
-            };
-            break;
+                break;
+            }
+            case IBLSearchTypeSend:{
+                [self.viewModel sendWithOrder:forwardViewModel.order
+                                     operator:operator
+                                      content:alert.contentTextField.text
+                              completehandler:^(NSError *error) {
+                                  [self hidHUD];
+                                  if (![self showAlertWithError:error]) {
+                                      [self.tableView.mj_header beginRefreshing];
+                                  }
+                              }];
+                break;
+            }
+            default:
+                break;
         }
-    }
-
+    };
 }
+
+
 
 
 @end

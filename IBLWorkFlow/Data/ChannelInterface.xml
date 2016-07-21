@@ -1,0 +1,30 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://webserver.module.miniboss.com/" name="ChannelInterface" targetNamespace="http://webserver.module.miniboss.com/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.webserver.module.miniboss.com/" xmlns="http://webserver.module.miniboss.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webserver.module.miniboss.com/">
+            <xsd:element name="getChannelList" type="getChannelList"/>
+            <xsd:complexType name="getChannelList">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getChannelListResponse" type="getChannelListResponse"/>
+            <xsd:complexType name="getChannelListResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="getChannelListResponse">
+        <wsdl:part element="ns1:getChannelListResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getChannelList">
+        <wsdl:part element="ns1:getChannelList" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="ChannelInterface">
+        <wsdl:operation name="getChannelList">
+            <wsdl:input message="ns1:getChannelList" name="getChannelList"></wsdl:input>
+            <wsdl:output message="ns1:getChannelListResponse" name="getChannelListResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

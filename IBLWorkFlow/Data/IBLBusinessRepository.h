@@ -13,6 +13,8 @@ static NSString *const IBLWorkOrderInterface = @"WorkOrderInterface";
 
 static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
 
+static NSString *const IBLChannelSOAPFileName = @"ChannelInterface";
+
 @interface IBLBusinessRepository : IBLRepository
 
 @property (nonatomic, readonly) IBLUser *user;

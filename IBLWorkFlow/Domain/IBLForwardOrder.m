@@ -35,13 +35,7 @@
     [self.orderRepository forwardOrderWithId:order.identifier
                                   operatorId:operator.identifier
                                      content:content
-                             completeHandler:^(NSError *error) {
-                                 [self.orderRepository forwardOrderWithId:order.identifier
-                                                               operatorId:operator.identifier
-                                                                  content:content
-                                                          completeHandler:handler];
-                                 
-                             }];
+                             completeHandler:handler];
     
 }
 @end

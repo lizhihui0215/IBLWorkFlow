@@ -13,4 +13,5 @@
 
 - (void)fetchOperatorsWithOperatorName:(NSString *)operatorName
                        completeHandler:(void (^)(NSArray<IBLOperator *>*, NSError *))handler;
+
 @end

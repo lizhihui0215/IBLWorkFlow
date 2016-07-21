@@ -5,6 +5,7 @@
 
 #import "IBLUseCase.h"
 
+@class IBLOrder;
 @interface IBLTrashOrder : IBLUseCase
 
 - (void)trashOrderWith:(IBLOrder *)order completeHandler:(void (^)(NSError *))handler;

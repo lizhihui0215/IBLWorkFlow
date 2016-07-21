@@ -89,4 +89,12 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
 
 - (void)trashOrderWithId:(NSInteger)identifier
          completeHandler:(void (^)(NSError *))handler;
+
+- (void)handleOrderWithId:(NSInteger)identifier
+          completeHandler:(void (^)(NSError *))handler;
+
+- (void)sendOrderWithId:(NSInteger)identifier
+             operatorId:(NSInteger)operatorId
+                content:(NSString *)content
+        completeHandler:(void (^)(NSError *))handler;
 @end
