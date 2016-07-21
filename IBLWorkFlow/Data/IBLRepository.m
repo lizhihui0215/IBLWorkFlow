@@ -28,6 +28,25 @@ static NSString * const kSignKey = @"48e5be901c6692bf46fd2bba3b04d56b";
 
 @end
 
+@implementation IBLFetchList
+
+- (instancetype)initWithStart:(NSInteger)start pageSize:(NSInteger)pageSize {
+    self = [super init];
+    if (self) {
+        self.start = start;
+        self.pageSize = pageSize;
+    }
+
+    return self;
+}
+
++ (instancetype)listWithStart:(NSInteger)start pageSize:(NSInteger)pageSize {
+    return [[self alloc] initWithStart:start pageSize:pageSize];
+}
+
+
+@end
+
 @implementation IBLSOAPMethod
 - (instancetype)initWithRequestMethodName:(NSString *)requestMethodName responseMethodName:(NSString *)responseMethodName {
     self = [super init];

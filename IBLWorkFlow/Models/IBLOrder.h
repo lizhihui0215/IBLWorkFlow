@@ -160,10 +160,10 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
 @property (nonatomic, copy) NSString *creatorPhone;
 
 /// 所属校区ID （报装工单特有）
-@property (nonatomic, copy) NSString *residentialIdentifier;
+@property (nonatomic, assign) NSInteger residentialIdentifier;
 
 /// 订购的销售品ID （报装工单特有）
-@property (nonatomic, copy) NSString *productIdentifier;
+@property (nonatomic, assign) NSInteger productIdentifier;
 
 /// 用户姓名 （报装工单特有）
 @property (nonatomic, copy) NSString *username;

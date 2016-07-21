@@ -17,7 +17,7 @@
 @implementation IBLAppDelegate
 
 + (instancetype)sharedDelegate{
-    return [UIApplication sharedApplication].delegate;
+    return (IBLAppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

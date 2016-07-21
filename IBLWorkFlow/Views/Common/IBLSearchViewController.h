@@ -9,6 +9,8 @@
 #import "IBLTableViewController.h"
 #import "IBLSearchViewModel.h"
 #import "IBLOperatorSearchViewModel.h"
+#import "IBLRegionSearchViewModel.h"
+#import "IBLProductSearchViewModel.h"
 
 @class IBLSearchViewController;
 

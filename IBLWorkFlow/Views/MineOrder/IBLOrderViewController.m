@@ -262,6 +262,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
             placeholder = @"派发说明";
             break;
         }
+        default: break;
     }
     
     IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title

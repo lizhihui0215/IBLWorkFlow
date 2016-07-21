@@ -22,9 +22,6 @@ static NSString *const kBizType = @"bizType";
 
 static NSString *const kDateRange = @"dateRange";
 
-static NSString *const kStart = @"start";
-
-static NSString *const kPageSize = @"pageSize";
 
 
 static NSString *const kOrderList = @"orderList";

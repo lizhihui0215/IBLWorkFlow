@@ -58,6 +58,15 @@
             searchInfo = @{kSearchOperatorName : keyword};
             break;
         }
+        case IBLSearchTypeCreateAccountArea:{
+            searchInfo = @{kSearchAreaName : keyword};
+            break;
+        }
+        case IBLSearchTypeProduct:{
+            searchInfo = @{kSearchProductName : keyword};
+            break;
+        }
+        
     }
     
     return searchInfo;
@@ -101,15 +110,40 @@
     UITableViewCell *cell = nil;
     switch (self.viewModel.searchType) {
         case IBLSearchTypeSend:
-        case IBLSearchTypeForward: {
-            cell = [self configurationForwardCellWithTableView:tableView indexPath:indexPath];
+        case IBLSearchTypeForward:{
+            cell = [self configurationOperatorCellWithTableView:tableView indexPath:indexPath];
+            break;
+        }
+        case IBLSearchTypeCreateAccountArea:{
+            cell = [self configurationRegionCellWithTableView:tableView indexPath:indexPath];
+            break;
+        }
+        case IBLSearchTypeProduct:{
+            cell = [self configurationProductCellWithTableView:tableView indexPath:indexPath];
             break;
         }
     }
     return cell;
 }
 
-- (UITableViewCell *)configurationForwardCellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)configurationProductCellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    IBLSearchFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:IBLSearchFieldCellIdentifier forIndexPath:indexPath];
+    IBLProductSearchViewModel *productSearchViewModel = (IBLProductSearchViewModel *) self.viewModel;
+    cell.nameLabel.text = [productSearchViewModel nameAtIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (UITableViewCell *)configurationRegionCellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    IBLSearchFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:IBLSearchFieldCellIdentifier forIndexPath:indexPath];
+    IBLRegionSearchViewModel *regionSearchViewModel = (IBLRegionSearchViewModel *) self.viewModel;
+    cell.nameLabel.text = [regionSearchViewModel nameAtIndexPath:indexPath];
+
+    return cell;
+}
+
+
+- (UITableViewCell *)configurationOperatorCellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     IBLSearchFieldCell *cell = [tableView dequeueReusableCellWithIdentifier:IBLSearchFieldCellIdentifier forIndexPath:indexPath];
     
     IBLOperatorSearchViewModel *fowardSearchViewModel = (IBLOperatorSearchViewModel *)self.viewModel;

@@ -9,13 +9,12 @@
 #import "IBLCreateAccountTableViewController.h"
 #import "IBLSectionHeaderView.h"
 #import "IBLSearchViewController.h"
-#import "IBLRegionSearchViewModel.h"
 
 
 @implementation IBLCreateAccountInfo
 
-- (instancetype)initWithResidentialIdentifier:(NSString *)residentialIdentifier
-                            productIdentifier:(NSString *)productIdentifier
+- (instancetype)initWithResidentialIdentifier:(NSInteger)residentialIdentifier
+                            productIdentifier:(NSInteger)productIdentifier
                                      username:(NSString *)username
                                    regionName:(NSString *)regionName
                                   productName:(NSString *)productName
@@ -45,8 +44,8 @@
     return self;
 }
 
-+ (instancetype)infoWithResidentialIdentifier:(NSString *)residentialIdentifier
-                            productIdentifier:(NSString *)productIdentifier
++ (instancetype)infoWithResidentialIdentifier:(NSInteger)residentialIdentifier
+                            productIdentifier:(NSInteger)productIdentifier
                                      username:(NSString *)username
                                    regionName:(NSString *)regionName
                                   productName:(NSString *)productName
@@ -160,7 +159,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     BOOL isHidden = [self.tableViewDataSource isHiddenAtIndexPath:indexPath];
     return isHidden ? 0 : 30;
 }
@@ -226,16 +224,41 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"CreateAccountForSearch"]){
+    if ([segue.identifier isEqualToString:@"CreateAccountRegionForSearch"]){
         IBLSearchViewController *searchViewController = [segue destinationViewController];
         searchViewController.viewModel = [IBLRegionSearchViewModel regionSearchModelWithSearchType:IBLSearchTypeCreateAccountArea];
+        searchViewController.searchDelegate = self;
+    }else if ([segue.identifier isEqualToString:@"CreateAccountProductForSearch"]){
+        IBLSearchViewController *searchViewController = [segue destinationViewController];
+        searchViewController.viewModel = [IBLProductSearchViewModel productSearchModelWithSearchType:IBLSearchTypeProduct
+                                                                                           productId:self.createAccountInfo.productIdentifier
+                                                                                            regionId:self.createAccountInfo.residentialIdentifier];
         searchViewController.searchDelegate = self;
     }
 }
 
 - (void)searchViewController:(IBLSearchViewController *)searchViewController
            didSelectedResult:(id)searchResult {
-    
+    switch (searchViewController.viewModel.searchType) {
+        
+        case IBLSearchTypeCreateAccountArea: {
+            IBLRegion *region = searchResult;
+            self.createAccountInfo.regionName = region.name;
+            self.createAccountInfo.residentialIdentifier = region.identifier;
+            self.regionTextField.text = region.name;
+
+            break;
+        }
+        case IBLSearchTypeProduct: {
+            IBLProduct *region = searchResult;
+            self.createAccountInfo.regionName = region.name;
+            self.createAccountInfo.residentialIdentifier = region.identifier;
+            self.regionTextField.text = region.name;
+
+            break;
+        }
+        default: break;
+    }
 }
 
 

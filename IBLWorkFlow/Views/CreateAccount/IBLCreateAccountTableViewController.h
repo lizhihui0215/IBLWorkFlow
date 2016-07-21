@@ -24,11 +24,11 @@
 
 @interface IBLCreateAccountInfo : NSObject
 
-/// 所属校区ID （报装工单特有）
-@property (nonatomic, copy) NSString *residentialIdentifier;
+/// 小区ID （报装工单特有）
+@property (nonatomic, assign) NSInteger residentialIdentifier;
 
 /// 订购的销售品ID （报装工单特有）
-@property (nonatomic, copy) NSString *productIdentifier;
+@property (nonatomic, assign) NSInteger productIdentifier;
 
 /// 用户姓名 （报装工单特有）
 @property (nonatomic, copy) NSString *username;
@@ -90,8 +90,8 @@
 /// 支付金额
 @property (nonatomic, copy) NSString *pay;
 
-+ (instancetype)infoWithResidentialIdentifier:(NSString *)residentialIdentifier
-                            productIdentifier:(NSString *)productIdentifier
++ (instancetype)infoWithResidentialIdentifier:(NSInteger)residentialIdentifier
+                            productIdentifier:(NSInteger)productIdentifier
                                      username:(NSString *)username
                                    regionName:(NSString *)regionName
                                   productName:(NSString *)productName

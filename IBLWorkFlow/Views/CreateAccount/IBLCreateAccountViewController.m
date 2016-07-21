@@ -62,17 +62,17 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
     IBLCreateAccountInfo *createAccountInfo = nil;
     if (order) {
         createAccountInfo = [IBLCreateAccountInfo infoWithResidentialIdentifier:order.residentialIdentifier
-                                          productIdentifier:order.productIdentifier
-                                                   username:order.username
-                                                 regionName:order.regionName
-                                                productName:order.productName
-                                           identifierNumber:order.identifierNumber
-                                                     remark:order.remark
-                                                 effectType:order.effectType
-                                                 effectDate:order.effectDate
-                                                      phone:order.phone
-                                                    address:order.address
-                                                 handleMark:order.handleMark];
+                                                              productIdentifier:order.productIdentifier
+                                                                       username:order.username
+                                                                     regionName:order.regionName
+                                                                    productName:order.productName
+                                                               identifierNumber:order.identifierNumber
+                                                                         remark:order.remark
+                                                                     effectType:order.effectType
+                                                                     effectDate:order.effectDate
+                                                                          phone:order.phone
+                                                                        address:order.address
+                                                                     handleMark:order.handleMark];
     }else{
         createAccountInfo = [[IBLCreateAccountInfo alloc] init];
     }

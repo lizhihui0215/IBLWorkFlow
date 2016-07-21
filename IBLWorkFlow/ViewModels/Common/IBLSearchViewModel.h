@@ -10,11 +10,13 @@
 
 static NSString *const kSearchOperatorName = @"operatorName";
 static NSString *const kSearchAreaName = @"areaName";
+static NSString *const kSearchProductName = @"productName";
 
 typedef NS_ENUM(NSInteger, IBLSearchType) {
     IBLSearchTypeForward,
     IBLSearchTypeSend,
     IBLSearchTypeCreateAccountArea,
+    IBLSearchTypeProduct,
 };
 
 @class IBLSearchViewModel;

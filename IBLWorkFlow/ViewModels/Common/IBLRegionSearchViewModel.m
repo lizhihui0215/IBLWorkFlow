@@ -8,7 +8,6 @@
 
 #import "IBLRegionSearchViewModel.h"
 #import "IBLFetchRegion.h"
-#import "IBLRegion.h"
 
 @interface IBLRegionSearchViewModel ()
 
@@ -45,7 +44,7 @@
                                     regionname:regionName
                                completeHandler:^(NSArray<IBLRegion *> *regions, NSError *error){
                                    IBLSection *section = [self sectionAt:0];
-                                   NSMutableArray<IBLSectionItem *> *sectionItems =[self sectionItemsWithOperators:regions];
+                                   NSMutableArray<IBLSectionItem *> *sectionItems = [self sectionItemsWithRegions:regions];
                                    if (isRefresh) {
                                        section.items = sectionItems;
                                    }else{
@@ -55,16 +54,31 @@
                                }];
 }
 
-- (NSMutableArray<IBLSectionItem *> *)sectionItemsWithOperators:(NSArray<IBLRegion *> *)operators {
+- (NSMutableArray<IBLSectionItem *> *)sectionItemsWithRegions:(NSArray<IBLRegion *> *)regions {
     
     NSMutableArray<IBLSectionItem *> *sectionItems = [NSMutableArray array];
     
-    for (IBLRegion *regions in operators) {
-        IBLSectionItem *item = [IBLSectionItem itemWithInfo:regions selected:NO];
+    for (IBLRegion *region in regions) {
+        IBLSectionItem *item = [IBLSectionItem itemWithInfo:region selected:NO];
         [sectionItems addObject:item];
     }
     
     return sectionItems;
 }
 
+- (id)searchResultAtIndexPath:(NSIndexPath *)indexPath {
+    return [self regionAtIndexPath:indexPath];;
+}
+
+- (NSString *)nameAtIndexPath:(NSIndexPath *)indexPath {
+    IBLRegion  *region = [self regionAtIndexPath:indexPath];
+
+    return region.name;
+}
+
+- (IBLRegion *)regionAtIndexPath:(NSIndexPath *)indexPath {
+    IBLSectionItem  *item = [self sectionItemAtIndexPath:indexPath];
+
+    return item.info;
+}
 @end

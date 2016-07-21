@@ -52,6 +52,10 @@
 		2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650AC391D2F571200421C78 /* IBLWSDLServices.m */; };
 		26588EA91D3CD1550095F9C3 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 26588EA81D3CD1550095F9C3 /* HMSegmentedControl.m */; };
 		26588EAC1D3CD61E0095F9C3 /* IBLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26588EAB1D3CD61E0095F9C3 /* IBLSearchViewController.m */; };
+		26734FCD1D4112300048DE97 /* IBLProductSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26734FCC1D4112300048DE97 /* IBLProductSearchViewModel.m */; };
+		26734FCF1D41135A0048DE97 /* ProductOfferInterface.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26734FCE1D41135A0048DE97 /* ProductOfferInterface.xml */; };
+		26734FD21D4113A60048DE97 /* IBLProductRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26734FD11D4113A60048DE97 /* IBLProductRepository.m */; };
+		26734FD51D4118F70048DE97 /* IBLFetchProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 26734FD41D4118F70048DE97 /* IBLFetchProduct.m */; };
 		267622C51D3CDD3200B4E2F3 /* IBLSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 267622C41D3CDD3200B4E2F3 /* IBLSearchViewModel.m */; };
 		267622C81D3CDE3F00B4E2F3 /* IBLSearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267622C71D3CDE3F00B4E2F3 /* IBLSearchFieldCell.m */; };
 		267622CB1D3CDEAD00B4E2F3 /* IBLOperatorSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 267622CA1D3CDEAD00B4E2F3 /* IBLOperatorSearchViewModel.m */; };
@@ -105,6 +109,7 @@
 		5B8757FCBA803A3DCB4C50B2 /* IBLOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B2890782FCCC77AB904 /* IBLOrderCell.m */; };
 		5B875ABCE8A1815B62EDC2A3 /* IBLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875A477581D17ADD3212A9 /* IBLTableViewController.m */; };
 		5B875BA76456459E9F3FA8BA /* IBLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */; };
+		5B875D0ED0EB1229E1244E5C /* IBLProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B87545523BC6DB49B830646 /* IBLProduct.m */; };
 		5B875F35EE4AEFAF69A69881 /* IBLLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */; };
 		5B875F608C49341C02D1E7F4 /* IBLOrderSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8758B18A41A5D65E5AA2E0 /* IBLOrderSearchResult.m */; };
 		916C3F0C4BE6724553A38E60 /* libPods-IBLWorkFlowUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDBB83F272FFCA67F7EB540F /* libPods-IBLWorkFlowUITests.a */; };
@@ -217,6 +222,13 @@
 		26588EA81D3CD1550095F9C3 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		26588EAA1D3CD61E0095F9C3 /* IBLSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLSearchViewController.h; sourceTree = "<group>"; };
 		26588EAB1D3CD61E0095F9C3 /* IBLSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLSearchViewController.m; sourceTree = "<group>"; };
+		26734FCB1D4112300048DE97 /* IBLProductSearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLProductSearchViewModel.h; sourceTree = "<group>"; };
+		26734FCC1D4112300048DE97 /* IBLProductSearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLProductSearchViewModel.m; sourceTree = "<group>"; };
+		26734FCE1D41135A0048DE97 /* ProductOfferInterface.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ProductOfferInterface.xml; sourceTree = "<group>"; };
+		26734FD01D4113A60048DE97 /* IBLProductRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLProductRepository.h; sourceTree = "<group>"; };
+		26734FD11D4113A60048DE97 /* IBLProductRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLProductRepository.m; sourceTree = "<group>"; };
+		26734FD31D4118F70048DE97 /* IBLFetchProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLFetchProduct.h; sourceTree = "<group>"; };
+		26734FD41D4118F70048DE97 /* IBLFetchProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFetchProduct.m; sourceTree = "<group>"; };
 		267622C31D3CDD3200B4E2F3 /* IBLSearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLSearchViewModel.h; sourceTree = "<group>"; };
 		267622C41D3CDD3200B4E2F3 /* IBLSearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLSearchViewModel.m; sourceTree = "<group>"; };
 		267622C61D3CDE3F00B4E2F3 /* IBLSearchFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLSearchFieldCell.h; sourceTree = "<group>"; };
@@ -307,11 +319,13 @@
 		5B8751501161A3D21DFE40EF /* IBLOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderViewController.h; sourceTree = "<group>"; };
 		5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLeftMenuViewController.m; sourceTree = "<group>"; };
 		5B8753BEE41EFC83BCC1A897 /* IBLLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLeftMenuViewController.h; sourceTree = "<group>"; };
+		5B87545523BC6DB49B830646 /* IBLProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLProduct.m; sourceTree = "<group>"; };
 		5B875517E4AEDED23890788A /* IBLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLTableViewCell.h; sourceTree = "<group>"; };
 		5B8755217F90CFB700C44EAD /* IBLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLTableViewController.h; sourceTree = "<group>"; };
 		5B87555C93509ED161F88566 /* IBLTrashOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLTrashOrder.h; sourceTree = "<group>"; };
 		5B875648DBF736BC2589E501 /* IBLOrderManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderManagerViewController.h; sourceTree = "<group>"; };
 		5B87572F5D7F00B76DFCC5CD /* IBLRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRootViewController.h; sourceTree = "<group>"; };
+		5B8758378F8342415865426C /* IBLProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLProduct.h; sourceTree = "<group>"; };
 		5B8758B18A41A5D65E5AA2E0 /* IBLOrderSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderSearchResult.m; sourceTree = "<group>"; };
 		5B8758BB5B46F169393FE2D7 /* IBLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLTableViewCell.m; sourceTree = "<group>"; };
 		5B8758BBA9729641CC5F291D /* IBLOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderViewController.m; sourceTree = "<group>"; };
@@ -485,6 +499,8 @@
 				2615BED01D38CAAE002FE7A7 /* IBLFieldConfiguration.m */,
 				262BFF8E1D40D0040021F8EB /* IBLRegion.h */,
 				262BFF8F1D40D0040021F8EB /* IBLRegion.m */,
+				5B8758378F8342415865426C /* IBLProduct.h */,
+				5B87545523BC6DB49B830646 /* IBLProduct.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -568,6 +584,8 @@
 				262BFF831D40BF910021F8EB /* IBLCreateAccountCommit.m */,
 				262BFF8B1D40CF9D0021F8EB /* IBLFetchRegion.h */,
 				262BFF8C1D40CF9D0021F8EB /* IBLFetchRegion.m */,
+				26734FD31D4118F70048DE97 /* IBLFetchProduct.h */,
+				26734FD41D4118F70048DE97 /* IBLFetchProduct.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -689,6 +707,8 @@
 				267622CA1D3CDEAD00B4E2F3 /* IBLOperatorSearchViewModel.m */,
 				262BFF881D40CD260021F8EB /* IBLRegionSearchViewModel.h */,
 				262BFF891D40CD260021F8EB /* IBLRegionSearchViewModel.m */,
+				26734FCB1D4112300048DE97 /* IBLProductSearchViewModel.h */,
+				26734FCC1D4112300048DE97 /* IBLProductSearchViewModel.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -765,12 +785,15 @@
 				26D56E441D3618E10091A940 /* IBLOrderRepository.m */,
 				26FFA9231D36936200DF8D4E /* IBLAppRepository.h */,
 				26FFA9241D36936200DF8D4E /* IBLAppRepository.m */,
+				26734FD01D4113A60048DE97 /* IBLProductRepository.h */,
+				26734FD11D4113A60048DE97 /* IBLProductRepository.m */,
 				2612E1651D2E9DDF00CA76BC /* User.xml */,
 				26F620191D2FB6B500B49065 /* Operator.xml */,
 				269B7D591D33453200D52DF0 /* Test.xml */,
 				26D56E411D3618870091A940 /* WorkOrder.xml */,
 				26469BE21D388F880000285D /* Configuration.xml */,
 				262BFF911D40D2400021F8EB /* ChannelInterface.xml */,
+				26734FCE1D41135A0048DE97 /* ProductOfferInterface.xml */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -913,6 +936,7 @@
 			files = (
 				262BFF921D40D2400021F8EB /* ChannelInterface.xml in Resources */,
 				264EBB711D2E023D00FF8373 /* LaunchScreen.storyboard in Resources */,
+				26734FCF1D41135A0048DE97 /* ProductOfferInterface.xml in Resources */,
 				26A11D071D363A6900984B40 /* IBLBusinessAlertViewController.xib in Resources */,
 				26D56E421D3618870091A940 /* WorkOrder.xml in Resources */,
 				26846F6A1D34C1E9001F9C73 /* IBLOrderCell.xib in Resources */,
@@ -1090,6 +1114,7 @@
 				267622CE1D3CE07200B4E2F3 /* IBLFetchOperatorList.m in Sources */,
 				2615BEDA1D38D732002FE7A7 /* IBLGenerateAppConfiguration.m in Sources */,
 				26588EAC1D3CD61E0095F9C3 /* IBLSearchViewController.m in Sources */,
+				26734FD21D4113A60048DE97 /* IBLProductRepository.m in Sources */,
 				26469BEC1D38C4380000285D /* IBLWorkOrderType.m in Sources */,
 				26D56E4B1D3629E20091A940 /* IBLOrderViewModel.m in Sources */,
 				2615BED41D38D314002FE7A7 /* IBLPickerView.m in Sources */,
@@ -1103,6 +1128,8 @@
 				26846F701D34D238001F9C73 /* IBLTableViewHeaderFooterView.m in Sources */,
 				2615BED11D38CAAE002FE7A7 /* IBLFieldConfiguration.m in Sources */,
 				264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */,
+				26734FD51D4118F70048DE97 /* IBLFetchProduct.m in Sources */,
+				26734FCD1D4112300048DE97 /* IBLProductSearchViewModel.m in Sources */,
 				267622C81D3CDE3F00B4E2F3 /* IBLSearchFieldCell.m in Sources */,
 				264EBB661D2E023D00FF8373 /* IBLAppDelegate.m in Sources */,
 				262BFF7E1D40752E0021F8EB /* IBLCreateAccountTableViewController.m in Sources */,
@@ -1156,6 +1183,7 @@
 				5B875F608C49341C02D1E7F4 /* IBLOrderSearchResult.m in Sources */,
 				26588EA91D3CD1550095F9C3 /* HMSegmentedControl.m in Sources */,
 				5B87503752F56F0A4773B64D /* IBLTrashOrder.m in Sources */,
+				5B875D0ED0EB1229E1244E5C /* IBLProduct.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

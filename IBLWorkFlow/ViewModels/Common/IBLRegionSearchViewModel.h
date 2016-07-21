@@ -7,8 +7,10 @@
 //
 
 #import "IBLSearchViewModel.h"
+#import "IBLRegion.h"
 
 @interface IBLRegionSearchViewModel : IBLSearchViewModel
 + (instancetype)regionSearchModelWithSearchType:(IBLSearchType)searchType;
 
+- (NSString *)nameAtIndexPath:(NSIndexPath *)indexPath;
 @end

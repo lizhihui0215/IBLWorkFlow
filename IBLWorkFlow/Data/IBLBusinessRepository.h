@@ -15,6 +15,10 @@ static NSString *const IBLWorkOrderSOAPFileName = @"WorkOrder";
 
 static NSString *const IBLChannelSOAPFileName = @"ChannelInterface";
 
+static NSString *const kStart = @"start";
+
+static NSString *const kPageSize = @"pageSize";
+
 @interface IBLBusinessRepository : IBLRepository
 
 @property (nonatomic, readonly) IBLUser *user;

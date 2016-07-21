@@ -14,6 +14,19 @@ static NSString * const kMCode = @"mCode";
 /** 时间戳 */
 static NSString * const kSessionID = @"sessionId";
 
+@interface IBLFetchList : NSObject
+
+@property (nonatomic, assign) NSInteger start;
+
+@property (nonatomic, assign) NSInteger pageSize;
+
+- (instancetype)initWithStart:(NSInteger)start pageSize:(NSInteger)pageSize;
+
++ (instancetype)listWithStart:(NSInteger)start pageSize:(NSInteger)pageSize;
+
+
+@end
+
 @interface IBLSOAPMethod : NSObject
 @property (nonatomic, copy) NSString *requestMethodName;
 

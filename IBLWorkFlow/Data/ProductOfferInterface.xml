@@ -1,0 +1,52 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://webserver.module.miniboss.com/" name="ProductOfferInterface" targetNamespace="http://webserver.module.miniboss.com/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.webserver.module.miniboss.com/" xmlns="http://webserver.module.miniboss.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://webserver.module.miniboss.com/">
+            <xsd:element name="getOfferList" type="getOfferList"/>
+            <xsd:complexType name="getOfferList">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getOfferListResponse" type="getOfferListResponse"/>
+            <xsd:complexType name="getOfferListResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getOfferTariffInfo" type="getOfferTariffInfo"/>
+            <xsd:complexType name="getOfferTariffInfo">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getOfferTariffInfoResponse" type="getOfferTariffInfoResponse"/>
+            <xsd:complexType name="getOfferTariffInfoResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="getOfferList">
+        <wsdl:part element="ns1:getOfferList" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOfferTariffInfoResponse">
+        <wsdl:part element="ns1:getOfferTariffInfoResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOfferTariffInfo">
+        <wsdl:part element="ns1:getOfferTariffInfo" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOfferListResponse">
+        <wsdl:part element="ns1:getOfferListResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="ProductOfferInterface">
+        <wsdl:operation name="getOfferList">
+            <wsdl:input message="ns1:getOfferList" name="getOfferList"></wsdl:input>
+            <wsdl:output message="ns1:getOfferListResponse" name="getOfferListResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOfferTariffInfo">
+            <wsdl:input message="ns1:getOfferTariffInfo" name="getOfferTariffInfo"></wsdl:input>
+            <wsdl:output message="ns1:getOfferTariffInfoResponse" name="getOfferTariffInfoResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>
