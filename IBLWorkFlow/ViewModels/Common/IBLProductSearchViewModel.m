@@ -40,6 +40,9 @@
         self.productId = productId;
         self.regionId = regionId;
         self.fetchProduct = [[IBLFetchProduct alloc] init];
+        IBLSection *section = [IBLSection sectionWithInfo:nil items:nil];
+        
+        [self.dataSource addObject:section];
     }
     return self;
 }

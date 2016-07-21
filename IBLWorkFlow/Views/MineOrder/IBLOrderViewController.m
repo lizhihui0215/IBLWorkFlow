@@ -140,7 +140,6 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 - (IBAction)orderUserButtonPressed:(UIButton *)button{
     NSIndexPath *indexPath = nil;
     
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

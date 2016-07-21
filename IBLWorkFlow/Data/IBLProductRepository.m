@@ -9,6 +9,12 @@
 #import "IBLProductRepository.h"
 #import "IBLProduct.h"
 
+static NSString *const kProductId = @"productId";
+
+static NSString *const kRegionId = @"nodeId";
+
+static NSString *const kProductName = @"offerName";
+
 @interface IBLProductRepository ()
 
 @property (nonatomic, strong) IBLSOAPMethod *fetchProduct;
@@ -62,9 +68,9 @@
                      completeHandler:(void (^)(NSArray<IBLProduct *>*, NSError *))handler{
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
-        parameters[@"productId"] = @(productList.productId);
-        parameters[@"nodeId"] = @(productList.regionId);
-        parameters[@"offerName"] = productList.productName;
+        if (productList.productId != 0) parameters[kProductId] = @(productList.productId);
+        if (productList.regionId != 0) parameters[kRegionId] = @(productList.regionId);
+        parameters[kProductName] = productList.productName;
         parameters[kStart] = @(productList.start);
         parameters[kPageSize] = @(productList.pageSize);
         
