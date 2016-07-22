@@ -10,6 +10,8 @@
 #import "IBLWorkOrderBussinessType.h"
 #import "IBLWorkOrderType.h"
 
+
+
 /**
  *  工单状态
  */
@@ -181,7 +183,7 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
 @property (nonatomic, copy) NSString *remark;
 
 /// 生效方式 (报装工单特有)
-@property (nonatomic, copy) NSString *effectType;
+@property (nonatomic, assign) IBLOrderEffectType effectType;
 
 /// 生效日期 (报装工单特有)
 @property (nonatomic, copy) NSString *effectDate;

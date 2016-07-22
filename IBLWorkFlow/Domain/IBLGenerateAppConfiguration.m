@@ -37,6 +37,14 @@ static NSString const * kMineOrderFinished = @"";
 
 @implementation IBLGenerateAppConfiguration
 
+- (NSString *)defaultEffectDate {
+    return nil;
+}
+
+- (IBLOrderEffectType)defaultEffectType{
+    return [IBLAppRepository appConfiguration].effType;
+}
+
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes {
     return [IBLAppRepository appConfiguration].workOrderBizTypes;
 }
@@ -158,5 +166,6 @@ static NSString const * kMineOrderFinished = @"";
     
     return [actions sortedArrayUsingSelector:@selector(compare:)];
 }
+
 
 @end

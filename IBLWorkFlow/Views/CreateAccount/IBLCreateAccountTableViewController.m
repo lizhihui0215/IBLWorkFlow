@@ -9,7 +9,8 @@
 #import "IBLCreateAccountTableViewController.h"
 #import "IBLSectionHeaderView.h"
 #import "IBLSearchViewController.h"
-
+#import "IBLAlertController.h"
+#import "RMDateSelectionViewController.h"
 
 @implementation IBLCreateAccountInfo
 
@@ -20,7 +21,7 @@
                                   productName:(NSString *)productName
                              identifierNumber:(NSString *)identifierNumber
                                        remark:(NSString *)remark
-                                   effectType:(NSString *)effectType
+                                   effectType:(IBLOrderEffectType)effectType
                                    effectDate:(NSString *)effectDate
                                         phone:(NSString *)phone
                                       address:(NSString *)address
@@ -51,7 +52,7 @@
                                   productName:(NSString *)productName
                              identifierNumber:(NSString *)identifierNumber
                                        remark:(NSString *)remark
-                                   effectType:(NSString *)effectType
+                                   effectType:(IBLOrderEffectType)effectType
                                    effectDate:(NSString *)effectDate
                                         phone:(NSString *)phone
                                       address:(NSString *)address
@@ -72,9 +73,9 @@
 
 @end
 
-@interface IBLCreateAccountTableViewController ()<IBLSearchViewControllerDelegate>
+@interface IBLCreateAccountTableViewController ()<IBLSearchViewControllerDelegate, UITextFieldDelegate>
 
-@property (nonatomic, strong) IBLCreateAccountInfo *createAccountInfo;
+@property (nonatomic, strong, readwrite) IBLCreateAccountInfo *createAccountInfo;
 
 /// 用户账号
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
@@ -108,31 +109,289 @@
 @property (weak, nonatomic) IBOutlet UITextField *contractNumberTextField;
 /// 票据号
 @property (weak, nonatomic) IBOutlet UITextField *ticketNumberTextField;
-/// 优惠金额
-@property (weak, nonatomic) IBOutlet UITextField *giveTextField;
 /// 临时赠送
+@property (weak, nonatomic) IBOutlet UITextField *giveTextField;
+/// 优惠金额
 @property (weak, nonatomic) IBOutlet UITextField *discountTextField;
 /// 支付金额
 @property (weak, nonatomic) IBOutlet UITextField *payTextField;
 
+@property (nonatomic, strong) IBLProductPrice *productPrice;
+@property (weak, nonatomic) IBOutlet UILabel *salesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *discountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *payLabel;
+@property (weak, nonatomic) IBOutlet UILabel *giveLabel;
+@property (weak, nonatomic) IBOutlet UILabel *salesCountLabel;
+
 @end
 
 @implementation IBLCreateAccountTableViewController
+- (IBAction)effectDateTapped:(UITapGestureRecognizer *)sender {
+    RMDateSelectionViewController *dateSelectionVC = [RMDateSelectionViewController dateSelectionController];
+    dateSelectionVC.disableBouncingWhenShowing = YES;
+    dateSelectionVC.datePicker.minuteInterval = 1;
+    
+    dateSelectionVC.disableBlurEffects = YES;
+    
+    dateSelectionVC.hideNowButton = YES;
+    [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
+        self.createAccountInfo.effectDate = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
+        self.dateOfValidTextField.text = self.createAccountInfo.effectDate;
+    } andCancelHandler:^(RMDateSelectionViewController *vc) {
+        
+    }];
+
+}
+
+- (IBAction)effectTypeTapped:(UITapGestureRecognizer *)sender {
+    //!!!: 优化将title 和 effect 提取到appConfig中
+    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"指定日期"
+                                                         action:^(IBLButtonItem *item) {
+                                                             self.createAccountInfo.effectType = IBLOrderEffectTypeBeforeTheDate;
+                                                             self.methodOfValidTextField.text = [self effectNames][@(self.createAccountInfo.effectType)];
+                                                             [self.tableView reloadData];
+                                                         }];
+    
+    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"首次上线"
+                                                 action:^(IBLButtonItem *item) {
+                                                     self.createAccountInfo.effectType = IBLOrderEffectTypeFirst;
+                                                     self.methodOfValidTextField.text = [self effectNames][@(self.createAccountInfo.effectType)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    
+    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+
+    
+    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                    title:@"请选择生效方式"
+                                                                  message:nil
+                                                         cancleButtonItem:cancel
+                                                         otherButtonItems:beforeTheDate,first,nil];
+    [alert showInController:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     UINib *nib = [UINib nibWithNibName:@"IBLSectionHeaderView" bundle:nil];
     [self.tableView registerNib:nib forHeaderFooterViewReuseIdentifier:@"IBLSectionHeaderView"];
+    
+    IBLCreateAccountType createAccountType = [self.tableViewDataSource createAccountTypeOfTableViewController:self];
+    
+    self.commentTextView.textContainerInset = UIEdgeInsetsZero;
     self.createAccountInfo = [self.tableViewDataSource createAccountInfoOfTableViewController:self];
-    self.regionTextField.text = self.createAccountInfo.regionName;
-    self.productTextField.text = self.createAccountInfo.productName;
-    self.methodOfValidTextField.text = self.createAccountInfo.effectType;
-    self.dateOfValidTextField.text = self.createAccountInfo.effectDate;
-    self.usernameTextField.text = self.createAccountInfo.username;
-    self.phoneTextField.text = self.createAccountInfo.phone;
-    self.addressTextField.text = self.createAccountInfo.address;
-    self.identifierTextField.text = self.createAccountInfo.identifierNumber;
-    self.commentTextView.text = self.createAccountInfo.remark;
+    self.countTextField.text = @"1";
+    switch (createAccountType) {
+        case IBLCreateAccountTypeFromOrder: {
+            self.regionTextField.text = self.createAccountInfo.regionName;
+            self.productTextField.text = self.createAccountInfo.productName;
+            self.methodOfValidTextField.text = [self effectNames][@(self.createAccountInfo.effectType)];
+            self.dateOfValidTextField.text = self.createAccountInfo.effectDate;
+            self.usernameTextField.text = self.createAccountInfo.username;
+            self.phoneTextField.text = self.createAccountInfo.phone;
+            self.addressTextField.text = self.createAccountInfo.address;
+            self.identifierTextField.text = self.createAccountInfo.identifierNumber;
+            self.commentTextView.text = self.createAccountInfo.remark;
+            @weakify(self)
+            [self.tableViewDataSource productPriceOfTableViewController:self
+                                                        completeHandler:^(IBLProductPrice *productPrice) {
+                                                            @strongify(self)
+                                                            self.productPrice = productPrice;
+                                                            [self setupPriceWithProductPrice];
+                                                        }];
+            break;
+        }
+        case IBLCreateAccountTypeFromLeftMenu: {
+            self.createAccountInfo.effectType = [self.tableViewDataSource defaultEffectTypeOfTableViewController:self];
+            self.createAccountInfo.effectDate = [self.tableViewDataSource defaultEffectDateOfTableViewController:self];
+            break;
+        }
+    }
+    
+    self.payTextField.delegate = self;
+    self.salesCountTextField.delegate = self;
+    self.salesTextField.delegate = self;
+    self.discountTextField.delegate = self;
+    self.giveTextField.delegate = self;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField;{
+    BOOL isNumber = [self validateNumberWithText:textField.text];
+    
+    if (!isNumber) return NO;
+    
+    if (![self validateTextFields]) return NO;
+    
+    return YES;
+}
+
+- (BOOL)validateTextFields{
+    
+    BOOL isValidate = YES;
+    
+    NSString *title = @"";
+    
+    // 支付金额
+    CGFloat pay = [self pay];
+    // 销售品总金额
+    CGFloat sales = [self sales];
+    // 优惠金额
+    CGFloat discount = [self discount];
+    
+    if (pay < 0) {
+        title = @"支付金额必须大于0";
+        isValidate = NO;
+    }
+    
+    if (pay > sales) {
+        title = @"销售品总额必须大于支付金额";
+        isValidate = NO;
+    }
+    
+    if (discount < 0) {
+        title = @"优惠金额必须大于0";
+        isValidate = NO;
+    }
+    
+    if (sales < discount) {
+        title = @"优惠金额必须小于总金额";
+        isValidate = NO;
+    }
+    
+    if (!isValidate) {
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                        title:title
+                                                                      message:nil
+                                                             cancleButtonItem:cancel
+                                                             otherButtonItems:nil];
+        [alert showInController:self];
+    }
+    
+    return  isValidate;
+}
+
+- (BOOL)validateNumberWithText:(NSString *)text{
+    if ([NSString isNull:text]) return YES;
+    
+    NSString *regex = @"^(([1-9]\\d{0,12})|0)(\\.\\d{0,2})?$";
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    
+    BOOL isNumber = [predicate evaluateWithObject:text];
+    
+    if (!isNumber) {
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                        title:@"请输入大于0的数字！"
+                                                                      message:nil
+                                                             cancleButtonItem:cancel
+                                                             otherButtonItems:nil];
+        [alert showInController:self];
+    }
+    
+    return isNumber;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField == self.discountTextField) {
+        [self setupPay];
+    }else if (textField == self.payTextField){
+        [self setupDiscount];
+    }else if (textField == self.giveTextField){
+        [self setupSalesCount];
+    }
+}
+
+- (void)setupPriceWithProductPrice{
+    [self setupPay];
+    [self setupSales];
+    [self setupSalesCount];
+    [self setupDiscount];
+    [self setupGive];
+}
+
+- (CGFloat)pay{
+    // 支付金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 优惠金额
+
+    // 单个销售品总额
+    NSInteger unitPrice = self.productPrice.unitPrice;
+    // 订购数量
+    NSInteger count = [self.countTextField.text integerValue];
+    // 优惠金额
+    NSInteger discount = [self.discountTextField.text doubleValue] * 100;
+    
+    return (unitPrice * count - discount) / 100.0f;
+}
+
+- (void)setupPay{
+    self.payTextField.text = [@([self pay]) stringValue];
+}
+
+- (CGFloat)sales{
+    // 销售品总金额 = 单个销售品金额（totalFee） ＊ 订购数量
+    
+    // 单个销售品总额
+    NSInteger unitPrice = self.productPrice.unitPrice;
+    
+    // 订购数量
+    NSInteger count = [self.countTextField.text integerValue];
+    
+    return (unitPrice * count) / 100.0f;
+}
+
+- (void)setupSales{
+    self.salesTextField.text = [@([self sales]) stringValue];
+}
+
+- (CGFloat)salesCount{
+    // 销售品总量 =  单个销售品总周期数(totalLength) * 订购数量 + 临时赠送
+    NSInteger totalLength = self.productPrice.totalLength;
+    
+    // 订购数量
+    NSInteger count = [self.countTextField.text integerValue];
+    
+    // 临时赠送
+    NSInteger given = [self.giveTextField.text integerValue];
+    
+    return totalLength * count + given;
+}
+
+- (void)setupSalesCount{
+    self.salesCountLabel.text = [NSString stringWithFormat:@"销售品总量%@",[self unit]];
+    self.salesCountTextField.text = [@([self salesCount]) stringValue];
+}
+
+- (void)setupGive{
+    self.giveLabel.text = [NSString stringWithFormat:@"临时赠送%@",[self unit]];
+}
+
+- (NSString *)unit{
+    NSString *unit = [NSString isNull:self.productPrice.unit] ? @"" : [NSString stringWithFormat:@"(%@)",self.productPrice.unit];
+    return unit;
+}
+
+- (CGFloat)discount{
+    // 优惠金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 支付金额
+    // 单个销售品总额
+    NSInteger unitPrice = self.productPrice.unitPrice;
+    
+    // 订购数量
+    NSInteger count = [self.countTextField.text integerValue];
+    
+    // 支付金额
+    NSInteger pay = [self.payTextField.text doubleValue] * 100;
+    
+    return (unitPrice * count - pay) / 100.0f;
+}
+
+- (void)setupDiscount{
+    self.discountTextField.text = [@([self discount]) stringValue];
+}
+
+//!!!: 优化将title 和 effect 提取到appConfig中
+- (NSDictionary<NSNumber *,NSString *> *)effectNames{
+    return @{@(1) : @"指定日期",
+             @(2) : @"首次上线"};
 }
 
 - (void)didReceiveMemoryWarning {
@@ -160,63 +419,19 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     BOOL isHidden = [self.tableViewDataSource isHiddenAtIndexPath:indexPath];
-    return isHidden ? 0 : 30;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (isHidden) return 0;
+
+    if([indexPath isEqual:[NSIndexPath indexPathForRow:4 inSection:1]]) return 87;
     
-    return cell;
+    if ([self isHiddenEffectDate] && [indexPath isEqual:[NSIndexPath indexPathForRow:6 inSection:0]]) return 0;
+    
+    return 30;
 }
-*/
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of rows
-//    return 0;
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (BOOL)isHiddenEffectDate{
+    return self.createAccountInfo.effectType == IBLOrderEffectTypeFirst;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark - Navigation
 
@@ -237,6 +452,7 @@
     }
 }
 
+
 - (void)searchViewController:(IBLSearchViewController *)searchViewController
            didSelectedResult:(id)searchResult {
     switch (searchViewController.viewModel.searchType) {
@@ -250,16 +466,19 @@
             break;
         }
         case IBLSearchTypeProduct: {
-            IBLProduct *region = searchResult;
-            self.createAccountInfo.regionName = region.name;
-            self.createAccountInfo.residentialIdentifier = region.identifier;
-            self.regionTextField.text = region.name;
-
+            IBLProduct *product = searchResult;
+            self.createAccountInfo.productName = product.name;
+            self.createAccountInfo.productIdentifier = product.identifier;
+            self.productTextField.text = product.name;
+            [self.tableViewDataSource productPriceOfTableViewController:self
+                                                        completeHandler:^(IBLProductPrice *productPrice) {
+                                                            self.productPrice = productPrice;
+                                                            [self setupPriceWithProductPrice];
+                                                        }];
             break;
         }
         default: break;
     }
 }
-
 
 @end

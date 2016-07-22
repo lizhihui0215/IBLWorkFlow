@@ -25,18 +25,22 @@
     
     self.searchTextField.delegate = self;
     self.searchTextField.returnKeyType = UIReturnKeySearch;
-    [self reloadWithSearchInfo:nil isRefresh:YES];
+    [self reloadWithSearchInfo:nil isRefresh:YES completeHandler:nil];
 }
 
 - (void)reloadWithSearchInfo:(id)searchInfo
-                   isRefresh:(BOOL)isRefresh{
+                   isRefresh:(BOOL)isRefresh
+             completeHandler:(void (^)(NSError *error))completeHandler{
     self.searchInfo = searchInfo;
+    [self showHUDWithMessage:nil];
     [self.viewModel fetchSearchContentWithSearchInfo:self.searchInfo
                                            isRefresh:isRefresh
                                      completeHandler:^(NSError *error) {
+                                         [self hidHUD];
                                          if(![self showAlertWithError:error]){
                                              [self.tableView reloadData];
                                          }
+                                         if(completeHandler) completeHandler(error);
                                      }];
 }
 
@@ -46,8 +50,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    [self reloadWithSearchInfo:[self searchInfoWithKeyword:textField.text]
-                     isRefresh:YES];
+    [self reloadWithSearchInfo:[self searchInfoWithKeyword:textField.text] isRefresh:YES completeHandler:nil];
 }
 
 - (id)searchInfoWithKeyword:(NSString *)keyword{
@@ -77,12 +80,18 @@
 
 - (void)tableView:(UITableView *)tableView footerBeginRefresh:(MJRefreshBackStateFooter *)footer{
     [self reloadWithSearchInfo:[self searchInfoWithKeyword:self.searchTextField.text]
-                     isRefresh:NO];
+                     isRefresh:NO
+               completeHandler:^(NSError *error) {
+                   [footer endRefreshing];
+               }];
 }
 
 - (void)tableView:(UITableView *)tableView headerBeginRefresh:(MJRefreshStateHeader *)header{
     [self reloadWithSearchInfo:[self searchInfoWithKeyword:self.searchTextField.text]
-                     isRefresh:YES];
+                     isRefresh:YES
+               completeHandler:^(NSError *error) {
+                   [header endRefreshing];
+               }];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

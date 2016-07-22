@@ -8,6 +8,7 @@
 
 #import "IBLProductRepository.h"
 #import "IBLProduct.h"
+#import "IBLProductPrice.h"
 
 static NSString *const kProductId = @"productId";
 
@@ -18,6 +19,28 @@ static NSString *const kProductName = @"offerName";
 @interface IBLProductRepository ()
 
 @property (nonatomic, strong) IBLSOAPMethod *fetchProduct;
+
+@property (nonatomic, strong) IBLSOAPMethod *fetchProductPrice;
+
+@end
+
+@implementation IBLFetchProductPriceInfo
+
+- (instancetype)initWithProductId:(NSInteger)productId discountIds:(NSString *)discountIds renew:(BOOL)renew {
+    self = [super init];
+    if (self) {
+        self.productId = productId;
+        self.discountIds = discountIds;
+        self.renew = renew;
+    }
+
+    return self;
+}
+
++ (instancetype)priceWithProductId:(NSInteger)productId discountIds:(NSString *)discountIds renew:(BOOL)renew {
+    return [[self alloc] initWithProductId:productId discountIds:discountIds renew:renew];
+}
+
 
 @end
 
@@ -60,6 +83,9 @@ static NSString *const kProductName = @"offerName";
     if (self) {
         self.fetchProduct = [IBLSOAPMethod methodWithRequestMethodName:@"getOfferList"
                                                     responseMethodName:@"getOfferListResponse"];
+        
+        self.fetchProductPrice = [IBLSOAPMethod methodWithRequestMethodName:@"getOfferTariffInfo"
+                                                         responseMethodName:@"getOfferTariffInfoResponse"];
     }
     return self;
 }
@@ -96,4 +122,27 @@ static NSString *const kProductName = @"offerName";
     
 }
 
+- (void)fetchPriductPrice:(IBLFetchProductPriceInfo *)fetchProductPriceInfo
+          completeHandler:(void (^)(IBLProductPrice *, NSError *))handler {
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        if (fetchProductPriceInfo.productId != 0) parameters[@"offerId"] = @(fetchProductPriceInfo.productId);
+        
+        if (![NSString isNull:fetchProductPriceInfo.discountIds]) parameters[@"selItems"] = fetchProductPriceInfo.discountIds;
+        
+        parameters[@"isRenew"] = fetchProductPriceInfo.isRenew ? @"true" : @"false";
+        
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.fetchProductPrice] POST:@"ProductOfferInterface"
+                                                    parameters:parameters
+                                                      progress:nil
+                                                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                           IBLProductPrice *productPrice = [[IBLProductPrice alloc] initWithDictionary:responseObject error:nil];
+                                                           handler(productPrice, nil);
+                                                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                           handler(nil, error);
+                                                       }];
+}
 @end

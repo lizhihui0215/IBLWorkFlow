@@ -8,11 +8,8 @@
 
 #import "IBLListViewModel.h"
 #import "IBLOrder.h"
-
-typedef NS_ENUM(NSInteger, IBLCreateAccountType) {
-    IBLCreateAccountTypeFromOrder,
-    IBLCreateAccountTypeFromLeftMenu,
-};
+@class IBLFetchProductPriceInfo;
+@class IBLProductPrice;
 
 @interface IBLCreateAccountViewModel : IBLListViewModel
 
@@ -23,4 +20,12 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountType) {
                                      order:(IBLOrder *)order;
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
+
+- (IBLOrderEffectType)defaultEffectType;
+
+- (NSString *)defaultEffectDate;
+
+- (void)fetchProductPrice:(IBLFetchProductPriceInfo *)fetchProductPrice completeHandler:(IBLViewModelCompleteHandler)handler;
+
+- (IBLProductPrice *)productPrice;
 @end

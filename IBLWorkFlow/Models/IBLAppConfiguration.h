@@ -42,6 +42,20 @@ typedef NS_ENUM(NSInteger, IBLPayModel) {
     IBLPayModelCash
 };
 
+/**
+ *  生效方式
+ */
+typedef NS_ENUM(NSInteger, IBLOrderEffectType) {
+    /**
+     *  指定当前日期前
+     */
+    IBLOrderEffectTypeBeforeTheDate = 1,
+    /**
+     *  首次上线
+     */
+    IBLOrderEffectTypeFirst,
+};
+
 @interface IBLAppConfiguration : IBLModel
 
 /// 工单业务类型
@@ -63,7 +77,7 @@ typedef NS_ENUM(NSInteger, IBLPayModel) {
 @property (nonatomic, assign) NSInteger changeType;
 
 /// 默认的生效方式
-@property (nonatomic, assign) NSInteger effType;
+@property (nonatomic, assign) IBLOrderEffectType effType;
 
 /// 隐藏输入 （主要针对于临时优惠和票据的配置，仅仅适用于开户工单、续费工单、换销售品工单）
 @property (nonatomic, strong) IBLFieldConfiguration *hiddenFields;

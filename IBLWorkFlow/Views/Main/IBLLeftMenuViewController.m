@@ -8,13 +8,12 @@
 
 #import "IBLLeftMenuViewController.h"
 #import "IBLOrderViewController.h"
-#import "IBLOrderManagerViewController.h"
 #import "UIViewController+RESideMenu.h"
 #import "IBLLeftMenuCell.h"
 #import "IBLLeftMenuTableHeaderView.h"
 #import "IBLLoginViewController.h"
 #import "IBLCreateAccountViewController.h"
-
+#import "IBLAddWorkOrderViewController.h"
 
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
@@ -38,15 +37,23 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     
     UINavigationController *createAccountViewController = [self createAccountViewController];
     
+    UINavigationController *addWorkOrderViewController = [self addWorkOrderViewController];
+    
     //FIXME: 添加功能
     self.viewControllers = @{@(IBLLeftMenuSectionActionMineOrder) : mineOrderContentViewController,
                              @(IBLLeftMenuSectionActionManagedOrder) : managedOrderContentViewController,
                              @(IBLLeftMenuSectionActionBusinessManaged) : @"",
                              @(IBLLeftMenuSectionActionAbout) : @"",
-                             @(IBLLeftMenuItemActionAddOrder) : @"",
+                             @(IBLLeftMenuItemActionAddOrder) : addWorkOrderViewController,
                              @(IBLLeftMenuItemActionAddCreateAccount) : createAccountViewController,
                              @(IBLLeftMenuItemActionAddRenew) : @"",
                              @(IBLLeftMenuItemActionAddChangeProduct) : @"",};
+}
+
+- (UINavigationController *)addWorkOrderViewController{
+    IBLAddWorkOrderViewController *addWorkOrderController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLAddWorkOrderViewController"];
+    
+    return [[UINavigationController alloc] initWithRootViewController:addWorkOrderController];
 }
 
 - (UINavigationController *)createAccountViewController {
@@ -146,6 +153,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 - (void)headerView:(IBLLeftMenuTableHeaderView *)headerView tappedAtSection:(NSInteger)sectionIndex {
     IBLSection *section = [self.viewModel sectionAt:sectionIndex];
     IBLLeftMenu *menu = section.info;
+    if (menu.index == IBLLeftMenuSectionActionBusinessManaged) return;
     self.sideMenuViewController.contentViewController = self.viewControllers[@(menu.index)];
     [self.sideMenuViewController hideMenuViewController];
 }

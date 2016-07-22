@@ -8,9 +8,29 @@
 
 #import <UIKit/UIKit.h>
 #import "RESideMenu.h"
+#import "IBLOrder.h"
+#import "IBLProductPrice.h"
 
 @class IBLCreateAccountTableViewController;
 @class IBLCreateAccountInfo;
+
+/**
+ *  销售品金额输入类型
+ */
+typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
+    /**
+     *  支付金额
+     */
+    IBLCreateAccountTextFieldTypePay,
+    /**
+     *  优惠金额
+     */
+    IBLCreateAccountTextFieldTypeDiscount,
+    /**
+     *  销售品总金额
+     */
+    IBLCreateAccountTextFieldTypeAmmount,
+};
 
 @protocol IBLCreateAccountTableViewControllerDataSource <NSObject>
 
@@ -18,8 +38,17 @@
                      commit:(IBLCreateAccountInfo *)commit;
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
+
+- (IBLCreateAccountType)createAccountTypeOfTableViewController:(IBLCreateAccountTableViewController *)controller;
 @optional
 - (IBLCreateAccountInfo *)createAccountInfoOfTableViewController:(IBLCreateAccountTableViewController *) controller;
+
+- (IBLOrderEffectType)defaultEffectTypeOfTableViewController:(IBLCreateAccountTableViewController *)controller;
+
+- (NSString *)defaultEffectDateOfTableViewController:(IBLCreateAccountTableViewController *)controller;
+
+- (void)productPriceOfTableViewController:(IBLCreateAccountTableViewController *)controller
+                          completeHandler:(void (^)(IBLProductPrice *productPrice))completeHandler;
 @end
 
 @interface IBLCreateAccountInfo : NSObject
@@ -46,7 +75,7 @@
 @property (nonatomic, copy) NSString *remark;
 
 /// 生效方式 (报装工单特有)
-@property (nonatomic, copy) NSString *effectType;
+@property (nonatomic, assign) IBLOrderEffectType effectType;
 
 /// 生效日期 (报装工单特有)
 @property (nonatomic, copy) NSString *effectDate;
@@ -97,7 +126,7 @@
                                   productName:(NSString *)productName
                              identifierNumber:(NSString *)identifierNumber
                                        remark:(NSString *)remark
-                                   effectType:(NSString *)effectType
+                                   effectType:(IBLOrderEffectType)effectType
                                    effectDate:(NSString *)effectDate
                                         phone:(NSString *)phone
                                       address:(NSString *)address
@@ -109,5 +138,7 @@
 @interface IBLCreateAccountTableViewController : UITableViewController
 
 @property (nonatomic, weak) id<IBLCreateAccountTableViewControllerDataSource> tableViewDataSource;
+
+@property (nonatomic, strong, readonly) IBLCreateAccountInfo *createAccountInfo;
 
 @end

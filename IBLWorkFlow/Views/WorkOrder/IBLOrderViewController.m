@@ -217,10 +217,9 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:NavigationToOrderSearchIdentifier]){
         IBLOrderSearchViewController *orderSearchViewController = [segue destinationViewController];
+        orderSearchViewController.delegate = self;
         IBLOrderSearchResult *result = [self.viewModel searchResult];
         orderSearchViewController.viewModel = [[IBLOrderSearchViewModel alloc] initWithSearchResult:result];
-        
-        orderSearchViewController.delegate = self;
     }else if ([segue.identifier isEqualToString:OrderActionForwardIdentifier]){
         IBLSearchViewController *forwardSearchViewController = [segue destinationViewController];
         forwardSearchViewController.title = @"转发";
@@ -237,7 +236,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     }
 }
 
-- (void)orderSearchViewController:(IBLOrderSearchViewController *)searchViewController
+- (void)orderSearchViewController:(IBLOrderSearchTableViewController *)searchViewController
                   didSearchResult:(IBLOrderSearchResult *)searchResult {
     [self.viewModel setSearchResult:searchResult];
     [self.tableView.mj_header beginRefreshing];

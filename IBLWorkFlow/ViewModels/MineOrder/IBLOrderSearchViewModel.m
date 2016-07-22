@@ -19,6 +19,14 @@
 
 @implementation IBLOrderSearchViewModel
 
+- (void)setDataSource:(NSMutableArray *)dataSource{
+    
+}
+
+- (NSMutableArray *)dataSource{
+    return nil;
+}
+
 - (instancetype)initWithSearchResult:(IBLOrderSearchResult *)searchResult {
     self = [super init];
     if (self) {

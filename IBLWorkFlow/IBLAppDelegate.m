@@ -9,6 +9,7 @@
 #import "IBLAppDelegate.h"
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 #import "UINavigationBar+IBLExtension.h"
+#import "RMDateSelectionViewController.h"
 
 @interface IBLAppDelegate ()
 
@@ -27,6 +28,10 @@
     [[[AFNetworkActivityLogger sharedLogger].loggers anyObject] setLevel:AFLoggerLevelDebug];
     
     [UINavigationBar setupAppearance];
+    
+    [RMDateSelectionViewController setLocalizedTitleForCancelButton:@"取消"];
+    [RMDateSelectionViewController setLocalizedTitleForSelectButton:@"选择"];
+    
     
     return YES;
 }

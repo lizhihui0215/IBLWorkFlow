@@ -83,9 +83,8 @@ static NSString * const kSignKey = @"48e5be901c6692bf46fd2bba3b04d56b";
 }
 
 - (NSDictionary *)signedParametersWithPatameters:(NSDictionary * (^)(NSDictionary *))parameters{
-    NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000;
     
-    NSDictionary *dictionary = parameters(@{kSessionID : [@(interval) stringValue],
+    NSDictionary *dictionary = parameters(@{kSessionID : @(time(NULL)),
                                             kMCode : [UIDevice UUID],
                                             kAuthID : AuthID});
     NSMutableDictionary *signedParameters = [dictionary mutableCopy];
@@ -121,6 +120,8 @@ static NSString * const kSignKey = @"48e5be901c6692bf46fd2bba3b04d56b";
     NSString *result = [list componentsJoinedByString:@""];
     
     result = [NSString stringWithFormat:@"%@key=%@",result,kSignKey];
+    
+    NSLog(@"------------\n%@\n----------------",result);
     
     CocoaSecurityResult *securityResult = [CocoaSecurity md5:result];
     

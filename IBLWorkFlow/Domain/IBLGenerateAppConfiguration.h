@@ -36,4 +36,8 @@
  */
 - (NSArray<NSNumber *> *)managedOrderActionsWithStatus:(IBLOrderStatus)status
                                                bizType:(IBLWorkOrderBizStatus)bizType;
+
+- (IBLOrderEffectType)defaultEffectType;
+
+- (NSString *)defaultEffectDate;
 @end

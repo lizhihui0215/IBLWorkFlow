@@ -1,18 +1,18 @@
 //
-//  IBLOrderSearchViewController.m
+//  IBLOrderSearchTableViewController.m
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 7/14/16.
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLOrderSearchViewController.h"
+#import "IBLOrderSearchTableViewController.h"
 #import "IBLOrderViewController.h"
 #import "IBLOrderSearchViewModel.h"
 #import "IBLPickerView.h"
 #import <RMDateSelectionViewController/RMDateSelectionViewController.h>
 
-@interface IBLOrderSearchViewController ()<UITextFieldDelegate>
+@interface IBLOrderSearchTableViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userAccountTextField;
 
@@ -24,13 +24,13 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *workOrderTypeTextField;
 
-@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
+@property (weak, nonatomic) IBOutlet UITextField *startDateTextField;
 
-@property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (weak, nonatomic) IBOutlet UITextField *endDateTextField;
 
 @end
 
-@implementation IBLOrderSearchViewController
+@implementation IBLOrderSearchTableViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -38,26 +38,26 @@
     [RMDateSelectionViewController setLocalizedTitleForCancelButton:@"取消"];
     [RMDateSelectionViewController setLocalizedTitleForSelectButton:@"选择"];
     
-    self.userAccountTextField.text = [self.viewModel userAccount];
-    self.usernameTextField.text = [self.viewModel username];
-    self.userPhoneTextField.text = [self.viewModel userPhone];
-    self.workOrderTypeTextField.text = [self.viewModel workOrderType];
-    self.workOrderBizTypeTextField.text = [self.viewModel workOrderBizType];
-    self.startDateLabel.text = [self.viewModel startDate];
-    self.endDateLabel.text = [self.viewModel endDate];
+    self.userAccountTextField.text = [self.searchDataSource userAccount];
+    self.usernameTextField.text = [self.searchDataSource username];
+    self.userPhoneTextField.text = [self.searchDataSource userPhone];
+    self.workOrderTypeTextField.text = [self.searchDataSource workOrderType];
+    self.workOrderBizTypeTextField.text = [self.searchDataSource workOrderBizType];
+    self.startDateTextField.text = [self.searchDataSource startDate];
+    self.endDateTextField.text = [self.searchDataSource endDate];
     
 }
 
 - (IBAction)businessTypeTaped:(UITapGestureRecognizer *)sender {
-    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.viewModel workOrderBizTypes];
+    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.searchDataSource workOrderBizTypes];
     
-    [IBLPickerView showPickerViewInView:self.view
+    [IBLPickerView showPickerViewInView:self.view.superview
                             withObjects:businessTypes
                             withOptions:nil
                 objectToStringConverter:^NSString *(IBLWorkOrderBussinessType *workOrderBizType) {
                     return workOrderBizType.name;
                 } completion:^(IBLWorkOrderBussinessType *workOrderBizType) {
-                    [self.viewModel setWorkOrderBizType:workOrderBizType];
+                    [self.searchDataSource setWorkOrderBizType:workOrderBizType];
                     self.workOrderBizTypeTextField.text = workOrderBizType.name;
                 }];
     
@@ -65,15 +65,15 @@
 }
 
 - (IBAction)workOrderTypeTaped:(UITapGestureRecognizer *)sender {
-    NSArray<IBLWorkOrderType *> *workOrderTypes = [self.viewModel workOrderTypes];
+    NSArray<IBLWorkOrderType *> *workOrderTypes = [self.searchDataSource workOrderTypes];
     
-    [IBLPickerView showPickerViewInView:self.view
+    [IBLPickerView showPickerViewInView:self.view.superview
                             withObjects:workOrderTypes
                             withOptions:nil
                 objectToStringConverter:^NSString *(IBLWorkOrderType *workOrderType) {
                     return workOrderType.name;
                 } completion:^(IBLWorkOrderType *businessType) {
-                    [self.viewModel setWorkOrderType:businessType];
+                    [self.searchDataSource setWorkOrderType:businessType];
                     self.workOrderTypeTextField.text = businessType.name;
                 }];
 }
@@ -87,13 +87,13 @@
     RMDateSelectionViewController *dateSelectionVC = [RMDateSelectionViewController dateSelectionController];
     dateSelectionVC.disableBouncingWhenShowing = YES;
     dateSelectionVC.datePicker.minuteInterval = 1;
-
+    
     dateSelectionVC.disableBlurEffects = YES;
     
     dateSelectionVC.hideNowButton = YES;
     [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
-       self.startDateLabel.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
-        [self.viewModel setStartDate:self.startDateLabel.text];
+        self.startDateTextField.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
+        [self.searchDataSource setStartDate:self.startDateTextField.text];
     } andCancelHandler:^(RMDateSelectionViewController *vc) {
         
     }];
@@ -107,25 +107,23 @@
     dateSelectionVC.disableBlurEffects = YES;
     
     dateSelectionVC.hideNowButton = YES;
-
+    
     [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
-        self.endDateLabel.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
-        [self.viewModel setEndDate:self.endDateLabel.text];
+        self.endDateTextField.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
+        [self.searchDataSource setEndDate:self.endDateTextField.text];
     } andCancelHandler:^(RMDateSelectionViewController *vc) {
         
     }];
 }
 
 - (void)saveUserOfSearchResult{
-    [self.viewModel setUsername:self.usernameTextField.text];
-    [self.viewModel setUserAccount:self.userAccountTextField.text];
-    [self.viewModel setUserPhone:self.userPhoneTextField.text];
+    [self.searchDataSource setUsername:self.usernameTextField.text];
+    [self.searchDataSource setUserAccount:self.userAccountTextField.text];
+    [self.searchDataSource setUserPhone:self.userPhoneTextField.text];
 }
 - (IBAction)searchButtonPressed:(UIButton *)sender {
     [self saveUserOfSearchResult];
-    if ([self.delegate respondsToSelector:@selector(orderSearchViewController:didSearchResult:)]) {
-        [self.delegate orderSearchViewController:self didSearchResult:self.viewModel.searchResult];
-    }
+    [self.searchDataSource orderSearchViewController:self didSearchResult:self.searchDataSource.searchResult];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

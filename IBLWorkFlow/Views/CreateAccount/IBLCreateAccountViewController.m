@@ -58,6 +58,35 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
     return [self createAccountInfoFromOrder:self.viewModel.order];
 }
 
+- (IBLOrderEffectType)defaultEffectTypeOfTableViewController:(IBLCreateAccountTableViewController *)controller{
+    return [self.viewModel defaultEffectType];
+}
+
+- (IBLCreateAccountType)createAccountTypeOfTableViewController:(IBLCreateAccountTableViewController *)controller{
+    return self.viewModel.createAccountType;
+}
+
+- (NSString *)defaultEffectDateOfTableViewController:(IBLCreateAccountTableViewController *)controller{
+    return [self.viewModel defaultEffectDate];
+}
+
+- (void)productPriceOfTableViewController:(IBLCreateAccountTableViewController *)controller
+                          completeHandler:(void (^)(IBLProductPrice *productPrice))completeHandler {
+    NSInteger productId = controller.createAccountInfo.productIdentifier;
+    IBLFetchProductPriceInfo *fetchProductPrice = [IBLFetchProductPriceInfo priceWithProductId:productId
+                                                                                   discountIds:@""
+                                                                                         renew:NO];
+    [self showHUDWithMessage:@""];
+    [self.viewModel fetchProductPrice:fetchProductPrice
+                      completeHandler:^(NSError *error){
+                          IBLProductPrice *productPrice = [self.viewModel productPrice];
+                          [self hidHUD];
+                          [self showAlertWithError:error];
+                          completeHandler(productPrice);
+                      }];
+}
+
+
 - (IBLCreateAccountInfo *)createAccountInfoFromOrder:(IBLOrder *)order {
     IBLCreateAccountInfo *createAccountInfo = nil;
     if (order) {
