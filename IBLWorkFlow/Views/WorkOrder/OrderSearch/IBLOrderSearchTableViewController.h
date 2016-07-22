@@ -8,8 +8,32 @@
 
 #import "IBLTableViewController.h"
 
+@class IBLOrderSearchTableViewController;
+
+typedef NS_ENUM(NSInteger, IBLOrderSearchFieldType) {
+    IBLOrderSearchFieldTypeAccount,
+    IBLOrderSearchFieldTypeUsername,
+    IBLOrderSearchFieldTypePhone,
+    IBLOrderSearchFieldTypeWorkOrderBizType,
+    IBLOrderSearchFieldTypeWorkOrderType,
+    IBLOrderSearchFieldTypeStartDate,
+    IBLOrderSearchFieldTypeEndDate,
+};
+
 @protocol IBLOrderSearchTableViewControllerDataSource <NSObject>
 
+- (NSString *)textOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller
+                               fieldType:(IBLOrderSearchFieldType)fieldType;
+
+- (void)orderSearchTableView:(IBLOrderSearchTableViewController *)controller
+                   fieldType:(IBLOrderSearchFieldType)type
+               didEndEdit:(id)object;
+
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller;
+
+- (NSArray<IBLWorkOrderType *> *)workOrderTypesOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller;
+
+- (void)orderSearchTableviewDidEndSearch:(IBLOrderSearchTableViewController *)controller;
 @end
 
 

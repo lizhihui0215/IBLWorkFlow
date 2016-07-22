@@ -257,11 +257,11 @@ CGFloat buttonSpacerHeight = 0;
         [closeButton addTarget:self action:@selector(customIOS7dialogButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         [closeButton setTag:i];
         
-        if ([[closeButton titleForState:UIControlStateNormal] isEqualToString:@"确认"]) {
+        if ([[buttonTitles objectAtIndex:i] isEqualToString:@"确认"]) {
             [closeButton setBackgroundImage:[UIImage imageNamed:@"alertConfirm"] forState:UIControlStateNormal];
         }
         
-        if ([[closeButton titleForState:UIControlStateNormal] isEqualToString:@"取消"]) {
+        if ([[buttonTitles objectAtIndex:i] isEqualToString:@"取消"]) {
             [closeButton setBackgroundImage:[UIImage imageNamed:@"alertCancel"] forState:UIControlStateNormal];
         }
 

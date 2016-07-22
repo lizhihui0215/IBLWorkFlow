@@ -37,5 +37,88 @@
     orderSearchTableViewController.searchDataSource = self;
 }
 
+- (NSString *)textOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller
+                               fieldType:(IBLOrderSearchFieldType)fieldType {
+    NSString *text = @"";
+    switch (fieldType) {
+        case IBLOrderSearchFieldTypeAccount: {
+            text = [self.viewModel userAccount];
+            break;
+        }
+        case IBLOrderSearchFieldTypeUsername: {
+            text = [self.viewModel username];
+            break;
+        }
+        case IBLOrderSearchFieldTypePhone: {
+            text = [self.viewModel userPhone];
+            break;
+        }
+        case IBLOrderSearchFieldTypeWorkOrderBizType: {
+            text = [self.viewModel workOrderBizType];
+            break;
+        }
+        case IBLOrderSearchFieldTypeWorkOrderType: {
+            text = [self.viewModel workOrderType];
+            break;
+        }
+        case IBLOrderSearchFieldTypeStartDate: {
+            text = [self.viewModel startDate];
+            break;
+        }
+        case IBLOrderSearchFieldTypeEndDate: {
+            text = [self.viewModel endDate];
+            break;
+        }
+    }
+    return text;
+}
+
+- (void)orderSearchTableView:(IBLOrderSearchTableViewController *)controller
+                   fieldType:(IBLOrderSearchFieldType)type
+                  didEndEdit:(id)object {
+    switch (type) {
+        case IBLOrderSearchFieldTypeAccount: {
+            [self.viewModel setUserAccount:object];
+            break;
+        }
+        case IBLOrderSearchFieldTypeUsername: {
+            [self.viewModel setUsername:object];
+            break;
+        }
+        case IBLOrderSearchFieldTypePhone: {
+            [self.viewModel setUserPhone:object];
+            break;
+        }
+        case IBLOrderSearchFieldTypeWorkOrderBizType: {
+            [self.viewModel setWorkOrderBizType:object];
+            break;
+        }
+        case IBLOrderSearchFieldTypeWorkOrderType: {
+            [self.viewModel setWorkOrderType:object];
+            break;
+        }
+        case IBLOrderSearchFieldTypeStartDate: {
+            [self.viewModel setStartDate:object];
+            break;
+        }
+        case IBLOrderSearchFieldTypeEndDate: {
+            [self.viewModel setEndDate:object];
+            break;
+        }
+    }
+}
+
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller {
+    return [self.viewModel workOrderBizTypes];
+}
+
+- (NSArray<IBLWorkOrderType *> *)workOrderTypesOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller {
+    return [self.viewModel workOrderTypes];
+}
+
+- (void)orderSearchTableviewDidEndSearch:(IBLOrderSearchTableViewController *)controller {
+    [self.delegate orderSearchViewController:self didSearchResult:self.viewModel.searchResult];
+}
+
 
 @end

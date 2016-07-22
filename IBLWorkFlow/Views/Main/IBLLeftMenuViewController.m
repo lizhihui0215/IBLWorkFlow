@@ -14,6 +14,7 @@
 #import "IBLLoginViewController.h"
 #import "IBLCreateAccountViewController.h"
 #import "IBLAddWorkOrderViewController.h"
+#import "IBLRenewViewController.h"
 
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
@@ -39,6 +40,8 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     
     UINavigationController *addWorkOrderViewController = [self addWorkOrderViewController];
     
+    UINavigationController *renewViewController = [self renewViewController];
+    
     //FIXME: 添加功能
     self.viewControllers = @{@(IBLLeftMenuSectionActionMineOrder) : mineOrderContentViewController,
                              @(IBLLeftMenuSectionActionManagedOrder) : managedOrderContentViewController,
@@ -46,8 +49,15 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
                              @(IBLLeftMenuSectionActionAbout) : @"",
                              @(IBLLeftMenuItemActionAddOrder) : addWorkOrderViewController,
                              @(IBLLeftMenuItemActionAddCreateAccount) : createAccountViewController,
-                             @(IBLLeftMenuItemActionAddRenew) : @"",
+                             @(IBLLeftMenuItemActionAddRenew) : renewViewController,
                              @(IBLLeftMenuItemActionAddChangeProduct) : @"",};
+}
+
+- (UINavigationController *)renewViewController {
+    IBLRenewViewController *renewViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLRenewViewController"];
+
+    
+    return [[UINavigationController alloc] initWithRootViewController:renewViewController];
 }
 
 - (UINavigationController *)addWorkOrderViewController{

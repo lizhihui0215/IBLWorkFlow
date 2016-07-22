@@ -34,22 +34,33 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [RMDateSelectionViewController setLocalizedTitleForNowButton:@"现在"];
-    [RMDateSelectionViewController setLocalizedTitleForCancelButton:@"取消"];
-    [RMDateSelectionViewController setLocalizedTitleForSelectButton:@"选择"];
+
+    self.userAccountTextField.text = [self.searchDataSource textOfOrderSearchTableView:self
+                                                                             fieldType:IBLOrderSearchFieldTypeAccount];
     
-    self.userAccountTextField.text = [self.searchDataSource userAccount];
-    self.usernameTextField.text = [self.searchDataSource username];
-    self.userPhoneTextField.text = [self.searchDataSource userPhone];
-    self.workOrderTypeTextField.text = [self.searchDataSource workOrderType];
-    self.workOrderBizTypeTextField.text = [self.searchDataSource workOrderBizType];
-    self.startDateTextField.text = [self.searchDataSource startDate];
-    self.endDateTextField.text = [self.searchDataSource endDate];
+    self.usernameTextField.text = [self.searchDataSource textOfOrderSearchTableView:self
+                                                                          fieldType:IBLOrderSearchFieldTypeUsername];
     
+    self.userPhoneTextField.text = [self.searchDataSource textOfOrderSearchTableView:self
+                                                                           fieldType:IBLOrderSearchFieldTypePhone];
+    
+    self.workOrderTypeTextField.text = [self.searchDataSource textOfOrderSearchTableView:self
+                                                                               fieldType:IBLOrderSearchFieldTypeWorkOrderType];
+    
+    self.workOrderBizTypeTextField.text = [self.searchDataSource textOfOrderSearchTableView:self
+                                                                                  fieldType:IBLOrderSearchFieldTypeWorkOrderBizType];
+    
+    self.startDateTextField.text = [self.searchDataSource textOfOrderSearchTableView:self
+                                                                           fieldType:IBLOrderSearchFieldTypeStartDate];
+    
+    self.endDateTextField.text = [self.searchDataSource textOfOrderSearchTableView:self
+                                                                         fieldType:IBLOrderSearchFieldTypeEndDate];
 }
 
+
+
 - (IBAction)businessTypeTaped:(UITapGestureRecognizer *)sender {
-    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.searchDataSource workOrderBizTypes];
+    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.searchDataSource workOrderBizTypesOfOrderSearchTableView:self ];
     
     [IBLPickerView showPickerViewInView:self.view.superview
                             withObjects:businessTypes
@@ -57,7 +68,9 @@
                 objectToStringConverter:^NSString *(IBLWorkOrderBussinessType *workOrderBizType) {
                     return workOrderBizType.name;
                 } completion:^(IBLWorkOrderBussinessType *workOrderBizType) {
-                    [self.searchDataSource setWorkOrderBizType:workOrderBizType];
+                    [self.searchDataSource orderSearchTableView:self
+                                                      fieldType:IBLOrderSearchFieldTypeWorkOrderBizType
+                                                     didEndEdit:workOrderBizType];
                     self.workOrderBizTypeTextField.text = workOrderBizType.name;
                 }];
     
@@ -65,16 +78,19 @@
 }
 
 - (IBAction)workOrderTypeTaped:(UITapGestureRecognizer *)sender {
-    NSArray<IBLWorkOrderType *> *workOrderTypes = [self.searchDataSource workOrderTypes];
+    NSArray<IBLWorkOrderType *> *workOrderTypes = [self.searchDataSource workOrderTypesOfOrderSearchTableView:self];
     
     [IBLPickerView showPickerViewInView:self.view.superview
                             withObjects:workOrderTypes
                             withOptions:nil
                 objectToStringConverter:^NSString *(IBLWorkOrderType *workOrderType) {
                     return workOrderType.name;
-                } completion:^(IBLWorkOrderType *businessType) {
-                    [self.searchDataSource setWorkOrderType:businessType];
-                    self.workOrderTypeTextField.text = businessType.name;
+                } completion:^(IBLWorkOrderType *workOrderType) {
+                    [self.searchDataSource orderSearchTableView:self
+                                                      fieldType:IBLOrderSearchFieldTypeWorkOrderType
+                                                     didEndEdit:workOrderType];
+
+                    self.workOrderTypeTextField.text = workOrderType.name;
                 }];
 }
 
@@ -93,7 +109,9 @@
     dateSelectionVC.hideNowButton = YES;
     [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
         self.startDateTextField.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
-        [self.searchDataSource setStartDate:self.startDateTextField.text];
+        [self.searchDataSource orderSearchTableView:self
+                                          fieldType:IBLOrderSearchFieldTypeStartDate
+                                         didEndEdit:self.startDateTextField.text];
     } andCancelHandler:^(RMDateSelectionViewController *vc) {
         
     }];
@@ -110,20 +128,28 @@
     
     [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
         self.endDateTextField.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
-        [self.searchDataSource setEndDate:self.endDateTextField.text];
+        [self.searchDataSource orderSearchTableView:self
+                                          fieldType:IBLOrderSearchFieldTypeEndDate
+                                         didEndEdit:self.endDateTextField.text];
     } andCancelHandler:^(RMDateSelectionViewController *vc) {
         
     }];
 }
 
 - (void)saveUserOfSearchResult{
-    [self.searchDataSource setUsername:self.usernameTextField.text];
-    [self.searchDataSource setUserAccount:self.userAccountTextField.text];
-    [self.searchDataSource setUserPhone:self.userPhoneTextField.text];
+    [self.searchDataSource orderSearchTableView:self
+                                      fieldType:IBLOrderSearchFieldTypeUsername
+                                     didEndEdit:self.usernameTextField.text];
+    [self.searchDataSource orderSearchTableView:self
+                                      fieldType:IBLOrderSearchFieldTypeAccount
+                                     didEndEdit:self.userAccountTextField.text];
+    [self.searchDataSource orderSearchTableView:self
+                                      fieldType:IBLOrderSearchFieldTypePhone
+                                     didEndEdit:self.userPhoneTextField.text];
 }
 - (IBAction)searchButtonPressed:(UIButton *)sender {
     [self saveUserOfSearchResult];
-    [self.searchDataSource orderSearchViewController:self didSearchResult:self.searchDataSource.searchResult];
+    [self.searchDataSource orderSearchTableviewDidEndSearch:self];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
