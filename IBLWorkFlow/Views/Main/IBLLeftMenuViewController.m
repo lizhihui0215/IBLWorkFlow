@@ -15,6 +15,8 @@
 #import "IBLCreateAccountViewController.h"
 #import "IBLAddWorkOrderViewController.h"
 #import "IBLRenewViewController.h"
+#import "IBLExchangeProductViewController.h"
+#import "IBLAboutViewController.h"
 
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
@@ -42,15 +44,32 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     
     UINavigationController *renewViewController = [self renewViewController];
     
+    UINavigationController *exchangeProductViewController = [self exchangeProductViewController];
+    
+    UINavigationController *aboutViewController = [self aboutViewController];
+    
     //FIXME: 添加功能
     self.viewControllers = @{@(IBLLeftMenuSectionActionMineOrder) : mineOrderContentViewController,
                              @(IBLLeftMenuSectionActionManagedOrder) : managedOrderContentViewController,
                              @(IBLLeftMenuSectionActionBusinessManaged) : @"",
-                             @(IBLLeftMenuSectionActionAbout) : @"",
+                             @(IBLLeftMenuSectionActionAbout) : aboutViewController,
                              @(IBLLeftMenuItemActionAddOrder) : addWorkOrderViewController,
                              @(IBLLeftMenuItemActionAddCreateAccount) : createAccountViewController,
                              @(IBLLeftMenuItemActionAddRenew) : renewViewController,
-                             @(IBLLeftMenuItemActionAddChangeProduct) : @"",};
+                             @(IBLLeftMenuItemActionAddChangeProduct) : exchangeProductViewController,};
+}
+
+- (UINavigationController *)aboutViewController {
+   IBLAboutViewController *aboutViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLAboutViewController"];
+    
+    return [[UINavigationController alloc] initWithRootViewController:aboutViewController];
+}
+
+- (UINavigationController *)exchangeProductViewController {
+    IBLExchangeProductViewController *exchangeProductViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLExchangeProductViewController"];
+
+    
+    return [[UINavigationController alloc] initWithRootViewController:exchangeProductViewController];
 }
 
 - (UINavigationController *)renewViewController {
