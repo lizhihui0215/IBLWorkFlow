@@ -121,6 +121,8 @@
         self.deleteOrder = [[IBLDeleteOrder alloc] init];
         
         self.handleOrder = [[IBLHandleOrder alloc] init];
+        
+        self.sendOrder = [[IBLSendOrder alloc] init];
 
         self.searchResults = [@{@(0) : [IBLOrderSearchResult defaultSearchResult],
                                 @(1) : [IBLOrderSearchResult defaultSearchResult] ,

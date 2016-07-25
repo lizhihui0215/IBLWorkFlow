@@ -184,7 +184,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
             
             NSString *placeholder = [self.viewModel placeHolderWith:action atIndexPath:indexPath];
             
-            IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title
+           __block __strong IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title
                                                                                            placeholder:placeholder
                                                                                                  image:image];
             @weakify(self)
@@ -197,6 +197,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                           [self.tableView.mj_header beginRefreshing];
                                       }
                                   }];
+                alertView = nil;
             };
             
             [alertView show];
@@ -266,9 +267,9 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title
                                                                                    placeholder:placeholder
                                                                                          image:[UIImage imageNamed:@"alert"]];
-    [alertView show];
     @weakify(self)
     alertView.buttonTapped = ^(IBLBusinessAlertViewController *alert, NSInteger buttonIndex){
+        if (buttonIndex == 1) return ;
         @strongify(self)
         [self showHUDWithMessage:@"处理中..."];
         switch (searchViewController.viewModel.searchType) {
@@ -301,6 +302,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                 break;
         }
     };
+    [alertView show];
 }
 
 

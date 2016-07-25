@@ -32,17 +32,17 @@
                           regionId:(NSInteger)regionId
                        productName:(NSString *)name
                    completeHandler:(void (^)(NSArray<IBLProduct *> *, NSError *))handler {
-    NSInteger start = self.start;
+    if (refresh) self.start = 0; else self.start ++;
     
     IBLFetchProductList *fetchProductList = [IBLFetchProductList listWithProductId:productId
                                                                           regionId:regionId
                                                                        productName:name
-                                                                             start:start++
+                                                                             start:self.start
                                                                           pageSize:20];
     
     [self.productRepository fetchProductsWithProductList:fetchProductList
                                          completeHandler:^(NSArray<IBLProduct *> *products, NSError *error) {
-                                             if (!error) self.start = fetchProductList.start;
+                                             if (error) self.start --;
                                              handler(products, error);
                                          }];
 

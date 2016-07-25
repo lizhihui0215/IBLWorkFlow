@@ -7,7 +7,10 @@
 //
 
 #import "IBLViewController.h"
+#import "IBLRenewViewModel.h"
 
 @interface IBLRenewViewController : IBLViewController
+
+@property (nonatomic, strong) IBLRenewViewModel *viewModel;
 
 @end

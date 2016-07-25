@@ -445,7 +445,7 @@
         searchViewController.searchDelegate = self;
     }else if ([segue.identifier isEqualToString:@"CreateAccountProductForSearch"]){
         IBLSearchViewController *searchViewController = [segue destinationViewController];
-        searchViewController.viewModel = [IBLProductSearchViewModel productSearchModelWithSearchType:IBLSearchTypeProduct
+        searchViewController.viewModel = [IBLProductSearchViewModel productSearchModelWithSearchType:IBLSearchTypeCreateAccountProduct
                                                                                            productId:self.createAccountInfo.productIdentifier
                                                                                             regionId:self.createAccountInfo.residentialIdentifier];
         searchViewController.searchDelegate = self;
@@ -465,7 +465,7 @@
 
             break;
         }
-        case IBLSearchTypeProduct: {
+        case IBLSearchTypeCreateAccountProduct: {
             IBLProduct *product = searchResult;
             self.createAccountInfo.productName = product.name;
             self.createAccountInfo.productIdentifier = product.identifier;

@@ -15,4 +15,9 @@
                                                        @"VALUE" : @"status"}];
 }
 
+- (NSComparisonResult)compare:(IBLWorkOrderBussinessType *)other
+{
+    return [@(self.status) compare:@(other.status)];
+}
+
 @end

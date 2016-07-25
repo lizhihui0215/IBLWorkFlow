@@ -100,11 +100,11 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         self.trashMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfTrashOrder
                                                    responseMethodName:IBLMethodOfTrashOrderResponse];
         
-        self.handleMethod = [IBLSOAPMethod methodWithRequestMethodName:@""
-                                                    responseMethodName:@""];
+        self.handleMethod = [IBLSOAPMethod methodWithRequestMethodName:@"orderHandle"
+                                                    responseMethodName:@"orderHandleResponse"];
         
-        self.sendOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@""
-                                                       responseMethodName:@""];
+        self.sendOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@"orderIssue"
+                                                       responseMethodName:@"orderIssueResponse"];
         
     }
     return self;
@@ -138,7 +138,7 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         
         if (fetch.bizType !=  IBLWorkOrderBizStatusUnknow) parameters[kType] = @(fetch.bizType);
         
-        if(fetch.type != IBLWorkOrderStatusUnknow) parameters[kType] = @(fetch.type);
+        if(fetch.type != IBLWorkOrderStatusUnknow) parameters[kBizType] = @(fetch.type);
         
         
         [parameters addEntriesFromDictionary:@{kOrderStatus : @(fetch.status),

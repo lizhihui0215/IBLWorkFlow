@@ -45,8 +45,19 @@ static NSString const * kMineOrderFinished = @"";
     return [IBLAppRepository appConfiguration].effType;
 }
 
-- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes {
-    return [IBLAppRepository appConfiguration].workOrderBizTypes;
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesWithStatus:(IBLWorkOrderStatus)status {
+    
+    NSString *string = [@(status) stringValue];
+    
+    NSMutableArray <IBLWorkOrderBussinessType *> *workOrderBizTypes = [NSMutableArray array];
+    
+    for (IBLWorkOrderBussinessType *type in [IBLAppRepository appConfiguration].workOrderBizTypes) {
+        if([[@(type.status) stringValue] hasPrefix:string]) [workOrderBizTypes addObject:type];
+    }
+    
+    [workOrderBizTypes sortUsingSelector:@selector(compare:)];
+    
+    return workOrderBizTypes;
 }
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes {

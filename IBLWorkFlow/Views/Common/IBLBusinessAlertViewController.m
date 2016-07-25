@@ -9,7 +9,7 @@
 #import "IBLBusinessAlertViewController.h"
 #import "CustomIOSAlertView.h"
 
-@interface IBLBusinessAlertViewController ()
+@interface IBLBusinessAlertViewController ()<CustomIOSAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleContainerWidthConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -50,20 +50,45 @@
         // You may use a Block, rather than a delegate.
         
         [self.alertView setUseMotionEffects:false];
+        
+////
+////        self.buttonTapped = ^(IBLBusinessAlertViewController *alertView, NSInteger buttonIndex){
+////            @strongify(self)
+//            @weakify(self)
+//            self.alertView.onButtonTouchUpInside = ^(CustomIOSAlertView *alertView, int buttonIndex) {
+//                @strongify(self)
+//                
+//                if (self.buttonTapped) {
+//                    self.buttonTapped(self, buttonIndex);
+//                }
+//                [self.alertView close];
+//            };
+////        };
+        
+        self.alertView.delegate = self;
+        
+        
     }
     return self;
 }
 
-- (void)setButtonTapped:(OnButtonTouchUpInside)buttonTapped{
-    @weakify(self)
-    [self.alertView setOnButtonTouchUpInside:^(CustomIOSAlertView *alertView, int buttonIndex) {
-        @strongify(self)
-        if (buttonTapped) {
-            buttonTapped(self, buttonIndex);
-        }
-        [alertView close];
-    }];
+- (void)customIOS7dialogButtonTouchUpInside:(id)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (self.buttonTapped) {
+        self.buttonTapped(self,buttonIndex);
+    }
+    [self.alertView close];
 }
+
+//- (void)setButtonTapped:(OnButtonTouchUpInside)buttonTapped{
+//    @weakify(self)
+//    [self.alertView setOnButtonTouchUpInside:^(CustomIOSAlertView *alertView, int buttonIndex) {
+//        @strongify(self)
+//        if (buttonTapped) {
+//            buttonTapped(self, buttonIndex);
+//        }
+//        [alertView close];
+//    }];
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

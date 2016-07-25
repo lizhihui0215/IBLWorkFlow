@@ -57,7 +57,12 @@
                                                                          fieldType:IBLOrderSearchFieldTypeEndDate];
 }
 
-
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [IBLPickerView dismissWithCompletion:^(NSString *xx) {
+        
+    }];
+}
 
 - (IBAction)businessTypeTaped:(UITapGestureRecognizer *)sender {
     NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.searchDataSource workOrderBizTypesOfOrderSearchTableView:self ];
@@ -91,6 +96,15 @@
                                                      didEndEdit:workOrderType];
 
                     self.workOrderTypeTextField.text = workOrderType.name;
+                    
+                    
+                    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.searchDataSource workOrderBizTypesOfOrderSearchTableView:self];
+                    
+                    IBLWorkOrderBussinessType *first = businessTypes.firstObject;
+                    [self.searchDataSource orderSearchTableView:self
+                                                      fieldType:IBLOrderSearchFieldTypeWorkOrderBizType
+                                                     didEndEdit:first];
+                    self.workOrderBizTypeTextField.text = first.name;
                 }];
 }
 

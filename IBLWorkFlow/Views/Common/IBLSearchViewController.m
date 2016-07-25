@@ -65,7 +65,7 @@
             searchInfo = @{kSearchAreaName : keyword};
             break;
         }
-        case IBLSearchTypeProduct:{
+        case IBLSearchTypeCreateAccountProduct:{
             searchInfo = @{kSearchProductName : keyword};
             break;
         }
@@ -127,7 +127,7 @@
             cell = [self configurationRegionCellWithTableView:tableView indexPath:indexPath];
             break;
         }
-        case IBLSearchTypeProduct:{
+        case IBLSearchTypeCreateAccountProduct:{
             cell = [self configurationProductCellWithTableView:tableView indexPath:indexPath];
             break;
         }

@@ -109,7 +109,7 @@
 }
 
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller {
-    return [self.viewModel workOrderBizTypes];
+    return [self.viewModel workOrderBizTypesStatus:self.viewModel.searchResult.type.status];
 }
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypesOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller {

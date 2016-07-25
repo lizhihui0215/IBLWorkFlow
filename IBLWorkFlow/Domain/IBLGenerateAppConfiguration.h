@@ -11,7 +11,7 @@
 
 @interface IBLGenerateAppConfiguration : IBLUseCase
 
-- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes;
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesWithStatus:(IBLWorkOrderStatus)status;
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes;
 

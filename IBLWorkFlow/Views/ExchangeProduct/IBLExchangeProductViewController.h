@@ -7,7 +7,10 @@
 //
 
 #import "IBLViewController.h"
+#import "IBLExchangeProductViewModel.h"
 
 @interface IBLExchangeProductViewController : IBLViewController
+
+@property (nonatomic, strong) IBLExchangeProductViewModel *viewModel;
 
 @end

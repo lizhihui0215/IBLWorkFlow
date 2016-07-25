@@ -34,7 +34,7 @@
 
 - (void)setUserPhone:(NSString *)userPhone;
 
-- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes;
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesStatus:(IBLWorkOrderStatus)status;
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes;
 
