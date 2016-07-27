@@ -73,7 +73,7 @@
 }
 
 - (void)createAccountWithInfo:(IBLCreateAccountInfo *)createAccountInfo
-              completeHandler:(void (^)(NSArray<IBLRelateUser *> *, NSError *))handler{
+              completeHandler:(void (^)(id, NSError *))handler{
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[@"type"] = createAccountInfo.type;

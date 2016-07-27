@@ -41,8 +41,25 @@ typedef NS_ENUM(NSInteger, IBLRenewTextFieldType) {
 @end
 
 @interface IBLRenewResult : NSObject
+@property (nonatomic, copy) NSString *renewProductCount;
+@property (nonatomic, copy) NSString *productPriceAmount;
+@property (nonatomic, copy) NSString *productCount;
+@property (nonatomic, copy) NSString *ticket;
+@property (nonatomic, copy) NSString *contract;
+@property (nonatomic, copy) NSString *discount;
+@property (nonatomic, copy) NSString *give;
+@property (nonatomic, copy) NSString *pay;
+@property (nonatomic, copy) NSString *comment;
 
-@property (nonatomic, copy) NSString *type;
++ (instancetype)resultWithRenewProductCount:(NSString *)renewProductCount
+                         productPriceAmount:(NSString *)productPriceAmount
+                               productCount:(NSString *)productCount
+                                     ticket:(NSString *)ticket
+                                   contract:(NSString *)contract
+                                   discount:(NSString *)discount
+                                       give:(NSString *)give
+                                        pay:(NSString *)pay
+                                    comment:(NSString *)comment;
 
 
 @end

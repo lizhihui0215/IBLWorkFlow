@@ -7,12 +7,16 @@
 //
 
 #import "IBLRenewViewModel.h"
+#import "IBLRenewTableViewController.h"
+#import "IBLCreateAccount.h"
 
 @interface IBLRenewViewModel ()
 
 @property (nonatomic, strong) IBLFetchProductPrice *fetchProductPrice;
 
 @property (nonatomic, strong) IBLProductPrice *productPrices;
+
+@property (nonatomic, strong) IBLCreateAccount *createAccount;
 
 @end
 
@@ -22,6 +26,8 @@
     if (self) {
         _user = user;
         self.fetchProductPrice = [[IBLFetchProductPrice alloc] init];
+        
+        self.createAccount = [[IBLCreateAccount alloc] init];
     }
 
     return self;
@@ -106,5 +112,27 @@
 
 - (IBLProductPrice *)productPrice {
     return self.productPrices;
+}
+
+- (void)commitWithResult:(IBLRenewResult *)result {
+    IBLCreateAccountInfo *info = [[IBLCreateAccountInfo alloc] init];
+    info.account = self.user.account;
+    info.userName = self.user.username;
+    info.idNo = self.user.userIdentifier;
+    info.phone = self.user.phone;
+    info.addr = self.user.address;
+    info.remark = self.user.comments;
+    info.productId = self.user.offerIdentifier;
+    info.buyLength = [@(self.productPrices.totalLength) stringValue];
+    info.totalCost = result.productPriceAmount;
+    info.preCost = result.discount;
+    info.extraLength = result.give;
+    info.nodeId = self.user.areaIdentifier;
+    info.loginType = @"";
+    info.contractCode = result.contract;
+    info.voiceCode = result.ticket;
+    
+    
+    [self.createAccount createAccountWithInfo:info];
 }
 @end

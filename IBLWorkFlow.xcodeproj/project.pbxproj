@@ -94,6 +94,7 @@
 		26ADA5E71D438C75005CAEEC /* IBLAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26ADA5E61D438C75005CAEEC /* IBLAboutViewController.m */; };
 		26C2597D1D42687300035F63 /* IBLRenewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C2597C1D42687300035F63 /* IBLRenewViewController.m */; };
 		26C259801D42688400035F63 /* IBLRenewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C2597F1D42688400035F63 /* IBLRenewTableViewController.m */; };
+		26C532D21D48B1BF0068E713 /* IBLCreateAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C532D11D48B1BF0068E713 /* IBLCreateAccount.m */; };
 		26C97D671D41C8C3001EFA6F /* IBLProductPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C97D661D41C8C3001EFA6F /* IBLProductPrice.m */; };
 		26C97D6B1D421DDF001EFA6F /* IBLAddWorkOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C97D6A1D421DDF001EFA6F /* IBLAddWorkOrderViewController.m */; };
 		26C97D6E1D421DF7001EFA6F /* IBLAddWorkOrderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C97D6D1D421DF7001EFA6F /* IBLAddWorkOrderTableViewController.m */; };
@@ -322,6 +323,8 @@
 		26C2597C1D42687300035F63 /* IBLRenewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRenewViewController.m; sourceTree = "<group>"; };
 		26C2597E1D42688400035F63 /* IBLRenewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRenewTableViewController.h; sourceTree = "<group>"; };
 		26C2597F1D42688400035F63 /* IBLRenewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRenewTableViewController.m; sourceTree = "<group>"; };
+		26C532D01D48B1BF0068E713 /* IBLCreateAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLCreateAccount.h; sourceTree = "<group>"; };
+		26C532D11D48B1BF0068E713 /* IBLCreateAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLCreateAccount.m; sourceTree = "<group>"; };
 		26C97D661D41C8C3001EFA6F /* IBLProductPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLProductPrice.m; sourceTree = "<group>"; };
 		26C97D681D41CB03001EFA6F /* IBLProductPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLProductPrice.h; sourceTree = "<group>"; };
 		26C97D691D421DDF001EFA6F /* IBLAddWorkOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAddWorkOrderViewController.h; sourceTree = "<group>"; };
@@ -693,6 +696,8 @@
 				5B8754F50FC733C78D974141 /* IBLFetchProductPrice.m */,
 				26EC5A3F1D45FA0500CB0F7C /* IBLFetchUserList.h */,
 				26EC5A401D45FA0500CB0F7C /* IBLFetchUserList.m */,
+				26C532D01D48B1BF0068E713 /* IBLCreateAccount.h */,
+				26C532D11D48B1BF0068E713 /* IBLCreateAccount.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1338,6 +1343,7 @@
 				262BFF771D4074050021F8EB /* IBLSectionHeaderView.m in Sources */,
 				5B8754AC25CDAC1FA27E0231 /* IBLOrderViewController.m in Sources */,
 				5B8757FCBA803A3DCB4C50B2 /* IBLOrderCell.m in Sources */,
+				26C532D21D48B1BF0068E713 /* IBLCreateAccount.m in Sources */,
 				26EC5A411D45FA0500CB0F7C /* IBLFetchUserList.m in Sources */,
 				26ADA5E41D43899B005CAEEC /* IBLExchangeProductViewController.m in Sources */,
 				26EC5A2B1D45E5F700CB0F7C /* IBLUserSearchTableViewController.m in Sources */,

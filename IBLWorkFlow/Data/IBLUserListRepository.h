@@ -11,35 +11,35 @@
 
 @interface IBLCreateAccountInfo :NSObject
 
-@property(nonatomic, strong) id type;
-@property(nonatomic, strong) id cardNo;
-@property(nonatomic, strong) id gender;
-@property(nonatomic, strong) id cardPwd;
-@property(nonatomic, strong) id genarate;
-@property(nonatomic, strong) id account;
-@property(nonatomic, strong) id password;
-@property(nonatomic, strong) id userName;
-@property(nonatomic, strong) id idNo;
-@property(nonatomic, strong) id phone;
-@property(nonatomic, strong) id subPhone;
-@property(nonatomic, strong) id addr;
-@property(nonatomic, strong) id birthDate;
-@property(nonatomic, strong) id email;
-@property(nonatomic, strong) id remark;
-@property(nonatomic, strong) id productId;
-@property(nonatomic, strong) id buyLength;
-@property(nonatomic, strong) id extraLength;
-@property(nonatomic, strong) id effType;
-@property(nonatomic, strong) id effDate;
-@property(nonatomic, strong) id discountItems;
-@property(nonatomic, strong) id totalCost;
-@property(nonatomic, strong) id preCost;
-@property(nonatomic, strong) id nodeId;
-@property(nonatomic, strong) id loginType;
-@property(nonatomic, strong) id balanceType;
-@property(nonatomic, strong) id prompt;
-@property(nonatomic, strong) id contractCode;
-@property(nonatomic, strong) id voiceCode;
+@property(nonatomic, copy) NSString *type;
+@property(nonatomic, copy) NSString *cardNo;
+@property(nonatomic, copy) NSString *gender;
+@property(nonatomic, copy) NSString *cardPwd;
+@property(nonatomic, copy) NSString *genarate;
+@property(nonatomic, copy) NSString *account;
+@property(nonatomic, copy) NSString *password;
+@property(nonatomic, copy) NSString *userName;
+@property(nonatomic, copy) NSString *idNo;
+@property(nonatomic, copy) NSString *phone;
+@property(nonatomic, copy) NSString *subPhone;
+@property(nonatomic, copy) NSString *addr;
+@property(nonatomic, copy) NSString *birthDate;
+@property(nonatomic, copy) NSString *email;
+@property(nonatomic, copy) NSString *remark;
+@property(nonatomic, copy) NSString *productId;
+@property(nonatomic, copy) NSString *buyLength;
+@property(nonatomic, copy) NSString *extraLength;
+@property(nonatomic, copy) NSString *effType;
+@property(nonatomic, copy) NSString *effDate;
+@property(nonatomic, copy) NSString *discountItems;
+@property(nonatomic, copy) NSString *totalCost;
+@property(nonatomic, copy) NSString *preCost;
+@property(nonatomic, copy) NSString *nodeId;
+@property(nonatomic, copy) NSString *loginType;
+@property(nonatomic, copy) NSString *balanceType;
+@property(nonatomic, copy) NSString *prompt;
+@property(nonatomic, copy) NSString *contractCode;
+@property(nonatomic, copy) NSString *voiceCode;
 @end
 
 @interface IBLFetchUserListInfo : IBLFetchList
@@ -70,6 +70,9 @@
 @end
 
 @interface IBLUserListRepository : IBLBusinessRepository
+
+- (void)createAccountWithInfo:(IBLCreateAccountInfo *)createAccountInfo
+              completeHandler:(void (^)(id, NSError *))handle;
 
 - (void)fetchUserListWithIsRefresh:(BOOL)refresh
                        fetchResult:(IBLFetchUserListInfo *)result

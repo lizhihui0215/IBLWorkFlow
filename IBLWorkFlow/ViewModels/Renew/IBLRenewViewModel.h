@@ -9,6 +9,7 @@
 #import "IBLViewModel.h"
 #import "IBLRelateUser.h"
 #import "IBLFetchProductPrice.h"
+@class IBLRenewResult;
 
 @interface IBLRenewViewModel : IBLViewModel
 
@@ -54,4 +55,6 @@
 - (void)fetchProductPrice:(IBLFetchProductPriceInfo *)info completeHandler:(IBLViewModelCompleteHandler)handler;
 
 - (IBLProductPrice *)productPrice;
+
+- (void)commitWithResult:(IBLRenewResult *)result;
 @end

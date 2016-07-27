@@ -11,6 +11,26 @@
 #import "IBLCreateAccountTableViewController.h"
 
 @implementation IBLRenewResult
+- (instancetype)initWithRenewProductCount:(NSString *)renewProductCount productPriceAmount:(NSString *)productPriceAmount productCount:(NSString *)productCount ticket:(NSString *)ticket contract:(NSString *)contract discount:(NSString *)discount give:(NSString *)give pay:(NSString *)pay comment:(NSString *)comment {
+    self = [super init];
+    if (self) {
+        self.renewProductCount = renewProductCount;
+        self.productPriceAmount = productPriceAmount;
+        self.productCount = productCount;
+        self.ticket = ticket;
+        self.contract = contract;
+        self.discount = discount;
+        self.give = give;
+        self.pay = pay;
+        self.comment = comment;
+    }
+
+    return self;
+}
+
++ (instancetype)resultWithRenewProductCount:(NSString *)renewProductCount productPriceAmount:(NSString *)productPriceAmount productCount:(NSString *)productCount ticket:(NSString *)ticket contract:(NSString *)contract discount:(NSString *)discount give:(NSString *)give pay:(NSString *)pay comment:(NSString *)comment {
+    return [[self alloc] initWithRenewProductCount:renewProductCount productPriceAmount:productPriceAmount productCount:productCount ticket:ticket contract:contract discount:discount give:give pay:pay comment:comment];
+}
 
 @end
 
@@ -159,8 +179,17 @@
 }
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {
-    IBLRenewResult *a ;
-    [self.tableViewDelegate tableViewController:self commitResult:a];
+    IBLRenewResult *result = [IBLRenewResult resultWithRenewProductCount:self.renewProductCount.text
+                                                 productPriceAmount:self.productPriceAmountTextField.text
+                                                       productCount:self.productCountTextField.text
+                                                             ticket:self.ticketTextField.text
+                                                           contract:self.contractTextField.text
+                                                           discount:self.discountTextField.text
+                                                               give:self.giveTextField.text
+                                                                pay:self.payTextField.text
+                                                            comment:self.commentTextView.text];
+    
+    [self.tableViewDelegate tableViewController:self commitResult:result];
 }
 
 - (CGFloat)sales{

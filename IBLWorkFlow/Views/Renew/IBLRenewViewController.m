@@ -128,7 +128,7 @@
 
 - (void)tableViewController:(IBLRenewTableViewController *)controller
                commitResult:(IBLRenewResult *)result {
-
+    [self.viewModel commitWithResult:result];
 }
 
 
