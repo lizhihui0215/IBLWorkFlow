@@ -10,4 +10,39 @@
 
 @interface IBLRelateUser : IBLModel
 
+/// 用户Id
+@property (nonatomic, assign) NSInteger servId;
+/// 用户账号
+@property (nonatomic, copy) NSString *account;
+/// 用户姓名
+@property (nonatomic, copy) NSString *username;
+/// 电话号码
+@property (nonatomic, copy) NSString *phone;
+/// 邮箱
+@property (nonatomic, copy) NSString *email;
+/// 联系地址
+@property (nonatomic, copy) NSString *address;
+/// 身份证号
+@property (nonatomic, copy) NSString *idNo;
+/// 所属小区
+@property (nonatomic, copy) NSString *areaName;
+/// 所属小区ID
+@property (nonatomic, copy) NSString *areaIdentifier;
+/// 订购套餐
+@property (nonatomic, copy) NSString *offerName;
+/// 销售品
+@property (nonatomic, copy) NSString *offerIdentifier;
+/// 失效时间
+@property (nonatomic, copy) NSString *expDate;
+/// 生效时间
+@property (nonatomic, copy) NSString *effDate;
+/// 身份证号
+@property (nonatomic, copy) NSString *userIdentifier;
+/// 备注
+@property (nonatomic, copy) NSString *comments;
+/// 办理时间
+@property (nonatomic, copy) NSString *createDate;
+/// 状态
+@property (nonatomic, copy) NSString *state;
+
 @end

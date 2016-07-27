@@ -61,6 +61,8 @@
             searchInfo = @{kSearchOperatorName : keyword};
             break;
         }
+        case IBLSearchTypeExchangeProductArea:
+        case IBLSearchTypeRenewArea:
         case IBLSearchTypeCreateAccountArea:{
             searchInfo = @{kSearchAreaName : keyword};
             break;
@@ -69,7 +71,6 @@
             searchInfo = @{kSearchProductName : keyword};
             break;
         }
-        
     }
     
     return searchInfo;
@@ -123,6 +124,8 @@
             cell = [self configurationOperatorCellWithTableView:tableView indexPath:indexPath];
             break;
         }
+        case IBLSearchTypeExchangeProductArea:
+        case IBLSearchTypeRenewArea:
         case IBLSearchTypeCreateAccountArea:{
             cell = [self configurationRegionCellWithTableView:tableView indexPath:indexPath];
             break;

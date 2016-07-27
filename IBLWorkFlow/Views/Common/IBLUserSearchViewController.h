@@ -8,6 +8,7 @@
 
 #import "IBLViewController.h"
 #import "IBLUserSearchViewModel.h"
+#import "RESideMenu.h"
 
 @interface IBLUserSearchViewController : IBLViewController
 

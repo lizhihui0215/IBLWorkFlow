@@ -17,6 +17,7 @@
 #import "IBLRenewViewController.h"
 #import "IBLExchangeProductViewController.h"
 #import "IBLAboutViewController.h"
+#import "IBLUserSearchViewController.h"
 
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
@@ -66,17 +67,19 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 }
 
 - (UINavigationController *)exchangeProductViewController {
-    IBLExchangeProductViewController *exchangeProductViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLExchangeProductViewController"];
+    IBLUserSearchViewController *userSearchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLUserSearchViewController"];
 
+    userSearchViewController.viewModel = [[IBLUserSearchViewModel alloc] initWithSearchType:IBLUserSearchTypeExchangeProduct];
     
-    return [[UINavigationController alloc] initWithRootViewController:exchangeProductViewController];
+    return [[UINavigationController alloc] initWithRootViewController:userSearchViewController];
 }
 
 - (UINavigationController *)renewViewController {
-    IBLRenewViewController *renewViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLRenewViewController"];
+    IBLUserSearchViewController *userSearchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLUserSearchViewController"];
 
-    
-    return [[UINavigationController alloc] initWithRootViewController:renewViewController];
+    userSearchViewController.viewModel = [[IBLUserSearchViewModel alloc] initWithSearchType:IBLUserSearchTypeRenew];
+
+    return [[UINavigationController alloc] initWithRootViewController:userSearchViewController];
 }
 
 - (UINavigationController *)addWorkOrderViewController{

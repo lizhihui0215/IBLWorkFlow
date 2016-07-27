@@ -4,9 +4,23 @@
 //
 
 #import "IBLExchangeProductViewModel.h"
+#import "IBLRelateUser.h"
 
 
-@implementation IBLExchangeProductViewModel {
+@implementation IBLExchangeProductViewModel
 
+- (instancetype)initWithUser:(IBLRelateUser *)user {
+    self = [super init];
+    if (self) {
+        _user = user;
+    }
+
+    return self;
 }
+
++ (instancetype)modelWithUser:(IBLRelateUser *)user {
+    return [[self alloc] initWithUser:user];
+}
+
+
 @end

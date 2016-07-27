@@ -23,6 +23,7 @@
     // Do any additional setup after loading the view.
     self.headerRefresh = YES;
     self.footerRefresh = YES;
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,6 +37,7 @@
 - (void)tableView:(UITableView *)tableView footerBeginRefresh:(MJRefreshBackStateFooter *)footer{
     [self.viewModel reloadWithIsRefresh:NO
                         completeHandler:^(NSError *error) {
+                            [tableView reloadData];
                             [footer endRefreshing];
                         }];
 }
@@ -43,6 +45,7 @@
 - (void)tableView:(UITableView *)tableView headerBeginRefresh:(MJRefreshStateHeader *)header{
     [self.viewModel reloadWithIsRefresh:YES
                         completeHandler:^(NSError *error) {
+                            [tableView reloadData];
                             [header endRefreshing];
                         }];
 }
@@ -71,6 +74,14 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:[self segueIdentifiers][@(self.viewModel.searchType)] sender:indexPath];
+}
+
+- (NSDictionary *)segueIdentifiers{
+    return @{@(IBLUserSearchTypeRenew) : @"NavigationToRenew" ,
+             @(IBLUserSearchTypeExchangeProduct) : @"NavigationToExchangeProduct"};
+}
 
 #pragma mark - Navigation
 
@@ -78,23 +89,20 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    id searchResult = [self.viewModel searchResultAtIndexPath:indexPath];
+    id searchResult = [self.viewModel searchResultAtIndexPath:sender];
 
     switch (self.viewModel.searchType) {
         case IBLUserSearchTypeRenew: {
             IBLRenewViewController *renewViewController = [segue destinationViewController];
             
-            renewViewController.viewModel = [[IBLRenewViewModel alloc] init];
+            renewViewController.viewModel = [IBLRenewViewModel modelWithUser:searchResult];
             break;
         }
         case IBLUserSearchTypeExchangeProduct: {
             
             IBLExchangeProductViewController *exchangeProductViewController = [segue destinationViewController];
             
-            exchangeProductViewController.viewModel = [[IBLExchangeProductViewModel alloc] init];
-            
+            exchangeProductViewController.viewModel = [IBLExchangeProductViewModel modelWithUser:searchResult];
             break;
         }
     }

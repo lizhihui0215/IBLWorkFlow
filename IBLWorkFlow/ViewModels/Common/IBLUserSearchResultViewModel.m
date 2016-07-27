@@ -48,17 +48,26 @@
 }
 
 - (id)searchResultAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    return [self relateUserAtIndexPath:indexPath];
 }
 
 
 - (NSString *)identifierAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    IBLRelateUser *user = [self relateUserAtIndexPath:indexPath];
+    return [@(user.servId) stringValue];
 }
 
 - (NSString *)nameAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    IBLRelateUser *user = [self relateUserAtIndexPath:indexPath];
+    return user.username;
 }
+
+- (IBLRelateUser *)relateUserAtIndexPath:(NSIndexPath *)indexPath{
+    IBLSectionItem *sectionItem = [self sectionItemAtIndexPath:indexPath];
+    
+    return sectionItem.info;
+}
+
 
 - (void)reloadWithIsRefresh:(BOOL)isRefresh
             completeHandler:(void (^)(NSError *))handler {
@@ -73,7 +82,28 @@
     [self.fetchUserList fetchUserListWithIsRefresh:isRefresh
                                        fetchResult:fetch
                                    completeHandler:^(NSArray<IBLRelateUser *> *users, NSError *error){
-                                       
+                                       IBLSection *section = [self sectionAt:0];
+                                       NSMutableArray<IBLSectionItem *> * sectionItems =[self sectionItemsWithRelateUsers:users];
+
+                                       if (isRefresh) {
+                                           section.items = sectionItems;
+                                       }else{
+                                           [section.items addObjectsFromArray:sectionItems];
+                                       }
+
+                                       handler(error);
                                    }];
 }
+
+- (NSMutableArray<IBLSectionItem *> *)sectionItemsWithRelateUsers:(NSArray<IBLRelateUser *> *)relateUsers{
+    NSMutableArray<IBLSectionItem *> *sectionItems = [NSMutableArray array];
+    
+    for (IBLRelateUser *relateUser in relateUsers) {
+        IBLSectionItem *item = [IBLSectionItem itemWithInfo:relateUser selected:NO];
+        [sectionItems addObject:item];
+    }
+    
+    return sectionItems;
+}
+
 @end

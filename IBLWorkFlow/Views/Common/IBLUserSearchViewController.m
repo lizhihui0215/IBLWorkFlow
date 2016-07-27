@@ -8,6 +8,7 @@
 
 #import "IBLUserSearchViewController.h"
 #import "IBLUserSearchTableViewController.h"
+#import "RESideMenu.h"
 
 @interface IBLUserSearchViewController ()<IBLUserSearchTableViewControllerDelegate>
 

@@ -32,6 +32,14 @@ typedef NS_ENUM(NSInteger, IBLSearchType) {
      *  开户选择销售品
      */
     IBLSearchTypeCreateAccountProduct,
+    /**
+     *  更换销售品选择小区
+     */
+    IBLSearchTypeExchangeProductArea,
+    /**
+     *  续费选择小区
+     */
+    IBLSearchTypeRenewArea,
 };
 
 @class IBLSearchViewModel;

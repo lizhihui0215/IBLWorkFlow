@@ -5,6 +5,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class IBLRelateUser;
+
 
 @interface IBLExchangeProductViewModel : NSObject
+
+@property (nonatomic, strong, readonly) IBLRelateUser *user;
+
++ (instancetype)modelWithUser:(IBLRelateUser *)user;
+
 @end

@@ -18,6 +18,15 @@
 
 @implementation IBLFetchUserList
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.userListRepository = [[IBLUserListRepository alloc] init];
+    }
+    return self;
+}
+
 - (void)fetchUserListWithIsRefresh:(BOOL)refresh
                        fetchResult:(IBLFetchUserListInfo *)result
                    completeHandler:(void (^)(NSArray<IBLRelateUser *> *, NSError *))handler {
@@ -27,8 +36,7 @@
     [self.userListRepository fetchUserListWithIsRefresh:refresh
                                             fetchResult:result
                                         completeHandler:^(NSArray<IBLRelateUser *> *users, NSError *error){
-
+                                            handler(users,error);
                                         }];
-    
 }
 @end

@@ -9,7 +9,6 @@
 #import "IBLCreateAccountViewModel.h"
 #import "IBLCreateAccountHiddenFields.h"
 #import "IBLGenerateAppConfiguration.h"
-#import "IBLProductRepository.h"
 #import "IBLFetchProductPrice.h"
 
 
