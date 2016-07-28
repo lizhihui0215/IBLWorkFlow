@@ -8,6 +8,41 @@
 
 #import "IBLTableViewController.h"
 
+typedef NS_ENUM(NSInteger, IBLAddWorkOrderFieldType) {
+    IBLAddWorkOrderFieldTypeWorkOrderType,
+    IBLAddWorkOrderFieldTypeBizType,
+    IBLAddWorkOrderFieldTypePriority,
+    IBLAddWorkOrderFieldTypeFinishedDate,
+    IBLAddWorkOrderFieldTypeRegion,
+    IBLAddWorkOrderFieldTypeProduct,
+    IBLAddWorkOrderFieldTypeCount,
+    IBLAddWorkOrderFieldTypeUsername,
+    IBLAddWorkOrderFieldTypePhone,
+    IBLAddWorkOrderFieldTypeAddress,
+    IBLAddWorkOrderFieldTypeUserIdentifier,
+    IBLAddWorkOrderFieldTypeWorkOrderContent,
+    IBLAddWorkOrderFieldTypeRelateUser,
+    IBLAddWorkOrderFieldTypeHandleUser,
+    IBLAddWorkOrderFieldTypeRemark,
+};
+
+@class IBLAddWorkOrderTableViewController;
+
+@protocol IBLAddWorkOrderTableViewControllerDelegate <NSObject>
+
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesOfTableView:(IBLAddWorkOrderTableViewController *)controller;
+
+- (NSArray<IBLWorkOrderType *> *)workOrderTypesOfTableView:(IBLAddWorkOrderTableViewController *)controller;
+
+- (void)addWorkOrderTableView:(IBLAddWorkOrderTableViewController *)controller
+                    fieldType:(IBLAddWorkOrderFieldType)type
+                   didEndEdit:(id)edit;
+
+- (id)fieldOfAddWorkOrderTableView:(IBLAddWorkOrderTableViewController *)controller fieldType:(enum IBLAddWorkOrderFieldType)type;
+@end
+
 @interface IBLAddWorkOrderTableViewController : UITableViewController
+
+@property (nonatomic,weak) id<IBLAddWorkOrderTableViewControllerDelegate> tableViewDelegate;
 
 @end

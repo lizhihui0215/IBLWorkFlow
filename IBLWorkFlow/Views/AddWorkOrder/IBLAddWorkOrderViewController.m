@@ -7,8 +7,13 @@
 //
 
 #import "IBLAddWorkOrderViewController.h"
+#import "IBLAddWorkOrderTableViewController.h"
+#import "IBLRegion.h"
+#import "IBLProduct.h"
+#import "IBLRelateUser.h"
+#import "IBLOperator.h"
 
-@interface IBLAddWorkOrderViewController ()
+@interface IBLAddWorkOrderViewController () <IBLAddWorkOrderTableViewControllerDelegate>
 
 @end
 
@@ -24,14 +29,107 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+   IBLAddWorkOrderTableViewController *addWorkOrderTableViewController = [segue destinationViewController];
+    addWorkOrderTableViewController.tableViewDelegate = self;
 }
-*/
+
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesOfTableView:(IBLAddWorkOrderTableViewController *)controller {
+    return nil;
+}
+
+- (NSArray<IBLWorkOrderType *> *)workOrderTypesOfTableView:(IBLAddWorkOrderTableViewController *)controller {
+    return nil;
+}
+
+- (void)addWorkOrderTableView:(IBLAddWorkOrderTableViewController *)controller fieldType:(IBLAddWorkOrderFieldType)type didEndEdit:(id)obj {
+    switch (type) {
+        case IBLAddWorkOrderFieldTypeWorkOrderType: {
+            [self.viewModel setWorkOrderType:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeBizType: {
+            [self.viewModel setWorkOrderBizType:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypePriority: {
+            [self.viewModel setPriority:[obj integerValue]];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeFinishedDate: {
+            [self.viewModel setFinishedDate:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeRegion: {
+            [self.viewModel setRegion:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeProduct: {
+            [self.viewModel setProduct:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeCount: {
+            [self.viewModel setCount:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeUsername: {
+            [self.viewModel setUsername:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypePhone: {
+            [self.viewModel setPhone:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeAddress: {
+            [self.viewModel setAddress:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeUserIdentifier: {
+            [self.viewModel setUserIdentifier:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeWorkOrderContent: {
+            [self.viewModel setWorkOrderContent:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeRelateUser: {
+            [self.viewModel setRelateUser:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeHandleUser: {
+            [self.viewModel setOperator:obj];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeRemark: {
+            [self.viewModel setRemark:obj];
+            break;
+        }
+    }
+}
+
+- (id)fieldOfAddWorkOrderTableView:(IBLAddWorkOrderTableViewController *)controller fieldType:(IBLAddWorkOrderFieldType)type {
+    id obj = nil;
+    switch (type) {
+        case IBLAddWorkOrderFieldTypeWorkOrderType: {
+           obj = [self.viewModel workOrderType];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeBizType: {
+            obj = [self.viewModel workOrderBizType];
+            break;
+        }
+        default:
+            break;
+    }
+    
+    return obj;
+}
+
 
 @end

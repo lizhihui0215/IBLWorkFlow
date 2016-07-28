@@ -59,7 +59,7 @@ static NSString const * kRenew = @"RENEW";
     }
     
     IBLLeftMenu *about = [IBLLeftMenu menuWithTitle:@"关于我们"
-                                               icon:[UIImage imageNamed:@"about"]
+                                               icon:[UIImage imageNamed:@"about1"]
                                         parentIndex:NSNotFound
                                               index:IBLLeftMenuSectionActionAbout];
     [menus addObject:about];

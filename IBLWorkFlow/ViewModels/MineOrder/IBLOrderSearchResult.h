@@ -15,9 +15,9 @@
 
 @property (nonatomic, copy) NSString *phone;
 
-@property (nonatomic, copy) IBLWorkOrderType *type;
+@property (nonatomic, strong) IBLWorkOrderType *type;
 
-@property (nonatomic, copy) IBLWorkOrderBussinessType *bizType;
+@property (nonatomic, strong) IBLWorkOrderBussinessType *bizType;
 
 @property (nonatomic, copy) NSString *dateRange;
 

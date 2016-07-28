@@ -117,6 +117,8 @@
 		26EC5A411D45FA0500CB0F7C /* IBLFetchUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC5A401D45FA0500CB0F7C /* IBLFetchUserList.m */; };
 		26EC5A441D45FAA600CB0F7C /* IBLRelateUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC5A431D45FAA600CB0F7C /* IBLRelateUser.m */; };
 		26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26F620191D2FB6B500B49065 /* Operator.xml */; };
+		26FDA1E51D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FDA1E41D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m */; };
+		26FDA1E81D49BDF100BB8C3D /* IBLAddWorkOrderResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FDA1E71D49BDF100BB8C3D /* IBLAddWorkOrderResult.m */; };
 		26FFA9251D36936200DF8D4E /* IBLAppRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA9241D36936200DF8D4E /* IBLAppRepository.m */; };
 		5B87503752F56F0A4773B64D /* IBLTrashOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875C50B051C41CC76D45C6 /* IBLTrashOrder.m */; };
 		5B8750822A767DB06CDBA96F /* IBLOrderSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8755847289098046B8A1DF /* IBLOrderSearchViewController.m */; };
@@ -367,6 +369,10 @@
 		26EC5A421D45FAA600CB0F7C /* IBLRelateUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRelateUser.h; sourceTree = "<group>"; };
 		26EC5A431D45FAA600CB0F7C /* IBLRelateUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRelateUser.m; sourceTree = "<group>"; };
 		26F620191D2FB6B500B49065 /* Operator.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Operator.xml; sourceTree = "<group>"; };
+		26FDA1E31D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAddWorkOrderViewModel.h; sourceTree = "<group>"; };
+		26FDA1E41D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAddWorkOrderViewModel.m; sourceTree = "<group>"; };
+		26FDA1E61D49BDF100BB8C3D /* IBLAddWorkOrderResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAddWorkOrderResult.h; sourceTree = "<group>"; };
+		26FDA1E71D49BDF100BB8C3D /* IBLAddWorkOrderResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAddWorkOrderResult.m; sourceTree = "<group>"; };
 		26FFA9231D36936200DF8D4E /* IBLAppRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAppRepository.h; sourceTree = "<group>"; };
 		26FFA9241D36936200DF8D4E /* IBLAppRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAppRepository.m; sourceTree = "<group>"; };
 		3827AAE8534D1CF41CA1D789 /* Pods-IBLWorkFlowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -564,6 +570,17 @@
 			path = WorkOrder;
 			sourceTree = "<group>";
 		};
+		5B87520A0D5E32DADCCA0AE3 /* AddWorkOrder */ = {
+			isa = PBXGroup;
+			children = (
+				26FDA1E61D49BDF100BB8C3D /* IBLAddWorkOrderResult.h */,
+				26FDA1E71D49BDF100BB8C3D /* IBLAddWorkOrderResult.m */,
+				26FDA1E31D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.h */,
+				26FDA1E41D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m */,
+			);
+			path = AddWorkOrder;
+			sourceTree = "<group>";
+		};
 		5B8753A10C9EEFD98D1ED3D5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +657,7 @@
 				5B875D20AC2E674620FCBA2C /* Common */,
 				5B875C38C14462D131F3D849 /* CreateAccount */,
 				5B875F4E63E73FD8F579C8D4 /* Renew */,
+				5B87520A0D5E32DADCCA0AE3 /* AddWorkOrder */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1256,6 +1274,7 @@
 				26469BE91D38C3300000285D /* IBLAppConfiguration.m in Sources */,
 				262BFF901D40D0040021F8EB /* IBLRegion.m in Sources */,
 				26D56E3D1D35D1CC0091A940 /* IBLLeftMenuViewModel.m in Sources */,
+				26FDA1E81D49BDF100BB8C3D /* IBLAddWorkOrderResult.m in Sources */,
 				26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */,
 				26ADA5E11D43898C005CAEEC /* IBLExchangeProductTableViewController.m in Sources */,
 				264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */,
@@ -1301,6 +1320,7 @@
 				267622C81D3CDE3F00B4E2F3 /* IBLSearchFieldCell.m in Sources */,
 				264EBB661D2E023D00FF8373 /* IBLAppDelegate.m in Sources */,
 				262BFF7E1D40752E0021F8EB /* IBLCreateAccountTableViewController.m in Sources */,
+				26FDA1E51D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m in Sources */,
 				2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */,
 				262BFF731D406AF80021F8EB /* IBLSendOrder.m in Sources */,
 				269B7D5D1D335A9F00D52DF0 /* NSString+IBLExtension.m in Sources */,

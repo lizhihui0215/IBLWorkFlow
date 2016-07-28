@@ -44,7 +44,7 @@
     
     if (parameters) {
         if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
-            [mutableRequest setValue:@"text/xml" forHTTPHeaderField:@"Content-Type"];
+            [mutableRequest setValue:@"text/xml;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
         }
         
         NSString *xml = [self.WSDLServices buildSOAPWithMethodName:self.methodName parameters:parameters];

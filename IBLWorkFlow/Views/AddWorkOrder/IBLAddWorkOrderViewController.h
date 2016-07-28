@@ -7,7 +7,10 @@
 //
 
 #import "IBLViewController.h"
+#import "IBLAddWorkOrderViewModel.h"
 
 @interface IBLAddWorkOrderViewController : IBLViewController
+
+@property (nonatomic, strong) IBLAddWorkOrderViewModel *viewModel;
 
 @end
