@@ -39,6 +39,8 @@ typedef NS_ENUM(NSInteger, IBLAddWorkOrderFieldType) {
                    didEndEdit:(id)edit;
 
 - (id)fieldOfAddWorkOrderTableView:(IBLAddWorkOrderTableViewController *)controller fieldType:(enum IBLAddWorkOrderFieldType)type;
+
+- (void)addWorkOrderTableDidCommit:(IBLAddWorkOrderTableViewController *)controller;
 @end
 
 @interface IBLAddWorkOrderTableViewController : UITableViewController

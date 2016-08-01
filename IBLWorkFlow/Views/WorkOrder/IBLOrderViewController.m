@@ -303,7 +303,4 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     [alertView show];
 }
 
-
-
-
 @end

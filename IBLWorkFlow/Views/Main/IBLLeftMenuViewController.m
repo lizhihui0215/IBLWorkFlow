@@ -85,6 +85,8 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 - (UINavigationController *)addWorkOrderViewController{
     IBLAddWorkOrderViewController *addWorkOrderController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLAddWorkOrderViewController"];
     
+    addWorkOrderController.viewModel = [[IBLAddWorkOrderViewModel alloc] init];
+    
     return [[UINavigationController alloc] initWithRootViewController:addWorkOrderController];
 }
 

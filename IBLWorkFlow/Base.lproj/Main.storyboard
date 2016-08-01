@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G12a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -481,7 +481,7 @@
                         <viewControllerLayoutGuide type="bottom" id="3JL-uC-K5h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="O59-64-yAR">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="35" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PMQ-Ou-MYF">
@@ -1907,6 +1907,9 @@
                                     <state key="normal" title="提交" backgroundImage="searchButtonBackground">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="commitTapped:" destination="wPe-r6-SRm" eventType="touchUpInside" id="3tI-mt-th4"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2053,6 +2056,9 @@
                                                         <constraint firstItem="bIg-kB-tSa" firstAttribute="centerY" secondItem="Dt9-F8-rNf" secondAttribute="centerY" id="iyT-9O-Njr"/>
                                                         <constraint firstItem="bIg-kB-tSa" firstAttribute="leading" secondItem="6vl-JQ-kLl" secondAttribute="trailing" constant="5" id="tLB-N5-2Y9"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="hCQ-yG-VyG" appends="YES" id="VT2-1N-MFR"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -2099,6 +2105,9 @@
                                                         <constraint firstItem="e0v-YO-imC" firstAttribute="leading" secondItem="aXg-ce-vLG" secondAttribute="leading" constant="10" id="gHR-Ij-THY"/>
                                                         <constraint firstItem="e0v-YO-imC" firstAttribute="centerY" secondItem="aXg-ce-vLG" secondAttribute="centerY" id="ube-Hd-PY3"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="Nc7-nM-Geb" appends="YES" id="9P6-4x-eli"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -2145,6 +2154,9 @@
                                                         <constraint firstItem="JFW-xI-5Gd" firstAttribute="leading" secondItem="Lth-Tj-wYD" secondAttribute="trailing" constant="10" id="f5R-Ul-U59"/>
                                                         <constraint firstItem="ymC-Vd-eNd" firstAttribute="leading" secondItem="JFW-xI-5Gd" secondAttribute="trailing" constant="5" id="fNn-iy-132"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="hKb-ky-cXh" appends="YES" id="Wbw-Ul-xYY"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -2191,6 +2203,9 @@
                                                         <constraint firstItem="QbO-sG-4Lk" firstAttribute="leading" secondItem="onM-Ph-ClB" secondAttribute="trailing" constant="5" id="iXB-xo-LNL"/>
                                                         <constraint firstItem="onM-Ph-ClB" firstAttribute="leading" secondItem="5Ae-fh-ctC" secondAttribute="trailing" constant="10" id="wmN-kK-AAu"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="ddj-Zr-idu" appends="YES" id="PiO-EQ-nNa"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -2493,6 +2508,9 @@
                                                         <constraint firstItem="kRz-M5-el6" firstAttribute="leading" secondItem="5Ke-UX-QRA" secondAttribute="trailing" constant="5" id="gpv-Tu-plT"/>
                                                         <constraint firstItem="rnL-PL-XVW" firstAttribute="centerY" secondItem="5zD-4g-gsD" secondAttribute="centerY" id="sgN-Gs-5xV"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="RZq-5P-Apu" appends="YES" id="Fm5-gl-zfh"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -2539,6 +2557,9 @@
                                                         <constraint firstItem="MbC-yb-Q50" firstAttribute="centerY" secondItem="89i-Og-xt0" secondAttribute="centerY" id="uIF-oY-KQs"/>
                                                         <constraint firstItem="PmV-A1-iM9" firstAttribute="centerY" secondItem="89i-Og-xt0" secondAttribute="centerY" id="v1L-ra-nI0"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="Hed-ob-WzC" appends="YES" id="lu9-FF-Dwv"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -2605,6 +2626,10 @@
                         <outlet property="workOrderBizTypeTextField" destination="5mQ-w8-riv" id="hAI-4E-dMS"/>
                         <outlet property="workOrderContentTextField" destination="fLR-rZ-2as" id="cht-vR-uMa"/>
                         <outlet property="workOrderTypeTextField" destination="a4c-gi-4es" id="jP3-h4-WGV"/>
+                        <segue destination="uQu-Qy-jc3" kind="push" identifier="SearchForRegion" id="OVr-mQ-v5u"/>
+                        <segue destination="uQu-Qy-jc3" kind="push" identifier="SearchForProduct" id="6Jt-f8-RHb"/>
+                        <segue destination="uQu-Qy-jc3" kind="push" identifier="SearchForRelateUser" id="7gK-52-7I1"/>
+                        <segue destination="uQu-Qy-jc3" kind="push" identifier="SearchForHandleUser" id="fUc-GE-Qyh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P67-aJ-igh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2616,6 +2641,36 @@
                 <tapGestureRecognizer id="Yaz-At-mZH">
                     <connections>
                         <action selector="workOrderBizTypeTapped:" destination="wPe-r6-SRm" id="DfN-Xy-uRW"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="hKb-ky-cXh">
+                    <connections>
+                        <action selector="regionTapped:" destination="wPe-r6-SRm" id="TKI-eF-n1v"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="ddj-Zr-idu">
+                    <connections>
+                        <action selector="productTapped:" destination="wPe-r6-SRm" id="6YD-oG-3rO"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Nc7-nM-Geb">
+                    <connections>
+                        <action selector="finishedDateTapped:" destination="wPe-r6-SRm" id="NRk-Yy-API"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="RZq-5P-Apu">
+                    <connections>
+                        <action selector="relateUserTapped:" destination="wPe-r6-SRm" id="oZI-TS-NSI"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Hed-ob-WzC">
+                    <connections>
+                        <action selector="handleUserTapped:" destination="wPe-r6-SRm" id="sSr-4x-ehy"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="hCQ-yG-VyG">
+                    <connections>
+                        <action selector="priorityTapped:" destination="wPe-r6-SRm" id="g5M-B2-wkh"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -5769,7 +5824,7 @@
         <image name="searchButtonBackground" width="302" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="k1Z-ey-jNe"/>
         <segue reference="YFb-RD-Ut0"/>
+        <segue reference="fUc-GE-Qyh"/>
     </inferredMetricsTieBreakers>
 </document>

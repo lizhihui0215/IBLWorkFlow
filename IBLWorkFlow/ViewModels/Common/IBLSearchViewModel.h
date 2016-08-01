@@ -40,6 +40,14 @@ typedef NS_ENUM(NSInteger, IBLSearchType) {
      *  续费选择小区
      */
     IBLSearchTypeRenewArea,
+    
+    IBLSearchTypeAddOrderArea,
+    
+    IBLSearchTypeAddOrderProduct,
+    
+    IBLSearchTypeAddOrderRelateUser,
+    
+    IBLSearchTypeAddOrderOperator,
 };
 
 @class IBLSearchViewModel;

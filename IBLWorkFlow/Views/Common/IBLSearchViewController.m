@@ -57,18 +57,25 @@
     id searchInfo = nil;
     switch (self.viewModel.searchType) {
         case IBLSearchTypeSend:
-        case IBLSearchTypeForward: {
+        case IBLSearchTypeForward:
+        case IBLSearchTypeAddOrderOperator:{
             searchInfo = @{kSearchOperatorName : keyword};
             break;
         }
         case IBLSearchTypeExchangeProductArea:
         case IBLSearchTypeRenewArea:
-        case IBLSearchTypeCreateAccountArea:{
+        case IBLSearchTypeCreateAccountArea:
+        case IBLSearchTypeAddOrderArea:{
             searchInfo = @{kSearchAreaName : keyword};
             break;
         }
-        case IBLSearchTypeCreateAccountProduct:{
+        case IBLSearchTypeCreateAccountProduct:
+        case IBLSearchTypeAddOrderProduct:{
             searchInfo = @{kSearchProductName : keyword};
+            break;
+        }
+        case IBLSearchTypeAddOrderRelateUser:{
+            //FIXME: 如何实现
             break;
         }
     }
@@ -120,18 +127,26 @@
     UITableViewCell *cell = nil;
     switch (self.viewModel.searchType) {
         case IBLSearchTypeSend:
-        case IBLSearchTypeForward:{
+        case IBLSearchTypeForward:
+        case IBLSearchTypeAddOrderOperator:{
             cell = [self configurationOperatorCellWithTableView:tableView indexPath:indexPath];
             break;
         }
         case IBLSearchTypeExchangeProductArea:
         case IBLSearchTypeRenewArea:
-        case IBLSearchTypeCreateAccountArea:{
+        case IBLSearchTypeCreateAccountArea:
+        case IBLSearchTypeAddOrderArea:{
             cell = [self configurationRegionCellWithTableView:tableView indexPath:indexPath];
             break;
         }
-        case IBLSearchTypeCreateAccountProduct:{
+        case IBLSearchTypeCreateAccountProduct:
+        case IBLSearchTypeAddOrderProduct:{
             cell = [self configurationProductCellWithTableView:tableView indexPath:indexPath];
+            break;
+        }
+        case IBLSearchTypeAddOrderRelateUser:
+        {
+            //FIXME: 如何实现
             break;
         }
     }

@@ -7,10 +7,13 @@
 //
 
 #import "IBLAddWorkOrderViewModel.h"
+#import "IBLGenerateAppConfiguration.h"
 
 @interface IBLAddWorkOrderViewModel ()
 
 @property (nonatomic, strong) IBLAddWorkOrderResult *result;
+
+@property (nonatomic, strong) IBLGenerateAppConfiguration *generateAppConfiguration;
 
 @end
 
@@ -21,6 +24,7 @@
     self = [super init];
     if (self) {
         self.result = [[IBLAddWorkOrderResult alloc] init];
+        self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
     }
     return self;
 }
@@ -42,7 +46,7 @@
     self.result.bizType = type;
 }
 
-- (void)setPriority:(int)i {
+- (void)setPriority:(NSInteger)i {
     self.result.priority = i;
 }
 
@@ -92,5 +96,14 @@
 
 - (void)setRemark:(NSString *)string {
     self.result.remark = string;
+}
+
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes {
+    IBLWorkOrderType *workOrderType = [self workOrderType];
+    return [self.generateAppConfiguration workOrderBizTypesWithStatus:workOrderType.status];
+}
+
+- (NSArray<IBLWorkOrderType *> *)workOrderTypes {
+    return [self.generateAppConfiguration workOrderTypes];
 }
 @end

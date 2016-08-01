@@ -41,11 +41,11 @@
 }
 
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesOfTableView:(IBLAddWorkOrderTableViewController *)controller {
-    return nil;
+    return [self.viewModel workOrderBizTypes];
 }
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypesOfTableView:(IBLAddWorkOrderTableViewController *)controller {
-    return nil;
+    return [self.viewModel workOrderTypes];
 }
 
 - (void)addWorkOrderTableView:(IBLAddWorkOrderTableViewController *)controller fieldType:(IBLAddWorkOrderFieldType)type didEndEdit:(id)obj {
@@ -129,6 +129,10 @@
     }
     
     return obj;
+}
+
+- (void)addWorkOrderTableDidCommit:(IBLAddWorkOrderTableViewController *)controller {
+
 }
 
 

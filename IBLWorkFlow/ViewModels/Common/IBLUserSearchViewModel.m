@@ -14,7 +14,13 @@
 
 @implementation IBLUserSearchResult
 
-- (instancetype)initWithSearchType:(IBLUserSearchType)searchType region:(IBLRegion *)region account:(NSString *)account username:(NSString *)username phone:(NSString *)phone userIdentifier:(NSString *)userIdentifier address:(NSString *)address {
+- (instancetype)initWithSearchType:(IBLUserSearchType)searchType
+                            region:(IBLRegion *)region
+                           account:(NSString *)account
+                          username:(NSString *)username
+                             phone:(NSString *)phone
+                    userIdentifier:(NSString *)userIdentifier
+                           address:(NSString *)address {
     self = [super init];
     if (self) {
         self.searchType = searchType;
@@ -29,8 +35,20 @@
     return self;
 }
 
-+ (instancetype)resultWithSearchType:(IBLUserSearchType)searchType region:(IBLRegion *)region account:(NSString *)account username:(NSString *)username phone:(NSString *)phone userIdentifier:(NSString *)userIdentifier address:(NSString *)address {
-    return [[self alloc] initWithSearchType:searchType region:region account:account username:username phone:phone userIdentifier:userIdentifier address:address];
++ (instancetype)resultWithSearchType:(IBLUserSearchType)searchType
+                              region:(IBLRegion *)region
+                             account:(NSString *)account
+                            username:(NSString *)username
+                               phone:(NSString *)phone
+                      userIdentifier:(NSString *)userIdentifier
+                             address:(NSString *)address {
+    return [[self alloc] initWithSearchType:searchType
+                                     region:region
+                                    account:account
+                                   username:username
+                                      phone:phone
+                             userIdentifier:userIdentifier
+                                    address:address];
 }
 
 @end

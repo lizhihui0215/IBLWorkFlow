@@ -20,7 +20,7 @@
 
 - (void)setWorkOrderBizType:(IBLWorkOrderBussinessType *)type;
 
-- (void)setPriority:(int)i;
+- (void)setPriority:(NSInteger)i;
 
 - (void)setFinishedDate:(NSString *)string;
 
@@ -45,4 +45,8 @@
 - (void)setOperator:(IBLOperator *)anOperator;
 
 - (void)setRemark:(NSString *)string;
+
+- (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes;
+
+- (NSArray<IBLWorkOrderType *> *)workOrderTypes;
 @end

@@ -8,8 +8,18 @@
 
 #import "IBLAddWorkOrderTableViewController.h"
 #import "IBLPickerView.h"
+#import "RMDateSelectionViewController.h"
+#import "IBLSearchViewController.h"
 
-@interface IBLAddWorkOrderTableViewController ()
+static NSString *const IBLSearchForHandleUserIdentifier = @"SearchForHandleUser";
+
+static NSString *const IBLSearchForProductIdentifier = @"SearchForProduct";
+
+static NSString *const IBLSearchForRegionIdentifier = @"SearchForRegion";
+
+static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser";
+
+@interface IBLAddWorkOrderTableViewController () <IBLSearchViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *workOrderTypeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *workOrderBizTypeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priorityTextField;
@@ -29,6 +39,38 @@
 @end
 
 @implementation IBLAddWorkOrderTableViewController
+- (IBAction)priorityTapped:(UITapGestureRecognizer *)sender {
+}
+- (IBAction)handleUserTapped:(UITapGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:IBLSearchForHandleUserIdentifier sender:self];
+}
+- (IBAction)relateUserTapped:(UITapGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:IBLSearchForRelateUserIdentifier sender:self];
+}
+- (IBAction)finishedDateTapped:(UITapGestureRecognizer *)sender {
+    RMDateSelectionViewController *dateSelectionVC = [RMDateSelectionViewController dateSelectionController];
+    dateSelectionVC.disableBouncingWhenShowing = YES;
+    dateSelectionVC.datePicker.minuteInterval = 1;
+    
+    dateSelectionVC.disableBlurEffects = YES;
+    
+    dateSelectionVC.hideNowButton = YES;
+    [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
+        self.finishedDateTextField.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
+        [self.tableViewDelegate addWorkOrderTableView:self
+                                            fieldType:IBLAddWorkOrderFieldTypeFinishedDate
+                                           didEndEdit:self.finishedDateTextField.text];
+    } andCancelHandler:^(RMDateSelectionViewController *vc) {
+        
+    }];
+}
+- (IBAction)productTapped:(UITapGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:IBLSearchForProductIdentifier sender:self];
+
+}
+- (IBAction)regionTapped:(UITapGestureRecognizer *)sender {
+    [self performSegueWithIdentifier:IBLSearchForRegionIdentifier sender:self];
+}
 
 - (IBAction)workOrderTypeTapped:(UITapGestureRecognizer *)sender {
     
@@ -58,6 +100,8 @@
     IBLWorkOrderBussinessType *bizType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeBizType];
     
     if ([[self hiddenFieldsDictionaryWithWorkBizType:bizType.status][indexPath] boolValue]) return 0;
+    
+    if([indexPath isEqual:[NSIndexPath indexPathForRow:14 inSection:0]]) return 87;
     
     return 40;
 }
@@ -150,6 +194,44 @@
     
 }
 
+
+- (IBAction)commitTapped:(UIButton *)sender {
+    [self saveWorkOrder];
+    [self.tableViewDelegate addWorkOrderTableDidCommit:self];
+}
+
+- (NSString *)validateContent:(NSString *)content{
+    return [NSString isNull:content] ? nil : content;
+}
+
+- (void)saveWorkOrder {
+    NSString *username = [self validateContent:self.usernameTextField.text];
+    NSString *phone = [self validateContent:self.phoneTextField.text];
+    NSString *address = [self validateContent:self.addressTextField.text];
+    NSString *userIdentifier = [self validateContent:self.userIdentifierTextField.text];
+    NSString *workOrderContent = [self validateContent:self.workOrderContentTextField.text];
+    NSString *remark = [self validateContent:self.remarkTextView.text];
+    
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeUsername
+                                       didEndEdit:username];
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypePhone
+                                       didEndEdit:phone];
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeAddress
+                                       didEndEdit:address];
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeUserIdentifier
+                                       didEndEdit:userIdentifier];
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeWorkOrderContent
+                                       didEndEdit:workOrderContent];
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeRemark
+                                       didEndEdit:remark];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -160,14 +242,72 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:IBLSearchForHandleUserIdentifier]) {
+        IBLSearchViewController *searchViewController = [segue destinationViewController];
+        searchViewController.viewModel = [IBLOperatorSearchViewModel operatorSearchModelWithOrder:nil
+                                                                                       searchType:IBLSearchTypeAddOrderOperator];
+        searchViewController.searchDelegate = self;
+    }else if ([segue.identifier isEqualToString:IBLSearchForProductIdentifier]){
+        IBLSearchViewController *searchViewController = [segue destinationViewController];
+        searchViewController.viewModel = [IBLProductSearchViewModel productSearchModelWithSearchType:IBLSearchTypeAddOrderProduct
+                                                                                           productId:0
+                                                                                            regionId:0];
+        searchViewController.searchDelegate = self;
+
+    }else if ([segue.identifier isEqualToString:IBLSearchForRegionIdentifier]){
+        IBLSearchViewController *searchViewController = [segue destinationViewController];
+        searchViewController.viewModel = [IBLRegionSearchViewModel regionSearchModelWithSearchType:IBLSearchTypeAddOrderArea];
+        searchViewController.searchDelegate = self;
+    }else if ([segue.identifier isEqualToString:IBLSearchForRelateUserIdentifier]){
+//        IBLSearchViewController *searchViewController = [segue destinationViewController];
+//        searchViewController.viewModel = [IBLRegionSearchViewModel regionSearchModelWithSearchType:IBLSearchTypeAddOrderArea];
+//        searchViewController.searchDelegate = self;
+    }
+    
+    
 }
-*/
+
+- (void)searchViewController:(IBLSearchViewController *)searchViewController
+           didSelectedResult:(id)searchResult {
+    switch (searchViewController.viewModel.searchType) {
+        case IBLSearchTypeAddOrderArea: {
+            [self.tableViewDelegate addWorkOrderTableView:self
+                                                fieldType:IBLAddWorkOrderFieldTypeRegion
+                                               didEndEdit:searchResult];
+            break;
+        }
+        case IBLSearchTypeAddOrderProduct: {
+            [self.tableViewDelegate addWorkOrderTableView:self
+                                                fieldType:IBLAddWorkOrderFieldTypeProduct
+                                               didEndEdit:searchResult];
+            
+            break;
+        }
+        case IBLSearchTypeAddOrderRelateUser: {
+            [self.tableViewDelegate addWorkOrderTableView:self
+                                                fieldType:IBLAddWorkOrderFieldTypeRelateUser
+                                               didEndEdit:searchResult];
+            
+            break;
+        }
+        case IBLSearchTypeAddOrderOperator: {
+            [self.tableViewDelegate addWorkOrderTableView:self
+                                                fieldType:IBLAddWorkOrderFieldTypeHandleUser
+                                               didEndEdit:searchResult];
+            
+            break;
+        }
+        default: break;
+    }
+
+}
+
 
 @end
