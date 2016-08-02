@@ -11,7 +11,7 @@
 
 @interface IBLCreateAccountHiddenFields ()
 
-@property (nonatomic, readonly) NSDictionary *allHiddenFields;
+@property (nonatomic, readonly) NSDictionary *createAccountAllFields;
 
 
 
@@ -28,7 +28,7 @@
     return self;
 }
 
-- (NSDictionary *)allHiddenFields{
+- (NSDictionary *)createAccountAllFields{
     NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
     NSIndexPath *custPhone = [NSIndexPath indexPathForRow:1 inSection:1];
     NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:3 inSection:1];
@@ -54,7 +54,7 @@
     NSMutableDictionary *notNullFields = [NSMutableDictionary dictionary];
     
     for (NSString *field in app.notNullFields.createAccountFields) {
-        NSIndexPath *hiddenIndexPath = self.allHiddenFields[field];
+        NSIndexPath *hiddenIndexPath = self.createAccountAllFields[field];
         if (hiddenIndexPath) {
             notNullFields[field] = hiddenIndexPath;
         }
@@ -69,7 +69,7 @@
     NSMutableDictionary *hiddenFields = [NSMutableDictionary dictionary];
     
     for (NSString *field in app.hiddenFields.createAccountFields) {
-        NSIndexPath *hiddenIndexPath = self.allHiddenFields[field];
+        NSIndexPath *hiddenIndexPath = self.createAccountAllFields[field];
         if (hiddenIndexPath) {
             hiddenFields[hiddenIndexPath] = field;
         }

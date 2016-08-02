@@ -49,6 +49,8 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
 
 - (void)productPriceOfTableViewController:(IBLCreateAccountTableViewController *)controller
                           completeHandler:(void (^)(IBLProductPrice *productPrice))completeHandler;
+
+- (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary;
 @end
 
 @interface IBLCreateAccountInfo : NSObject

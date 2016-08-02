@@ -9,6 +9,18 @@
 #import "IBLExchangeProductTableViewController.h"
 
 @interface IBLExchangeProductTableViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *typeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *productTextField;
+@property (weak, nonatomic) IBOutlet UITextField *renewProductCount;
+@property (weak, nonatomic) IBOutlet UITextField *productAmountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *productCountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *contractTextField;
+@property (weak, nonatomic) IBOutlet UITextField *tickectTextField;
+@property (weak, nonatomic) IBOutlet UITextField *discountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *giveTextField;
+@property (weak, nonatomic) IBOutlet UITextField *payTextField;
+@property (weak, nonatomic) IBOutlet UITextView *remarkTextView;
 
 @end
 
@@ -16,12 +28,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    IBLExchangeProductTextFieldTypeAccount,
+//    IBLExchangeProductTextFieldTypeType,
+//    IBLExchangeProductTextFieldTypeProduct,
+//    IBLExchangeProductTextFieldTypeRenewProductCount,
+//    IBLExchangeProductTextFieldTypeProductAmout,
+//    IBLExchangeProductTextFieldTypeProductCount,
+//    IBLExchangeProductTextFieldTypeContract,
+//    IBLExchangeProductTextFieldTypeTicket,
+//    IBLExchangeProductTextFieldTypeDiscount,
+//    IBLExchangeProductTextFieldTypeGive,
+//    IBLExchangeProductTextFieldTypePay,
+//    IBLExchangeProductTextFieldTypeRemark,
+    self.accountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeAccount];
+    self.typeTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeType];
+//    self.accountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeAccount];
+//    self.accountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeAccount];
+//    self.accountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeAccount];
+//    self.accountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeAccount];
+//    self.accountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeAccount];
+//    self.accountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeAccount];
+//    self.accountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeAccount];
+//    
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {

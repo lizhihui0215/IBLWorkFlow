@@ -405,8 +405,70 @@
              @(2) : @"结算"};
 }
 
+- (NSDictionary <NSIndexPath *, UITextField *> *)test{
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:1 inSection:1];
+    NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:3 inSection:1];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:4 inSection:1];
+    NSIndexPath *custAddress = [NSIndexPath indexPathForRow:2 inSection:1];
+    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
+    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
+
+    return @{custNameIndexPath : self.accountTextField,
+             custPhone : self.phoneTextField,
+             custIdCard : self.identifierTextField,
+             custReserve : self.commentTextView,
+             custAddress : self.addressTextField,
+             contractCode : self.contractNumberTextField,
+             voiceCode : self.ticketNumberTextField,
+             };
+}
+
+- (NSDictionary <NSIndexPath *, NSString *> *)notNullTitleDictionary{
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:1 inSection:1];
+    NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:3 inSection:1];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:4 inSection:1];
+    NSIndexPath *custAddress = [NSIndexPath indexPathForRow:2 inSection:1];
+    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
+    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
+
+    return @{ custNameIndexPath : @"用户名不能为空！",
+             custPhone : @"联系电话不能为空！",
+             custIdCard : @"身份证号不能为空！",
+             custReserve : @"备注不能为空！",
+             custAddress : @"联系地址不能为空！",
+             contractCode : @"合同号不能为空！",
+             voiceCode : @"票据号不能为空！",
+             };
+}
+
 - (IBAction)commitButtonPressed:(UIButton *)sender {
-    [self.tableViewDataSource tableViewController:self commit:self.createAccountInfo];
+    NSDictionary <NSIndexPath *, NSString *> *notNullFields = [self.tableViewDataSource notNullFieldsDictionary];
+    
+    NSArray *indexPaths = [notNullFields.allKeys sortedArrayUsingSelector:@selector(compare:)];
+    
+    NSString *notNullText = nil;
+    
+    for (NSIndexPath *indexPath in indexPaths) {
+        UITextField *textField = [self test][indexPath];
+        if([NSString isNull:textField.text]) {
+            notNullText = [self notNullTitleDictionary][indexPath];
+            break;
+        }
+    }
+    
+    if (notNullText) {
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                        title:notNullText
+                                                                      message:nil
+                                                             cancleButtonItem:cancel
+                                                             otherButtonItems:nil];
+        [alert showInController:self];
+    }else{
+        [self.tableViewDataSource tableViewController:self commit:self.createAccountInfo];
+    }
 }
 
 #pragma mark - Table view data source

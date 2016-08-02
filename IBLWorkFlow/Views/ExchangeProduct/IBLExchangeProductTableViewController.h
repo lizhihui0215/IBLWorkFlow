@@ -8,6 +8,28 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, IBLExchangeProductTextFieldType) {
+    IBLExchangeProductTextFieldTypeAccount,
+    IBLExchangeProductTextFieldTypeType,
+    IBLExchangeProductTextFieldTypeProduct,
+    IBLExchangeProductTextFieldTypeRenewProductCount,
+    IBLExchangeProductTextFieldTypeProductAmout,
+    IBLExchangeProductTextFieldTypeProductCount,
+    IBLExchangeProductTextFieldTypeContract,
+    IBLExchangeProductTextFieldTypeTicket,
+    IBLExchangeProductTextFieldTypeDiscount,
+    IBLExchangeProductTextFieldTypeGive,
+    IBLExchangeProductTextFieldTypePay,
+    IBLExchangeProductTextFieldTypeRemark,
+};
+
+@protocol IBLExchangeProductTableViewControllerDelegate <NSObject>
+
+- (NSString *)exchangeProductText:(IBLExchangeProductTextFieldType)type;
+@end
+
 @interface IBLExchangeProductTableViewController : UITableViewController
+
+@property (nonatomic, weak) id<IBLExchangeProductTableViewControllerDelegate> tableViewDelegate;
 
 @end

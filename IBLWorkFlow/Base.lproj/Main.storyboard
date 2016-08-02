@@ -5402,6 +5402,20 @@
                             <outlet property="delegate" destination="DII-N8-HZa" id="Bem-7o-FRy"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="accountTextField" destination="en8-54-cM2" id="spp-gw-BCT"/>
+                        <outlet property="contractTextField" destination="1Gz-6y-nia" id="T7X-my-O6P"/>
+                        <outlet property="discountTextField" destination="65u-kc-aPh" id="lu3-oA-oZC"/>
+                        <outlet property="giveTextField" destination="P31-cU-0Ze" id="tD4-Db-dCb"/>
+                        <outlet property="payTextField" destination="K0U-QI-SNV" id="geD-Pi-Ksg"/>
+                        <outlet property="productAmountTextField" destination="9xe-4S-SUO" id="iGt-43-Z9z"/>
+                        <outlet property="productCountTextField" destination="5ql-PM-itB" id="a8b-ro-50C"/>
+                        <outlet property="productTextField" destination="X6N-Pl-cbI" id="JmX-Lg-iIG"/>
+                        <outlet property="remarkTextView" destination="3Zw-5U-8jm" id="Zgh-nx-XhD"/>
+                        <outlet property="renewProductCount" destination="VS4-S5-gUm" id="cMs-r7-2ba"/>
+                        <outlet property="tickectTextField" destination="jD2-bv-Wmn" id="lGd-AC-dpv"/>
+                        <outlet property="typeTextField" destination="J1W-tF-9CC" id="gal-US-oAW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXh-C2-tBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
