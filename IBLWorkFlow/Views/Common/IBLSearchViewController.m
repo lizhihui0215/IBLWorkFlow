@@ -74,10 +74,7 @@
             searchInfo = @{kSearchProductName : keyword};
             break;
         }
-        case IBLSearchTypeAddOrderRelateUser:{
-            //FIXME: 如何实现
-            break;
-        }
+        
     }
     
     return searchInfo;
@@ -142,11 +139,6 @@
         case IBLSearchTypeCreateAccountProduct:
         case IBLSearchTypeAddOrderProduct:{
             cell = [self configurationProductCellWithTableView:tableView indexPath:indexPath];
-            break;
-        }
-        case IBLSearchTypeAddOrderRelateUser:
-        {
-            //FIXME: 如何实现
             break;
         }
     }

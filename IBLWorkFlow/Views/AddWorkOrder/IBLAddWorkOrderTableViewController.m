@@ -45,7 +45,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     IBLButtonItem *emergency = [IBLButtonItem itemWithLabel:@"紧急"
                                                          action:^(IBLButtonItem *item) {
-                                                             self.phoneTextField.text = item.label;
+                                                             self.priorityTextField.text = item.label;
                                                              [self.tableViewDelegate addWorkOrderTableView:self
                                                                                                  fieldType:IBLAddWorkOrderFieldTypePriority
                                                                                                 didEndEdit:@(IBLPriorityStatusEmergency)];
@@ -54,7 +54,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"一般"
                                                  action:^(IBLButtonItem *item) {
-                                                     self.phoneTextField.text = item.label;
+                                                     self.priorityTextField.text = item.label;
                                                      [self.tableViewDelegate addWorkOrderTableView:self
                                                                                          fieldType:IBLAddWorkOrderFieldTypePriority
                                                                                         didEndEdit:@(IBLPriorityStatusGeneral)];
@@ -63,7 +63,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"不紧急"
                                                  action:^(IBLButtonItem *item) {
-                                                     self.phoneTextField.text = item.label;
+                                                     self.priorityTextField.text = item.label;
                                                      [self.tableViewDelegate addWorkOrderTableView:self
                                                                                          fieldType:IBLAddWorkOrderFieldTypePriority
                                                                                         didEndEdit:@(IBLPriorityStatusNoEmergency)];
@@ -274,6 +274,23 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSArray<IBLWorkOrderType *> *workOrderTypes = [self.tableViewDelegate workOrderTypesOfTableView:self];
+    
+    IBLWorkOrderType *workOrderType = [workOrderTypes firstObject];
+    
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeWorkOrderType
+                                       didEndEdit:workOrderType];
+    self.workOrderTypeTextField.text = workOrderType.name;
+    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.tableViewDelegate workOrderBizTypesOfTableView:self];
+    IBLWorkOrderBussinessType *first = businessTypes.firstObject;
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeBizType
+                                       didEndEdit:first];
+    self.workOrderBizTypeTextField.text = first.name;
+    [self.tableView reloadData];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -315,6 +332,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     [self.tableViewDelegate addWorkOrderTableView:self
                                         fieldType:IBLAddWorkOrderFieldTypeRelateUser
                                        didEndEdit:relateUser];
+    self.relateUserTextField.text = relateUser.account;
 }
 
 - (IBAction)relateUserSearchDidComplete:(UIStoryboardSegue *)segue{
@@ -325,30 +343,30 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
            didSelectedResult:(id)searchResult {
     switch (searchViewController.viewModel.searchType) {
         case IBLSearchTypeAddOrderArea: {
+            IBLRegion *region = searchResult;
             [self.tableViewDelegate addWorkOrderTableView:self
                                                 fieldType:IBLAddWorkOrderFieldTypeRegion
                                                didEndEdit:searchResult];
+            self.regionTextField.text = [region name];
+            self.addressTextField.text = [region address];
             break;
         }
         case IBLSearchTypeAddOrderProduct: {
+            IBLProduct *product = searchResult;
             [self.tableViewDelegate addWorkOrderTableView:self
                                                 fieldType:IBLAddWorkOrderFieldTypeProduct
                                                didEndEdit:searchResult];
+            self.productTextField.text = product.name;
             
             break;
         }
-        case IBLSearchTypeAddOrderRelateUser: {
-            [self.tableViewDelegate addWorkOrderTableView:self
-                                                fieldType:IBLAddWorkOrderFieldTypeRelateUser
-                                               didEndEdit:searchResult];
-            
-            break;
-        }
+        
         case IBLSearchTypeAddOrderOperator: {
+            IBLOperator *operator = searchResult;
             [self.tableViewDelegate addWorkOrderTableView:self
                                                 fieldType:IBLAddWorkOrderFieldTypeHandleUser
                                                didEndEdit:searchResult];
-            
+            self.handleUserTextField.text = operator.name;
             break;
         }
         default: break;

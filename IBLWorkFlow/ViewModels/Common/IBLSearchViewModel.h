@@ -44,9 +44,7 @@ typedef NS_ENUM(NSInteger, IBLSearchType) {
     IBLSearchTypeAddOrderArea,
     
     IBLSearchTypeAddOrderProduct,
-    
-    IBLSearchTypeAddOrderRelateUser,
-    
+        
     IBLSearchTypeAddOrderOperator,
 };
 
