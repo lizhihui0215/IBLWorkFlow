@@ -27,6 +27,7 @@ static NSString * const MineWorkFlowCellNibName = @"IBLOrderCell";
 
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *segmentControl;
 @property (weak, nonatomic) IBOutlet UIButton *orderUserButton;
+@property (weak, nonatomic) IBOutlet UILabel *workOrderContentLabel;
 
 - (void)setPriority:(IBLPriorityStatus)priority;
 

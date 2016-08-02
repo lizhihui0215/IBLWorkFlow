@@ -149,8 +149,10 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     [cell setUserTitle:[self.viewModel usernameAtIndexPath:indexPath]];
     cell.dateLabel.text = [self.viewModel dateAtIndexPath:indexPath];
     [cell setPriority:[self.viewModel orderPriorityAtIndexPath:indexPath]];
+    
     NSArray *titles = [self.viewModel orderActionsTitlesAtIndexPath:indexPath];
     [cell setActionTitles:titles];
+    cell.workOrderContentLabel.text = [self.viewModel orderContentAtIndexPath:indexPath];
     @weakify(self);
     cell.segmentControl.indexChangeBlock = ^(NSInteger index){
         @strongify(self);

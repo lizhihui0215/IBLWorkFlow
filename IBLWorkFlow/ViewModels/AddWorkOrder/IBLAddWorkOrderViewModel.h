@@ -8,6 +8,7 @@
 
 #import "IBLViewModel.h"
 #import "IBLAddWorkOrderResult.h"
+#import "IBLGenerateAppConfiguration.h"
 
 
 @interface IBLAddWorkOrderViewModel : IBLViewModel
@@ -20,7 +21,7 @@
 
 - (void)setWorkOrderBizType:(IBLWorkOrderBussinessType *)type;
 
-- (void)setPriority:(NSInteger)i;
+- (void)setPriority:(IBLPriorityStatus)i;
 
 - (void)setFinishedDate:(NSString *)string;
 

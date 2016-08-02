@@ -10,6 +10,7 @@
 #import "IBLPickerView.h"
 #import "RMDateSelectionViewController.h"
 #import "IBLSearchViewController.h"
+#import "IBLUserSearchViewController.h"
 
 static NSString *const IBLSearchForHandleUserIdentifier = @"SearchForHandleUser";
 
@@ -39,7 +40,45 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 @end
 
 @implementation IBLAddWorkOrderTableViewController
+
 - (IBAction)priorityTapped:(UITapGestureRecognizer *)sender {
+    
+    IBLButtonItem *emergency = [IBLButtonItem itemWithLabel:@"紧急"
+                                                         action:^(IBLButtonItem *item) {
+                                                             self.phoneTextField.text = item.label;
+                                                             [self.tableViewDelegate addWorkOrderTableView:self
+                                                                                                 fieldType:IBLAddWorkOrderFieldTypePriority
+                                                                                                didEndEdit:@(IBLPriorityStatusEmergency)];
+
+                                                         }];
+    
+    IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"一般"
+                                                 action:^(IBLButtonItem *item) {
+                                                     self.phoneTextField.text = item.label;
+                                                     [self.tableViewDelegate addWorkOrderTableView:self
+                                                                                         fieldType:IBLAddWorkOrderFieldTypePriority
+                                                                                        didEndEdit:@(IBLPriorityStatusGeneral)];
+
+                                                 }];
+    
+    IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"不紧急"
+                                                 action:^(IBLButtonItem *item) {
+                                                     self.phoneTextField.text = item.label;
+                                                     [self.tableViewDelegate addWorkOrderTableView:self
+                                                                                         fieldType:IBLAddWorkOrderFieldTypePriority
+                                                                                        didEndEdit:@(IBLPriorityStatusNoEmergency)];
+
+                                                 }];
+    
+    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+    
+    
+    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                    title:@"请选择生效方式"
+                                                                  message:nil
+                                                         cancleButtonItem:cancel
+                                                         otherButtonItems:emergency,general,noEmergency,nil];
+    [alert showInController:self];
 }
 - (IBAction)handleUserTapped:(UITapGestureRecognizer *)sender {
     [self performSegueWithIdentifier:IBLSearchForHandleUserIdentifier sender:self];
@@ -266,11 +305,19 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         searchViewController.viewModel = [IBLRegionSearchViewModel regionSearchModelWithSearchType:IBLSearchTypeAddOrderArea];
         searchViewController.searchDelegate = self;
     }else if ([segue.identifier isEqualToString:IBLSearchForRelateUserIdentifier]){
-//        IBLSearchViewController *searchViewController = [segue destinationViewController];
-//        searchViewController.viewModel = [IBLRegionSearchViewModel regionSearchModelWithSearchType:IBLSearchTypeAddOrderArea];
+        IBLUserSearchViewController *userSearchViewController = [segue destinationViewController];
+        userSearchViewController.viewModel = [[IBLUserSearchViewModel alloc] initWithSearchType:IBLUserSearchTypeAddWorkOrder];
 //        searchViewController.searchDelegate = self;
     }
-    
+}
+
+- (void)setRelateUser:(IBLRelateUser *)relateUser{
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeRelateUser
+                                       didEndEdit:relateUser];
+}
+
+- (IBAction)relateUserSearchDidComplete:(UIStoryboardSegue *)segue{
     
 }
 

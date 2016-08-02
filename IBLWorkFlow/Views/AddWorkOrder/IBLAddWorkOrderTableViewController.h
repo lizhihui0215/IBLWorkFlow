@@ -7,6 +7,7 @@
 //
 
 #import "IBLTableViewController.h"
+#import "IBLRelateUser.h"
 
 typedef NS_ENUM(NSInteger, IBLAddWorkOrderFieldType) {
     IBLAddWorkOrderFieldTypeWorkOrderType,
@@ -46,5 +47,7 @@ typedef NS_ENUM(NSInteger, IBLAddWorkOrderFieldType) {
 @interface IBLAddWorkOrderTableViewController : UITableViewController
 
 @property (nonatomic,weak) id<IBLAddWorkOrderTableViewControllerDelegate> tableViewDelegate;
+
+- (void)setRelateUser:(IBLRelateUser *)relateUser;
 
 @end

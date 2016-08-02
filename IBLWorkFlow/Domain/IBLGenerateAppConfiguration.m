@@ -26,7 +26,7 @@ static NSString const * kManagedOrderView = @"VIEW_ORDER";
 
 static NSString const * kMineOrderView = @"VIEW_SINGLE_ORDER";
 
-static NSString const * kMineOrderFinished = @"";
+static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
 
 
 
@@ -107,12 +107,11 @@ static NSString const * kMineOrderFinished = @"";
     for (IBLPremission *premission in user.permissions) {
         switch (status) {
             case IBLOrderStatusSended:
-            case IBLOrderStatusForwarding: {
+            case IBLOrderStatusForwarding:
             case IBLOrderStatusHandling: {
                 NSNumber *action = [self mineOrderHandleForwardUnHandleMaps][premission.key];
                 if (action){
                     [actions addObject:action];
-                    if (bizType == IBLWorkOrderBizStatusRepair) [actions addObject:@(IBLOrderActionCreate)];
                 };
                 break;
             }
@@ -131,8 +130,18 @@ static NSString const * kMineOrderFinished = @"";
             }
             default:
                 break;
-            }
+                
         }
+    }
+    
+    switch (status) {
+        case IBLOrderStatusSended:
+        case IBLOrderStatusForwarding:
+        case IBLOrderStatusHandling: {
+            if (bizType == IBLWorkOrderBizStatusInstall) [actions addObject:@(IBLOrderActionCreate)];
+        }
+        default:
+            break;
     }
     
     return [actions sortedArrayUsingSelector:@selector(compare:)];;

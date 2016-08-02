@@ -34,7 +34,7 @@
 
 - (IBAction)searchButtonPressed:(UIButton *)sender {
     
-    IBLUserSearchType type = [self.delegate userSearchType];
+    IBLUserSearchType type = [self.tableViewDelegate userSearchType];
     
     NSString *account = [NSString isNull:self.accountTextField.text]  ? nil : self.accountTextField.text;
     
@@ -52,7 +52,7 @@
                                                    userIdentifier:userIdentifier
                                                           address:self.region.address];
     
-    [self.delegate userSearchTableViewController:self didEndSearch:self.searchResult];
+    [self.tableViewDelegate userSearchTableViewController:self didEndSearch:self.searchResult];
     
     [self performSegueWithIdentifier:@"NavigationToResult" sender:self];
 }
@@ -71,7 +71,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"NavigationToResult"]) {
-        IBLUserSearchType type = [self.delegate userSearchType];
+        IBLUserSearchType type = [self.tableViewDelegate userSearchType];
         
         IBLUserSearchResultViewController *searchResultViewController = [segue destinationViewController];
         
@@ -80,7 +80,7 @@
     }else if([segue.identifier isEqualToString:@"NavigationToAreaSearch"]){
         IBLSearchViewController *searchViewController = [segue destinationViewController];
         
-        IBLSearchType type =  [self.delegate userSearchType] == IBLUserSearchTypeRenew ? IBLSearchTypeRenewArea : IBLSearchTypeExchangeProductArea;
+        IBLSearchType type =  [self.tableViewDelegate userSearchType] == IBLUserSearchTypeRenew ? IBLSearchTypeRenewArea : IBLSearchTypeExchangeProductArea;
         
         searchViewController.viewModel = [IBLRegionSearchViewModel regionSearchModelWithSearchType:type];
         

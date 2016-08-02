@@ -24,6 +24,6 @@
 
 @interface IBLUserSearchTableViewController : UITableViewController
 
-@property  (nonatomic, weak) id<IBLUserSearchTableViewControllerDelegate> delegate;
+@property  (nonatomic, weak) id<IBLUserSearchTableViewControllerDelegate> tableViewDelegate;
 
 @end

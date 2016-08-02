@@ -22,6 +22,10 @@ typedef NS_ENUM(NSInteger,IBLUserSearchType) {
      *  更换销售品检索用户
      */
     IBLUserSearchTypeExchangeProduct,
+    /**
+     *  新增工单检索用户
+     */
+    IBLUserSearchTypeAddWorkOrder,
 };
 
 

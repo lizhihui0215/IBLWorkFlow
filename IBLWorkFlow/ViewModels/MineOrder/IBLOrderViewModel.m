@@ -273,7 +273,13 @@
 - (NSString *)usernameAtIndexPath:(NSIndexPath *)indexPath {
     IBLOrder *order = [self orderAtIndexPath:indexPath];
 
-    return order.username;
+    return order.userAccount;
+}
+
+- (NSString *)orderContentAtIndexPath:(NSIndexPath *)indexPath {
+    IBLOrder *order = [self orderAtIndexPath:indexPath];
+
+    return order.content;
 }
 
 - (NSString *)dateAtIndexPath:(NSIndexPath *)indexPath {
@@ -491,4 +497,6 @@
                           content:content
                   completeHandler:handler];
 }
+
+
 @end

@@ -106,6 +106,7 @@
                 <outlet property="priorityButton" destination="OIH-8r-Fd4" id="r5W-dU-IVf"/>
                 <outlet property="segmentControl" destination="XKE-Rq-gbR" id="4Ux-p0-Feu"/>
                 <outlet property="segmentControlWidthConstraint" destination="lC4-6T-xcm" id="suZ-RE-v0u"/>
+                <outlet property="workOrderContentLabel" destination="kV3-aK-9EF" id="m7G-v3-NEX"/>
                 <outlet property="workOrderTypeLabel" destination="cr2-Im-Nk8" id="FlZ-AJ-uJG"/>
             </connections>
             <point key="canvasLocation" x="552" y="374.5"/>

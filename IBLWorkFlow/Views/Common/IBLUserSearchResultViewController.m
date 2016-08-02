@@ -11,6 +11,7 @@
 #import "IBLRenewViewController.h"
 #import "IBLUserSearchResultViewModel.h"
 #import "IBLUserSearchResultCell.h"
+#import "IBLAddWorkOrderTableViewController.h"
 
 @interface IBLUserSearchResultViewController ()
 
@@ -80,7 +81,8 @@
 
 - (NSDictionary *)segueIdentifiers{
     return @{@(IBLUserSearchTypeRenew) : @"NavigationToRenew" ,
-             @(IBLUserSearchTypeExchangeProduct) : @"NavigationToExchangeProduct"};
+             @(IBLUserSearchTypeExchangeProduct) : @"NavigationToExchangeProduct",
+             @(IBLUserSearchTypeAddWorkOrder) : @"NavigationToAddWorkOrder"};
 }
 
 #pragma mark - Navigation
@@ -103,6 +105,11 @@
             IBLExchangeProductViewController *exchangeProductViewController = [segue destinationViewController];
             
             exchangeProductViewController.viewModel = [IBLExchangeProductViewModel modelWithUser:searchResult];
+            break;
+        }
+        case IBLUserSearchTypeAddWorkOrder:{
+            IBLAddWorkOrderTableViewController *addWorkOrderTableViewController = [segue destinationViewController];
+            [addWorkOrderTableViewController setRelateUser:searchResult];
             break;
         }
     }

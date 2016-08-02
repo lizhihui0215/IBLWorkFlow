@@ -11,6 +11,7 @@
 #import "IBLProduct.h"
 #import "IBLRelateUser.h"
 #import "IBLOperator.h"
+#import "IBLOrder.h"
 
 @interface IBLAddWorkOrderResult : NSObject
 
@@ -26,7 +27,7 @@
 
 @property (nonatomic, strong) IBLOperator *oper;
 
-@property (nonatomic, assign) NSInteger priority;
+@property (nonatomic, assign) IBLPriorityStatus priority;
 
 @property (nonatomic, copy) NSString *finishedDate;
 

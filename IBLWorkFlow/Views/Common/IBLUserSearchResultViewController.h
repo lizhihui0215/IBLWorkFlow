@@ -13,7 +13,6 @@
 
 @interface IBLUserSearchResultViewController : IBLTableViewController
 
-
 @property (nonatomic, strong) IBLUserSearchResultViewModel *viewModel;
 
 @end

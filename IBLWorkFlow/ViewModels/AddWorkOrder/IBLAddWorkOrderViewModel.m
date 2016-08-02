@@ -7,7 +7,6 @@
 //
 
 #import "IBLAddWorkOrderViewModel.h"
-#import "IBLGenerateAppConfiguration.h"
 
 @interface IBLAddWorkOrderViewModel ()
 
@@ -46,7 +45,7 @@
     self.result.bizType = type;
 }
 
-- (void)setPriority:(NSInteger)i {
+- (void)setPriority:(IBLPriorityStatus)i {
     self.result.priority = i;
 }
 
