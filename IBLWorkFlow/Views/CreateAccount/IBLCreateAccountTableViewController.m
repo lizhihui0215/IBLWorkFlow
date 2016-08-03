@@ -433,7 +433,7 @@
     NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
     NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
 
-    return @{ custNameIndexPath : @"用户名不能为空！",
+    return @{custNameIndexPath : @"用户名不能为空！",
              custPhone : @"联系电话不能为空！",
              custIdCard : @"身份证号不能为空！",
              custReserve : @"备注不能为空！",
