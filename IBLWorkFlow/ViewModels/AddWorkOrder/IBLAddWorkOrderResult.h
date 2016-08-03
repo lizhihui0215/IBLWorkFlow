@@ -39,7 +39,7 @@
 
 @property (nonatomic, copy) NSString *address;
 
-@property (nonatomic, copy) NSString *userIdentifier;
+@property (nonatomic, assign) NSInteger userIdentifier;
 
 @property (nonatomic, copy) NSString *workOrderContent;
 

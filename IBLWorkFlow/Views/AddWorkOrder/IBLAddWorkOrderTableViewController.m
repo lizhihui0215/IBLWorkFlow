@@ -32,7 +32,10 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *addressTextField;
 @property (weak, nonatomic) IBOutlet UITextField *userIdentifierTextField;
-@property (weak, nonatomic) IBOutlet UITextField *workOrderContentTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *workOrderContentTextField;
+@property (weak, nonatomic) IBOutlet UITextView *workOrderContentTextView;
+
+
 @property (weak, nonatomic) IBOutlet UITextField *relateUserTextField;
 @property (weak, nonatomic) IBOutlet UITextField *handleUserTextField;
 @property (weak, nonatomic) IBOutlet UITextView *remarkTextView;
@@ -95,7 +98,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     dateSelectionVC.hideNowButton = YES;
     [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
-        self.finishedDateTextField.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
+        self.finishedDateTextField.text = [aDate stringFromFormatter:@"yyyy-MM-dd HH:mm:ss"];
         [self.tableViewDelegate addWorkOrderTableView:self
                                             fieldType:IBLAddWorkOrderFieldTypeFinishedDate
                                            didEndEdit:self.finishedDateTextField.text];
@@ -248,7 +251,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     NSString *phone = [self validateContent:self.phoneTextField.text];
     NSString *address = [self validateContent:self.addressTextField.text];
     NSString *userIdentifier = [self validateContent:self.userIdentifierTextField.text];
-    NSString *workOrderContent = [self validateContent:self.workOrderContentTextField.text];
+    NSString *workOrderContent = [self validateContent:self.workOrderContentTextView.text];
     NSString *remark = [self validateContent:self.remarkTextView.text];
     
     [self.tableViewDelegate addWorkOrderTableView:self
@@ -288,6 +291,10 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                                         fieldType:IBLAddWorkOrderFieldTypeBizType
                                        didEndEdit:first];
     self.workOrderBizTypeTextField.text = first.name;
+    
+    self.productCountTextField.text = @"1";
+    
+    
     [self.tableView reloadData];
     
     

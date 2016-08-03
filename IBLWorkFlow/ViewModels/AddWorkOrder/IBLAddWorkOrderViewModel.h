@@ -37,7 +37,7 @@
 
 - (void)setAddress:(NSString *)string;
 
-- (void)setUserIdentifier:(NSString *)string;
+- (void)setUserIdentifier:(NSInteger)string;
 
 - (void)setWorkOrderContent:(NSString *)string;
 
@@ -50,4 +50,6 @@
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes;
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes;
+
+- (void)commitWithCompleteHandler:(IBLViewModelCompleteHandler)handler;
 @end

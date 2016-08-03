@@ -7,12 +7,15 @@
 //
 
 #import "IBLAddWorkOrderViewModel.h"
+#import "IBLAddWorkOrder.h"
 
 @interface IBLAddWorkOrderViewModel ()
 
 @property (nonatomic, strong) IBLAddWorkOrderResult *result;
 
 @property (nonatomic, strong) IBLGenerateAppConfiguration *generateAppConfiguration;
+
+@property (nonatomic, strong) IBLAddWorkOrder *addWorkOrder;
 
 @end
 
@@ -24,6 +27,7 @@
     if (self) {
         self.result = [[IBLAddWorkOrderResult alloc] init];
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
+        self.addWorkOrder = [[IBLAddWorkOrder alloc] init];
     }
     return self;
 }
@@ -77,7 +81,7 @@
     self.result.address = string;
 }
 
-- (void)setUserIdentifier:(NSString *)string {
+- (void)setUserIdentifier:(NSInteger )string {
     self.result.userIdentifier = string;
 }
 
@@ -104,5 +108,28 @@
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes {
     return [self.generateAppConfiguration workOrderTypes];
+}
+
+- (void)commitWithCompleteHandler:(IBLViewModelCompleteHandler)handler {
+    IBLAddWorkOrderInfo *info = [[IBLAddWorkOrderInfo alloc] init];
+    info.orderType = self.result.type.status;
+    info.bizType = self.result.bizType.status;
+    info.priority = self.result.priority;
+    info.preFinishTime = self.result.finishedDate;
+    info.orderContent = self.result.workOrderContent;
+    info.servId = self.result.relateUser.servId;
+    info.handleOperId = self.result.oper.identifier;
+    info.offerId = self.result.product.identifier;
+    info.nodeId = self.result.region.identifier;
+    info.username = self.result.name;
+    info.userIdentifier = self.result.userIdentifier;
+    info.phone = self.result.phone;
+    info.address = self.result.address;
+    info.remark = self.result.remark;
+    info.buyLength = self.result.count;
+    [self.addWorkOrder addWorkOrderWith:info
+                        completeHandler:^(NSString *orderId, NSError *error) {
+                            handler(error);
+                        }];
 }
 @end

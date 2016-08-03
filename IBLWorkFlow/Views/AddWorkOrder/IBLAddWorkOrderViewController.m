@@ -91,7 +91,7 @@
             break;
         }
         case IBLAddWorkOrderFieldTypeUserIdentifier: {
-            [self.viewModel setUserIdentifier:obj];
+            [self.viewModel setUserIdentifier:[obj integerValue]];
             break;
         }
         case IBLAddWorkOrderFieldTypeWorkOrderContent: {
@@ -113,7 +113,8 @@
     }
 }
 
-- (id)fieldOfAddWorkOrderTableView:(IBLAddWorkOrderTableViewController *)controller fieldType:(IBLAddWorkOrderFieldType)type {
+- (id)fieldOfAddWorkOrderTableView:(IBLAddWorkOrderTableViewController *)controller
+                         fieldType:(IBLAddWorkOrderFieldType)type {
     id obj = nil;
     switch (type) {
         case IBLAddWorkOrderFieldTypeWorkOrderType: {
@@ -132,7 +133,13 @@
 }
 
 - (void)addWorkOrderTableDidCommit:(IBLAddWorkOrderTableViewController *)controller {
-
+    [self showHUDWithMessage:@"提交中..."];
+    [self.viewModel commitWithCompleteHandler:^(NSError *error){
+        [self hidHUD];
+        if (![self showAlertWithError:error]) {
+            
+        }
+    }];
 }
 
 

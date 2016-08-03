@@ -22,8 +22,6 @@ static NSString *const kBizType = @"bizType";
 
 static NSString *const kDateRange = @"dateRange";
 
-
-
 static NSString *const kOrderList = @"orderList";
 
 static NSString *const IBLMethodOfFetchMineOrderList = @"getMyOrderList";
@@ -73,6 +71,8 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
 @property (nonatomic, strong) IBLSOAPMethod *handleMethod;
 
 @property (nonatomic, strong) IBLSOAPMethod *sendOrderMethod;
+
+@property (nonatomic, strong) IBLSOAPMethod *addWorkOrderMethod;
 @end
 
 @implementation IBLOrderRepository
@@ -105,6 +105,9 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         
         self.sendOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@"orderIssue"
                                                        responseMethodName:@"orderIssueResponse"];
+        
+        self.addWorkOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@"orderAdd"
+                                                          responseMethodName:@"orderAddResponse"];
         
     }
     return self;
@@ -289,6 +292,42 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
                                                       handler(error);
                                                   }];
 }
+
+
+- (void)addWorkOrdeWith:(IBLAddWorkOrderInfo *)info
+        completeHandler:(void (^)(NSString *, NSError *))handler {
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        if (info.orderType != IBLWorkOrderStatusUnknow) parameters[@"orderType"] = @(info.orderType);
+        if (info.bizType != IBLWorkOrderBizStatusUnknow) parameters[@"bizType"] = @(info.bizType);
+        if(info.servId != 0 ) parameters[@"servId"] = @(info.servId);
+        if(info.offerId != 0) parameters[@"offerId"] = @(info.offerId);
+        if(info.nodeId != 0) parameters[@"nodeId"] = @(info.nodeId);
+        if (info.userIdentifier != 0) parameters[@"idNo"] = @(info.userIdentifier);
+        if (info.handleOperId != 0) parameters[@"handleOperId"] = @(info.handleOperId);
+        if (info.buyLength != 0) parameters[@"buyLength"] = @(info.buyLength);
+        parameters[@"priority"] = @(info.priority);
+        parameters[@"preFinishTime"] = info.preFinishTime;
+        parameters[@"orderContent"] = info.orderContent;
+        parameters[@"userName"] = info.username;
+        parameters[@"phone"] = info.phone;
+        parameters[@"addr"] = info.address;
+        parameters[@"remark"] = info.remark;
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.addWorkOrderMethod] POST:IBLWorkOrderInterface
+                                                     parameters:parameters
+                                                       progress:nil
+                                                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                            handler(responseObject[@"orderId"],nil);
+                                                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                            handler(nil,error);
+                                                        }];
+}
+@end
+
+@implementation IBLAddWorkOrderInfo
 
 
 @end

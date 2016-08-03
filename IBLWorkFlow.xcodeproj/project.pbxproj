@@ -94,6 +94,7 @@
 		26ADA5E71D438C75005CAEEC /* IBLAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26ADA5E61D438C75005CAEEC /* IBLAboutViewController.m */; };
 		26C2597D1D42687300035F63 /* IBLRenewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C2597C1D42687300035F63 /* IBLRenewViewController.m */; };
 		26C259801D42688400035F63 /* IBLRenewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C2597F1D42688400035F63 /* IBLRenewTableViewController.m */; };
+		26C51C361D518E9900A13E5C /* IBLAddWorkOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C51C351D518E9900A13E5C /* IBLAddWorkOrder.m */; };
 		26C532D21D48B1BF0068E713 /* IBLCreateAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C532D11D48B1BF0068E713 /* IBLCreateAccount.m */; };
 		26C97D671D41C8C3001EFA6F /* IBLProductPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C97D661D41C8C3001EFA6F /* IBLProductPrice.m */; };
 		26C97D6B1D421DDF001EFA6F /* IBLAddWorkOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C97D6A1D421DDF001EFA6F /* IBLAddWorkOrderViewController.m */; };
@@ -325,6 +326,8 @@
 		26C2597C1D42687300035F63 /* IBLRenewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRenewViewController.m; sourceTree = "<group>"; };
 		26C2597E1D42688400035F63 /* IBLRenewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRenewTableViewController.h; sourceTree = "<group>"; };
 		26C2597F1D42688400035F63 /* IBLRenewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRenewTableViewController.m; sourceTree = "<group>"; };
+		26C51C341D518E9900A13E5C /* IBLAddWorkOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAddWorkOrder.h; sourceTree = "<group>"; };
+		26C51C351D518E9900A13E5C /* IBLAddWorkOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAddWorkOrder.m; sourceTree = "<group>"; };
 		26C532D01D48B1BF0068E713 /* IBLCreateAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLCreateAccount.h; sourceTree = "<group>"; };
 		26C532D11D48B1BF0068E713 /* IBLCreateAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLCreateAccount.m; sourceTree = "<group>"; };
 		26C97D661D41C8C3001EFA6F /* IBLProductPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLProductPrice.m; sourceTree = "<group>"; };
@@ -716,6 +719,8 @@
 				26EC5A401D45FA0500CB0F7C /* IBLFetchUserList.m */,
 				26C532D01D48B1BF0068E713 /* IBLCreateAccount.h */,
 				26C532D11D48B1BF0068E713 /* IBLCreateAccount.m */,
+				26C51C341D518E9900A13E5C /* IBLAddWorkOrder.h */,
+				26C51C351D518E9900A13E5C /* IBLAddWorkOrder.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1330,6 +1335,7 @@
 				26CA04891D3676320044C81B /* IBLFetchOrder.m in Sources */,
 				264EBB631D2E023D00FF8373 /* main.m in Sources */,
 				26C97D6E1D421DF7001EFA6F /* IBLAddWorkOrderTableViewController.m in Sources */,
+				26C51C361D518E9900A13E5C /* IBLAddWorkOrder.m in Sources */,
 				261F40221D3720D50068F502 /* IBLOrder.m in Sources */,
 				26846F531D34A2F6001F9C73 /* IBLAlertController.m in Sources */,
 				26846F611D34A405001F9C73 /* UIActionSheet+Blocks.m in Sources */,

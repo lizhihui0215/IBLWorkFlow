@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, IBLWorkOrderStatus) {
     /**
      *  未知
      */
-    IBLWorkOrderStatusUnknow = -1,
+    IBLWorkOrderStatusUnknow = 0,
     /**
      *  工程
      */

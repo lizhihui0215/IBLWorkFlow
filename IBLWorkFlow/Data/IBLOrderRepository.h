@@ -18,6 +18,52 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
     IBLFetchOrderTypeManaged,
 };
 
+@interface IBLAddWorkOrderInfo : NSObject
+
+@property (nonatomic, assign) IBLWorkOrderStatus orderType;
+
+@property (nonatomic, assign) IBLWorkOrderBizStatus bizType;
+
+@property (nonatomic, assign) IBLPriorityStatus priority;
+
+/// 期望完成时间 YYYY-MM-dd HH:mm:ss （可选）
+@property (nonatomic, copy) NSString *preFinishTime;
+
+/// 工单内容
+@property (nonatomic, copy) NSString *orderContent;
+
+/// 关联用户
+@property (nonatomic, assign) NSInteger servId;
+
+/// 分配处理的人员ID
+@property (nonatomic, assign) NSInteger handleOperId;
+
+/// 订购销售品ID
+@property (nonatomic, assign) NSInteger offerId;
+
+/// 小区ID（仅适用于报装工单类型）
+@property (nonatomic, assign) NSInteger nodeId;
+
+/// 用户姓名（仅适用于报装工单类型）
+@property (nonatomic, copy) NSString *username;
+
+/// 身份证号（仅适用于报装工单类型）
+@property (nonatomic, assign) NSInteger userIdentifier;
+
+/// 电话（仅适用于报装工单类型）
+@property (nonatomic, copy) NSString *phone;
+
+/// 联系地址（仅适用于报装工单类型）
+@property (nonatomic, copy) NSString *address;
+
+/// 备注（仅适用于报装工单类型）
+@property (nonatomic, copy) NSString *remark;
+
+/// 订购数，默认为1（仅适用于报装工单类型）
+@property (nonatomic, assign) NSInteger buyLength;
+
+@end
+
 /**
  *  the info for fetch mine order list
  */
@@ -93,6 +139,9 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
 
 - (void)handleOrderWithId:(NSInteger)identifier
           completeHandler:(void (^)(NSError *))handler;
+
+- (void)addWorkOrdeWith:(IBLAddWorkOrderInfo *)info
+        completeHandler:(void (^)(NSString *, NSError *))handler;
 
 - (void)sendOrderWithId:(NSInteger)identifier
              operatorId:(NSInteger)operatorId
