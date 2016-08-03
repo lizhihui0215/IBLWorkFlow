@@ -128,7 +128,22 @@
 
 - (void)tableViewController:(IBLRenewTableViewController *)controller
                commitResult:(IBLRenewResult *)result {
-    [self.viewModel commitWithResult:result];
+    IBLPayModel model = [self.viewModel payModel];
+    
+    switch (model) {
+        case IBLPayModelNet: {
+            
+            break;
+        }
+        case IBLPayModelCash: {
+            [self.viewModel commitWithResult:result completeHandler:^(NSError *error) {
+                if (![self showAlertWithError:error]) {
+                    
+                }
+            }];
+            break;
+        }
+    }    
 }
 
 

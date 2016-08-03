@@ -49,9 +49,43 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 
 - (void)tableViewController:(IBLCreateAccountTableViewController *)controller
                      commit:(IBLCreateAccountInfo *)commit {
+    IBLPayModel paymodel = [self.viewModel payModel];
     
+    switch (paymodel) {
+        case IBLPayModelNet: {
+            IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
+                                                           action:^(IBLButtonItem *item) {
+                                                               
+                                                           }];
+            
+            IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
+                                                               action:^(IBLButtonItem *item) {
+                                                                   
+                                                               }];
+            
+            IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+            
+            
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                            title:@"请选择支付方式"
+                                                                          message:nil
+                                                                 cancleButtonItem:cancel
+                                                                 otherButtonItems:general,noEmergency,nil];
+            [alert showInController:self];
+            break;
+        }
+        case IBLPayModelCash: {
+            [self.viewModel createAccountWith:commit completeHandler:^(NSError *error){
+                
+            }];
+            break;
+        }
+    }
 }
 
+- (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary;{
+    return [self.viewModel notNullFieldsDictionary];
+}
 
 
 - (IBLCreateAccountInfo *)createAccountInfoOfTableViewController:(IBLCreateAccountTableViewController *)controller{

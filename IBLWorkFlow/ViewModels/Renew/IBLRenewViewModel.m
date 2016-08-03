@@ -9,6 +9,7 @@
 #import "IBLRenewViewModel.h"
 #import "IBLRenewTableViewController.h"
 #import "IBLCreateAccount.h"
+#import "IBLGenerateAppConfiguration.h"
 
 @interface IBLRenewViewModel ()
 
@@ -17,6 +18,8 @@
 @property (nonatomic, strong) IBLProductPrice *productPrices;
 
 @property (nonatomic, strong) IBLCreateAccount *createAccount;
+
+@property (nonatomic, strong) IBLGenerateAppConfiguration *generateAppConfiguration;
 
 @end
 
@@ -28,6 +31,8 @@
         self.fetchProductPrice = [[IBLFetchProductPrice alloc] init];
         
         self.createAccount = [[IBLCreateAccount alloc] init];
+
+        self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
     }
 
     return self;
@@ -114,7 +119,8 @@
     return self.productPrices;
 }
 
-- (void)commitWithResult:(IBLRenewResult *)result {
+- (void)commitWithResult:(IBLRenewResult *)result
+         completeHandler:(IBLViewModelCompleteHandler)handler{
     IBLCreateAccountInfo *info = [[IBLCreateAccountInfo alloc] init];
     info.account = self.user.account;
     info.userName = self.user.username;
@@ -133,6 +139,12 @@
     info.voiceCode = result.ticket;
     
     
-    [self.createAccount createAccountWithInfo:info];
+    [self.createAccount createAccountWithInfo:info completeHandler:^(id obj, NSError *error) {
+        
+    }];
+}
+
+- (IBLPayModel)payModel {
+    return [self.generateAppConfiguration payModel];
 }
 @end

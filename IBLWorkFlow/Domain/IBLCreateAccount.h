@@ -11,6 +11,6 @@
 
 @interface IBLCreateAccount : IBLUseCase
 
-- (void)createAccountWithInfo:(IBLCreateAccountInfo *)createAccountInfo;
-
+- (void)createAccountWithInfo:(IBLCreateAccountInfo *)createAccountInfo
+              completeHandler:(void (^)(id, NSError *))handler;
 @end

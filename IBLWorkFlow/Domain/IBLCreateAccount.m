@@ -25,14 +25,10 @@
     return self;
 }
 
-- (void)createAccountWithInfo:(IBLCreateAccountInfo *)createAccountInfo{
-    
-    IBLCreateAccountInfo *info = nil;
-    
-    [self.userListRepository createAccountWithInfo:info
-                                   completeHandler:^(id obj, NSError *error) {
-                                       
-                                   }];
+- (void)createAccountWithInfo:(IBLCreateAccountInfo *)createAccountInfo
+              completeHandler:(void (^)(id, NSError *))handler{
+    [self.userListRepository createAccountWithInfo:createAccountInfo
+                                   completeHandler:handler];
 }
 
 @end

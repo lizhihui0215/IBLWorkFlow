@@ -10,7 +10,7 @@
 #import "IBLCreateAccountHiddenFields.h"
 #import "IBLGenerateAppConfiguration.h"
 #import "IBLFetchProductPrice.h"
-
+#import "IBLCreateAccount.h"
 
 @interface IBLCreateAccountViewModel ()
 
@@ -25,6 +25,8 @@
 @property (nonatomic, strong) IBLFetchProductPrice *fetchProductPrice;
 
 @property (nonatomic, strong) IBLProductPrice *productPrices;
+
+@property (nonatomic, strong) IBLCreateAccount *createAccount;
 @end
 
 @implementation IBLCreateAccountViewModel
@@ -46,6 +48,7 @@
         self.hiddenFields = [[IBLCreateAccountHiddenFields alloc] init];
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
         self.fetchProductPrice = [[IBLFetchProductPrice alloc] init];
+        self.createAccount = [[IBLCreateAccount alloc] init];
     }
 
     return self;
@@ -83,5 +86,21 @@
 
 - (IBLProductPrice *)productPrice {
     return self.productPrices;
+}
+
+- (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary {
+    return [self.hiddenFields createNotNullFieldsDictionary];
+}
+
+- (IBLPayModel)payModel {
+    return [self.generateAppConfiguration payModel];
+}
+
+
+
+- (void)createAccountWith:(IBLCreateAccountInfo *)info completeHandler:(void (^)(NSError *))handler {
+    [self.createAccount createAccountWithInfo:info completeHandler:^(id obj, NSError *error) {
+        handler(error);
+    }];
 }
 @end

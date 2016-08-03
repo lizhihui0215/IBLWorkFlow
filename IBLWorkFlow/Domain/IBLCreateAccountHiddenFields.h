@@ -9,6 +9,8 @@
 #import "IBLUseCase.h"
 
 @interface IBLCreateAccountHiddenFields : IBLUseCase
+
 @property (nonatomic, strong) NSDictionary<NSIndexPath *, NSString *> *createAccountHiddenFieldsDictionary;
 
+- (NSDictionary <NSIndexPath *, NSString *> *)createNotNullFieldsDictionary;
 @end

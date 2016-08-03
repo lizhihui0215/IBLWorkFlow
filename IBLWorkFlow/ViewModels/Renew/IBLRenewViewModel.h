@@ -56,5 +56,8 @@
 
 - (IBLProductPrice *)productPrice;
 
-- (void)commitWithResult:(IBLRenewResult *)result;
+- (void)commitWithResult:(IBLRenewResult *)result
+         completeHandler:(IBLViewModelCompleteHandler)handler;
+
+- (IBLPayModel)payModel;
 @end

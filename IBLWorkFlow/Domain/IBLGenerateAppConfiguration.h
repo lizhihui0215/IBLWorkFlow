@@ -40,4 +40,6 @@
 - (IBLOrderEffectType)defaultEffectType;
 
 - (NSString *)defaultEffectDate;
+
+- (IBLPayModel)payModel;
 @end

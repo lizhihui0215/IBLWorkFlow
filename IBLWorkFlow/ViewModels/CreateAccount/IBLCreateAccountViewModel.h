@@ -10,6 +10,7 @@
 #import "IBLOrder.h"
 @class IBLFetchProductPriceInfo;
 @class IBLProductPrice;
+@class IBLCreateAccountInfo;
 
 @interface IBLCreateAccountViewModel : IBLListViewModel
 
@@ -28,4 +29,10 @@
 - (void)fetchProductPrice:(IBLFetchProductPriceInfo *)fetchProductPrice completeHandler:(IBLViewModelCompleteHandler)handler;
 
 - (IBLProductPrice *)productPrice;
+
+- (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary;
+
+- (IBLPayModel)payModel;
+
+- (void)createAccountWith:(IBLCreateAccountInfo *)info completeHandler:(void (^)(NSError *))handler;
 @end
