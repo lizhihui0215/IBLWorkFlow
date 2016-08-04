@@ -111,7 +111,7 @@
 
 - (void)productPriceOfTableViewController:(IBLRenewTableViewController *)controller
                           completeHandler:(void (^)(IBLProductPrice *productPrice))completeHandler {
-    NSInteger productId = [[self.viewModel product] integerValue];
+    NSInteger productId = [[self.viewModel productIdentifier] integerValue];
     IBLFetchProductPriceInfo *fetchProductPrice = [IBLFetchProductPriceInfo priceWithProductId:productId
                                                                                    discountIds:@""
                                                                                          renew:NO];
@@ -132,7 +132,25 @@
     
     switch (model) {
         case IBLPayModelNet: {
+            IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
+                                                           action:^(IBLButtonItem *item) {
+                                                               
+                                                           }];
             
+            IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
+                                                               action:^(IBLButtonItem *item) {
+                                                                   
+                                                               }];
+            
+            IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+            
+            
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                            title:@"请选择支付方式"
+                                                                          message:nil
+                                                                 cancleButtonItem:cancel
+                                                                 otherButtonItems:general,noEmergency,nil];
+            [alert showInController:self];
             break;
         }
         case IBLPayModelCash: {

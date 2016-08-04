@@ -67,6 +67,10 @@
 }
 
 - (NSString *)product {
+    return self.user.offerName;
+}
+
+- (NSString *)productIdentifier{
     return self.user.offerIdentifier;
 }
 

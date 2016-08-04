@@ -22,5 +22,36 @@
     return [[self alloc] initWithUser:user];
 }
 
+- (NSString *)account {
+    return self.user.account;
+}
 
+
+- (NSString *)status {
+    return self.user.state;
+}
+
+- (NSString *)username {
+    return self.user.username;
+}
+
+- (NSString *)phone {
+    return self.user.phone;
+}
+
+- (NSString *)region {
+    return self.user.areaName;
+}
+
+- (NSString *)finishedDate {
+    return self.user.expDate;
+}
+
+- (NSString *)product {
+    return self.user.offerName;
+}
+
+- (NSString *)exchangeType {
+    return nil;
+}
 @end

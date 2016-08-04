@@ -14,4 +14,19 @@
 
 + (instancetype)modelWithUser:(IBLRelateUser *)user;
 
+- (NSString *)account;
+
+- (NSString *)status;
+
+- (NSString *)username;
+
+- (NSString *)phone;
+
+- (NSString *)region;
+
+- (NSString *)finishedDate;
+
+- (NSString *)product;
+
+- (NSString *)exchangeType;
 @end

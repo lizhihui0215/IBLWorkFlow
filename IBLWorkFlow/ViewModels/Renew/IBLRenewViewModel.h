@@ -52,6 +52,8 @@
 
 - (NSString *)renewProductCount;
 
+- (NSString *)productIdentifier;
+
 - (void)fetchProductPrice:(IBLFetchProductPriceInfo *)info completeHandler:(IBLViewModelCompleteHandler)handler;
 
 - (IBLProductPrice *)productPrice;
