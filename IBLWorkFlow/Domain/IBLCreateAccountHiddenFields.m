@@ -13,6 +13,7 @@
 
 @property (nonatomic, readonly) NSDictionary *createAccountAllFields;
 
+@property (nonatomic, readonly) NSDictionary *exchangeProductAllFields;
 
 
 @end
@@ -24,11 +25,14 @@
     self = [super init];
     if (self) {
         self.createAccountHiddenFieldsDictionary = [self makeCreateAccountHiddenFieldsDictionary];
+        
+        self.exchangeProductHiddenFieldsDictionary = [self makeExchangeProductHiddenFieldsDictionary];
     }
     return self;
 }
 
 - (NSDictionary *)createAccountAllFields{
+    
     NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
     NSIndexPath *custPhone = [NSIndexPath indexPathForRow:1 inSection:1];
     NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:3 inSection:1];
@@ -47,17 +51,67 @@
               @"voiceCode_cfield": voiceCode,};
 }
 
+- (NSDictionary *)exchangeProductAllFields{
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:0 inSection:3];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:0 inSection:19];
+    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:0 inSection:13];
+    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:0 inSection:14];
+    return  @{@"custName" : custNameIndexPath,
+              @"custPhone" : custPhone  ,
+              @"custReserve" : custReserve,
+              @"contractCode": contractCode,
+              @"voiceCode" : voiceCode,
+              @"contractCode_cfield" : contractCode,
+              @"voiceCode_cfield": voiceCode,};
+}
 
-- (NSDictionary <NSIndexPath *, NSString *> *)createNotNullFieldsDictionary{
+
+
+
+- (NSDictionary <NSIndexPath *, NSString *> *)createAccountNotNullFieldsDictionary{
     IBLAppConfiguration *app = [IBLAppRepository appConfiguration];
     
     NSMutableDictionary *notNullFields = [NSMutableDictionary dictionary];
     
     for (NSString *field in app.notNullFields.createAccountFields) {
-        NSIndexPath *hiddenIndexPath = self.createAccountAllFields[field];
-        if (hiddenIndexPath) {
-            notNullFields[field] = hiddenIndexPath;
-        }
+        NSIndexPath *notNullIndexPath = self.createAccountAllFields[field];
+        
+        NSNumber *isNull = notNullIndexPath == nil ? @(NO) : @(YES);
+        
+        notNullFields[field] = isNull;
+    }
+    
+    return notNullFields;
+}
+
+- (NSDictionary <NSIndexPath *, NSString *> *)makeExchangeProductHiddenFieldsDictionary{
+    IBLAppConfiguration *app = [IBLAppRepository appConfiguration];
+    
+    NSMutableDictionary *hiddenFields = [NSMutableDictionary dictionary];
+    
+    for (NSString *field in app.hiddenFields.changeProductFields) {
+        NSIndexPath *hiddenIndexPath = self.exchangeProductAllFields[field];
+        
+        NSNumber *isHidden = hiddenIndexPath == nil ? @(NO) : @(YES);
+        
+        hiddenFields[hiddenIndexPath] = isHidden;
+    }
+    
+    return hiddenFields;
+}
+
+- (NSDictionary <NSIndexPath *, NSString *> *)exchangeProductNotNullFieldsDictionary{
+    IBLAppConfiguration *app = [IBLAppRepository appConfiguration];
+    
+    NSMutableDictionary *notNullFields = [NSMutableDictionary dictionary];
+    
+    for (NSString *field in app.notNullFields.createAccountFields) {
+        NSIndexPath *notNullIndexPath = self.exchangeProductAllFields[field];
+        
+        NSNumber *isNull = notNullIndexPath == nil ? @(NO) : @(YES);
+        
+        notNullFields[field] = isNull;
     }
     
     return notNullFields;
@@ -68,11 +122,11 @@
     
     NSMutableDictionary *hiddenFields = [NSMutableDictionary dictionary];
     
-    for (NSString *field in app.hiddenFields.createAccountFields) {
+    for (NSString *field in app.hiddenFields.changeProductFields) {
         NSIndexPath *hiddenIndexPath = self.createAccountAllFields[field];
-        if (hiddenIndexPath) {
-            hiddenFields[hiddenIndexPath] = field;
-        }
+        NSNumber *isHidden = hiddenIndexPath == nil ? @(NO) : @(YES);
+        
+        hiddenFields[hiddenIndexPath] = isHidden;
     }
     
     return hiddenFields;

@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger, IBLExchangeProductTextFieldType) {
 @protocol IBLExchangeProductTableViewControllerDelegate <NSObject>
 
 - (NSString *)exchangeProductText:(IBLExchangeProductTextFieldType)type;
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 @interface IBLExchangeProductTableViewController : UITableViewController

@@ -74,8 +74,12 @@
         default: break;
     }
     
-    
     return text;
+}
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return [self.viewModel isHiddenAtIndexPath:indexPath];
 }
 
 

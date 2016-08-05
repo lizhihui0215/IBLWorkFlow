@@ -7,6 +7,7 @@
 //
 
 #import "IBLExchangeProductTableViewController.h"
+#import "IBLCreateAccountTableViewController.h"
 
 @interface IBLExchangeProductTableViewController ()
 
@@ -63,11 +64,29 @@
 
 #pragma mark - Table view data source
 
+- (BOOL)isSeparationAtIndexPath:(NSIndexPath *)indexPath{
+    NSIndexPath *separation1 = [NSIndexPath indexPathForRow:7 inSection:0];
+    NSIndexPath *separation2 = [NSIndexPath indexPathForRow:10 inSection:0];
+    
+    NSDictionary *separationDictionary = @{separation1 : @(YES),
+                                           separation2 : @(YES)};
+    
+    return [separationDictionary[indexPath] boolValue];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if([self isSeparationAtIndexPath:indexPath]) return 6;
+    
+    BOOL isHidden = [self.tableViewDelegate isHiddenAtIndexPath:indexPath];
+    
+    if (isHidden) return 0;
+    
+    NSIndexPath *remark = [NSIndexPath indexPathForRow:19 inSection:0];
+    
+    if ([indexPath isEqual:remark]) return 124;
+    
     return 40;
-    
-    
-//    124
 }
 
 #pragma mark - Navigation

@@ -5,7 +5,13 @@
 
 #import "IBLExchangeProductViewModel.h"
 #import "IBLRelateUser.h"
+#import "IBLCreateAccountHiddenFields.h"
 
+@interface IBLExchangeProductViewModel ()
+
+@property (nonatomic, strong) IBLCreateAccountHiddenFields *hiddenFields;
+
+@end
 
 @implementation IBLExchangeProductViewModel
 
@@ -13,6 +19,7 @@
     self = [super init];
     if (self) {
         _user = user;
+        self.hiddenFields = [[IBLCreateAccountHiddenFields alloc] init];
     }
 
     return self;
@@ -53,5 +60,9 @@
 
 - (NSString *)exchangeType {
     return nil;
+}
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.hiddenFields.exchangeProductHiddenFieldsDictionary[indexPath] boolValue];
 }
 @end

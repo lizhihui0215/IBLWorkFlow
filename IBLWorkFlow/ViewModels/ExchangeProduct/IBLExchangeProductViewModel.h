@@ -29,4 +29,6 @@
 - (NSString *)product;
 
 - (NSString *)exchangeType;
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
 @end

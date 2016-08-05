@@ -12,5 +12,10 @@
 
 @property (nonatomic, strong) NSDictionary<NSIndexPath *, NSString *> *createAccountHiddenFieldsDictionary;
 
-- (NSDictionary <NSIndexPath *, NSString *> *)createNotNullFieldsDictionary;
+@property (nonatomic, strong) NSDictionary<NSIndexPath *, NSString *> *exchangeProductHiddenFieldsDictionary;
+
+
+- (NSDictionary <NSIndexPath *, NSString *> *)createAccountNotNullFieldsDictionary;
+
+- (NSDictionary <NSIndexPath *, NSString *> *)exchangeProductNotNullFieldsDictionary;
 @end

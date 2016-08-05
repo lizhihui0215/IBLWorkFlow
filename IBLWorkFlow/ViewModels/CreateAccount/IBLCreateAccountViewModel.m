@@ -61,10 +61,7 @@
 }
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath {
-    if([self.hiddenFields createAccountHiddenFieldsDictionary][indexPath]){
-        return YES;
-    }
-    return NO;
+    return [[self.hiddenFields createAccountHiddenFieldsDictionary][indexPath] boolValue];
 }
 
 - (IBLOrderEffectType)defaultEffectType {
@@ -89,7 +86,7 @@
 }
 
 - (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary {
-    return [self.hiddenFields createNotNullFieldsDictionary];
+    return [self.hiddenFields createAccountNotNullFieldsDictionary];
 }
 
 - (IBLPayModel)payModel {
