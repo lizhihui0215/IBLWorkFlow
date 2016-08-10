@@ -9,36 +9,90 @@
 #import "IBLBusinessRepository.h"
 #import "IBLRelateUser.h"
 
-@interface IBLCreateAccountInfo :NSObject
-
+@interface IBLCreateAccountInfo : NSObject
+//开户类型，0-默认，1-用户自助，2-账号卡开户（可选）
 @property(nonatomic, copy) NSString *type;
+//账号卡卡号（可选）
 @property(nonatomic, copy) NSString *cardNo;
-@property(nonatomic, copy) NSString *gender;
+//账号卡密码（可选）
 @property(nonatomic, copy) NSString *cardPwd;
+//性别（可选）
+@property(nonatomic, copy) NSString *gender;
+/**
+ *  对象类型（可选）
+ type -- 账号密码生成方式
+ 0-	默认
+ 1-	根据前缀定制
+ 2-	小区
+ typeval—type如果为0，该值为空，账号密码则由系统自动生成；如果为1，则需要填入前缀值；如果为2，需要填入区域的id，前提是区域有相应的账号生成规则
+ accountLen – 账号长度
+ pwdLen – 密码长度
+ */
 @property(nonatomic, copy) NSString *genarate;
+//用户账号（可选）
 @property(nonatomic, copy) NSString *account;
+//用户密码（可选）
 @property(nonatomic, copy) NSString *password;
+//用户姓名（根据配置）
 @property(nonatomic, copy) NSString *userName;
+//身份证号（根据配置）
 @property(nonatomic, copy) NSString *idNo;
+//电话号码，同时支持手机或者座机（必选）
 @property(nonatomic, copy) NSString *phone;
+//备用电话号码，同时支持手机或者座机（可选）
 @property(nonatomic, copy) NSString *subPhone;
+//联系地址（根据配置）
 @property(nonatomic, copy) NSString *addr;
+//生日（格式2010-01-01）（可选）
 @property(nonatomic, copy) NSString *birthDate;
+//Email（可选）
 @property(nonatomic, copy) NSString *email;
+//备注（可选）
 @property(nonatomic, copy) NSString *remark;
+//产品ID（可选）
 @property(nonatomic, copy) NSString *productId;
+//销售品ID（必选）
+@property (nonatomic, copy) NSString *offerId;
+//购买量（可选）
 @property(nonatomic, copy) NSString *buyLength;
+//临时赠送量（可选）
 @property(nonatomic, copy) NSString *extraLength;
+//生效方式：（必选）
+//1-指定日期
+//2-首次上线
+//3-首次上线+最迟日期
 @property(nonatomic, copy) NSString *effType;
+//根据生效方式不同而不同，如果生效方式为指定日期，则该值为生效日期，并且生效日期不能在当前时间之前；如果生效方式为首次上线，则该值没有作用；如果生效方式为首次上线+最迟日期，则该值为最迟生效日期（可选）
 @property(nonatomic, copy) NSString *effDate;
+//所选优惠条目ID，格式为以逗号为分割的ID字符串，例如所选优惠条目的ID为14000111111111和14000111111112，那么传递参数应为” 14000111111111，14000111111112” （可选）
 @property(nonatomic, copy) NSString *discountItems;
+//支付金额，以分为单位（必选）totalCost = 销售品金额+其它金额-优惠金额
+
 @property(nonatomic, copy) NSString *totalCost;
+//优惠金额，以分为单位（可选）
 @property(nonatomic, copy) NSString *preCost;
+
+//其它金额，以分为单位（可选）
+@property(nonatomic, copy) NSString *otherCost;
+//小区ID（必选）
 @property(nonatomic, copy) NSString *nodeId;
+//登录方式：（可选）
+//1 – PPPOE
+//2 –WEB
+//默认为1
 @property(nonatomic, copy) NSString *loginType;
+//缴费方式（可选）
+//5003000500  --人工收费
+//5003000504  --套餐卡
+//5003000505  --支付宝充值
+//5003000506  --网银收入
+//5003000510 – 微信
 @property(nonatomic, copy) NSString *balanceType;
+//是否立即开户，true
 @property(nonatomic, copy) NSString *prompt;
+//合同号
 @property(nonatomic, copy) NSString *contractCode;
+//票据号
 @property(nonatomic, copy) NSString *voiceCode;
 @end
 

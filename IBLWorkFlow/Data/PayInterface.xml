@@ -1,0 +1,74 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://pay.webserver.module.miniboss.com/" name="IBLPayInterface" targetNamespace="http://pay.webserver.module.miniboss.com/">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.pay.webserver.module.miniboss.com/" xmlns="http://pay.webserver.module.miniboss.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://pay.webserver.module.miniboss.com/">
+            <xsd:element name="getOrderInfo" type="getOrderInfo"/>
+            <xsd:complexType name="getOrderInfo">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getOrderInfoResponse" type="getOrderInfoResponse"/>
+            <xsd:complexType name="getOrderInfoResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="checkOrder" type="checkOrder"/>
+            <xsd:complexType name="checkOrder">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="checkOrderResponse" type="checkOrderResponse"/>
+            <xsd:complexType name="checkOrderResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="qrPay" type="qrPay"/>
+            <xsd:complexType name="qrPay">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="qrPayResponse" type="qrPayResponse"/>
+            <xsd:complexType name="qrPayResponse">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="getOrderInfoResponse">
+        <wsdl:part element="ns1:getOrderInfoResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="checkOrder">
+        <wsdl:part element="ns1:checkOrder" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getOrderInfo">
+        <wsdl:part element="ns1:getOrderInfo" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="qrPay">
+        <wsdl:part element="ns1:qrPay" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="qrPayResponse">
+        <wsdl:part element="ns1:qrPayResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="checkOrderResponse">
+        <wsdl:part element="ns1:checkOrderResponse" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="IBLPayInterface">
+        <wsdl:operation name="getOrderInfo">
+            <wsdl:input message="ns1:getOrderInfo" name="getOrderInfo"></wsdl:input>
+            <wsdl:output message="ns1:getOrderInfoResponse" name="getOrderInfoResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="checkOrder">
+            <wsdl:input message="ns1:checkOrder" name="checkOrder"></wsdl:input>
+            <wsdl:output message="ns1:checkOrderResponse" name="checkOrderResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="qrPay">
+            <wsdl:input message="ns1:qrPay" name="qrPay"></wsdl:input>
+            <wsdl:output message="ns1:qrPayResponse" name="qrPayResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

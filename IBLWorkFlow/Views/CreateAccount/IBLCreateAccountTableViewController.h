@@ -12,7 +12,7 @@
 #import "IBLProductPrice.h"
 
 @class IBLCreateAccountTableViewController;
-@class IBLCreateAccountInfo;
+@class IBLCreateAccountTableViewInfo;
 
 /**
  *  销售品金额输入类型
@@ -35,13 +35,13 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
 @protocol IBLCreateAccountTableViewControllerDataSource <NSObject>
 
 - (void)tableViewController:(IBLCreateAccountTableViewController *)controller
-                     commit:(IBLCreateAccountInfo *)commit;
+                     commit:(IBLCreateAccountTableViewInfo *)commit;
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
 
 - (IBLCreateAccountType)createAccountTypeOfTableViewController:(IBLCreateAccountTableViewController *)controller;
 @optional
-- (IBLCreateAccountInfo *)createAccountInfoOfTableViewController:(IBLCreateAccountTableViewController *) controller;
+- (IBLCreateAccountTableViewInfo *)createAccountInfoOfTableViewController:(IBLCreateAccountTableViewController *) controller;
 
 - (IBLOrderEffectType)defaultEffectTypeOfTableViewController:(IBLCreateAccountTableViewController *)controller;
 
@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
 - (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary;
 @end
 
-@interface IBLCreateAccountInfo : NSObject
+@interface IBLCreateAccountTableViewInfo : NSObject
 
 /// 小区ID （报装工单特有）
 @property (nonatomic, assign) NSInteger residentialIdentifier;
@@ -141,6 +141,6 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
 
 @property (nonatomic, weak) id<IBLCreateAccountTableViewControllerDataSource> tableViewDataSource;
 
-@property (nonatomic, strong, readonly) IBLCreateAccountInfo *createAccountInfo;
+@property (nonatomic, strong, readonly) IBLCreateAccountTableViewInfo *createAccountInfo;
 
 @end

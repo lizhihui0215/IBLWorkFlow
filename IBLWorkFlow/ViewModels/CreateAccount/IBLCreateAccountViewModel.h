@@ -35,4 +35,6 @@
 - (IBLPayModel)payModel;
 
 - (void)createAccountWith:(IBLCreateAccountInfo *)info completeHandler:(void (^)(NSError *))handler;
+
+- (void)payWithType:(NSString *)type createAccountInfo:(IBLCreateAccountInfo *)createAccountInfo completeHandler:(IBLViewModelCompleteHandler)handler;
 @end

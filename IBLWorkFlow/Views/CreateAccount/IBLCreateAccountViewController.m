@@ -48,19 +48,27 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 }
 
 - (void)tableViewController:(IBLCreateAccountTableViewController *)controller
-                     commit:(IBLCreateAccountInfo *)commit {
+                     commit:(IBLCreateAccountTableViewInfo *)commit {
     IBLPayModel paymodel = [self.viewModel payModel];
     
     switch (paymodel) {
         case IBLPayModelNet: {
             IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
                                                            action:^(IBLButtonItem *item) {
-                                                               
+                                                               [self.viewModel payWithType:@"0"
+                                                                         createAccountInfo:commit
+                                                                           completeHandler:^(NSError *error) {
+
+                                                               }];
                                                            }];
             
             IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
                                                                action:^(IBLButtonItem *item) {
-                                                                   
+                                                                   [self.viewModel payWithType:@"1"
+                                                                             createAccountInfo:commit
+                                                                               completeHandler:^(NSError *error) {
+
+                                                                   }];
                                                                }];
             
             IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
@@ -121,10 +129,10 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 }
 
 
-- (IBLCreateAccountInfo *)createAccountInfoFromOrder:(IBLOrder *)order {
-    IBLCreateAccountInfo *createAccountInfo = nil;
+- (IBLCreateAccountTableViewInfo *)createAccountInfoFromOrder:(IBLOrder *)order {
+    IBLCreateAccountTableViewInfo *createAccountInfo = nil;
     if (order) {
-        createAccountInfo = [IBLCreateAccountInfo infoWithResidentialIdentifier:order.residentialIdentifier
+        createAccountInfo = [IBLCreateAccountTableViewInfo infoWithResidentialIdentifier:order.residentialIdentifier
                                                               productIdentifier:order.productIdentifier
                                                                        username:order.username
                                                                      regionName:order.regionName
@@ -137,7 +145,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
                                                                         address:order.address
                                                                      handleMark:order.handleMark];
     }else{
-        createAccountInfo = [[IBLCreateAccountInfo alloc] init];
+        createAccountInfo = [[IBLCreateAccountTableViewInfo alloc] init];
     }
     
     return createAccountInfo;

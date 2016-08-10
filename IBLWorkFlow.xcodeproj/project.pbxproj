@@ -52,6 +52,9 @@
 		2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650AC391D2F571200421C78 /* IBLWSDLServices.m */; };
 		26588EA91D3CD1550095F9C3 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 26588EA81D3CD1550095F9C3 /* HMSegmentedControl.m */; };
 		26588EAC1D3CD61E0095F9C3 /* IBLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26588EAB1D3CD61E0095F9C3 /* IBLSearchViewController.m */; };
+		265A57AC1D5B0F21001DBFA0 /* PayInterface.xml in Resources */ = {isa = PBXBuildFile; fileRef = 265A57AB1D5B0F21001DBFA0 /* PayInterface.xml */; };
+		265A57AF1D5B0F60001DBFA0 /* IBLPayRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 265A57AE1D5B0F60001DBFA0 /* IBLPayRepository.m */; };
+		265A57B21D5B1330001DBFA0 /* IBLPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 265A57B11D5B1330001DBFA0 /* IBLPay.m */; };
 		26734FCD1D4112300048DE97 /* IBLProductSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26734FCC1D4112300048DE97 /* IBLProductSearchViewModel.m */; };
 		26734FCF1D41135A0048DE97 /* ProductOfferInterface.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26734FCE1D41135A0048DE97 /* ProductOfferInterface.xml */; };
 		26734FD21D4113A60048DE97 /* IBLProductRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26734FD11D4113A60048DE97 /* IBLProductRepository.m */; };
@@ -247,6 +250,11 @@
 		26588EA81D3CD1550095F9C3 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		26588EAA1D3CD61E0095F9C3 /* IBLSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLSearchViewController.h; sourceTree = "<group>"; };
 		26588EAB1D3CD61E0095F9C3 /* IBLSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLSearchViewController.m; sourceTree = "<group>"; };
+		265A57AB1D5B0F21001DBFA0 /* PayInterface.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PayInterface.xml; sourceTree = "<group>"; };
+		265A57AD1D5B0F60001DBFA0 /* IBLPayRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLPayRepository.h; sourceTree = "<group>"; };
+		265A57AE1D5B0F60001DBFA0 /* IBLPayRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLPayRepository.m; sourceTree = "<group>"; };
+		265A57B01D5B1330001DBFA0 /* IBLPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLPay.h; sourceTree = "<group>"; };
+		265A57B11D5B1330001DBFA0 /* IBLPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLPay.m; sourceTree = "<group>"; };
 		26734FCB1D4112300048DE97 /* IBLProductSearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLProductSearchViewModel.h; sourceTree = "<group>"; };
 		26734FCC1D4112300048DE97 /* IBLProductSearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLProductSearchViewModel.m; sourceTree = "<group>"; };
 		26734FCE1D41135A0048DE97 /* ProductOfferInterface.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ProductOfferInterface.xml; sourceTree = "<group>"; };
@@ -721,6 +729,8 @@
 				26C532D11D48B1BF0068E713 /* IBLCreateAccount.m */,
 				26C51C341D518E9900A13E5C /* IBLAddWorkOrder.h */,
 				26C51C351D518E9900A13E5C /* IBLAddWorkOrder.m */,
+				265A57B01D5B1330001DBFA0 /* IBLPay.h */,
+				265A57B11D5B1330001DBFA0 /* IBLPay.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -959,6 +969,8 @@
 				26734FD11D4113A60048DE97 /* IBLProductRepository.m */,
 				26EC5A3C1D45F99E00CB0F7C /* IBLUserListRepository.h */,
 				26EC5A3D1D45F99E00CB0F7C /* IBLUserListRepository.m */,
+				265A57AD1D5B0F60001DBFA0 /* IBLPayRepository.h */,
+				265A57AE1D5B0F60001DBFA0 /* IBLPayRepository.m */,
 				2612E1651D2E9DDF00CA76BC /* User.xml */,
 				26F620191D2FB6B500B49065 /* Operator.xml */,
 				269B7D591D33453200D52DF0 /* Test.xml */,
@@ -966,6 +978,7 @@
 				26469BE21D388F880000285D /* Configuration.xml */,
 				262BFF911D40D2400021F8EB /* ChannelInterface.xml */,
 				26734FCE1D41135A0048DE97 /* ProductOfferInterface.xml */,
+				265A57AB1D5B0F21001DBFA0 /* PayInterface.xml */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1120,6 +1133,7 @@
 				26734FCF1D41135A0048DE97 /* ProductOfferInterface.xml in Resources */,
 				26A11D071D363A6900984B40 /* IBLBusinessAlertViewController.xib in Resources */,
 				26D56E421D3618870091A940 /* WorkOrder.xml in Resources */,
+				265A57AC1D5B0F21001DBFA0 /* PayInterface.xml in Resources */,
 				26846F6A1D34C1E9001F9C73 /* IBLOrderCell.xib in Resources */,
 				26846F751D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib in Resources */,
 				262BFF781D4074050021F8EB /* IBLSectionHeaderView.xib in Resources */,
@@ -1286,6 +1300,7 @@
 				262BFF841D40BF910021F8EB /* IBLCreateAccountCommit.m in Sources */,
 				26846F681D34BC3F001F9C73 /* UIViewController+IBLExtension.m in Sources */,
 				26846F781D34F0BE001F9C73 /* IBLPremission.m in Sources */,
+				265A57AF1D5B0F60001DBFA0 /* IBLPayRepository.m in Sources */,
 				26EC5A3B1D45F7C900CB0F7C /* IBLUserSearchResultCell.m in Sources */,
 				262BFF701D4060D10021F8EB /* IBLHandleOrder.m in Sources */,
 				26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */,
@@ -1315,6 +1330,7 @@
 				26C2597D1D42687300035F63 /* IBLRenewViewController.m in Sources */,
 				26846F701D34D238001F9C73 /* IBLTableViewHeaderFooterView.m in Sources */,
 				2615BED11D38CAAE002FE7A7 /* IBLFieldConfiguration.m in Sources */,
+				265A57B21D5B1330001DBFA0 /* IBLPay.m in Sources */,
 				26C97D671D41C8C3001EFA6F /* IBLProductPrice.m in Sources */,
 				26EC5A311D45E7C300CB0F7C /* IBLRenewUserSearchViewModel.m in Sources */,
 				264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */,

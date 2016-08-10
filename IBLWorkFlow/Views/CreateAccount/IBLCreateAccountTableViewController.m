@@ -12,7 +12,7 @@
 #import "IBLAlertController.h"
 #import "RMDateSelectionViewController.h"
 
-@implementation IBLCreateAccountInfo
+@implementation IBLCreateAccountTableViewInfo
 
 - (instancetype)initWithResidentialIdentifier:(NSInteger)residentialIdentifier
                             productIdentifier:(NSInteger)productIdentifier
@@ -75,7 +75,7 @@
 
 @interface IBLCreateAccountTableViewController ()<IBLSearchViewControllerDelegate, UITextFieldDelegate>
 
-@property (nonatomic, strong, readwrite) IBLCreateAccountInfo *createAccountInfo;
+@property (nonatomic, strong, readwrite) IBLCreateAccountTableViewInfo *createAccountInfo;
 
 /// 用户账号
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;

@@ -11,6 +11,8 @@
 #import "IBLGenerateAppConfiguration.h"
 #import "IBLFetchProductPrice.h"
 #import "IBLCreateAccount.h"
+#import "IBLPay.h"
+#import "IBLCreateAccountTableViewController.h"
 
 @interface IBLCreateAccountViewModel ()
 
@@ -27,6 +29,9 @@
 @property (nonatomic, strong) IBLProductPrice *productPrices;
 
 @property (nonatomic, strong) IBLCreateAccount *createAccount;
+
+@property (nonatomic, strong) IBLPay *pay;
+
 @end
 
 @implementation IBLCreateAccountViewModel
@@ -49,6 +54,7 @@
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
         self.fetchProductPrice = [[IBLFetchProductPrice alloc] init];
         self.createAccount = [[IBLCreateAccount alloc] init];
+        self.pay = [[IBLPay alloc] init];
     }
 
     return self;
@@ -85,7 +91,7 @@
     return self.productPrices;
 }
 
-- (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary {
+- (NSDictionary<NSIndexPath *, NSNumber *> *)notNullFieldsDictionary {
     return [self.hiddenFields createAccountNotNullFieldsDictionary];
 }
 
@@ -95,9 +101,87 @@
 
 
 
-- (void)createAccountWith:(IBLCreateAccountInfo *)info completeHandler:(void (^)(NSError *))handler {
-    [self.createAccount createAccountWithInfo:info completeHandler:^(id obj, NSError *error) {
-        handler(error);
-    }];
+- (void)createAccountWith:(IBLCreateAccountTableViewInfo *)info
+          completeHandler:(void (^)(NSError *))handler {
+    
+    IBLCreateAccountInfo *createInfo = [[IBLCreateAccountInfo alloc] init];
+    
+    createInfo.account = info.account;
+    createInfo.password = info.password;
+    createInfo.nodeId = [@(info.residentialIdentifier) stringValue];
+
+    createInfo.offerId = [@(info.productIdentifier) stringValue];
+    createInfo.userName = info.username;
+    
+   createInfo.idNo = info.identifierNumber;
+   createInfo.remark = info.remark;
+   createInfo.effType = [@(info.effectType) stringValue];
+   createInfo.effDate = info.effectDate;
+   createInfo.phone = info.phone;
+   createInfo.addr = info.address;
+//    info.handleMark;
+   createInfo.account = info.account;
+   createInfo.password = info.password;
+   createInfo.buyLength = info.count;
+//    info.sales;
+//    info.salesCount;
+   createInfo.contractCode = info.contractNumebr;
+   createInfo.voiceCode = info.ticketNumber;
+   createInfo.preCost = info.give;
+   createInfo.extraLength = info.discount;
+   createInfo.totalCost = info.pay;
+    
+    
+    [self.createAccount createAccountWithInfo:createInfo
+                              completeHandler:^(id obj, NSError *error) {
+                                  handler(error);
+                              }];
+}
+
+- (void)payWithType:(NSString *)type createAccountInfo:(IBLCreateAccountTableViewInfo *)createAccountInfo completeHandler:(IBLViewModelCompleteHandler)handler {
+    
+    IBLQRPayInfo *info = [[IBLQRPayInfo alloc] init];
+    
+    info.orderType = @"1";
+    
+    info.payType = type;
+    
+    info.offerId = [@(createAccountInfo.productIdentifier) stringValue];
+    
+    info.account = createAccountInfo.account;
+    
+    info.password = createAccountInfo.password;
+    
+    info.userName = createAccountInfo.username;
+    
+    info.phone = createAccountInfo.phone;
+    
+    info.addr = createAccountInfo.address;
+    
+    info.remark = createAccountInfo.remark;
+    
+    info.buyLength = createAccountInfo.count;
+    
+    info.extraLength = createAccountInfo.discount;
+    
+    //???: 总量从那获取
+//    info.totalLength = createAccountInfo.totalCost;
+    
+    
+    info.totalCost = createAccountInfo.sales;
+    
+    //???: payCost 从那获取
+//    info.payCost = createAccountInfo.payCost;
+    
+    //???:
+//    info.otherCost = createAccountInfo
+    
+    info.nodeId = [@(createAccountInfo.residentialIdentifier) stringValue];
+    
+    
+    [self.pay payWithQRPayInfo:info
+               completeHandler:^(NSArray<id> *obj, NSError *error) {
+                   
+               }];
 }
 @end

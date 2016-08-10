@@ -158,7 +158,7 @@
     return [self.generateAppConfiguration payModel];
 }
 
-- (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary {
+- (NSDictionary<NSIndexPath *, NSNumber *> *)notNullFieldsDictionary {
     return [self.hiddenFields renewNotNullFieldsDictionary];
 }
 @end
