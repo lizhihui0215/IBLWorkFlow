@@ -128,6 +128,7 @@
 
 - (void)tableViewController:(IBLRenewTableViewController *)controller
                commitResult:(IBLRenewResult *)result {
+    
     IBLPayModel model = [self.viewModel payModel];
     
     switch (model) {
@@ -154,14 +155,19 @@
             break;
         }
         case IBLPayModelCash: {
-            [self.viewModel commitWithResult:result completeHandler:^(NSError *error) {
+            [self.viewModel commitWithResult:result
+                             completeHandler:^(NSError *error) {
                 if (![self showAlertWithError:error]) {
-                    
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                 }
             }];
             break;
         }
     }    
+}
+
+- (NSDictionary<NSIndexPath *, NSString *> *)notNullsFieldsDictionary {
+    return [self.viewModel notNullFieldsDictionary];
 }
 
 

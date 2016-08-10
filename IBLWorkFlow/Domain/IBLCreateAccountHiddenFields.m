@@ -15,6 +15,7 @@
 
 @property (nonatomic, readonly) NSDictionary *exchangeProductAllFields;
 
+@property (nonatomic, readonly) NSDictionary *renewAllFields;
 
 @end
 
@@ -27,6 +28,8 @@
         self.createAccountHiddenFieldsDictionary = [self makeCreateAccountHiddenFieldsDictionary];
         
         self.exchangeProductHiddenFieldsDictionary = [self makeExchangeProductHiddenFieldsDictionary];
+        
+        self.renewHiddenFieldsDictionary = [self makeRenewHiddenFieldsDictionary];
     }
     return self;
 }
@@ -67,9 +70,24 @@
 }
 
 
+- (NSDictionary *)renewAllFields{
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:0 inSection:3];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:0 inSection:16];
+    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:0 inSection:12];
+    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:0 inSection:11];
+    return  @{@"custName" : custNameIndexPath,
+              @"custPhone" : custPhone  ,
+              @"custReserve" : custReserve,
+              @"contractCode": contractCode,
+              @"voiceCode" : voiceCode,
+              @"contractCode_cfield" : contractCode,
+              @"voiceCode_cfield": voiceCode,};
+}
 
 
-- (NSDictionary <NSIndexPath *, NSString *> *)createAccountNotNullFieldsDictionary{
+
+- (NSDictionary <NSIndexPath *, NSNumber *> *)createAccountNotNullFieldsDictionary{
     IBLAppConfiguration *app = [IBLAppRepository appConfiguration];
     
     NSMutableDictionary *notNullFields = [NSMutableDictionary dictionary];
@@ -85,7 +103,7 @@
     return notNullFields;
 }
 
-- (NSDictionary <NSIndexPath *, NSString *> *)makeExchangeProductHiddenFieldsDictionary{
+- (NSDictionary <NSIndexPath *, NSNumber *> *)makeExchangeProductHiddenFieldsDictionary{
     IBLAppConfiguration *app = [IBLAppRepository appConfiguration];
     
     NSMutableDictionary *hiddenFields = [NSMutableDictionary dictionary];
@@ -101,7 +119,7 @@
     return hiddenFields;
 }
 
-- (NSDictionary <NSIndexPath *, NSString *> *)exchangeProductNotNullFieldsDictionary{
+- (NSDictionary <NSIndexPath *, NSNumber *> *)exchangeProductNotNullFieldsDictionary{
     IBLAppConfiguration *app = [IBLAppRepository appConfiguration];
     
     NSMutableDictionary *notNullFields = [NSMutableDictionary dictionary];
@@ -117,7 +135,7 @@
     return notNullFields;
 }
 
-- (NSDictionary <NSIndexPath *, NSString *> *)makeCreateAccountHiddenFieldsDictionary{
+- (NSDictionary <NSIndexPath *, NSNumber *> *)makeCreateAccountHiddenFieldsDictionary{
     IBLAppConfiguration *app = [IBLAppRepository appConfiguration];
     
     NSMutableDictionary *hiddenFields = [NSMutableDictionary dictionary];
@@ -130,5 +148,37 @@
     }
     
     return hiddenFields;
+}
+
+- (NSDictionary <NSIndexPath *, NSNumber *> *)makeRenewHiddenFieldsDictionary{
+    IBLAppConfiguration *app = [IBLAppRepository appConfiguration];
+    
+    NSMutableDictionary *hiddenFields = [NSMutableDictionary dictionary];
+    
+    for (NSString *field in app.hiddenFields.renewFields) {
+        NSIndexPath *hiddenIndexPath = self.renewAllFields[field];
+        NSNumber *isHidden = hiddenIndexPath == nil ? @(NO) : @(YES);
+        
+        hiddenFields[hiddenIndexPath] = isHidden;
+    }
+    
+    return hiddenFields;
+}
+
+
+- (NSDictionary<NSIndexPath *, NSNumber *> *)renewNotNullFieldsDictionary {
+    IBLAppConfiguration *app = [IBLAppRepository appConfiguration];
+    
+    NSMutableDictionary *notNullFields = [NSMutableDictionary dictionary];
+    
+    for (NSString *field in app.notNullFields.renewFields) {
+        NSIndexPath *notNullIndexPath = self.renewAllFields[field];
+        
+        NSNumber *isNull = notNullIndexPath == nil ? @(NO) : @(YES);
+        
+        notNullFields[field] = isNull;
+    }
+    
+    return notNullFields;
 }
 @end

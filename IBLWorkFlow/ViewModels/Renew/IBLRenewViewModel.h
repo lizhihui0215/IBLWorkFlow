@@ -62,4 +62,6 @@
          completeHandler:(IBLViewModelCompleteHandler)handler;
 
 - (IBLPayModel)payModel;
+
+- (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary;
 @end

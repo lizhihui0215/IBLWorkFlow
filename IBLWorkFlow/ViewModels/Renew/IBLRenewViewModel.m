@@ -10,6 +10,7 @@
 #import "IBLRenewTableViewController.h"
 #import "IBLCreateAccount.h"
 #import "IBLGenerateAppConfiguration.h"
+#import "IBLCreateAccountHiddenFields.h"
 
 @interface IBLRenewViewModel ()
 
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) IBLCreateAccount *createAccount;
 
 @property (nonatomic, strong) IBLGenerateAppConfiguration *generateAppConfiguration;
+
+@property (nonatomic, strong) IBLCreateAccountHiddenFields *hiddenFields;
 
 @end
 
@@ -33,6 +36,9 @@
         self.createAccount = [[IBLCreateAccount alloc] init];
 
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
+        
+        self.hiddenFields = [[IBLCreateAccountHiddenFields alloc] init];
+
     }
 
     return self;
@@ -150,5 +156,9 @@
 
 - (IBLPayModel)payModel {
     return [self.generateAppConfiguration payModel];
+}
+
+- (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary {
+    return [self.hiddenFields renewNotNullFieldsDictionary];
 }
 @end

@@ -11,7 +11,15 @@
 #import "IBLCreateAccountTableViewController.h"
 
 @implementation IBLRenewResult
-- (instancetype)initWithRenewProductCount:(NSString *)renewProductCount productPriceAmount:(NSString *)productPriceAmount productCount:(NSString *)productCount ticket:(NSString *)ticket contract:(NSString *)contract discount:(NSString *)discount give:(NSString *)give pay:(NSString *)pay comment:(NSString *)comment {
+- (instancetype)initWithRenewProductCount:(NSString *)renewProductCount
+                       productPriceAmount:(NSString *)productPriceAmount
+                             productCount:(NSString *)productCount
+                                   ticket:(NSString *)ticket
+                                 contract:(NSString *)contract
+                                 discount:(NSString *)discount
+                                     give:(NSString *)give
+                                      pay:(NSString *)pay
+                                  comment:(NSString *)comment {
     self = [super init];
     if (self) {
         self.renewProductCount = renewProductCount;
@@ -28,8 +36,24 @@
     return self;
 }
 
-+ (instancetype)resultWithRenewProductCount:(NSString *)renewProductCount productPriceAmount:(NSString *)productPriceAmount productCount:(NSString *)productCount ticket:(NSString *)ticket contract:(NSString *)contract discount:(NSString *)discount give:(NSString *)give pay:(NSString *)pay comment:(NSString *)comment {
-    return [[self alloc] initWithRenewProductCount:renewProductCount productPriceAmount:productPriceAmount productCount:productCount ticket:ticket contract:contract discount:discount give:give pay:pay comment:comment];
++ (instancetype)resultWithRenewProductCount:(NSString *)renewProductCount
+                         productPriceAmount:(NSString *)productPriceAmount
+                               productCount:(NSString *)productCount
+                                     ticket:(NSString *)ticket
+                                   contract:(NSString *)contract
+                                   discount:(NSString *)discount
+                                       give:(NSString *)give
+                                        pay:(NSString *)pay
+                                    comment:(NSString *)comment {
+    return [[self alloc] initWithRenewProductCount:renewProductCount
+                                productPriceAmount:productPriceAmount
+                                      productCount:productCount
+                                            ticket:ticket
+                                          contract:contract
+                                          discount:discount
+                                              give:give
+                                               pay:pay
+                                           comment:comment];
 }
 
 @end
@@ -178,18 +202,74 @@
     self.payTextField.text = [@([self pay]) stringValue];
 }
 
+
+
 - (IBAction)commitButtonPressed:(UIButton *)sender {
-    IBLRenewResult *result = [IBLRenewResult resultWithRenewProductCount:self.renewProductCount.text
-                                                 productPriceAmount:self.productPriceAmountTextField.text
-                                                       productCount:self.productCountTextField.text
-                                                             ticket:self.ticketTextField.text
-                                                           contract:self.contractTextField.text
-                                                           discount:self.discountTextField.text
-                                                               give:self.giveTextField.text
-                                                                pay:self.payTextField.text
-                                                            comment:self.commentTextView.text];
+    NSDictionary <NSIndexPath *, NSString *> *notNullFields = [self.tableViewDelegate notNullsFieldsDictionary];
     
-    [self.tableViewDelegate tableViewController:self commitResult:result];
+    NSArray *indexPaths = [notNullFields.allKeys sortedArrayUsingSelector:@selector(compare:)];
+    
+    NSString *notNullText = nil;
+    
+    for (NSIndexPath *indexPath in indexPaths) {
+        UITextField *textField = [self test][indexPath];
+        if([NSString isNull:textField.text]) {
+            notNullText = [self notNullTitleDictionary][indexPath];
+            break;
+        }
+    }
+    
+    if (notNullText) {
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                        title:notNullText
+                                                                      message:nil
+                                                             cancleButtonItem:cancel
+                                                             otherButtonItems:nil];
+        [alert showInController:self];
+    }else{
+        IBLRenewResult *result = [IBLRenewResult resultWithRenewProductCount:self.renewProductCount.text
+                                                          productPriceAmount:self.productPriceAmountTextField.text
+                                                                productCount:self.productCountTextField.text
+                                                                      ticket:self.ticketTextField.text
+                                                                    contract:self.contractTextField.text
+                                                                    discount:self.discountTextField.text
+                                                                        give:self.giveTextField.text
+                                                                         pay:self.payTextField.text
+                                                                     comment:self.commentTextView.text];
+        
+        [self.tableViewDelegate tableViewController:self commitResult:result];
+    }
+}
+
+- (NSDictionary <NSIndexPath *, NSString *> *)notNullTitleDictionary{
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:0 inSection:3];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:0 inSection:16];
+    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:0 inSection:12];
+    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:0 inSection:11];
+
+    return @{custNameIndexPath : @"用户名不能为空！",
+            custPhone : @"联系电话不能为空！",
+            custReserve : @"备注不能为空！",
+            contractCode : @"合同号不能为空！",
+            voiceCode : @"票据号不能为空！",
+    };
+}
+
+- (NSDictionary <NSIndexPath *, UITextField *> *)test{
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:0 inSection:3];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:0 inSection:16];
+    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:0 inSection:12];
+    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:0 inSection:11];
+
+    return @{custNameIndexPath : self.accountTextField,
+            custPhone : self.phoneTextField,
+            custReserve : self.commentTextView,
+            contractCode : self.contractTextField,
+            voiceCode : self.ticketTextField,
+    };
 }
 
 - (CGFloat)sales{

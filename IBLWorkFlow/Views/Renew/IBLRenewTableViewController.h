@@ -38,6 +38,8 @@ typedef NS_ENUM(NSInteger, IBLRenewTextFieldType) {
                           completeHandler:(void (^)(IBLProductPrice *productPrice))completeHandler;
 
 - (void)tableViewController:(IBLRenewTableViewController *)controller commitResult:(IBLRenewResult *)result;
+
+- (NSDictionary<NSIndexPath *, NSString *> *)notNullsFieldsDictionary;
 @end
 
 @interface IBLRenewResult : NSObject

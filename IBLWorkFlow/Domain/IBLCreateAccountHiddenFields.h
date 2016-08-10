@@ -10,12 +10,17 @@
 
 @interface IBLCreateAccountHiddenFields : IBLUseCase
 
-@property (nonatomic, strong) NSDictionary<NSIndexPath *, NSString *> *createAccountHiddenFieldsDictionary;
+@property (nonatomic, strong) NSDictionary<NSIndexPath *, NSNumber *> *createAccountHiddenFieldsDictionary;
 
-@property (nonatomic, strong) NSDictionary<NSIndexPath *, NSString *> *exchangeProductHiddenFieldsDictionary;
+@property (nonatomic, strong) NSDictionary<NSIndexPath *, NSNumber *> *exchangeProductHiddenFieldsDictionary;
+
+@property (nonatomic, strong) NSDictionary<NSIndexPath *, NSNumber *> *renewHiddenFieldsDictionary;
 
 
-- (NSDictionary <NSIndexPath *, NSString *> *)createAccountNotNullFieldsDictionary;
 
-- (NSDictionary <NSIndexPath *, NSString *> *)exchangeProductNotNullFieldsDictionary;
+- (NSDictionary <NSIndexPath *, NSNumber *> *)createAccountNotNullFieldsDictionary;
+
+- (NSDictionary <NSIndexPath *, NSNumber *> *)exchangeProductNotNullFieldsDictionary;
+
+- (NSDictionary<NSIndexPath *, NSNumber *> *)renewNotNullFieldsDictionary;
 @end
