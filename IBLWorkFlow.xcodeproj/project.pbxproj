@@ -121,6 +121,8 @@
 		26EC5A411D45FA0500CB0F7C /* IBLFetchUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC5A401D45FA0500CB0F7C /* IBLFetchUserList.m */; };
 		26EC5A441D45FAA600CB0F7C /* IBLRelateUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC5A431D45FAA600CB0F7C /* IBLRelateUser.m */; };
 		26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26F620191D2FB6B500B49065 /* Operator.xml */; };
+		26FCA08E1D5C3297004B8E2C /* IBLQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCA08D1D5C3297004B8E2C /* IBLQRViewController.m */; };
+		26FCA0911D5C57E3004B8E2C /* IBLCheckOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCA0901D5C57E3004B8E2C /* IBLCheckOrder.m */; };
 		26FDA1E51D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FDA1E41D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m */; };
 		26FDA1E81D49BDF100BB8C3D /* IBLAddWorkOrderResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FDA1E71D49BDF100BB8C3D /* IBLAddWorkOrderResult.m */; };
 		26FFA9251D36936200DF8D4E /* IBLAppRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA9241D36936200DF8D4E /* IBLAppRepository.m */; };
@@ -380,6 +382,10 @@
 		26EC5A421D45FAA600CB0F7C /* IBLRelateUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRelateUser.h; sourceTree = "<group>"; };
 		26EC5A431D45FAA600CB0F7C /* IBLRelateUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRelateUser.m; sourceTree = "<group>"; };
 		26F620191D2FB6B500B49065 /* Operator.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Operator.xml; sourceTree = "<group>"; };
+		26FCA08C1D5C3297004B8E2C /* IBLQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLQRViewController.h; sourceTree = "<group>"; };
+		26FCA08D1D5C3297004B8E2C /* IBLQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLQRViewController.m; sourceTree = "<group>"; };
+		26FCA08F1D5C57E3004B8E2C /* IBLCheckOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLCheckOrder.h; sourceTree = "<group>"; };
+		26FCA0901D5C57E3004B8E2C /* IBLCheckOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLCheckOrder.m; sourceTree = "<group>"; };
 		26FDA1E31D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAddWorkOrderViewModel.h; sourceTree = "<group>"; };
 		26FDA1E41D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAddWorkOrderViewModel.m; sourceTree = "<group>"; };
 		26FDA1E61D49BDF100BB8C3D /* IBLAddWorkOrderResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAddWorkOrderResult.h; sourceTree = "<group>"; };
@@ -731,6 +737,8 @@
 				26C51C351D518E9900A13E5C /* IBLAddWorkOrder.m */,
 				265A57B01D5B1330001DBFA0 /* IBLPay.h */,
 				265A57B11D5B1330001DBFA0 /* IBLPay.m */,
+				26FCA08F1D5C57E3004B8E2C /* IBLCheckOrder.h */,
+				26FCA0901D5C57E3004B8E2C /* IBLCheckOrder.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -944,6 +952,8 @@
 				26EC5A3A1D45F7C900CB0F7C /* IBLUserSearchResultCell.m */,
 				26EC5A351D45F09500CB0F7C /* IBLUserSearchResultViewController.h */,
 				26EC5A361D45F09500CB0F7C /* IBLUserSearchResultViewController.m */,
+				26FCA08C1D5C3297004B8E2C /* IBLQRViewController.h */,
+				26FCA08D1D5C3297004B8E2C /* IBLQRViewController.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1308,6 +1318,7 @@
 				26EC5A441D45FAA600CB0F7C /* IBLRelateUser.m in Sources */,
 				26C259801D42688400035F63 /* IBLRenewTableViewController.m in Sources */,
 				262BFF8A1D40CD260021F8EB /* IBLRegionSearchViewModel.m in Sources */,
+				26FCA08E1D5C3297004B8E2C /* IBLQRViewController.m in Sources */,
 				264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */,
 				26A11D061D363A6900984B40 /* IBLBusinessAlertViewController.m in Sources */,
 				267622CB1D3CDEAD00B4E2F3 /* IBLOperatorSearchViewModel.m in Sources */,
@@ -1356,6 +1367,7 @@
 				26846F531D34A2F6001F9C73 /* IBLAlertController.m in Sources */,
 				26846F611D34A405001F9C73 /* UIActionSheet+Blocks.m in Sources */,
 				26108FFD1D3E245F008B0B4C /* IBLFinishOrder.m in Sources */,
+				26FCA0911D5C57E3004B8E2C /* IBLCheckOrder.m in Sources */,
 				2612E16A1D2E9EC900CA76BC /* DDXMLElement+WSDL.m in Sources */,
 				26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */,
 				264EBB991D2E2BC200FF8373 /* IBLRepository.m in Sources */,

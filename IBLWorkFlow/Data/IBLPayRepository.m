@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) IBLSOAPMethod *QRPayMethod;
 
+@property (nonatomic, strong) IBLSOAPMethod *checkOrderMethod;
+
 @end
 
 @implementation IBLPayRepository
@@ -27,12 +29,15 @@
         self.QRPayMethod = [IBLSOAPMethod methodWithRequestMethodName:@"qrPay"
                                                    responseMethodName:@"qrPayResponse"];
         
+        self.checkOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@"checkOrder"
+                                                        responseMethodName:@"checkOrderResponse"];
+        
     }
     return self;
 }
 
 - (void)payWithQRPayInfo:(IBLQRPayInfo *)QRPayInfo
-                   completeHandler:(void (^)(NSArray<id> *, NSError *))handler {
+         completeHandler:(void (^)(NSString *, NSError *))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[@"orderType"] = QRPayInfo.orderType;
@@ -63,14 +68,31 @@
     }];
     
     [[self networkServicesMethods:self.QRPayMethod] POST:@"IBLPayInterface"
-                                                      parameters:parameters
-                                                        progress:nil
-                                                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                             
-                                                             handler(nil, nil);
-                                                         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                             handler(nil, error);
-                                                         }];
+                                              parameters:parameters
+                                                progress:nil
+                                                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                     handler(responseObject[@"codeUrl"], nil);
+                                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                     handler(nil, error);
+                                                 }];
+}
+
+- (NSURLSessionDataTask *)checkOrderObj:(id)obj completeHandler:(void (^)(NSString *, NSError *))handler{
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        
+        return parameters;
+    }];
+    
+    return  [[self networkServicesMethods:self.checkOrderMethod] POST:@"IBLPayInterface"
+                                                           parameters:parameters
+                                                             progress:nil
+                                                              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                  handler(responseObject[@"codeUrl"], nil);
+                                                              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                  handler(nil, error);
+                                                              }];
+    
 }
 
 @end

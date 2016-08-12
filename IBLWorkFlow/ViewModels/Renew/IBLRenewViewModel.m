@@ -11,6 +11,7 @@
 #import "IBLCreateAccount.h"
 #import "IBLGenerateAppConfiguration.h"
 #import "IBLCreateAccountHiddenFields.h"
+#import "IBLUserListRepository.h"
 
 @interface IBLRenewViewModel ()
 

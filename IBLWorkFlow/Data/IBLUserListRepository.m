@@ -8,6 +8,10 @@
 
 #import "IBLUserListRepository.h"
 
+@implementation IBLCreateAccountInfo
+
+@end
+
 @implementation IBLFetchUserListInfo
 - (instancetype)initWithAccount:(NSString *)account
                        username:(NSString *)username

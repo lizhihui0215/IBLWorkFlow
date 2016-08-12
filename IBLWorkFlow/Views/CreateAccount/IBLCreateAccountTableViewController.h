@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
 
 - (IBLCreateAccountType)createAccountTypeOfTableViewController:(IBLCreateAccountTableViewController *)controller;
+
 @optional
 - (IBLCreateAccountTableViewInfo *)createAccountInfoOfTableViewController:(IBLCreateAccountTableViewController *) controller;
 

@@ -1150,6 +1150,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="开户" id="mEd-uL-9Do"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="bjz-IL-vsJ" kind="push" identifier="IBLQRViewController" id="U3E-X6-uY2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6AX-Mz-PvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4632,6 +4635,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wnJ-IA-AlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3063" y="1562"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="cAf-Jk-Gs8">
+            <objects>
+                <viewController id="bjz-IL-vsJ" customClass="IBLQRViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="psU-CU-aHV"/>
+                        <viewControllerLayoutGuide type="bottom" id="JC8-iR-g24"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eqq-2a-yCf">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OPw-uZ-MqR">
+                                <rect key="frame" x="60" y="152" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="7sd-Qh-h7U"/>
+                                    <constraint firstAttribute="height" constant="200" id="vVD-79-PLI"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OPw-uZ-MqR" firstAttribute="centerY" secondItem="eqq-2a-yCf" secondAttribute="centerY" id="5Oa-B8-9ce"/>
+                            <constraint firstItem="OPw-uZ-MqR" firstAttribute="centerX" secondItem="eqq-2a-yCf" secondAttribute="centerX" id="u2i-0L-vR9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hv9-Rg-IHR"/>
+                    <connections>
+                        <outlet property="QRImageView" destination="OPw-uZ-MqR" id="B52-tT-0Jc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sXS-We-7tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3063" y="2889"/>
         </scene>
         <!--换销售品-->
         <scene sceneID="uLy-5c-O0w">

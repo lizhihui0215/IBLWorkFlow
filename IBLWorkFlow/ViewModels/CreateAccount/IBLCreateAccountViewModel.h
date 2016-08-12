@@ -11,6 +11,7 @@
 @class IBLFetchProductPriceInfo;
 @class IBLProductPrice;
 @class IBLCreateAccountInfo;
+@class IBLCreateAccountTableViewInfo;
 
 @interface IBLCreateAccountViewModel : IBLListViewModel
 
@@ -34,7 +35,9 @@
 
 - (IBLPayModel)payModel;
 
-- (void)createAccountWith:(IBLCreateAccountInfo *)info completeHandler:(void (^)(NSError *))handler;
+- (void)createAccountWith:(IBLCreateAccountTableViewInfo *)info completeHandler:(void (^)(NSError *))handler;
 
-- (void)payWithType:(NSString *)type createAccountInfo:(IBLCreateAccountInfo *)createAccountInfo completeHandler:(IBLViewModelCompleteHandler)handler;
+- (void)payWithType:(NSString *)type createAccountInfo:(IBLCreateAccountTableViewInfo *)createAccountInfo completeHandler:(IBLViewModelCompleteHandler)handler;
+
+- (NSString *)encodeQRImageData;
 @end

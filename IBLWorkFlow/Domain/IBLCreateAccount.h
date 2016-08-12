@@ -7,7 +7,7 @@
 //
 
 #import "IBLUseCase.h"
-#import "IBLUserListRepository.h"
+@class IBLCreateAccountInfo;
 
 @interface IBLCreateAccount : IBLUseCase
 

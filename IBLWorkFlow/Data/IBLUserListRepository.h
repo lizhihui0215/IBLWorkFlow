@@ -67,7 +67,6 @@
 //所选优惠条目ID，格式为以逗号为分割的ID字符串，例如所选优惠条目的ID为14000111111111和14000111111112，那么传递参数应为” 14000111111111，14000111111112” （可选）
 @property(nonatomic, copy) NSString *discountItems;
 //支付金额，以分为单位（必选）totalCost = 销售品金额+其它金额-优惠金额
-
 @property(nonatomic, copy) NSString *totalCost;
 //优惠金额，以分为单位（可选）
 @property(nonatomic, copy) NSString *preCost;

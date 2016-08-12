@@ -13,6 +13,7 @@
 #import "IBLCreateAccount.h"
 #import "IBLPay.h"
 #import "IBLCreateAccountTableViewController.h"
+#import "IBLUserListRepository.h"
 
 @interface IBLCreateAccountViewModel ()
 
@@ -31,6 +32,8 @@
 @property (nonatomic, strong) IBLCreateAccount *createAccount;
 
 @property (nonatomic, strong) IBLPay *pay;
+
+@property (nonatomic, strong) NSString *encodeQRImageData;
 
 @end
 
@@ -165,13 +168,13 @@
     info.extraLength = createAccountInfo.discount;
     
     //???: 总量从那获取
-//    info.totalLength = createAccountInfo.totalCost;
+    info.totalLength = createAccountInfo.salesCount;
     
     
     info.totalCost = createAccountInfo.sales;
     
     //???: payCost 从那获取
-//    info.payCost = createAccountInfo.payCost;
+    info.payCost = createAccountInfo.pay;
     
     //???:
 //    info.otherCost = createAccountInfo
@@ -180,8 +183,10 @@
     
     
     [self.pay payWithQRPayInfo:info
-               completeHandler:^(NSArray<id> *obj, NSError *error) {
-                   
+               completeHandler:^(NSString *encodeQRImageData, NSError *error) {
+                   self.encodeQRImageData = encodeQRImageData;
+                   handler(error);
                }];
 }
+
 @end

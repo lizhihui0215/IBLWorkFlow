@@ -7,6 +7,7 @@
 //
 
 #import "IBLCreateAccount.h"
+#import "IBLUserListRepository.h"
 
 @interface IBLCreateAccount ()
 

@@ -8,6 +8,7 @@
 
 #import "IBLCreateAccountViewController.h"
 #import "IBLCreateAccountTableViewController.h"
+#import "IBLQRViewController.h"
 
 static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccountEmbedTableView";
 
@@ -44,6 +45,10 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
         IBLCreateAccountTableViewController *tableViewController = [segue destinationViewController];
         
         tableViewController.tableViewDataSource = self;
+    }else if ([segue.identifier isEqualToString:@"IBLQRViewController"]){
+        IBLQRViewController *QRViewController = [segue destinationViewController];
+        QRViewController.encodeQRImageData = self.viewModel.encodeQRImageData;
+        QRViewController.pay = [sender integerValue];
     }
 }
 
@@ -58,7 +63,9 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
                                                                [self.viewModel payWithType:@"0"
                                                                          createAccountInfo:commit
                                                                            completeHandler:^(NSError *error) {
-
+                                                                               if (![self showAlertWithError:error]) {
+                                                                                   [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLPayAilPay)];
+                                                                               }
                                                                }];
                                                            }];
             
@@ -67,7 +74,9 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
                                                                    [self.viewModel payWithType:@"1"
                                                                              createAccountInfo:commit
                                                                                completeHandler:^(NSError *error) {
-
+                                                                                   if (![self showAlertWithError:error]) {
+                                                                                       [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLPayWeChat)];
+                                                                                   }
                                                                    }];
                                                                }];
             
@@ -96,7 +105,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 }
 
 
-- (IBLCreateAccountInfo *)createAccountInfoOfTableViewController:(IBLCreateAccountTableViewController *)controller{
+- (IBLCreateAccountTableViewInfo *)createAccountInfoOfTableViewController:(IBLCreateAccountTableViewController *)controller{
     return [self createAccountInfoFromOrder:self.viewModel.order];
 }
 
@@ -154,6 +163,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
    return [self.viewModel isHiddenAtIndexPath:indexPath];
 }
+
 
 
 

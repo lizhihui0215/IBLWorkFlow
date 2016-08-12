@@ -320,7 +320,7 @@
     // 优惠金额
     NSInteger discount = [self.discountTextField.text doubleValue] * 100;
     
-    return (unitPrice * count - discount) / 100.0f;
+    return (unitPrice * count - discount) / 100.0;
 }
 
 - (void)setupPay{
@@ -336,7 +336,7 @@
     // 订购数量
     NSInteger count = [self.countTextField.text integerValue];
     
-    return (unitPrice * count) / 100.0f;
+    return (unitPrice * count) / 100.0;
 }
 
 - (void)setupSales{
@@ -381,7 +381,7 @@
     // 支付金额
     NSInteger pay = [self.payTextField.text doubleValue] * 100;
     
-    return (unitPrice * count - pay) / 100.0f;
+    return (unitPrice * count - pay) / 100.0;
 }
 
 - (void)setupDiscount{
@@ -413,14 +413,19 @@
     NSIndexPath *custAddress = [NSIndexPath indexPathForRow:2 inSection:1];
     NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
     NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
+    NSIndexPath *account = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
+    
 
-    return @{custNameIndexPath : self.accountTextField,
+    return @{custNameIndexPath : self.usernameTextField,
              custPhone : self.phoneTextField,
              custIdCard : self.identifierTextField,
              custReserve : self.commentTextView,
              custAddress : self.addressTextField,
              contractCode : self.contractNumberTextField,
              voiceCode : self.ticketNumberTextField,
+             account : self.accountTextField,
+             password : self.passwordTextField,
              };
 }
 
@@ -432,6 +437,8 @@
     NSIndexPath *custAddress = [NSIndexPath indexPathForRow:2 inSection:1];
     NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
     NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
+    NSIndexPath *account = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
 
     return @{custNameIndexPath : @"用户名不能为空！",
              custPhone : @"联系电话不能为空！",
@@ -440,10 +447,12 @@
              custAddress : @"联系地址不能为空！",
              contractCode : @"合同号不能为空！",
              voiceCode : @"票据号不能为空！",
+             account : @"账户不能为空！",
+             password : @"密码不能为空！",
              };
 }
 
-- (IBAction)commitButtonPressed:(UIButton *)sender {
+- (BOOL)validateNotNullFields{
     NSDictionary <NSIndexPath *, NSString *> *notNullFields = [self.tableViewDataSource notNullFieldsDictionary];
     
     NSArray *indexPaths = [notNullFields.allKeys sortedArrayUsingSelector:@selector(compare:)];
@@ -458,6 +467,34 @@
         }
     }
     
+    if ([NSString isNull:self.accountTextField.text]) {
+        notNullText = @"用户账户不能为空！";
+    }
+    
+    if ([NSString isNull:self.passwordTextField.text]) {
+        notNullText = @"用户密码不能为空！";
+
+    }
+    
+    if ([NSString isNull:self.productTextField.text]) {
+        notNullText = @"请选择销售品！";
+
+    }
+    
+    if ([NSString isNull:self.methodOfValidTextField.text]) {
+        notNullText = @"请选择生效方式！";
+    }else{
+        if (self.createAccountInfo.effectType == IBLOrderEffectTypeBeforeTheDate) {
+            if ([NSString isNull:self.dateOfValidTextField.text]) {
+                notNullText = @"请选择上线日期！";
+            }
+        }
+    }
+    
+    if ([NSString isNull:self.regionTextField.text]) {
+        notNullText = @"请选择小区！";
+    }
+    
     if (notNullText) {
         IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
         IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
@@ -466,9 +503,36 @@
                                                              cancleButtonItem:cancel
                                                              otherButtonItems:nil];
         [alert showInController:self];
-    }else{
-        [self.tableViewDataSource tableViewController:self commit:self.createAccountInfo];
+        return NO;
     }
+    
+    return YES;
+    
+}
+
+- (void)saveCreateAccountInfo{
+    self.createAccountInfo.account = self.accountTextField.text;
+    self.createAccountInfo.password = self.passwordTextField.text;
+    self.createAccountInfo.identifierNumber = self.identifierTextField.text;
+    self.createAccountInfo.remark = self.commentTextView.text;
+    self.createAccountInfo.phone = self.phoneTextField.text;
+    self.createAccountInfo.address = self.addressTextField.text;
+    self.createAccountInfo.count = self.countTextField.text;
+    self.createAccountInfo.sales = self.salesTextField.text;
+    self.createAccountInfo.salesCount = self.salesCountTextField.text;
+    self.createAccountInfo.contractNumebr = self.contractNumberTextField.text;
+    self.createAccountInfo.ticketNumber = self.ticketNumberTextField.text;
+    self.createAccountInfo.give = self.giveTextField.text;
+    self.createAccountInfo.discount = self.discountTextField.text;
+    self.createAccountInfo.pay = self.payTextField.text;
+}
+
+- (IBAction)commitButtonPressed:(UIButton *)sender {
+    if (![self validateNotNullFields]) return;
+    
+    [self saveCreateAccountInfo];
+    
+    [self.tableViewDataSource tableViewController:self commit:self.createAccountInfo];
 }
 
 #pragma mark - Table view data source
@@ -508,7 +572,7 @@
     }else if ([segue.identifier isEqualToString:@"CreateAccountProductForSearch"]){
         IBLSearchViewController *searchViewController = [segue destinationViewController];
         searchViewController.viewModel = [IBLProductSearchViewModel productSearchModelWithSearchType:IBLSearchTypeCreateAccountProduct
-                                                                                           productId:self.createAccountInfo.productIdentifier
+                                                                                           productId:0
                                                                                             regionId:self.createAccountInfo.residentialIdentifier];
         searchViewController.searchDelegate = self;
     }
