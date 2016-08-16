@@ -47,7 +47,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
         tableViewController.tableViewDataSource = self;
     }else if ([segue.identifier isEqualToString:@"IBLQRViewController"]){
         IBLQRViewController *QRViewController = [segue destinationViewController];
-        QRViewController.encodeQRImageData = self.viewModel.encodeQRImageData;
+        QRViewController.payResult = self.viewModel.payResult;
         QRViewController.pay = [sender integerValue];
     }
 }

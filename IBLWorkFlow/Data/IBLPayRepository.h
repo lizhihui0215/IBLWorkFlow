@@ -7,6 +7,34 @@
 //
 
 #import "IBLBusinessRepository.h"
+#import "IBLPayResult.h"
+
+/**
+ *  支付状态
+ */
+typedef NS_ENUM(NSInteger, IBLOrderPayStatus) {
+    IBLOrderPayStatusError,
+    /**
+     *  未支付
+     */
+    IBLOrderPayStatusUnpay,
+    /**
+     *  支付中
+     */
+    IBLOrderPayStatusPaying,
+    /**
+     *  已付款
+     */
+    IBLOrderPayStatusPayed,
+    /**
+     *  已完成
+     */
+    IBLOrderPayStatusFinished,
+    /**
+     *  已关闭
+     */
+    IBLOrderPayStatusClosed,
+};
 
 @interface IBLQRPayInfo : NSObject
 
@@ -40,6 +68,9 @@
 @interface IBLPayRepository : IBLBusinessRepository
 
 - (void)payWithQRPayInfo:(IBLQRPayInfo *)QRPayInfo
-         completeHandler:(void (^)(NSString *, NSError *))handler;
+         completeHandler:(void (^)(IBLPayResult *, NSError *))handler;
+
+- (NSURLSessionDataTask *)checkOrderWithNumber:(NSInteger)orderNumber
+                               completeHandler:(void (^)(IBLOrderPayStatus, NSError *))handler;
 
 @end

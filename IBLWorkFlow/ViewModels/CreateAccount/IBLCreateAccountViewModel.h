@@ -12,11 +12,13 @@
 @class IBLProductPrice;
 @class IBLCreateAccountInfo;
 @class IBLCreateAccountTableViewInfo;
+@class IBLPayResult;
 
 @interface IBLCreateAccountViewModel : IBLListViewModel
 
 @property (nonatomic, assign, readonly) IBLCreateAccountType createAccountType;
 @property (nonatomic, strong, readonly) IBLOrder *order;
+@property (nonatomic, strong, readonly) IBLPayResult *payResult;
 
 + (instancetype)modelWithCreateAccountType:(IBLCreateAccountType)createAccountType
                                      order:(IBLOrder *)order;
@@ -39,5 +41,4 @@
 
 - (void)payWithType:(NSString *)type createAccountInfo:(IBLCreateAccountTableViewInfo *)createAccountInfo completeHandler:(IBLViewModelCompleteHandler)handler;
 
-- (NSString *)encodeQRImageData;
 @end

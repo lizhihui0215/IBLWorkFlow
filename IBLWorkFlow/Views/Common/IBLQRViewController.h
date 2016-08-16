@@ -7,6 +7,7 @@
 //
 
 #import "IBLViewController.h"
+#import "IBLPayResult.h"
 
 typedef NS_ENUM(NSInteger, IBLPay) {
     IBLPayWeChat,
@@ -14,6 +15,6 @@ typedef NS_ENUM(NSInteger, IBLPay) {
 };
 
 @interface IBLQRViewController : IBLViewController
-@property (nonatomic, strong) NSString *encodeQRImageData;
+@property (nonatomic, strong) IBLPayResult *payResult;
 @property (nonatomic, assign) IBLPay pay;
 @end

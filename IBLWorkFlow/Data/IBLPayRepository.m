@@ -37,7 +37,7 @@
 }
 
 - (void)payWithQRPayInfo:(IBLQRPayInfo *)QRPayInfo
-         completeHandler:(void (^)(NSString *, NSError *))handler {
+         completeHandler:(void (^)(IBLPayResult *, NSError *))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[@"orderType"] = QRPayInfo.orderType;
@@ -71,16 +71,18 @@
                                               parameters:parameters
                                                 progress:nil
                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                     handler(responseObject[@"codeUrl"], nil);
+                                                     IBLPayResult *result = [[IBLPayResult alloc] initWithDictionary:responseObject error:nil];
+                                                     handler(result, nil);
                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                      handler(nil, error);
                                                  }];
 }
 
-- (NSURLSessionDataTask *)checkOrderObj:(id)obj completeHandler:(void (^)(NSString *, NSError *))handler{
+- (NSURLSessionDataTask *)checkOrderWithNumber:(NSInteger)orderNumber
+                        completeHandler:(void (^)(IBLOrderPayStatus, NSError *))handler{
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
-        
+        parameters[@"orderNo"] = @(orderNumber);
         return parameters;
     }];
     
@@ -88,9 +90,9 @@
                                                            parameters:parameters
                                                              progress:nil
                                                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                                  handler(responseObject[@"codeUrl"], nil);
+                                                                  handler([responseObject[@"state"] integerValue], nil);
                                                               } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                                  handler(nil, error);
+                                                                  handler(IBLOrderPayStatusError, error);
                                                               }];
     
 }

@@ -26,9 +26,9 @@
 }
 
 - (void)payWithQRPayInfo:(IBLQRPayInfo *)QRPayInfo
-         completeHandler:(void (^)(NSString *, NSError *))handler{
+         completeHandler:(void (^)(IBLPayResult *, NSError *))handler{
     [self.payRepository payWithQRPayInfo:QRPayInfo
-                         completeHandler:^(NSString *obj, NSError *error) {
+                         completeHandler:^(IBLPayResult *obj, NSError *error) {
                              handler(obj,error);
                          }];
 }

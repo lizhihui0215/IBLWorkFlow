@@ -7,7 +7,11 @@
 //
 
 #import "IBLUseCase.h"
+#import "IBLPayRepository.h"
 
 @interface IBLCheckOrder : IBLUseCase
+
+- (void)checkOrderWithNumber:(NSInteger)orderNumber
+             completeHandler:(void (^)(IBLOrderPayStatus, NSError *))handler;
 
 @end

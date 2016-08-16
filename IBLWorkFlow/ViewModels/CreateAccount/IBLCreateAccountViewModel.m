@@ -33,7 +33,7 @@
 
 @property (nonatomic, strong) IBLPay *pay;
 
-@property (nonatomic, strong) NSString *encodeQRImageData;
+@property (nonatomic, strong) IBLPayResult *payResult;
 
 @end
 
@@ -183,8 +183,8 @@
     
     
     [self.pay payWithQRPayInfo:info
-               completeHandler:^(NSString *encodeQRImageData, NSError *error) {
-                   self.encodeQRImageData = encodeQRImageData;
+               completeHandler:^(IBLPayResult *payResult, NSError *error) {
+                   self.payResult = payResult;
                    handler(error);
                }];
 }

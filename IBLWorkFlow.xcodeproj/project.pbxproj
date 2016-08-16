@@ -120,6 +120,7 @@
 		26EC5A3E1D45F99E00CB0F7C /* IBLUserListRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC5A3D1D45F99E00CB0F7C /* IBLUserListRepository.m */; };
 		26EC5A411D45FA0500CB0F7C /* IBLFetchUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC5A401D45FA0500CB0F7C /* IBLFetchUserList.m */; };
 		26EC5A441D45FAA600CB0F7C /* IBLRelateUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EC5A431D45FAA600CB0F7C /* IBLRelateUser.m */; };
+		26ECF2711D62F5D800BA8C2B /* IBLPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 26ECF2701D62F5D800BA8C2B /* IBLPayResult.m */; };
 		26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26F620191D2FB6B500B49065 /* Operator.xml */; };
 		26FCA08E1D5C3297004B8E2C /* IBLQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCA08D1D5C3297004B8E2C /* IBLQRViewController.m */; };
 		26FCA0911D5C57E3004B8E2C /* IBLCheckOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCA0901D5C57E3004B8E2C /* IBLCheckOrder.m */; };
@@ -381,6 +382,8 @@
 		26EC5A401D45FA0500CB0F7C /* IBLFetchUserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFetchUserList.m; sourceTree = "<group>"; };
 		26EC5A421D45FAA600CB0F7C /* IBLRelateUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRelateUser.h; sourceTree = "<group>"; };
 		26EC5A431D45FAA600CB0F7C /* IBLRelateUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRelateUser.m; sourceTree = "<group>"; };
+		26ECF26F1D62F5D800BA8C2B /* IBLPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLPayResult.h; sourceTree = "<group>"; };
+		26ECF2701D62F5D800BA8C2B /* IBLPayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLPayResult.m; sourceTree = "<group>"; };
 		26F620191D2FB6B500B49065 /* Operator.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Operator.xml; sourceTree = "<group>"; };
 		26FCA08C1D5C3297004B8E2C /* IBLQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLQRViewController.h; sourceTree = "<group>"; };
 		26FCA08D1D5C3297004B8E2C /* IBLQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLQRViewController.m; sourceTree = "<group>"; };
@@ -637,6 +640,8 @@
 				5B87545523BC6DB49B830646 /* IBLProduct.m */,
 				26C97D681D41CB03001EFA6F /* IBLProductPrice.h */,
 				26C97D661D41C8C3001EFA6F /* IBLProductPrice.m */,
+				26ECF26F1D62F5D800BA8C2B /* IBLPayResult.h */,
+				26ECF2701D62F5D800BA8C2B /* IBLPayResult.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1388,6 +1393,7 @@
 				5B875F35EE4AEFAF69A69881 /* IBLLeftMenuViewController.m in Sources */,
 				5B8757182B593FAE81750768 /* IBLViewController.m in Sources */,
 				269CD3921D37BF3400603A83 /* IBLOrderSearchViewModel.m in Sources */,
+				26ECF2711D62F5D800BA8C2B /* IBLPayResult.m in Sources */,
 				269E15A41D3DD5AC004D497B /* IBLForwardOrder.m in Sources */,
 				26469BE61D38B9F40000285D /* IBLWorkOrderBussinessType.m in Sources */,
 				26EC5A371D45F09500CB0F7C /* IBLUserSearchResultViewController.m in Sources */,

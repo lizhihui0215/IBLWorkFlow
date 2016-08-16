@@ -12,6 +12,6 @@
 @interface IBLPay : IBLUseCase
 
 - (void)payWithQRPayInfo:(IBLQRPayInfo *)QRPayInfo
-         completeHandler:(void (^)(NSString *, NSError *))handler;
+         completeHandler:(void (^)(IBLPayResult *, NSError *))handler;
 
 @end
