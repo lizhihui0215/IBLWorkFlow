@@ -16,3 +16,8 @@
                                                        @"orderUrl" : @"orderURL"}];
 }
 @end
+
+
+@implementation IBLGenarate
+
+@end

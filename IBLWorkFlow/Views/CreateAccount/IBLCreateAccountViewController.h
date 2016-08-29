@@ -11,8 +11,17 @@
 #import "IBLCreateAccountTableViewController.h"
 #import "IBLSearchViewController.h"
 
+@class IBLCreateAccountViewController;
+@protocol IBLCreateAccountViewControllerDelegate <NSObject>
+
+- (void)createAccountViewController:(IBLCreateAccountViewController *)createAccountViewController commit:(IBLOrder *)commit;
+
+@end
+
 @interface IBLCreateAccountViewController : IBLViewController <IBLCreateAccountTableViewControllerDataSource>
 
 @property (nonatomic, strong) IBLCreateAccountViewModel *viewModel;
+
+@property (nonatomic, weak) id<IBLCreateAccountViewControllerDelegate> delegate;
 
 @end

@@ -68,4 +68,8 @@ typedef NS_ENUM(NSInteger, IBLOrderType) {
 - (void)sendWithOrder:(IBLOrder *)order operator:(IBLOperator *)operator content:(NSString *)content completehandler:(void (^)(NSError *))completehandler;
 
 - (NSString *)orderContentAtIndexPath:(NSIndexPath *)indexPath;
+- (void)finishedHandleOrderWithAction:(IBLOrderAction)action
+                  atIndexPath:(NSIndexPath *)indexPath;
+
+- (NSIndexPath *)indexPathWithOrder:(IBLOrder *)order;
 @end

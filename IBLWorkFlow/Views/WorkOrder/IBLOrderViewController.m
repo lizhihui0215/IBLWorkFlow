@@ -17,7 +17,7 @@
 
 static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSearch";
 
-@interface IBLOrderViewController () <IBLOrderSearchDelegate>
+@interface IBLOrderViewController () <IBLOrderSearchDelegate,IBLCreateAccountViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet HMSegmentedControl *segmentedControl;
 
@@ -71,9 +71,10 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 
 - (void)switchTableWithIndex:(NSInteger)index{
     [self.viewModel setIndex:index];
-    if([self.viewModel numberOfRowsInSection:0] <= 0){
-        [self.tableView.mj_header beginRefreshing];
-    }
+    [self.tableView.mj_header beginRefreshing];
+//
+//    if([self.viewModel numberOfRowsInSection:0] <= 0){
+//    }
     [self.tableView reloadData];
 }
 
@@ -196,7 +197,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                         indexPath:indexPath
                                   completeHandler:^(NSError *error) {
                                       if (![self showAlertWithError:error]) {
-                                          [self.tableView.mj_header beginRefreshing];
+                                          [self.tableView reloadData];
                                       }
                                   }];
                 alertView = nil;
@@ -208,6 +209,13 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
         default:break;
     }
     
+}
+
+- (void)createAccountViewController:(IBLCreateAccountViewController *)createAccountViewController
+                             commit:(IBLOrder *)commit{
+    NSIndexPath *indexPath = [self.viewModel indexPathWithOrder:commit];
+    [self.viewModel finishedHandleOrderWithAction:IBLOrderActionCreate atIndexPath:indexPath];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Navigation
@@ -234,8 +242,11 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     }else if ([segue.identifier isEqualToString:NavigationToCreateAccountIdentifier]){
         IBLCreateAccountViewController *createAccountViewController = [segue destinationViewController];
         createAccountViewController.viewModel = [IBLCreateAccountViewModel modelWithCreateAccountType:IBLCreateAccountTypeFromOrder order:[self.viewModel orderAtIndexPath:sender]];
+        createAccountViewController.delegate = self;
     }
 }
+
+
 
 - (void)orderSearchViewController:(IBLOrderSearchTableViewController *)searchViewController
                   didSearchResult:(IBLOrderSearchResult *)searchResult {
@@ -279,10 +290,12 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                         operator:operator
                                          content:alert.contentTextField.text
                                  completehandler:^(NSError *error) {
-                                     [self hidHUD];
                                      if (![self showAlertWithError:error]) {
-                                         [self.tableView.mj_header beginRefreshing];
+                                        NSIndexPath *indexPath = [self.viewModel indexPathWithOrder:forwardViewModel.order];
+                                         [self.viewModel finishedHandleOrderWithAction:IBLOrderActionForward
+                                                                           atIndexPath:indexPath];
                                      }
+                                     [self hidHUD];
                                  }];
                 break;
             }
@@ -291,10 +304,12 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                      operator:operator
                                       content:alert.contentTextField.text
                               completehandler:^(NSError *error) {
-                                  [self hidHUD];
                                   if (![self showAlertWithError:error]) {
-                                      [self.tableView.mj_header beginRefreshing];
+                                      NSIndexPath *indexPath = [self.viewModel indexPathWithOrder:forwardViewModel.order];
+                                      [self.viewModel finishedHandleOrderWithAction:IBLOrderActionSend
+                                                                        atIndexPath:indexPath];
                                   }
+                                  [self hidHUD];
                               }];
                 break;
             }

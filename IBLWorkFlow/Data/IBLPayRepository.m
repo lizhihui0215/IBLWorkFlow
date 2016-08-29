@@ -7,7 +7,7 @@
 //
 
 #import "IBLPayRepository.h"
-
+#import "IBLAppRepository.h"
 @implementation IBLQRPayInfo
 
 @end
@@ -38,13 +38,15 @@
 
 - (void)payWithQRPayInfo:(IBLQRPayInfo *)QRPayInfo
          completeHandler:(void (^)(IBLPayResult *, NSError *))handler {
+    IBLAppConfiguration *appConfigration = [IBLAppRepository appConfiguration];
+    
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[@"orderType"] = QRPayInfo.orderType;
         parameters[@"payType"] = QRPayInfo.payType;
         parameters[@"offerId"] = QRPayInfo.offerId;
         parameters[@"offerName"] = QRPayInfo.offerName;
-        parameters[@"genarate"] = QRPayInfo.genarate;
+        parameters[@"genarate"] = [appConfigration.genarate toJSONString];;
         parameters[@"account"] = QRPayInfo.account;
         parameters[@"password"] = QRPayInfo.password;
         parameters[@"userName"] = QRPayInfo.userName;
@@ -60,9 +62,9 @@
         parameters[@"extraLength"] = QRPayInfo.extraLength;
         parameters[@"totalLength"] = QRPayInfo.totalLength;
         parameters[@"discountItems"] = QRPayInfo.discountItems;
-        parameters[@"totalCost"] = QRPayInfo.totalCost;
-        parameters[@"payCost"] = QRPayInfo.payCost;
-        parameters[@"otherCost"] = QRPayInfo.otherCost;
+        parameters[@"totalCost"] = @([QRPayInfo.totalCost floatValue] * 100);
+        parameters[@"payCost"] = @([QRPayInfo.payCost floatValue] * 100);
+        parameters[@"otherCost"] = @([QRPayInfo.otherCost floatValue] * 100);
         parameters[@"nodeId"] = QRPayInfo.nodeId;
         return parameters;
     }];
@@ -78,11 +80,11 @@
                                                  }];
 }
 
-- (NSURLSessionDataTask *)checkOrderWithNumber:(NSInteger)orderNumber
+- (NSURLSessionDataTask *)checkOrderWithNumber:(NSString *)orderNumber
                         completeHandler:(void (^)(IBLOrderPayStatus, NSError *))handler{
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
-        parameters[@"orderNo"] = @(orderNumber);
+        parameters[@"orderNo"] = orderNumber;
         return parameters;
     }];
     

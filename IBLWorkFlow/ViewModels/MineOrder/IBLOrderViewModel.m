@@ -95,7 +95,7 @@
     IBLSection *section4 = [IBLSection sectionWithInfo:nil items:nil];
     IBLSection *section5 = [IBLSection sectionWithInfo:nil items:nil];
     IBLSection *section6 = [IBLSection sectionWithInfo:nil items:nil];
-
+    
     self.dataSourceMaps = @{@(0) : [@[section1] mutableCopy],
                             @(1) : [@[section2] mutableCopy],
                             @(2) : [@[section3] mutableCopy],
@@ -123,7 +123,7 @@
         self.handleOrder = [[IBLHandleOrder alloc] init];
         
         self.sendOrder = [[IBLSendOrder alloc] init];
-
+        
         self.searchResults = [@{@(0) : [IBLOrderSearchResult defaultSearchResult],
                                 @(1) : [IBLOrderSearchResult defaultSearchResult] ,
                                 @(2) : [IBLOrderSearchResult defaultSearchResult],
@@ -131,7 +131,7 @@
                                 @(4) : [IBLOrderSearchResult defaultSearchResult],
                                 @(5) : [IBLOrderSearchResult defaultSearchResult],
                                 @(6) : [IBLOrderSearchResult defaultSearchResult]} mutableCopy];
-
+        
     }
     return self;
 }
@@ -168,7 +168,7 @@
                       isRefresh:(BOOL)isRefresh
                 completeHandler:(IBLViewModelCompleteHandler)handler {
     IBLFetchOrderList *fetch = [self fetchMineOrderList];
-
+    
     [self.fetchOrder fetchOrderListWithIsRefresh:isRefresh
                                            fetch:fetch
                                  completeHandler:^(NSMutableArray<IBLOrder *> *orderList, NSError *error) {
@@ -184,25 +184,25 @@
     IBLSection *section = [self sectionAt:0];
     
     NSMutableArray<IBLSectionItem *> *items = [self itemsWithOrders:orderList];
-
+    
     if (refresh) section.items = items; else [section.items addObjectsFromArray:items];
 }
 
 - (NSMutableArray<IBLSectionItem *> *)itemsWithOrders:(NSMutableArray<IBLOrder *> *)orders {
     NSMutableArray<IBLSectionItem *> *items = [NSMutableArray array];
-
+    
     for (IBLOrder *order in orders) {
         order.actions = [[self orderActionsWithStatus:order.status
                                               bizType:order.bizType] mutableCopy];
         IBLSectionItem *item = [IBLSectionItem itemWithInfo:order selected:NO];
         [items addObject:item];
     }
-
+    
     return items;
 }
 
 - (NSArray<NSNumber *> *)orderActionsWithStatus:(IBLOrderStatus)status
-                                               bizType:(IBLWorkOrderBizStatus)bizType {
+                                        bizType:(IBLWorkOrderBizStatus)bizType {
     switch (self.type) {
         case IBLOrderTypeMine: {
             return [self mineOrderActionsWithStatus:status bizType:bizType];
@@ -260,37 +260,37 @@
                                         @(IBLWorkOrderBizStatusLineBarrier) : @"[ 线不通穿线 ]",
                                         @(IBLWorkOrderBizStatusCableBreak) : @"[ 光缆断 ]",
                                         @(IBLWorkOrderBizStatusOther) : @"[ 其他 ]"};
-
+    
     return workOrderBizTypes[@(status)];
 }
 
 - (NSString *)workOrderTypAtIndexPath:(NSIndexPath *)indexPath {
     IBLOrder *order = [self orderAtIndexPath:indexPath];
-
+    
     return [self workOrderBizTypeNameWithStatus:order.bizType];
 }
 
 - (NSString *)usernameAtIndexPath:(NSIndexPath *)indexPath {
     IBLOrder *order = [self orderAtIndexPath:indexPath];
-
+    
     return order.userAccount;
 }
 
 - (NSString *)orderContentAtIndexPath:(NSIndexPath *)indexPath {
     IBLOrder *order = [self orderAtIndexPath:indexPath];
-
+    
     return order.content;
 }
 
 - (NSString *)dateAtIndexPath:(NSIndexPath *)indexPath {
     IBLOrder *order = [self orderAtIndexPath:indexPath];
-
+    
     return order.lastModifyTime;
 }
 
 - (IBLPriorityStatus)orderPriorityAtIndexPath:(NSIndexPath *)indexPath {
     IBLOrder *order = [self orderAtIndexPath:indexPath];
-
+    
     return order.priority;
 }
 
@@ -362,8 +362,8 @@
         }
         case IBLOrderActionForward:{
             //FIXME: 转发最后一步。
-//            IBLOrder *order = [self orderAtIndexPath:indexPath];
-//            title = [NSString stringWithFormat:@"转发给：开户%@号"];
+            //            IBLOrder *order = [self orderAtIndexPath:indexPath];
+            //            title = [NSString stringWithFormat:@"转发给：开户%@号"];
             break;
         }
             
@@ -394,7 +394,7 @@
         }
         default: break;
     }
-
+    
     return image;
 }
 
@@ -456,25 +456,90 @@
         }
         case IBLOrderActionFinish: {
             [self.finishOrder finishOrderWith:order completeHandler:^(NSError *error) {
-                [self deleteOrderAtIndexPath:indexPath];
+                if(!error) [self finishedHandleOrderWithAction:action atIndexPath:indexPath];
                 handler(error);
             }];
             break;
         }
         case IBLOrderActionDelete: {
             [self.deleteOrder deleteOrderWithOrder:order completeHandler:^(NSError *error) {
-                [self deleteOrderAtIndexPath:indexPath];
+                if(!error) [self finishedHandleOrderWithAction:action atIndexPath:indexPath];
                 handler(error);
             }];
             break;
         }
         case IBLOrderActionHandling:{
             [self.handleOrder handleOrderWithOrder:order completeHandler:^(NSError *error){
-                
+                if (!error) [self finishedHandleOrderWithAction:action atIndexPath:indexPath];
+                handler(error);
             }];
             break;
         }
         default: break;
+    }
+}
+
+- (NSIndexPath *)indexPathWithOrder:(IBLOrder *)order{
+    NSInteger index = [self.dataSource indexOfObject:order];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    return indexPath;
+}
+
+- (void)finisedHandleMineWorkOrderStatusWithWithAction:(IBLOrderAction)action
+                                           atIndexPath:(NSIndexPath *)indexPath{
+    switch (self.status) {
+        case IBLOrderStatusSended: {
+            switch (action) {
+                case IBLOrderActionHandling:
+                case IBLOrderActionFinish:
+                case IBLOrderActionForward:
+                case IBLOrderActionCreate:{
+                    [self deleteOrderAtIndexPath:indexPath];
+                    break;
+                }
+                case IBLOrderActionViewSingle:
+                default: break;
+            }
+        }
+        case IBLOrderStatusHandling:{
+            switch (action) {
+                case IBLOrderActionFinish:
+                case IBLOrderActionForward:{
+                    [self deleteOrderAtIndexPath:indexPath];
+                    break;
+                }
+                default: break;
+            }
+            break;
+        }
+        case IBLOrderStatusForwarding:{
+            switch (action) {
+                case IBLOrderActionFinish:
+                case IBLOrderActionCreate:{
+                    [self deleteOrderAtIndexPath:indexPath];
+                    break;
+                }
+                default: break;
+            }
+            break;
+        }
+        default: break;
+    }
+}
+
+- (void)finishedHandleManagedWorkOrderStatusWithWithAction:(IBLOrderAction)action
+                                               atIndexPath:(NSIndexPath *)indexPath{
+}
+
+
+- (void)finishedHandleOrderWithAction:(IBLOrderAction)action
+                  atIndexPath:(NSIndexPath *)indexPath {
+    if (self.type == IBLOrderTypeMine) {
+        [self finisedHandleMineWorkOrderStatusWithWithAction:action
+                                                 atIndexPath:indexPath];
+    }else{
+        [self finishedHandleManagedWorkOrderStatusWithWithAction:action
+                                                     atIndexPath:indexPath];
     }
 }
 

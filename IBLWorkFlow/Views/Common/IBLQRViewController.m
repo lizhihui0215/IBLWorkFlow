@@ -50,8 +50,6 @@
         }
     }
     
-    
-    
     CocoaSecurityDecoder *encode = [[CocoaSecurityDecoder alloc] init];
     NSData *data = [encode base64:self.payResult.codeUrl];
     self.QRImageView.image = [UIImage imageWithData:data];

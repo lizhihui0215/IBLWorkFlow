@@ -7,6 +7,7 @@
 //
 
 #import "IBLUserListRepository.h"
+#import "IBLAppRepository.h"
 
 @implementation IBLCreateAccountInfo
 
@@ -78,12 +79,14 @@
 
 - (void)createAccountWithInfo:(IBLCreateAccountInfo *)createAccountInfo
               completeHandler:(void (^)(id, NSError *))handler{
+    IBLAppConfiguration *appConfigration = [IBLAppRepository appConfiguration];
+    
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[@"type"] = createAccountInfo.type;
         parameters[@"cardNo"] = createAccountInfo.cardNo;
         parameters[@"cardPwd"] = createAccountInfo.cardPwd;
-        parameters[@"genarate"] = createAccountInfo.genarate;
+        parameters[@"genarate"] =  [appConfigration.genarate toDictionary];
         parameters[@"account"] = createAccountInfo.account;
         parameters[@"password"] = createAccountInfo.password;
         parameters[@"userName"] = createAccountInfo.userName;

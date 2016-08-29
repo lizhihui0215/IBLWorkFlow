@@ -25,7 +25,7 @@
     return self;
 }
 
-- (void)checkOrderWithNumber:(NSInteger)orderNumber
+- (void)checkOrderWithNumber:(NSString *)orderNumber
              completeHandler:(void (^)(IBLOrderPayStatus, NSError *))handler{
     [self.payRepository checkOrderWithNumber:orderNumber
                              completeHandler:handler];

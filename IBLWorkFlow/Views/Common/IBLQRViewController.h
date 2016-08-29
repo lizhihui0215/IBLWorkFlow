@@ -14,7 +14,18 @@ typedef NS_ENUM(NSInteger, IBLPay) {
     IBLPayAilPay,
 };
 
+@class IBLQRViewController;
+
+@protocol IBLQRViewControllerDelegate <NSObject>
+
+- (void)finishedPayQRViewController:(IBLQRViewController *)viewController;
+
+@end
+
 @interface IBLQRViewController : IBLViewController
 @property (nonatomic, strong) IBLPayResult *payResult;
 @property (nonatomic, assign) IBLPay pay;
+
+@property (nonatomic, weak) id<IBLQRViewControllerDelegate> delegate;
+
 @end

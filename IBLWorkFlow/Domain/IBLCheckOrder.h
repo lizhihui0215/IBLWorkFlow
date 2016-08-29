@@ -11,7 +11,7 @@
 
 @interface IBLCheckOrder : IBLUseCase
 
-- (void)checkOrderWithNumber:(NSInteger)orderNumber
+- (void)checkOrderWithNumber:(NSString *)orderNumber
              completeHandler:(void (^)(IBLOrderPayStatus, NSError *))handler;
 
 @end

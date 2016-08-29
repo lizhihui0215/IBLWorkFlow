@@ -70,7 +70,7 @@ typedef NS_ENUM(NSInteger, IBLOrderPayStatus) {
 - (void)payWithQRPayInfo:(IBLQRPayInfo *)QRPayInfo
          completeHandler:(void (^)(IBLPayResult *, NSError *))handler;
 
-- (NSURLSessionDataTask *)checkOrderWithNumber:(NSInteger)orderNumber
+- (NSURLSessionDataTask *)checkOrderWithNumber:(NSString *)orderNumber
                                completeHandler:(void (^)(IBLOrderPayStatus, NSError *))handler;
 
 @end

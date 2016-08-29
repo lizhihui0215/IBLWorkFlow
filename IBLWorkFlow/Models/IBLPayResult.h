@@ -12,5 +12,5 @@
 
 @property (nonatomic, copy) NSString *codeUrl;
 
-@property (nonatomic, assign) NSInteger orderNo;
+@property (nonatomic, copy) NSString *orderNo;
 @end

@@ -142,9 +142,17 @@
     
     for (NSString *field in app.hiddenFields.changeProductFields) {
         NSIndexPath *hiddenIndexPath = self.createAccountAllFields[field];
+        
         NSNumber *isHidden = hiddenIndexPath == nil ? @(NO) : @(YES);
         
         hiddenFields[hiddenIndexPath] = isHidden;
+    }
+    
+    if (app.genarate.type || [app.genarate.type integerValue] != 5) {
+        NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
+        hiddenFields[custNameIndexPath] = @(YES);
+        hiddenFields[password] = @(YES);
     }
     
     return hiddenFields;

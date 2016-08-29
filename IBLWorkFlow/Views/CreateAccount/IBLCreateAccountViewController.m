@@ -93,7 +93,11 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
         }
         case IBLPayModelCash: {
             [self.viewModel createAccountWith:commit completeHandler:^(NSError *error){
-                
+                if (![self showAlertWithError:error]) {
+                    if([self.delegate respondsToSelector:@selector(createAccountViewController:commit:)]){
+                        [self.delegate createAccountViewController:self commit:self.viewModel.order];
+                    }
+                }
             }];
             break;
         }

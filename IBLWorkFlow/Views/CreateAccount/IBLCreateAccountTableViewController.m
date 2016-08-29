@@ -467,11 +467,15 @@
         }
     }
     
-    if ([NSString isNull:self.accountTextField.text]) {
+    BOOL isHiddenAccount = [self.tableViewDataSource isHiddenAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    BOOL isHiddenPassword = [self.tableViewDataSource isHiddenAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    
+    if (!isHiddenAccount && [NSString isNull:self.accountTextField.text]) {
         notNullText = @"用户账户不能为空！";
     }
     
-    if ([NSString isNull:self.passwordTextField.text]) {
+    if (!isHiddenPassword && [NSString isNull:self.passwordTextField.text]) {
         notNullText = @"用户密码不能为空！";
 
     }
@@ -544,6 +548,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     BOOL isHidden = [self.tableViewDataSource isHiddenAtIndexPath:indexPath];
     
     if (isHidden) return 0;

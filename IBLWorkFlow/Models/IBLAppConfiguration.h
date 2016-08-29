@@ -56,6 +56,14 @@ typedef NS_ENUM(NSInteger, IBLOrderEffectType) {
     IBLOrderEffectTypeFirst,
 };
 
+@interface IBLGenarate : IBLModel
+@property (nonatomic, copy) NSString *accountLen;
+@property (nonatomic, copy) NSString *pre;
+@property (nonatomic, copy) NSString *pwdLen;
+@property (nonatomic, assign) NSNumber *type;
+
+@end
+
 @interface IBLAppConfiguration : IBLModel
 
 /// 工单业务类型
@@ -84,5 +92,7 @@ typedef NS_ENUM(NSInteger, IBLOrderEffectType) {
 
 /// 非空字段 （开户，更换销售品）
 @property (nonatomic, strong) IBLFieldConfiguration *notNullFields;
+
+@property (nonatomic, strong) IBLGenarate *genarate;
 
 @end
