@@ -8,8 +8,8 @@
 
 #import "IBLQRViewController.h"
 #import <CocoaSecurity/CocoaSecurity.h>
-
 #import "IBLCheckOrder.h"
+#import "IBLOrderDetailViewController.h"
 
 @interface IBLQRViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *QRImageView;
@@ -31,10 +31,11 @@
     // Do any additional setup after loading the view.
     self.checkOrder = [[IBLCheckOrder alloc] init];
     
-    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"]
+    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
                                                                       style:UIBarButtonItemStyleBordered
                                                                      target:self
                                                                      action:@selector(backButtonPressed:)];
+    
     self.navigationItem.leftBarButtonItem = newBackButton;
     
     self.startDate = [NSDate date];
@@ -76,6 +77,11 @@
     [self.checkOrder checkOrderWithNumber:self.payResult.orderNo
                           completeHandler:^(IBLOrderPayStatus status, NSError *error) {
                               @strongify(self)
+                              if (status == IBLOrderPayStatusFinished) {
+                                  [self performSegueWithIdentifier:@"NavigationToOrderDetail" sender:nil];
+                                  return ;
+                              }
+                              
                               NSTimeInterval interval = [self.startDate timeIntervalSinceNow];
                               [self checkOrders:interval > 60 * 3];
                           }];
@@ -86,14 +92,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"NavigationToOrderDetail"]) {
+        IBLOrderDetailViewController *orderDetailViewController = [segue destinationViewController];
+        orderDetailViewController.orderNumber = self.payResult.orderNo;
+        orderDetailViewController.order = self.order;
+        switch (self.type) {
+            case IBLQRTypeFromOrderCreateAccount: {
+                orderDetailViewController.type = IBLQRTypeFromOrderCreateAccount;
+                break;
+            }
+            case IBLQRTypeFromCreateAccount: {
+                orderDetailViewController.type = IBLQRTypeFromCreateAccount;
+                break;
+            }
+        }
+    }
 }
-*/
+
 
 @end

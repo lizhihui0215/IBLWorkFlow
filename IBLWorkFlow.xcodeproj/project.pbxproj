@@ -95,6 +95,9 @@
 		26ADA5E11D43898C005CAEEC /* IBLExchangeProductTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26ADA5E01D43898C005CAEEC /* IBLExchangeProductTableViewController.m */; };
 		26ADA5E41D43899B005CAEEC /* IBLExchangeProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26ADA5E31D43899B005CAEEC /* IBLExchangeProductViewController.m */; };
 		26ADA5E71D438C75005CAEEC /* IBLAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26ADA5E61D438C75005CAEEC /* IBLAboutViewController.m */; };
+		26B549D81D75388C0011D0D0 /* IBLOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B549D71D75388C0011D0D0 /* IBLOrderDetailViewController.m */; };
+		26B549DB1D7538FC0011D0D0 /* IBLFetchOrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B549DA1D7538FC0011D0D0 /* IBLFetchOrderDetail.m */; };
+		26B549DE1D753A490011D0D0 /* IBLOrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B549DD1D753A490011D0D0 /* IBLOrderDetail.m */; };
 		26C2597D1D42687300035F63 /* IBLRenewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C2597C1D42687300035F63 /* IBLRenewViewController.m */; };
 		26C259801D42688400035F63 /* IBLRenewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C2597F1D42688400035F63 /* IBLRenewTableViewController.m */; };
 		26C51C361D518E9900A13E5C /* IBLAddWorkOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C51C351D518E9900A13E5C /* IBLAddWorkOrder.m */; };
@@ -333,6 +336,12 @@
 		26ADA5E31D43899B005CAEEC /* IBLExchangeProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLExchangeProductViewController.m; sourceTree = "<group>"; };
 		26ADA5E51D438C75005CAEEC /* IBLAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAboutViewController.h; sourceTree = "<group>"; };
 		26ADA5E61D438C75005CAEEC /* IBLAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAboutViewController.m; sourceTree = "<group>"; };
+		26B549D61D75388C0011D0D0 /* IBLOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderDetailViewController.h; sourceTree = "<group>"; };
+		26B549D71D75388C0011D0D0 /* IBLOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderDetailViewController.m; sourceTree = "<group>"; };
+		26B549D91D7538FC0011D0D0 /* IBLFetchOrderDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLFetchOrderDetail.h; sourceTree = "<group>"; };
+		26B549DA1D7538FC0011D0D0 /* IBLFetchOrderDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFetchOrderDetail.m; sourceTree = "<group>"; };
+		26B549DC1D753A490011D0D0 /* IBLOrderDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderDetail.h; sourceTree = "<group>"; };
+		26B549DD1D753A490011D0D0 /* IBLOrderDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderDetail.m; sourceTree = "<group>"; };
 		26C2597B1D42687300035F63 /* IBLRenewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRenewViewController.h; sourceTree = "<group>"; };
 		26C2597C1D42687300035F63 /* IBLRenewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRenewViewController.m; sourceTree = "<group>"; };
 		26C2597E1D42688400035F63 /* IBLRenewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRenewTableViewController.h; sourceTree = "<group>"; };
@@ -585,6 +594,8 @@
 				26846F691D34C1E9001F9C73 /* IBLOrderCell.xib */,
 				5B8751501161A3D21DFE40EF /* IBLOrderViewController.h */,
 				5B8758BBA9729641CC5F291D /* IBLOrderViewController.m */,
+				26B549D61D75388C0011D0D0 /* IBLOrderDetailViewController.h */,
+				26B549D71D75388C0011D0D0 /* IBLOrderDetailViewController.m */,
 				5B87549D6E482B1831932C04 /* OrderSearch */,
 			);
 			path = WorkOrder;
@@ -642,6 +653,8 @@
 				26C97D661D41C8C3001EFA6F /* IBLProductPrice.m */,
 				26ECF26F1D62F5D800BA8C2B /* IBLPayResult.h */,
 				26ECF2701D62F5D800BA8C2B /* IBLPayResult.m */,
+				26B549DC1D753A490011D0D0 /* IBLOrderDetail.h */,
+				26B549DD1D753A490011D0D0 /* IBLOrderDetail.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -744,6 +757,8 @@
 				265A57B11D5B1330001DBFA0 /* IBLPay.m */,
 				26FCA08F1D5C57E3004B8E2C /* IBLCheckOrder.h */,
 				26FCA0901D5C57E3004B8E2C /* IBLCheckOrder.m */,
+				26B549D91D7538FC0011D0D0 /* IBLFetchOrderDetail.h */,
+				26B549DA1D7538FC0011D0D0 /* IBLFetchOrderDetail.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1316,6 +1331,7 @@
 				26846F681D34BC3F001F9C73 /* UIViewController+IBLExtension.m in Sources */,
 				26846F781D34F0BE001F9C73 /* IBLPremission.m in Sources */,
 				265A57AF1D5B0F60001DBFA0 /* IBLPayRepository.m in Sources */,
+				26B549DE1D753A490011D0D0 /* IBLOrderDetail.m in Sources */,
 				26EC5A3B1D45F7C900CB0F7C /* IBLUserSearchResultCell.m in Sources */,
 				262BFF701D4060D10021F8EB /* IBLHandleOrder.m in Sources */,
 				26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */,
@@ -1381,8 +1397,10 @@
 				262BFF951D40D3510021F8EB /* IBLRegionRepository.m in Sources */,
 				26469BE11D3882A40000285D /* NSDate+IBLExtension.m in Sources */,
 				26846F731D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.m in Sources */,
+				26B549DB1D7538FC0011D0D0 /* IBLFetchOrderDetail.m in Sources */,
 				267622C51D3CDD3200B4E2F3 /* IBLSearchViewModel.m in Sources */,
 				269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */,
+				26B549D81D75388C0011D0D0 /* IBLOrderDetailViewController.m in Sources */,
 				267622D11D3CE10600B4E2F3 /* IBLSearchRepository.m in Sources */,
 				262BFF811D409F230021F8EB /* IBLCreateAccountViewModel.m in Sources */,
 				2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */,

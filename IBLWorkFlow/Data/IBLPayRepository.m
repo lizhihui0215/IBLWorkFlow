@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) IBLSOAPMethod *checkOrderMethod;
 
+@property (nonatomic, strong) IBLSOAPMethod *fetchOrderDetailMethod;
+
 @end
 
 @implementation IBLPayRepository
@@ -31,6 +33,9 @@
         
         self.checkOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@"checkOrder"
                                                         responseMethodName:@"checkOrderResponse"];
+        
+        self.fetchOrderDetailMethod = [IBLSOAPMethod methodWithRequestMethodName:@"getOrderInfo"
+                                                              responseMethodName:@"getOrderInfoResponse"];
         
     }
     return self;
@@ -96,6 +101,29 @@
                                                               } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                                   handler(IBLOrderPayStatusError, error);
                                                               }];
+    
+}
+
+
+- (NSURLSessionDataTask *)fetchOrderDetailWithOrderNumber:(NSString *)orderNumber
+                                          completeHandler:(void (^)(IBLOrderDetail *, NSError *))handler{
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[@"orderNo"] = orderNumber;
+        return parameters;
+    }];
+    
+    return  [[self networkServicesMethods:self.fetchOrderDetailMethod] POST:@"IBLPayInterface"
+                                                                 parameters:parameters
+                                                                   progress:nil
+                                                                    success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                        
+                                                                       IBLOrderDetail *orderDetail = [[IBLOrderDetail alloc] initWithDictionary:responseObject error:nil];
+                                                                        
+                                                                        handler(orderDetail, nil);
+                                                                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                        handler(IBLOrderPayStatusError, error);
+                                                                    }];
     
 }
 

@@ -14,6 +14,7 @@
 #import "IBLBusinessAlertViewController.h"
 #import "IBLSearchViewController.h"
 #import "IBLCreateAccountViewController.h"
+#import "IBLOrderDetailViewController.h"
 
 static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSearch";
 
@@ -166,6 +167,14 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     return @{@(IBLOrderActionForward) : OrderActionForwardIdentifier,
              @(IBLOrderActionSend) : OrderActionSendIdentifier,
              @(IBLOrderActionCreate) : NavigationToCreateAccountIdentifier};
+}
+
+- (IBAction)orderCreateAccountFinishedWithSegue:(UIStoryboardSegue *)segue{
+    IBLOrderDetailViewController *orderDetailViewController = [segue sourceViewController];
+    
+    NSIndexPath *indexPath = [self.viewModel indexPathWithOrder:orderDetailViewController.order];
+    
+    [self.viewModel finishedHandleOrderWithAction:IBLOrderActionCreate atIndexPath:indexPath];
 }
 
 - (void)segmentControlTappedWithAction:(IBLOrderAction)action

@@ -49,7 +49,26 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
         IBLQRViewController *QRViewController = [segue destinationViewController];
         QRViewController.payResult = self.viewModel.payResult;
         QRViewController.pay = [sender integerValue];
+        QRViewController.order = self.viewModel.order;
+        switch (self.viewModel.createAccountType) {
+            case IBLCreateAccountTypeFromOrder: {
+                QRViewController.type = IBLQRTypeFromOrderCreateAccount;
+                break;
+            }
+            case IBLCreateAccountTypeFromLeftMenu: {
+                QRViewController.type = IBLQRTypeFromCreateAccount;
+                break;
+            }
+        }
     }
+}
+
+- (IBAction)createAccountFinished:(UIStoryboardSegue *)segue{
+    [self clean];
+}
+
+- (void)clean{
+    
 }
 
 - (void)tableViewController:(IBLCreateAccountTableViewController *)controller

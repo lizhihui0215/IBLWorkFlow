@@ -8,6 +8,7 @@
 
 #import "IBLBusinessRepository.h"
 #import "IBLPayResult.h"
+#import "IBLOrderDetail.h"
 
 /**
  *  支付状态
@@ -72,5 +73,8 @@ typedef NS_ENUM(NSInteger, IBLOrderPayStatus) {
 
 - (NSURLSessionDataTask *)checkOrderWithNumber:(NSString *)orderNumber
                                completeHandler:(void (^)(IBLOrderPayStatus, NSError *))handler;
+
+- (NSURLSessionDataTask *)fetchOrderDetailWithOrderNumber:(NSString *)orderNumber
+                                          completeHandler:(void (^)(IBLOrderDetail *, NSError *))handler;
 
 @end
