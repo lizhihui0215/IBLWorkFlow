@@ -21,12 +21,33 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     if (self.viewModel.createAccountType == IBLCreateAccountTypeFromLeftMenu) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu"]
                                                                                  style:UIBarButtonItemStylePlain
                                                                                 target:self action:@selector(presentLeftMenuViewController:)];
+    }else{
+        UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
+                                                                          style:UIBarButtonItemStyleBordered
+                                                                         target:self
+                                                                         action:@selector(backButtonPressed:)];
+        
+        self.navigationItem.leftBarButtonItem = newBackButton;
     }
+}
+
+- (void)backButtonPressed:(UIBarButtonItem *)button{
+    IBLButtonItem *confirm = [IBLButtonItem itemWithLabel:@"确认" action:^(IBLButtonItem *item) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+    
+    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                    title:@"返回将丢失所有填写信息。"
+                                                                  message:nil
+                                                         cancleButtonItem:cancel
+                                                         otherButtonItems:confirm,nil];
+    [alert showInController:self];
 }
 
 - (void)didReceiveMemoryWarning {

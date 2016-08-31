@@ -529,6 +529,47 @@
 
 - (void)finishedHandleManagedWorkOrderStatusWithWithAction:(IBLOrderAction)action
                                                atIndexPath:(NSIndexPath *)indexPath{
+    switch (self.status) {
+        case IBLOrderStatusUnsend: {
+            switch (action) {
+                case IBLOrderActionSend:
+                case IBLOrderActionDelete:{
+                    [self deleteOrderAtIndexPath:indexPath];
+                    break;
+                }
+                default: break;
+            }
+            break;
+        }
+        case IBLOrderStatusSended: {
+            switch (action) {
+                case IBLOrderActionForward:
+                case IBLOrderActionFinish:
+                case IBLOrderActionTrash:
+                case IBLOrderActionDelete:{
+                    [self deleteOrderAtIndexPath:indexPath];
+                    break;
+                }
+                default: break;
+            }
+            break;
+        }
+        
+        case IBLOrderStatusHandling: {
+            switch (action) {
+                case IBLOrderActionForward:
+                case IBLOrderActionFinish:
+                case IBLOrderActionTrash:
+                case IBLOrderActionDelete:{
+                    [self deleteOrderAtIndexPath:indexPath];
+                    break;
+                }
+                default: break;
+            }
+            break;
+        }
+        default: break;
+    }
 }
 
 

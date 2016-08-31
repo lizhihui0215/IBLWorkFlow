@@ -61,7 +61,9 @@
 
 - (void)checkOrders:(BOOL)isStop{
     if (isStop) {
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认" action:^(IBLButtonItem *item) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
         
         
         IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
