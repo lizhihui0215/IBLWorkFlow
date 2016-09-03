@@ -97,7 +97,7 @@ static NSString *const kProductName = @"offerName";
         if (productList.productId != 0) parameters[kProductId] = @(productList.productId);
         if (productList.regionId != 0) parameters[kRegionId] = @(productList.regionId);
         parameters[kProductName] = productList.productName;
-        parameters[kStart] = @(productList.start);
+        parameters[kStart] = @(productList.start * productList.pageSize);
         parameters[kPageSize] = @(productList.pageSize);
         
         return parameters;

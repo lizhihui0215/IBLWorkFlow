@@ -139,7 +139,7 @@
         parameters[@"idNo"] = result.userIdentifier;
         parameters[@"addr"] = result.address;
         parameters[kPageSize] = @(result.pageSize);
-        parameters[kStart] = @(result.start);
+        parameters[kStart] = @(result.start * result.pageSize);
         return parameters;
     }];
     

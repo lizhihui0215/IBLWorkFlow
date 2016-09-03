@@ -145,7 +145,7 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[kUsername] = fetch.username;
         parameters[kPhone] = fetch.phone;
         parameters[kDateRange] = fetch.dateRange;
-        parameters[kStart] = @(start);
+        parameters[kStart] = @(start * pageSize);
         parameters[kPageSize] = @(pageSize);
         return parameters;
     }];
