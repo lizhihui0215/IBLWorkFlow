@@ -70,6 +70,28 @@
     return workOrderStatus[@(status)];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell =  [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    return cell;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell =  [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    
+    if (size.height < tableView.estimatedRowHeight) {
+        return tableView.estimatedRowHeight;
+    }
+    
+    NSLog(@"hight %f",size.height);
+    
+    return size.height + 0.5;
+}
+
+
 - (NSString *)workOrderTypeNameWithStatus:(IBLWorkOrderStatus)status{
     
     NSDictionary *workOrderTypes = @{@(IBLWorkOrderStatusUnknow) : @"",

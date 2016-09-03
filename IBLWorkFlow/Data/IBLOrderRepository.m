@@ -138,19 +138,15 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
                     completeHandler:(void (^)(NSMutableArray<IBLOrder *> *, NSError *error))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
-        
-        if (fetch.bizType !=  IBLWorkOrderBizStatusUnknow) parameters[kType] = @(fetch.bizType);
-        
-        if(fetch.type != IBLWorkOrderStatusUnknow) parameters[kBizType] = @(fetch.type);
-        
-        
-        [parameters addEntriesFromDictionary:@{kOrderStatus : @(fetch.status),
-                                               kAccount : fetch.account,
-                                               kUsername : fetch.username,
-                                               kPhone : fetch.phone,
-                                               kDateRange : fetch.dateRange,
-                                               kStart : @(start),
-                                               kPageSize: @(pageSize)}];
+        if (fetch.bizType !=  IBLWorkOrderBizStatusUnknow) parameters[kBizType] = @(fetch.bizType);
+        if(fetch.type != IBLWorkOrderStatusUnknow) parameters[kType] = @(fetch.type);
+        parameters[kOrderStatus] = @(fetch.status);
+        parameters[kAccount] = fetch.account;
+        parameters[kUsername] = fetch.username;
+        parameters[kPhone] = fetch.phone;
+        parameters[kDateRange] = fetch.dateRange;
+        parameters[kStart] = @(start);
+        parameters[kPageSize] = @(pageSize);
         return parameters;
     }];
     
