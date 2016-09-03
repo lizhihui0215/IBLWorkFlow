@@ -14,7 +14,8 @@
 #import "IBLBusinessAlertViewController.h"
 #import "IBLSearchViewController.h"
 #import "IBLCreateAccountViewController.h"
-#import "IBLOrderDetailViewController.h"
+#import "IBLPayDetailViewController.h"
+#import "IBLOrderDetailTableViewController.h"
 
 static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSearch";
 
@@ -118,7 +119,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self performSegueWithIdentifier:@"NavigationToWorkOrderDetail" sender:indexPath];
 }
 
 #pragma mark -
@@ -170,7 +171,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 }
 
 - (IBAction)orderCreateAccountFinishedWithSegue:(UIStoryboardSegue *)segue{
-    IBLOrderDetailViewController *orderDetailViewController = [segue sourceViewController];
+    IBLPayDetailViewController *orderDetailViewController = [segue sourceViewController];
     
     NSIndexPath *indexPath = [self.viewModel indexPathWithOrder:orderDetailViewController.order];
     
@@ -252,6 +253,11 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
         IBLCreateAccountViewController *createAccountViewController = [segue destinationViewController];
         createAccountViewController.viewModel = [IBLCreateAccountViewModel modelWithCreateAccountType:IBLCreateAccountTypeFromOrder order:[self.viewModel orderAtIndexPath:sender]];
         createAccountViewController.delegate = self;
+    }else if ([segue.identifier isEqualToString:@"NavigationToWorkOrderDetail"]){
+        NSIndexPath *indexPath = sender;
+        IBLOrder *order = [self.viewModel orderAtIndexPath:indexPath];
+        IBLOrderDetailTableViewController *orderDetailTableViewController = [segue destinationViewController];
+        orderDetailTableViewController.order = order;
     }
 }
 

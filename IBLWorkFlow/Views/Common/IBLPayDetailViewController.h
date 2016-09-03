@@ -1,5 +1,5 @@
 //
-//  IBLOrderDetailViewController.h
+//  IBLPayDetailViewController.h
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 30/08/2016.
@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger,IBLOrderDetailType) {
     IBLOrderDetailTypeFromCreateAccount,
 };
 
-@interface IBLOrderDetailViewController : UITableViewController
+@interface IBLPayDetailViewController : UITableViewController
 
 @property (nonatomic, strong) IBLOrder *order;
 

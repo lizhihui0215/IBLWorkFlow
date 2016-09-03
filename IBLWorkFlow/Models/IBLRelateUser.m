@@ -14,7 +14,7 @@
                                                        @"ADDR" : @"address",
                                                        @"AREA_NAME" : @"areaName",
                                                        @"COMMENTS" : @"comments",
-                                                       @"CREATE_DATE" : @"createDate",
+                                                       @"CREATE_DATE" : @"createDateLabel",
                                                        @"EFF_DATE" : @"effDate",
                                                        @"EXP_DATE" : @"expDate",
                                                        @"IDNO" : @"userIdentifier",

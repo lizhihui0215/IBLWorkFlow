@@ -26,7 +26,7 @@
                                                        @"SERV_ID" : @"userIdentifier",
                                                        @"USER_ACCOUNT" : @"userAccount",
                                                        @"CREATE_OPER_NAME" : @"creatorName",
-                                                       @"CREATE_OPER_PHONE" : @"creatorPhone",
+                                                       @"CREATE_OPER_PHONE" : @"creatorPhoneLabel",
                                                        @"NODE_ID" : @"residentialIdentifier",
                                                        @"OFFER_ID" : @"productIdentifier",
                                                        @"USER_NAME" : @"username",

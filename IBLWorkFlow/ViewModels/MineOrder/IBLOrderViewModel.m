@@ -124,6 +124,8 @@
         
         self.sendOrder = [[IBLSendOrder alloc] init];
         
+        self.finishOrder = [[IBLFinishOrder alloc] init];
+        
         self.searchResults = [@{@(0) : [IBLOrderSearchResult defaultSearchResult],
                                 @(1) : [IBLOrderSearchResult defaultSearchResult] ,
                                 @(2) : [IBLOrderSearchResult defaultSearchResult],

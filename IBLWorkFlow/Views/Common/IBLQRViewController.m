@@ -9,7 +9,7 @@
 #import "IBLQRViewController.h"
 #import <CocoaSecurity/CocoaSecurity.h>
 #import "IBLCheckOrder.h"
-#import "IBLOrderDetailViewController.h"
+#import "IBLPayDetailViewController.h"
 
 @interface IBLQRViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *QRImageView;
@@ -102,7 +102,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"NavigationToOrderDetail"]) {
-        IBLOrderDetailViewController *orderDetailViewController = [segue destinationViewController];
+        IBLPayDetailViewController *orderDetailViewController = [segue destinationViewController];
         orderDetailViewController.orderNumber = self.payResult.orderNo;
         orderDetailViewController.order = self.order;
         switch (self.type) {

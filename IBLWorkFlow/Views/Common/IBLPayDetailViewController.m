@@ -1,15 +1,15 @@
 //
-//  IBLOrderDetailViewController.m
+//  IBLPayDetailViewController.m
 //  IBLWorkFlow
 //
 //  Created by 李智慧 on 30/08/2016.
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLOrderDetailViewController.h"
+#import "IBLPayDetailViewController.h"
 #import "IBLFetchOrderDetail.h"
 
-@interface IBLOrderDetailViewController ()
+@interface IBLPayDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *payCostTextField;
 @property (weak, nonatomic) IBOutlet UITextField *totalLengthTextField;
 @property (weak, nonatomic) IBOutlet UITextField *totalCostTextField;
@@ -32,7 +32,7 @@
 
 @end
 
-@implementation IBLOrderDetailViewController
+@implementation IBLPayDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
