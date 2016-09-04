@@ -482,9 +482,7 @@
 }
 
 - (NSIndexPath *)indexPathWithOrder:(IBLOrder *)order{
-    NSInteger index = [self.dataSource indexOfObject:order];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    return indexPath;
+    return [self indexPathOfItem:order];
 }
 
 - (void)finisedHandleMineWorkOrderStatusWithWithAction:(IBLOrderAction)action

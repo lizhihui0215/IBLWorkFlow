@@ -51,7 +51,7 @@
 
 - (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button
 {
-    if (!self.tableView.mj_header.isRefreshing) {
+    if (!self.tableView.mj_header.isRefreshing && self.headerRefresh) {
         [self.tableView.mj_header beginRefreshing];
     }
 }

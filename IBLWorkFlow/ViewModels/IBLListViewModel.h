@@ -9,10 +9,11 @@
 #import "IBLViewModel.h"
 
 @class IBLSectionItem;
+@class IBLSection;
 
 @protocol IBLListViewModelProtocol <NSObject>
 
-@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray<IBLSection *> *dataSource;
 
 @end
 
@@ -45,4 +46,6 @@
 - (IBLSection *)sectionAt:(NSInteger)section;
 
 - (IBLSectionItem *)sectionItemAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSIndexPath *)indexPathOfItem:(id)item;
 @end

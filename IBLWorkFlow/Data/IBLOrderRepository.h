@@ -10,6 +10,7 @@
 #import "IBLOrder.h"
 #import "IBLWorkOrderType.h"
 #import "IBLWorkOrderBussinessType.h"
+#import "IBLOrderFlow.h"
 
 
 typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
@@ -147,4 +148,7 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
              operatorId:(NSInteger)operatorId
                 content:(NSString *)content
         completeHandler:(void (^)(NSError *))handler;
+
+- (void)fetchOrderFlowWithIdentifier:(NSInteger)orderIdentifier
+                     completaHandler:(void (^)(NSMutableArray<IBLOrderFlow *> *, NSError *))handler;
 @end

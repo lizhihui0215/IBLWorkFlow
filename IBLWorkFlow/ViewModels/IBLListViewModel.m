@@ -39,6 +39,24 @@
     return section.items[indexPath.row];
 }
 
+- (NSIndexPath *)indexPathOfItem:(id)item{
+    
+    NSIndexPath *indexPath = nil;
+    
+    IBLSectionItem *sectionItem = [IBLSectionItem itemWithInfo:item selected:NO];
+    
+    for (IBLSection *section in self.delegate.dataSource) {
+        NSInteger index = [section.items indexOfObject:sectionItem];
+        if(index != NSNotFound){
+            NSInteger sectionIndex = [self.delegate.dataSource indexOfObject:section];
+            indexPath = [NSIndexPath indexPathForRow:index inSection:sectionIndex];
+            break;
+        }
+    }
+    
+    return indexPath;
+}
+
 @end
 
 @implementation IBLSection
@@ -57,6 +75,16 @@
     return self;
 }
 
+- (BOOL)isEqual:(IBLSection *)object{
+    if (![object isMemberOfClass:[self class]]) return NO;
+    
+    if (self.items) return [self.items isEqualToArray:object.items];
+    
+    //default isEqual implementation
+    return [super isEqual:object];
+}
+
+
 @end
 
 @implementation IBLSectionItem
@@ -74,4 +102,14 @@
     }
     return self;
 }
+
+- (BOOL)isEqual:(IBLSectionItem *)object{
+    if (![object isMemberOfClass:[self class]]) return NO;
+    
+    if (self.info) return [self.info isEqual:object.info];
+    
+    //default isEqual implementation
+    return [super isEqual:object];
+}
+
 @end

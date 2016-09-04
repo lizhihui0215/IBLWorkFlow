@@ -73,6 +73,8 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
 @property (nonatomic, strong) IBLSOAPMethod *sendOrderMethod;
 
 @property (nonatomic, strong) IBLSOAPMethod *addWorkOrderMethod;
+
+@property (nonatomic, strong) IBLSOAPMethod *fetchOrderFlowMethod;
 @end
 
 @implementation IBLOrderRepository
@@ -108,6 +110,8 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         
         self.addWorkOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@"orderAdd"
                                                           responseMethodName:@"orderAddResponse"];
+        self.fetchOrderFlowMethod = [IBLSOAPMethod methodWithRequestMethodName:@"viewOrderFlow"
+                                                            responseMethodName:@"viewOrderFlowResponse"];
         
     }
     return self;
@@ -130,6 +134,31 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         }
     }
     return method;
+}
+
+- (void)fetchOrderFlowWithIdentifier:(NSInteger)orderIdentifier
+                     completaHandler:(void (^)(NSMutableArray<IBLOrderFlow *> *, NSError *))handler{
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[kOrderIdentifier] = @(orderIdentifier);
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.fetchOrderFlowMethod] POST:IBLWorkOrderInterface
+                                                       parameters:parameters
+                                                         progress:nil
+                                                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                              NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderList];
+                                                              
+                                                              NSMutableArray<IBLOrderFlow *> *orderFlows = [NSMutableArray array];
+                                                              for (NSDictionary *orderDictionary in ordersDictionary) {
+                                                                  IBLOrderFlow *order = [[IBLOrderFlow alloc] initWithDictionary:orderDictionary error:nil];
+                                                                  [orderFlows addObject:order];
+                                                              }
+                                                              handler(orderFlows, nil);
+                                                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                              handler(nil, error);
+                                                          }];
 }
 
 - (void)fetchMineOrderListWithFetch:(IBLFetchOrderList *)fetch

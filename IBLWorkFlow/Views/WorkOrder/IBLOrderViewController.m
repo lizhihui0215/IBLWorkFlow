@@ -16,6 +16,7 @@
 #import "IBLCreateAccountViewController.h"
 #import "IBLPayDetailViewController.h"
 #import "IBLOrderDetailTableViewController.h"
+#import "IBLOrderFlowViewController.h"
 
 static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSearch";
 
@@ -140,11 +141,6 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     return [self.viewModel numberOfRowsInSection:sectionIndex];
 }
 
-- (IBAction)orderUserButtonPressed:(UIButton *)button{
-    NSIndexPath *indexPath = nil;
-    
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IBLOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:MineWorkFlowCellIdentifier forIndexPath:indexPath];
@@ -216,7 +212,13 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
             [alertView show];
             break;
         }
-        default:break;
+        case IBLOrderActionView:{
+            break;
+        }
+        case IBLOrderActionViewSingle:{
+            [self performSegueWithIdentifier:@"NavigationToWorkOrderFlow" sender:indexPath];
+            break;
+        }
     }
     
 }
@@ -254,10 +256,13 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
         createAccountViewController.viewModel = [IBLCreateAccountViewModel modelWithCreateAccountType:IBLCreateAccountTypeFromOrder order:[self.viewModel orderAtIndexPath:sender]];
         createAccountViewController.delegate = self;
     }else if ([segue.identifier isEqualToString:@"NavigationToWorkOrderDetail"]){
-        NSIndexPath *indexPath = sender;
-        IBLOrder *order = [self.viewModel orderAtIndexPath:indexPath];
+        IBLOrder *order = [self.viewModel orderAtIndexPath:sender];
         IBLOrderDetailTableViewController *orderDetailTableViewController = [segue destinationViewController];
         orderDetailTableViewController.order = order;
+    }else if ([segue.identifier isEqualToString:@"NavigationToWorkOrderFlow"]){
+        IBLOrderFlowViewController *orderFlowViewController = [segue destinationViewController];
+        IBLOrder *order = [self.viewModel orderAtIndexPath:sender];
+        orderFlowViewController.viewModel = [[IBLOrderFlowViewModel alloc] initWithOrder:order];
     }
 }
 
