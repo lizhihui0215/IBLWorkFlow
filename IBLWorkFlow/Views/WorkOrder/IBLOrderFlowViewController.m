@@ -35,15 +35,31 @@
 
 - (void)tableView:(UITableView *)tableView headerBeginRefresh:(MJRefreshStateHeader *)header{
     [self.viewModel startFetchWithCompleteHandler:^(NSError *error) {
+        [tableView.mj_header endRefreshing];
         if (![self showAlertWithError:error]) {
             [self.tableView reloadData];
         }
     }];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [tableView fd_heightForCellWithIdentifier:@"IBLOrderFlowCell" configuration:^(IBLOrderFlowCell *cell) {
+        cell.orderStatusLabel.text = [self.viewModel statusAtIndexPath:indexPath];
+        cell.operatorLabel.text = [self.viewModel operatorNameAtIndexPath:indexPath];
+        cell.suggestLabel.text = [self.viewModel suggestAtIndexPath:indexPath];
+        cell.handleDateLabel.text = [self.viewModel handleDateAtIndexPath:indexPath];
+    }];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     IBLOrderFlowCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IBLOrderFlowCell" forIndexPath:indexPath];
+    
+    cell.orderStatusLabel.text = [self.viewModel statusAtIndexPath:indexPath];
+    cell.operatorLabel.text = [self.viewModel operatorNameAtIndexPath:indexPath];
+    cell.suggestLabel.text = [self.viewModel suggestAtIndexPath:indexPath];
+    cell.handleDateLabel.text = [self.viewModel handleDateAtIndexPath:indexPath];
     
     return cell;
 }

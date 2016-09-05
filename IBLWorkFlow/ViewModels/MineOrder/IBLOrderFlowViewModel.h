@@ -15,4 +15,11 @@
 
 - (void)startFetchWithCompleteHandler:(IBLViewModelCompleteHandler)handler;
 
+- (NSString *)statusAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSString *)operatorNameAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSString *)suggestAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSString *)handleDateAtIndexPath:(NSIndexPath *)indexPath;
 @end

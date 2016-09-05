@@ -24,6 +24,8 @@ static NSString *const kDateRange = @"dateRange";
 
 static NSString *const kOrderList = @"orderList";
 
+static NSString *const kOrderFlowList = @"orderFlowList";
+
 static NSString *const IBLMethodOfFetchMineOrderList = @"getMyOrderList";
 
 static NSString *const IBLMethodOfOrderMineOrderListResponse = @"getMyOrderListResponse";
@@ -148,7 +150,7 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
                                                        parameters:parameters
                                                          progress:nil
                                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                              NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderList];
+                                                              NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderFlowList];
                                                               
                                                               NSMutableArray<IBLOrderFlow *> *orderFlows = [NSMutableArray array];
                                                               for (NSDictionary *orderDictionary in ordersDictionary) {

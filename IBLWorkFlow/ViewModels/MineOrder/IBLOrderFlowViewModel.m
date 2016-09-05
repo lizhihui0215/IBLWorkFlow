@@ -60,8 +60,44 @@
     return items;
 }
 
+- (IBLOrderFlow *)orderFlowAtIndexPath:(NSIndexPath *)indexPath{
+    IBLSectionItem *item = [self sectionItemAtIndexPath:indexPath];
+    IBLOrderFlow *orderFlow = item.info;
+    return orderFlow;
+}
 
+- (NSString *)orderStatusNameWithStatus:(IBLOrderStatus)status{
+    NSDictionary *workOrderStatus = @{@(IBLOrderStatusUnsend) : @"[未派单]",
+                                      @(IBLOrderStatusSended) : @"[已派单]",
+                                      @(IBLOrderStatusForwarding) : @"[转发中]",
+                                      @(IBLOrderStatusHandling) : @"[处理中]",
+                                      @(IBLOrderStatusInvalid) : @"[作废]",
+                                      @(IBLOrderStatusFinished) : @"[完成]",
+                                      @(IBLOrderStatusFeedback) : @"[反馈中]"};
+    return workOrderStatus[@(status)];
+}
 
+- (NSString *)statusAtIndexPath:(NSIndexPath *)indexPath {
+    IBLOrderFlow *orderFlow = [self orderFlowAtIndexPath:indexPath];
+    
+    return [self orderStatusNameWithStatus:orderFlow.state];
+}
 
+- (NSString *)operatorNameAtIndexPath:(NSIndexPath *)indexPath {
+    IBLOrderFlow *orderFlow = [self orderFlowAtIndexPath:indexPath];
+    
+    return orderFlow.operatorName;
+}
 
+- (NSString *)suggestAtIndexPath:(NSIndexPath *)indexPath {
+    IBLOrderFlow *orderFlow = [self orderFlowAtIndexPath:indexPath];
+
+    return orderFlow.handleSuggest;
+}
+
+- (NSString *)handleDateAtIndexPath:(NSIndexPath *)indexPath {
+    IBLOrderFlow *orderFlow = [self orderFlowAtIndexPath:indexPath];
+
+    return orderFlow.creatorTime;
+}
 @end

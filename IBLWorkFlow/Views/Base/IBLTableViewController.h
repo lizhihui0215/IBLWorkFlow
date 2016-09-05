@@ -8,6 +8,8 @@
 
 #import "IBLViewController.h"
 #import <MJRefresh/MJRefresh.h>
+#import <UITableView+FDTemplateLayoutCell/UITableView+FDTemplateLayoutCell.h>
+
 
 @protocol IBLTableViewControllerDelegate <NSObject>
 
