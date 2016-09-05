@@ -134,10 +134,12 @@
 
 - (void)addWorkOrderTableDidCommit:(IBLAddWorkOrderTableViewController *)controller {
     [self showHUDWithMessage:@"提交中..."];
+    @weakify(self)
     [self.viewModel commitWithCompleteHandler:^(NSError *error){
+        @strongify(self)
         [self hidHUD];
         if (![self showAlertWithError:error]) {
-            
+            [self.delegate addWorkOrderTableDidCommit:self];
         }
     }];
 }

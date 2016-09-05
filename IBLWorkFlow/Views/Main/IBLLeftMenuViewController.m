@@ -22,17 +22,25 @@
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 
-@interface IBLLeftMenuViewController () <IBLLeftMenuTableHeaderViewDelegate>
+@interface IBLLeftMenuViewController () <IBLLeftMenuTableHeaderViewDelegate,IBLAddWorkOrderViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 
-@property (nonatomic, strong) NSDictionary *viewControllers;
+@property (nonatomic, strong) NSMutableDictionary *actionViewControllers;
 
 @end
 
 @implementation IBLLeftMenuViewController
+
+- (void)addWorkOrderTableDidCommit:(IBLAddWorkOrderViewController *)addWorkOrderViewController{
+    UINavigationController *addWorkOrderNavigationViewController = [self addWorkOrderViewController];
+    
+    self.actionViewControllers[@(IBLLeftMenuItemActionAddOrder)] = addWorkOrderNavigationViewController;
+    
+    self.sideMenuViewController.contentViewController = addWorkOrderNavigationViewController;
+}
 
 - (void)setupViewControllers{
     UINavigationController *mineOrderContentViewController = [self mineOrderViewController];
@@ -50,14 +58,14 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     UINavigationController *aboutViewController = [self aboutViewController];
     
     //FIXME: 添加功能
-    self.viewControllers = @{@(IBLLeftMenuSectionActionMineOrder) : mineOrderContentViewController,
-                             @(IBLLeftMenuSectionActionManagedOrder) : managedOrderContentViewController,
-                             @(IBLLeftMenuSectionActionBusinessManaged) : @"",
-                             @(IBLLeftMenuSectionActionAbout) : aboutViewController,
-                             @(IBLLeftMenuItemActionAddOrder) : addWorkOrderViewController,
-                             @(IBLLeftMenuItemActionAddCreateAccount) : createAccountViewController,
-                             @(IBLLeftMenuItemActionAddRenew) : renewViewController,
-                             @(IBLLeftMenuItemActionAddChangeProduct) : exchangeProductViewController,};
+    self.actionViewControllers = [@{@(IBLLeftMenuSectionActionMineOrder) : mineOrderContentViewController,
+                                    @(IBLLeftMenuSectionActionManagedOrder) : managedOrderContentViewController,
+                                    @(IBLLeftMenuSectionActionBusinessManaged) : @"",
+                                    @(IBLLeftMenuSectionActionAbout) : aboutViewController,
+                                    @(IBLLeftMenuItemActionAddOrder) : addWorkOrderViewController,
+                                    @(IBLLeftMenuItemActionAddCreateAccount) : createAccountViewController,
+                                    @(IBLLeftMenuItemActionAddRenew) : renewViewController,
+                                    @(IBLLeftMenuItemActionAddChangeProduct) : exchangeProductViewController,} mutableCopy];
 }
 
 - (UINavigationController *)aboutViewController {
@@ -86,6 +94,8 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     IBLAddWorkOrderViewController *addWorkOrderController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLAddWorkOrderViewController"];
     
     addWorkOrderController.viewModel = [[IBLAddWorkOrderViewModel alloc] init];
+    
+    addWorkOrderController.delegate = self;
     
     return [[UINavigationController alloc] initWithRootViewController:addWorkOrderController];
 }
@@ -126,7 +136,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     
     [self setupViewControllers];
     
-    self.sideMenuViewController.contentViewController = self.viewControllers[@(IBLLeftMenuSectionActionMineOrder)];
+    self.sideMenuViewController.contentViewController = self.actionViewControllers[@(IBLLeftMenuSectionActionMineOrder)];
 }
 
 #pragma mark -
@@ -136,7 +146,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 {
     IBLSectionItem *item = [self.viewModel sectionItemAtIndexPath:indexPath];
     IBLLeftMenu *menu = item.info;
-    self.sideMenuViewController.contentViewController = self.viewControllers[@(menu.index)];
+    self.sideMenuViewController.contentViewController = self.actionViewControllers[@(menu.index)];
     [self.sideMenuViewController hideMenuViewController];
 }
 
@@ -188,7 +198,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     IBLSection *section = [self.viewModel sectionAt:sectionIndex];
     IBLLeftMenu *menu = section.info;
     if (menu.index == IBLLeftMenuSectionActionBusinessManaged) return;
-    self.sideMenuViewController.contentViewController = self.viewControllers[@(menu.index)];
+    self.sideMenuViewController.contentViewController = self.actionViewControllers[@(menu.index)];
     [self.sideMenuViewController hideMenuViewController];
 }
 

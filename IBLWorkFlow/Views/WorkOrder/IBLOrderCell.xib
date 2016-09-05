@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="16A313a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6r6-bh-6bA" id="1Kr-kd-1xW">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="136.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCz-B2-o1z">
@@ -62,14 +62,14 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJh-8t-q3j">
-                                <rect key="frame" x="91" y="44" width="224" height="28"/>
+                                <rect key="frame" x="91" y="44" width="30" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="xyz"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="TJh-8t-q3j" secondAttribute="trailing" constant="5" id="8OL-d6-12t"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TJh-8t-q3j" secondAttribute="trailing" constant="5" id="8OL-d6-12t"/>
                             <constraint firstItem="yf7-DV-1KI" firstAttribute="leading" secondItem="cCz-B2-o1z" secondAttribute="leading" id="C6x-Ym-jkF"/>
                             <constraint firstItem="kV3-aK-9EF" firstAttribute="leading" secondItem="cr2-Im-Nk8" secondAttribute="leading" id="H5u-Vk-4sy"/>
                             <constraint firstAttribute="bottom" secondItem="RJd-xb-ybj" secondAttribute="bottom" constant="8.5" id="HAY-ox-FxN"/>

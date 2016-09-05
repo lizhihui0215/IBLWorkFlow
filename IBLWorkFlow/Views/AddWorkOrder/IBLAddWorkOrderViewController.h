@@ -9,8 +9,18 @@
 #import "IBLViewController.h"
 #import "IBLAddWorkOrderViewModel.h"
 
+@class IBLAddWorkOrderViewController;
+
+@protocol IBLAddWorkOrderViewControllerDelegate <NSObject>
+
+- (void)addWorkOrderTableDidCommit:(IBLAddWorkOrderViewController *)addWorkOrderViewController;
+
+@end
+
 @interface IBLAddWorkOrderViewController : IBLViewController
 
 @property (nonatomic, strong) IBLAddWorkOrderViewModel *viewModel;
+
+@property (nonatomic, weak) id<IBLAddWorkOrderViewControllerDelegate> delegate;
 
 @end
