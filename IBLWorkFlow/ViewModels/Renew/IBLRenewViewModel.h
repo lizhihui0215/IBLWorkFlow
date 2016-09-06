@@ -9,6 +9,8 @@
 #import "IBLViewModel.h"
 #import "IBLRelateUser.h"
 #import "IBLFetchProductPrice.h"
+#import "IBLPay.h"
+
 @class IBLRenewResult;
 
 @interface IBLRenewViewModel : IBLViewModel
@@ -17,6 +19,7 @@
 
 @property (nonatomic, strong, readonly) IBLProductPrice *productPrices;
 
+@property (nonatomic, strong, readonly) IBLPayResult *payResult;
 
 + (instancetype)modelWithUser:(IBLRelateUser *)user;
 
@@ -64,4 +67,8 @@
 - (IBLPayModel)payModel;
 
 - (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary;
+
+- (void)payWithType:(NSString *)type
+             result:(IBLRenewResult *)result
+    completeHandler:(IBLViewModelCompleteHandler)handler;
 @end

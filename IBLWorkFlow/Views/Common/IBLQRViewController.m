@@ -13,6 +13,8 @@
 
 @interface IBLQRViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *QRImageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIView *QRBackgroundView;
 
 @property (nonatomic, strong) IBLCheckOrder *checkOrder;
 
@@ -30,6 +32,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.checkOrder = [[IBLCheckOrder alloc] init];
+    self.QRBackgroundView.layer.cornerRadius = 3;
     
     UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
                                                                       style:UIBarButtonItemStyleBordered
@@ -41,12 +44,14 @@
     self.startDate = [NSDate date];
 
     switch (self.pay) {
-        case IBLPayWeChat: {
+        case IBLQRPayTypeWeChat: {
             self.title = @"微信支付";
+            self.titleLabel.text = @"使用微信扫描二维码付款";
             break;
         }
-        case IBLPayAilPay: {
+        case IBLQRPayTypeAilPay: {
             self.title = @"支付宝支付";
+            self.titleLabel.text = @"使用支付宝扫描二维码付款";
             break;
         }
     }
@@ -107,11 +112,19 @@
         orderDetailViewController.order = self.order;
         switch (self.type) {
             case IBLQRTypeFromOrderCreateAccount: {
-                orderDetailViewController.type = IBLQRTypeFromOrderCreateAccount;
+                orderDetailViewController.type = IBLOrderDetailTypeFromOrderCreateAccount;
                 break;
             }
             case IBLQRTypeFromCreateAccount: {
-                orderDetailViewController.type = IBLQRTypeFromCreateAccount;
+                orderDetailViewController.type = IBLOrderDetailTypeFromCreateAccount;
+                break;
+            }
+            case IBLQRTypeFromRenew:{
+                orderDetailViewController.type = IBLOrderDetailTypeFromRenew;
+                break;
+            }
+            case IBLQRTypeFromExchangeProduct:{
+                orderDetailViewController.type = IBLOrderDetailTypeFromExchangeProduct;
                 break;
             }
         }

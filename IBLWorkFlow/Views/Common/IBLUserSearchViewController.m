@@ -33,6 +33,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)renewCommitFinished:(UIStoryboardSegue *)segue{
+    NSLog(@"renewCommitFinished commit finished");
+}
+
+- (IBAction)exchangeProductCommitFinished:(UIStoryboardSegue *)segue{
+    NSLog(@"exchangeProductCommitFinished commit finished");
+}
+
 - (void)userSearchTableViewController:(IBLUserSearchTableViewController *)tableViewController
                          didEndSearch:(IBLUserSearchResult *)searchResult {
 

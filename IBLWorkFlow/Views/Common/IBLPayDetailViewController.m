@@ -59,6 +59,14 @@
             [self performSegueWithIdentifier:@"NavigationToCreateAccount" sender:nil];
             break;
         }
+        case IBLOrderDetailTypeFromRenew:{
+            [self performSegueWithIdentifier:@"NavigationToRenew" sender:nil];
+            break;
+        }
+        case IBLOrderDetailTypeFromExchangeProduct:{
+            [self performSegueWithIdentifier:@"NavigationToExchangeProduct" sender:nil];
+            break;
+        }
     }
 }
 

@@ -70,7 +70,8 @@
             break;
         }
         case IBLSearchTypeCreateAccountProduct:
-        case IBLSearchTypeAddOrderProduct:{
+        case IBLSearchTypeAddOrderProduct:
+        case IBLSearchTypeExchangeProductProduct:{
             searchInfo = @{kSearchProductName : keyword};
             break;
         }
@@ -137,7 +138,8 @@
             break;
         }
         case IBLSearchTypeCreateAccountProduct:
-        case IBLSearchTypeAddOrderProduct:{
+        case IBLSearchTypeAddOrderProduct:
+        case IBLSearchTypeExchangeProductProduct:{
             cell = [self configurationProductCellWithTableView:tableView indexPath:indexPath];
             break;
         }

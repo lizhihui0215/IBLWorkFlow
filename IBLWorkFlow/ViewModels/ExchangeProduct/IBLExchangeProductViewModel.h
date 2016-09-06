@@ -3,14 +3,19 @@
 // Copyright (c) 2016 IBL. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "IBLViewModel.h"
+#import "IBLFetchProductPrice.h"
+#import "IBLRelateUser.h"
+#import "IBLPay.h"
+@class IBLExchangeProductResult;
 
-@class IBLRelateUser;
-
-
-@interface IBLExchangeProductViewModel : NSObject
+@interface IBLExchangeProductViewModel : IBLViewModel
 
 @property (nonatomic, strong, readonly) IBLRelateUser *user;
+
+@property (nonatomic, strong, readonly) IBLProductPrice *productPrices;
+
+@property (nonatomic, strong, readonly) IBLPayResult *payResult;
 
 + (instancetype)modelWithUser:(IBLRelateUser *)user;
 
@@ -30,5 +35,23 @@
 
 - (NSString *)exchangeType;
 
+- (NSString *)productIdentifier;
+
+- (NSString *)regionIdentifier;
+
+- (IBLProductPrice *)productPrice;
+
+- (IBLPayModel)payModel;
+
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)fetchProductPrice:(IBLFetchProductPriceInfo *)info
+          completeHandler:(IBLViewModelCompleteHandler)handler;
+
+- (void)payWithType:(NSString *)type
+             result:(IBLExchangeProductResult *)result
+    completeHandler:(IBLViewModelCompleteHandler)handler;
+
+- (void)commitWithResult:(IBLExchangeProductResult *)result
+         completeHandler:(IBLViewModelCompleteHandler)handler;
 @end

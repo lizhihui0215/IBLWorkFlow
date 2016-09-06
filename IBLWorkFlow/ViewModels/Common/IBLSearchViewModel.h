@@ -46,6 +46,10 @@ typedef NS_ENUM(NSInteger, IBLSearchType) {
     IBLSearchTypeAddOrderProduct,
         
     IBLSearchTypeAddOrderOperator,
+    /**
+     *  更换销售品选择销售品
+     */
+    IBLSearchTypeExchangeProductProduct,
 };
 
 @class IBLSearchViewModel;

@@ -8,6 +8,7 @@
 
 #import "IBLRenewViewController.h"
 #import "IBLRenewTableViewController.h"
+#import "IBLQRViewController.h"
 
 @interface IBLRenewViewController () <IBLRenewTableViewControllerDelegate>
 
@@ -25,15 +26,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-   IBLRenewTableViewController *renewTableViewController = [segue destinationViewController];
-    renewTableViewController.tableViewDelegate = self;
+    if ([segue.identifier isEqualToString:@"IBLQRViewController"]) {
+        IBLQRViewController *QRViewController = [segue destinationViewController];
+        QRViewController.payResult = self.viewModel.payResult;
+        QRViewController.pay = [sender integerValue];
+        QRViewController.type = IBLQRTypeFromRenew;
+    }else{
+        IBLRenewTableViewController *renewTableViewController = [segue destinationViewController];
+        renewTableViewController.tableViewDelegate = self;
+    }
 }
 
 - (NSString *)textOfTableViewController:(IBLRenewTableViewController *)controller
@@ -135,12 +142,24 @@
         case IBLPayModelNet: {
             IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
                                                            action:^(IBLButtonItem *item) {
-                                                               
+                                                               [self.viewModel payWithType:@"0"
+                                                                                    result:result
+                                                                           completeHandler:^(NSError *error) {
+                                                                               if (![self showAlertWithError:error]) {
+                                                                                   [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeAilPay)];
+                                                                               }
+                                                                           }];
                                                            }];
             
             IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
                                                                action:^(IBLButtonItem *item) {
-                                                                   
+                                                                   [self.viewModel payWithType:@"1"
+                                                                                        result:result
+                                                                               completeHandler:^(NSError *error) {
+                                                                                   if (![self showAlertWithError:error]) {
+                                                                                       [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeWeChat)];
+                                                                                   }
+                                                                               }];
                                                                }];
             
             IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];

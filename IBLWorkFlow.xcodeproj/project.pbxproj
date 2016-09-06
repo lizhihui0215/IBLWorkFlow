@@ -567,8 +567,8 @@
 		26EC5A381D45F21C00CB0F7C /* ExchangeProduct */ = {
 			isa = PBXGroup;
 			children = (
-				5B875A9FF16C311E1D55C840 /* IBLExchangeProductViewModel.m */,
 				5B875FCE8E5C33A137830DB8 /* IBLExchangeProductViewModel.h */,
+				5B875A9FF16C311E1D55C840 /* IBLExchangeProductViewModel.m */,
 			);
 			path = ExchangeProduct;
 			sourceTree = "<group>";

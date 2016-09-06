@@ -212,6 +212,7 @@
     self.salesTextField.delegate = self;
     self.discountTextField.delegate = self;
     self.giveTextField.delegate = self;
+    self.giveTextField.text = @"0";
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField;{
@@ -314,7 +315,7 @@
     // 支付金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 优惠金额
 
     // 单个销售品总额
-    NSInteger unitPrice = self.productPrice.unitPrice;
+    NSInteger unitPrice = self.productPrice.totalAmount;
     // 订购数量
     NSInteger count = [self.countTextField.text integerValue];
     // 优惠金额
@@ -331,7 +332,7 @@
     // 销售品总金额 = 单个销售品金额（totalFee） ＊ 订购数量
     
     // 单个销售品总额
-    NSInteger unitPrice = self.productPrice.unitPrice;
+    NSInteger unitPrice = self.productPrice.totalAmount;
     
     // 订购数量
     NSInteger count = [self.countTextField.text integerValue];
@@ -373,7 +374,7 @@
 - (CGFloat)discount{
     // 优惠金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 支付金额
     // 单个销售品总额
-    NSInteger unitPrice = self.productPrice.unitPrice;
+    NSInteger unitPrice = self.productPrice.totalAmount;
     
     // 订购数量
     NSInteger count = [self.countTextField.text integerValue];

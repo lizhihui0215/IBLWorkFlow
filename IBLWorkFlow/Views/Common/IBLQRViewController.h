@@ -10,14 +10,16 @@
 #import "IBLPayResult.h"
 #import "IBLOrder.h"
 
-typedef NS_ENUM(NSInteger, IBLPay) {
-    IBLPayWeChat,
-    IBLPayAilPay,
+typedef NS_ENUM(NSInteger, IBLQRPayType) {
+    IBLQRPayTypeWeChat,
+    IBLQRPayTypeAilPay,
 };
 
 typedef NS_ENUM(NSInteger, IBLQRType) {
     IBLQRTypeFromOrderCreateAccount,
     IBLQRTypeFromCreateAccount,
+    IBLQRTypeFromRenew,
+    IBLQRTypeFromExchangeProduct,
 };
 
 
@@ -37,7 +39,7 @@ typedef NS_ENUM(NSInteger, IBLQRType) {
 
 @property (nonatomic, strong) IBLPayResult *payResult;
 
-@property (nonatomic, assign) IBLPay pay;
+@property (nonatomic, assign) IBLQRPayType pay;
 
 @property (nonatomic, weak) id<IBLQRViewControllerDelegate> delegate;
 

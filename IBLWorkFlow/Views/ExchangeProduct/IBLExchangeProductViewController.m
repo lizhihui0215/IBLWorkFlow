@@ -8,6 +8,7 @@
 
 #import "IBLExchangeProductViewController.h"
 #import "IBLExchangeProductTableViewController.h"
+#import "IBLQRViewController.h"
 
 @interface IBLExchangeProductViewController () <IBLExchangeProductTableViewControllerDelegate>
 
@@ -23,6 +24,74 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)productPriceOfTableViewController:(IBLExchangeProductTableViewController *)controller
+                          completeHandler:(void (^)(IBLProductPrice *productPrice))completeHandler {
+    NSInteger productId = [[self.viewModel productIdentifier] integerValue];
+    IBLFetchProductPriceInfo *fetchProductPrice = [IBLFetchProductPriceInfo priceWithProductId:productId
+                                                                                   discountIds:@""
+                                                                                         renew:NO];
+    [self showHUDWithMessage:@""];
+    [self.viewModel fetchProductPrice:fetchProductPrice
+                      completeHandler:^(NSError *error){
+                          IBLProductPrice *productPrice = [self.viewModel productPrice];
+                          [self hidHUD];
+                          [self showAlertWithError:error];
+                          completeHandler(productPrice);
+                      }];
+    
+}
+
+- (void)tableViewController:(IBLExchangeProductTableViewController *)controller commitResult:(IBLExchangeProductResult *)result{
+    IBLPayModel model = [self.viewModel payModel];
+    
+    switch (model) {
+        case IBLPayModelNet: {
+            IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
+                                                           action:^(IBLButtonItem *item) {
+                                                               [self.viewModel payWithType:@"0"
+                                                                                    result:result
+                                                                           completeHandler:^(NSError *error) {
+                                                                               if (![self showAlertWithError:error]) {
+                                                                                   [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeAilPay)];
+                                                                               }
+                                                                           }];
+                                                           }];
+            
+            IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
+                                                               action:^(IBLButtonItem *item) {
+                                                                   [self.viewModel payWithType:@"1"
+                                                                                        result:result
+                                                                               completeHandler:^(NSError *error) {
+                                                                                   if (![self showAlertWithError:error]) {
+                                                                                       [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeWeChat)];
+                                                                                   }
+                                                                               }];
+                                                               }];
+            
+            IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+            
+            
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                            title:@"请选择支付方式"
+                                                                          message:nil
+                                                                 cancleButtonItem:cancel
+                                                                 otherButtonItems:general,noEmergency,nil];
+            [alert showInController:self];
+            break;
+        }
+        case IBLPayModelCash: {
+            [self.viewModel commitWithResult:result
+                             completeHandler:^(NSError *error) {
+                                 if (![self showAlertWithError:error]) {
+                                     [self.navigationController popToRootViewControllerAnimated:YES];
+                                 }
+                             }];
+            break;
+        }
+    }    
+
 }
 
 
@@ -69,6 +138,10 @@
         }
         case IBLExchangeProductTextFieldTypeExchangeType: {
             text = [self.viewModel exchangeType];
+            break;
+        }
+        case IBLExchangeProductTextFieldTypeRegionIdentifier:{
+            text = [self.viewModel regionIdentifier];
             break;
         }
         default: break;

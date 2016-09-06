@@ -13,6 +13,7 @@
 #import "IBLCreateAccountHiddenFields.h"
 #import "IBLUserListRepository.h"
 
+
 @interface IBLRenewViewModel ()
 
 @property (nonatomic, strong) IBLFetchProductPrice *fetchProductPrice;
@@ -25,6 +26,9 @@
 
 @property (nonatomic, strong) IBLCreateAccountHiddenFields *hiddenFields;
 
+@property (nonatomic, strong) IBLPay *QRPay;
+
+@property (nonatomic, strong, readwrite) IBLPayResult *payResult;
 @end
 
 @implementation IBLRenewViewModel
@@ -39,6 +43,7 @@
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
         
         self.hiddenFields = [[IBLCreateAccountHiddenFields alloc] init];
+        self.QRPay = [[IBLPay alloc] init];
 
     }
 
@@ -130,8 +135,65 @@
     return self.productPrices;
 }
 
+- (void)payWithType:(NSString *)type
+             result:(IBLRenewResult *)result
+    completeHandler:(IBLViewModelCompleteHandler)handler {
+    
+    IBLQRPayInfo *info = [[IBLQRPayInfo alloc] init];
+    
+    info.orderType = @"2";
+    
+    info.payType = type;
+    
+    info.offerId = self.productIdentifier;
+    
+    info.account = self.user.account;
+    
+//    info.password = self.;
+    
+    info.userName = self.user.username;
+    
+    info.phone = self.user.phone;
+    
+    info.addr = self.user.address;
+    
+    info.remark = result.comment;
+    
+    info.buyLength = result.productCount;
+    
+    info.extraLength = result.give;
+    
+    info.offerName = self.product;
+    
+    info.idNo = self.user.idNo;
+    
+    info.buyLength = result.renewProductCount;
+    
+    //???: 总量从那获取
+    info.totalLength = result.productCount;
+    
+    
+    info.totalCost = result.productPriceAmount;
+    
+    //???: payCost 从那获取
+    info.payCost = result.pay;
+    
+    //???:
+    //    info.otherCost = createAccountInfo
+    
+    info.nodeId = self.user.areaIdentifier;
+    
+    
+    [self.QRPay payWithQRPayInfo:info
+               completeHandler:^(IBLPayResult *payResult, NSError *error) {
+                   self.payResult = payResult;
+                   handler(error);
+               }];
+}
+
 - (void)commitWithResult:(IBLRenewResult *)result
          completeHandler:(IBLViewModelCompleteHandler)handler{
+    
     IBLCreateAccountInfo *info = [[IBLCreateAccountInfo alloc] init];
     info.account = self.user.account;
     info.userName = self.user.username;
@@ -148,7 +210,6 @@
     info.loginType = @"";
     info.contractCode = result.contract;
     info.voiceCode = result.ticket;
-    
     
     [self.createAccount createAccountWithInfo:info completeHandler:^(id obj, NSError *error) {
         

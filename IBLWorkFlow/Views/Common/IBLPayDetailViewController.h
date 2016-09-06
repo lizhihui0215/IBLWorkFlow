@@ -12,6 +12,8 @@
 typedef NS_ENUM(NSInteger,IBLOrderDetailType) {
     IBLOrderDetailTypeFromOrderCreateAccount,
     IBLOrderDetailTypeFromCreateAccount,
+    IBLOrderDetailTypeFromRenew,
+    IBLOrderDetailTypeFromExchangeProduct,
 };
 
 @interface IBLPayDetailViewController : UITableViewController

@@ -104,7 +104,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
                                                                          createAccountInfo:commit
                                                                            completeHandler:^(NSError *error) {
                                                                                if (![self showAlertWithError:error]) {
-                                                                                   [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLPayAilPay)];
+                                                                                   [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeAilPay)];
                                                                                }
                                                                }];
                                                            }];
@@ -115,7 +115,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
                                                                              createAccountInfo:commit
                                                                                completeHandler:^(NSError *error) {
                                                                                    if (![self showAlertWithError:error]) {
-                                                                                       [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLPayWeChat)];
+                                                                                       [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeWeChat)];
                                                                                    }
                                                                    }];
                                                                }];
