@@ -58,6 +58,12 @@ static NSString const * kRenew = @"RENEW";
         [menus addObject:menu];
     }
     
+    IBLLeftMenu *menu7 = [IBLLeftMenu menuWithTitle:@"上网记录查询"
+                                               icon:[UIImage imageNamed:@"Internet"]
+                                        parentIndex:IBLLeftMenuSectionActionBusinessManaged
+                                              index:IBLLeftMenuItemActionInternet];
+    [menus addObject:menu7];
+
     IBLLeftMenu *about = [IBLLeftMenu menuWithTitle:@"关于我们"
                                                icon:[UIImage imageNamed:@"about1"]
                                         parentIndex:NSNotFound
@@ -100,6 +106,7 @@ static NSString const * kRenew = @"RENEW";
                                         parentIndex:IBLLeftMenuSectionActionBusinessManaged
                                               index:IBLLeftMenuItemActionAddChangeProduct];
     
+
     return @{kMineWorkOrder : menu1,
              kMineWorkOrderManage : menu2,
              kAddOrder : menu3,

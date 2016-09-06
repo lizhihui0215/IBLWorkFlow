@@ -79,6 +79,8 @@
 		26846F731D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F721D34D28B001F9C73 /* IBLLeftMenuTableHeaderView.m */; };
 		26846F751D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26846F741D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib */; };
 		26846F781D34F0BE001F9C73 /* IBLPremission.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F771D34F0BE001F9C73 /* IBLPremission.m */; };
+		2684A3071D7EC5B9001B92B7 /* IBLInternetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684A3061D7EC5B9001B92B7 /* IBLInternetTableViewController.m */; };
+		2684A30A1D7ECA21001B92B7 /* IBLInternetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684A3091D7ECA21001B92B7 /* IBLInternetListViewController.m */; };
 		269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D571D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m */; };
 		269B7D5A1D33453200D52DF0 /* Test.xml in Resources */ = {isa = PBXBuildFile; fileRef = 269B7D591D33453200D52DF0 /* Test.xml */; };
 		269B7D5D1D335A9F00D52DF0 /* NSString+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D5C1D335A9F00D52DF0 /* NSString+IBLExtension.m */; };
@@ -312,6 +314,10 @@
 		26846F741D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IBLLeftMenuTableHeaderView.xib; sourceTree = "<group>"; };
 		26846F761D34F0BE001F9C73 /* IBLPremission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLPremission.h; sourceTree = "<group>"; };
 		26846F771D34F0BE001F9C73 /* IBLPremission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLPremission.m; sourceTree = "<group>"; };
+		2684A3051D7EC5B9001B92B7 /* IBLInternetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLInternetTableViewController.h; sourceTree = "<group>"; };
+		2684A3061D7EC5B9001B92B7 /* IBLInternetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetTableViewController.m; sourceTree = "<group>"; };
+		2684A3081D7ECA21001B92B7 /* IBLInternetListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLInternetListViewController.h; sourceTree = "<group>"; };
+		2684A3091D7ECA21001B92B7 /* IBLInternetListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetListViewController.m; sourceTree = "<group>"; };
 		269B7D561D333BA200D52DF0 /* IBLWebServiceResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWebServiceResponseSerializer.h; sourceTree = "<group>"; };
 		269B7D571D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWebServiceResponseSerializer.m; sourceTree = "<group>"; };
 		269B7D591D33453200D52DF0 /* Test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test.xml; sourceTree = "<group>"; };
@@ -562,6 +568,17 @@
 				264EBB881D2E023D00FF8373 /* Info.plist */,
 			);
 			path = IBLWorkFlowUITests;
+			sourceTree = "<group>";
+		};
+		2684A3041D7EB62A001B92B7 /* Internet */ = {
+			isa = PBXGroup;
+			children = (
+				2684A3051D7EC5B9001B92B7 /* IBLInternetTableViewController.h */,
+				2684A3061D7EC5B9001B92B7 /* IBLInternetTableViewController.m */,
+				2684A3081D7ECA21001B92B7 /* IBLInternetListViewController.h */,
+				2684A3091D7ECA21001B92B7 /* IBLInternetListViewController.m */,
+			);
+			path = Internet;
 			sourceTree = "<group>";
 		};
 		26EC5A381D45F21C00CB0F7C /* ExchangeProduct */ = {
@@ -828,6 +845,7 @@
 				5B87507F1DBBBDCD62C4B2A4 /* Renew */,
 				5B8750E1AE5CD0609E587076 /* ExchangeProduct */,
 				5B8759655A5418E7D4BDB598 /* About */,
+				2684A3041D7EB62A001B92B7 /* Internet */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1437,6 +1455,7 @@
 				269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */,
 				267622D11D3CE10600B4E2F3 /* IBLSearchRepository.m in Sources */,
 				262BFF811D409F230021F8EB /* IBLCreateAccountViewModel.m in Sources */,
+				2684A30A1D7ECA21001B92B7 /* IBLInternetListViewController.m in Sources */,
 				2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */,
 				26846F561D34A34A001F9C73 /* IBLButtonItem.m in Sources */,
 				5B8757B04D26803E3A8D923B /* IBLRootViewController.m in Sources */,
@@ -1452,6 +1471,7 @@
 				5B875ABCE8A1815B62EDC2A3 /* IBLTableViewController.m in Sources */,
 				26FFA9251D36936200DF8D4E /* IBLAppRepository.m in Sources */,
 				26A11D051D363A6900984B40 /* CustomIOSAlertView.m in Sources */,
+				2684A3071D7EC5B9001B92B7 /* IBLInternetTableViewController.m in Sources */,
 				262BFF771D4074050021F8EB /* IBLSectionHeaderView.m in Sources */,
 				5B8754AC25CDAC1FA27E0231 /* IBLOrderViewController.m in Sources */,
 				5B8757FCBA803A3DCB4C50B2 /* IBLOrderCell.m in Sources */,

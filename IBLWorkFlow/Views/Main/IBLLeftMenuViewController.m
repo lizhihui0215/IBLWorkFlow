@@ -18,6 +18,7 @@
 #import "IBLExchangeProductViewController.h"
 #import "IBLAboutViewController.h"
 #import "IBLUserSearchViewController.h"
+#import "IBLInternetTableViewController.h"
 
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
@@ -57,6 +58,8 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     
     UINavigationController *aboutViewController = [self aboutViewController];
     
+    UINavigationController *internetViewController = [self internetViewController];
+    
     //FIXME: 添加功能
     self.actionViewControllers = [@{@(IBLLeftMenuSectionActionMineOrder) : mineOrderContentViewController,
                                     @(IBLLeftMenuSectionActionManagedOrder) : managedOrderContentViewController,
@@ -65,7 +68,14 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
                                     @(IBLLeftMenuItemActionAddOrder) : addWorkOrderViewController,
                                     @(IBLLeftMenuItemActionAddCreateAccount) : createAccountViewController,
                                     @(IBLLeftMenuItemActionAddRenew) : renewViewController,
-                                    @(IBLLeftMenuItemActionAddChangeProduct) : exchangeProductViewController,} mutableCopy];
+                                    @(IBLLeftMenuItemActionAddChangeProduct) : exchangeProductViewController,
+                                    @(IBLLeftMenuItemActionInternet) : internetViewController} mutableCopy];
+}
+
+- (UINavigationController *)internetViewController{
+    IBLInternetTableViewController *internetViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLInternetTableViewController"];
+    
+    return [[UINavigationController alloc] initWithRootViewController:internetViewController];
 }
 
 - (UINavigationController *)aboutViewController {

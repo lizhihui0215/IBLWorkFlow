@@ -90,7 +90,8 @@
 //        // 换销售品
 //        IBLSectionItem *item = [IBLSectionItem itemWithInfo:@"" selected:NO];
 //
-//    
+//       // 上网记录
+//
 //    // 关于我们
 //    IBLSection *section1 = [IBLSection sectionWithInfo:@"" items:[@[] mutableCopy]];
 //

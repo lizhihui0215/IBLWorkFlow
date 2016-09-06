@@ -189,6 +189,170 @@
             </objects>
             <point key="canvasLocation" x="1336" y="-354"/>
         </scene>
+        <!--Internet Table View Controller-->
+        <scene sceneID="3hf-zU-kF2">
+            <objects>
+                <tableViewController storyboardIdentifier="IBLInternetTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jHK-Ka-Xiu" customClass="IBLInternetTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GKZ-Ra-hX6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="KQQ-Ln-iOb">
+                            <rect key="frame" x="0.0" y="80" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNb-ZA-3VG">
+                                    <rect key="frame" x="9" y="3" width="302" height="37"/>
+                                    <state key="normal" title="搜索" backgroundImage="searchButtonBackground">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="searchButtonPressed:" destination="jHK-Ka-Xiu" eventType="touchUpInside" id="rxL-w7-Y42"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="rNb-ZA-3VG" firstAttribute="centerX" secondItem="KQQ-Ln-iOb" secondAttribute="centerX" id="X4k-Ib-UYW"/>
+                                <constraint firstItem="rNb-ZA-3VG" firstAttribute="centerY" secondItem="KQQ-Ln-iOb" secondAttribute="centerY" id="z4x-Oy-eoV"/>
+                            </constraints>
+                        </view>
+                        <sections>
+                            <tableViewSection id="Ohp-Gx-2GU">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="CMu-V1-6JD">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CMu-V1-6JD" id="U5l-WK-pCz">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awx-wD-DCA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户账户*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qBa-LZ-UaI">
+                                                            <rect key="frame" x="10" y="12" width="59" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OfL-1k-os7">
+                                                            <rect key="frame" x="74" y="11" width="241" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="OfL-1k-os7" secondAttribute="trailing" constant="5" id="2Zb-BY-Xpf"/>
+                                                        <constraint firstItem="qBa-LZ-UaI" firstAttribute="centerY" secondItem="awx-wD-DCA" secondAttribute="centerY" id="MDm-B4-Dcg"/>
+                                                        <constraint firstItem="OfL-1k-os7" firstAttribute="centerY" secondItem="awx-wD-DCA" secondAttribute="centerY" id="OFN-UQ-PUY"/>
+                                                        <constraint firstItem="qBa-LZ-UaI" firstAttribute="leading" secondItem="awx-wD-DCA" secondAttribute="leading" constant="10" id="SwH-dU-Add"/>
+                                                        <constraint firstItem="OfL-1k-os7" firstAttribute="leading" secondItem="qBa-LZ-UaI" secondAttribute="trailing" constant="5" id="TG3-mb-sTG"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="awx-wD-DCA" secondAttribute="bottom" id="XlC-aK-i5z"/>
+                                                <constraint firstItem="awx-wD-DCA" firstAttribute="leading" secondItem="U5l-WK-pCz" secondAttribute="leading" id="kJM-rk-eym"/>
+                                                <constraint firstAttribute="trailing" secondItem="awx-wD-DCA" secondAttribute="trailing" id="nFb-oB-x75"/>
+                                                <constraint firstItem="awx-wD-DCA" firstAttribute="top" secondItem="U5l-WK-pCz" secondAttribute="top" id="uhf-cl-Vpa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="HwC-2E-Wa5">
+                                        <rect key="frame" x="0.0" y="40" width="320" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HwC-2E-Wa5" id="rle-ir-0Al">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfp-3P-L3g">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查询月份*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZc-1I-UbB">
+                                                            <rect key="frame" x="10" y="12" width="59" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" verticalHuggingPriority="251" image="date" translatesAutoresizingMaskIntoConstraints="NO" id="NDp-sL-cWz">
+                                                            <rect key="frame" x="79" y="12" width="15" height="15"/>
+                                                        </imageView>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LHR-pJ-0H1">
+                                                            <rect key="frame" x="99" y="11" width="216" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstItem="LHR-pJ-0H1" firstAttribute="leading" secondItem="NDp-sL-cWz" secondAttribute="trailing" constant="5" id="HKI-gS-a3t"/>
+                                                        <constraint firstAttribute="trailing" secondItem="LHR-pJ-0H1" secondAttribute="trailing" constant="5" id="Vi6-au-oTb"/>
+                                                        <constraint firstItem="qZc-1I-UbB" firstAttribute="centerY" secondItem="rfp-3P-L3g" secondAttribute="centerY" id="dfy-i9-VRx"/>
+                                                        <constraint firstItem="NDp-sL-cWz" firstAttribute="centerY" secondItem="rfp-3P-L3g" secondAttribute="centerY" id="fiX-HL-Svj"/>
+                                                        <constraint firstItem="LHR-pJ-0H1" firstAttribute="centerY" secondItem="rfp-3P-L3g" secondAttribute="centerY" id="p7s-bT-PRF"/>
+                                                        <constraint firstItem="qZc-1I-UbB" firstAttribute="leading" secondItem="rfp-3P-L3g" secondAttribute="leading" constant="10" id="rlO-iR-x92"/>
+                                                        <constraint firstItem="NDp-sL-cWz" firstAttribute="leading" secondItem="qZc-1I-UbB" secondAttribute="trailing" constant="10" id="v36-0X-JEF"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="1qY-28-7ke" appends="YES" id="cOl-YP-X4Y"/>
+                                                    </connections>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="rfp-3P-L3g" secondAttribute="trailing" id="ChB-uN-74d"/>
+                                                <constraint firstItem="rfp-3P-L3g" firstAttribute="top" secondItem="rle-ir-0Al" secondAttribute="top" id="LIf-77-UgL"/>
+                                                <constraint firstAttribute="bottom" secondItem="rfp-3P-L3g" secondAttribute="bottom" id="hAa-Tr-Pii"/>
+                                                <constraint firstItem="rfp-3P-L3g" firstAttribute="leading" secondItem="rle-ir-0Al" secondAttribute="leading" id="mV1-Yu-INR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="jHK-Ka-Xiu" id="6O1-m5-FhP"/>
+                            <outlet property="delegate" destination="jHK-Ka-Xiu" id="iGi-h8-9Ma"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="accountTextField" destination="OfL-1k-os7" id="AJA-VD-vcC"/>
+                        <outlet property="dateTextField" destination="LHR-pJ-0H1" id="IIT-9x-qDH"/>
+                        <segue destination="fFT-OM-zdP" kind="push" identifier="NavigationToInternetList" id="hWc-Zj-mlv"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="omc-ET-1Dt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1qY-28-7ke">
+                    <connections>
+                        <action selector="dateTapped:" destination="jHK-Ka-Xiu" id="Ueu-tB-1ki"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1336" y="2566"/>
+        </scene>
+        <!--Internet List View Controller-->
+        <scene sceneID="rqV-bF-GqQ">
+            <objects>
+                <viewController id="fFT-OM-zdP" customClass="IBLInternetListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r5Z-cC-bO1"/>
+                        <viewControllerLayoutGuide type="bottom" id="42Q-tt-340"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VNm-y6-MU4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Pj4-mR-mPt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1EV-VL-aoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1708" y="2566"/>
+        </scene>
         <!--Left Menu View Controller-->
         <scene sceneID="cFZ-u7-aDa">
             <objects>
@@ -6114,7 +6278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syX-qH-2KV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="2931"/>
+            <point key="canvasLocation" x="1336" y="3247"/>
         </scene>
         <!--Exchange Product Table View Controller-->
         <scene sceneID="MbJ-9n-crw">
@@ -7603,7 +7767,7 @@
         <image name="searchButtonBackground" width="302" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qOL-3E-ClQ"/>
+        <segue reference="RFf-r4-heB"/>
         <segue reference="Ay8-Pb-szr"/>
         <segue reference="YFb-RD-Ut0"/>
     </inferredMetricsTieBreakers>

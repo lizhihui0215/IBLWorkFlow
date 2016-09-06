@@ -50,6 +50,10 @@ typedef NS_ENUM(NSInteger, IBLLeftMenuItemAction) {
      *  换销售品
      */
     IBLLeftMenuItemActionAddChangeProduct,
+    /**
+     *  上网记录查询
+     */
+    IBLLeftMenuItemActionInternet,
 };
 
 @interface IBLLeftMenu : NSObject
