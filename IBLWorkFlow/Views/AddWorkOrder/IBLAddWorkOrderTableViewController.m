@@ -143,7 +143,9 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     if ([[self hiddenFieldsDictionaryWithWorkBizType:bizType.status][indexPath] boolValue]) return 0;
     
-    if([indexPath isEqual:[NSIndexPath indexPathForRow:14 inSection:0]]) return 87;
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:14 inSection:0]]) return 87;
+    
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:11 inSection:0]]) return 98;
     
     return 40;
 }
