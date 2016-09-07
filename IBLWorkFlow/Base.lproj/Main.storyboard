@@ -281,7 +281,7 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" verticalHuggingPriority="251" image="date" translatesAutoresizingMaskIntoConstraints="NO" id="NDp-sL-cWz">
                                                             <rect key="frame" x="79" y="12" width="15" height="15"/>
                                                         </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LHR-pJ-0H1">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LHR-pJ-0H1">
                                                             <rect key="frame" x="99" y="11" width="216" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -436,7 +436,7 @@
             </objects>
             <point key="canvasLocation" x="1745" y="2566"/>
         </scene>
-        <!--Internet Detail Table View Controller-->
+        <!--记录详情-->
         <scene sceneID="h9c-qz-zvy">
             <objects>
                 <tableViewController id="vse-zs-8iE" customClass="IBLInternetDetailTableViewController" sceneMemberID="viewController">
@@ -819,7 +819,7 @@
                             <outlet property="delegate" destination="vse-zs-8iE" id="yyg-II-vrQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="jaC-UB-icn"/>
+                    <navigationItem key="navigationItem" title="记录详情" id="jaC-UB-icn"/>
                     <connections>
                         <outlet property="BASAddressTextField" destination="KkX-AR-ocD" id="0AL-M1-wTw"/>
                         <outlet property="IPTextField" destination="YtM-ah-ALw" id="mZf-mX-Cjb"/>
