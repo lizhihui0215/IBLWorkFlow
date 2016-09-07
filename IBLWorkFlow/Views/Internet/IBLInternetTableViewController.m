@@ -11,6 +11,7 @@
 #import "IBLInternetListViewController.h"
 
 @interface IBLInternetTableViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *dateTextField;
 
@@ -21,13 +22,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dateTextField.text = [[NSDate date] stringFromFormatter:@"yyyy-MM"];
     
 }
 - (IBAction)dateTapped:(UITapGestureRecognizer *)sender {
     RMDateSelectionViewController *dateSelectionVC = [RMDateSelectionViewController dateSelectionController];
     dateSelectionVC.disableBouncingWhenShowing = YES;
     dateSelectionVC.datePicker.minuteInterval = 1;
-    
+    dateSelectionVC.datePicker.datePickerMode = UIDatePickerModeDate;
     dateSelectionVC.disableBlurEffects = YES;
     
     dateSelectionVC.hideNowButton = YES;
@@ -40,6 +42,18 @@
 
 - (IBAction)searchButtonPressed:(UIButton *)sender {
 //    IBLINternetListViewController *internetViewController = [IBLINternetListViewController]
+    if ([NSString isNull:self.accountTextField.text]){
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确定"];
+        
+        
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                        title:@"请输入账号！"
+                                                                      message:nil
+                                                             cancleButtonItem:cancel
+                                                             otherButtonItems:nil];
+        [alert showInController:self];
+        return;
+    }
     [self performSegueWithIdentifier:@"NavigationToInternetList" sender:nil];
 }
 
@@ -52,9 +66,6 @@
 
 
 
-
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -63,7 +74,8 @@
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"NavigationToInternetList"]){
         IBLInternetListViewController *internetViewController = [segue destinationViewController];
-        
+        internetViewController.viewModel = [[IBLInternetListViewModel alloc] initWithAccount:self.accountTextField.text
+                                                                                        date:self.dateTextField.text];
     }
 }
 

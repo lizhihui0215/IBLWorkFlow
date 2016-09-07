@@ -8,6 +8,10 @@
 
 #import "IBLTableViewController.h"
 
+#import "IBLInternetListViewModel.h"
+
 @interface IBLInternetListViewController : IBLTableViewController
+
+@property (nonatomic, strong) IBLInternetListViewModel *viewModel;
 
 @end

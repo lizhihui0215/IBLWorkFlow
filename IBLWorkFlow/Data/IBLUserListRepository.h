@@ -8,6 +8,8 @@
 
 #import "IBLBusinessRepository.h"
 #import "IBLRelateUser.h"
+#import "IBLNetworkRecord.h"
+
 
 @interface IBLCreateAccountInfo : NSObject
 //开户类型，0-默认，1-用户自助，2-账号卡开户（可选）
@@ -130,4 +132,10 @@
 - (void)fetchUserListWithIsRefresh:(BOOL)refresh
                        fetchResult:(IBLFetchUserListInfo *)result
                    completeHandler:(void (^)(NSArray<IBLRelateUser *> *, NSError *))handler;
+
+- (void)fetchOnlineWithAccount:(NSString *)account
+                          date:(NSString *)date
+                         start:(NSInteger)start
+                      pageSize:(NSInteger)pageSize
+               completeHandler:(void (^)(NSArray<IBLNetworkRecord *> *, NSError *))handler;
 @end

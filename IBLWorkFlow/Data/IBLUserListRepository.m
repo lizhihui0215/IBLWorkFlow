@@ -60,6 +60,8 @@
 
 @property (nonatomic, strong) IBLSOAPMethod *createAccountMethod;
 
+@property (nonatomic, strong) IBLSOAPMethod *fetchOnline;
+
 @end
 
 @implementation IBLUserListRepository
@@ -72,9 +74,47 @@
         
         self.createAccountMethod = [IBLSOAPMethod methodWithRequestMethodName:@"openAccount"
                                                            responseMethodName:@"openAccountResponse"];
-
+        
+        self.fetchOnline = [IBLSOAPMethod methodWithRequestMethodName:@"getOnlineRecord"
+                                                   responseMethodName:@"getOnlineRecordResponse"];
     }
     return self;
+}
+
+- (void)fetchOnlineWithAccount:(NSString *)account
+                          date:(NSString *)date
+                         start:(NSInteger)start
+                      pageSize:(NSInteger)pageSize
+            completeHandler:(void (^)(NSArray<IBLNetworkRecord *> *, NSError *))handler{
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[@"dateStr"] = [date stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        parameters[@"userName"] = account;
+        parameters[kStart] = @(start * pageSize);
+        parameters[kPageSize] =  @(pageSize);
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.fetchOnline] POST:@"UserInterface"
+                                                      parameters:parameters
+                                                        progress:nil
+                                                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                             NSArray *recordListDictionary = responseObject[@"recordList"];
+                                                             
+                                                             NSMutableArray<IBLNetworkRecord *> *records = [NSMutableArray array];
+                                                             
+                                                             for (NSDictionary *dictionary in recordListDictionary) {
+                                                                 IBLNetworkRecord *networkRecord = [[IBLNetworkRecord alloc] initWithDictionary:dictionary error:nil];
+                                                                 [records addObject:networkRecord];
+                                                             }
+                                                             
+                                                             handler(records, nil);
+                                                         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                             handler(nil, error);
+                                                         }];
+
+
+    
 }
 
 - (void)createAccountWithInfo:(IBLCreateAccountInfo *)createAccountInfo

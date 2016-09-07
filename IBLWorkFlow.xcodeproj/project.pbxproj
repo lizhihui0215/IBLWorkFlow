@@ -13,6 +13,11 @@
 		2612E1621D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612E1611D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m */; };
 		2612E1661D2E9DDF00CA76BC /* User.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2612E1651D2E9DDF00CA76BC /* User.xml */; };
 		2612E16A1D2E9EC900CA76BC /* DDXMLElement+WSDL.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612E1691D2E9EC900CA76BC /* DDXMLElement+WSDL.m */; };
+		261524C21D7FBDA2007BF989 /* IBLNetworkRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 261524C11D7FBDA2007BF989 /* IBLNetworkRecord.m */; };
+		261524C51D7FBFAE007BF989 /* IBLFetchOnlineRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 261524C41D7FBFAE007BF989 /* IBLFetchOnlineRecord.m */; };
+		261524C91D7FC1B3007BF989 /* IBLInternetListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 261524C81D7FC1B3007BF989 /* IBLInternetListViewModel.m */; };
+		261524CC1D7FC571007BF989 /* IBLInternetListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 261524CB1D7FC571007BF989 /* IBLInternetListCell.m */; };
+		261524CF1D7FDB25007BF989 /* IBLInternetDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 261524CE1D7FDB25007BF989 /* IBLInternetDetailTableViewController.m */; };
 		2615BED11D38CAAE002FE7A7 /* IBLFieldConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615BED01D38CAAE002FE7A7 /* IBLFieldConfiguration.m */; };
 		2615BED41D38D314002FE7A7 /* IBLPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615BED31D38D314002FE7A7 /* IBLPickerView.m */; };
 		2615BEDA1D38D732002FE7A7 /* IBLGenerateAppConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 2615BED91D38D732002FE7A7 /* IBLGenerateAppConfiguration.m */; };
@@ -188,6 +193,16 @@
 		2612E1651D2E9DDF00CA76BC /* User.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = User.xml; sourceTree = "<group>"; };
 		2612E1681D2E9EC900CA76BC /* DDXMLElement+WSDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DDXMLElement+WSDL.h"; path = "IBLWorkFlow/Data/DDXMLElement+WSDL.h"; sourceTree = SOURCE_ROOT; };
 		2612E1691D2E9EC900CA76BC /* DDXMLElement+WSDL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DDXMLElement+WSDL.m"; path = "IBLWorkFlow/Data/DDXMLElement+WSDL.m"; sourceTree = SOURCE_ROOT; };
+		261524C01D7FBDA2007BF989 /* IBLNetworkRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLNetworkRecord.h; sourceTree = "<group>"; };
+		261524C11D7FBDA2007BF989 /* IBLNetworkRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLNetworkRecord.m; sourceTree = "<group>"; };
+		261524C31D7FBFAE007BF989 /* IBLFetchOnlineRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLFetchOnlineRecord.h; sourceTree = "<group>"; };
+		261524C41D7FBFAE007BF989 /* IBLFetchOnlineRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFetchOnlineRecord.m; sourceTree = "<group>"; };
+		261524C71D7FC1B3007BF989 /* IBLInternetListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLInternetListViewModel.h; sourceTree = "<group>"; };
+		261524C81D7FC1B3007BF989 /* IBLInternetListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetListViewModel.m; sourceTree = "<group>"; };
+		261524CA1D7FC571007BF989 /* IBLInternetListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLInternetListCell.h; sourceTree = "<group>"; };
+		261524CB1D7FC571007BF989 /* IBLInternetListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetListCell.m; sourceTree = "<group>"; };
+		261524CD1D7FDB25007BF989 /* IBLInternetDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLInternetDetailTableViewController.h; sourceTree = "<group>"; };
+		261524CE1D7FDB25007BF989 /* IBLInternetDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetDetailTableViewController.m; sourceTree = "<group>"; };
 		2615BECF1D38CAAE002FE7A7 /* IBLFieldConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLFieldConfiguration.h; sourceTree = "<group>"; };
 		2615BED01D38CAAE002FE7A7 /* IBLFieldConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFieldConfiguration.m; sourceTree = "<group>"; };
 		2615BED21D38D314002FE7A7 /* IBLPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLPickerView.h; sourceTree = "<group>"; };
@@ -499,6 +514,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		261524C61D7FC17B007BF989 /* Internet */ = {
+			isa = PBXGroup;
+			children = (
+				261524C71D7FC1B3007BF989 /* IBLInternetListViewModel.h */,
+				261524C81D7FC1B3007BF989 /* IBLInternetListViewModel.m */,
+			);
+			path = Internet;
+			sourceTree = "<group>";
+		};
 		264EBB551D2E023C00FF8373 = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +601,10 @@
 				2684A3061D7EC5B9001B92B7 /* IBLInternetTableViewController.m */,
 				2684A3081D7ECA21001B92B7 /* IBLInternetListViewController.h */,
 				2684A3091D7ECA21001B92B7 /* IBLInternetListViewController.m */,
+				261524CA1D7FC571007BF989 /* IBLInternetListCell.h */,
+				261524CB1D7FC571007BF989 /* IBLInternetListCell.m */,
+				261524CD1D7FDB25007BF989 /* IBLInternetDetailTableViewController.h */,
+				261524CE1D7FDB25007BF989 /* IBLInternetDetailTableViewController.m */,
 			);
 			path = Internet;
 			sourceTree = "<group>";
@@ -696,6 +724,8 @@
 				26ECF2701D62F5D800BA8C2B /* IBLPayResult.m */,
 				26B549DC1D753A490011D0D0 /* IBLOrderDetail.h */,
 				26B549DD1D753A490011D0D0 /* IBLOrderDetail.m */,
+				261524C01D7FBDA2007BF989 /* IBLNetworkRecord.h */,
+				261524C11D7FBDA2007BF989 /* IBLNetworkRecord.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -732,8 +762,9 @@
 				5B8755C9215561E3D6B86307 /* MineOrder */,
 				5B875D20AC2E674620FCBA2C /* Common */,
 				5B875C38C14462D131F3D849 /* CreateAccount */,
-				5B875F4E63E73FD8F579C8D4 /* Renew */,
 				5B87520A0D5E32DADCCA0AE3 /* AddWorkOrder */,
+				5B875F4E63E73FD8F579C8D4 /* Renew */,
+				261524C61D7FC17B007BF989 /* Internet */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -804,6 +835,8 @@
 				26B549DA1D7538FC0011D0D0 /* IBLFetchOrderDetail.m */,
 				269F29861D7B4B69004F90D4 /* IBLFetchOrderFlow.h */,
 				269F29871D7B4B69004F90D4 /* IBLFetchOrderFlow.m */,
+				261524C31D7FBFAE007BF989 /* IBLFetchOnlineRecord.h */,
+				261524C41D7FBFAE007BF989 /* IBLFetchOnlineRecord.m */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1370,6 +1403,7 @@
 			files = (
 				26469BE91D38C3300000285D /* IBLAppConfiguration.m in Sources */,
 				262BFF901D40D0040021F8EB /* IBLRegion.m in Sources */,
+				261524C21D7FBDA2007BF989 /* IBLNetworkRecord.m in Sources */,
 				26D56E3D1D35D1CC0091A940 /* IBLLeftMenuViewModel.m in Sources */,
 				26FDA1E81D49BDF100BB8C3D /* IBLAddWorkOrderResult.m in Sources */,
 				26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */,
@@ -1383,6 +1417,7 @@
 				26B549DE1D753A490011D0D0 /* IBLOrderDetail.m in Sources */,
 				26EC5A3B1D45F7C900CB0F7C /* IBLUserSearchResultCell.m in Sources */,
 				262BFF701D4060D10021F8EB /* IBLHandleOrder.m in Sources */,
+				261524CF1D7FDB25007BF989 /* IBLInternetDetailTableViewController.m in Sources */,
 				26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */,
 				26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */,
 				26EC5A441D45FAA600CB0F7C /* IBLRelateUser.m in Sources */,
@@ -1437,6 +1472,7 @@
 				26C97D6E1D421DF7001EFA6F /* IBLAddWorkOrderTableViewController.m in Sources */,
 				26C51C361D518E9900A13E5C /* IBLAddWorkOrder.m in Sources */,
 				261F40221D3720D50068F502 /* IBLOrder.m in Sources */,
+				261524C51D7FBFAE007BF989 /* IBLFetchOnlineRecord.m in Sources */,
 				26846F531D34A2F6001F9C73 /* IBLAlertController.m in Sources */,
 				26846F611D34A405001F9C73 /* UIActionSheet+Blocks.m in Sources */,
 				26108FFD1D3E245F008B0B4C /* IBLFinishOrder.m in Sources */,
@@ -1467,6 +1503,7 @@
 				26ECF2711D62F5D800BA8C2B /* IBLPayResult.m in Sources */,
 				269E15A41D3DD5AC004D497B /* IBLForwardOrder.m in Sources */,
 				26469BE61D38B9F40000285D /* IBLWorkOrderBussinessType.m in Sources */,
+				261524C91D7FC1B3007BF989 /* IBLInternetListViewModel.m in Sources */,
 				26EC5A371D45F09500CB0F7C /* IBLUserSearchResultViewController.m in Sources */,
 				5B875ABCE8A1815B62EDC2A3 /* IBLTableViewController.m in Sources */,
 				26FFA9251D36936200DF8D4E /* IBLAppRepository.m in Sources */,
@@ -1487,6 +1524,7 @@
 				26846F6D1D34C4C0001F9C73 /* IBLLeftMenuCell.m in Sources */,
 				262BFF7B1D4075060021F8EB /* IBLCreateAccountViewController.m in Sources */,
 				5B875F608C49341C02D1E7F4 /* IBLOrderSearchResult.m in Sources */,
+				261524CC1D7FC571007BF989 /* IBLInternetListCell.m in Sources */,
 				26588EA91D3CD1550095F9C3 /* HMSegmentedControl.m in Sources */,
 				5B87503752F56F0A4773B64D /* IBLTrashOrder.m in Sources */,
 				5B875D0ED0EB1229E1244E5C /* IBLProduct.m in Sources */,
