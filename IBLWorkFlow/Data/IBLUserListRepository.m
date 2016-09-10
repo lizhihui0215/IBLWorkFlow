@@ -9,6 +9,14 @@
 #import "IBLUserListRepository.h"
 #import "IBLAppRepository.h"
 
+@implementation IBLExchangeProductParameters
+
+@end
+
+@implementation IBLRenewParameters
+
+@end
+
 @implementation IBLCreateAccountInfo
 
 @end
@@ -62,6 +70,10 @@
 
 @property (nonatomic, strong) IBLSOAPMethod *fetchOnline;
 
+@property (nonatomic, strong) IBLSOAPMethod *renewMethod;
+
+@property (nonatomic, strong) IBLSOAPMethod *exchangeProductMethod;
+
 @end
 
 @implementation IBLUserListRepository
@@ -77,6 +89,12 @@
         
         self.fetchOnline = [IBLSOAPMethod methodWithRequestMethodName:@"getOnlineRecord"
                                                    responseMethodName:@"getOnlineRecordResponse"];
+        
+        self.renewMethod = [IBLSOAPMethod methodWithRequestMethodName:@"renew"
+                                                   responseMethodName:@"renewResponse"];
+        
+        self.exchangeProductMethod = [IBLSOAPMethod methodWithRequestMethodName:@"change"
+                                                             responseMethodName:@"changeResponse"];
     }
     return self;
 }
@@ -202,4 +220,70 @@
                                                          handler(nil, error);
                                                      }];
 }
+
+- (void)exchangeProductWithParameters:(IBLExchangeProductParameters *)exchangeProductParameters
+                      completeHandler:(void (^)(NSString *obj, NSError *))handler{
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[@"thirdId"] = exchangeProductParameters.thirdId;
+        parameters[@"thirdType"] = exchangeProductParameters.thirdType;
+        parameters[@"servId"] = exchangeProductParameters.servId;
+        parameters[@"account"] = exchangeProductParameters.account;
+        parameters[@"cardNos"] = exchangeProductParameters.cardNos;
+        parameters[@"buyLength"] = exchangeProductParameters.buyLength;
+        parameters[@"discountItems"] = exchangeProductParameters.discountItems;
+        parameters[@"totalCost"] = exchangeProductParameters.totalCost;
+        parameters[@"preCost"] = exchangeProductParameters.preCost;
+        parameters[@"otherCost"] = exchangeProductParameters.otherCost;
+        parameters[@"extraLength"] = exchangeProductParameters.extraLength;
+        parameters[@"prompt"] = exchangeProductParameters.prompt;
+        parameters[@"remark"] = exchangeProductParameters.remark;
+        parameters[@"contractCode"] = exchangeProductParameters.contractCode;
+        parameters[@"voiceCode"] = exchangeProductParameters.voiceCode;
+        parameters[@"changeType"] = exchangeProductParameters.changeType;
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.exchangeProductMethod] POST:@"UserInterface"
+                                              parameters:parameters
+                                                progress:nil
+                                                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                     handler(@"", nil);
+                                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                     handler(nil, error);
+                                                 }];
+}
+
+- (void)renewWithRenewParameters:(IBLRenewParameters *)renewParameters
+                 completeHandler:(void (^)(NSString *obj, NSError *))handler{
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[@"thirdId"] = renewParameters.thirdId;
+        parameters[@"thirdType"] = renewParameters.thirdType;
+        parameters[@"servId"] = renewParameters.servId;
+        parameters[@"account"] = renewParameters.account;
+        parameters[@"cardNos"] = renewParameters.cardNos;
+        parameters[@"buyLength"] = renewParameters.buyLength;
+        parameters[@"discountItems"] = renewParameters.discountItems;
+        parameters[@"totalCost"] = renewParameters.totalCost;
+        parameters[@"preCost"] = renewParameters.preCost;
+        parameters[@"otherCost"] = renewParameters.otherCost;
+        parameters[@"extraLength"] = renewParameters.extraLength;
+        parameters[@"prompt"] = renewParameters.prompt;
+        parameters[@"remark"] = renewParameters.remark;
+        parameters[@"contractCode"] = renewParameters.contractCode;
+        parameters[@"voiceCode"] = renewParameters.voiceCode;
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.renewMethod] POST:@"UserInterface"
+                                                      parameters:parameters
+                                                        progress:nil
+                                                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                             handler(@"", nil);
+                                                         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                             handler(nil, error);
+                                                         }];
+}
+
 @end

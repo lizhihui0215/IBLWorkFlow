@@ -10,6 +10,81 @@
 #import "IBLRelateUser.h"
 #import "IBLNetworkRecord.h"
 
+@interface IBLExchangeProductParameters : NSObject
+/// 第三方类型（可选）
+@property (nonatomic, copy) NSString *thirdType;
+/// 第三方id
+@property (nonatomic, copy) NSString *thirdId;
+/// 用户ID
+@property (nonatomic, copy) NSString *servId;
+/// 用户账号
+@property (nonatomic, copy) NSString *account;
+/// 卡号ID集合，格式为以逗号为分割的ID字符串
+@property (nonatomic, copy) NSString *cardNos;
+/// 购买销售品数（可选）
+@property (nonatomic, copy) NSString *buyLength;
+/// 所选优惠条目ID
+@property (nonatomic, copy) NSString *discountItems;
+/// 总金额，以分为单位（必选）
+@property (nonatomic, copy) NSString *totalCost;
+/// 优惠金额，以分为单位（可选）
+@property (nonatomic, copy) NSString *preCost;
+/// 其它金额，以分为单位（可选）
+@property (nonatomic, copy) NSString *otherCost;
+/// 临时赠送量
+@property (nonatomic, copy) NSString *extraLength;
+/// 缴费类型
+@property (nonatomic, copy) NSString *balanceType;
+/// 是否立即开户
+@property (nonatomic, copy) NSString *prompt;
+/// 备注
+@property (nonatomic, copy) NSString *remark;
+/// 合同号
+@property (nonatomic, copy) NSString *contractCode;
+/// 票据号
+@property (nonatomic, copy) NSString *voiceCode;
+/// 更换类型
+@property (nonatomic, copy) NSString *changeType;
+
+@property (nonatomic, copy) NSString *offerId;
+
+@end
+
+@interface IBLRenewParameters : NSObject
+/// 第三方类型（可选）
+@property (nonatomic, copy) NSString *thirdType;
+/// 第三方id
+@property (nonatomic, copy) NSString *thirdId;
+/// 用户ID
+@property (nonatomic, copy) NSString *servId;
+/// 用户账号
+@property (nonatomic, copy) NSString *account;
+/// 卡号ID集合，格式为以逗号为分割的ID字符串
+@property (nonatomic, copy) NSString *cardNos;
+/// 购买销售品数（可选）
+@property (nonatomic, copy) NSString *buyLength;
+/// 所选优惠条目ID
+@property (nonatomic, copy) NSString *discountItems;
+/// 总金额，以分为单位（必选）
+@property (nonatomic, copy) NSString *totalCost;
+/// 优惠金额，以分为单位（可选）
+@property (nonatomic, copy) NSString *preCost;
+/// 其它金额，以分为单位（可选）
+@property (nonatomic, copy) NSString *otherCost;
+/// 临时赠送量
+@property (nonatomic, copy) NSString *extraLength;
+/// 缴费类型
+@property (nonatomic, copy) NSString *balanceSourceType;
+/// 是否立即开户
+@property (nonatomic, copy) NSString *prompt;
+/// 备注
+@property (nonatomic, copy) NSString *remark;
+/// 合同号
+@property (nonatomic, copy) NSString *contractCode;
+/// 票据号
+@property (nonatomic, copy) NSString *voiceCode;
+
+@end
 
 @interface IBLCreateAccountInfo : NSObject
 //开户类型，0-默认，1-用户自助，2-账号卡开户（可选）
@@ -138,4 +213,10 @@
                          start:(NSInteger)start
                       pageSize:(NSInteger)pageSize
                completeHandler:(void (^)(NSArray<IBLNetworkRecord *> *, NSError *))handler;
+
+- (void)renewWithRenewParameters:(IBLRenewParameters *)renewParameters
+                 completeHandler:(void (^)(NSString *obj, NSError *))handler;
+
+- (void)exchangeProductWithParameters:(IBLExchangeProductParameters *)exchangeProductParameters
+                      completeHandler:(void (^)(NSString *obj, NSError *))handler;
 @end

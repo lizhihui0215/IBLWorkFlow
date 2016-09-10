@@ -10,7 +10,7 @@
 #import "IBLGenerateAppConfiguration.h"
 #import "IBLExchangeProductTableViewController.h"
 #import "IBLUserListRepository.h"
-#import "IBLCreateAccount.h"
+#import "IBLExchangeProduct.h"
 
 @interface IBLExchangeProductViewModel ()
 @property (nonatomic, strong) IBLFetchProductPrice *fetchProductPrice;
@@ -25,7 +25,7 @@
 
 @property (nonatomic, strong) IBLGenerateAppConfiguration *generateAppConfiguration;
 
-@property (nonatomic, strong) IBLCreateAccount *createAccount;
+@property (nonatomic, strong) IBLExchangeProduct *exchangeProduct;
 
 @end
 
@@ -39,7 +39,7 @@
         self.hiddenFields = [[IBLCreateAccountHiddenFields alloc] init];
         self.QRPay = [[IBLPay alloc] init];
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
-        self.createAccount = [[IBLCreateAccount alloc] init];
+        self.exchangeProduct = [[IBLExchangeProduct alloc] init];
     }
 
     return self;
@@ -162,27 +162,20 @@
 
 - (void)commitWithResult:(IBLExchangeProductResult *)result
          completeHandler:(IBLViewModelCompleteHandler)handler{
-    
-    IBLCreateAccountInfo *info = [[IBLCreateAccountInfo alloc] init];
+    IBLExchangeProductParameters *info = [[IBLExchangeProductParameters alloc] init];
     info.account = self.user.account;
-    info.userName = self.user.username;
-    info.idNo = self.user.userIdentifier;
-    info.phone = self.user.phone;
-    info.addr = self.user.address;
+    info.offerId = self.productIdentifier;
     info.remark = self.user.comments;
-    info.productId = self.user.offerIdentifier;
     info.buyLength = [@(self.productPrices.totalLength) stringValue];
     info.totalCost = result.productPriceAmount;
     info.preCost = result.discount;
     info.extraLength = result.give;
-    info.nodeId = self.user.areaIdentifier;
-    info.loginType = @"";
     info.contractCode = result.contract;
     info.voiceCode = result.ticket;
-    
-    [self.createAccount createAccountWithInfo:info completeHandler:^(id obj, NSError *error) {
-        
-    }];
+    [self.exchangeProduct exchangeProductWithParameters:info
+                                        completeHandler:^(NSString *obj, NSError *error) {
+                                            handler(error);
+                                        }];
 }
 
 

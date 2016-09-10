@@ -12,6 +12,7 @@
 #import "IBLGenerateAppConfiguration.h"
 #import "IBLCreateAccountHiddenFields.h"
 #import "IBLUserListRepository.h"
+#import "IBLRenew.h"
 
 
 @interface IBLRenewViewModel ()
@@ -29,6 +30,8 @@
 @property (nonatomic, strong) IBLPay *QRPay;
 
 @property (nonatomic, strong, readwrite) IBLPayResult *payResult;
+
+@property (nonatomic, strong) IBLRenew *renew;
 @end
 
 @implementation IBLRenewViewModel
@@ -41,6 +44,8 @@
         self.createAccount = [[IBLCreateAccount alloc] init];
 
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
+        
+        self.renew = [[IBLRenew alloc] init];
         
         self.hiddenFields = [[IBLCreateAccountHiddenFields alloc] init];
         self.QRPay = [[IBLPay alloc] init];
@@ -193,27 +198,21 @@
 
 - (void)commitWithResult:(IBLRenewResult *)result
          completeHandler:(IBLViewModelCompleteHandler)handler{
-    
-    IBLCreateAccountInfo *info = [[IBLCreateAccountInfo alloc] init];
+    IBLRenewParameters *info = [[IBLRenewParameters alloc] init];
+    info.servId = self.user.account;
     info.account = self.user.account;
-    info.userName = self.user.username;
-    info.idNo = self.user.userIdentifier;
-    info.phone = self.user.phone;
-    info.addr = self.user.address;
     info.remark = self.user.comments;
-    info.productId = self.user.offerIdentifier;
     info.buyLength = [@(self.productPrices.totalLength) stringValue];
     info.totalCost = result.productPriceAmount;
     info.preCost = result.discount;
     info.extraLength = result.give;
-    info.nodeId = self.user.areaIdentifier;
-    info.loginType = @"";
     info.contractCode = result.contract;
     info.voiceCode = result.ticket;
-    
-    [self.createAccount createAccountWithInfo:info completeHandler:^(id obj, NSError *error) {
-        
-    }];
+    info.remark = result.comment;
+    [self.renew renewWithRenewParameters:info
+                         completeHandler:^(NSString *obj, NSError *error) {
+                             handler(error);
+                         }];
 }
 
 - (IBLPayModel)payModel {
