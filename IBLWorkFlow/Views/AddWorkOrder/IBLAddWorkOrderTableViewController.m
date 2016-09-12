@@ -239,7 +239,61 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 }
 
 
+
+- (NSString *)validateContents{
+    NSString *title = nil;
+    IBLWorkOrderBussinessType *type = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeBizType];
+    
+    if([NSString isNull:self.workOrderTypeTextField.text]){
+        title = @"请选择工单类型！";
+    };
+    
+    if([NSString isNull:self.workOrderBizTypeTextField.text]){
+        title = @"请选择业务类型！";
+    };
+    
+    if (type.status == IBLWorkOrderBizStatusInstall) {
+        if([NSString isNull:self.regionTextField.text]){
+            title = @"请选择小区！";
+        };
+        
+        if([NSString isNull:self.productTextField.text]){
+            title = @"请选择销售品！";
+        };
+        
+        if([NSString isNull:self.productCountTextField.text]){
+            title = @"请选填写订购数量！";
+        };
+        
+        if([NSString isNull:self.phoneTextField.text]){
+            title = @"请填写用户电话！";
+        };
+
+    }else{
+        if([NSString isNull:self.relateUserTextField.text]){
+            title = @"请选择关联用户！";
+        };
+    }
+    
+    return title;
+}
+
 - (IBAction)commitTapped:(UIButton *)sender {
+    NSString *title = [self validateContents];
+    if (![NSString isNull:title]) {
+        
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
+        
+        
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                        title:title
+                                                                      message:nil
+                                                             cancleButtonItem:cancel
+                                                             otherButtonItems:nil];
+        [alert showInController:self];
+
+        return;
+    }
     [self saveWorkOrder];
     [self.tableViewDelegate addWorkOrderTableDidCommit:self];
 }
@@ -279,20 +333,20 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSArray<IBLWorkOrderType *> *workOrderTypes = [self.tableViewDelegate workOrderTypesOfTableView:self];
-    
-    IBLWorkOrderType *workOrderType = [workOrderTypes firstObject];
-    
-    [self.tableViewDelegate addWorkOrderTableView:self
-                                        fieldType:IBLAddWorkOrderFieldTypeWorkOrderType
-                                       didEndEdit:workOrderType];
-    self.workOrderTypeTextField.text = workOrderType.name;
-    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.tableViewDelegate workOrderBizTypesOfTableView:self];
-    IBLWorkOrderBussinessType *first = businessTypes.firstObject;
-    [self.tableViewDelegate addWorkOrderTableView:self
-                                        fieldType:IBLAddWorkOrderFieldTypeBizType
-                                       didEndEdit:first];
-    self.workOrderBizTypeTextField.text = first.name;
+//    NSArray<IBLWorkOrderType *> *workOrderTypes = [self.tableViewDelegate workOrderTypesOfTableView:self];
+//    
+//    IBLWorkOrderType *workOrderType = [workOrderTypes firstObject];
+//    
+//    [self.tableViewDelegate addWorkOrderTableView:self
+//                                        fieldType:IBLAddWorkOrderFieldTypeWorkOrderType
+//                                       didEndEdit:workOrderType];
+//    self.workOrderTypeTextField.text = workOrderType.name;
+//    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.tableViewDelegate workOrderBizTypesOfTableView:self];
+//    IBLWorkOrderBussinessType *first = businessTypes.firstObject;
+//    [self.tableViewDelegate addWorkOrderTableView:self
+//                                        fieldType:IBLAddWorkOrderFieldTypeBizType
+//                                       didEndEdit:first];
+//    self.workOrderBizTypeTextField.text = first.name;
     
     self.productCountTextField.text = @"1";
     

@@ -93,9 +93,11 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 }
 
 - (void)tableView:(UITableView *)tableView footerBeginRefresh:(MJRefreshBackStateFooter *)footer{
+    [self showHUDWithMessage:@""];
     [self.viewModel fetchOrderListWithIndex:self.segmentedControl.selectedSegmentIndex
                                   isRefresh:NO
                             completeHandler:^(NSError *error) {
+                                [self hidHUD];
                                 [footer endRefreshing];
                                 if (![self showAlertWithError:error]) {
                                     [tableView reloadData];
@@ -104,10 +106,11 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 }
 
 - (void)tableView:(UITableView *)tableView headerBeginRefresh:(MJRefreshStateHeader *)header{
-
+    [self showHUDWithMessage:@""];
     [self.viewModel fetchOrderListWithIndex:self.segmentedControl.selectedSegmentIndex
                                   isRefresh:YES
                             completeHandler:^(NSError *error) {
+                                [self hidHUD];
                                 [header endRefreshing];
                                 if (![self showAlertWithError:error]) {
                                     [tableView reloadData];
@@ -187,6 +190,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
         case IBLOrderActionTrash:
         case IBLOrderActionFinish:
         case IBLOrderActionHandling:{
+            [self showHUDWithMessage:@""];
             NSString *title = [self.viewModel actionTitleWith:action atIndexPath:indexPath];
             
             UIImage *image = [self.viewModel actionImageWith:action];
@@ -198,10 +202,12 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                                                                                  image:image];
             @weakify(self)
             alertView.buttonTapped = ^(IBLBusinessAlertViewController *alert, NSInteger buttonIndex){
+                if (buttonIndex == 1) {[self hidHUD]; return ;}
                 @strongify(self)
                 [self.viewModel handlerWithAction:action
                                         indexPath:indexPath
                                   completeHandler:^(NSError *error) {
+                                      [self hidHUD];
                                       if (![self showAlertWithError:error]) {
                                           [self.tableView reloadData];
                                       }
@@ -212,9 +218,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
             [alertView show];
             break;
         }
-        case IBLOrderActionView:{
-            break;
-        }
+        case IBLOrderActionView:
         case IBLOrderActionViewSingle:{
             [self performSegueWithIdentifier:@"NavigationToWorkOrderFlow" sender:indexPath];
             break;

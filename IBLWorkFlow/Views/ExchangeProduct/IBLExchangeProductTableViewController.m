@@ -239,24 +239,18 @@
 }
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {
-    NSString *title = @"";
-    
-    if([NSString isNull:self.exchangeTypeTextField.text]){
-        title = @"请选择销售品";
-    };
-    
-    if (![NSString isNull:title]) {
+    if([NSString isNull:self.exchangeProductTextField.text]){
         IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确定"];
         
         
         IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                        title:title
+                                                                        title:@"请选择销售品"
                                                                       message:nil
                                                              cancleButtonItem:cancel
                                                              otherButtonItems:nil];
         [alert showInController:self];
         return;
-    }
+    };
     
     [self saveResult];
     [self.tableViewDelegate tableViewController:self

@@ -34,7 +34,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView headerBeginRefresh:(MJRefreshStateHeader *)header{
+    [self showHUDWithMessage:@""];
     [self.viewModel startFetchWithCompleteHandler:^(NSError *error) {
+        [self hidHUD];
         [tableView.mj_header endRefreshing];
         if (![self showAlertWithError:error]) {
             [self.tableView reloadData];

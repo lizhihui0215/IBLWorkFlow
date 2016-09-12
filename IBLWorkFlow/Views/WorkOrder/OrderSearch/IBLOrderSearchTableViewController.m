@@ -66,7 +66,18 @@
 
 - (IBAction)businessTypeTaped:(UITapGestureRecognizer *)sender {
     NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.searchDataSource workOrderBizTypesOfOrderSearchTableView:self ];
-    
+    if ([NSString isNull:self.workOrderTypeTextField.text]) {
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
+        
+        
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                        title:@"请选择工单类型！"
+                                                                      message:nil
+                                                             cancleButtonItem:cancel
+                                                             otherButtonItems:nil];
+        [alert showInController:self];
+        return;
+    }
     [IBLPickerView showPickerViewInView:self.view.superview
                             withObjects:businessTypes
                             withOptions:nil

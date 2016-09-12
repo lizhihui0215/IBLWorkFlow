@@ -24,10 +24,11 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
 }
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
-    
+    [self showHUDWithMessage:@"登录中..."];
     [self.viewModel loginWithUsername:self.usernameTextField.text
                              password:self.passwordTextField.text
                       completeHandler:^(NSError *error){
+                          [self hidHUD];
                           if (![self showAlertWithError:error]) {
                               [self performSegueWithIdentifier:NavigationToMainIdentifier sender:self];
                           }

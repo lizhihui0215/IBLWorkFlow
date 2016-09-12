@@ -368,6 +368,9 @@
             //            title = [NSString stringWithFormat:@"转发给：开户%@号"];
             break;
         }
+        case IBLOrderActionHandling:{
+            title = @"工单处理";
+        }
             
         default: break;
     }
@@ -393,6 +396,9 @@
         case IBLOrderActionForward:{
             image = [UIImage imageNamed:@"alert"];
             break;
+        }
+        case IBLOrderActionHandling:{
+            image = [UIImage imageNamed:@"info"];
         }
         default: break;
     }
@@ -425,12 +431,15 @@
             break;
         }
         case IBLOrderActionFinish: {
-            placeHolder = @"完成说明填写";
+            placeHolder = @"完成说明";
             break;
         }
         case IBLOrderActionDelete: {
-            placeHolder = @"删除说明填写";
+            placeHolder = @"删除说明";
             break;
+        }
+        case IBLOrderActionHandling:{
+            placeHolder = @"处理说明";
         }
         default: break;
     }
