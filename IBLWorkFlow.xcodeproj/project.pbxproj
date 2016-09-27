@@ -56,7 +56,6 @@
 		264EBBA21D2E2C1300FF8373 /* IBLFetchUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBA11D2E2C1300FF8373 /* IBLFetchUser.m */; };
 		264EBBAB1D2E328B00FF8373 /* IBLExchangeRootSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBBAA1D2E328B00FF8373 /* IBLExchangeRootSegue.m */; };
 		2650AC3A1D2F571200421C78 /* IBLWSDLServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 2650AC391D2F571200421C78 /* IBLWSDLServices.m */; };
-		26588EA91D3CD1550095F9C3 /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 26588EA81D3CD1550095F9C3 /* HMSegmentedControl.m */; };
 		26588EAC1D3CD61E0095F9C3 /* IBLSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26588EAB1D3CD61E0095F9C3 /* IBLSearchViewController.m */; };
 		265A57AC1D5B0F21001DBFA0 /* PayInterface.xml in Resources */ = {isa = PBXBuildFile; fileRef = 265A57AB1D5B0F21001DBFA0 /* PayInterface.xml */; };
 		265A57AF1D5B0F60001DBFA0 /* IBLPayRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 265A57AE1D5B0F60001DBFA0 /* IBLPayRepository.m */; };
@@ -141,6 +140,7 @@
 		26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26F620191D2FB6B500B49065 /* Operator.xml */; };
 		26FCA08E1D5C3297004B8E2C /* IBLQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCA08D1D5C3297004B8E2C /* IBLQRViewController.m */; };
 		26FCA0911D5C57E3004B8E2C /* IBLCheckOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCA0901D5C57E3004B8E2C /* IBLCheckOrder.m */; };
+		26FD2B601D9A6D450019401D /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FD2B5F1D9A6D450019401D /* HMSegmentedControl.m */; };
 		26FDA1E51D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FDA1E41D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m */; };
 		26FDA1E81D49BDF100BB8C3D /* IBLAddWorkOrderResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FDA1E71D49BDF100BB8C3D /* IBLAddWorkOrderResult.m */; };
 		26FFA9251D36936200DF8D4E /* IBLAppRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA9241D36936200DF8D4E /* IBLAppRepository.m */; };
@@ -279,8 +279,6 @@
 		264EBBAC1D2E32DB00FF8373 /* IBLWorkFlow-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IBLWorkFlow-prefix.pch"; sourceTree = "<group>"; };
 		2650AC381D2F571200421C78 /* IBLWSDLServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWSDLServices.h; sourceTree = "<group>"; };
 		2650AC391D2F571200421C78 /* IBLWSDLServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWSDLServices.m; sourceTree = "<group>"; };
-		26588EA71D3CD1550095F9C3 /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
-		26588EA81D3CD1550095F9C3 /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		26588EAA1D3CD61E0095F9C3 /* IBLSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLSearchViewController.h; sourceTree = "<group>"; };
 		26588EAB1D3CD61E0095F9C3 /* IBLSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLSearchViewController.m; sourceTree = "<group>"; };
 		265A57AB1D5B0F21001DBFA0 /* PayInterface.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PayInterface.xml; sourceTree = "<group>"; };
@@ -441,6 +439,8 @@
 		26FCA08D1D5C3297004B8E2C /* IBLQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLQRViewController.m; sourceTree = "<group>"; };
 		26FCA08F1D5C57E3004B8E2C /* IBLCheckOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLCheckOrder.h; sourceTree = "<group>"; };
 		26FCA0901D5C57E3004B8E2C /* IBLCheckOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLCheckOrder.m; sourceTree = "<group>"; };
+		26FD2B5E1D9A6D450019401D /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
+		26FD2B5F1D9A6D450019401D /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		26FDA1E31D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAddWorkOrderViewModel.h; sourceTree = "<group>"; };
 		26FDA1E41D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAddWorkOrderViewModel.m; sourceTree = "<group>"; };
 		26FDA1E61D49BDF100BB8C3D /* IBLAddWorkOrderResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAddWorkOrderResult.h; sourceTree = "<group>"; };
@@ -1031,11 +1031,11 @@
 		5B875E7F67203C8BE2825219 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				26FD2B5E1D9A6D450019401D /* HMSegmentedControl.h */,
+				26FD2B5F1D9A6D450019401D /* HMSegmentedControl.m */,
 				262BFF741D4074050021F8EB /* IBLSectionHeaderView.h */,
 				262BFF751D4074050021F8EB /* IBLSectionHeaderView.m */,
 				262BFF761D4074050021F8EB /* IBLSectionHeaderView.xib */,
-				26588EA71D3CD1550095F9C3 /* HMSegmentedControl.h */,
-				26588EA81D3CD1550095F9C3 /* HMSegmentedControl.m */,
 				2615BED21D38D314002FE7A7 /* IBLPickerView.h */,
 				2615BED31D38D314002FE7A7 /* IBLPickerView.m */,
 				26A11D001D363A6900984B40 /* CustomIOSAlertView.h */,
@@ -1213,6 +1213,7 @@
 					264EBB5D1D2E023C00FF8373 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 3P8C7H426Z;
+						ProvisioningStyle = Automatic;
 					};
 					264EBB761D2E023D00FF8373 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1536,7 +1537,6 @@
 				262BFF7B1D4075060021F8EB /* IBLCreateAccountViewController.m in Sources */,
 				5B875F608C49341C02D1E7F4 /* IBLOrderSearchResult.m in Sources */,
 				261524CC1D7FC571007BF989 /* IBLInternetListCell.m in Sources */,
-				26588EA91D3CD1550095F9C3 /* HMSegmentedControl.m in Sources */,
 				26E69B8F1D84234900E41972 /* IBLRenew.m in Sources */,
 				5B87503752F56F0A4773B64D /* IBLTrashOrder.m in Sources */,
 				5B875D0ED0EB1229E1244E5C /* IBLProduct.m in Sources */,
@@ -1546,6 +1546,7 @@
 				269F29881D7B4B69004F90D4 /* IBLFetchOrderFlow.m in Sources */,
 				5B87535E8802AC01CF38AC05 /* IBLOrderSearchTableViewController.m in Sources */,
 				5B87552696CA41BBB6DE17DC /* IBLExchangeProductViewModel.m in Sources */,
+				26FD2B601D9A6D450019401D /* HMSegmentedControl.m in Sources */,
 				5B8758F65DE876F318FEC022 /* IBLUserSearchResultViewModel.m in Sources */,
 				5B875A10DFA89C3EE4F4783D /* IBLPayDetailViewController.m in Sources */,
 			);
@@ -1692,6 +1693,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3P8C7H426Z;
 				GCC_PREFIX_HEADER = "${SRCROOT}/IBLWorkFlow/IBLWorkFlow-prefix.pch";
 				INFOPLIST_FILE = IBLWorkFlow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1708,6 +1711,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3P8C7H426Z;
 				GCC_PREFIX_HEADER = "${SRCROOT}/IBLWorkFlow/IBLWorkFlow-prefix.pch";
 				INFOPLIST_FILE = IBLWorkFlow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
