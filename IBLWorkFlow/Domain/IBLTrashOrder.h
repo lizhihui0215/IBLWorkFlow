@@ -8,5 +8,5 @@
 @class IBLOrder;
 @interface IBLTrashOrder : IBLUseCase
 
-- (void)trashOrderWith:(IBLOrder *)order completeHandler:(void (^)(NSError *))handler;
+- (void)trashOrderWith:(IBLOrder *)order content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
 @end

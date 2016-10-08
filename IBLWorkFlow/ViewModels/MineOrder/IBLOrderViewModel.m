@@ -333,7 +333,7 @@
     NSArray<NSString *> *titles = nil;
     switch (self.type) {
         case IBLOrderTypeMine: {
-            titles = @[@"未理中",@"处理中",@"转发中",@"已完成",@"作废"];
+            titles = @[@"未处理",@"处理中",@"转发中",@"已完成",@"作废"];
             break;
         }
         case IBLOrderTypeManage: {
@@ -452,35 +452,33 @@
     [section.items removeObjectAtIndex:indexPath.row];
 }
 
-- (void)handlerWithAction:(IBLOrderAction)action
-                indexPath:(NSIndexPath *)indexPath
-          completeHandler:(void (^)(NSError *))handler {
+- (void)handlerWithAction:(IBLOrderAction)action content:(NSString *)content indexPath:(NSIndexPath *)indexPath completeHandler:(void (^)(NSError *))handler {
     IBLOrder *order = [self orderAtIndexPath:indexPath];
     //!!!: can be refine
     switch (action) {
         case IBLOrderActionTrash: {
-            [self.trashOrder trashOrderWith:order completeHandler:^(NSError *error) {
+            [self.trashOrder trashOrderWith:order content:content completeHandler:^(NSError *error) {
                 [self deleteOrderAtIndexPath:indexPath];
                 handler(error);
             }];
             break;
         }
         case IBLOrderActionFinish: {
-            [self.finishOrder finishOrderWith:order completeHandler:^(NSError *error) {
-                if(!error) [self finishedHandleOrderWithAction:action atIndexPath:indexPath];
+            [self.finishOrder finishOrderWith:order content:content completeHandler:^(NSError *error) {
+                if (!error) [self finishedHandleOrderWithAction:action atIndexPath:indexPath];
                 handler(error);
             }];
             break;
         }
         case IBLOrderActionDelete: {
-            [self.deleteOrder deleteOrderWithOrder:order completeHandler:^(NSError *error) {
-                if(!error) [self finishedHandleOrderWithAction:action atIndexPath:indexPath];
+            [self.deleteOrder deleteOrderWithOrder:order content:content completeHandler:^(NSError *error) {
+                if (!error) [self finishedHandleOrderWithAction:action atIndexPath:indexPath];
                 handler(error);
             }];
             break;
         }
         case IBLOrderActionHandling:{
-            [self.handleOrder handleOrderWithOrder:order completeHandler:^(NSError *error){
+            [self.handleOrder handleOrderWithOrder:order content:content completeHandler:^(NSError *error) {
                 if (!error) [self finishedHandleOrderWithAction:action atIndexPath:indexPath];
                 handler(error);
             }];

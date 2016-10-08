@@ -74,6 +74,8 @@
 
 @property (nonatomic, strong) IBLSOAPMethod *exchangeProductMethod;
 
+@property (nonatomic, strong) IBLSOAPMethod *fetchOrderRelatedUserMethod;
+
 @end
 
 @implementation IBLUserListRepository
@@ -95,9 +97,35 @@
         
         self.exchangeProductMethod = [IBLSOAPMethod methodWithRequestMethodName:@"change"
                                                              responseMethodName:@"changeResponse"];
+        
+        self.fetchOrderRelatedUserMethod = [IBLSOAPMethod methodWithRequestMethodName:@"getUserInfo"
+                                                                   responseMethodName:@"getUserInfoResponse"];
+
     }
     return self;
 }
+
+- (void)fetchOrderRelatedUserWithID:(NSString *)userID
+                            account:(NSString *)account
+                    completeHandler:(void (^)(IBLOrderRelateUser *, NSError *))handler{
+    NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
+        NSMutableDictionary *parameters = [aParameters mutableCopy];
+        parameters[@"servId"] = userID;
+        parameters[@"account"] = account;
+        return parameters;
+    }];
+    
+    [[self networkServicesMethods:self.fetchOrderRelatedUserMethod] POST:@"OperatorInterface"
+                                                              parameters:parameters
+                                                                progress:nil
+                                                                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                     IBLOrderRelateUser *user = [[IBLOrderRelateUser alloc] initWithDictionary:responseObject error:nil];
+                                                                     handler(user, nil);
+                                                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                     handler(nil, error);
+                                                                 }];
+}
+
 
 - (void)fetchOnlineWithAccount:(NSString *)account
                           date:(NSString *)date

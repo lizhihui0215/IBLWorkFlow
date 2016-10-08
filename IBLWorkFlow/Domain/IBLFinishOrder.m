@@ -27,8 +27,7 @@
     return self;
 }
 
-- (void)finishOrderWith:(IBLOrder *)order
-        completeHandler:(void (^)(NSError *))handler {
-    [self.orderRepository finishOrderWithId:order.identifier completeHandler:handler];
+- (void)finishOrderWith:(IBLOrder *)order content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
+    [self.orderRepository finishOrderWithId:order.identifier content:content completeHandler:handler];
 }
 @end

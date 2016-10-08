@@ -8,6 +8,7 @@
 
 #import "IBLBusinessRepository.h"
 #import "IBLRelateUser.h"
+#import "IBLOrderRelateUser.h"
 #import "IBLNetworkRecord.h"
 
 @interface IBLExchangeProductParameters : NSObject
@@ -219,4 +220,8 @@
 
 - (void)exchangeProductWithParameters:(IBLExchangeProductParameters *)exchangeProductParameters
                       completeHandler:(void (^)(NSString *obj, NSError *))handler;
+
+- (void)fetchOrderRelatedUserWithID:(NSString *)userID
+                            account:(NSString *)account
+                    completeHandler:(void (^)(IBLOrderRelateUser *, NSError *))handler;
 @end

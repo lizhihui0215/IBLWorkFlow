@@ -29,7 +29,7 @@
 }
 
 
-- (void)handleOrderWithOrder:(IBLOrder *)order completeHandler:(void (^)(NSError *))handler {
-    [self.orderRepository handleOrderWithId:order.identifier completeHandler:handler];
+- (void)handleOrderWithOrder:(IBLOrder *)order content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
+    [self.orderRepository handleOrderWithId:order.identifier content:content completeHandler:handler];
 }
 @end

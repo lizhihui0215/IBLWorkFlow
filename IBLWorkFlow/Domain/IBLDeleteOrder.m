@@ -27,8 +27,7 @@
     return self;
 }
 
-- (void)deleteOrderWithOrder:(IBLOrder *)order
-             completeHandler:(void (^)(NSError *))handler {
-    [self.orderRepository deleteOrderWithOrderId:order.identifier completeHandler:handler];
+- (void)deleteOrderWithOrder:(IBLOrder *)order content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
+    [self.orderRepository deleteOrderWithOrderId:order.identifier content:content completeHandler:handler];
 }
 @end

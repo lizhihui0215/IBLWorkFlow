@@ -245,12 +245,12 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
                                                         }];
 }
 
-- (void)deleteOrderWithOrderId:(NSInteger)identifier
-               completeHandler:(void (^)(NSError *))handler {
+- (void)deleteOrderWithOrderId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
     
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[kOrderIdentifier] = @(identifier);
+        parameters[kContent] = content;
         return parameters;
     }];
     
@@ -265,11 +265,11 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
     
 }
 
-- (void)finishOrderWithId:(NSInteger)identifier
-          completeHandler:(void (^)(NSError *))handler {
+- (void)finishOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[kOrderIdentifier] = @(identifier);
+        parameters[kContent] = content;
         return parameters;
     }];
     
@@ -283,11 +283,11 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
                                                   }];
 }
 
-- (void)trashOrderWithId:(NSInteger)identifier
-         completeHandler:(void (^)(NSError *))handler {
+- (void)trashOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[kOrderIdentifier] = @(identifier);
+        parameters[kContent] = content;
         return parameters;
     }];
     
@@ -302,11 +302,11 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
     
 }
 
-- (void)handleOrderWithId:(NSInteger)identifier
-          completeHandler:(void (^)(NSError *))handler {
+- (void)handleOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[kOrderIdentifier] = @(identifier);
+        parameters[kContent] = content;
         return parameters;
     }];
     

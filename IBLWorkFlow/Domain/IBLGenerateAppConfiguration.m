@@ -12,6 +12,9 @@
 
 static NSString const * kMineOrderHandle = @"HANDLE";
 
+static NSString const * kMineOrderForward = @"TRAN";
+
+
 static NSString const * kManagedOrderSend = @"ISUUE";
 
 static NSString const * kManagedOrderForward = @"TRAN";
@@ -71,7 +74,8 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
 - (NSDictionary *)mineOrderHandleForwardUnHandleMaps{
     return @{kMineOrderHandle : @(IBLOrderActionHandling),
              kMineOrderView : @(IBLOrderActionViewSingle),
-             kMineOrderFinished : @(IBLOrderActionFinish)};
+             kMineOrderFinished : @(IBLOrderActionFinish),
+             kMineOrderForward : @(IBLOrderActionForward)};
 }
 
 - (NSDictionary *)mineOrderFinishedMaps{

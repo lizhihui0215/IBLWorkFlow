@@ -12,5 +12,5 @@
 
 @interface IBLFinishOrder : IBLUseCase
 
-- (void)finishOrderWith:(IBLOrder *)order completeHandler:(void (^)(NSError *))handler;
+- (void)finishOrderWith:(IBLOrder *)order content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
 @end

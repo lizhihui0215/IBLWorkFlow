@@ -17,6 +17,8 @@
 #import "IBLPayDetailViewController.h"
 #import "IBLOrderDetailTableViewController.h"
 #import "IBLOrderFlowViewController.h"
+#import "IBLUserDetailTableViewController.h"
+
 
 static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSearch";
 
@@ -205,13 +207,14 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                 if (buttonIndex == 1) {[self hidHUD]; return ;}
                 @strongify(self)
                 [self.viewModel handlerWithAction:action
+                                          content:alert.contentTextField.text
                                         indexPath:indexPath
                                   completeHandler:^(NSError *error) {
-                                      [self hidHUD];
-                                      if (![self showAlertWithError:error]) {
-                                          [self.tableView reloadData];
-                                      }
-                                  }];
+                    [self hidHUD];
+                    if (![self showAlertWithError:error]) {
+                        [self.tableView reloadData];
+                    }
+                }];
                 alertView = nil;
             };
             
@@ -267,9 +270,21 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
         IBLOrderFlowViewController *orderFlowViewController = [segue destinationViewController];
         IBLOrder *order = [self.viewModel orderAtIndexPath:sender];
         orderFlowViewController.viewModel = [[IBLOrderFlowViewModel alloc] initWithOrder:order];
+    }else if ([segue.identifier isEqualToString:@"NavigationToUserDetail"]){
+        IBLOrder *order = sender;
+       IBLUserDetailTableViewController *userDetailViewController = [segue destinationViewController];
+        userDetailViewController.order = order;
     }
 }
 
+- (IBAction)userOrderTapped:(UIButton *)sender {
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender.superview.superview];
+    
+    IBLOrder *order = [self.viewModel orderAtIndexPath:indexPath];
+    
+    [self performSegueWithIdentifier:@"NavigationToUserDetail" sender:order];
+}
 
 
 - (void)orderSearchViewController:(IBLOrderSearchTableViewController *)searchViewController

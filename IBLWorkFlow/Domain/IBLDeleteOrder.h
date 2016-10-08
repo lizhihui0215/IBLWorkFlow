@@ -12,6 +12,5 @@
 
 @interface IBLDeleteOrder : IBLUseCase
 
-- (void)deleteOrderWithOrder:(IBLOrder *)order
-             completeHandler:(void (^)(NSError *))handler;
+- (void)deleteOrderWithOrder:(IBLOrder *)order content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
 @end

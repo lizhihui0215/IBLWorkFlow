@@ -19,6 +19,8 @@ static IBLUser *_user = nil;
 
 @interface IBLUserRepository ()
 @property (nonatomic, strong) IBLSOAPMethod *fetchUserMethod;
+
+
 @end
 
 @implementation IBLUserRepository
@@ -65,5 +67,6 @@ static IBLUser *_user = nil;
                            handler(nil, error);
                        }];
 }
+
 
 @end

@@ -129,17 +129,13 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
                    content:(NSString *)content
            completeHandler:(void (^)(NSError *))handler;
 
-- (void)deleteOrderWithOrderId:(NSInteger)identifier
-               completeHandler:(void (^)(NSError *))handler;
+- (void)deleteOrderWithOrderId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
 
-- (void)finishOrderWithId:(NSInteger)identifier
-          completeHandler:(void (^)(NSError *))handler;
+- (void)finishOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
 
-- (void)trashOrderWithId:(NSInteger)identifier
-         completeHandler:(void (^)(NSError *))handler;
+- (void)trashOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
 
-- (void)handleOrderWithId:(NSInteger)identifier
-          completeHandler:(void (^)(NSError *))handler;
+- (void)handleOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
 
 - (void)addWorkOrdeWith:(IBLAddWorkOrderInfo *)info
         completeHandler:(void (^)(NSString *, NSError *))handler;

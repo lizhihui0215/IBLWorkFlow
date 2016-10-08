@@ -24,9 +24,8 @@
 }
 
 
-- (void)trashOrderWith:(IBLOrder *)order
-       completeHandler:(void (^)(NSError *))handler {
-    [self.orderRepository trashOrderWithId:order.identifier completeHandler:handler];
+- (void)trashOrderWith:(IBLOrder *)order content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
+    [self.orderRepository trashOrderWithId:order.identifier content:content completeHandler:handler];
 }
 
 @end
