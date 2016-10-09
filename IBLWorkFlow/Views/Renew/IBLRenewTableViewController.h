@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "IBLStaticTableViewController.h"
 
 @class IBLRenewTableViewController;
 @class IBLProductPrice;
@@ -40,6 +40,8 @@ typedef NS_ENUM(NSInteger, IBLRenewTextFieldType) {
 - (void)tableViewController:(IBLRenewTableViewController *)controller commitResult:(IBLRenewResult *)result;
 
 - (NSDictionary<NSIndexPath *, NSString *> *)notNullsFieldsDictionary;
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @interface IBLRenewResult : NSObject
@@ -66,7 +68,7 @@ typedef NS_ENUM(NSInteger, IBLRenewTextFieldType) {
 
 @end
 
-@interface IBLRenewTableViewController : UITableViewController
+@interface IBLRenewTableViewController : IBLStaticTableViewController
 
 @property (nonatomic, weak) id<IBLRenewTableViewControllerDelegate> tableViewDelegate;
 

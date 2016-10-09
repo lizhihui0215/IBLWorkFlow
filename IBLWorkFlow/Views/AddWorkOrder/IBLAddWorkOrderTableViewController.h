@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewController.h"
+#import "IBLStaticTableViewController.h"
 #import "IBLRelateUser.h"
 
 typedef NS_ENUM(NSInteger, IBLAddWorkOrderFieldType) {
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger, IBLAddWorkOrderFieldType) {
 - (void)addWorkOrderTableDidCommit:(IBLAddWorkOrderTableViewController *)controller;
 @end
 
-@interface IBLAddWorkOrderTableViewController : UITableViewController
+@interface IBLAddWorkOrderTableViewController : IBLStaticTableViewController
 
 @property (nonatomic,weak) id<IBLAddWorkOrderTableViewControllerDelegate> tableViewDelegate;
 

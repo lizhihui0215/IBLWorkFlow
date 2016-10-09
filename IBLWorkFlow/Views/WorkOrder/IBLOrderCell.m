@@ -55,7 +55,7 @@ static NSInteger const IBLOrderSegmentControlTitleWidth = 40;
     self.segmentControl.titleTextAttributes = fontAttributes;
     self.segmentControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationNone;
     self.segmentControl.sectionTitles = titles;
-   // self.segmentControl.selectedIndexTouchable = YES;
+    self.segmentControl.selectedIndexTouchable = YES;
     self.segmentControlWidthConstraint.constant = [titles count] * IBLOrderSegmentControlTitleWidth;
 }
 

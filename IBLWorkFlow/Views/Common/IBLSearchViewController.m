@@ -23,6 +23,7 @@
     self.headerRefresh = YES;
     self.footerRefresh = YES;
     
+    self.title = [self.viewModel title];
     self.searchTextField.delegate = self;
     self.searchTextField.returnKeyType = UIReturnKeySearch;
     [self reloadWithSearchInfo:nil isRefresh:YES completeHandler:nil];

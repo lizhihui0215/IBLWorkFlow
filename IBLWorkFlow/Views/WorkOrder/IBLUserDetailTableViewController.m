@@ -48,22 +48,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.tableView.estimatedRowHeight = 40;
     self.fetchOrderRelatedUser = [[IBLFetchOrderRelatedUser alloc] init];
-    
+    [self showHUDWithMessage:@""];
     [self.fetchOrderRelatedUser fetchOrderRelatedUserWithID:[@(self.order.userIdentifier) stringValue]
                                                     account:self.order.userAccount
                                             completeHandler:^(IBLOrderRelateUser *relatedUser, NSError *error) {
-                                                self.orderRelateUser = relatedUser;
-                                                [self setup];
-                                            }];
-    
-    
-    UIView *view = [[UIView alloc] init];
-    
-    view.backgroundColor = [UIColor whiteColor];
-    
-    self.tableView.tableFooterView = view;
+                                                [self hidHUD];
+                                                if (![self showAlertWithError:error]) {
+                                                    self.orderRelateUser = relatedUser;
+                                                    [self setup];
+                                                }
+                                            }];    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,6 +78,21 @@
 //#warning Incomplete implementation, return the number of rows
 //    return 0;
 //}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell =  [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    
+    if (size.height < tableView.estimatedRowHeight) {
+        return tableView.estimatedRowHeight;
+    }
+    
+    NSLog(@"hight %f",size.height);
+    
+    return size.height + 0.5;
+}
+
 
 /*
 #pragma mark - Navigation

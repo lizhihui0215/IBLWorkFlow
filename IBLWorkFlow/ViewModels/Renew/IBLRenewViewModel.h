@@ -71,4 +71,6 @@
 - (void)payWithType:(NSString *)type
              result:(IBLRenewResult *)result
     completeHandler:(IBLViewModelCompleteHandler)handler;
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
 @end

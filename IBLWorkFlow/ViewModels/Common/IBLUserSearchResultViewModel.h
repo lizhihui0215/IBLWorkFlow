@@ -18,7 +18,7 @@
 
 - (id)searchResultAtIndexPath:(NSIndexPath *)indexPath;
 
-- (NSString *)identifierAtIndexPath:(NSIndexPath *)indexPath;
+- (NSString *)accountAtIndexPath:(NSIndexPath *)indexPath;
 
 - (NSString *)nameAtIndexPath:(NSIndexPath *)indexPath;
 

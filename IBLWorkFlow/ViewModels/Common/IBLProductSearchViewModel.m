@@ -47,6 +47,10 @@
     return self;
 }
 
+- (NSString *)title{
+    return @"销售品选择";
+}
+
 - (void)fetchSearchContentWithSearchInfo:(id)searchInfo
                                isRefresh:(BOOL)isRefresh
                          completeHandler:(IBLViewModelCompleteHandler)handler{

@@ -68,4 +68,6 @@ typedef NS_ENUM(NSInteger, IBLSearchType) {
 
 @property (nonatomic, assign) IBLSearchType searchType;
 
+- (NSString *)title;
+
 @end

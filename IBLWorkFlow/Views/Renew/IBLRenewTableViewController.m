@@ -202,8 +202,30 @@
 - (void)setupPay{
     self.payTextField.text = [@([self pay]) stringValue];
 }
+#pragma mark - Table view data source
 
+- (BOOL)isSeparationAtIndexPath:(NSIndexPath *)indexPath{
+    NSIndexPath *separation1 = [NSIndexPath indexPathForRow:7 inSection:0];
+    
+    NSDictionary *separationDictionary = @{separation1 : @(YES),};
+    
+    return [separationDictionary[indexPath] boolValue];
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if([self isSeparationAtIndexPath:indexPath]) return 6;
+    
+    BOOL isHidden = [self.tableViewDelegate isHiddenAtIndexPath:indexPath];
+    
+    if (isHidden) return 0;
+    
+    NSIndexPath *remark = [NSIndexPath indexPathForRow:16 inSection:0];
+    
+    if ([indexPath isEqual:remark]) return 124;
+    
+    return 40;
+}
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {
     NSDictionary <NSIndexPath *, NSString *> *notNullFields = [self.tableViewDelegate notNullsFieldsDictionary];

@@ -114,6 +114,34 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     [self performSegueWithIdentifier:IBLSearchForRegionIdentifier sender:self];
 }
 
+- (IBAction)workOrderBizTypeTapped:(UITapGestureRecognizer *)sender {
+    
+    IBLWorkOrderType *workOrderType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeWorkOrderType];
+    
+    if (!workOrderType) {
+        NSError *error = [NSError errorWithDomain:@""
+                                             code:0
+                                         userInfo:@{kExceptionCode : @"-1",
+                                                    kExceptionMessage: @"请选择工单类型！"}];
+        [self showAlertWithError:error];
+        return;
+    }
+    
+    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.tableViewDelegate workOrderBizTypesOfTableView:self ];
+    
+    [IBLPickerView showPickerViewInView:self.view.superview
+                            withObjects:businessTypes
+                            withOptions:nil
+                objectToStringConverter:^NSString *(IBLWorkOrderBussinessType *workOrderBizType) {
+                    return workOrderBizType.name;
+                } completion:^(IBLWorkOrderBussinessType *workOrderBizType) {
+                    [self.tableViewDelegate addWorkOrderTableView:self
+                                                        fieldType:IBLAddWorkOrderFieldTypeBizType
+                                                       didEndEdit:workOrderBizType];
+                    self.workOrderBizTypeTextField.text = workOrderBizType.name;
+                    [self.tableView reloadData];
+                }];
+}
 - (IBAction)workOrderTypeTapped:(UITapGestureRecognizer *)sender {
     
     NSArray<IBLWorkOrderType *> *workOrderTypes = [self.tableViewDelegate workOrderTypesOfTableView:self];
@@ -150,22 +178,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     return 40;
 }
 
-- (IBAction)workOrderBizTypeTapped:(UITapGestureRecognizer *)sender {
-    NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.tableViewDelegate workOrderBizTypesOfTableView:self ];
-    
-    [IBLPickerView showPickerViewInView:self.view.superview
-                            withObjects:businessTypes
-                            withOptions:nil
-                objectToStringConverter:^NSString *(IBLWorkOrderBussinessType *workOrderBizType) {
-                    return workOrderBizType.name;
-                } completion:^(IBLWorkOrderBussinessType *workOrderBizType) {
-                    [self.tableViewDelegate addWorkOrderTableView:self
-                                                      fieldType:IBLAddWorkOrderFieldTypeBizType
-                                                     didEndEdit:workOrderBizType];
-                    self.workOrderBizTypeTextField.text = workOrderBizType.name;
-                    [self.tableView reloadData];
-                }];
-}
+
 
 - (NSDictionary<NSIndexPath *, NSNumber* > *)hiddenFieldsDictionaryWithWorkBizType:(IBLWorkOrderBizStatus)bizType{
     NSDictionary *dic;

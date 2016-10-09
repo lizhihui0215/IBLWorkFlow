@@ -23,7 +23,7 @@ static NSString const * kManagedOrderDelete = @"DEL_ORDER";
 
 static NSString const * kManagedOrderTrash = @"CANCEL_ORDER";
 
-static NSString const * kManagedOrderFinished = @"FINISH_ORDER";
+static NSString const * kManagedOrderFinished = @"FINISH_MY_ORDER";
 
 static NSString const * kManagedOrderView = @"VIEW_ORDER";
 
@@ -101,6 +101,10 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
 }
 
 - (NSDictionary *)managedOrderTrashMaps{
+    return @{kManagedOrderView : @(IBLOrderActionView)};
+}
+
+- (NSDictionary *)managedOrderFinishedMaps{
     return @{kManagedOrderView : @(IBLOrderActionView),
              kManagedOrderDelete : @(IBLOrderActionDelete)};
 }
@@ -165,25 +169,25 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
     for (IBLPremission *premission in user.permissions) {
         switch (status) {
             case IBLOrderStatusUnsend: {
-                
+                NSNumber *action = [self managedOrderUnsendMaps][premission.key];
+                if (action) [actions addObject:action];
                 break;
             }
             case IBLOrderStatusSended:
             case IBLOrderStatusForwarding:
             case IBLOrderStatusHandling:
             {
-                NSNumber *action = [self managedOrderUnsendMaps][premission.key];
-                if (action) [actions addObject:action];
-                break;
-                break;
-            }
-            case IBLOrderStatusInvalid: {
                 NSNumber *action = [self managedOrderSendHandingForwardMaps][premission.key];
                 if (action) [actions addObject:action];
                 break;
             }
-            case IBLOrderStatusFinished: {
+            case IBLOrderStatusInvalid: {
                 NSNumber *action = [self managedOrderTrashMaps][premission.key];
+                if (action) [actions addObject:action];
+                break;
+            }
+            case IBLOrderStatusFinished: {
+                NSNumber *action = [self managedOrderFinishedMaps][premission.key];
                 if (action) [actions addObject:action];
                 break;
             }

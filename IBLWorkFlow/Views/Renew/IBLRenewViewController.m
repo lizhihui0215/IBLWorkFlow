@@ -189,5 +189,8 @@
     return [self.viewModel notNullFieldsDictionary];
 }
 
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
+    return [self.viewModel isHiddenAtIndexPath:indexPath];
+}
 
 @end

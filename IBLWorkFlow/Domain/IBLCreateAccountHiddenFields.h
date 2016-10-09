@@ -16,8 +16,6 @@
 
 @property (nonatomic, strong) NSDictionary<NSIndexPath *, NSNumber *> *renewHiddenFieldsDictionary;
 
-
-
 - (NSDictionary <NSIndexPath *, NSNumber *> *)createAccountNotNullFieldsDictionary;
 
 - (NSDictionary <NSIndexPath *, NSNumber *> *)exchangeProductNotNullFieldsDictionary;

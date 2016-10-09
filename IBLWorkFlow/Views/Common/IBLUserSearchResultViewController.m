@@ -68,7 +68,7 @@
 {
     IBLUserSearchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IBLUserSearchResultCell" forIndexPath:indexPath];
     
-    cell.identifierLabel.text = [self.viewModel identifierAtIndexPath:indexPath];
+    cell.identifierLabel.text = [self.viewModel accountAtIndexPath:indexPath];
 
     cell.nameLabel.text = [self.viewModel nameAtIndexPath:indexPath];
    

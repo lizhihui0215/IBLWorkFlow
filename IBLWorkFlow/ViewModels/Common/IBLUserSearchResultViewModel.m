@@ -52,9 +52,9 @@
 }
 
 
-- (NSString *)identifierAtIndexPath:(NSIndexPath *)indexPath {
+- (NSString *)accountAtIndexPath:(NSIndexPath *)indexPath {
     IBLRelateUser *user = [self relateUserAtIndexPath:indexPath];
-    return [@(user.servId) stringValue];
+    return user.account;
 }
 
 - (NSString *)nameAtIndexPath:(NSIndexPath *)indexPath {

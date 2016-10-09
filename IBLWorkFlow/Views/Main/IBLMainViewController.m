@@ -16,6 +16,7 @@
 @implementation IBLMainViewController
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     self.menuPreferredStatusBarStyle = UIStatusBarStyleLightContent;
     self.contentViewShadowEnabled = YES;
     self.contentViewInPortraitOffsetCenterX = 80;

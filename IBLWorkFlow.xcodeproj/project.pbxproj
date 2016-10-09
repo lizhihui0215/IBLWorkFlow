@@ -60,6 +60,8 @@
 		265A57AC1D5B0F21001DBFA0 /* PayInterface.xml in Resources */ = {isa = PBXBuildFile; fileRef = 265A57AB1D5B0F21001DBFA0 /* PayInterface.xml */; };
 		265A57AF1D5B0F60001DBFA0 /* IBLPayRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 265A57AE1D5B0F60001DBFA0 /* IBLPayRepository.m */; };
 		265A57B21D5B1330001DBFA0 /* IBLPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 265A57B11D5B1330001DBFA0 /* IBLPay.m */; };
+		265F5C821DA9F9C40058A5C2 /* IBLStaticTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265F5C811DA9F9C40058A5C2 /* IBLStaticTableViewController.m */; };
+		265F5C851DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265F5C841DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.m */; };
 		26734FCD1D4112300048DE97 /* IBLProductSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26734FCC1D4112300048DE97 /* IBLProductSearchViewModel.m */; };
 		26734FCF1D41135A0048DE97 /* ProductOfferInterface.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26734FCE1D41135A0048DE97 /* ProductOfferInterface.xml */; };
 		26734FD21D4113A60048DE97 /* IBLProductRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26734FD11D4113A60048DE97 /* IBLProductRepository.m */; };
@@ -206,7 +208,7 @@
 		261524C81D7FC1B3007BF989 /* IBLInternetListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetListViewModel.m; sourceTree = "<group>"; };
 		261524CA1D7FC571007BF989 /* IBLInternetListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLInternetListCell.h; sourceTree = "<group>"; };
 		261524CB1D7FC571007BF989 /* IBLInternetListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetListCell.m; sourceTree = "<group>"; };
-		261524CD1D7FDB25007BF989 /* IBLInternetDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLInternetDetailTableViewController.h; sourceTree = "<group>"; };
+		261524CD1D7FDB25007BF989 /* IBLInternetDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLInternetDetailTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		261524CE1D7FDB25007BF989 /* IBLInternetDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetDetailTableViewController.m; sourceTree = "<group>"; };
 		2615BECF1D38CAAE002FE7A7 /* IBLFieldConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLFieldConfiguration.h; sourceTree = "<group>"; };
 		2615BED01D38CAAE002FE7A7 /* IBLFieldConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFieldConfiguration.m; sourceTree = "<group>"; };
@@ -214,7 +216,7 @@
 		2615BED31D38D314002FE7A7 /* IBLPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLPickerView.m; sourceTree = "<group>"; };
 		2615BED81D38D732002FE7A7 /* IBLGenerateAppConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLGenerateAppConfiguration.h; sourceTree = "<group>"; };
 		2615BED91D38D732002FE7A7 /* IBLGenerateAppConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLGenerateAppConfiguration.m; sourceTree = "<group>"; };
-		2616BE261D7B2EBA00A1C77F /* IBLOrderDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderDetailTableViewController.h; sourceTree = "<group>"; };
+		2616BE261D7B2EBA00A1C77F /* IBLOrderDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLOrderDetailTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2616BE271D7B2EBA00A1C77F /* IBLOrderDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderDetailTableViewController.m; sourceTree = "<group>"; };
 		261F40201D3720D50068F502 /* IBLOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrder.h; sourceTree = "<group>"; };
 		261F40211D3720D50068F502 /* IBLOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrder.m; sourceTree = "<group>"; };
@@ -227,7 +229,7 @@
 		262BFF761D4074050021F8EB /* IBLSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IBLSectionHeaderView.xib; sourceTree = "<group>"; };
 		262BFF791D4075060021F8EB /* IBLCreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLCreateAccountViewController.h; sourceTree = "<group>"; };
 		262BFF7A1D4075060021F8EB /* IBLCreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLCreateAccountViewController.m; sourceTree = "<group>"; };
-		262BFF7C1D40752E0021F8EB /* IBLCreateAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLCreateAccountTableViewController.h; sourceTree = "<group>"; };
+		262BFF7C1D40752E0021F8EB /* IBLCreateAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLCreateAccountTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		262BFF7D1D40752E0021F8EB /* IBLCreateAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLCreateAccountTableViewController.m; sourceTree = "<group>"; };
 		262BFF7F1D409F230021F8EB /* IBLCreateAccountViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLCreateAccountViewModel.h; sourceTree = "<group>"; };
 		262BFF801D409F230021F8EB /* IBLCreateAccountViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLCreateAccountViewModel.m; sourceTree = "<group>"; };
@@ -289,6 +291,10 @@
 		265A57AE1D5B0F60001DBFA0 /* IBLPayRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLPayRepository.m; sourceTree = "<group>"; };
 		265A57B01D5B1330001DBFA0 /* IBLPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLPay.h; sourceTree = "<group>"; };
 		265A57B11D5B1330001DBFA0 /* IBLPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLPay.m; sourceTree = "<group>"; };
+		265F5C801DA9F9C40058A5C2 /* IBLStaticTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLStaticTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		265F5C811DA9F9C40058A5C2 /* IBLStaticTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLStaticTableViewController.m; sourceTree = "<group>"; };
+		265F5C831DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderFlowDetailViewController.h; sourceTree = "<group>"; };
+		265F5C841DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderFlowDetailViewController.m; sourceTree = "<group>"; };
 		26734FCB1D4112300048DE97 /* IBLProductSearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLProductSearchViewModel.h; sourceTree = "<group>"; };
 		26734FCC1D4112300048DE97 /* IBLProductSearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLProductSearchViewModel.m; sourceTree = "<group>"; };
 		26734FCE1D41135A0048DE97 /* ProductOfferInterface.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ProductOfferInterface.xml; sourceTree = "<group>"; };
@@ -332,7 +338,7 @@
 		26846F741D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IBLLeftMenuTableHeaderView.xib; sourceTree = "<group>"; };
 		26846F761D34F0BE001F9C73 /* IBLPremission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLPremission.h; sourceTree = "<group>"; };
 		26846F771D34F0BE001F9C73 /* IBLPremission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLPremission.m; sourceTree = "<group>"; };
-		2684A3051D7EC5B9001B92B7 /* IBLInternetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLInternetTableViewController.h; sourceTree = "<group>"; };
+		2684A3051D7EC5B9001B92B7 /* IBLInternetTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLInternetTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2684A3061D7EC5B9001B92B7 /* IBLInternetTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetTableViewController.m; sourceTree = "<group>"; };
 		2684A3081D7ECA21001B92B7 /* IBLInternetListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLInternetListViewController.h; sourceTree = "<group>"; };
 		2684A3091D7ECA21001B92B7 /* IBLInternetListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetListViewController.m; sourceTree = "<group>"; };
@@ -372,7 +378,7 @@
 		26A9D13E1D2E847C000950F6 /* IBLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBLModel.m; path = IBLWorkFlow/Views/IBLModel.m; sourceTree = SOURCE_ROOT; };
 		26A9D1401D2E8487000950F6 /* IBLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLUser.h; path = IBLWorkFlow/Views/IBLUser.h; sourceTree = SOURCE_ROOT; };
 		26A9D1411D2E8487000950F6 /* IBLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IBLUser.m; path = IBLWorkFlow/Views/IBLUser.m; sourceTree = SOURCE_ROOT; };
-		26ADA5DF1D43898C005CAEEC /* IBLExchangeProductTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLExchangeProductTableViewController.h; sourceTree = "<group>"; };
+		26ADA5DF1D43898C005CAEEC /* IBLExchangeProductTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLExchangeProductTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		26ADA5E01D43898C005CAEEC /* IBLExchangeProductTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLExchangeProductTableViewController.m; sourceTree = "<group>"; };
 		26ADA5E21D43899B005CAEEC /* IBLExchangeProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLExchangeProductViewController.h; sourceTree = "<group>"; };
 		26ADA5E31D43899B005CAEEC /* IBLExchangeProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLExchangeProductViewController.m; sourceTree = "<group>"; };
@@ -384,9 +390,9 @@
 		26B549DD1D753A490011D0D0 /* IBLOrderDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderDetail.m; sourceTree = "<group>"; };
 		26C2597B1D42687300035F63 /* IBLRenewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRenewViewController.h; sourceTree = "<group>"; };
 		26C2597C1D42687300035F63 /* IBLRenewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRenewViewController.m; sourceTree = "<group>"; };
-		26C2597E1D42688400035F63 /* IBLRenewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRenewTableViewController.h; sourceTree = "<group>"; };
+		26C2597E1D42688400035F63 /* IBLRenewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLRenewTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		26C2597F1D42688400035F63 /* IBLRenewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRenewTableViewController.m; sourceTree = "<group>"; };
-		26C314F51DA920C10099721D /* IBLUserDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUserDetailTableViewController.h; sourceTree = "<group>"; };
+		26C314F51DA920C10099721D /* IBLUserDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLUserDetailTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		26C314F61DA920C10099721D /* IBLUserDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLUserDetailTableViewController.m; sourceTree = "<group>"; };
 		26C314F81DA9265D0099721D /* IBLOrderRelateUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderRelateUser.h; sourceTree = "<group>"; };
 		26C314F91DA9265D0099721D /* IBLOrderRelateUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderRelateUser.m; sourceTree = "<group>"; };
@@ -400,7 +406,7 @@
 		26C97D681D41CB03001EFA6F /* IBLProductPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLProductPrice.h; sourceTree = "<group>"; };
 		26C97D691D421DDF001EFA6F /* IBLAddWorkOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAddWorkOrderViewController.h; sourceTree = "<group>"; };
 		26C97D6A1D421DDF001EFA6F /* IBLAddWorkOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAddWorkOrderViewController.m; sourceTree = "<group>"; };
-		26C97D6C1D421DF7001EFA6F /* IBLAddWorkOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAddWorkOrderTableViewController.h; sourceTree = "<group>"; };
+		26C97D6C1D421DF7001EFA6F /* IBLAddWorkOrderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLAddWorkOrderTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		26C97D6D1D421DF7001EFA6F /* IBLAddWorkOrderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAddWorkOrderTableViewController.m; sourceTree = "<group>"; };
 		26CA04871D3676320044C81B /* IBLFetchOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLFetchOrder.h; sourceTree = "<group>"; };
 		26CA04881D3676320044C81B /* IBLFetchOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFetchOrder.m; sourceTree = "<group>"; };
@@ -423,7 +429,7 @@
 		26E69B911D84261F00E41972 /* IBLExchangeProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLExchangeProduct.m; sourceTree = "<group>"; };
 		26EC5A261D45E5E500CB0F7C /* IBLUserSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUserSearchViewController.h; sourceTree = "<group>"; };
 		26EC5A271D45E5E500CB0F7C /* IBLUserSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLUserSearchViewController.m; sourceTree = "<group>"; };
-		26EC5A291D45E5F700CB0F7C /* IBLUserSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUserSearchTableViewController.h; sourceTree = "<group>"; };
+		26EC5A291D45E5F700CB0F7C /* IBLUserSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLUserSearchTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		26EC5A2A1D45E5F700CB0F7C /* IBLUserSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLUserSearchTableViewController.m; sourceTree = "<group>"; };
 		26EC5A2C1D45E6D700CB0F7C /* IBLUserSearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUserSearchViewModel.h; sourceTree = "<group>"; };
 		26EC5A2D1D45E6D700CB0F7C /* IBLUserSearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLUserSearchViewModel.m; sourceTree = "<group>"; };
@@ -479,7 +485,7 @@
 		5B8758BBA9729641CC5F291D /* IBLOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderViewController.m; sourceTree = "<group>"; };
 		5B8758F5509F16FDE270112B /* IBLOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderCell.h; sourceTree = "<group>"; };
 		5B875A477581D17ADD3212A9 /* IBLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLTableViewController.m; sourceTree = "<group>"; };
-		5B875A567C203D9BF01151D6 /* IBLPayDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLPayDetailViewController.h; sourceTree = "<group>"; };
+		5B875A567C203D9BF01151D6 /* IBLPayDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLPayDetailViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		5B875A9FF16C311E1D55C840 /* IBLExchangeProductViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLExchangeProductViewModel.m; sourceTree = "<group>"; };
 		5B875B2890782FCCC77AB904 /* IBLOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderCell.m; sourceTree = "<group>"; };
 		5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMainViewController.m; sourceTree = "<group>"; };
@@ -489,7 +495,7 @@
 		5B875CBB1B52E43E34F296AF /* IBLOrderSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderSearchViewController.h; sourceTree = "<group>"; };
 		5B875CF33E2F3DB3FED110D4 /* IBLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLViewController.m; sourceTree = "<group>"; };
 		5B875EABA63BA31F5E2EF5F0 /* IBLPayDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLPayDetailViewController.m; sourceTree = "<group>"; };
-		5B875EFCBE865B7FD2E3FFD7 /* IBLOrderSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderSearchTableViewController.h; sourceTree = "<group>"; };
+		5B875EFCBE865B7FD2E3FFD7 /* IBLOrderSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLOrderSearchTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		5B875F49C01D81C5D5902304 /* IBLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMainViewController.h; sourceTree = "<group>"; };
 		5B875FA0896D4BEFF18C1576 /* IBLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLViewController.h; sourceTree = "<group>"; };
 		5B875FB5811336EE05248DB0 /* IBLRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRootViewController.m; sourceTree = "<group>"; };
@@ -676,6 +682,8 @@
 				269F298D1D7B5BB0004F90D4 /* IBLOrderFlowCell.m */,
 				269F29801D7B4A73004F90D4 /* IBLOrderFlowViewController.h */,
 				269F29811D7B4A73004F90D4 /* IBLOrderFlowViewController.m */,
+				265F5C831DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.h */,
+				265F5C841DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.m */,
 				26C314F51DA920C10099721D /* IBLUserDetailTableViewController.h */,
 				26C314F61DA920C10099721D /* IBLUserDetailTableViewController.m */,
 				2616BE261D7B2EBA00A1C77F /* IBLOrderDetailTableViewController.h */,
@@ -1035,6 +1043,8 @@
 				5B875CF33E2F3DB3FED110D4 /* IBLViewController.m */,
 				5B8755217F90CFB700C44EAD /* IBLTableViewController.h */,
 				5B875A477581D17ADD3212A9 /* IBLTableViewController.m */,
+				265F5C801DA9F9C40058A5C2 /* IBLStaticTableViewController.h */,
+				265F5C811DA9F9C40058A5C2 /* IBLStaticTableViewController.m */,
 				5B875517E4AEDED23890788A /* IBLTableViewCell.h */,
 				5B8758BB5B46F169393FE2D7 /* IBLTableViewCell.m */,
 				26846F6E1D34D238001F9C73 /* IBLTableViewHeaderFooterView.h */,
@@ -1495,6 +1505,7 @@
 				26D56E401D35D8E70091A940 /* IBLGenerateLeftMenu.m in Sources */,
 				26E69B921D84261F00E41972 /* IBLExchangeProduct.m in Sources */,
 				26EC5A3E1D45F99E00CB0F7C /* IBLUserListRepository.m in Sources */,
+				265F5C821DA9F9C40058A5C2 /* IBLStaticTableViewController.m in Sources */,
 				26CA04891D3676320044C81B /* IBLFetchOrder.m in Sources */,
 				264EBB631D2E023D00FF8373 /* main.m in Sources */,
 				26C97D6E1D421DF7001EFA6F /* IBLAddWorkOrderTableViewController.m in Sources */,
@@ -1530,6 +1541,7 @@
 				269CD3921D37BF3400603A83 /* IBLOrderSearchViewModel.m in Sources */,
 				26ECF2711D62F5D800BA8C2B /* IBLPayResult.m in Sources */,
 				269E15A41D3DD5AC004D497B /* IBLForwardOrder.m in Sources */,
+				265F5C851DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.m in Sources */,
 				26469BE61D38B9F40000285D /* IBLWorkOrderBussinessType.m in Sources */,
 				261524C91D7FC1B3007BF989 /* IBLInternetListViewModel.m in Sources */,
 				26EC5A371D45F09500CB0F7C /* IBLUserSearchResultViewController.m in Sources */,

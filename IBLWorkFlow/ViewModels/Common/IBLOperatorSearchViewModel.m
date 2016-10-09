@@ -35,6 +35,9 @@
     return self;
 }
 
+- (NSString *)title{
+    return @"操作员";
+}
 
 + (instancetype)operatorSearchModelWithOrder:(IBLOrder *)order searchType:(IBLSearchType)searchType {
     return [[self alloc] initWithWorkOrder:order searchType:searchType];

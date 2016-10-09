@@ -36,6 +36,10 @@
     return self;
 }
 
+- (NSString *)title{
+    return @"小区选择";
+}
+
 - (void)fetchSearchContentWithSearchInfo:(id)searchInfo
                                isRefresh:(BOOL)isRefresh
                          completeHandler:(IBLViewModelCompleteHandler)handler{

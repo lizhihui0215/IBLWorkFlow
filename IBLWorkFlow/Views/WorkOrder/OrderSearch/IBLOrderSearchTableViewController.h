@@ -7,6 +7,7 @@
 //
 
 #import "IBLTableViewController.h"
+#import "IBLStaticTableViewController.h"
 
 @class IBLOrderSearchTableViewController;
 
@@ -37,7 +38,7 @@ typedef NS_ENUM(NSInteger, IBLOrderSearchFieldType) {
 @end
 
 
-@interface IBLOrderSearchTableViewController : UITableViewController
+@interface IBLOrderSearchTableViewController : IBLStaticTableViewController
 
 @property (nonatomic, weak) id<IBLOrderSearchTableViewControllerDataSource> searchDataSource;
 

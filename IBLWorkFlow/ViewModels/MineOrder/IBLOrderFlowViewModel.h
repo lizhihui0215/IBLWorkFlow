@@ -22,4 +22,6 @@
 - (NSString *)suggestAtIndexPath:(NSIndexPath *)indexPath;
 
 - (NSString *)handleDateAtIndexPath:(NSIndexPath *)indexPath;
+
+- (IBLOrderFlow *)orderFlowAtIndexPath:(NSIndexPath *)indexPath;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IBLStaticTableViewController.h"
 
 @class IBLExchangeProductTableViewController;
 @class IBLProductPrice;
@@ -65,7 +66,7 @@ typedef NS_ENUM(NSInteger, IBLExchangeProductTextFieldType) {
 
 @end
 
-@interface IBLExchangeProductTableViewController : UITableViewController
+@interface IBLExchangeProductTableViewController : IBLStaticTableViewController
 
 @property (nonatomic, weak) id<IBLExchangeProductTableViewControllerDelegate> tableViewDelegate;
 

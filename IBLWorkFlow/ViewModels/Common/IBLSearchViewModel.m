@@ -16,6 +16,10 @@
 
 @implementation IBLSearchViewModel
 
+- (NSString *)title{
+    return nil;
+}
+
 - (NSMutableArray *)dataSource{
     return _dataSource;
 }

@@ -222,4 +222,8 @@
 - (NSDictionary<NSIndexPath *, NSNumber *> *)notNullFieldsDictionary {
     return [self.hiddenFields renewNotNullFieldsDictionary];
 }
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.hiddenFields.renewHiddenFieldsDictionary[indexPath] boolValue];
+}
 @end

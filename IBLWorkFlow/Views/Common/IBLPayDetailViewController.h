@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IBLStaticTableViewController.h"
 #import "IBLOrder.h"
 
 typedef NS_ENUM(NSInteger,IBLOrderDetailType) {
@@ -16,7 +17,7 @@ typedef NS_ENUM(NSInteger,IBLOrderDetailType) {
     IBLOrderDetailTypeFromExchangeProduct,
 };
 
-@interface IBLPayDetailViewController : UITableViewController
+@interface IBLPayDetailViewController : IBLStaticTableViewController
 
 @property (nonatomic, strong) IBLOrder *order;
 

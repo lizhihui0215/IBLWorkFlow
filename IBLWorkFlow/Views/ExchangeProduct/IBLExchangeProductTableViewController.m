@@ -276,7 +276,7 @@
     BOOL isHidden = [self.tableViewDelegate isHiddenAtIndexPath:indexPath];
     
     if (isHidden) return 0;
-    
+
     NSIndexPath *remark = [NSIndexPath indexPathForRow:19 inSection:0];
     
     if ([indexPath isEqual:remark]) return 124;

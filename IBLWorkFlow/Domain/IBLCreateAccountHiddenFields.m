@@ -55,11 +55,11 @@
 }
 
 - (NSDictionary *)exchangeProductAllFields{
-    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
-    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:0 inSection:3];
-    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:0 inSection:19];
-    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:0 inSection:13];
-    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:0 inSection:14];
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:3 inSection:0];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:19 inSection:0];
+    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:13 inSection:0];
+    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:14 inSection:0];
     return  @{@"custName" : custNameIndexPath,
               @"custPhone" : custPhone  ,
               @"custReserve" : custReserve,
@@ -71,11 +71,11 @@
 
 
 - (NSDictionary *)renewAllFields{
-    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:2];
-    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:0 inSection:3];
-    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:0 inSection:16];
-    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:0 inSection:12];
-    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:0 inSection:11];
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:3 inSection:0];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:16 inSection:0];
+    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:12 inSection:0];
+    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:11 inSection:0];
     return  @{@"custName" : custNameIndexPath,
               @"custPhone" : custPhone  ,
               @"custReserve" : custReserve,
