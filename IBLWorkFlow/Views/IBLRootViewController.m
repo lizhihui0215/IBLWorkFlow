@@ -37,7 +37,6 @@ static NSString * const NavigationToLoginIdentifier = @"NavigationToLogin";
      IBLLoginViewController *loginViewController = [segue destinationViewController];
      
      loginViewController.viewModel = [[IBLLoginViewModel alloc] init];
-     
- }
+}
 
 @end

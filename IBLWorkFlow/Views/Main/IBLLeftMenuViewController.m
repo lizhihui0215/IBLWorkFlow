@@ -147,6 +147,26 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     [self setupViewControllers];
     
     self.sideMenuViewController.contentViewController = self.actionViewControllers[@(IBLLeftMenuSectionActionMineOrder)];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationReviced:)
+                                                 name:@"notificationReviced"
+                                               object:nil];
+}
+
+- (void)notificationReviced:(NSNotification *)notification{
+    NSNumber *thePageToOpen = notification.userInfo[@""];
+    switch (thePageToOpen.integerValue) {
+        case 0:
+            
+            [self.sideMenuViewController setContentViewController:self.actionViewControllers[@(IBLLeftMenuSectionActionMineOrder)]];
+            break;
+        case 1:
+            [self.sideMenuViewController setContentViewController:self.actionViewControllers[@(IBLLeftMenuSectionActionManagedOrder)]];
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark -
@@ -243,6 +263,9 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 }
 
 
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

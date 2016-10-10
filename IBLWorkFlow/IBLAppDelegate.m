@@ -67,6 +67,8 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     [UMessage didReceiveRemoteNotification:userInfo];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationReviced" object:userInfo];
 }
 
 //iOS10新增：处理前台收到通知的代理方法
@@ -76,7 +78,7 @@
         //应用处于前台时的远程推送接受
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationReviced" object:userInfo];
     }else{
         //应用处于前台时的本地推送接受
     }
@@ -90,7 +92,7 @@
         //应用处于后台时的远程推送接受
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationReviced" object:userInfo];
     }else{
         //应用处于后台时的本地推送接受
     }

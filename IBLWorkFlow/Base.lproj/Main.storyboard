@@ -6400,9 +6400,24 @@
                     <view key="view" contentMode="scaleToFill" id="o5S-yk-zqL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKz-aO-Yf0">
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qKz-aO-Yf0" firstAttribute="leading" secondItem="o5S-yk-zqL" secondAttribute="leading" id="A0Q-NI-0bX"/>
+                            <constraint firstItem="qKz-aO-Yf0" firstAttribute="top" secondItem="V79-oB-dHw" secondAttribute="bottom" id="BRX-S6-AKu"/>
+                            <constraint firstAttribute="trailing" secondItem="qKz-aO-Yf0" secondAttribute="trailing" id="Lhf-VA-1Q4"/>
+                            <constraint firstItem="RpS-pu-Rdw" firstAttribute="top" secondItem="qKz-aO-Yf0" secondAttribute="bottom" id="hxT-IA-vz5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="关于我们" id="WcA-kW-oA5"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="webView" destination="qKz-aO-Yf0" id="xJ3-Bg-Ce6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syX-qH-2KV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

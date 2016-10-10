@@ -90,6 +90,8 @@ typedef NS_ENUM(NSInteger, IBLOrderEffectType) {
 /// 隐藏输入 （主要针对于临时优惠和票据的配置，仅仅适用于开户工单、续费工单、换销售品工单）
 @property (nonatomic, strong) IBLFieldConfiguration *hiddenFields;
 
+@property (nonatomic, copy) NSString *aboutUrl;
+
 /// 非空字段 （开户，更换销售品）
 @property (nonatomic, strong) IBLFieldConfiguration *notNullFields;
 

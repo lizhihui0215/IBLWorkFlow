@@ -7,8 +7,11 @@
 //
 
 #import "IBLAboutViewController.h"
+#import "IBLAppRepository.h"
+
 
 @interface IBLAboutViewController ()
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -17,6 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    IBLAppConfiguration *appConfiguration = [IBLAppRepository appConfiguration];
+    
+    NSURL *url = [NSURL URLWithString:appConfiguration.aboutUrl];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [self.webView loadRequest:request];
 }
 
 - (void)didReceiveMemoryWarning {
