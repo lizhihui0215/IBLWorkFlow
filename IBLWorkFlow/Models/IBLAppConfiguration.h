@@ -33,13 +33,13 @@ typedef NS_ENUM(NSInteger, IBLAccountType) {
  */
 typedef NS_ENUM(NSInteger, IBLPayModel) {
     /**
+     *  现金支付
+     */
+    IBLPayModelCash,
+    /**
      *  网上支付（支付宝，微信）
      */
     IBLPayModelNet,
-    /**
-     *  现金支付
-     */
-    IBLPayModelCash
 };
 
 /**
