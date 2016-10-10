@@ -207,20 +207,66 @@
         }
     }
     
-    self.payTextField.delegate = self;
-    self.salesCountTextField.delegate = self;
-    self.salesTextField.delegate = self;
-    self.discountTextField.delegate = self;
-    self.giveTextField.delegate = self;
+    [self setPriceTextFieldsEnable:NO];
+    
+    for (UITextField *textField in [self priceTextFields]) textField.delegate = self;
+    
+    self.phoneTextField.delegate = self;
+    
+    self.identifierTextField.delegate = self;
+    
     self.giveTextField.text = @"0";
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField;{
+- (void)setPriceTextFieldsEnable:(BOOL)enable{
+    NSString *placeholder = enable ? @"" : @"请选择销售品";
+    
+    for (UITextField *textField in [self priceTextFields]) {
+        textField.placeholder = placeholder;
+        textField.enabled = enable;
+    }
+}
+
+- (NSArray<UITextField *> *)priceTextFields{
+    return @[self.payTextField,
+             self.discountTextField,
+             self.giveTextField];
+}
+
+- (BOOL)validatePriceWithTextField:(UITextField *)textField{
+    
     BOOL isNumber = [self validateNumberWithText:textField.text];
     
     if (!isNumber) return NO;
     
     if (![self validateTextFields]) return NO;
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField;{
+    if ([[self priceTextFields] containsObject:textField]) return [self validatePriceWithTextField:textField];
+    
+    if (textField == self.phoneTextField && ![NSString isNull:self.phoneTextField.text]) {
+        if ([IBLUtilities validateMobile:textField.text]) return YES;
+        NSError *error = [NSError errorWithDomain:@""
+                                             code:0
+                                         userInfo:@{kExceptionCode : @"-1",
+                                                    kExceptionMessage: @"您输入的手机格式不正确！"}];
+        [self showAlertWithError:error];
+        return NO;
+    }
+    
+    if (textField == self.identifierTextField && ![NSString isNull:self.identifierTextField.text]) {
+        if ([IBLUtilities validateIdentityCard:self.identifierTextField.text]) return YES;
+        
+        NSError *error = [NSError errorWithDomain:@""
+                                             code:0
+                                         userInfo:@{kExceptionCode : @"-1",
+                                                    kExceptionMessage: @"您输入的身份证号码格式不正确！"}];
+        [self showAlertWithError:error];
+        return NO;
+    }
     
     return YES;
 }
@@ -309,6 +355,7 @@
     [self setupSalesCount];
     [self setupDiscount];
     [self setupGive];
+    [self setPriceTextFieldsEnable:YES];
 }
 
 - (CGFloat)pay{

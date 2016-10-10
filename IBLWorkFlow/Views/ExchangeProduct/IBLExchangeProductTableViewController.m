@@ -108,7 +108,7 @@
     IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
     
     
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
                                                                     title:@"请选择生效方式"
                                                                   message:nil
                                                          cancleButtonItem:cancel
@@ -243,7 +243,7 @@
         IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确定"];
         
         
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
                                                                         title:@"请选择销售品"
                                                                       message:nil
                                                              cancleButtonItem:cancel

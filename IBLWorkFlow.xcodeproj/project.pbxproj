@@ -101,6 +101,7 @@
 		26A11D051D363A6900984B40 /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A11D011D363A6900984B40 /* CustomIOSAlertView.m */; };
 		26A11D061D363A6900984B40 /* IBLBusinessAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A11D031D363A6900984B40 /* IBLBusinessAlertViewController.m */; };
 		26A11D071D363A6900984B40 /* IBLBusinessAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A11D041D363A6900984B40 /* IBLBusinessAlertViewController.xib */; };
+		26A562AC1DAB3BBF00EAC200 /* IBLUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A562AB1DAB3BBF00EAC200 /* IBLUtilities.m */; };
 		26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */; };
 		26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D1381D2E844C000950F6 /* IBLViewModel.m */; };
 		26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9D13B1D2E8458000950F6 /* IBLLoginViewModel.m */; };
@@ -162,6 +163,7 @@
 		5B875A10DFA89C3EE4F4783D /* IBLPayDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875EABA63BA31F5E2EF5F0 /* IBLPayDetailViewController.m */; };
 		5B875ABCE8A1815B62EDC2A3 /* IBLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875A477581D17ADD3212A9 /* IBLTableViewController.m */; };
 		5B875BA76456459E9F3FA8BA /* IBLMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */; };
+		5B875BF706873151551D3EEC /* libUMessage_Sdk_1.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8750A5CF7DB26B48CD2007 /* libUMessage_Sdk_1.4.0.a */; };
 		5B875D0ED0EB1229E1244E5C /* IBLProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B87545523BC6DB49B830646 /* IBLProduct.m */; };
 		5B875EBA6916E043812870AB /* IBLFetchProductPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8754F50FC733C78D974141 /* IBLFetchProductPrice.m */; };
 		5B875F35EE4AEFAF69A69881 /* IBLLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */; };
@@ -368,6 +370,8 @@
 		26A11D021D363A6900984B40 /* IBLBusinessAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLBusinessAlertViewController.h; sourceTree = "<group>"; };
 		26A11D031D363A6900984B40 /* IBLBusinessAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLBusinessAlertViewController.m; sourceTree = "<group>"; };
 		26A11D041D363A6900984B40 /* IBLBusinessAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IBLBusinessAlertViewController.xib; sourceTree = "<group>"; };
+		26A562AA1DAB3BBF00EAC200 /* IBLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUtilities.h; sourceTree = "<group>"; };
+		26A562AB1DAB3BBF00EAC200 /* IBLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLUtilities.m; sourceTree = "<group>"; };
 		26A9D1341D2E7E3E000950F6 /* IBLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLoginViewController.h; sourceTree = "<group>"; };
 		26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLoginViewController.m; sourceTree = "<group>"; };
 		26A9D1371D2E844C000950F6 /* IBLViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IBLViewModel.h; path = IBLWorkFlow/Views/IBLViewModel.h; sourceTree = SOURCE_ROOT; };
@@ -467,6 +471,7 @@
 		4421433E1B53EEC5E521C458 /* Pods-IBLWorkFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.release.xcconfig"; sourceTree = "<group>"; };
 		565A3BAEBC81E00A178005D9 /* Pods-IBLWorkFlow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.debug.xcconfig"; sourceTree = "<group>"; };
 		5B87506EA97E96D86DEB0D3B /* IBLUserSearchResultViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUserSearchResultViewModel.h; sourceTree = "<group>"; };
+		5B8750A5CF7DB26B48CD2007 /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
 		5B8751501161A3D21DFE40EF /* IBLOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderViewController.h; sourceTree = "<group>"; };
 		5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLLeftMenuViewController.m; sourceTree = "<group>"; };
 		5B8753BEE41EFC83BCC1A897 /* IBLLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLeftMenuViewController.h; sourceTree = "<group>"; };
@@ -489,6 +494,7 @@
 		5B875A9FF16C311E1D55C840 /* IBLExchangeProductViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLExchangeProductViewModel.m; sourceTree = "<group>"; };
 		5B875B2890782FCCC77AB904 /* IBLOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderCell.m; sourceTree = "<group>"; };
 		5B875B3AD79922AC7DBE16B9 /* IBLMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLMainViewController.m; sourceTree = "<group>"; };
+		5B875BD3087F7FC6DC4FA335 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		5B875C0E69E5725584090704 /* IBLUserSearchResultViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLUserSearchResultViewModel.m; sourceTree = "<group>"; };
 		5B875C50B051C41CC76D45C6 /* IBLTrashOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLTrashOrder.m; sourceTree = "<group>"; };
 		5B875C62F23D441DE986C86A /* IBLOrderSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderSearchResult.h; sourceTree = "<group>"; };
@@ -513,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C29699C982E6C6E8F36F7C33 /* libPods-IBLWorkFlow.a in Frameworks */,
+				5B875BF706873151551D3EEC /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +598,8 @@
 		264EBB611D2E023D00FF8373 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5B875E71672CC838FC4F0449 /* SDKs */,
+				26A562A91DAB3BA800EAC200 /* Utilities */,
 				264EBB621D2E023D00FF8373 /* main.m */,
 				264EBBAC1D2E32DB00FF8373 /* IBLWorkFlow-prefix.pch */,
 			);
@@ -628,6 +637,15 @@
 				261524CE1D7FDB25007BF989 /* IBLInternetDetailTableViewController.m */,
 			);
 			path = Internet;
+			sourceTree = "<group>";
+		};
+		26A562A91DAB3BA800EAC200 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				26A562AA1DAB3BBF00EAC200 /* IBLUtilities.h */,
+				26A562AB1DAB3BBF00EAC200 /* IBLUtilities.m */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		26EC5A381D45F21C00CB0F7C /* ExchangeProduct */ = {
@@ -712,6 +730,15 @@
 				5B87558483DFA968DEE92C1A /* Manager */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		5B8753DFB9FFE118FF9DD3FC /* UMessage_Sdk_1.4.0 */ = {
+			isa = PBXGroup;
+			children = (
+				5B8750A5CF7DB26B48CD2007 /* libUMessage_Sdk_1.4.0.a */,
+				5B875BD3087F7FC6DC4FA335 /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.4.0;
 			sourceTree = "<group>";
 		};
 		5B87540258EE7F5BCE66BC19 /* Models */ = {
@@ -1053,6 +1080,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		5B875E71672CC838FC4F0449 /* SDKs */ = {
+			isa = PBXGroup;
+			children = (
+				5B8753DFB9FFE118FF9DD3FC /* UMessage_Sdk_1.4.0 */,
+			);
+			path = SDKs;
+			sourceTree = "<group>";
+		};
 		5B875E7F67203C8BE2825219 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1237,7 +1272,7 @@
 				TargetAttributes = {
 					264EBB5D1D2E023C00FF8373 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 3P8C7H426Z;
+						DevelopmentTeam = 5R5G2D4E69;
 						ProvisioningStyle = Automatic;
 					};
 					264EBB761D2E023D00FF8373 = {
@@ -1558,6 +1593,7 @@
 				26ADA5E41D43899B005CAEEC /* IBLExchangeProductViewController.m in Sources */,
 				26EC5A2B1D45E5F700CB0F7C /* IBLUserSearchTableViewController.m in Sources */,
 				262BFF871D40BFB10021F8EB /* IBLCreateAccountHiddenFields.m in Sources */,
+				26A562AC1DAB3BBF00EAC200 /* IBLUtilities.m in Sources */,
 				26846F651D34BB35001F9C73 /* IBLHUDHandler.m in Sources */,
 				262BFF8D1D40CF9D0021F8EB /* IBLFetchRegion.m in Sources */,
 				5B8752353A6DB84830C5F1CA /* IBLTableViewCell.m in Sources */,
@@ -1724,11 +1760,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3P8C7H426Z;
+				DEVELOPMENT_TEAM = 5R5G2D4E69;
 				GCC_PREFIX_HEADER = "${SRCROOT}/IBLWorkFlow/IBLWorkFlow-prefix.pch";
 				INFOPLIST_FILE = IBLWorkFlow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.iblworkflow.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1742,11 +1782,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3P8C7H426Z;
+				DEVELOPMENT_TEAM = 5R5G2D4E69;
 				GCC_PREFIX_HEADER = "${SRCROOT}/IBLWorkFlow/IBLWorkFlow-prefix.pch";
 				INFOPLIST_FILE = IBLWorkFlow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.iblworkflow.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
