@@ -27,8 +27,9 @@
 }
 
 - (void)productPriceOfTableViewController:(IBLExchangeProductTableViewController *)controller
+                                  product:(IBLProduct *)product
                           completeHandler:(void (^)(IBLProductPrice *productPrice))completeHandler {
-    NSInteger productId = [[self.viewModel productIdentifier] integerValue];
+    NSInteger productId = product.identifier;
     IBLFetchProductPriceInfo *fetchProductPrice = [IBLFetchProductPriceInfo priceWithProductId:productId
                                                                                    discountIds:@""
                                                                                          renew:NO];
@@ -50,7 +51,7 @@
         case IBLPayModelNet: {
             IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
                                                            action:^(IBLButtonItem *item) {
-                                                               [self.viewModel payWithType:@"0"
+                                                               [self.viewModel payWithType:@"1"
                                                                                     result:result
                                                                            completeHandler:^(NSError *error) {
                                                                                if (![self showAlertWithError:error]) {
@@ -61,7 +62,7 @@
             
             IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
                                                                action:^(IBLButtonItem *item) {
-                                                                   [self.viewModel payWithType:@"1"
+                                                                   [self.viewModel payWithType:@"0"
                                                                                         result:result
                                                                                completeHandler:^(NSError *error) {
                                                                                    if (![self showAlertWithError:error]) {

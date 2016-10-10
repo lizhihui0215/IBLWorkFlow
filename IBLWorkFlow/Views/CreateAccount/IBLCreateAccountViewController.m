@@ -100,7 +100,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
         case IBLPayModelNet: {
             IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
                                                            action:^(IBLButtonItem *item) {
-                                                               [self.viewModel payWithType:@"0"
+                                                               [self.viewModel payWithType:@"1"
                                                                          createAccountInfo:commit
                                                                            completeHandler:^(NSError *error) {
                                                                                if (![self showAlertWithError:error]) {
@@ -111,7 +111,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
             
             IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
                                                                action:^(IBLButtonItem *item) {
-                                                                   [self.viewModel payWithType:@"1"
+                                                                   [self.viewModel payWithType:@"0"
                                                                              createAccountInfo:commit
                                                                                completeHandler:^(NSError *error) {
                                                                                    if (![self showAlertWithError:error]) {

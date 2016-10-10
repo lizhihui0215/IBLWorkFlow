@@ -43,6 +43,7 @@ typedef NS_ENUM(NSInteger, IBLExchangeProductTextFieldType) {
 - (void)tableViewController:(IBLExchangeProductTableViewController *)controller commitResult:(IBLExchangeProductResult *)result;
 
 - (void)productPriceOfTableViewController:(IBLExchangeProductTableViewController *)controller
+                                  product:(IBLProduct *)product
                           completeHandler:(void (^)(IBLProductPrice *productPrice))completeHandler;
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;

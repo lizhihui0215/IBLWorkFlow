@@ -196,7 +196,7 @@
     // 优惠金额
     NSInteger discount = [self.discountTextField.text doubleValue] * 100;
     
-    return (unitPrice * count - discount) / 100.0f;
+    return (unitPrice * count - discount) / 100.0;
 }
 
 - (void)setupPay{
@@ -304,7 +304,7 @@
     // 订购数量
     NSInteger count = [self.renewProductCount.text integerValue];
     
-    return (unitPrice * count) / 100.0f;
+    return (unitPrice * count) / 100.0;
 }
 
 - (void)setupSales{
@@ -349,7 +349,7 @@
     // 支付金额
     NSInteger pay = [self.payTextField.text doubleValue] * 100;
     
-    return (unitPrice * count - pay) / 100.0f;
+    return (unitPrice * count - pay) / 100.0;
 }
 
 - (void)setupDiscount{
