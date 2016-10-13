@@ -227,14 +227,14 @@
 }
 
 - (void)saveResult{
-    self.result.renewProductCount = self.renewProductCountTextField.text;
+    self.result.renewProductCount = [self.renewProductCountTextField.text integerValue];
     self.result.productPriceAmount = [self.productAmountTextField.text floatValue];
-    self.result.productCount = self.productCountTextField.text;
+    self.result.productCount = [self.productCountTextField.text integerValue];
     self.result.ticket = self.ticketTextField.text;
     self.result.contract = self.contractTextField.text;
     self.result.discount = [self.discountTextField.text floatValue];
     self.result.give = [self.giveTextField.text floatValue];
-    self.result.pay = self.payTextField.text;
+    self.result.pay = [self.payTextField.text floatValue];
     self.result.comment = self.remarkTextView.text;
 }
 
