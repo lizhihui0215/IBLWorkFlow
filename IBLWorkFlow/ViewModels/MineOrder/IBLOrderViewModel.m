@@ -576,6 +576,30 @@
             }
             break;
         }
+        case IBLOrderStatusFinished:
+        {
+            switch (action) {
+                case IBLOrderActionDelete:{
+                    [self deleteOrderAtIndexPath:indexPath];
+                    break;
+                }
+                default: break;
+            }
+            break;
+        }
+        case IBLOrderStatusForwarding:{
+            switch (action) {
+                case IBLOrderActionFinish:
+                case IBLOrderActionTrash:
+                case IBLOrderActionDelete:{
+                    [self deleteOrderAtIndexPath:indexPath];
+                    break;
+                }
+                default: break;
+            }
+
+            break;
+        }
         default: break;
     }
 }
