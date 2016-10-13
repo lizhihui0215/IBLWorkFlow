@@ -11,14 +11,14 @@
 #import "IBLCreateAccountTableViewController.h"
 
 @implementation IBLRenewResult
-- (instancetype)initWithRenewProductCount:(NSString *)renewProductCount
-                       productPriceAmount:(NSString *)productPriceAmount
-                             productCount:(NSString *)productCount
+- (instancetype)initWithRenewProductCount:(NSInteger)renewProductCount
+                       productPriceAmount:(CGFloat)productPriceAmount
+                             productCount:(NSInteger)productCount
                                    ticket:(NSString *)ticket
                                  contract:(NSString *)contract
-                                 discount:(NSString *)discount
-                                     give:(NSString *)give
-                                      pay:(NSString *)pay
+                                 discount:(CGFloat)discount
+                                     give:(CGFloat)give
+                                      pay:(CGFloat)pay
                                   comment:(NSString *)comment {
     self = [super init];
     if (self) {
@@ -36,14 +36,14 @@
     return self;
 }
 
-+ (instancetype)resultWithRenewProductCount:(NSString *)renewProductCount
-                         productPriceAmount:(NSString *)productPriceAmount
-                               productCount:(NSString *)productCount
++ (instancetype)resultWithRenewProductCount:(NSInteger)renewProductCount
+                         productPriceAmount:(CGFloat)productPriceAmount
+                               productCount:(NSInteger)productCount
                                      ticket:(NSString *)ticket
                                    contract:(NSString *)contract
-                                   discount:(NSString *)discount
-                                       give:(NSString *)give
-                                        pay:(NSString *)pay
+                                   discount:(CGFloat)discount
+                                       give:(CGFloat)give
+                                        pay:(CGFloat)pay
                                     comment:(NSString *)comment {
     return [[self alloc] initWithRenewProductCount:renewProductCount
                                 productPriceAmount:productPriceAmount
@@ -251,14 +251,14 @@
                                                              otherButtonItems:nil];
         [alert showInController:self];
     }else{
-        IBLRenewResult *result = [IBLRenewResult resultWithRenewProductCount:self.renewProductCount.text
-                                                          productPriceAmount:self.productPriceAmountTextField.text
-                                                                productCount:self.productCountTextField.text
+        IBLRenewResult *result = [IBLRenewResult resultWithRenewProductCount:[self.renewProductCount.text integerValue]
+                                                          productPriceAmount:[self.productPriceAmountTextField.text floatValue]
+                                                                productCount:[self.productCountTextField.text integerValue]
                                                                       ticket:self.ticketTextField.text
                                                                     contract:self.contractTextField.text
-                                                                    discount:self.discountTextField.text
-                                                                        give:self.giveTextField.text
-                                                                         pay:self.payTextField.text
+                                                                    discount:[self.discountTextField.text floatValue]
+                                                                        give:[self.giveTextField.text floatValue]
+                                                                         pay:[self.payTextField.text floatValue]
                                                                      comment:self.commentTextView.text];
         
         [self.tableViewDelegate tableViewController:self commitResult:result];

@@ -63,17 +63,17 @@
 /// 卡号ID集合，格式为以逗号为分割的ID字符串
 @property (nonatomic, copy) NSString *cardNos;
 /// 购买销售品数（可选）
-@property (nonatomic, copy) NSString *buyLength;
+@property (nonatomic, assign) NSInteger buyLength;
 /// 所选优惠条目ID
 @property (nonatomic, copy) NSString *discountItems;
 /// 总金额，以分为单位（必选）
-@property (nonatomic, copy) NSString *totalCost;
+@property (nonatomic, assign) NSInteger totalCost;
 /// 优惠金额，以分为单位（可选）
-@property (nonatomic, copy) NSString *preCost;
+@property (nonatomic, assign) NSInteger preCost;
 /// 其它金额，以分为单位（可选）
-@property (nonatomic, copy) NSString *otherCost;
+@property (nonatomic, assign) NSInteger otherCost;
 /// 临时赠送量
-@property (nonatomic, copy) NSString *extraLength;
+@property (nonatomic, assign) NSInteger extraLength;
 /// 缴费类型
 @property (nonatomic, copy) NSString *balanceSourceType;
 /// 是否立即开户

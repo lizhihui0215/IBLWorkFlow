@@ -35,7 +35,7 @@
     self.QRBackgroundView.layer.cornerRadius = 3;
     
     UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
-                                                                      style:UIBarButtonItemStyleBordered
+                                                                      style:UIBarButtonItemStylePlain
                                                                      target:self
                                                                      action:@selector(backButtonPressed:)];
     

@@ -191,7 +191,7 @@
         parameters[@"effDate"] = createAccountInfo.effDate;
         parameters[@"discountItems"] = createAccountInfo.discountItems;
         parameters[@"totalCost"] = @(createAccountInfo.totalCost);
-        parameters[@"preCost"] = createAccountInfo.preCost;
+        parameters[@"preCost"] = @(createAccountInfo.preCost);
         parameters[@"nodeId"] = createAccountInfo.nodeId;
         parameters[@"loginType"] = createAccountInfo.loginType;
         parameters[@"balanceType"] = createAccountInfo.balanceType;
@@ -292,12 +292,12 @@
         parameters[@"servId"] = renewParameters.servId;
         parameters[@"account"] = renewParameters.account;
         parameters[@"cardNos"] = renewParameters.cardNos;
-        parameters[@"buyLength"] = renewParameters.buyLength;
+        parameters[@"buyLength"] = @(renewParameters.buyLength);
         parameters[@"discountItems"] = renewParameters.discountItems;
-        parameters[@"totalCost"] = renewParameters.totalCost;
-        parameters[@"preCost"] = renewParameters.preCost;
-        parameters[@"otherCost"] = renewParameters.otherCost;
-        parameters[@"extraLength"] = renewParameters.extraLength;
+        parameters[@"totalCost"] = @(renewParameters.totalCost);
+        parameters[@"preCost"] = @(renewParameters.preCost);
+        parameters[@"otherCost"] = @(renewParameters.otherCost);
+        parameters[@"extraLength"] = @(renewParameters.extraLength);
         parameters[@"prompt"] = renewParameters.prompt;
         parameters[@"remark"] = renewParameters.remark;
         parameters[@"contractCode"] = renewParameters.contractCode;

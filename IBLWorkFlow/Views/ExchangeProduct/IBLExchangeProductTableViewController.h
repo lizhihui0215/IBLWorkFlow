@@ -58,7 +58,7 @@ typedef NS_ENUM(NSInteger, IBLExchangeProductTextFieldType) {
 /**支付总金额*/
 @property (nonatomic, assign) CGFloat productPriceAmount;
 
-@property (nonatomic, copy) NSString *productCount;
+@property (nonatomic, assign) NSInteger productCount;
 
 @property (nonatomic, copy) NSString *ticket;
 
@@ -68,7 +68,7 @@ typedef NS_ENUM(NSInteger, IBLExchangeProductTextFieldType) {
 
 @property (nonatomic, assign) CGFloat give;
 
-@property (nonatomic, copy) NSString *pay;
+@property (nonatomic, assign) CGFloat pay;
 
 @property (nonatomic, copy) NSString *comment;
 

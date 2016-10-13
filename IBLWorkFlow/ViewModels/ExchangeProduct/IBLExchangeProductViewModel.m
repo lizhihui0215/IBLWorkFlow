@@ -128,7 +128,7 @@
     
     info.remark = result.comment;
     
-    info.extraLength = result.give * 100;
+    info.extraLength = result.discount * 100;
     
     info.offerName = result.product.name;
     
@@ -166,8 +166,8 @@
     info.remark = result.comment;
     info.buyLength = result.renewProductCount;
     info.totalCost = result.productPriceAmount * 100;
-    info.preCost = result.discount * 100;
-    info.extraLength = result.give * 100;
+    info.preCost = result.give * 100;
+    info.extraLength = result.discount * 100;
     info.contractCode = result.contract;
     info.voiceCode = result.ticket;
     info.changeType = result.exchangeType;

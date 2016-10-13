@@ -45,24 +45,24 @@ typedef NS_ENUM(NSInteger, IBLRenewTextFieldType) {
 @end
 
 @interface IBLRenewResult : NSObject
-@property (nonatomic, copy) NSString *renewProductCount;
-@property (nonatomic, copy) NSString *productPriceAmount;
-@property (nonatomic, copy) NSString *productCount;
+@property (nonatomic, assign) NSInteger renewProductCount;
+@property (nonatomic, assign) CGFloat productPriceAmount;
+@property (nonatomic, assign) NSInteger productCount;
 @property (nonatomic, copy) NSString *ticket;
 @property (nonatomic, copy) NSString *contract;
-@property (nonatomic, copy) NSString *discount;
-@property (nonatomic, copy) NSString *give;
-@property (nonatomic, copy) NSString *pay;
+@property (nonatomic, assign) CGFloat discount;
+@property (nonatomic, assign) CGFloat give;
+@property (nonatomic, assign) CGFloat pay;
 @property (nonatomic, copy) NSString *comment;
 
-+ (instancetype)resultWithRenewProductCount:(NSString *)renewProductCount
-                         productPriceAmount:(NSString *)productPriceAmount
-                               productCount:(NSString *)productCount
++ (instancetype)resultWithRenewProductCount:(NSInteger)renewProductCount
+                         productPriceAmount:(CGFloat)productPriceAmount
+                               productCount:(NSInteger)productCount
                                      ticket:(NSString *)ticket
                                    contract:(NSString *)contract
-                                   discount:(NSString *)discount
-                                       give:(NSString *)give
-                                        pay:(NSString *)pay
+                                   discount:(CGFloat)discount
+                                       give:(CGFloat)give
+                                        pay:(CGFloat)pay
                                     comment:(NSString *)comment;
 
 

@@ -65,7 +65,7 @@
         parameters[@"remark"] = QRPayInfo.remark;
         parameters[@"buyLength"] = @(QRPayInfo.buyLength);
         parameters[@"extraLength"] = @(QRPayInfo.extraLength);
-        parameters[@"totalLength"] = QRPayInfo.totalLength;
+        parameters[@"totalLength"] = @(QRPayInfo.totalLength);
         parameters[@"discountItems"] = QRPayInfo.discountItems;
         parameters[@"totalCost"] = @(QRPayInfo.totalCost  * 100);
         parameters[@"payCost"] = @(QRPayInfo.payCost * 100);
