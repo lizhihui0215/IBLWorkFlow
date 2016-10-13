@@ -130,9 +130,9 @@
 //    info.salesCount;
    createInfo.contractCode = info.contractNumebr;
    createInfo.voiceCode = info.ticketNumber;
-   createInfo.preCost = info.give;
-   createInfo.extraLength = info.discount;
-   createInfo.totalCost = info.pay;
+   createInfo.preCost = info.give * 100;
+   createInfo.extraLength = info.discount * 100;
+   createInfo.totalCost = info.pay * 100;
     
     
     [self.createAccount createAccountWithInfo:createInfo
@@ -163,18 +163,18 @@
     
     info.remark = createAccountInfo.remark;
     
-    info.buyLength = createAccountInfo.count;
+    info.buyLength = createAccountInfo.count * 100;
     
-    info.extraLength = createAccountInfo.discount;
+    info.extraLength = createAccountInfo.discount * 100;
     
     //???: 总量从那获取
     info.totalLength = createAccountInfo.salesCount;
     
     
-    info.totalCost = createAccountInfo.sales;
+    info.totalCost = createAccountInfo.sales * 100;
     
     //???: payCost 从那获取
-    info.payCost = createAccountInfo.pay;
+    info.payCost = createAccountInfo.pay * 100;
     
     //???:
 //    info.otherCost = createAccountInfo

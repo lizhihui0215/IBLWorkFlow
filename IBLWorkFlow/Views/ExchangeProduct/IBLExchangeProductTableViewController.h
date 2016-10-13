@@ -53,14 +53,23 @@ typedef NS_ENUM(NSInteger, IBLExchangeProductTextFieldType) {
 @interface IBLExchangeProductResult : NSObject;
 
 @property (nonatomic, copy) NSString *exchangeType;
-@property (nonatomic, copy) NSString *renewProductCount;
-@property (nonatomic, copy) NSString *productPriceAmount;
+
+@property (nonatomic, assign) NSInteger renewProductCount;
+/**支付总金额*/
+@property (nonatomic, assign) CGFloat productPriceAmount;
+
 @property (nonatomic, copy) NSString *productCount;
+
 @property (nonatomic, copy) NSString *ticket;
+
 @property (nonatomic, copy) NSString *contract;
-@property (nonatomic, copy) NSString *discount;
-@property (nonatomic, copy) NSString *give;
+
+@property (nonatomic, assign) CGFloat discount;
+
+@property (nonatomic, assign) CGFloat give;
+
 @property (nonatomic, copy) NSString *pay;
+
 @property (nonatomic, copy) NSString *comment;
 
 @property (nonatomic, strong) IBLProduct *product;

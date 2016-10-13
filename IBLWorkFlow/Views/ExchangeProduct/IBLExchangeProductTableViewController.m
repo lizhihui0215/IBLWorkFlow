@@ -228,12 +228,12 @@
 
 - (void)saveResult{
     self.result.renewProductCount = self.renewProductCountTextField.text;
-    self.result.productPriceAmount = self.productAmountTextField.text;
+    self.result.productPriceAmount = [self.productAmountTextField.text floatValue];
     self.result.productCount = self.productCountTextField.text;
     self.result.ticket = self.ticketTextField.text;
     self.result.contract = self.contractTextField.text;
-    self.result.discount = self.discountTextField.text;
-    self.result.give = self.giveTextField.text;
+    self.result.discount = [self.discountTextField.text floatValue];
+    self.result.give = [self.giveTextField.text floatValue];
     self.result.pay = self.payTextField.text;
     self.result.comment = self.remarkTextView.text;
 }

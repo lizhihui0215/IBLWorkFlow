@@ -34,13 +34,13 @@
 /// 购买销售品数
 @property (nonatomic, copy) NSString *buyLength;
 /// 临时赠送量（带单位）
-@property (nonatomic, copy) NSString *extraLength;
+@property (nonatomic, assign) NSInteger extraLength;
 /// 总量（带单位）
 @property (nonatomic, copy) NSString *totalLength;
 /// 支付金额，单位分
 @property (nonatomic, copy) NSString *payCost;
 /// 销售品总金额，单位分
-@property (nonatomic, copy) NSString *totalCost;
+@property (nonatomic, assign) NSInteger totalCost;
 /// 其它金额，如果为负数，则为优惠金额
 @property (nonatomic, copy) NSString *otherCost;
 

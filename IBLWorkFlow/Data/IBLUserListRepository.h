@@ -23,17 +23,17 @@
 /// 卡号ID集合，格式为以逗号为分割的ID字符串
 @property (nonatomic, copy) NSString *cardNos;
 /// 购买销售品数（可选）
-@property (nonatomic, copy) NSString *buyLength;
+@property (nonatomic, assign) NSInteger buyLength;
 /// 所选优惠条目ID
 @property (nonatomic, copy) NSString *discountItems;
 /// 总金额，以分为单位（必选）
-@property (nonatomic, copy) NSString *totalCost;
+@property (nonatomic, assign) NSInteger totalCost;
 /// 优惠金额，以分为单位（可选）
-@property (nonatomic, copy) NSString *preCost;
+@property (nonatomic, assign) NSInteger preCost;
 /// 其它金额，以分为单位（可选）
 @property (nonatomic, copy) NSString *otherCost;
 /// 临时赠送量
-@property (nonatomic, copy) NSString *extraLength;
+@property (nonatomic, assign) NSInteger extraLength;
 /// 缴费类型
 @property (nonatomic, copy) NSString *balanceType;
 /// 是否立即开户
@@ -132,9 +132,9 @@
 //销售品ID（必选）
 @property (nonatomic, copy) NSString *offerId;
 //购买量（可选）
-@property(nonatomic, copy) NSString *buyLength;
+@property(nonatomic, assign) NSInteger buyLength;
 //临时赠送量（可选）
-@property(nonatomic, copy) NSString *extraLength;
+@property(nonatomic, assign) NSInteger extraLength;
 //生效方式：（必选）
 //1-指定日期
 //2-首次上线
@@ -145,12 +145,12 @@
 //所选优惠条目ID，格式为以逗号为分割的ID字符串，例如所选优惠条目的ID为14000111111111和14000111111112，那么传递参数应为” 14000111111111，14000111111112” （可选）
 @property(nonatomic, copy) NSString *discountItems;
 //支付金额，以分为单位（必选）totalCost = 销售品金额+其它金额-优惠金额
-@property(nonatomic, copy) NSString *totalCost;
+@property(nonatomic, assign) NSInteger totalCost;
 //优惠金额，以分为单位（可选）
-@property(nonatomic, copy) NSString *preCost;
+@property(nonatomic, assign) NSInteger preCost;
 
 //其它金额，以分为单位（可选）
-@property(nonatomic, copy) NSString *otherCost;
+@property(nonatomic, assign) NSInteger otherCost;
 //小区ID（必选）
 @property(nonatomic, copy) NSString *nodeId;
 //登录方式：（可选）

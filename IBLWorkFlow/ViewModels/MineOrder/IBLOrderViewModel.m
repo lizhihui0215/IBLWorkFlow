@@ -522,6 +522,7 @@
         case IBLOrderStatusForwarding:{
             switch (action) {
                 case IBLOrderActionFinish:
+                case IBLOrderActionHandling:
                 case IBLOrderActionCreate:{
                     [self deleteOrderAtIndexPath:indexPath];
                     break;

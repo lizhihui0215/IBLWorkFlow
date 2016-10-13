@@ -72,7 +72,7 @@
 
 - (void)setupUI{
     self.payCostTextField.text = self.orderDetail.payCost;
-    self.totalLengthTextField.text = self.orderDetail.totalCost;
+    self.totalLengthTextField.text = [@(self.orderDetail.totalCost) stringValue];
     self.totalLengthTextField.text = self.orderDetail.totalLength;
     self.buyLengthTextField.text = self.orderDetail.buyLength;
     self.orderNoTextField.text = self.orderDetail.orderNo;

@@ -128,9 +128,7 @@
     
     info.remark = result.comment;
     
-    info.buyLength = result.productCount;
-    
-    info.extraLength = result.give;
+    info.extraLength = result.give * 100;
     
     info.offerName = result.product.name;
     
@@ -164,14 +162,15 @@
          completeHandler:(IBLViewModelCompleteHandler)handler{
     IBLExchangeProductParameters *info = [[IBLExchangeProductParameters alloc] init];
     info.account = self.user.account;
-    info.offerId = self.productIdentifier;
-    info.remark = self.user.comments;
-    info.buyLength = [@(self.productPrices.totalLength) stringValue];
-    info.totalCost = result.productPriceAmount;
-    info.preCost = result.discount;
-    info.extraLength = result.give;
+    info.offerId = [@(result.product.identifier) stringValue];
+    info.remark = result.comment;
+    info.buyLength = result.renewProductCount;
+    info.totalCost = result.productPriceAmount * 100;
+    info.preCost = result.discount * 100;
+    info.extraLength = result.give * 100;
     info.contractCode = result.contract;
     info.voiceCode = result.ticket;
+    info.changeType = result.exchangeType;
     [self.exchangeProduct exchangeProductWithParameters:info
                                         completeHandler:^(NSString *obj, NSError *error) {
                                             handler(error);

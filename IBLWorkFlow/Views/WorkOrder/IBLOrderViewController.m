@@ -177,6 +177,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     NSIndexPath *indexPath = [self.viewModel indexPathWithOrder:orderDetailViewController.order];
     
     [self.viewModel finishedHandleOrderWithAction:IBLOrderActionCreate atIndexPath:indexPath];
+    [self.tableView reloadData];
 }
 
 - (void)segmentControlTappedWithAction:(IBLOrderAction)action
@@ -333,6 +334,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                         NSIndexPath *indexPath = [self.viewModel indexPathWithOrder:forwardViewModel.order];
                                          [self.viewModel finishedHandleOrderWithAction:IBLOrderActionForward
                                                                            atIndexPath:indexPath];
+                                         [self.tableView reloadData];
                                      }
                                      [self hidHUD];
                                  }];
@@ -347,6 +349,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                       NSIndexPath *indexPath = [self.viewModel indexPathWithOrder:forwardViewModel.order];
                                       [self.viewModel finishedHandleOrderWithAction:IBLOrderActionSend
                                                                         atIndexPath:indexPath];
+                                      [self.tableView reloadData];
                                   }
                                   [self hidHUD];
                               }];

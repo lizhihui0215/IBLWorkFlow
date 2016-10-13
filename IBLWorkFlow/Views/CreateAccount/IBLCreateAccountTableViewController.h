@@ -100,13 +100,13 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
 @property (nonatomic, copy) NSString *password;
 
 /// 订购数量
-@property (nonatomic, copy) NSString *count;
+@property (nonatomic, assign) NSInteger count;
 
 /// 销售品总额
-@property (nonatomic, copy) NSString *sales;
+@property (nonatomic, assign) CGFloat sales;
 
 /// 销售品总量
-@property (nonatomic, copy) NSString *salesCount;
+@property (nonatomic, assign) NSInteger salesCount;
 
 /// 合同号
 @property (nonatomic, copy) NSString *contractNumebr;
@@ -115,13 +115,13 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
 @property (nonatomic, copy) NSString *ticketNumber;
 
 /// 优惠金额
-@property (nonatomic, copy) NSString *give;
+@property (nonatomic, assign) CGFloat give;
 
 /// 临时赠送
-@property (nonatomic, copy) NSString *discount;
+@property (nonatomic, assign) CGFloat discount;
 
 /// 支付金额
-@property (nonatomic, copy) NSString *pay;
+@property (nonatomic, assign) CGFloat pay;
 
 + (instancetype)infoWithResidentialIdentifier:(NSInteger)residentialIdentifier
                             productIdentifier:(NSInteger)productIdentifier

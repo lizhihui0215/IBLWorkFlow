@@ -571,14 +571,14 @@
     self.createAccountInfo.remark = self.commentTextView.text;
     self.createAccountInfo.phone = self.phoneTextField.text;
     self.createAccountInfo.address = self.addressTextField.text;
-    self.createAccountInfo.count = self.countTextField.text;
-    self.createAccountInfo.sales = self.salesTextField.text;
-    self.createAccountInfo.salesCount = self.salesCountTextField.text;
+    self.createAccountInfo.count = [self.countTextField.text integerValue];
+    self.createAccountInfo.sales = [self.salesTextField.text floatValue];
+    self.createAccountInfo.salesCount = [self.salesCountTextField.text integerValue];
     self.createAccountInfo.contractNumebr = self.contractNumberTextField.text;
     self.createAccountInfo.ticketNumber = self.ticketNumberTextField.text;
-    self.createAccountInfo.give = self.giveTextField.text;
-    self.createAccountInfo.discount = self.discountTextField.text;
-    self.createAccountInfo.pay = self.payTextField.text;
+    self.createAccountInfo.give = [self.giveTextField.text floatValue];
+    self.createAccountInfo.discount = [self.discountTextField.text floatValue];
+    self.createAccountInfo.pay = [self.payTextField.text floatValue];
 }
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {

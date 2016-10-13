@@ -63,12 +63,12 @@
         parameters[@"birthDate"] = QRPayInfo.birthDate;
         parameters[@"email"] = QRPayInfo.email;
         parameters[@"remark"] = QRPayInfo.remark;
-        parameters[@"buyLength"] = QRPayInfo.buyLength;
-        parameters[@"extraLength"] = QRPayInfo.extraLength;
+        parameters[@"buyLength"] = @(QRPayInfo.buyLength);
+        parameters[@"extraLength"] = @(QRPayInfo.extraLength);
         parameters[@"totalLength"] = QRPayInfo.totalLength;
         parameters[@"discountItems"] = QRPayInfo.discountItems;
-        parameters[@"totalCost"] = @([QRPayInfo.totalCost floatValue] * 100);
-        parameters[@"payCost"] = @([QRPayInfo.payCost floatValue] * 100);
+        parameters[@"totalCost"] = @(QRPayInfo.totalCost  * 100);
+        parameters[@"payCost"] = @(QRPayInfo.payCost * 100);
         parameters[@"otherCost"] = @([QRPayInfo.otherCost floatValue] * 100);
         parameters[@"nodeId"] = QRPayInfo.nodeId;
         return parameters;
