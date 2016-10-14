@@ -23,7 +23,7 @@
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 
-@interface IBLLeftMenuViewController () <IBLLeftMenuTableHeaderViewDelegate,IBLAddWorkOrderViewControllerDelegate>
+@interface IBLLeftMenuViewController () <IBLLeftMenuTableHeaderViewDelegate,IBLAddWorkOrderViewControllerDelegate, IBLCreateAccountViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
@@ -41,6 +41,15 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     self.actionViewControllers[@(IBLLeftMenuItemActionAddOrder)] = addWorkOrderNavigationViewController;
     
     self.sideMenuViewController.contentViewController = addWorkOrderNavigationViewController;
+}
+
+- (void)createAccountViewController:(IBLCreateAccountViewController *)createAccountViewController
+                             commit:(IBLOrder *)commit{
+    UINavigationController *createAccountNavigationViewController = [self createAccountViewController];
+    
+    self.actionViewControllers[@(IBLLeftMenuItemActionAddCreateAccount)] = createAccountNavigationViewController;
+    
+    self.sideMenuViewController.contentViewController = createAccountNavigationViewController;
 }
 
 - (void)setupViewControllers{
@@ -114,6 +123,8 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     IBLCreateAccountViewController * createAccountViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLCreateAccountViewController"];
     
     createAccountViewController.viewModel = [IBLCreateAccountViewModel modelWithCreateAccountType:IBLCreateAccountTypeFromLeftMenu order:nil];
+    
+    createAccountViewController.delegate = self;
     
     return [[UINavigationController alloc] initWithRootViewController:createAccountViewController];
 }

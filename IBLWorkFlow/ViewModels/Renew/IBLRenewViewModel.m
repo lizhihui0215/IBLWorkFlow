@@ -197,7 +197,7 @@
 - (void)commitWithResult:(IBLRenewResult *)result
          completeHandler:(IBLViewModelCompleteHandler)handler{
     IBLRenewParameters *info = [[IBLRenewParameters alloc] init];
-    info.servId = self.user.account;
+    info.servId = self.user.servId;
     info.account = self.user.account;
     info.remark = self.user.comments;
     info.buyLength = result.renewProductCount;
@@ -207,6 +207,7 @@
     info.contractCode = result.contract;
     info.voiceCode = result.ticket;
     info.remark = result.comment;
+    
     [self.renew renewWithRenewParameters:info
                          completeHandler:^(NSString *obj, NSError *error) {
                              handler(error);

@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, IBLOrderEffectType) {
 @property (nonatomic, copy) NSString *accountLen;
 @property (nonatomic, copy) NSString *pre;
 @property (nonatomic, copy) NSString *pwdLen;
-@property (nonatomic, assign) NSNumber *type;
+@property (nonatomic, strong) NSNumber *type;
 
 @end
 

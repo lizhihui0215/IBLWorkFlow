@@ -27,7 +27,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
                                                                                 target:self action:@selector(presentLeftMenuViewController:)];
     }else{
         UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
-                                                                          style:UIBarButtonItemStyleBordered
+                                                                          style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(backButtonPressed:)];
         
@@ -132,11 +132,22 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
             break;
         }
         case IBLPayModelCash: {
+            [self showHUDWithMessage:@""];
             [self.viewModel createAccountWith:commit completeHandler:^(NSError *error){
+                [self hidHUD];
                 if (![self showAlertWithError:error]) {
-                    if([self.delegate respondsToSelector:@selector(createAccountViewController:commit:)]){
-                        [self.delegate createAccountViewController:self commit:self.viewModel.order];
-                    }
+                    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确定" action:^(IBLButtonItem *item) {
+                        if([self.delegate respondsToSelector:@selector(createAccountViewController:commit:)]){
+                            [self.delegate createAccountViewController:self commit:self.viewModel.order];
+                        }
+                    }];
+                    
+                    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                                    title:@"开户成功"
+                                                                                  message:nil
+                                                                         cancleButtonItem:cancel
+                                                                         otherButtonItems:nil];
+                    [alert showInController:self];
                 }
             }];
             break;

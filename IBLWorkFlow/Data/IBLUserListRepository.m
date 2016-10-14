@@ -172,7 +172,7 @@
         parameters[@"type"] = createAccountInfo.type;
         parameters[@"cardNo"] = createAccountInfo.cardNo;
         parameters[@"cardPwd"] = createAccountInfo.cardPwd;
-        parameters[@"genarate"] =  [appConfigration.genarate toDictionary];
+        parameters[@"genarate"] =  appConfigration.genarate.toJSONString;
         parameters[@"account"] = createAccountInfo.account;
         parameters[@"password"] = createAccountInfo.password;
         parameters[@"userName"] = createAccountInfo.userName;
@@ -182,6 +182,7 @@
         parameters[@"subPhone"] = createAccountInfo.subPhone;
         parameters[@"addr"] = createAccountInfo.addr;
         parameters[@"birthDate"] = createAccountInfo.birthDate;
+        parameters[@"offerId"] = createAccountInfo.offerId;
         parameters[@"email"] = createAccountInfo.email;
         parameters[@"remark"] = createAccountInfo.remark;
         parameters[@"productId"] = createAccountInfo.productId;
@@ -289,7 +290,7 @@
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[@"thirdId"] = renewParameters.thirdId;
         parameters[@"thirdType"] = renewParameters.thirdType;
-        parameters[@"servId"] = renewParameters.servId;
+        parameters[@"servId"] = @(renewParameters.servId);
         parameters[@"account"] = renewParameters.account;
         parameters[@"cardNos"] = renewParameters.cardNos;
         parameters[@"buyLength"] = @(renewParameters.buyLength);

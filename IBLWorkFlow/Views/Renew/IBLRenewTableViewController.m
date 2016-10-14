@@ -136,6 +136,8 @@
                                                 }];
 }
 
+
+
 - (BOOL)validateNumberWithText:(NSString *)text{
     if ([NSString isNull:text]) return YES;
     
@@ -156,6 +158,72 @@
     }
     
     return isNumber;
+}
+
+- (NSArray<UITextField *> *)priceTextFields{
+    return @[self.payTextField,
+             self.discountTextField,
+             self.giveTextField];
+}
+
+- (BOOL)validateTextFields{
+    
+    BOOL isValidate = YES;
+    
+    NSString *title = @"";
+    
+    // 支付金额
+    CGFloat pay = [self pay];
+    // 销售品总金额
+    CGFloat sales = [self sales];
+    // 优惠金额
+    CGFloat discount = [self discount];
+    
+    if (pay < 0) {
+        title = @"支付金额必须大于0";
+        isValidate = NO;
+    }
+    
+    if (pay > sales) {
+        title = @"销售品总额必须大于支付金额";
+        isValidate = NO;
+    }
+    
+    if (discount < 0) {
+        title = @"优惠金额必须大于0";
+        isValidate = NO;
+    }
+    
+    if (sales < discount) {
+        title = @"优惠金额必须小于总金额";
+        isValidate = NO;
+    }
+    
+    if (!isValidate) {
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                        title:title
+                                                                      message:nil
+                                                             cancleButtonItem:cancel
+                                                             otherButtonItems:nil];
+        [alert showInController:self];
+    }
+    
+    return  isValidate;
+}
+
+- (BOOL)validatePriceWithTextField:(UITextField *)textField{
+    if ([[self priceTextFields] containsObject:textField]) return [self validatePriceWithTextField:textField];
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField;{
+    BOOL isNumber = [self validateNumberWithText:textField.text];
+    if (!isNumber) return NO;
+    if (![self validateTextFields]) return NO;
+    return YES;
+
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{

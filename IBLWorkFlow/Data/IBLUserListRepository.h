@@ -57,7 +57,7 @@
 /// 第三方id
 @property (nonatomic, copy) NSString *thirdId;
 /// 用户ID
-@property (nonatomic, copy) NSString *servId;
+@property (nonatomic, assign) NSInteger servId;
 /// 用户账号
 @property (nonatomic, copy) NSString *account;
 /// 卡号ID集合，格式为以逗号为分割的ID字符串
