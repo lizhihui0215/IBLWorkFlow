@@ -50,6 +50,7 @@
     [super viewDidLoad];
     self.tableView.estimatedRowHeight = 40;
     self.fetchOrderRelatedUser = [[IBLFetchOrderRelatedUser alloc] init];
+    [self removeFooterView];
     [self showHUDWithMessage:@""];
     [self.fetchOrderRelatedUser fetchOrderRelatedUserWithID:[@(self.order.userIdentifier) stringValue]
                                                     account:self.order.userAccount

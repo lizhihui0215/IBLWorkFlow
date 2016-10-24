@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2338c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IBLOrderViewController"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="IBLOrderCell" rowHeight="137" id="6r6-bh-6bA" customClass="IBLOrderCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6r6-bh-6bA" id="1Kr-kd-1xW">
-                <frame key="frameInset" width="320" height="136.5"/>
+                <frame key="frameInset" width="320" height="136"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCz-B2-o1z">
@@ -59,13 +59,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="xyz"/>
                                 <connections>
-                                    <action selector="userOrderTapped:" destination="-1" eventType="touchUpInside" id="hzF-f2-G99"/>
+                                    <action selector="userOrderTapped:" destination="-2" eventType="touchUpInside" id="nTe-gA-wpt"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TJh-8t-q3j" secondAttribute="trailing" constant="5" id="8OL-d6-12t"/>
                             <constraint firstItem="yf7-DV-1KI" firstAttribute="leading" secondItem="cCz-B2-o1z" secondAttribute="leading" id="C6x-Ym-jkF"/>
                             <constraint firstItem="kV3-aK-9EF" firstAttribute="leading" secondItem="cr2-Im-Nk8" secondAttribute="leading" id="H5u-Vk-4sy"/>
                             <constraint firstAttribute="bottom" secondItem="RJd-xb-ybj" secondAttribute="bottom" constant="8.5" id="HAY-ox-FxN"/>
