@@ -85,35 +85,62 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
 {
     self = [super initWithSOAPFileName:IBLWorkOrderSOAPFileName];
     if (self) {
-        self.fetchMineOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFetchMineOrderList
-                                                            responseMethodName:IBLMethodOfOrderMineOrderListResponse];
+        self.fetchMineOrderMethod = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                              fileName:IBLWorkOrderSOAPFileName
+                                                     requestMethodName:IBLMethodOfFetchMineOrderList
+                                                    responseMethodName:IBLMethodOfOrderMineOrderListResponse];
         
-        self.fetchManagedOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFetchManagedOrderList
-                                                               responseMethodName:IBLMethodOfFetchManagedOrderListResponse];
+
+        self.fetchManagedOrderMethod = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                                 fileName:IBLWorkOrderSOAPFileName
+                                                        requestMethodName:IBLMethodOfFetchManagedOrderList
+                                                       responseMethodName:IBLMethodOfFetchManagedOrderListResponse];
         
         
-        self.forwardOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfForwardOrder
-                                                          responseMethodName:IBLMethodOfForwardOrderResponse];
         
-        self.deleteOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfDeleteOrder
-                                                         responseMethodName:IBLMethodOfDeleteOrderReponse];
+        self.forwardOrderMethod = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                            fileName:IBLWorkOrderSOAPFileName
+                                                   requestMethodName:IBLMethodOfForwardOrder
+                                                  responseMethodName:IBLMethodOfForwardOrderResponse];
         
-        self.finishMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFinishOrder
-                                                    responseMethodName:IBLMethodOfFinishOrderResponse];
+        self.deleteOrderMethod = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                           fileName:IBLWorkOrderSOAPFileName
+                                                  requestMethodName:IBLMethodOfDeleteOrder
+                                                 responseMethodName:IBLMethodOfDeleteOrderReponse];
         
-        self.trashMethod = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfTrashOrder
-                                                   responseMethodName:IBLMethodOfTrashOrderResponse];
         
-        self.handleMethod = [IBLSOAPMethod methodWithRequestMethodName:@"orderHandle"
-                                                    responseMethodName:@"orderHandleResponse"];
+        self.finishMethod = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                      fileName:IBLWorkOrderSOAPFileName
+                                             requestMethodName:IBLMethodOfFinishOrder
+                                            responseMethodName:IBLMethodOfFinishOrderResponse];
         
-        self.sendOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@"orderIssue"
-                                                       responseMethodName:@"orderIssueResponse"];
         
-        self.addWorkOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@"orderAdd"
-                                                          responseMethodName:@"orderAddResponse"];
-        self.fetchOrderFlowMethod = [IBLSOAPMethod methodWithRequestMethodName:@"viewOrderFlow"
-                                                            responseMethodName:@"viewOrderFlowResponse"];
+        self.trashMethod = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                     fileName:IBLWorkOrderSOAPFileName
+                                            requestMethodName:IBLMethodOfTrashOrder
+                                           responseMethodName:IBLMethodOfTrashOrderResponse];
+        
+        
+        self.handleMethod = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                      fileName:IBLWorkOrderSOAPFileName
+                                             requestMethodName:@"orderHandle"
+                                            responseMethodName:@"orderHandleResponse"];
+        
+        self.sendOrderMethod = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                         fileName:IBLWorkOrderSOAPFileName
+                                                requestMethodName:@"orderIssue"
+                                               responseMethodName:@"orderIssueResponse"];
+        
+        
+        self.addWorkOrderMethod = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                            fileName:IBLWorkOrderSOAPFileName
+                                                   requestMethodName:@"orderAdd"
+                                                  responseMethodName:@"orderAddResponse"];
+        
+        self.fetchOrderFlowMethod = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                              fileName:IBLWorkOrderSOAPFileName
+                                                     requestMethodName:@"viewOrderFlow"
+                                                    responseMethodName:@"viewOrderFlowResponse"];
         
     }
     return self;
@@ -146,21 +173,20 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         return parameters;
     }];
     
-    [[self networkServicesMethods:self.fetchOrderFlowMethod] POST:IBLWorkOrderInterface
-                                                       parameters:parameters
-                                                         progress:nil
-                                                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                              NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderFlowList];
-                                                              
-                                                              NSMutableArray<IBLOrderFlow *> *orderFlows = [NSMutableArray array];
-                                                              for (NSDictionary *orderDictionary in ordersDictionary) {
-                                                                  IBLOrderFlow *order = [[IBLOrderFlow alloc] initWithDictionary:orderDictionary error:nil];
-                                                                  [orderFlows addObject:order];
-                                                              }
-                                                              handler(orderFlows, nil);
-                                                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                              handler(nil, error);
-                                                          }];
+    [[IBLNetworkServices networkServicesWithMethod:self.fetchOrderFlowMethod] POST:parameters
+                                                                          progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                              NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderFlowList];
+                                                                              
+                                                                              NSMutableArray<IBLOrderFlow *> *orderFlows = [NSMutableArray array];
+                                                                              for (NSDictionary *orderDictionary in ordersDictionary) {
+                                                                                  IBLOrderFlow *order = [[IBLOrderFlow alloc] initWithDictionary:orderDictionary error:nil];
+                                                                                  [orderFlows addObject:order];
+                                                                              }
+                                                                              handler(orderFlows, nil);
+                                                                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                              handler(nil, error);
+                                                                          }];
+    
 }
 
 - (void)fetchMineOrderListWithFetch:(IBLFetchOrderList *)fetch
@@ -183,21 +209,20 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
     
     IBLSOAPMethod *method = [self methodWithFetchType:fetch.fetchType];
     
-    [[self networkServicesMethods:method] POST:IBLWorkOrderInterface
-                                    parameters:parameters
-                                      progress:nil
-                                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                           NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderList];
-                                           
-                                           NSMutableArray<IBLOrder *> *orders = [NSMutableArray array];
-                                           for (NSDictionary *orderDictionary in ordersDictionary) {
-                                               IBLOrder *order = [[IBLOrder alloc] initWithDictionary:orderDictionary error:nil];
-                                               [orders addObject:order];
-                                           }
-                                           handler(orders, nil);
-                                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                           handler(nil, error);
-                                       }];
+    [[IBLNetworkServices networkServicesWithMethod:method] POST:parameters
+                                                       progress:nil
+                                                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                           NSArray <NSDictionary *> * ordersDictionary = responseObject[kOrderList];
+                                                           
+                                                           NSMutableArray<IBLOrder *> *orders = [NSMutableArray array];
+                                                           for (NSDictionary *orderDictionary in ordersDictionary) {
+                                                               IBLOrder *order = [[IBLOrder alloc] initWithDictionary:orderDictionary error:nil];
+                                                               [orders addObject:order];
+                                                           }
+                                                           handler(orders, nil);
+                                                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                           handler(nil, error);
+                                                       }];
 }
 
 - (void)forwardOrderWithId:(NSInteger)orderId
@@ -212,15 +237,14 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[kContent] = content;
         return parameters;
     }];
+    [[IBLNetworkServices networkServicesWithMethod:self.forwardOrderMethod] POST:parameters
+                                                                        progress:nil
+                                                                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                             handler(nil);
+                                                                         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                             handler(error);
+                                                                         }];
     
-    [[self networkServicesMethods:self.forwardOrderMethod] POST:IBLWorkOrderInterface
-                                                     parameters:parameters
-                                                       progress:nil
-                                                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                            handler(nil);
-                                                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                            handler(error);
-                                                        }];
 }
 
 - (void)sendOrderWithId:(NSInteger)identifier
@@ -234,15 +258,13 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[kContent] = content;
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.sendOrderMethod] POST:IBLWorkOrderInterface
-                                                     parameters:parameters
-                                                       progress:nil
-                                                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                            handler(nil);
-                                                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                            handler(error);
-                                                        }];
+    [[IBLNetworkServices networkServicesWithMethod:self.sendOrderMethod] POST:parameters
+                                                                        progress:nil
+                                                                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                          handler(nil);
+                                                                      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                          handler(error);
+                                                                      }];
 }
 
 - (void)deleteOrderWithOrderId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
@@ -253,16 +275,13 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[kContent] = content;
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.deleteOrderMethod] POST:IBLWorkOrderInterface
-                                                    parameters:parameters
-                                                      progress:nil
-                                                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                           handler(nil);
-                                                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                           handler(error);
-                                                       }];
-    
+    [[IBLNetworkServices networkServicesWithMethod:self.deleteOrderMethod] POST:parameters
+                                                                     progress:nil
+                                                                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                          handler(nil);
+                                                                      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                          handler(error);
+                                                                      }];
 }
 
 - (void)finishOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
@@ -272,15 +291,13 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[kContent] = content;
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.finishMethod] POST:IBLWorkOrderInterface
-                                               parameters:parameters
-                                                 progress:nil
-                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                      handler(nil);
-                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                      handler(error);
-                                                  }];
+    [[IBLNetworkServices networkServicesWithMethod:self.finishMethod] POST:parameters
+                                                                       progress:nil
+                                                                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                       handler(nil);
+                                                                   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                       handler(error);
+                                                                   }];
 }
 
 - (void)trashOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
@@ -290,16 +307,13 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[kContent] = content;
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.trashMethod] POST:IBLWorkOrderInterface
-                                              parameters:parameters
-                                                progress:nil
-                                                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                     handler(nil);
-                                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                     handler(error);
-                                                 }];
-    
+    [[IBLNetworkServices networkServicesWithMethod:self.trashMethod] POST:parameters
+                                                                  progress:nil
+                                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                      handler(nil);
+                                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                      handler(error);
+                                                                  }];
 }
 
 - (void)handleOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
@@ -309,15 +323,13 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[kContent] = content;
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.handleMethod] POST:IBLWorkOrderInterface
-                                               parameters:parameters
-                                                 progress:nil
-                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                      handler(nil);
-                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                      handler(error);
-                                                  }];
+    [[IBLNetworkServices networkServicesWithMethod:self.handleMethod] POST:parameters
+                                                                 progress:nil
+                                                                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                       handler(nil);
+                                                                   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                       handler(error);
+                                                                   }];
 }
 
 
@@ -342,15 +354,13 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[@"remark"] = info.remark;
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.addWorkOrderMethod] POST:IBLWorkOrderInterface
-                                                     parameters:parameters
-                                                       progress:nil
-                                                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                            handler(responseObject[@"orderId"],nil);
-                                                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                            handler(nil,error);
-                                                        }];
+    [[IBLNetworkServices networkServicesWithMethod:self.addWorkOrderMethod] POST:parameters
+                                                                  progress:nil
+                                                                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                             handler(responseObject[@"orderId"],nil);
+                                                                         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                             handler(nil,error);
+                                                                         }];
 }
 @end
 

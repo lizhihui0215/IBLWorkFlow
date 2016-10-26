@@ -28,9 +28,10 @@ static NSString *const kOperatorName = @"operName";
 {
     self = [super initWithSOAPFileName:IBLWorkOrderSOAPFileName];
     if (self) {
-        self.fetchOperator = [IBLSOAPMethod methodWithRequestMethodName:IBLMethodOfFetchOperatorList
-                                                     responseMethodName:IBLMethodOfFetchOperatorListReponse];
-        
+        self.fetchOperator = [IBLSOAPMethod methodWithURLString:IBLWorkOrderInterface
+                                                       fileName:IBLWorkOrderSOAPFileName
+                                              requestMethodName:IBLMethodOfFetchOperatorList
+                                             responseMethodName:IBLMethodOfFetchOperatorListReponse];
     }
     return self;
 }
@@ -44,23 +45,22 @@ static NSString *const kOperatorName = @"operName";
         return parameters;
     }];
     
-    [[self networkServicesMethods:self.fetchOperator] POST:IBLWorkOrderInterface
-                                                parameters:parameters
-                                                  progress:nil
-                                                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                       NSArray<NSDictionary *> *operatorListDictionarys = responseObject[@"operList"];
-                                                       
-                                                       NSMutableArray<IBLOperator *> *operators = [NSMutableArray array];
-                                                       
-                                                       for (NSDictionary *operatorDictionary in operatorListDictionarys) {
-                                                           IBLOperator *operator = [[IBLOperator alloc] initWithDictionary:operatorDictionary error:nil];
-                                                           [operators addObject:operator];
-                                                       }
-                                                       
-                                                       handler(operators, nil);
-                                                   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                       handler(nil, error);
-                                                   }];
+    [[IBLNetworkServices networkServicesWithMethod:self.fetchOperator] POST:parameters
+                                                                   progress:nil
+                                                                    success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                        NSArray<NSDictionary *> *operatorListDictionarys = responseObject[@"operList"];
+                                                                        
+                                                                        NSMutableArray<IBLOperator *> *operators = [NSMutableArray array];
+                                                                        
+                                                                        for (NSDictionary *operatorDictionary in operatorListDictionarys) {
+                                                                            IBLOperator *operator = [[IBLOperator alloc] initWithDictionary:operatorDictionary error:nil];
+                                                                            [operators addObject:operator];
+                                                                        }
+                                                                        
+                                                                        handler(operators, nil);
+                                                                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                        handler(nil, error);
+                                                                    }];
 }
 
 

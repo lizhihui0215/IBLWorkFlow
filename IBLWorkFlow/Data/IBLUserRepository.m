@@ -18,8 +18,8 @@ static NSString * const kOSVersion = @"osVersion";
 static IBLUser *_user = nil;
 
 @interface IBLUserRepository ()
-@property (nonatomic, strong) IBLSOAPMethod *fetchUserMethod;
 
+@property (nonatomic, strong) IBLSOAPMethod *fetchUserMethod;
 
 @end
 
@@ -37,8 +37,11 @@ static IBLUser *_user = nil;
 {
     self = [super initWithSOAPFileName:@"Operator"];
     if (self) {
-        self.fetchUserMethod = [IBLSOAPMethod methodWithRequestMethodName:@"auth" responseMethodName:@"authResponse"];
-
+//        OperatorInterface
+        self.fetchUserMethod = [IBLSOAPMethod methodWithURLString:@"OperatorInterface"
+                                                         fileName:@"Operator"
+                                                requestMethodName:@"auth"
+                                               responseMethodName:@"authResponse"];
     }
     return self;
 }
@@ -57,15 +60,14 @@ static IBLUser *_user = nil;
         return parameters;
     }];
     
-    [[self networkServicesMethods:self.fetchUserMethod] POST:@"OperatorInterface"
-                    parameters:parameters
-                      progress:nil
-                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                           IBLUser *user = [[IBLUser alloc] initWithDictionary:responseObject error:nil];
-                           handler(user, nil);
-                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                           handler(nil, error);
-                       }];
+    [[IBLNetworkServices networkServicesWithMethod:self.fetchUserMethod] POST:parameters
+                                                                     progress:nil
+                                                                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                          IBLUser *user = [[IBLUser alloc] initWithDictionary:responseObject error:nil];
+                                                                          handler(user, nil);
+                                                                      } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                          handler(nil, error);
+                                                                      }];
 }
 
 

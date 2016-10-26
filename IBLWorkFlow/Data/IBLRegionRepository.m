@@ -22,8 +22,10 @@ static NSString *const kRegionName = @"areaName";
 {
     self = [super initWithSOAPFileName:IBLChannelSOAPFileName];
     if (self) {
-        self.fetchRegion = [IBLSOAPMethod methodWithRequestMethodName:@"getChannelList"
-                                                   responseMethodName:@"getChannelListResponse"];
+        self.fetchRegion = [IBLSOAPMethod methodWithURLString:IBLChannelInterface
+                                                     fileName:IBLChannelSOAPFileName
+                                            requestMethodName:@"getChannelList"
+                                           responseMethodName:@"getChannelListResponse" ];
     }
     return self;
 }
@@ -36,23 +38,21 @@ static NSString *const kRegionName = @"areaName";
         return parameters;
     }];
     
-    [[self networkServicesMethods:self.fetchRegion] POST:IBLChannelInterface
-                                                parameters:parameters
-                                                  progress:nil
-                                                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                       NSArray<NSDictionary *> *regionListDictionarys = responseObject[@"channelList"];
-                                                       
-                                                       NSMutableArray<IBLRegion *> *regions = [NSMutableArray array];
-                                                       
-                                                       for (NSDictionary *regionDictionary in regionListDictionarys) {
-                                                           IBLRegion *region = [[IBLRegion alloc] initWithDictionary:regionDictionary error:nil];
-                                                           [regions addObject:region];
-                                                       }
-                                                       
-                                                       handler(regions, nil);
-                                                   } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                       handler(nil, error);
-                                                   }];
-
+    [[IBLNetworkServices networkServicesWithMethod:self.fetchRegion] POST:parameters
+                                                                 progress:nil
+                                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                      NSArray<NSDictionary *> *regionListDictionarys = responseObject[@"channelList"];
+                                                                      
+                                                                      NSMutableArray<IBLRegion *> *regions = [NSMutableArray array];
+                                                                      
+                                                                      for (NSDictionary *regionDictionary in regionListDictionarys) {
+                                                                          IBLRegion *region = [[IBLRegion alloc] initWithDictionary:regionDictionary error:nil];
+                                                                          [regions addObject:region];
+                                                                      }
+                                                                      
+                                                                      handler(regions, nil);
+                                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                      handler(nil, error);
+                                                                  }];
 }
 @end

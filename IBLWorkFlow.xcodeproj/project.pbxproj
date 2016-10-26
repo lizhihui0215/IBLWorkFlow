@@ -1274,6 +1274,14 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 5R5G2D4E69;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					264EBB761D2E023D00FF8373 = {
 						CreatedOnToolsVersion = 7.3;

@@ -27,27 +27,12 @@ static NSString * const kSessionID = @"sessionId";
 
 @end
 
-@interface IBLSOAPMethod : NSObject
-@property (nonatomic, copy) NSString *requestMethodName;
-
-@property (nonatomic, copy) NSString *responseMethodName;
-
-- (instancetype)initWithRequestMethodName:(NSString *)requestMethodName responseMethodName:(NSString *)responseMethodName;
-
-+ (instancetype)methodWithRequestMethodName:(NSString *)requestMethodName responseMethodName:(NSString *)responseMethodName;
-
-@end
-
 @interface IBLRepository : NSObject
 
 @property (nonatomic, readonly, strong) NSString *SOAPFileName;
 
 - (instancetype)initWithSOAPFileName:(NSString *)SOAPFileName;
 
-
-- (IBLNetworkServices *)networkServicesMethods:(IBLSOAPMethod *)SOAPmethod;
-
 - (NSDictionary *)signedParametersWithPatameters:(NSDictionary * (^)(NSDictionary *))parameters;
-
 
 @end

@@ -29,8 +29,10 @@ static IBLAppConfiguration *_appConfiguration;
 {
     self = [super initWithSOAPFileName:@"Configuration"];
     if (self) {
-        self.fetchAppConfiguration = [IBLSOAPMethod methodWithRequestMethodName:@"getAPPConfig" responseMethodName:@"getAPPConfigResponse"];
-
+        self.fetchAppConfiguration = [IBLSOAPMethod methodWithURLString:@"ConfigInterface"
+                                                               fileName:@"Configuration"
+                                                      requestMethodName:@"getAPPConfig"
+                                                     responseMethodName:@"getAPPConfigResponse"];
     }
     return self;
 }
@@ -44,17 +46,19 @@ static IBLAppConfiguration *_appConfiguration;
         return parameters;
     }];
     
-    [[self networkServicesMethods:self.fetchAppConfiguration] POST:@"ConfigInterface"
-                                                        parameters:parameters
-                                                          progress:nil
-                                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                               NSError *error = nil;
-                                                               IBLAppConfiguration *configuration = [[IBLAppConfiguration alloc] initWithDictionary:responseObject error:&error];
-                                                               [IBLAppRepository setAppConfiguration:configuration];
-                                                               handler(configuration, error);
-                                                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                               handler(nil, error);
-                                                           }];
+    [[IBLNetworkServices networkServicesWithMethod:self.fetchAppConfiguration] POST:parameters
+                                                                           progress:nil
+                                                                            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                                NSError *error = nil;
+                                                                                
+                                                                                IBLAppConfiguration *configuration = [[IBLAppConfiguration alloc] initWithDictionary:responseObject error:&error];
+                                                                                
+                                                                                [IBLAppRepository setAppConfiguration:configuration];
+                                                                                handler(configuration, error);
+                                                                            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                                
+                                                                                handler(nil, error);
+                                                                            }];
 }
 
 @end

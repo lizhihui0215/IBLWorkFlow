@@ -81,11 +81,14 @@ static NSString *const kProductName = @"offerName";
 {
     self = [super initWithSOAPFileName:@"ProductOfferInterface"];
     if (self) {
-        self.fetchProduct = [IBLSOAPMethod methodWithRequestMethodName:@"getOfferList"
-                                                    responseMethodName:@"getOfferListResponse"];
-        
-        self.fetchProductPrice = [IBLSOAPMethod methodWithRequestMethodName:@"getOfferTariffInfo"
-                                                         responseMethodName:@"getOfferTariffInfoResponse"];
+        self.fetchProduct = [IBLSOAPMethod methodWithURLString:@"ProductOfferInterface"
+                                                      fileName:@"ProductOfferInterface"
+                                             requestMethodName:@"getOfferList"
+                                            responseMethodName:@"getOfferListResponse"];
+        self.fetchProductPrice = [IBLSOAPMethod methodWithURLString:@"ProductOfferInterface"
+                                                           fileName:@"ProductOfferInterface"
+                                                  requestMethodName:@"getOfferTariffInfo"
+                                                 responseMethodName:@"getOfferTariffInfoResponse"];
     }
     return self;
 }
@@ -103,23 +106,21 @@ static NSString *const kProductName = @"offerName";
         return parameters;
     }];
     
-    [[self networkServicesMethods:self.fetchProduct] POST:@"ProductOfferInterface"
-                                               parameters:parameters
-                                                 progress:nil
-                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                      NSArray<NSDictionary *> *productListDictionarys = responseObject[@"offerList"];
-                                                      
-                                                      NSMutableArray<IBLProduct *> *products = [NSMutableArray array];
-                                                      
-                                                      for (NSDictionary *productDictionary in productListDictionarys) {
-                                                          IBLProduct *product = [[IBLProduct alloc] initWithDictionary:productDictionary error:nil];
-                                                          [products addObject:product];
-                                                      }
-                                                      handler(products, nil);
-                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                      handler(nil, error);
-                                                  }];
-    
+    [[IBLNetworkServices networkServicesWithMethod:self.fetchProduct] POST:parameters
+                                                                  progress:nil
+                                                                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                      NSArray<NSDictionary *> *productListDictionarys = responseObject[@"offerList"];
+                                                                      
+                                                                      NSMutableArray<IBLProduct *> *products = [NSMutableArray array];
+                                                                      
+                                                                      for (NSDictionary *productDictionary in productListDictionarys) {
+                                                                          IBLProduct *product = [[IBLProduct alloc] initWithDictionary:productDictionary error:nil];
+                                                                          [products addObject:product];
+                                                                      }
+                                                                      handler(products, nil);
+                                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                      handler(nil, error);
+                                                                  }];
 }
 
 - (void)fetchPriductPrice:(IBLFetchProductPriceInfo *)fetchProductPriceInfo
@@ -135,14 +136,13 @@ static NSString *const kProductName = @"offerName";
         return parameters;
     }];
     
-    [[self networkServicesMethods:self.fetchProductPrice] POST:@"ProductOfferInterface"
-                                                    parameters:parameters
-                                                      progress:nil
-                                                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                           IBLProductPrice *productPrice = [[IBLProductPrice alloc] initWithDictionary:responseObject error:nil];
-                                                           handler(productPrice, nil);
-                                                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                           handler(nil, error);
-                                                       }];
+    [[IBLNetworkServices networkServicesWithMethod:self.fetchProductPrice] POST:parameters
+                                                                  progress:nil
+                                                                        success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                            IBLProductPrice *productPrice = [[IBLProductPrice alloc] initWithDictionary:responseObject error:nil];
+                                                                            handler(productPrice, nil);
+                                                                        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                            handler(nil, error);
+                                                                        }];
 }
 @end

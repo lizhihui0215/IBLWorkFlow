@@ -84,23 +84,35 @@
 {
     self = [super initWithSOAPFileName:@"User"];
     if (self) {
-        self.fetchUserListMethod = [IBLSOAPMethod methodWithRequestMethodName:@"getUserList" responseMethodName:@"getUserListResponse"];
+        self.fetchUserListMethod = [IBLSOAPMethod methodWithURLString:@"UserInterface"
+                                                             fileName:@"User"
+                                                    requestMethodName:@"getUserList"
+                                                   responseMethodName:@"getUserListResponse" ];
         
-        self.createAccountMethod = [IBLSOAPMethod methodWithRequestMethodName:@"openAccount"
-                                                           responseMethodName:@"openAccountResponse"];
+        self.createAccountMethod = [IBLSOAPMethod methodWithURLString:@"UserInterface"
+                                                             fileName:@"User"
+                                                    requestMethodName:@"openAccount"
+                                                   responseMethodName:@"openAccountResponse" ];
         
-        self.fetchOnline = [IBLSOAPMethod methodWithRequestMethodName:@"getOnlineRecord"
-                                                   responseMethodName:@"getOnlineRecordResponse"];
+        self.fetchOnline = [IBLSOAPMethod methodWithURLString:@"UserInterface"
+                                                     fileName:@"User"
+                                            requestMethodName:@"getOnlineRecord"
+                                           responseMethodName:@"getOnlineRecordResponse" ];
         
-        self.renewMethod = [IBLSOAPMethod methodWithRequestMethodName:@"renew"
-                                                   responseMethodName:@"renewResponse"];
+        self.renewMethod = [IBLSOAPMethod methodWithURLString:@"UserInterface"
+                                                     fileName:@"User"
+                                            requestMethodName:@"renew"
+                                           responseMethodName:@"renewResponse" ];
         
-        self.exchangeProductMethod = [IBLSOAPMethod methodWithRequestMethodName:@"change"
-                                                             responseMethodName:@"changeResponse"];
+        self.exchangeProductMethod = [IBLSOAPMethod methodWithURLString:@"UserInterface"
+                                                               fileName:@"User"
+                                                      requestMethodName:@"change"
+                                                     responseMethodName:@"changeResponse" ];
         
-        self.fetchOrderRelatedUserMethod = [IBLSOAPMethod methodWithRequestMethodName:@"getUserInfo"
-                                                                   responseMethodName:@"getUserInfoResponse"];
-
+        self.fetchOrderRelatedUserMethod = [IBLSOAPMethod methodWithURLString:@"UserInterface"
+                                                                     fileName:@"User"
+                                                            requestMethodName:@"getUserInfo"
+                                                           responseMethodName:@"getUserInfoResponse" ];
     }
     return self;
 }
@@ -114,16 +126,14 @@
         parameters[@"account"] = account;
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.fetchOrderRelatedUserMethod] POST:@"UserInterface"
-                                                              parameters:parameters
-                                                                progress:nil
-                                                                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                                     IBLOrderRelateUser *user = [[IBLOrderRelateUser alloc] initWithDictionary:responseObject error:nil];
-                                                                     handler(user, nil);
-                                                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                                     handler(nil, error);
-                                                                 }];
+    [[IBLNetworkServices networkServicesWithMethod:self.fetchOrderRelatedUserMethod] POST:parameters
+                                                                                 progress:nil
+                                                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                                      IBLOrderRelateUser *user = [[IBLOrderRelateUser alloc] initWithDictionary:responseObject error:nil];
+                                                                                      handler(user, nil);
+                                                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                                      handler(nil, error);
+                                                                                  }];
 }
 
 
@@ -140,27 +150,22 @@
         parameters[kPageSize] =  @(pageSize);
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.fetchOnline] POST:@"UserInterface"
-                                                      parameters:parameters
-                                                        progress:nil
-                                                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                             NSArray *recordListDictionary = responseObject[@"recordList"];
-                                                             
-                                                             NSMutableArray<IBLNetworkRecord *> *records = [NSMutableArray array];
-                                                             
-                                                             for (NSDictionary *dictionary in recordListDictionary) {
-                                                                 IBLNetworkRecord *networkRecord = [[IBLNetworkRecord alloc] initWithDictionary:dictionary error:nil];
-                                                                 [records addObject:networkRecord];
-                                                             }
-                                                             
-                                                             handler(records, nil);
-                                                         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                             handler(nil, error);
-                                                         }];
-
-
-    
+    [[IBLNetworkServices networkServicesWithMethod:self.fetchOnline] POST:parameters
+                                                                                 progress:nil
+                                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                      NSArray *recordListDictionary = responseObject[@"recordList"];
+                                                                      
+                                                                      NSMutableArray<IBLNetworkRecord *> *records = [NSMutableArray array];
+                                                                      
+                                                                      for (NSDictionary *dictionary in recordListDictionary) {
+                                                                          IBLNetworkRecord *networkRecord = [[IBLNetworkRecord alloc] initWithDictionary:dictionary error:nil];
+                                                                          [records addObject:networkRecord];
+                                                                      }
+                                                                      
+                                                                      handler(records, nil);
+                                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                      handler(nil, error);
+                                                                  }];
 }
 
 - (void)createAccountWithInfo:(IBLCreateAccountInfo *)createAccountInfo
@@ -202,15 +207,13 @@
         return parameters;
     }];
     
-
-    [[self networkServicesMethods:self.createAccountMethod] POST:@"UserInterface"
-                                                      parameters:parameters
-                                                        progress:nil
-                                                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                             handler(responseObject[@"resultCode"], nil);
-                                                         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                             handler(nil, error);
-                                                         }];
+    [[IBLNetworkServices networkServicesWithMethod:self.createAccountMethod] POST:parameters
+                                                                 progress:nil
+                                                                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                              handler(responseObject[@"resultCode"], nil);
+                                                                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                              handler(nil, error);
+                                                                          }];
 }
 
 - (void)fetchUserListWithIsRefresh:(BOOL)refresh
@@ -229,25 +232,23 @@
         parameters[kStart] = @(result.start * result.pageSize);
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.fetchUserListMethod] POST:@"UserInterface"
-                                                  parameters:parameters
-                                                    progress:nil
-                                                     success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                        NSArray *relateUserDictionarys = responseObject[@"userList"];
-                                                         
-                                                         
-                                                         NSMutableArray<IBLRelateUser *> *relateUsers = [NSMutableArray array];
-                                                         
-                                                         for (NSDictionary *relateUserDictionary in relateUserDictionarys) {
-                                                             IBLRelateUser *user = [[IBLRelateUser alloc] initWithDictionary:relateUserDictionary error:nil];
-                                                             [relateUsers addObject:user];
-                                                         }
-                                                         
-                                                         handler(relateUsers, nil);
-                                                     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                         handler(nil, error);
-                                                     }];
+    [[IBLNetworkServices networkServicesWithMethod:self.fetchUserListMethod] POST:parameters
+                                                                         progress:nil
+                                                                          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                              NSArray *relateUserDictionarys = responseObject[@"userList"];
+                                                                              
+                                                                              
+                                                                              NSMutableArray<IBLRelateUser *> *relateUsers = [NSMutableArray array];
+                                                                              
+                                                                              for (NSDictionary *relateUserDictionary in relateUserDictionarys) {
+                                                                                  IBLRelateUser *user = [[IBLRelateUser alloc] initWithDictionary:relateUserDictionary error:nil];
+                                                                                  [relateUsers addObject:user];
+                                                                              }
+                                                                              
+                                                                              handler(relateUsers, nil);
+                                                                          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                              handler(nil, error);
+                                                                          }];
 }
 
 - (void)exchangeProductWithParameters:(IBLExchangeProductParameters *)exchangeProductParameters
@@ -273,15 +274,13 @@
         parameters[@"changeType"] = exchangeProductParameters.changeType;
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.exchangeProductMethod] POST:@"UserInterface"
-                                              parameters:parameters
-                                                progress:nil
-                                                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                     handler(@"", nil);
-                                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                     handler(nil, error);
-                                                 }];
+    [[IBLNetworkServices networkServicesWithMethod:self.exchangeProductMethod] POST:parameters
+                                                                         progress:nil
+                                                                            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                                handler(@"", nil);
+                                                                            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                                handler(nil, error);
+                                                                            }];
 }
 
 - (void)renewWithRenewParameters:(IBLRenewParameters *)renewParameters
@@ -305,15 +304,13 @@
         parameters[@"voiceCode"] = renewParameters.voiceCode;
         return parameters;
     }];
-    
-    [[self networkServicesMethods:self.renewMethod] POST:@"UserInterface"
-                                                      parameters:parameters
-                                                        progress:nil
-                                                         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                             handler(@"", nil);
-                                                         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                             handler(nil, error);
-                                                         }];
+    [[IBLNetworkServices networkServicesWithMethod:self.renewMethod] POST:parameters
+                                                                           progress:nil
+                                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                      handler(@"", nil);
+                                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                      handler(nil, error);
+                                                                  }];
 }
 
 @end

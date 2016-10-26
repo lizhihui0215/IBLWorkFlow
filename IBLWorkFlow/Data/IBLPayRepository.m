@@ -28,15 +28,18 @@
 {
     self = [super initWithSOAPFileName:@"PayInterface"];
     if (self) {
-        self.QRPayMethod = [IBLSOAPMethod methodWithRequestMethodName:@"qrPay"
-                                                   responseMethodName:@"qrPayResponse"];
-        
-        self.checkOrderMethod = [IBLSOAPMethod methodWithRequestMethodName:@"checkOrder"
-                                                        responseMethodName:@"checkOrderResponse"];
-        
-        self.fetchOrderDetailMethod = [IBLSOAPMethod methodWithRequestMethodName:@"getOrderInfo"
-                                                              responseMethodName:@"getOrderInfoResponse"];
-        
+        self.QRPayMethod = [IBLSOAPMethod methodWithURLString:@"IBLPayInterface"
+                                                     fileName:@"PayInterface"
+                                            requestMethodName:@"qrPay"
+                                           responseMethodName:@"qrPayResponse"];
+        self.checkOrderMethod = [IBLSOAPMethod  methodWithURLString:@"IBLPayInterface"
+                                                           fileName:@"PayInterface"
+                                                  requestMethodName:@"checkOrder"
+                                                 responseMethodName:@"checkOrderResponse"];
+        self.fetchOrderDetailMethod = [IBLSOAPMethod  methodWithURLString:@"IBLPayInterface"
+                                                                 fileName:@"PayInterface"
+                                                        requestMethodName:@"getOrderInfo"
+                                                       responseMethodName:@"getOrderInfoResponse"];
     }
     return self;
 }
@@ -74,15 +77,14 @@
         return parameters;
     }];
     
-    [[self networkServicesMethods:self.QRPayMethod] POST:@"IBLPayInterface"
-                                              parameters:parameters
-                                                progress:nil
-                                                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                     IBLPayResult *result = [[IBLPayResult alloc] initWithDictionary:responseObject error:nil];
-                                                     handler(result, nil);
-                                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                     handler(nil, error);
-                                                 }];
+     [[IBLNetworkServices networkServicesWithMethod:self.QRPayMethod] POST:parameters
+                                                                 progress:nil
+                                                                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                      IBLPayResult *result = [[IBLPayResult alloc] initWithDictionary:responseObject error:nil];
+                                                                      handler(result, nil);
+                                                                  } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                      handler(nil, error);
+                                                                  }];
 }
 
 - (NSURLSessionDataTask *)checkOrderWithNumber:(NSString *)orderNumber
@@ -93,15 +95,13 @@
         return parameters;
     }];
     
-    return  [[self networkServicesMethods:self.checkOrderMethod] POST:@"IBLPayInterface"
-                                                           parameters:parameters
-                                                             progress:nil
-                                                              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                                  handler([responseObject[@"state"] integerValue], nil);
-                                                              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                                  handler(IBLOrderPayStatusError, error);
-                                                              }];
-    
+    return [[IBLNetworkServices networkServicesWithMethod:self.checkOrderMethod] POST:parameters
+                                                                        progress:nil
+                                                                              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                                  handler([responseObject[@"state"] integerValue], nil);
+                                                                              } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                                  handler(IBLOrderPayStatusError, error);
+                                                                              }];
 }
 
 
@@ -112,19 +112,16 @@
         parameters[@"orderNo"] = orderNumber;
         return parameters;
     }];
-    
-    return  [[self networkServicesMethods:self.fetchOrderDetailMethod] POST:@"IBLPayInterface"
-                                                                 parameters:parameters
-                                                                   progress:nil
-                                                                    success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                                        
-                                                                       IBLOrderDetail *orderDetail = [[IBLOrderDetail alloc] initWithDictionary:responseObject error:nil];
-                                                                        
-                                                                        handler(orderDetail, nil);
-                                                                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                                        handler(IBLOrderPayStatusError, error);
-                                                                    }];
-    
+    return [[IBLNetworkServices networkServicesWithMethod:self.fetchOrderDetailMethod] POST:parameters
+                                                                             progress:nil
+                                                                                    success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                                                                        
+                                                                                        IBLOrderDetail *orderDetail = [[IBLOrderDetail alloc] initWithDictionary:responseObject error:nil];
+                                                                                        
+                                                                                        handler(orderDetail, nil);
+                                                                                    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                                                                        handler(IBLOrderPayStatusError, error);
+                                                                                    }];
 }
 
 @end
