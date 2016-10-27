@@ -60,12 +60,13 @@
     NSData *data = [encode base64:self.payResult.codeUrl];
     self.QRImageView.image = [UIImage imageWithData:data];
     
-    [self checkOrders:NO];
     
+    [self performSelectorInBackground:@selector(checkOrders:) withObject:@(NO)];
 }
 
-- (void)checkOrders:(BOOL)isStop{
-    if (isStop) {
+- (void)checkOrders:(NSNumber *)isStop{
+    [NSThread sleepForTimeInterval:10];
+    if ([isStop boolValue]) {
         IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认" action:^(IBLButtonItem *item) {
             [self.navigationController popViewControllerAnimated:YES];
         }];
@@ -90,7 +91,7 @@
                               }
                               
                               NSTimeInterval interval = [self.startDate timeIntervalSinceNow];
-                              [self checkOrders:interval > 60 * 3];
+                              [self performSelectorInBackground:@selector(checkOrders:) withObject:@(interval > 60 * 3)];
                           }];
 }
 
