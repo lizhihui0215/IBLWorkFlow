@@ -67,18 +67,18 @@
 - (void)checkOrders:(NSNumber *)isStop{
     [NSThread sleepForTimeInterval:10];
     if ([isStop boolValue]) {
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认" action:^(IBLButtonItem *item) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
-        
-        
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                        title:@"支付超时，请重新支付！"
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
-
+        dispatch_async(dispatch_get_main_queue(), ^{
+            IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认" action:^(IBLButtonItem *item) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                            title:@"支付超时，请重新支付！"
+                                                                          message:nil
+                                                                 cancleButtonItem:cancel
+                                                                 otherButtonItems:nil];
+            [alert showInController:self];
+        });
         return;
     }
     @weakify(self)
