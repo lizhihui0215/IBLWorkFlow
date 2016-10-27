@@ -433,7 +433,6 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                                                 fieldType:IBLAddWorkOrderFieldTypeProduct
                                                didEndEdit:searchResult];
             self.productTextField.text = product.name;
-            
             break;
         }
         
