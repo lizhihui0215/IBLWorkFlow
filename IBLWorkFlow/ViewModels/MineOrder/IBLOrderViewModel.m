@@ -458,7 +458,7 @@
     switch (action) {
         case IBLOrderActionTrash: {
             [self.trashOrder trashOrderWith:order content:content completeHandler:^(NSError *error) {
-                [self deleteOrderAtIndexPath:indexPath];
+                if (!error) [self finishedHandleOrderWithAction:action atIndexPath:indexPath];
                 handler(error);
             }];
             break;

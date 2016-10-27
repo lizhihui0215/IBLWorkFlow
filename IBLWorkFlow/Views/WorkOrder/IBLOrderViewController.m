@@ -200,7 +200,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
             
             NSString *placeholder = [self.viewModel placeHolderWith:action atIndexPath:indexPath];
             
-           __block __strong IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title
+           __block IBLBusinessAlertViewController *alertView = [IBLBusinessAlertViewController alertWithTitle:title
                                                                                            placeholder:placeholder
                                                                                                  image:image];
             @weakify(self)
