@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, IBLWorkOrderBizStatus) {
      */
     IBLWorkOrderBizStatusInstall = 12,
     /**
-     *  停机修复
+     *  停复机
      */
     IBLWorkOrderBizStatusStop = 13,
     /**

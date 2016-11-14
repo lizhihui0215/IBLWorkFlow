@@ -19,6 +19,7 @@
 #import "IBLAlertController.h"
 #import "IBLAppConfiguration.h"
 #import "IBLUtilities.h"
+#import "IBLFileManager.h"
 
 typedef NS_ENUM(NSInteger, IBLCreateAccountType) {
     IBLCreateAccountTypeFromOrder,

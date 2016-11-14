@@ -33,6 +33,19 @@
     return error;
 }
 
+- (IBLUser *)lastUser{
+   return [NSKeyedUnarchiver unarchiveObjectWithFile:[IBLFileManager patchForUserCacheFile]];
+}
+
+- (void)saveLastUser:(IBLUser *)user{
+    if([IBLFileManager itemExistsAtPath:[IBLFileManager patchForUserCacheFile]]){
+        [IBLFileManager removeItemAtPath:[IBLFileManager patchForUserCacheFile] error:nil];
+    }
+    
+    
+    [NSKeyedArchiver archiveRootObject:user toFile:[IBLFileManager patchForUserCacheFile]];
+}
+
 - (void)startFetchWithUsername:(NSString *)username
                       password:(NSString *)password
                completeHandler:(void (^)(IBLUser *, NSError *))handler {
@@ -52,6 +65,9 @@
                 IBLAppRepository *appRepository = [[IBLAppRepository alloc] init];
                 [appRepository fetchWithConfigurationWithCompleteHandler:^(IBLAppConfiguration *configuration, NSError *error) {
                     [IBLUserRepository setUser:user];
+                    user.account = username;
+                    user.password = password;
+                    [self saveLastUser:user];
                     handler(user, error);
                 }];                
             }];

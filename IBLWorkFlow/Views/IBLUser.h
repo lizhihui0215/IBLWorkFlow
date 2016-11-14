@@ -14,12 +14,15 @@
 @end
 
 @interface IBLUser : IBLModel
-
 @property (nonatomic, copy) NSString *userName;
 
 @property (nonatomic, copy) NSString *roleName;
 
+@property (nonatomic, copy) NSString *password;
+
 @property (nonatomic, copy) NSString *identifier;
+
+@property (nonatomic, copy) NSString *account;
 
 @property (nonatomic, strong) NSArray<IBLPremission> *permissions;
 

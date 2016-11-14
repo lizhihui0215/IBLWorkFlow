@@ -108,7 +108,7 @@
     NSDictionary *workOrderBizTypes = @{@(IBLWorkOrderBizStatusUnknow) : @"",
                                         @(IBLWorkOrderBizStatusRepair) : @"报修",
                                         @(IBLWorkOrderBizStatusInstall) : @"报装",
-                                        @(IBLWorkOrderBizStatusStop) : @"停机修复",
+                                        @(IBLWorkOrderBizStatusStop) : @"停复机",
                                         @(IBLWorkOrderBizStatusReturn) : @"退网",
                                         @(IBLWorkOrderBizStatusMove) : @"移网",
                                         @(IBLWorkOrderBizStatusHandleMalfunction) : @"故障处理",

@@ -14,4 +14,7 @@
                  password:(NSString *)password
           completeHandler:(IBLViewModelCompleteHandler)handler;
 
+- (NSString *)lastUsername;
+
+- (NSString *)lastPassword;
 @end

@@ -21,6 +21,10 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.usernameTextField.text = [self.viewModel lastUsername];
+    self.passwordTextField.text = [self.viewModel lastPassword];
+    
+    
 }
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {

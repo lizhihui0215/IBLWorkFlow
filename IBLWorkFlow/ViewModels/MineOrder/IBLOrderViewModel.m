@@ -126,6 +126,8 @@
         
         self.finishOrder = [[IBLFinishOrder alloc] init];
         
+        self.trashOrder = [[IBLTrashOrder alloc] init];
+        
         self.searchResults = [@{@(0) : [IBLOrderSearchResult defaultSearchResult],
                                 @(1) : [IBLOrderSearchResult defaultSearchResult] ,
                                 @(2) : [IBLOrderSearchResult defaultSearchResult],
@@ -244,7 +246,7 @@
     NSDictionary *workOrderBizTypes = @{@(IBLWorkOrderBizStatusUnknow) : @"[ 未知 ]",
                                         @(IBLWorkOrderBizStatusRepair) : @"[ 报修 ]",
                                         @(IBLWorkOrderBizStatusInstall) : @"[ 报装 ]",
-                                        @(IBLWorkOrderBizStatusStop) : @"[ 停机修复 ]",
+                                        @(IBLWorkOrderBizStatusStop) : @"[ 停复机 ]",
                                         @(IBLWorkOrderBizStatusReturn) : @"[ 退网 ]",
                                         @(IBLWorkOrderBizStatusMove) : @"[ 移网 ]",
                                         @(IBLWorkOrderBizStatusHandleMalfunction) : @"[ 故障处理 ]",

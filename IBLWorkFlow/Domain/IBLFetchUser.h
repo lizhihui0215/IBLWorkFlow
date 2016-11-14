@@ -14,4 +14,6 @@
 - (void)startFetchWithUsername:(NSString *)username
                       password:(NSString *)password
                completeHandler:(void (^)(IBLUser *, NSError *))handler;
+
+- (IBLUser *)lastUser;
 @end

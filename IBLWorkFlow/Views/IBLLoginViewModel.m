@@ -11,20 +11,37 @@
 
 @interface IBLLoginViewModel ()
 
+@property (nonatomic, strong) IBLFetchUser *fetchUser;
+
 @end
 
 @implementation IBLLoginViewModel
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.fetchUser = [[IBLFetchUser alloc] init];
+    }
+    return self;
+}
 
 - (void)loginWithUsername:(NSString *)username
                  password:(NSString *)password
           completeHandler:(IBLViewModelCompleteHandler)handler {
     
-    IBLFetchUser *fetchUser = [[IBLFetchUser alloc] init];
-    
-    [fetchUser startFetchWithUsername:username
+    [self.fetchUser startFetchWithUsername:username
                              password:password
                       completeHandler:^(IBLUser *user, NSError *error) {
                           handler(error);
                       }];
+}
+
+- (NSString *)lastUsername {
+    return [self.fetchUser lastUser].account;
+}
+
+- (NSString *)lastPassword {
+    return [self.fetchUser lastUser].password;
 }
 @end

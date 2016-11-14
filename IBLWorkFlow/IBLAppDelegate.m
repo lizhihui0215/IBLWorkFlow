@@ -32,6 +32,8 @@
     
     [UINavigationBar setupAppearance];
     
+    [IBLFileManager setup];
+    
     [RMDateSelectionViewController setLocalizedTitleForCancelButton:@"取消"];
     [RMDateSelectionViewController setLocalizedTitleForSelectButton:@"选择"];
     
