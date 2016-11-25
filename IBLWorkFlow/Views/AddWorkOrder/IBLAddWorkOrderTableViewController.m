@@ -94,7 +94,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateMode
                                                                               defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy/MM/dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     datePicker.formatter = formatter;
     [datePicker showHcdDateTimePicker];
     datePicker.clickedOkBtn = ^(NSString *time){
@@ -277,8 +277,8 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             title = @"请选填写订购数量！";
         };
         
-        if([NSString isNull:self.phoneTextField.text]){
-            title = @"请填写用户电话！";
+        if(![IBLUtilities validateMobile:self.phoneTextField.text]){
+            title = @"您输入的手机格式不正确！";
         };
         
     }else{
