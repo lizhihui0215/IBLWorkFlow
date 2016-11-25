@@ -11,7 +11,7 @@
 
 NSString * const kExceptionCode = @"com.ibilling.iblworkflow.exception.code";
 
-NSString * const kExceptionMessage = @"com.ibilling.iblworkflow.exception.message";
+NSString * const kExceptionMessage = @"NSLocalizedDescription";
 
 static BOOL IsShowing = NO;
 
@@ -52,7 +52,7 @@ static BOOL IsShowing = NO;
     
     IsShowing = YES;
     
-    NSString *code = error.userInfo[kExceptionCode];
+//    NSString *code = error.userInfo[kExceptionCode];
     
     NSString *message = error.userInfo[kExceptionMessage];
     
@@ -64,7 +64,7 @@ static BOOL IsShowing = NO;
                                                         }];
     
     IBLAlertController *controller = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                         title:code
+                                                                         title:nil
                                                                        message:message
                                                               cancleButtonItem:cancelButton
                                                               otherButtonItems:nil];

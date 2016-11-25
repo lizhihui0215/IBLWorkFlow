@@ -60,9 +60,9 @@ target 'IBLWorkFlow' do
   # https://github.com/AFNetworking/AFNetworkActivityLogger/tree/3_0_0
   pod 'AFNetworkActivityLogger', git: 'https://github.com/AFNetworking/AFNetworkActivityLogger.git', branch: '3_0_0'
   
-  # https://github.com/CooperRS/RMDateSelectionViewController
-  pod 'RMDateSelectionViewController'
-  
+#  # https://github.com/CooperRS/RMDateSelectionViewController
+#  pod 'RMDateSelectionViewController'
+
   target 'IBLWorkFlowTests' do
     inherit! :search_paths
     # Pods for testing

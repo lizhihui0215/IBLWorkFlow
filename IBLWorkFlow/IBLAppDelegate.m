@@ -9,7 +9,6 @@
 #import "IBLAppDelegate.h"
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 #import "UINavigationBar+IBLExtension.h"
-#import "RMDateSelectionViewController.h"
 #import "UMessage.h"
 
 
@@ -34,8 +33,6 @@
     
     [IBLFileManager setup];
     
-    [RMDateSelectionViewController setLocalizedTitleForCancelButton:@"取消"];
-    [RMDateSelectionViewController setLocalizedTitleForSelectButton:@"选择"];
     
     [self setupNotificationWithLaunchOptions:launchOptions];
     

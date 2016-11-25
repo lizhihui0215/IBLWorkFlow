@@ -7,7 +7,8 @@
 //
 
 #import "IBLInternetTableViewController.h"
-#import <RMDateSelectionViewController/RMDateSelectionViewController.h>
+//#import <RMDateSelectionViewController/RMDateSelectionViewController.h>
+#import "HcdDateTimePickerView.h"
 #import "IBLInternetListViewController.h"
 
 @interface IBLInternetTableViewController ()
@@ -26,18 +27,16 @@
     
 }
 - (IBAction)dateTapped:(UITapGestureRecognizer *)sender {
-    RMDateSelectionViewController *dateSelectionVC = [RMDateSelectionViewController dateSelectionController];
-    dateSelectionVC.disableBouncingWhenShowing = YES;
-    dateSelectionVC.datePicker.minuteInterval = 1;
-    dateSelectionVC.datePicker.datePickerMode = UIDatePickerModeDate;
-    dateSelectionVC.disableBlurEffects = YES;
     
-    dateSelectionVC.hideNowButton = YES;
-    [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
-        self.dateTextField.text = [aDate stringFromFormatter:@"yyyy-MM"];
-    } andCancelHandler:^(RMDateSelectionViewController *vc) {
-        
-    }];
+    HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateTimeMode defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
+    [datePicker showHcdDateTimePicker];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    datePicker.formatter = formatter;
+    datePicker.clickedOkBtn = ^(NSString *time){
+        self.dateTextField.text = time;//[aDate stringFromFormatter:@"yyyy-MM"];
+    };
+
 }
 
 - (IBAction)searchButtonPressed:(UIButton *)sender {

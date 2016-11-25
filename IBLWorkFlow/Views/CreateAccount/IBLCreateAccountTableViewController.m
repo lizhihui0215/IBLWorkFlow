@@ -10,7 +10,7 @@
 #import "IBLSectionHeaderView.h"
 #import "IBLSearchViewController.h"
 #import "IBLAlertController.h"
-#import "RMDateSelectionViewController.h"
+#import "HcdDateTimePickerView.h"
 
 @implementation IBLCreateAccountTableViewInfo
 
@@ -127,19 +127,17 @@
 
 @implementation IBLCreateAccountTableViewController
 - (IBAction)effectDateTapped:(UITapGestureRecognizer *)sender {
-    RMDateSelectionViewController *dateSelectionVC = [RMDateSelectionViewController dateSelectionController];
-    dateSelectionVC.disableBouncingWhenShowing = YES;
-    dateSelectionVC.datePicker.minuteInterval = 1;
     
-    dateSelectionVC.disableBlurEffects = YES;
-    
-    dateSelectionVC.hideNowButton = YES;
-    [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
-        self.createAccountInfo.effectDate = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
+    HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateTimeMode defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    datePicker.formatter = formatter;
+    [datePicker showHcdDateTimePicker];
+    datePicker.clickedOkBtn = ^(NSString *time){
+        self.createAccountInfo.effectDate = time;
         self.dateOfValidTextField.text = self.createAccountInfo.effectDate;
-    } andCancelHandler:^(RMDateSelectionViewController *vc) {
-        
-    }];
+    };
+
 
 }
 

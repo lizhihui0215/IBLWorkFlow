@@ -62,6 +62,9 @@
 		265A57B21D5B1330001DBFA0 /* IBLPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 265A57B11D5B1330001DBFA0 /* IBLPay.m */; };
 		265F5C821DA9F9C40058A5C2 /* IBLStaticTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265F5C811DA9F9C40058A5C2 /* IBLStaticTableViewController.m */; };
 		265F5C851DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265F5C841DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.m */; };
+		26720C591DE88BD50051D6DD /* HcdDateTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26720C541DE88BD50051D6DD /* HcdDateTimePickerView.m */; };
+		26720C5A1DE88BD50051D6DD /* MXSCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26720C561DE88BD50051D6DD /* MXSCycleScrollView.m */; };
+		26720C5B1DE88BD50051D6DD /* UIColor+HcdCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = 26720C581DE88BD50051D6DD /* UIColor+HcdCustom.m */; };
 		26734FCD1D4112300048DE97 /* IBLProductSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26734FCC1D4112300048DE97 /* IBLProductSearchViewModel.m */; };
 		26734FCF1D41135A0048DE97 /* ProductOfferInterface.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26734FCE1D41135A0048DE97 /* ProductOfferInterface.xml */; };
 		26734FD21D4113A60048DE97 /* IBLProductRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26734FD11D4113A60048DE97 /* IBLProductRepository.m */; };
@@ -298,6 +301,12 @@
 		265F5C811DA9F9C40058A5C2 /* IBLStaticTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLStaticTableViewController.m; sourceTree = "<group>"; };
 		265F5C831DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderFlowDetailViewController.h; sourceTree = "<group>"; };
 		265F5C841DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderFlowDetailViewController.m; sourceTree = "<group>"; };
+		26720C531DE88BD50051D6DD /* HcdDateTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HcdDateTimePickerView.h; sourceTree = "<group>"; };
+		26720C541DE88BD50051D6DD /* HcdDateTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HcdDateTimePickerView.m; sourceTree = "<group>"; };
+		26720C551DE88BD50051D6DD /* MXSCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXSCycleScrollView.h; sourceTree = "<group>"; };
+		26720C561DE88BD50051D6DD /* MXSCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXSCycleScrollView.m; sourceTree = "<group>"; };
+		26720C571DE88BD50051D6DD /* UIColor+HcdCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HcdCustom.h"; sourceTree = "<group>"; };
+		26720C581DE88BD50051D6DD /* UIColor+HcdCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HcdCustom.m"; sourceTree = "<group>"; };
 		26734FCB1D4112300048DE97 /* IBLProductSearchViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLProductSearchViewModel.h; sourceTree = "<group>"; };
 		26734FCC1D4112300048DE97 /* IBLProductSearchViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLProductSearchViewModel.m; sourceTree = "<group>"; };
 		26734FCE1D41135A0048DE97 /* ProductOfferInterface.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ProductOfferInterface.xml; sourceTree = "<group>"; };
@@ -625,6 +634,19 @@
 				264EBB881D2E023D00FF8373 /* Info.plist */,
 			);
 			path = IBLWorkFlowUITests;
+			sourceTree = "<group>";
+		};
+		26720C521DE88BD50051D6DD /* DateTimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				26720C531DE88BD50051D6DD /* HcdDateTimePickerView.h */,
+				26720C541DE88BD50051D6DD /* HcdDateTimePickerView.m */,
+				26720C551DE88BD50051D6DD /* MXSCycleScrollView.h */,
+				26720C561DE88BD50051D6DD /* MXSCycleScrollView.m */,
+				26720C571DE88BD50051D6DD /* UIColor+HcdCustom.h */,
+				26720C581DE88BD50051D6DD /* UIColor+HcdCustom.m */,
+			);
+			path = DateTimePicker;
 			sourceTree = "<group>";
 		};
 		2684A3041D7EB62A001B92B7 /* Internet */ = {
@@ -1096,6 +1118,7 @@
 		5B875E7F67203C8BE2825219 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				26720C521DE88BD50051D6DD /* DateTimePicker */,
 				26FD2B5E1D9A6D450019401D /* HMSegmentedControl.h */,
 				26FD2B5F1D9A6D450019401D /* HMSegmentedControl.m */,
 				262BFF741D4074050021F8EB /* IBLSectionHeaderView.h */,
@@ -1487,11 +1510,13 @@
 			files = (
 				26469BE91D38C3300000285D /* IBLAppConfiguration.m in Sources */,
 				262BFF901D40D0040021F8EB /* IBLRegion.m in Sources */,
+				26720C5B1DE88BD50051D6DD /* UIColor+HcdCustom.m in Sources */,
 				261524C21D7FBDA2007BF989 /* IBLNetworkRecord.m in Sources */,
 				26D56E3D1D35D1CC0091A940 /* IBLLeftMenuViewModel.m in Sources */,
 				26FDA1E81D49BDF100BB8C3D /* IBLAddWorkOrderResult.m in Sources */,
 				26A9D13F1D2E847C000950F6 /* IBLModel.m in Sources */,
 				26ADA5E11D43898C005CAEEC /* IBLExchangeProductTableViewController.m in Sources */,
+				26720C591DE88BD50051D6DD /* HcdDateTimePickerView.m in Sources */,
 				264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */,
 				262BFF841D40BF910021F8EB /* IBLCreateAccountCommit.m in Sources */,
 				26C314F71DA920C10099721D /* IBLUserDetailTableViewController.m in Sources */,
@@ -1591,6 +1616,7 @@
 				26ECF2711D62F5D800BA8C2B /* IBLPayResult.m in Sources */,
 				269E15A41D3DD5AC004D497B /* IBLForwardOrder.m in Sources */,
 				265F5C851DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.m in Sources */,
+				26720C5A1DE88BD50051D6DD /* MXSCycleScrollView.m in Sources */,
 				26469BE61D38B9F40000285D /* IBLWorkOrderBussinessType.m in Sources */,
 				261524C91D7FC1B3007BF989 /* IBLInternetListViewModel.m in Sources */,
 				26EC5A371D45F09500CB0F7C /* IBLUserSearchResultViewController.m in Sources */,

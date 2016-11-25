@@ -10,7 +10,7 @@
 #import "IBLOrderViewController.h"
 #import "IBLOrderSearchViewModel.h"
 #import "IBLPickerView.h"
-#import <RMDateSelectionViewController/RMDateSelectionViewController.h>
+#import "HcdDateTimePickerView.h"
 
 @interface IBLOrderSearchTableViewController ()<UITextFieldDelegate>
 
@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-
+    
     self.userAccountTextField.text = [self.searchDataSource textOfOrderSearchTableView:self
                                                                              fieldType:IBLOrderSearchFieldTypeAccount];
     
@@ -90,7 +90,7 @@
                     self.workOrderBizTypeTextField.text = workOrderBizType.name;
                 }];
     
-
+    
 }
 
 - (IBAction)workOrderTypeTaped:(UITapGestureRecognizer *)sender {
@@ -105,7 +105,7 @@
                     [self.searchDataSource orderSearchTableView:self
                                                       fieldType:IBLOrderSearchFieldTypeWorkOrderType
                                                      didEndEdit:workOrderType];
-
+                    
                     self.workOrderTypeTextField.text = workOrderType.name;
                     
                     
@@ -124,40 +124,32 @@
 }
 
 - (IBAction)startDateTaped:(UITapGestureRecognizer *)sender {
-    RMDateSelectionViewController *dateSelectionVC = [RMDateSelectionViewController dateSelectionController];
-    dateSelectionVC.disableBouncingWhenShowing = YES;
-    dateSelectionVC.datePicker.minuteInterval = 1;
     
-    dateSelectionVC.disableBlurEffects = YES;
-    
-    dateSelectionVC.hideNowButton = YES;
-    [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
-        self.startDateTextField.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
+    HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateTimeMode defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    datePicker.formatter = formatter;
+    [datePicker showHcdDateTimePicker];
+    datePicker.clickedOkBtn = ^(NSString *time){
+        self.startDateTextField.text = time;//[aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
         [self.searchDataSource orderSearchTableView:self
                                           fieldType:IBLOrderSearchFieldTypeStartDate
                                          didEndEdit:self.startDateTextField.text];
-    } andCancelHandler:^(RMDateSelectionViewController *vc) {
-        
-    }];
+    };
 }
 
 - (IBAction)endDateTaped:(UITapGestureRecognizer *)sender {
-    RMDateSelectionViewController *dateSelectionVC = [RMDateSelectionViewController dateSelectionController];
-    dateSelectionVC.disableBouncingWhenShowing = YES;
-    dateSelectionVC.datePicker.minuteInterval = 1;
-    
-    dateSelectionVC.disableBlurEffects = YES;
-    
-    dateSelectionVC.hideNowButton = YES;
-    
-    [dateSelectionVC showWithSelectionHandler:^(RMDateSelectionViewController *vc, NSDate *aDate) {
-        self.endDateTextField.text = [aDate stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
+    HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateTimeMode defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    datePicker.formatter = formatter;
+    [datePicker showHcdDateTimePicker];
+    datePicker.clickedOkBtn = ^(NSString *time){
+        self.endDateTextField.text = time;
         [self.searchDataSource orderSearchTableView:self
                                           fieldType:IBLOrderSearchFieldTypeEndDate
                                          didEndEdit:self.endDateTextField.text];
-    } andCancelHandler:^(RMDateSelectionViewController *vc) {
-        
-    }];
+    };
 }
 
 - (void)saveUserOfSearchResult{
