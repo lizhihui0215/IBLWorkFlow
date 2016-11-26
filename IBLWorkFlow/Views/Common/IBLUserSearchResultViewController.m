@@ -12,6 +12,7 @@
 #import "IBLUserSearchResultViewModel.h"
 #import "IBLUserSearchResultCell.h"
 #import "IBLAddWorkOrderTableViewController.h"
+#import "IBLUserDetailTableViewController.h"
 
 @interface IBLUserSearchResultViewController ()
 
@@ -63,6 +64,13 @@
 {
     return [self.viewModel numberOfRowsInSection:sectionIndex];
 }
+- (IBAction)userDetailButtonPressed:(UIButton *)sender {
+    CGPoint location = [sender.superview convertPoint:sender.center toView:self.tableView];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+
+    [self performSegueWithIdentifier:@"NavigationToUserDetail" sender:indexPath];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -91,27 +99,38 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    id searchResult = [self.viewModel searchResultAtIndexPath:sender];
+    
+    if ([segue.identifier isEqualToString:@"NavigationToUserDetail"]) {
+        IBLUserDetailTableViewController *userDetailTableViewController = [segue destinationViewController];
+        
+        IBLOrder *order = [[IBLOrder alloc] init];
+        order.userIdentifier = [self.viewModel identifierAtIndexPath:sender];
+        order.userAccount = [self.viewModel accountAtIndexPath:sender];
+        userDetailTableViewController.order = order;
+    }else{
+        id searchResult = [self.viewModel searchResultAtIndexPath:sender];
+        
+        switch (self.viewModel.searchType) {
+            case IBLUserSearchTypeRenew: {
+                IBLRenewViewController *renewViewController = [segue destinationViewController];
+                
+                renewViewController.viewModel = [IBLRenewViewModel modelWithUser:searchResult];
+                break;
+            }
+            case IBLUserSearchTypeExchangeProduct: {
+                
+                IBLExchangeProductViewController *exchangeProductViewController = [segue destinationViewController];
+                
+                exchangeProductViewController.viewModel = [IBLExchangeProductViewModel modelWithUser:searchResult];
+                break;
+            }
+            case IBLUserSearchTypeAddWorkOrder:{
+                IBLAddWorkOrderTableViewController *addWorkOrderTableViewController = [segue destinationViewController];
+                [addWorkOrderTableViewController setRelateUser:searchResult];
+                break;
+            }
+        }
 
-    switch (self.viewModel.searchType) {
-        case IBLUserSearchTypeRenew: {
-            IBLRenewViewController *renewViewController = [segue destinationViewController];
-            
-            renewViewController.viewModel = [IBLRenewViewModel modelWithUser:searchResult];
-            break;
-        }
-        case IBLUserSearchTypeExchangeProduct: {
-            
-            IBLExchangeProductViewController *exchangeProductViewController = [segue destinationViewController];
-            
-            exchangeProductViewController.viewModel = [IBLExchangeProductViewModel modelWithUser:searchResult];
-            break;
-        }
-        case IBLUserSearchTypeAddWorkOrder:{
-            IBLAddWorkOrderTableViewController *addWorkOrderTableViewController = [segue destinationViewController];
-            [addWorkOrderTableViewController setRelateUser:searchResult];
-            break;
-        }
     }
 }
 

@@ -165,7 +165,7 @@
             IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
             
             
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
                                                                             title:@"请选择支付方式"
                                                                           message:nil
                                                                  cancleButtonItem:cancel

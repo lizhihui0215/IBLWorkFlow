@@ -23,4 +23,6 @@
 - (NSString *)nameAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)reloadWithIsRefresh:(BOOL)isRefresh completeHandler:(void (^)(NSError *))handler;
+
+- (NSInteger)identifierAtIndexPath:(NSIndexPath *)indexPath;
 @end

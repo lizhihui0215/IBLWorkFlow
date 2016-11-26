@@ -72,7 +72,7 @@
                 [self.navigationController popViewControllerAnimated:YES];
             }];
             
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
                                                                             title:@"支付超时，请重新支付！"
                                                                           message:nil
                                                                  cancleButtonItem:cancel

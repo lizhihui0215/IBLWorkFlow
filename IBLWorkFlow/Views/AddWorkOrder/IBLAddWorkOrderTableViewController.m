@@ -91,10 +91,10 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 }
 - (IBAction)finishedDateTapped:(UITapGestureRecognizer *)sender {
     
-    HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateMode
+    HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateTimeMode
                                                                               defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     datePicker.formatter = formatter;
     [datePicker showHcdDateTimePicker];
     datePicker.clickedOkBtn = ^(NSString *time){

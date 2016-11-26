@@ -42,7 +42,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
     
     IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
     
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
                                                                     title:@"返回将丢失所有填写信息。"
                                                                   message:nil
                                                          cancleButtonItem:cancel
@@ -142,7 +142,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
                         }
                     }];
                     
-                    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
                                                                                     title:@"开户成功"
                                                                                   message:nil
                                                                          cancleButtonItem:cancel

@@ -106,4 +106,7 @@
     return sectionItems;
 }
 
+- (NSInteger)identifierAtIndexPath:(NSIndexPath *)indexPath {
+    return [self relateUserAtIndexPath:indexPath].servId;
+}
 @end
