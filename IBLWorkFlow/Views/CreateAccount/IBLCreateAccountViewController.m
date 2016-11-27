@@ -196,6 +196,13 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 - (IBLCreateAccountTableViewInfo *)createAccountInfoFromOrder:(IBLOrder *)order {
     IBLCreateAccountTableViewInfo *createAccountInfo = nil;
     if (order) {
+        IBLOrderEffectType effType = order.effectType;
+        NSString *effDate = order.effectDate;
+        if(order.effectType == IBLOrderEffectTypeUnknow) {
+            effType = [self.viewModel defaultEffectType];
+            effDate = [self.viewModel defaultEffectDate];
+        }
+        
         createAccountInfo = [IBLCreateAccountTableViewInfo infoWithResidentialIdentifier:order.residentialIdentifier
                                                               productIdentifier:order.productIdentifier
                                                                        username:order.username
@@ -203,8 +210,8 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
                                                                     productName:order.productName
                                                                identifierNumber:order.identifierNumber
                                                                          remark:order.remark
-                                                                     effectType:order.effectType
-                                                                     effectDate:order.effectDate
+                                                                     effectType:effType
+                                                                     effectDate:effDate
                                                                           phone:order.phone
                                                                         address:order.address
                                                                      handleMark:order.handleMark];

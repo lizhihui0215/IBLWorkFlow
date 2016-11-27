@@ -106,6 +106,17 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     };
 }
 - (IBAction)productTapped:(UITapGestureRecognizer *)sender {
+    IBLRegion *region = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeRegion];
+    
+    IBLWorkOrderBussinessType *biz = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeBizType];
+    if (!region && biz.status == IBLWorkOrderBizStatusInstall) {
+        NSError *error = [NSError errorWithDomain:@"" code:0 userInfo:@{kExceptionCode : @(0),
+                                                                        kExceptionMessage : @"请选择小区!"}];
+        
+        [self showAlertWithError:error];
+        return;
+    }
+    
     [self performSegueWithIdentifier:IBLSearchForProductIdentifier sender:self];
     
 }
@@ -387,9 +398,11 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         searchViewController.searchDelegate = self;
     }else if ([segue.identifier isEqualToString:IBLSearchForProductIdentifier]){
         IBLSearchViewController *searchViewController = [segue destinationViewController];
+        IBLRegion *region = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeRegion];
+
         searchViewController.viewModel = [IBLProductSearchViewModel productSearchModelWithSearchType:IBLSearchTypeAddOrderProduct
                                                                                            productId:0
-                                                                                            regionId:0];
+                                                                                            regionId:region.identifier];
         searchViewController.searchDelegate = self;
         
     }else if ([segue.identifier isEqualToString:IBLSearchForRegionIdentifier]){

@@ -128,9 +128,9 @@
 @implementation IBLCreateAccountTableViewController
 - (IBAction)effectDateTapped:(UITapGestureRecognizer *)sender {
     
-    HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateMode defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
+    HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateTimeMode defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     datePicker.formatter = formatter;
     [datePicker showHcdDateTimePicker];
     datePicker.clickedOkBtn = ^(NSString *time){
@@ -210,6 +210,8 @@
     [self setPriceTextFieldsEnable:NO];
     
     for (UITextField *textField in [self priceTextFields]) textField.delegate = self;
+    
+    self.countTextField.delegate = self;
     
     self.phoneTextField.delegate = self;
     
@@ -340,7 +342,12 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    if (textField == self.discountTextField) {
+    if (textField == self.countTextField){
+        [self setupSales];
+        [self setupPay];
+        [self setupSalesCount];
+        [self setupDiscount];
+    }else if (textField == self.discountTextField) {
         [self setupPay];
     }else if (textField == self.payTextField){
         [self setupDiscount];
@@ -570,13 +577,15 @@
     self.createAccountInfo.phone = self.phoneTextField.text;
     self.createAccountInfo.address = self.addressTextField.text;
     self.createAccountInfo.count = [self.countTextField.text integerValue];
-    self.createAccountInfo.sales = [self.salesTextField.text floatValue];
+    
+    self.createAccountInfo.sales = [self.salesTextField.text doubleValue];
     self.createAccountInfo.salesCount = [self.salesCountTextField.text integerValue];
     self.createAccountInfo.contractNumebr = self.contractNumberTextField.text;
     self.createAccountInfo.ticketNumber = self.ticketNumberTextField.text;
-    self.createAccountInfo.give = [self.giveTextField.text floatValue];
-    self.createAccountInfo.discount = [self.discountTextField.text floatValue];
-    self.createAccountInfo.pay = [self.payTextField.text floatValue];
+    self.createAccountInfo.give = [self.giveTextField.text integerValue];
+    self.createAccountInfo.discount = [self.discountTextField.text doubleValue];
+    self.createAccountInfo.pay = [self.payTextField.text doubleValue];
+    self.createAccountInfo.username = self.usernameTextField.text;
 }
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {

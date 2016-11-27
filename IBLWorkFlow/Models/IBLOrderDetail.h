@@ -44,4 +44,6 @@
 /// 其它金额，如果为负数，则为优惠金额
 @property (nonatomic, copy) NSString *otherCost;
 
+@property (nonatomic, copy) NSString *servId;
+
 @end

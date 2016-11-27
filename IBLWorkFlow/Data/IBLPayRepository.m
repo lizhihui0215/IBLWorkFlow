@@ -70,9 +70,9 @@
         parameters[@"extraLength"] = @(QRPayInfo.extraLength);
         parameters[@"totalLength"] = @(QRPayInfo.totalLength);
         parameters[@"discountItems"] = QRPayInfo.discountItems;
-        parameters[@"totalCost"] = @(QRPayInfo.totalCost  * 100);
-        parameters[@"payCost"] = @(QRPayInfo.payCost * 100);
-        parameters[@"otherCost"] = @([QRPayInfo.otherCost floatValue] * 100);
+        parameters[@"totalCost"] = @(QRPayInfo.totalCost  * 100); // 总金额
+        parameters[@"payCost"] = @(QRPayInfo.payCost * 100); // 支付金额 900
+        parameters[@"otherCost"] = @([QRPayInfo.otherCost doubleValue] * 100); // 优惠金额 - 值
         parameters[@"nodeId"] = QRPayInfo.nodeId;
         return parameters;
     }];

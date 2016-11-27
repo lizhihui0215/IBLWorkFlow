@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260617511DE9396E007092FB /* IBLSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 260617501DE9396E007092FB /* IBLSegmentControl.m */; };
 		260923311D3769F2004F31BE /* UINavigationBar+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 260923301D3769F2004F31BE /* UINavigationBar+IBLExtension.m */; };
 		26108FFA1D3E2136008B0B4C /* IBLDeleteOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26108FF91D3E2136008B0B4C /* IBLDeleteOrder.m */; };
 		26108FFD1D3E245F008B0B4C /* IBLFinishOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26108FFC1D3E245F008B0B4C /* IBLFinishOrder.m */; };
@@ -195,6 +196,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2606174F1DE9396E007092FB /* IBLSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLSegmentControl.h; sourceTree = "<group>"; };
+		260617501DE9396E007092FB /* IBLSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLSegmentControl.m; sourceTree = "<group>"; };
 		2609232F1D3769F2004F31BE /* UINavigationBar+IBLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+IBLExtension.h"; sourceTree = "<group>"; };
 		260923301D3769F2004F31BE /* UINavigationBar+IBLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+IBLExtension.m"; sourceTree = "<group>"; };
 		26108FF81D3E2136008B0B4C /* IBLDeleteOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLDeleteOrder.h; sourceTree = "<group>"; };
@@ -1153,6 +1156,8 @@
 				26FCA08D1D5C3297004B8E2C /* IBLQRViewController.m */,
 				5B875EABA63BA31F5E2EF5F0 /* IBLPayDetailViewController.m */,
 				5B875A567C203D9BF01151D6 /* IBLPayDetailViewController.h */,
+				2606174F1DE9396E007092FB /* IBLSegmentControl.h */,
+				260617501DE9396E007092FB /* IBLSegmentControl.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1529,6 +1534,7 @@
 				26EC5A3B1D45F7C900CB0F7C /* IBLUserSearchResultCell.m in Sources */,
 				262BFF701D4060D10021F8EB /* IBLHandleOrder.m in Sources */,
 				261524CF1D7FDB25007BF989 /* IBLInternetDetailTableViewController.m in Sources */,
+				260617511DE9396E007092FB /* IBLSegmentControl.m in Sources */,
 				26A9D1391D2E844C000950F6 /* IBLViewModel.m in Sources */,
 				26A9D1361D2E7E3E000950F6 /* IBLLoginViewController.m in Sources */,
 				26EC5A441D45FAA600CB0F7C /* IBLRelateUser.m in Sources */,

@@ -61,6 +61,10 @@
     self.result.region = region;
 }
 
+- (IBLRegion *)region{
+    return self.result.region;
+}
+
 - (void)setProduct:(IBLProduct *)product {
     self.result.product = product;
 }

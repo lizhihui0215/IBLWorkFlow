@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, IBLPayModel) {
  *  生效方式
  */
 typedef NS_ENUM(NSInteger, IBLOrderEffectType) {
+    IBLOrderEffectTypeUnknow = 0,
     /**
      *  指定当前日期前
      */
@@ -76,7 +77,7 @@ typedef NS_ENUM(NSInteger, IBLOrderEffectType) {
 @property (nonatomic, copy) NSString *orderURL;
 
 /// 支付方式
-@property (nonatomic, assign) IBLPayModel payModel;
+@property (nonatomic, assign) IBLPayModel payMode;
 
 /// 账户密码配置
 @property (nonatomic, assign) IBLAccountType accountType;

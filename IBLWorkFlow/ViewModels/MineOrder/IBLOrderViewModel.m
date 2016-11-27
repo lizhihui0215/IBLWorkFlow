@@ -480,7 +480,7 @@
             break;
         }
         case IBLOrderActionHandling:{
-            [self.handleOrder handleOrderWithOrder:order content:content completeHandler:^(NSError *error) {
+            [self.handleOrder handleOrderWithOrder:order markHandle:nil servId:nil content:content completeHandler:^(NSError *error) {
                 if (!error) [self finishedHandleOrderWithAction:action atIndexPath:indexPath];
                 handler(error);
             }];

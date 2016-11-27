@@ -28,10 +28,10 @@
 }
 - (IBAction)dateTapped:(UITapGestureRecognizer *)sender {
     
-    HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateMode defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
+    HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerYearMonthMode defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
     [datePicker showHcdDateTimePicker];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM"];
     datePicker.formatter = formatter;
     datePicker.clickedOkBtn = ^(NSString *time){
         self.dateTextField.text = time;//[aDate stringFromFormatter:@"yyyy-MM"];

@@ -11,5 +11,5 @@
 @class IBLOrder;
 @interface IBLHandleOrder : IBLUseCase
 
-- (void)handleOrderWithOrder:(IBLOrder *)order content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
+- (void)handleOrderWithOrder:(IBLOrder *)order markHandle:(NSString *)markHandle servId:(NSString *)servId content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
 @end

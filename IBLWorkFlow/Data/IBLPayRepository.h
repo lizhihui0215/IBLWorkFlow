@@ -59,8 +59,8 @@ typedef NS_ENUM(NSInteger, IBLOrderPayStatus) {
 @property (nonatomic, assign) NSInteger extraLength;
 @property (nonatomic, assign) NSInteger totalLength;
 @property (nonatomic, strong) NSString *discountItems;
-@property (nonatomic, assign) NSInteger totalCost;
-@property (nonatomic, assign) NSInteger payCost;
+@property (nonatomic, assign) CGFloat totalCost;
+@property (nonatomic, assign) CGFloat payCost;
 @property (nonatomic, strong) NSString *otherCost;
 @property (nonatomic, strong) NSString *nodeId;
 

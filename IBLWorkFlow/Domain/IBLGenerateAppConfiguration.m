@@ -41,11 +41,11 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
 @implementation IBLGenerateAppConfiguration
 
 - (IBLPayModel)payModel{
-    return [IBLAppRepository appConfiguration].payModel;
+    return [IBLAppRepository appConfiguration].payMode;
 }
 
 - (NSString *)defaultEffectDate {
-    return nil;
+    return [[NSDate date] stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
 }
 
 - (IBLOrderEffectType)defaultEffectType{

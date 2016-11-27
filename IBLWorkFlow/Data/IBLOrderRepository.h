@@ -135,7 +135,7 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
 
 - (void)trashOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
 
-- (void)handleOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
+- (void)handleOrderWithId:(NSInteger)identifier servId:(NSString *)servId markHandle:(NSString *)markHandle content:(NSString *)content completeHandler:(void (^)(NSError *))handler;
 
 - (void)addWorkOrdeWith:(IBLAddWorkOrderInfo *)info
         completeHandler:(void (^)(NSString *, NSError *))handler;

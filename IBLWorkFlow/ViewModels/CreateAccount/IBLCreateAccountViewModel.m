@@ -14,6 +14,7 @@
 #import "IBLPay.h"
 #import "IBLCreateAccountTableViewController.h"
 #import "IBLUserListRepository.h"
+#import "IBLHandleOrder.h"
 
 @interface IBLCreateAccountViewModel ()
 
@@ -34,6 +35,8 @@
 @property (nonatomic, strong) IBLPay *pay;
 
 @property (nonatomic, strong) IBLPayResult *payResult;
+
+@property (nonatomic, strong) IBLHandleOrder *handleOrder;
 
 @end
 
@@ -58,6 +61,7 @@
         self.fetchProductPrice = [[IBLFetchProductPrice alloc] init];
         self.createAccount = [[IBLCreateAccount alloc] init];
         self.pay = [[IBLPay alloc] init];
+        self.handleOrder = [[IBLHandleOrder alloc] init];
     }
 
     return self;
@@ -130,14 +134,24 @@
 //    info.salesCount;
    createInfo.contractCode = info.contractNumebr;
    createInfo.voiceCode = info.ticketNumber;
-   createInfo.preCost = info.give * 100;
-   createInfo.extraLength = info.discount * 100;
-   createInfo.totalCost = info.pay * 100;
+   createInfo.preCost = info.give;
+   createInfo.extraLength = info.discount;
+   createInfo.totalCost = info.pay;
     
     
     [self.createAccount createAccountWithInfo:createInfo
                               completeHandler:^(id obj, NSError *error) {
-                                  handler(error);
+                                  if (error) {handler(error); return ;}
+                                  if (self.order.bizType == IBLWorkOrderBizStatusInstall && ![NSString isNull:obj]) {
+                                      [self.handleOrder handleOrderWithOrder:self.order
+                                                                  markHandle:@"1"
+                                                                      servId:obj
+                                                                     content:@"已开户"
+                                                             completeHandler:^(NSError *error) {
+                                          handler(error);
+                                      }];
+                                  }
+
                               }];
 }
 
@@ -163,21 +177,21 @@
     
     info.remark = createAccountInfo.remark;
     
-    info.buyLength = createAccountInfo.count * 100;
+    info.buyLength = createAccountInfo.count;
     
-    info.extraLength = createAccountInfo.discount * 100;
+    info.extraLength = createAccountInfo.give;
     
     //???: 总量从那获取
     info.totalLength = createAccountInfo.salesCount;
     
     
-    info.totalCost = createAccountInfo.sales * 100;
+    info.totalCost = createAccountInfo.sales;
     
     //???: payCost 从那获取
-    info.payCost = createAccountInfo.pay * 100;
+    info.payCost = createAccountInfo.pay;
     
     //???:
-//    info.otherCost = createAccountInfo
+    info.otherCost = [@(0 - createAccountInfo.discount) stringValue];
     
     info.nodeId = [@(createAccountInfo.residentialIdentifier) stringValue];
     

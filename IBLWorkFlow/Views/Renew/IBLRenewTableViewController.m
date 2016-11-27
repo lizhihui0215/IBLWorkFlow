@@ -320,13 +320,13 @@
         [alert showInController:self];
     }else{
         IBLRenewResult *result = [IBLRenewResult resultWithRenewProductCount:[self.renewProductCount.text integerValue]
-                                                          productPriceAmount:[self.productPriceAmountTextField.text floatValue]
+                                                          productPriceAmount:[self.productPriceAmountTextField.text doubleValue]
                                                                 productCount:[self.productCountTextField.text integerValue]
                                                                       ticket:self.ticketTextField.text
                                                                     contract:self.contractTextField.text
-                                                                    discount:[self.discountTextField.text floatValue]
-                                                                        give:[self.giveTextField.text floatValue]
-                                                                         pay:[self.payTextField.text floatValue]
+                                                                    discount:[self.discountTextField.text doubleValue]
+                                                                        give:[self.giveTextField.text integerValue]
+                                                                         pay:[self.payTextField.text doubleValue]
                                                                      comment:self.commentTextView.text];
         
         [self.tableViewDelegate tableViewController:self commitResult:result];

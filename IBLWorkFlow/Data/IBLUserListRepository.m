@@ -196,8 +196,8 @@
         parameters[@"effType"] = createAccountInfo.effType;
         parameters[@"effDate"] = createAccountInfo.effDate;
         parameters[@"discountItems"] = createAccountInfo.discountItems;
-        parameters[@"totalCost"] = @(createAccountInfo.totalCost);
-        parameters[@"preCost"] = @(createAccountInfo.preCost);
+        parameters[@"totalCost"] = @(createAccountInfo.totalCost * 100);
+        parameters[@"preCost"] = @(createAccountInfo.preCost * 100);
         parameters[@"nodeId"] = createAccountInfo.nodeId;
         parameters[@"loginType"] = createAccountInfo.loginType;
         parameters[@"balanceType"] = createAccountInfo.balanceType;
@@ -210,7 +210,7 @@
     [[IBLNetworkServices networkServicesWithMethod:self.createAccountMethod] POST:parameters
                                                                  progress:nil
                                                                           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                                              handler(responseObject[@"resultCode"], nil);
+                                                                              handler(responseObject[@"servId"], nil);
                                                                           } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                                               handler(nil, error);
                                                                           }];
@@ -262,8 +262,8 @@
         parameters[@"cardNos"] = exchangeProductParameters.cardNos;
         parameters[@"buyLength"] = @(exchangeProductParameters.buyLength);
         parameters[@"discountItems"] = exchangeProductParameters.discountItems;
-        parameters[@"totalCost"] = @(exchangeProductParameters.totalCost);
-        parameters[@"preCost"] = @(exchangeProductParameters.preCost);
+        parameters[@"totalCost"] = @(exchangeProductParameters.totalCost * 100);
+        parameters[@"preCost"] = @(exchangeProductParameters.preCost * 100);
         parameters[@"otherCost"] = exchangeProductParameters.otherCost;
         parameters[@"extraLength"] = @(exchangeProductParameters.extraLength);
         parameters[@"offerId"] = exchangeProductParameters.offerId;
@@ -294,9 +294,9 @@
         parameters[@"cardNos"] = renewParameters.cardNos;
         parameters[@"buyLength"] = @(renewParameters.buyLength);
         parameters[@"discountItems"] = renewParameters.discountItems;
-        parameters[@"totalCost"] = @(renewParameters.totalCost);
-        parameters[@"preCost"] = @(renewParameters.preCost);
-        parameters[@"otherCost"] = @(renewParameters.otherCost);
+        parameters[@"totalCost"] = @(renewParameters.totalCost * 100);
+        parameters[@"preCost"] = @(renewParameters.preCost * 100);
+        parameters[@"otherCost"] = @(renewParameters.otherCost * 100);
         parameters[@"extraLength"] = @(renewParameters.extraLength);
         parameters[@"prompt"] = renewParameters.prompt;
         parameters[@"remark"] = renewParameters.remark;

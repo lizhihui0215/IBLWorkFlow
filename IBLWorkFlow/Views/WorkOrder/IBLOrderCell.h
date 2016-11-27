@@ -7,7 +7,7 @@
 //
 
 #import "IBLTableViewCell.h"
-#import "HMSegmentedControl.h"
+#import "IBLSegmentControl.h"
 #import "IBLOrder.h"
 
 
@@ -25,7 +25,7 @@ static NSString * const MineWorkFlowCellNibName = @"IBLOrderCell";
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
-@property (weak, nonatomic) IBOutlet HMSegmentedControl *segmentControl;
+@property (weak, nonatomic) IBOutlet IBLSegmentControl *segmentControl;
 @property (weak, nonatomic) IBOutlet UIButton *orderUserButton;
 @property (weak, nonatomic) IBOutlet UILabel *workOrderContentLabel;
 

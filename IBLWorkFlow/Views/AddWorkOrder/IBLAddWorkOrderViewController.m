@@ -125,6 +125,9 @@
             obj = [self.viewModel workOrderBizType];
             break;
         }
+        case IBLAddWorkOrderFieldTypeRegion:{
+            obj = self.viewModel.region;
+        }
         default:
             break;
     }

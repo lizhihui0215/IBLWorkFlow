@@ -316,11 +316,13 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
                                                                   }];
 }
 
-- (void)handleOrderWithId:(NSInteger)identifier content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
+- (void)handleOrderWithId:(NSInteger)identifier servId:(NSString *)servId markHandle:(NSString *)markHandle content:(NSString *)content completeHandler:(void (^)(NSError *))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[kOrderIdentifier] = @(identifier);
         parameters[kContent] = content;
+        parameters[@"servId"] = servId;
+        parameters[@"markHandle"] = markHandle;
         return parameters;
     }];
     [[IBLNetworkServices networkServicesWithMethod:self.handleMethod] POST:parameters

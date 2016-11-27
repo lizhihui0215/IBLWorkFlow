@@ -49,14 +49,16 @@ static NSInteger const IBLOrderSegmentControlTitleWidth = 40;
 }
 
 - (void)setActionTitles:(NSArray<NSString *> *)titles{
-    UIColor *titleColor = [UIColor colorWithHex:0x2289E6];
-    NSDictionary *fontAttributes = @{NSForegroundColorAttributeName : titleColor,
-                                     NSFontAttributeName : [UIFont systemFontOfSize:13]};
-    self.segmentControl.titleTextAttributes = fontAttributes;
-    self.segmentControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationNone;
-    self.segmentControl.sectionTitles = titles;
-    self.segmentControl.selectedIndexTouchable = YES;
+//    UIColor *titleColor = [UIColor colorWithHex:0x2289E6];
+//    NSDictionary *fontAttributes = @{NSForegroundColorAttributeName : titleColor,
+//                                     NSFontAttributeName : [UIFont systemFontOfSize:13]};
+//    self.segmentControl.titleTextAttributes = fontAttributes;
+//    self.segmentControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationNone;
+//    self.segmentControl.sectionTitles = titles;
+//    self.segmentControl.selectedIndexTouchable = YES;
     self.segmentControlWidthConstraint.constant = [titles count] * IBLOrderSegmentControlTitleWidth;
+    self.segmentControl.width = [titles count] * IBLOrderSegmentControlTitleWidth;
+    [self.segmentControl setActionTitles:titles];
 }
 
 - (void)setUserTitle:(NSString *)title{

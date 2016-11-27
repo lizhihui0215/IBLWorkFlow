@@ -8,6 +8,7 @@
 
 #import "IBLPayDetailViewController.h"
 #import "IBLFetchOrderDetail.h"
+#import "IBLHandleOrder.h"
 
 @interface IBLPayDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *payCostTextField;
@@ -28,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *payTypeTextField;
 @property (nonatomic, strong) IBLFetchOrderDetail *fetchOrderDetail;
 
+@property (nonatomic, strong) IBLHandleOrder *handleOrder;
+
 @property (nonatomic, strong) IBLOrderDetail *orderDetail;
 
 @end
@@ -44,6 +47,16 @@
     [self.fetchOrderDetail fetchOrderDetailWithOrderNumber:self.orderNumber
                                            completeHandler:^(IBLOrderDetail *orderDetail, NSError *error) {
                                                @strongify(self)
+                                               if (orderDetail.servId){
+                                                   [self.handleOrder handleOrderWithOrder:self.order
+                                                                               markHandle:@"1"
+                                                                                   servId:orderDetail.servId
+                                                                                  content:@"已开户"
+                                                                          completeHandler:^(NSError *error) {
+                                                                              
+                                                                          }];
+
+                                               }
                                                self.orderDetail = orderDetail;
                                                [self setupUI];
                                            }];

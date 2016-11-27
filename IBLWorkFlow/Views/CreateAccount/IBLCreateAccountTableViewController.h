@@ -114,11 +114,11 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
 /// 票据号
 @property (nonatomic, copy) NSString *ticketNumber;
 
-/// 优惠金额
+/// 临时赠送
 @property (nonatomic, assign) CGFloat give;
 
-/// 临时赠送
-@property (nonatomic, assign) CGFloat discount;
+/// 优惠金额
+@property (nonatomic, assign) NSInteger discount;
 
 /// 支付金额
 @property (nonatomic, assign) CGFloat pay;

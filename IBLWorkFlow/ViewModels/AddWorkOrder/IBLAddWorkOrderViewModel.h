@@ -25,6 +25,8 @@
 
 - (void)setFinishedDate:(NSString *)string;
 
+- (IBLRegion *)region;
+
 - (void)setRegion:(IBLRegion *)region;
 
 - (void)setProduct:(IBLProduct *)product;
