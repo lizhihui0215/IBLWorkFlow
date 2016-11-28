@@ -320,7 +320,7 @@
         [alert showInController:self];
     }else{
         IBLRenewResult *result = [IBLRenewResult resultWithRenewProductCount:[self.renewProductCount.text integerValue]
-                                                          productPriceAmount:[self.productPriceAmountTextField.text doubleValue]
+                                                          productPriceAmount:[self sales]
                                                                 productCount:[self.productCountTextField.text integerValue]
                                                                       ticket:self.ticketTextField.text
                                                                     contract:self.contractTextField.text

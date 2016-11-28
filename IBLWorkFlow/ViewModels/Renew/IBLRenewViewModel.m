@@ -175,7 +175,7 @@
     
     
     //???: 总量从那获取
-//    info.totalLength = result.productCount;
+    info.totalLength = result.renewProductCount;
     
     
     info.totalCost = result.productPriceAmount;
@@ -184,7 +184,7 @@
     info.payCost = result.pay;
     
     //???:
-    //    info.otherCost = createAccountInfo
+    info.otherCost = [@(0 - result.discount) stringValue];
     
     info.nodeId = self.user.areaIdentifier;
     
@@ -209,6 +209,7 @@
     info.contractCode = result.contract;
     info.voiceCode = result.ticket;
     info.remark = result.comment;
+    
     
     [self.renew renewWithRenewParameters:info
                          completeHandler:^(NSString *obj, NSError *error) {

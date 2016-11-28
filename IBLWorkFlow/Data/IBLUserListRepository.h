@@ -67,9 +67,9 @@
 /// 所选优惠条目ID
 @property (nonatomic, copy) NSString *discountItems;
 /// 总金额，以分为单位（必选）
-@property (nonatomic, assign) NSInteger totalCost;
+@property (nonatomic, assign) CGFloat totalCost;
 /// 优惠金额，以分为单位（可选）
-@property (nonatomic, assign) NSInteger preCost;
+@property (nonatomic, assign) CGFloat preCost;
 /// 其它金额，以分为单位（可选）
 @property (nonatomic, assign) NSInteger otherCost;
 /// 临时赠送量

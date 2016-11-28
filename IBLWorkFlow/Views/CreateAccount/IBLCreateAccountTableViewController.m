@@ -577,14 +577,14 @@
     self.createAccountInfo.phone = self.phoneTextField.text;
     self.createAccountInfo.address = self.addressTextField.text;
     self.createAccountInfo.count = [self.countTextField.text integerValue];
-    
-    self.createAccountInfo.sales = [self.salesTextField.text doubleValue];
+    self.createAccountInfo.sales = [self sales];
     self.createAccountInfo.salesCount = [self.salesCountTextField.text integerValue];
     self.createAccountInfo.contractNumebr = self.contractNumberTextField.text;
     self.createAccountInfo.ticketNumber = self.ticketNumberTextField.text;
     self.createAccountInfo.give = [self.giveTextField.text integerValue];
-    self.createAccountInfo.discount = [self.discountTextField.text doubleValue];
-    self.createAccountInfo.pay = [self.payTextField.text doubleValue];
+    self.createAccountInfo.discount = [self discount];
+    
+    self.createAccountInfo.pay = [self pay];
     self.createAccountInfo.username = self.usernameTextField.text;
 }
 

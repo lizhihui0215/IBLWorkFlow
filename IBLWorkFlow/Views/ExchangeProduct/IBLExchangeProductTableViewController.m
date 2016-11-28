@@ -228,7 +228,7 @@
 
 - (void)saveResult{
     self.result.renewProductCount = [self.renewProductCountTextField.text integerValue];
-    self.result.productPriceAmount = [self.productAmountTextField.text doubleValue];
+    self.result.productPriceAmount = [self sales];
     self.result.productCount = [self.productCountTextField.text integerValue];
     self.result.ticket = self.ticketTextField.text;
     self.result.contract = self.contractTextField.text;
