@@ -509,6 +509,7 @@
                 case IBLOrderActionViewSingle:
                 default: break;
             }
+            break;
         }
         case IBLOrderStatusHandling:{
             switch (action) {

@@ -35,11 +35,11 @@ typedef NS_ENUM(NSInteger, IBLPayModel) {
     /**
      *  现金支付
      */
-    IBLPayModelCash,
+    IBLPayModelCash = 1,
     /**
      *  网上支付（支付宝，微信）
      */
-    IBLPayModelNet,
+    IBLPayModelNet = 0,
 };
 
 /**

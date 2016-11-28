@@ -134,8 +134,8 @@
 //    info.salesCount;
    createInfo.contractCode = info.contractNumebr;
    createInfo.voiceCode = info.ticketNumber;
-   createInfo.preCost = info.give;
-   createInfo.extraLength = info.discount;
+   createInfo.preCost = info.discount;
+   createInfo.extraLength = info.give;
    createInfo.totalCost = info.pay;
     
     
