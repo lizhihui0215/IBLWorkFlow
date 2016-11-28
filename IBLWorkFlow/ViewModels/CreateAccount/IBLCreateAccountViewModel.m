@@ -150,8 +150,9 @@
                                                              completeHandler:^(NSError *error) {
                                           handler(error);
                                       }];
+                                      return;
                                   }
-
+                                  handler(error);
                               }];
 }
 
