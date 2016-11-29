@@ -209,7 +209,10 @@
     
     [self setPriceTextFieldsEnable:NO];
     
-    for (UITextField *textField in [self priceTextFields]) textField.delegate = self;
+    for (UITextField *textField in [self priceTextFields]){
+        textField.delegate = self;
+        textField.keyboardType = UIKeyboardTypeDecimalPad;
+    }
     
     self.countTextField.delegate = self;
     
@@ -217,11 +220,20 @@
     
     self.identifierTextField.delegate = self;
     
-    self.giveTextField.text = @"0";
+    self.giveTextField.text = @"";
+    
+    self.giveTextField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    self.countTextField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    self.identifierTextField.keyboardType = UIKeyboardTypeASCIICapable;
+    
+    self.phoneTextField.keyboardType = UIKeyboardTypeNumberPad;
+    
 }
 
 - (void)setPriceTextFieldsEnable:(BOOL)enable{
-    NSString *placeholder = enable ? @"" : @"请选择销售品";
+    NSString *placeholder = enable ? @"请输入" : @"请选择销售品";
     
     for (UITextField *textField in [self priceTextFields]) {
         textField.placeholder = placeholder;
@@ -266,6 +278,15 @@
                                              code:0
                                          userInfo:@{kExceptionCode : @"-1",
                                                     kExceptionMessage: @"您输入的身份证号码格式不正确！"}];
+        [self showAlertWithError:error];
+        return NO;
+    }
+    
+    if (textField == self.countTextField && [self.countTextField.text integerValue] <= 0) {
+        NSError *error = [NSError errorWithDomain:@""
+                                             code:0
+                                         userInfo:@{kExceptionCode : @"-1",
+                                                    kExceptionMessage: @"订购数量必须大于0！"}];
         [self showAlertWithError:error];
         return NO;
     }
@@ -357,12 +378,15 @@
 }
 
 - (void)setupPriceWithProductPrice{
+    self.countTextField.text = @"1";
     [self setupPay];
     [self setupSales];
     [self setupSalesCount];
     [self setupDiscount];
     [self setupGive];
     [self setPriceTextFieldsEnable:YES];
+    self.discountTextField.text = @"";
+    self.giveTextField.text = @"";
 }
 
 - (CGFloat)pay{
@@ -440,7 +464,10 @@
 }
 
 - (void)setupDiscount{
-    self.discountTextField.text = [@([self discount]) stringValue];
+    if ([self discount] <= 0)
+        self.discountTextField.text = @"";
+    else
+        self.discountTextField.text = [@([self discount]) stringValue];
 }
 
 //!!!: 优化将title 和 effect 提取到appConfig中

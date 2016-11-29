@@ -242,7 +242,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入账号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OfL-1k-os7">
-                                                            <rect key="frame" x="75" y="12" width="295" height="17"/>
+                                                            <rect key="frame" x="75" y="11" width="295" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
@@ -284,10 +284,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" verticalHuggingPriority="251" image="date" translatesAutoresizingMaskIntoConstraints="NO" id="NDp-sL-cWz">
-                                                            <rect key="frame" x="80" y="13" width="15" height="15"/>
+                                                            <rect key="frame" x="80" y="12" width="15" height="15"/>
                                                         </imageView>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LHR-pJ-0H1">
-                                                            <rect key="frame" x="100" y="12" width="270" height="17"/>
+                                                            <rect key="frame" x="100" y="11" width="270" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
@@ -1140,11 +1140,11 @@
                         <viewControllerLayoutGuide type="bottom" id="3JL-uC-K5h"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="O59-64-yAR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="495"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="35" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PMQ-Ou-MYF">
-                                <rect key="frame" x="0.0" y="50" width="375" height="445"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IBLSearchFieldCell" rowHeight="35" id="7kW-E5-XXt" customClass="IBLSearchFieldCell">
@@ -1180,7 +1180,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttd-VY-2bl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchBackground" translatesAutoresizingMaskIntoConstraints="NO" id="J5C-yG-RGM">
                                         <rect key="frame" x="5" y="10" width="345" height="30"/>
@@ -3117,7 +3117,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightBlack" translatesAutoresizingMaskIntoConstraints="NO" id="4Aw-yi-I6k">
-                                                            <rect key="frame" x="358" y="16" width="6" height="9"/>
+                                                            <rect key="frame" x="358" y="15" width="6" height="9"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3993,7 +3993,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightBlack" translatesAutoresizingMaskIntoConstraints="NO" id="ymC-Vd-eNd">
-                                                            <rect key="frame" x="358" y="16" width="6" height="9"/>
+                                                            <rect key="frame" x="358" y="15" width="6" height="9"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4042,7 +4042,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightBlack" translatesAutoresizingMaskIntoConstraints="NO" id="QbO-sG-4Lk">
-                                                            <rect key="frame" x="358" y="16" width="6" height="9"/>
+                                                            <rect key="frame" x="358" y="15" width="6" height="9"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4339,7 +4339,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightBlack" translatesAutoresizingMaskIntoConstraints="NO" id="kRz-M5-el6">
-                                                            <rect key="frame" x="358" y="16" width="6" height="9"/>
+                                                            <rect key="frame" x="358" y="15" width="6" height="9"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4388,7 +4388,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightBlack" translatesAutoresizingMaskIntoConstraints="NO" id="LEL-Fb-eYQ">
-                                                            <rect key="frame" x="358" y="16" width="6" height="9"/>
+                                                            <rect key="frame" x="358" y="15" width="6" height="9"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4833,7 +4833,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" verticalHuggingPriority="251" image="date" translatesAutoresizingMaskIntoConstraints="NO" id="DWh-Cd-AFt">
-                                                            <rect key="frame" x="74" y="13" width="15" height="15"/>
+                                                            <rect key="frame" x="74" y="12" width="15" height="15"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4882,7 +4882,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" verticalHuggingPriority="251" image="date" translatesAutoresizingMaskIntoConstraints="NO" id="Tpf-Me-1ig">
-                                                            <rect key="frame" x="74" y="13" width="15" height="15"/>
+                                                            <rect key="frame" x="74" y="12" width="15" height="15"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5903,14 +5903,14 @@
                         <viewControllerLayoutGuide type="bottom" id="JC8-iR-g24"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eqq-2a-yCf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="495"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="eAy-7S-rOr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="495"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjI-8Y-wfh">
-                                <rect key="frame" x="68" y="80" width="240" height="296"/>
+                                <rect key="frame" x="68" y="133.5" width="240" height="296"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OPw-uZ-MqR">
                                         <rect key="frame" x="20" y="69" width="200" height="200"/>
@@ -5965,7 +5965,7 @@
             <objects>
                 <tableViewController id="cGx-uo-o1r" customClass="IBLPayDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pCX-LU-dlv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="495"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -7949,6 +7949,7 @@
                         <outlet property="accountTextField" destination="en8-54-cM2" id="NnB-pT-D0D"/>
                         <outlet property="contractTextField" destination="Wfz-5Y-pyF" id="CwO-g9-fZw"/>
                         <outlet property="discountTextField" destination="G8t-WH-b70" id="cBJ-oV-xfw"/>
+                        <outlet property="exchangeCountTextField" destination="A1E-le-Vka" id="emN-Ig-T0J"/>
                         <outlet property="exchangeProductTextField" destination="65u-kc-aPh" id="2yr-fA-l6S"/>
                         <outlet property="exchangeTypeTextField" destination="jD2-bv-Wmn" id="Tsq-xu-rI9"/>
                         <outlet property="finishedDateTextField" destination="5ql-PM-itB" id="W1L-1V-iJq"/>
@@ -7962,7 +7963,6 @@
                         <outlet property="productTextField" destination="1Gz-6y-nia" id="hub-qw-gkA"/>
                         <outlet property="regionTextField" destination="9xe-4S-SUO" id="41S-5m-SoD"/>
                         <outlet property="remarkTextView" destination="3Zw-5U-8jm" id="18g-KV-Bde"/>
-                        <outlet property="renewProductCountTextField" destination="A1E-le-Vka" id="emN-Ig-T0J"/>
                         <outlet property="statusTextField" destination="J1W-tF-9CC" id="9ab-RM-U3S"/>
                         <outlet property="ticketTextField" destination="JFB-ea-ud1" id="QDW-9r-XZy"/>
                         <outlet property="usernameTextField" destination="X6N-Pl-cbI" id="FB5-fx-106"/>
@@ -8245,7 +8245,7 @@
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightBlack" translatesAutoresizingMaskIntoConstraints="NO" id="HiS-ck-jql">
-                                                            <rect key="frame" x="358" y="16" width="6" height="9"/>
+                                                            <rect key="frame" x="358" y="15" width="6" height="9"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -8414,9 +8414,9 @@
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yJj-F9-6Zf"/>
-        <segue reference="qOL-3E-ClQ"/>
         <segue reference="YFb-RD-Ut0"/>
+        <segue reference="U3E-X6-uY2"/>
         <segue reference="zz9-vl-537"/>
+        <segue reference="vzf-23-dAx"/>
     </inferredMetricsTieBreakers>
 </document>

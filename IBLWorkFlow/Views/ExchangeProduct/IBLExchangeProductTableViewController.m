@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *productCountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *contractTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ticketTextField;
-@property (weak, nonatomic) IBOutlet UITextField *renewProductCountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *exchangeCountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *discountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *giveTextField;
 @property (weak, nonatomic) IBOutlet UITextField *payTextField;
@@ -59,7 +59,7 @@
     self.productCountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeProductCount];
     self.contractTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeContract];
     self.ticketTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeTicket];
-    self.renewProductCountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeRenewProductCount];
+    self.exchangeCountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeRenewProductCount];
     self.discountTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeDiscount];
     self.giveTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeGive];
     self.giveTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeGive];
@@ -68,17 +68,19 @@
     
     NSString *exchangeType = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeExchangeType];
     self.exchangeTypeTextField.text = [self exchangeTypeMap][exchangeType];
-    self.renewProductCountTextField.text = @"1";
+    self.exchangeCountTextField.text = @"1";
     self.discountTextField.delegate = self;
     self.payTextField.delegate = self;
     self.giveTextField.delegate = self;
-    self.renewProductCountTextField.delegate = self;
+    self.exchangeCountTextField.delegate = self;
     self.giveTextField.text = @"0";
     self.result = [[IBLExchangeProductResult alloc] init];
     self.result.exchangeType = exchangeType;
     self.discountTextField.enabled = NO;
     self.payTextField.enabled = NO;
     self.giveTextField.enabled = NO;
+    self.giveTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.exchangeCountTextField.keyboardType = UIKeyboardTypeNumberPad;
     
 }
 
@@ -123,7 +125,7 @@
         [self setupDiscount];
     }else if (textField == self.giveTextField){
         [self setupSalesCount];
-    }else if (textField == self.renewProductCountTextField){
+    }else if (textField == self.exchangeCountTextField){
         [self setupRenewProductCount];
     }
 }
@@ -149,7 +151,7 @@
     // 单个销售品总额
     NSInteger unitPrice = self.productPrice.totalAmount;
     // 订购数量
-    NSInteger count = [self.renewProductCountTextField.text integerValue];
+    NSInteger count = [self.exchangeCountTextField.text integerValue];
     // 优惠金额
     NSInteger discount = [self.discountTextField.text doubleValue] * 100;
     
@@ -167,7 +169,7 @@
     NSInteger unitPrice = self.productPrice.totalAmount;
     
     // 订购数量
-    NSInteger count = [self.renewProductCountTextField.text integerValue];
+    NSInteger count = [self.exchangeCountTextField.text integerValue];
     
     return (unitPrice * count) / 100.0;
 }
@@ -181,7 +183,7 @@
     NSInteger totalLength = self.productPrice.totalLength;
     
     // 订购数量
-    NSInteger count = [self.renewProductCountTextField.text integerValue];
+    NSInteger count = [self.exchangeCountTextField.text integerValue];
     
     // 临时赠送
     NSInteger given = [self.giveTextField.text integerValue];
@@ -209,7 +211,7 @@
     NSInteger unitPrice = self.productPrice.totalAmount;
     
     // 订购数量
-    NSInteger count = [self.renewProductCountTextField.text integerValue];
+    NSInteger count = [self.exchangeCountTextField.text integerValue];
     
     // 支付金额
     NSInteger pay = [self.payTextField.text doubleValue] * 100;
@@ -227,7 +229,7 @@
 }
 
 - (void)saveResult{
-    self.result.renewProductCount = [self.renewProductCountTextField.text integerValue];
+    self.result.renewProductCount = [self.exchangeCountTextField.text integerValue];
     self.result.productPriceAmount = [self sales];
     self.result.productCount = [self.productCountTextField.text integerValue];
     self.result.ticket = self.ticketTextField.text;
@@ -298,6 +300,108 @@
                                                                                             regionId:[regionIdentifier integerValue]];
         searchViewController.searchDelegate = self;
     }
+}
+
+- (BOOL)validateTextFields{
+    
+    BOOL isValidate = YES;
+    
+    NSString *title = @"";
+    
+    // 支付金额
+    CGFloat pay = [self pay];
+    // 销售品总金额
+    CGFloat sales = [self sales];
+    // 优惠金额
+    CGFloat discount = [self discount];
+    
+    if (pay < 0) {
+        title = @"支付金额必须大于0";
+        isValidate = NO;
+    }
+    
+    if (pay > sales) {
+        title = @"销售品总额必须大于支付金额";
+        isValidate = NO;
+    }
+    
+    if (discount < 0) {
+        title = @"优惠金额必须大于0";
+        isValidate = NO;
+    }
+    
+    if (sales < discount) {
+        title = @"优惠金额必须小于总金额";
+        isValidate = NO;
+    }
+    
+    if (!isValidate) {
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                        title:title
+                                                                      message:nil
+                                                             cancleButtonItem:cancel
+                                                             otherButtonItems:nil];
+        [alert showInController:self];
+    }
+    
+    return  isValidate;
+}
+
+- (BOOL)validateNumberWithText:(NSString *)text{
+    if ([NSString isNull:text]) return YES;
+    
+    NSString *regex = @"^(([1-9]\\d{0,12})|0)(\\.\\d{0,2})?$";
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    
+    BOOL isNumber = [predicate evaluateWithObject:text];
+    
+    if (!isNumber) {
+        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
+        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                        title:@"请输入大于0的数字！"
+                                                                      message:nil
+                                                             cancleButtonItem:cancel
+                                                             otherButtonItems:nil];
+        [alert showInController:self];
+    }
+    
+    return isNumber;
+}
+
+
+- (BOOL)validatePriceWithTextField:(UITextField *)textField{
+    
+    BOOL isNumber = [self validateNumberWithText:textField.text];
+    
+    if (!isNumber) return NO;
+    
+    if (![self validateTextFields]) return NO;
+    
+    return YES;
+}
+
+- (NSArray<UITextField *> *)priceTextFields{
+    return @[self.payTextField,
+             self.discountTextField,
+             self.giveTextField];
+}
+
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    if ([[self priceTextFields] containsObject:textField]) return [self validatePriceWithTextField:textField];
+    
+    if (textField == self.exchangeCountTextField && [self.exchangeCountTextField.text integerValue] <= 0) {
+        NSError *error = [NSError errorWithDomain:@""
+                                             code:0
+                                         userInfo:@{kExceptionCode : @"-1",
+                                                    kExceptionMessage: @"订购数量必须大于0！"}];
+        [self showAlertWithError:error];
+        return NO;
+    }
+
+    return YES;
 }
 
 - (void)searchViewController:(IBLSearchViewController *)searchViewController

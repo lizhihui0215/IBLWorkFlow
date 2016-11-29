@@ -9,6 +9,8 @@
 #import "IBLRenewTableViewController.h"
 #import "IBLProductPrice.h"
 #import "IBLCreateAccountTableViewController.h"
+#import "IBLException.h"
+
 
 @implementation IBLRenewResult
 - (instancetype)initWithRenewProductCount:(NSInteger)renewProductCount
@@ -126,6 +128,8 @@
     self.giveTextField.delegate = self;
     self.renewProductCount.delegate = self;
     self.giveTextField.text = @"0";
+    self.giveTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.renewProductCount.keyboardType = UIKeyboardTypeNumberPad;
 
     @weakify(self)
     [self.tableViewDelegate productPriceOfTableViewController:self
@@ -150,7 +154,7 @@
     if (!isNumber) {
         IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
         IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:@"请输入大于0的数字！"
+                                                                        title:@"请输入正确的金额！"
                                                                       message:nil
                                                              cancleButtonItem:cancel
                                                              otherButtonItems:nil];
@@ -212,13 +216,18 @@
     return  isValidate;
 }
 
-- (BOOL)validatePriceWithTextField:(UITextField *)textField{
-    if ([[self priceTextFields] containsObject:textField]) return [self validatePriceWithTextField:textField];
-    
-    return YES;
-}
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField;{
+    if (textField == self.renewProductCount &&
+        [self.renewProductCount.text integerValue] <= 0) {
+        NSError *error = [NSError errorWithDomain:@""
+                                             code:0
+                                         userInfo:@{kExceptionCode : @"-1",
+                                                    kExceptionMessage: @"订购数量必须大于0！"}];
+        [self showAlertWithError:error];
+        return NO;
+    }
+    
     BOOL isNumber = [self validateNumberWithText:textField.text];
     if (!isNumber) return NO;
     if (![self validateTextFields]) return NO;

@@ -298,6 +298,10 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         };
     }
     
+    if ([self.productCountTextField.text integerValue] <= 0) {
+        title = @"订购数量必须大于0！";
+    }
+    
     return title;
 }
 
