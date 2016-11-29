@@ -41,8 +41,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.fetchOrderDetail = [[IBLFetchOrderDetail alloc] init];
+    self.handleOrder = [[IBLHandleOrder alloc] init];
     
-    
+    [self showHUDWithMessage:@""];
     @weakify(self)
     [self.fetchOrderDetail fetchOrderDetailWithOrderNumber:self.orderNumber
                                            completeHandler:^(IBLOrderDetail *orderDetail, NSError *error) {
@@ -53,7 +54,8 @@
                                                                                    servId:orderDetail.servId
                                                                                   content:@"已开户"
                                                                           completeHandler:^(NSError *error) {
-                                                                              
+                                                                              [self hidHUD];
+
                                                                           }];
 
                                                }

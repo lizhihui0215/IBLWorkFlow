@@ -136,15 +136,17 @@
 - (void)tableViewController:(IBLRenewTableViewController *)controller
                commitResult:(IBLRenewResult *)result {
     
-    IBLPayModel model = [self.viewModel payModel];
+    IBLPayModel paymodel = result.pay <= 0 ? IBLPayModelCash : [self.viewModel payModel];
     
-    switch (model) {
+    switch (paymodel) {
         case IBLPayModelNet: {
             IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
                                                            action:^(IBLButtonItem *item) {
+                                                               [self showHUDWithMessage:@""];
                                                                [self.viewModel payWithType:@"1"
                                                                                     result:result
                                                                            completeHandler:^(NSError *error) {
+                                                                               [self hidHUD];
                                                                                if (![self showAlertWithError:error]) {
                                                                                    [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeAilPay)];
                                                                                }
@@ -153,9 +155,11 @@
             
             IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
                                                                action:^(IBLButtonItem *item) {
+                                                                   [self showHUDWithMessage:@""];
                                                                    [self.viewModel payWithType:@"0"
                                                                                         result:result
                                                                                completeHandler:^(NSError *error) {
+                                                                                   [self hidHUD];
                                                                                    if (![self showAlertWithError:error]) {
                                                                                        [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeWeChat)];
                                                                                    }
@@ -165,7 +169,7 @@
             IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
             
             
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
                                                                             title:@"请选择支付方式"
                                                                           message:nil
                                                                  cancleButtonItem:cancel

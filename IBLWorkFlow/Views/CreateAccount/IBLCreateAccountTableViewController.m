@@ -239,6 +239,8 @@
         textField.placeholder = placeholder;
         textField.enabled = enable;
     }
+    self.countTextField.enabled = enable;
+    self.countTextField.placeholder = placeholder;
 }
 
 - (NSArray<UITextField *> *)priceTextFields{
@@ -253,12 +255,28 @@
     
     if (!isNumber) return NO;
     
-    if (![self validateTextFields]) return NO;
+    if (![self validateTextFields:textField]) return NO;
     
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField;{
+    
+    if (textField == self.countTextField) {
+        if ( [self.countTextField.text integerValue] <= 0) {
+            NSError *error = [NSError errorWithDomain:@""
+                                                 code:0
+                                             userInfo:@{kExceptionCode : @"-1",
+                                                        kExceptionMessage: @"订购数量必须大于0！"}];
+            [self showAlertWithError:error];
+            return NO;
+
+        }
+        
+        return YES;
+    }
+
+    
     if ([[self priceTextFields] containsObject:textField]) return [self validatePriceWithTextField:textField];
     
     if (textField == self.phoneTextField && ![NSString isNull:self.phoneTextField.text]) {
@@ -282,50 +300,60 @@
         return NO;
     }
     
-    if (textField == self.countTextField && [self.countTextField.text integerValue] <= 0) {
-        NSError *error = [NSError errorWithDomain:@""
-                                             code:0
-                                         userInfo:@{kExceptionCode : @"-1",
-                                                    kExceptionMessage: @"订购数量必须大于0！"}];
-        [self showAlertWithError:error];
-        return NO;
-    }
     
     return YES;
 }
 
-- (BOOL)validateTextFields{
+- (BOOL)validateTextFields:(UITextField *)textField{
     
     BOOL isValidate = YES;
     
     NSString *title = @"";
     
     // 支付金额
-    CGFloat pay = [self pay];
+    CGFloat pay = 0;
     // 销售品总金额
     CGFloat sales = [self sales];
+    
+    CGFloat discount = 0;
+    
     // 优惠金额
-    CGFloat discount = [self discount];
     
-    if (pay < 0) {
-        title = @"支付金额必须大于0";
-        isValidate = NO;
+    
+    
+    if (textField == self.payTextField){
+        pay = [textField.text doubleValue];
+        discount = [self discountWithPay:pay];
+        if (pay < 0) {
+            title = @"支付金额必须大于0";
+            isValidate = NO;
+        }
+        
+        if (pay > sales) {
+            title = @"支付金额必须小于总金额";
+            isValidate = NO;
+        }
+        
     }
     
-    if (pay > sales) {
-        title = @"销售品总额必须大于支付金额";
-        isValidate = NO;
+    if (textField == self.discountTextField) {
+        discount = [textField.text doubleValue];
+        pay = [self payWithDiscount:discount];
+        
+        
+        if (sales < discount) {
+            title = @"优惠金额必须小于总金额";
+            isValidate = NO;
+        }
+        
+        
+        if ([textField.text doubleValue] < 0) {
+            title = @"优惠金额必须大于0";
+            isValidate = NO;
+        }
+        
     }
     
-    if (discount < 0) {
-        title = @"优惠金额必须大于0";
-        isValidate = NO;
-    }
-    
-    if (sales < discount) {
-        title = @"优惠金额必须小于总金额";
-        isValidate = NO;
-    }
     
     if (!isValidate) {
         IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
@@ -364,10 +392,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     if (textField == self.countTextField){
-        [self setupSales];
-        [self setupPay];
-        [self setupSalesCount];
-        [self setupDiscount];
+        [self setupRenewCount];
     }else if (textField == self.discountTextField) {
         [self setupPay];
     }else if (textField == self.payTextField){
@@ -377,7 +402,17 @@
     }
 }
 
+- (void)setupRenewCount{
+    self.discountTextField.text = @"";
+    self.giveTextField.text = @"";
+    [self setupSales];
+    [self setupPay];
+    [self setupSalesCount];
+}
+
 - (void)setupPriceWithProductPrice{
+    self.discountTextField.text = @"";
+    self.giveTextField.text = @"";
     self.countTextField.text = @"1";
     [self setupPay];
     [self setupSales];
@@ -385,11 +420,9 @@
     [self setupDiscount];
     [self setupGive];
     [self setPriceTextFieldsEnable:YES];
-    self.discountTextField.text = @"";
-    self.giveTextField.text = @"";
 }
 
-- (CGFloat)pay{
+- (CGFloat)payWithDiscount:(CGFloat)aDiscount{
     // 支付金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 优惠金额
 
     // 单个销售品总额
@@ -397,13 +430,13 @@
     // 订购数量
     NSInteger count = [self.countTextField.text integerValue];
     // 优惠金额
-    NSInteger discount = [self.discountTextField.text doubleValue] * 100;
+    NSInteger discount = aDiscount * 100;
     
     return (unitPrice * count - discount) / 100.0;
 }
 
 - (void)setupPay{
-    self.payTextField.text = [@([self pay]) stringValue];
+    self.payTextField.text = [@([self payWithDiscount:[self.discountTextField.text doubleValue]]) stringValue];
 }
 
 - (CGFloat)sales{
@@ -449,7 +482,7 @@
     return unit;
 }
 
-- (CGFloat)discount{
+- (CGFloat)discountWithPay:(CGFloat)aPay{
     // 优惠金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 支付金额
     // 单个销售品总额
     NSInteger unitPrice = self.productPrice.totalAmount;
@@ -458,16 +491,16 @@
     NSInteger count = [self.countTextField.text integerValue];
     
     // 支付金额
-    NSInteger pay = [self.payTextField.text doubleValue] * 100;
+    NSInteger pay = aPay * 100;
     
     return (unitPrice * count - pay) / 100.0;
 }
 
 - (void)setupDiscount{
-    if ([self discount] <= 0)
+    if ([self discountWithPay:[self.payTextField.text doubleValue]] <= 0)
         self.discountTextField.text = @"";
     else
-        self.discountTextField.text = [@([self discount]) stringValue];
+        self.discountTextField.text = [@([self discountWithPay:[self.payTextField.text doubleValue]]) stringValue];
 }
 
 //!!!: 优化将title 和 effect 提取到appConfig中
@@ -609,9 +642,8 @@
     self.createAccountInfo.contractNumebr = self.contractNumberTextField.text;
     self.createAccountInfo.ticketNumber = self.ticketNumberTextField.text;
     self.createAccountInfo.give = [self.giveTextField.text integerValue];
-    self.createAccountInfo.discount = [self discount];
-    
-    self.createAccountInfo.pay = [self pay];
+    self.createAccountInfo.discount = [self.discountTextField.text doubleValue];
+    self.createAccountInfo.pay = [self.payTextField.text doubleValue];
     self.createAccountInfo.username = self.usernameTextField.text;
 }
 

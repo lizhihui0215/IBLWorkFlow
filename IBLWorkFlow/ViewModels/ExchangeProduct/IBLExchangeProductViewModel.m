@@ -11,6 +11,7 @@
 #import "IBLExchangeProductTableViewController.h"
 #import "IBLUserListRepository.h"
 #import "IBLExchangeProduct.h"
+#import "IBLCreateAccount.h"
 
 @interface IBLExchangeProductViewModel ()
 @property (nonatomic, strong) IBLFetchProductPrice *fetchProductPrice;
@@ -27,6 +28,8 @@
 
 @property (nonatomic, strong) IBLExchangeProduct *exchangeProduct;
 
+@property (nonatomic, strong) IBLCreateAccount *createAccount;
+
 @end
 
 @implementation IBLExchangeProductViewModel
@@ -40,6 +43,7 @@
         self.QRPay = [[IBLPay alloc] init];
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
         self.exchangeProduct = [[IBLExchangeProduct alloc] init];
+        self.createAccount = [[IBLCreateAccount alloc] init];
     }
 
     return self;
@@ -128,7 +132,7 @@
     
     info.remark = result.comment;
     
-    info.extraLength = result.discount * 100;
+    info.extraLength = result.give;
     
     info.offerName = result.product.name;
     
@@ -146,7 +150,7 @@
     info.payCost = result.pay;
     
     //???:
-    //    info.otherCost = createAccountInfo
+    info.otherCost = [@(0 -result.discount) stringValue];
     
     info.nodeId = self.user.areaIdentifier;
     

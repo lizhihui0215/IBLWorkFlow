@@ -42,7 +42,7 @@
     self.navigationItem.leftBarButtonItem = newBackButton;
     
     self.startDate = [NSDate date];
-
+    
     switch (self.pay) {
         case IBLQRPayTypeWeChat: {
             self.title = @"微信支付";
@@ -85,13 +85,35 @@
     [self.checkOrder checkOrderWithNumber:self.payResult.orderNo
                           completeHandler:^(IBLOrderPayStatus status, NSError *error) {
                               @strongify(self)
-                              if (status == IBLOrderPayStatusFinished) {
-                                  [self performSegueWithIdentifier:@"NavigationToOrderDetail" sender:nil];
-                                  return ;
-                              }
                               
-                              NSTimeInterval interval = [self.startDate timeIntervalSinceNow];
-                              [self performSelectorInBackground:@selector(checkOrders:) withObject:@(interval > 60 * 3)];
+                              switch (status) {
+                                  case IBLOrderPayStatusPayed:
+                                  case IBLOrderPayStatusClosed:
+                                  case IBLOrderPayStatusFaild:{
+                                      IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认" action:^(IBLButtonItem *item) {
+                                          [self.navigationController popViewControllerAnimated:YES];
+                                      }];
+                                      
+                                      IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                                                      title:@"支付失败，请联系管理员！"
+                                                                                                    message:nil
+                                                                                           cancleButtonItem:cancel
+                                                                                           otherButtonItems:nil];
+                                      [alert showInController:self];
+                                      return ;
+
+                                  }
+                                  case IBLOrderPayStatusFinished:{
+                                      [self performSegueWithIdentifier:@"NavigationToOrderDetail" sender:nil];
+                                      return ;
+                                  }
+                                  default:
+                                  {
+                                      NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:self.startDate];
+                                      [self performSelectorInBackground:@selector(checkOrders:) withObject:@(interval > 60 * 3)];
+                                      break;
+                                  }
+                              }
                           }];
 }
 

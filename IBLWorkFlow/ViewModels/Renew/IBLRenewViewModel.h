@@ -73,4 +73,5 @@
     completeHandler:(IBLViewModelCompleteHandler)handler;
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
+
 @end

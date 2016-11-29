@@ -45,15 +45,17 @@
 }
 
 - (void)tableViewController:(IBLExchangeProductTableViewController *)controller commitResult:(IBLExchangeProductResult *)result{
-    IBLPayModel model = [self.viewModel payModel];
+    IBLPayModel paymodel = result.pay <= 0 ? IBLPayModelCash : [self.viewModel payModel];
     
-    switch (model) {
+    switch (paymodel) {
         case IBLPayModelNet: {
             IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
                                                            action:^(IBLButtonItem *item) {
+                                                               [self showHUDWithMessage:@""];
                                                                [self.viewModel payWithType:@"1"
                                                                                     result:result
                                                                            completeHandler:^(NSError *error) {
+                                                                               [self hidHUD];
                                                                                if (![self showAlertWithError:error]) {
                                                                                    [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeAilPay)];
                                                                                }
@@ -62,9 +64,11 @@
             
             IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
                                                                action:^(IBLButtonItem *item) {
+                                                                   [self showHUDWithMessage:@""];
                                                                    [self.viewModel payWithType:@"0"
                                                                                         result:result
                                                                                completeHandler:^(NSError *error) {
+                                                                                   [self hidHUD];
                                                                                    if (![self showAlertWithError:error]) {
                                                                                        [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeWeChat)];
                                                                                    }
@@ -102,8 +106,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-   IBLExchangeProductTableViewController *exchangeProductTableViewController = [segue destinationViewController];
-    exchangeProductTableViewController.tableViewDelegate = self;
+    if ([segue.identifier isEqualToString:@"IBLQRViewController"]) {
+        IBLQRViewController *QRViewController = [segue destinationViewController];
+        QRViewController.payResult = self.viewModel.payResult;
+        QRViewController.pay = [sender integerValue];
+        QRViewController.type = IBLQRTypeFromExchangeProduct;
+    }else{
+        IBLExchangeProductTableViewController *exchangeProductTableViewController = [segue destinationViewController];
+        exchangeProductTableViewController.tableViewDelegate = self;
+    }
 }
 
 - (NSString *)exchangeProductText:(IBLExchangeProductTextFieldType)type {

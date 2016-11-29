@@ -94,15 +94,16 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 
 - (void)tableViewController:(IBLCreateAccountTableViewController *)controller
                      commit:(IBLCreateAccountTableViewInfo *)commit {
-    IBLPayModel paymodel = [self.viewModel payModel];
-    
+    IBLPayModel paymodel = commit.pay <= 0 ? IBLPayModelCash : [self.viewModel payModel];
     switch (paymodel) {
         case IBLPayModelNet: {
             IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
                                                            action:^(IBLButtonItem *item) {
+                                                               [self showHUDWithMessage:@""];
                                                                [self.viewModel payWithType:@"1"
                                                                          createAccountInfo:commit
                                                                            completeHandler:^(NSError *error) {
+                                                                               [self hidHUD];
                                                                                if (![self showAlertWithError:error]) {
                                                                                    [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeAilPay)];
                                                                                }
@@ -111,9 +112,11 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
             
             IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
                                                                action:^(IBLButtonItem *item) {
+                                                                   [self showHUDWithMessage:@""];
                                                                    [self.viewModel payWithType:@"0"
                                                                              createAccountInfo:commit
                                                                                completeHandler:^(NSError *error) {
+                                                                                   [self hidHUD];
                                                                                    if (![self showAlertWithError:error]) {
                                                                                        [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeWeChat)];
                                                                                    }

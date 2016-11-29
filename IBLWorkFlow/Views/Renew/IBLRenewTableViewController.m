@@ -127,14 +127,20 @@
     self.payTextField.delegate = self;
     self.giveTextField.delegate = self;
     self.renewProductCount.delegate = self;
-    self.giveTextField.text = @"0";
+    self.giveTextField.text = @"";
+    
     self.giveTextField.keyboardType = UIKeyboardTypeNumberPad;
     self.renewProductCount.keyboardType = UIKeyboardTypeNumberPad;
+    self.discountTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    self.payTextField.keyboardType = UIKeyboardTypeDecimalPad;
 
+    
+    [self showHUDWithMessage:@""];
     @weakify(self)
     [self.tableViewDelegate productPriceOfTableViewController:self
                                                 completeHandler:^(IBLProductPrice *productPrice) {
                                                     @strongify(self)
+                                                    [self hidHUD];
                                                     self.productPrice = productPrice;
                                                     [self setupPriceWithProductPrice];
                                                 }];
@@ -170,38 +176,56 @@
              self.giveTextField];
 }
 
-- (BOOL)validateTextFields{
+- (BOOL)validateTextFields:(UITextField *)textField{
     
     BOOL isValidate = YES;
     
     NSString *title = @"";
     
     // 支付金额
-    CGFloat pay = [self pay];
+    CGFloat pay = 0;
     // 销售品总金额
     CGFloat sales = [self sales];
+    
+    CGFloat discount = 0;
+    
     // 优惠金额
-    CGFloat discount = [self discount];
     
-    if (pay < 0) {
-        title = @"支付金额必须大于0";
-        isValidate = NO;
+    
+    
+    if (textField == self.payTextField){
+        pay = [textField.text doubleValue];
+        discount = [self discountWithPay:pay];
+        if (pay < 0) {
+            title = @"支付金额必须大于0";
+            isValidate = NO;
+        }
+        
+        if (pay > sales) {
+            title = @"支付金额必须小于总金额";
+            isValidate = NO;
+        }
+        
     }
     
-    if (pay > sales) {
-        title = @"销售品总额必须大于支付金额";
-        isValidate = NO;
+    if (textField == self.discountTextField) {
+        discount = [textField.text doubleValue];
+        pay = [self payWithDiscount:discount];
+        
+        
+        if (sales < discount) {
+            title = @"优惠金额必须小于总金额";
+            isValidate = NO;
+        }
+        
+        
+        if ([textField.text doubleValue] < 0) {
+            title = @"优惠金额必须大于0";
+            isValidate = NO;
+        }
+        
     }
     
-    if (discount < 0) {
-        title = @"优惠金额必须大于0";
-        isValidate = NO;
-    }
-    
-    if (sales < discount) {
-        title = @"优惠金额必须小于总金额";
-        isValidate = NO;
-    }
     
     if (!isValidate) {
         IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
@@ -216,21 +240,26 @@
     return  isValidate;
 }
 
-
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField;{
-    if (textField == self.renewProductCount &&
-        [self.renewProductCount.text integerValue] <= 0) {
-        NSError *error = [NSError errorWithDomain:@""
-                                             code:0
-                                         userInfo:@{kExceptionCode : @"-1",
-                                                    kExceptionMessage: @"订购数量必须大于0！"}];
-        [self showAlertWithError:error];
-        return NO;
+    
+    if (textField == self.renewProductCount) {
+        
+        if ([self.renewProductCount.text integerValue] <= 0) {
+            NSError *error = [NSError errorWithDomain:@""
+                                                 code:0
+                                             userInfo:@{kExceptionCode : @"-1",
+                                                        kExceptionMessage: @"订购数量必须大于0！"}];
+            [self showAlertWithError:error];
+            return NO;
+
+        }
+        
+        return YES;
     }
     
     BOOL isNumber = [self validateNumberWithText:textField.text];
     if (!isNumber) return NO;
-    if (![self validateTextFields]) return NO;
+    if (![self validateTextFields:textField]) return NO;
     return YES;
 
 }
@@ -243,19 +272,22 @@
     }else if (textField == self.giveTextField){
         [self setupSalesCount];
     }else if (textField == self.renewProductCount){
-        [self setupRenewProductCount];
+        [self setupProductCount];
     }
 }
 
-- (void)setupRenewProductCount{
+- (void)setupProductCount{
+    self.discountTextField.text = @"";
+    self.giveTextField.text = @"";
     [self setupPay];
     [self setupSales];
     [self setupSalesCount];
-    [self setupDiscount];
-    [self setupGive];
 }
 
 - (void)setupPriceWithProductPrice{
+    self.renewProductCount.text = @"1";
+    self.discountTextField.text = @"";
+    self.giveTextField.text = @"";
     [self setupPay];
     [self setupSales];
     [self setupSalesCount];
@@ -263,7 +295,7 @@
     [self setupGive];
 }
 
-- (CGFloat)pay{
+- (CGFloat)payWithDiscount:(CGFloat)aDiscount{
     // 支付金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 优惠金额
     
     // 单个销售品总额
@@ -271,13 +303,13 @@
     // 订购数量
     NSInteger count = [self.renewProductCount.text integerValue];
     // 优惠金额
-    NSInteger discount = [self.discountTextField.text doubleValue] * 100;
+    NSInteger discount = aDiscount * 100;
     
     return (unitPrice * count - discount) / 100.0;
 }
 
 - (void)setupPay{
-    self.payTextField.text = [@([self pay]) stringValue];
+    self.payTextField.text = [@([self payWithDiscount:[self.discountTextField.text doubleValue]]) stringValue];
 }
 #pragma mark - Table view data source
 
@@ -415,7 +447,7 @@
     return unit;
 }
 
-- (CGFloat)discount{
+- (CGFloat)discountWithPay:(CGFloat)aPay{
     // 优惠金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 支付金额
     // 单个销售品总额
     NSInteger unitPrice = self.productPrice.totalAmount;
@@ -424,13 +456,14 @@
     NSInteger count = [self.renewProductCount.text integerValue];
     
     // 支付金额
-    NSInteger pay = [self.payTextField.text doubleValue] * 100;
+    NSInteger pay = aPay * 100;
     
     return (unitPrice * count - pay) / 100.0;
 }
 
 - (void)setupDiscount{
-    self.discountTextField.text = [@([self discount]) stringValue];
+    
+    self.discountTextField.text =  [self discountWithPay:[self.payTextField.text doubleValue]] <= 0 ? @"" : [@([self discountWithPay:[self.payTextField.text doubleValue]]) stringValue];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, IBLExchangeProductTextFieldType) {
 
 @property (nonatomic, assign) CGFloat discount;
 
-@property (nonatomic, assign) CGFloat give;
+@property (nonatomic, assign) NSInteger give;
 
 @property (nonatomic, assign) CGFloat pay;
 

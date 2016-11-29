@@ -35,6 +35,10 @@ typedef NS_ENUM(NSInteger, IBLOrderPayStatus) {
      *  已关闭
      */
     IBLOrderPayStatusClosed,
+    /**
+     *  支付失败
+     */
+    IBLOrderPayStatusFaild = 7,
 };
 
 @interface IBLQRPayInfo : NSObject

@@ -175,7 +175,7 @@
     
     
     //???: 总量从那获取
-    info.totalLength = result.renewProductCount;
+    info.totalLength = result.productCount;
     
     
     info.totalCost = result.productPriceAmount;

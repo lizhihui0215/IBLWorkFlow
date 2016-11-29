@@ -198,6 +198,9 @@
     for (IBLOrder *order in orders) {
         order.actions = [[self orderActionsWithStatus:order.status
                                               bizType:order.bizType] mutableCopy];
+        
+        if ([order.handleMark isEqualToString:@"1"]) [order.actions removeObject:@(IBLOrderActionCreate)];
+        
         IBLSectionItem *item = [IBLSectionItem itemWithInfo:order selected:NO];
         [items addObject:item];
     }

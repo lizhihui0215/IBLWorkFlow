@@ -73,7 +73,6 @@
     self.payTextField.delegate = self;
     self.giveTextField.delegate = self;
     self.exchangeCountTextField.delegate = self;
-    self.giveTextField.text = @"0";
     self.result = [[IBLExchangeProductResult alloc] init];
     self.result.exchangeType = exchangeType;
     self.discountTextField.enabled = NO;
@@ -81,7 +80,9 @@
     self.giveTextField.enabled = NO;
     self.giveTextField.keyboardType = UIKeyboardTypeNumberPad;
     self.exchangeCountTextField.keyboardType = UIKeyboardTypeNumberPad;
-    
+    self.payTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    self.discountTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    [self setPriceTextFieldsEnable:NO];
 }
 
 - (NSDictionary<NSString*, NSString *> *)exchangeTypeMap{
@@ -131,21 +132,25 @@
 }
 
 - (void)setupRenewProductCount{
+    self.discountTextField.text = @"";
+    self.giveTextField.text = @"";
     [self setupPay];
     [self setupSales];
     [self setupSalesCount];
-    [self setupDiscount];
-    [self setupGive];
 }
 - (void)setupPriceWithProductPrice{
+    self.exchangeCountTextField.text = @"1";
+    self.discountTextField.text = @"";
+    self.giveTextField.text = @"";
     [self setupPay];
     [self setupSales];
     [self setupSalesCount];
     [self setupDiscount];
     [self setupGive];
+    [self setPriceTextFieldsEnable:YES];
 }
 
-- (CGFloat)pay{
+- (CGFloat)payWithDiscount:(CGFloat)aDiscount{
     // 支付金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 优惠金额
     
     // 单个销售品总额
@@ -153,13 +158,13 @@
     // 订购数量
     NSInteger count = [self.exchangeCountTextField.text integerValue];
     // 优惠金额
-    NSInteger discount = [self.discountTextField.text doubleValue] * 100;
+    NSInteger discount = aDiscount * 100;
     
     return (unitPrice * count - discount) / 100.0;
 }
 
 - (void)setupPay{
-    self.payTextField.text = [@([self pay]) stringValue];
+    self.payTextField.text = [@([self payWithDiscount:[self.discountTextField.text doubleValue]]) stringValue];
 }
 
 - (CGFloat)sales{
@@ -205,7 +210,7 @@
     return unit;
 }
 
-- (CGFloat)discount{
+- (CGFloat)discountWithPay:(CGFloat)aPay{
     // 优惠金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 支付金额
     // 单个销售品总额
     NSInteger unitPrice = self.productPrice.totalAmount;
@@ -214,13 +219,13 @@
     NSInteger count = [self.exchangeCountTextField.text integerValue];
     
     // 支付金额
-    NSInteger pay = [self.payTextField.text doubleValue] * 100;
+    NSInteger pay = aPay * 100;
     
     return (unitPrice * count - pay) / 100.0;
 }
 
 - (void)setupDiscount{
-    self.discountTextField.text = [@([self discount]) stringValue];
+    self.discountTextField.text = [self discountWithPay:[self.payTextField.text doubleValue]] <= 0 ? @"" : [@([self discountWithPay:[self.payTextField.text doubleValue]]) stringValue];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -258,6 +263,19 @@
     [self.tableViewDelegate tableViewController:self
                                    commitResult:self.result];
 }
+
+- (void)setPriceTextFieldsEnable:(BOOL)enable{
+    NSString *placeholder = enable ? @"请输入" : @"请选择销售品";
+    
+    for (UITextField *textField in [self priceTextFields]) {
+        textField.placeholder = placeholder;
+        textField.enabled = enable;
+    }
+    
+    self.exchangeCountTextField.enabled = enable;
+    self.exchangeCountTextField.placeholder = placeholder;
+}
+
 
 #pragma mark - Table view data source
 
@@ -302,39 +320,57 @@
     }
 }
 
-- (BOOL)validateTextFields{
+- (BOOL)validateTextFields:(UITextField *)textField{
     
     BOOL isValidate = YES;
     
     NSString *title = @"";
     
     // 支付金额
-    CGFloat pay = [self pay];
+    CGFloat pay = 0;
     // 销售品总金额
     CGFloat sales = [self sales];
+    
+    CGFloat discount = 0;
+
     // 优惠金额
-    CGFloat discount = [self discount];
     
-    if (pay < 0) {
-        title = @"支付金额必须大于0";
-        isValidate = NO;
+
+    
+    if (textField == self.payTextField){
+        pay = [textField.text doubleValue];
+        discount = [self discountWithPay:pay];
+        if (pay < 0) {
+            title = @"支付金额必须大于0";
+            isValidate = NO;
+        }
+        
+        if (pay > sales) {
+            title = @"支付金额必须小于总金额";
+            isValidate = NO;
+        }
+        
+    }
+
+    if (textField == self.discountTextField) {
+        discount = [textField.text doubleValue];
+        pay = [self payWithDiscount:discount];
+
+        
+        if (sales < discount) {
+            title = @"优惠金额必须小于总金额";
+            isValidate = NO;
+        }
+
+        
+        if ([textField.text doubleValue] < 0) {
+            title = @"优惠金额必须大于0";
+            isValidate = NO;
+        }
+        
     }
     
-    if (pay > sales) {
-        title = @"销售品总额必须大于支付金额";
-        isValidate = NO;
-    }
-    
-    if (discount < 0) {
-        title = @"优惠金额必须大于0";
-        isValidate = NO;
-    }
-    
-    if (sales < discount) {
-        title = @"优惠金额必须小于总金额";
-        isValidate = NO;
-    }
-    
+
     if (!isValidate) {
         IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
         IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
@@ -377,7 +413,7 @@
     
     if (!isNumber) return NO;
     
-    if (![self validateTextFields]) return NO;
+    if (![self validateTextFields:textField]) return NO;
     
     return YES;
 }
@@ -390,16 +426,22 @@
 
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    if (textField == self.exchangeCountTextField) {
+        if ([self.exchangeCountTextField.text integerValue] <= 0) {
+            NSError *error = [NSError errorWithDomain:@""
+                                                 code:0
+                                             userInfo:@{kExceptionCode : @"-1",
+                                                        kExceptionMessage: @"订购数量必须大于0！"}];
+            [self showAlertWithError:error];
+            return NO;
+        }
+        
+        return YES;
+    }
+
+    
     if ([[self priceTextFields] containsObject:textField]) return [self validatePriceWithTextField:textField];
     
-    if (textField == self.exchangeCountTextField && [self.exchangeCountTextField.text integerValue] <= 0) {
-        NSError *error = [NSError errorWithDomain:@""
-                                             code:0
-                                         userInfo:@{kExceptionCode : @"-1",
-                                                    kExceptionMessage: @"订购数量必须大于0！"}];
-        [self showAlertWithError:error];
-        return NO;
-    }
 
     return YES;
 }
