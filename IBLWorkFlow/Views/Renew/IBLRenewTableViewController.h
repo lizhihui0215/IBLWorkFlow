@@ -51,7 +51,7 @@ typedef NS_ENUM(NSInteger, IBLRenewTextFieldType) {
 @property (nonatomic, copy) NSString *ticket;
 @property (nonatomic, copy) NSString *contract;
 @property (nonatomic, assign) CGFloat discount;
-@property (nonatomic, assign) CGFloat give;
+@property (nonatomic, assign) NSInteger give;
 @property (nonatomic, assign) CGFloat pay;
 @property (nonatomic, copy) NSString *comment;
 

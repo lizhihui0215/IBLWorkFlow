@@ -169,9 +169,9 @@
     info.offerId = [@(result.product.identifier) stringValue];
     info.remark = result.comment;
     info.buyLength = result.renewProductCount;
-    info.totalCost = result.productPriceAmount ;
-    info.preCost = result.give;
-    info.extraLength = result.discount;
+    info.totalCost = result.pay ;
+    info.preCost = result.discount;
+    info.extraLength = result.give;
     info.contractCode = result.contract;
     info.voiceCode = result.ticket;
     info.changeType = result.exchangeType;
