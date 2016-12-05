@@ -164,15 +164,13 @@
     
     info.remark = result.comment;
     
-    info.extraLength = result.discount;
+    info.extraLength = result.give;
     
     info.offerName = self.product;
     
     info.idNo = self.user.idNo;
     
     info.buyLength = result.renewProductCount;
-    
-    
     
     //???: 总量从那获取
     info.totalLength = result.productCount;
@@ -203,7 +201,7 @@
     info.account = self.user.account;
     info.remark = self.user.comments;
     info.buyLength = result.renewProductCount;
-    info.totalCost = result.productPriceAmount;
+    info.totalCost = result.pay;
     info.preCost = result.discount;
     info.extraLength = result.give;
     info.contractCode = result.contract;
