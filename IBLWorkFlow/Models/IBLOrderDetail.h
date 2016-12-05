@@ -38,7 +38,7 @@
 /// 总量（带单位）
 @property (nonatomic, copy) NSString *totalLength;
 /// 支付金额，单位分
-@property (nonatomic, copy) NSString *payCost;
+@property (nonatomic, assign) NSInteger payCost;
 /// 销售品总金额，单位分
 @property (nonatomic, assign) NSInteger totalCost;
 /// 其它金额，如果为负数，则为优惠金额

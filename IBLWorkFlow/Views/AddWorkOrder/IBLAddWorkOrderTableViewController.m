@@ -20,7 +20,7 @@ static NSString *const IBLSearchForRegionIdentifier = @"SearchForRegion";
 
 static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser";
 
-@interface IBLAddWorkOrderTableViewController () <IBLSearchViewControllerDelegate>
+@interface IBLAddWorkOrderTableViewController () <IBLSearchViewControllerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *workOrderTypeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *workOrderBizTypeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *priorityTextField;
@@ -98,7 +98,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     datePicker.formatter = formatter;
     [datePicker showHcdDateTimePicker];
     datePicker.clickedOkBtn = ^(NSString *time){
-//        [aDate stringFromFormatter:@"yyyy-MM-dd HH:mm:ss"]
+        //        [aDate stringFromFormatter:@"yyyy-MM-dd HH:mm:ss"]
         self.finishedDateTextField.text = time;
         [self.tableViewDelegate addWorkOrderTableView:self
                                             fieldType:IBLAddWorkOrderFieldTypeFinishedDate
@@ -192,13 +192,25 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 
 - (NSDictionary<NSIndexPath *, NSNumber* > *)hiddenFieldsDictionaryWithWorkBizType:(IBLWorkOrderBizStatus)bizType{
     NSDictionary *dic;
-    
+    self.productTextField.hidden = NO;
+    self.productCountTextField.hidden = NO;
+    self.usernameTextField.hidden = NO;
+    self.phoneTextField.hidden = NO;
+    self.addressTextField.hidden = NO;
+    self.userIdentifierTextField.hidden = NO;
+    self.relateUserTextField.hidden = NO;
+    self.remarkTextView.hidden = NO;
+    self.workOrderContentTextView.hidden = NO;
+    self.regionTextField.hidden = NO;
+
     switch (bizType) {
         case IBLWorkOrderBizStatusUnknow: {
             break;
         }
             
         case IBLWorkOrderBizStatusInstall: {
+            self.workOrderContentTextView.hidden = YES;
+            self.relateUserTextField.hidden = YES;
             NSIndexPath *indexPathWorkOrderContent = [NSIndexPath indexPathForRow:11 inSection:0];
             NSIndexPath *indexPathRelateUser = [NSIndexPath indexPathForRow:12 inSection:0];
             dic = @{indexPathWorkOrderContent : @(YES),
@@ -225,6 +237,14 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
             NSIndexPath *relateUserIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
             NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+            self.productTextField.hidden = YES;
+            self.productCountTextField.hidden = YES;
+            self.usernameTextField.hidden = YES;
+            self.phoneTextField.hidden = YES;
+            self.addressTextField.hidden = YES;
+            self.userIdentifierTextField.hidden = YES;
+            self.relateUserTextField.hidden = YES;
+            self.remarkTextView.hidden = YES;
             dic = @{productIndexPath : @(YES),
                     countIndexPath : @(YES),
                     usernameIndexPath : @(YES),
@@ -236,6 +256,14 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             break;
         }
         default:{
+            self.regionTextField.hidden = YES;
+            self.productTextField.hidden = YES;
+            self.productCountTextField.hidden = YES;
+            self.usernameTextField.hidden = YES;
+            self.phoneTextField.hidden = YES;
+            self.addressTextField.hidden = YES;
+            self.userIdentifierTextField.hidden = YES;
+            self.remarkTextView.hidden = YES;
             NSIndexPath *regionIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
             NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
             NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
@@ -244,6 +272,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
             NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
             NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+            
             dic = @{regionIndexPath : @(YES),
                     productIndexPath : @(YES),
                     countIndexPath : @(YES),
@@ -377,8 +406,49 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     self.productCountTextField.text = @"1";
     
+    self.priorityTextField.text = @"一般";
     
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypePriority
+                                       didEndEdit:@(IBLPriorityStatusGeneral)];
+
     [self.tableView reloadData];
+    self.productCountTextField.delegate = self;
+    self.phoneTextField.keyboardType = UIKeyboardTypePhonePad;
+    self.userIdentifierTextField.keyboardType = UIKeyboardTypeASCIICapable;
+    self.productCountTextField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    [self.phoneTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
+        BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
+        if (!isVaidate) {
+            IBLButtonItem *item = [IBLButtonItem itemWithLabel:@"确定"];
+            
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                            title:@"电话号码格式不正确！"
+                                                                          message:nil
+                                                                 cancleButtonItem:item
+                                                                 otherButtonItems:nil];
+            [alert showInController:self];
+        }
+        
+        return isVaidate;
+    }];
+    
+    [self.userIdentifierTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
+        BOOL isVaidate = [IBLUtilities validateIdentityCard:textField.text];
+        if (!isVaidate) {
+            IBLButtonItem *item = [IBLButtonItem itemWithLabel:@"确定"];
+            
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                            title:@"身份证号码格式不正确！"
+                                                                          message:nil
+                                                                 cancleButtonItem:item
+                                                                 otherButtonItems:nil];
+            [alert showInController:self];
+        }
+
+        return isVaidate;
+    }];
     
     
 }
@@ -403,7 +473,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     }else if ([segue.identifier isEqualToString:IBLSearchForProductIdentifier]){
         IBLSearchViewController *searchViewController = [segue destinationViewController];
         IBLRegion *region = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeRegion];
-
+        
         searchViewController.viewModel = [IBLProductSearchViewModel productSearchModelWithSearchType:IBLSearchTypeAddOrderProduct
                                                                                            productId:0
                                                                                             regionId:region.identifier];

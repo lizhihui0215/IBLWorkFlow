@@ -42,26 +42,30 @@
     // Do any additional setup after loading the view.
     self.fetchOrderDetail = [[IBLFetchOrderDetail alloc] init];
     self.handleOrder = [[IBLHandleOrder alloc] init];
-    
+    self.payTypeTextField.text = [self payTypeName];
     [self showHUDWithMessage:@""];
     @weakify(self)
     [self.fetchOrderDetail fetchOrderDetailWithOrderNumber:self.orderNumber
                                            completeHandler:^(IBLOrderDetail *orderDetail, NSError *error) {
                                                @strongify(self)
+                                               [self hidHUD];
                                                if (orderDetail.servId){
                                                    [self.handleOrder handleOrderWithOrder:self.order
                                                                                markHandle:@"1"
                                                                                    servId:orderDetail.servId
                                                                                   content:@"已开户"
                                                                           completeHandler:^(NSError *error) {
-                                                                              [self hidHUD];
-
+                                                                              
                                                                           }];
-
                                                }
                                                self.orderDetail = orderDetail;
                                                [self setupUI];
                                            }];
+}
+
+- (NSString *)payTypeName{
+    return @{@(IBLQRPayDetailTypeAilPay) : @"支付宝",
+             @(IBLQRPayDetailTypeWeChat) : @"微信"}[@(self.payModel)];
 }
 
 - (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
@@ -86,8 +90,8 @@
 }
 
 - (void)setupUI{
-    self.payCostTextField.text = self.orderDetail.payCost;
-    self.totalLengthTextField.text = [@(self.orderDetail.totalCost) stringValue];
+    self.payCostTextField.text = [@(self.orderDetail.payCost / 100.0f) stringValue];
+    self.totalLengthTextField.text = [@(self.orderDetail.totalCost / 100.0f) stringValue];
     self.totalLengthTextField.text = self.orderDetail.totalLength;
     self.buyLengthTextField.text = self.orderDetail.buyLength;
     self.orderNoTextField.text = self.orderDetail.orderNo;

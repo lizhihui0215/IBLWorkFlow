@@ -112,8 +112,8 @@
 */
 
 - (void)initDatas {
-    _topViewColor = [UIColor colorWithHexString:@"0x6271f3"];
-    _buttonTitleColor = [UIColor colorWithHexString:@"0xffffff"];
+    _topViewColor = [UIColor colorWithHex:0x1E84E5];
+    _buttonTitleColor = [UIColor whiteColor];
 }
 
 - (void)setTopViewColor:(UIColor *)topViewColor {
@@ -179,15 +179,16 @@
     timeBroadcastView.backgroundColor = [UIColor whiteColor];
     [self addSubview:timeBroadcastView];
     UIView *beforeSepLine = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight + (kTimeBroadcastViewHeight / 5), kScreen_Width, 1.5)];
-    [beforeSepLine setBackgroundColor:[UIColor colorWithHexString:@"0xEDEDED"]];
+    [beforeSepLine setBackgroundColor:[UIColor colorWithHex:0x1E84E5]];
+//    [UIColor colorWithHexString:@"0xEDEDED"]
     [timeBroadcastView addSubview:beforeSepLine];
     UIView *middleSepView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight + 2 * (kTimeBroadcastViewHeight / 5), kScreen_Width, kTimeBroadcastViewHeight / 5)];
-    [middleSepView setBackgroundColor:[UIColor colorWithHexString:@"0xEDEDED"]];
+    [middleSepView setBackgroundColor:[UIColor colorWithHex:0x1E84E5]];
     [timeBroadcastView addSubview:middleSepView];
     middleSepView.layer.borderWidth = 1.5;
-    middleSepView.layer.borderColor = [UIColor colorWithHexString:@"0xEDEDED"].CGColor;
+    middleSepView.layer.borderColor = [UIColor colorWithHex:0x1E84E5].CGColor;
     UIView *bottomSepLine = [[UIView alloc] initWithFrame:CGRectMake(0, kTopViewHeight + 4 * (kTimeBroadcastViewHeight / 5), kScreen_Width, 1.5)];
-    [bottomSepLine setBackgroundColor:[UIColor colorWithHexString:@"0xEDEDED"]];
+    [bottomSepLine setBackgroundColor:[UIColor colorWithHex:0x1E84E5]];
     [timeBroadcastView addSubview:bottomSepLine];
     
     if (self.datePickerMode == DatePickerDateMode) {
@@ -352,10 +353,10 @@
 {
     UILabel *oneLabel = [[(UILabel*)[[scrollview subviews] objectAtIndex:0] subviews] objectAtIndex:pageNumber];
     [oneLabel setFont:[UIFont systemFontOfSize:14]];
-    [oneLabel setTextColor:[UIColor colorWithHexString:@"0xBABABA"]];
+    [oneLabel setTextColor:[UIColor blackColor]];
     UILabel *twoLabel = [[(UILabel*)[[scrollview subviews] objectAtIndex:0] subviews] objectAtIndex:pageNumber+1];
     [twoLabel setFont:[UIFont systemFontOfSize:16]];
-    [twoLabel setTextColor:[UIColor colorWithHexString:@"0x717171"]];
+    [twoLabel setTextColor:[UIColor blackColor]];
     
     UILabel *currentLabel = [[(UILabel*)[[scrollview subviews] objectAtIndex:0] subviews] objectAtIndex:pageNumber+2];
     [currentLabel setFont:[UIFont systemFontOfSize:18]];
@@ -363,10 +364,10 @@
     
     UILabel *threeLabel = [[(UILabel*)[[scrollview subviews] objectAtIndex:0] subviews] objectAtIndex:pageNumber+3];
     [threeLabel setFont:[UIFont systemFontOfSize:16]];
-    [threeLabel setTextColor:[UIColor colorWithHexString:@"0x717171"]];
+    [threeLabel setTextColor:[UIColor blackColor]];
     UILabel *fourLabel = [[(UILabel*)[[scrollview subviews] objectAtIndex:0] subviews] objectAtIndex:pageNumber+4];
     [fourLabel setFont:[UIFont systemFontOfSize:14]];
-    [fourLabel setTextColor:[UIColor colorWithHexString:@"0xBABABA"]];
+    [fourLabel setTextColor:[UIColor blackColor]];
 }
 #pragma mark mxccyclescrollview delegate
 #pragma mark mxccyclescrollview databasesource

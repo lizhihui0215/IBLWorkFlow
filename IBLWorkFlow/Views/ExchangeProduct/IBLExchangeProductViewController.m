@@ -90,7 +90,15 @@
             [self.viewModel commitWithResult:result
                              completeHandler:^(NSError *error) {
                                  if (![self showAlertWithError:error]) {
-                                     [self.navigationController popToRootViewControllerAnimated:YES];
+                                     
+                                     NSError *error = [NSError errorWithDomain:@""
+                                                                          code:0 userInfo:@{kExceptionCode : @(0),
+                                                                                            kExceptionMessage : @"更换成功！"}];
+                                     
+                                     [self showAlertWithError:error
+                                              completeHandler:^(BOOL isShowError, NSError *error) {
+                                                  [self.navigationController popToRootViewControllerAnimated:YES];
+                                              }];
                                  }
                              }];
             break;

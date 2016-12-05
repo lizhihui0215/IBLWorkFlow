@@ -202,7 +202,7 @@
             self.createAccountInfo.effectType = [self.tableViewDataSource defaultEffectTypeOfTableViewController:self];
             self.createAccountInfo.effectDate = [self.tableViewDataSource defaultEffectDateOfTableViewController:self];
             self.methodOfValidTextField.text = [self effectNames][@(self.createAccountInfo.effectType)];
-            self.dateOfValidTextField.text = [[NSDate date] stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
+            self.dateOfValidTextField.text = [[NSDate date] stringFromFormatter:@"yyyy-MM-dd"];
             break;
         }
     }

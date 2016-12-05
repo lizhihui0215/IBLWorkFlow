@@ -12,6 +12,7 @@
 #import "IBLProduct.h"
 #import "IBLRelateUser.h"
 #import "IBLOperator.h"
+#import "IBLException.h"
 
 @interface IBLAddWorkOrderViewController () <IBLAddWorkOrderTableViewControllerDelegate>
 
@@ -142,7 +143,13 @@
         @strongify(self)
         [self hidHUD];
         if (![self showAlertWithError:error]) {
-            [self.delegate addWorkOrderTableDidCommit:self];
+            NSError *error = [NSError errorWithDomain:@""
+                                                 code:0 userInfo:@{kExceptionCode : @(0),
+                                                                   kExceptionMessage : @"新增成功！"}];
+            [self showAlertWithError:error
+                     completeHandler:^(BOOL isShowError, NSError *error) {
+                         [self.delegate addWorkOrderTableDidCommit:self];
+                     }];
         }
     }];
 }

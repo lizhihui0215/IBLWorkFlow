@@ -154,10 +154,10 @@
 {
     UILabel *oneLabel = (UILabel*)[[scrollview subviews] objectAtIndex:pageNumber];
     [oneLabel setFont:[UIFont systemFontOfSize:14]];
-    [oneLabel setTextColor:[UIColor colorWithHexString:@"0xBABABA"]];
+    [oneLabel setTextColor:[UIColor blackColor]];
     UILabel *twoLabel = (UILabel*)[[scrollview subviews] objectAtIndex:pageNumber+1];
     [twoLabel setFont:[UIFont systemFontOfSize:16]];
-    [twoLabel setTextColor:[UIColor colorWithHexString:@"0x717171"]];
+    [twoLabel setTextColor:[UIColor blackColor]];
     
     UILabel *currentLabel = (UILabel*)[[scrollview subviews] objectAtIndex:pageNumber+2];
     [currentLabel setFont:[UIFont systemFontOfSize:18]];
@@ -165,10 +165,10 @@
     
     UILabel *threeLabel = (UILabel*)[[scrollview subviews] objectAtIndex:pageNumber+3];
     [threeLabel setFont:[UIFont systemFontOfSize:16]];
-    [threeLabel setTextColor:[UIColor colorWithHexString:@"0x717171"]];
+    [threeLabel setTextColor:[UIColor blackColor]];
     UILabel *fourLabel = (UILabel*)[[scrollview subviews] objectAtIndex:pageNumber+4];
     [fourLabel setFont:[UIFont systemFontOfSize:14]];
-    [fourLabel setTextColor:[UIColor colorWithHexString:@"0xBABABA"]];
+    [fourLabel setTextColor:[UIColor blackColor]];
 }
 
 #pragma mark - UIScrollViewDelegate

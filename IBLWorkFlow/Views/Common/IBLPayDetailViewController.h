@@ -17,6 +17,11 @@ typedef NS_ENUM(NSInteger,IBLOrderDetailType) {
     IBLOrderDetailTypeFromExchangeProduct,
 };
 
+typedef NS_ENUM(NSInteger, IBLQRPayDetailType) {
+    IBLQRPayDetailTypeWeChat,
+    IBLQRPayDetailTypeAilPay,
+};
+
 @interface IBLPayDetailViewController : IBLStaticTableViewController
 
 @property (nonatomic, strong) IBLOrder *order;
@@ -24,5 +29,7 @@ typedef NS_ENUM(NSInteger,IBLOrderDetailType) {
 @property (nonatomic, copy) NSString *orderNumber;
 
 @property (nonatomic, assign) IBLOrderDetailType type;
+
+@property (nonatomic, assign) IBLQRPayDetailType payModel;
 
 @end

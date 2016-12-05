@@ -133,6 +133,7 @@
         IBLPayDetailViewController *orderDetailViewController = [segue destinationViewController];
         orderDetailViewController.orderNumber = self.payResult.orderNo;
         orderDetailViewController.order = self.order;
+        orderDetailViewController.payModel = self.pay == IBLQRPayTypeWeChat ? IBLQRPayDetailTypeWeChat : IBLQRPayDetailTypeAilPay;
         switch (self.type) {
             case IBLQRTypeFromOrderCreateAccount: {
                 orderDetailViewController.type = IBLOrderDetailTypeFromOrderCreateAccount;
