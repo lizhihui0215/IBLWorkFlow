@@ -305,6 +305,7 @@
 		265F5C811DA9F9C40058A5C2 /* IBLStaticTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLStaticTableViewController.m; sourceTree = "<group>"; };
 		265F5C831DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderFlowDetailViewController.h; sourceTree = "<group>"; };
 		265F5C841DAA1A870058A5C2 /* IBLOrderFlowDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderFlowDetailViewController.m; sourceTree = "<group>"; };
+		266A21901DF572920094F728 /* IBLWorkFlow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IBLWorkFlow.entitlements; sourceTree = "<group>"; };
 		26720C531DE88BD50051D6DD /* HcdDateTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HcdDateTimePickerView.h; sourceTree = "<group>"; };
 		26720C541DE88BD50051D6DD /* HcdDateTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HcdDateTimePickerView.m; sourceTree = "<group>"; };
 		26720C551DE88BD50051D6DD /* MXSCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXSCycleScrollView.h; sourceTree = "<group>"; };
@@ -594,6 +595,7 @@
 		264EBB601D2E023D00FF8373 /* IBLWorkFlow */ = {
 			isa = PBXGroup;
 			children = (
+				266A21901DF572920094F728 /* IBLWorkFlow.entitlements */,
 				264EBB641D2E023D00FF8373 /* IBLAppDelegate.h */,
 				264EBB651D2E023D00FF8373 /* IBLAppDelegate.m */,
 				5B875E9D723F8984F0BCE45E /* Data */,
@@ -1317,7 +1319,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -1814,6 +1816,7 @@
 			baseConfigurationReference = 565A3BAEBC81E00A178005D9 /* Pods-IBLWorkFlow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = IBLWorkFlow/IBLWorkFlow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5R5G2D4E69;
@@ -1825,7 +1828,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.iblworkflow.IBLWorkFlow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1836,6 +1839,7 @@
 			baseConfigurationReference = 4421433E1B53EEC5E521C458 /* Pods-IBLWorkFlow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = IBLWorkFlow/IBLWorkFlow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5R5G2D4E69;
@@ -1847,7 +1851,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.iblworkflow.IBLWorkFlow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
