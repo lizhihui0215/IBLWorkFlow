@@ -75,6 +75,7 @@
 		267622CB1D3CDEAD00B4E2F3 /* IBLOperatorSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 267622CA1D3CDEAD00B4E2F3 /* IBLOperatorSearchViewModel.m */; };
 		267622CE1D3CE07200B4E2F3 /* IBLFetchOperatorList.m in Sources */ = {isa = PBXBuildFile; fileRef = 267622CD1D3CE07200B4E2F3 /* IBLFetchOperatorList.m */; };
 		267622D11D3CE10600B4E2F3 /* IBLSearchRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 267622D01D3CE10600B4E2F3 /* IBLSearchRepository.m */; };
+		26788BDF1DF80B0200D59617 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788BDE1DF80B0200D59617 /* UserNotifications.framework */; };
 		26846F4D1D34935B001F9C73 /* UIDevice+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F4C1D34935B001F9C73 /* UIDevice+IBLExtension.m */; };
 		26846F501D349F0B001F9C73 /* IBLException.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F4F1D349F0B001F9C73 /* IBLException.m */; };
 		26846F531D34A2F6001F9C73 /* IBLAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F521D34A2F6001F9C73 /* IBLAlertController.m */; };
@@ -329,6 +330,7 @@
 		267622CD1D3CE07200B4E2F3 /* IBLFetchOperatorList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFetchOperatorList.m; sourceTree = "<group>"; };
 		267622CF1D3CE10600B4E2F3 /* IBLSearchRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLSearchRepository.h; sourceTree = "<group>"; };
 		267622D01D3CE10600B4E2F3 /* IBLSearchRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLSearchRepository.m; sourceTree = "<group>"; };
+		26788BDE1DF80B0200D59617 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		26846F4B1D34935B001F9C73 /* UIDevice+IBLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IBLExtension.h"; sourceTree = "<group>"; };
 		26846F4C1D34935B001F9C73 /* UIDevice+IBLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IBLExtension.m"; sourceTree = "<group>"; };
 		26846F4E1D349F0B001F9C73 /* IBLException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLException.h; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26788BDF1DF80B0200D59617 /* UserNotifications.framework in Frameworks */,
 				C29699C982E6C6E8F36F7C33 /* libPods-IBLWorkFlow.a in Frameworks */,
 				5B875BF706873151551D3EEC /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 			);
@@ -1216,6 +1219,7 @@
 		C6505BA9493FBCA3FC914E33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26788BDE1DF80B0200D59617 /* UserNotifications.framework */,
 				75ECACC7C53EB3B0DA024790 /* libPods-IBLWorkFlow.a */,
 				6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */,
 				EDBB83F272FFCA67F7EB540F /* libPods-IBLWorkFlowUITests.a */,
@@ -1312,7 +1316,7 @@
 				TargetAttributes = {
 					264EBB5D1D2E023C00FF8373 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 5R5G2D4E69;
+						DevelopmentTeam = 5F56XN57QC;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1819,7 +1823,7 @@
 				CODE_SIGN_ENTITLEMENTS = IBLWorkFlow/IBLWorkFlow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5R5G2D4E69;
+				DEVELOPMENT_TEAM = 5F56XN57QC;
 				GCC_PREFIX_HEADER = "${SRCROOT}/IBLWorkFlow/IBLWorkFlow-prefix.pch";
 				INFOPLIST_FILE = IBLWorkFlow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1828,7 +1832,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.IBLWorkFlow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pccw.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1842,7 +1846,7 @@
 				CODE_SIGN_ENTITLEMENTS = IBLWorkFlow/IBLWorkFlow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5R5G2D4E69;
+				DEVELOPMENT_TEAM = 5F56XN57QC;
 				GCC_PREFIX_HEADER = "${SRCROOT}/IBLWorkFlow/IBLWorkFlow-prefix.pch";
 				INFOPLIST_FILE = IBLWorkFlow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1851,7 +1855,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.IBLWorkFlow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pccw.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

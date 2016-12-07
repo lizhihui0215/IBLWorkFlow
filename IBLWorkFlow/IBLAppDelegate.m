@@ -41,7 +41,7 @@
 
 - (void)setupNotificationWithLaunchOptions:(NSDictionary *)launchOptions{
     //初始化方法,也可以使用(void)startWithAppkey:(NSString *)appKey launchOptions:(NSDictionary * )launchOptions httpsenable:(BOOL)value;这个方法，方便设置https请求。
-    [UMessage startWithAppkey:@"your appkey" launchOptions:launchOptions];
+    [UMessage startWithAppkey:@"56fb8699e0f55ad78a001ec9" launchOptions:launchOptions];
     
     //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
     [UMessage registerForRemoteNotifications];
@@ -67,9 +67,16 @@
 //iOS10以下使用这个方法接收通知
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    [UMessage setAutoAlert:NO];
     [UMessage didReceiveRemoteNotification:userInfo];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationReviced" object:userInfo];
+}
+
+
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    NSLog(@"error %@",error);
 }
 
 //iOS10新增：处理前台收到通知的代理方法

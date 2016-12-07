@@ -10,6 +10,7 @@
 #import "RESideMenu.h"
 #import "IBLOrderViewModel.h"
 #import "IBLSearchViewController.h"
+#import "HMSegmentedControl.h"
 
 static NSString *const OrderActionForwardIdentifier = @"ForwardForSearch";
 
@@ -20,5 +21,6 @@ static NSString *const NavigationToCreateAccountIdentifier = @"NavigationToCreat
 @interface IBLOrderViewController : IBLTableViewController <IBLSearchViewControllerDelegate>
 
 @property (nonatomic, strong) IBLOrderViewModel *viewModel;
+
 
 @end

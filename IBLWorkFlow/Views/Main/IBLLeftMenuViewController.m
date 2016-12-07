@@ -53,9 +53,9 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 }
 
 - (void)setupViewControllers{
-    UINavigationController *mineOrderContentViewController = [self mineOrderViewController];
+    UINavigationController *mineOrderContentViewController = [self mineOrderViewControllerWithIndex:0];
 
-    UINavigationController *managedOrderContentViewController = [self managedOrderController];
+    UINavigationController *managedOrderContentViewController = [self managedOrderControllerWithIndex:0];
     
     UINavigationController *createAccountViewController = [self createAccountViewController];
     
@@ -129,17 +129,20 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     return [[UINavigationController alloc] initWithRootViewController:createAccountViewController];
 }
 
-- (UINavigationController *)managedOrderController {
+- (UINavigationController *)managedOrderControllerWithIndex:(NSInteger)index {
     UINavigationController *managedOrderContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
     IBLOrderViewController *managedOrderViewController = (IBLOrderViewController *)managedOrderContentViewController.topViewController;
     managedOrderViewController.viewModel = [[IBLOrderViewModel alloc] initWithOrderType:IBLOrderTypeManage];
+    managedOrderViewController.viewModel.index = index;
     return managedOrderContentViewController;
 }
 
-- (UINavigationController *)mineOrderViewController {
+- (UINavigationController *)mineOrderViewControllerWithIndex:(NSInteger)index {
     UINavigationController *mineOrderContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentViewController"];
     IBLOrderViewController *mineOrderViewController = (IBLOrderViewController *)mineOrderContentViewController.topViewController;
     mineOrderViewController.viewModel = [[IBLOrderViewModel alloc] initWithOrderType:IBLOrderTypeMine];
+    mineOrderViewController.viewModel.index = index;
+
     return mineOrderContentViewController;
 }
 
@@ -166,13 +169,17 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 }
 
 - (void)notificationReviced:(NSNotification *)notification{
-    NSNumber *thePageToOpen = notification.userInfo[@""];
+    NSNumber *thePageToOpen = notification.object[@"target"];
+    NSNumber *status = notification.object[@"orderStatus"];
+    
     switch (thePageToOpen.integerValue) {
-        case 0:
+        case 1:
+            self.actionViewControllers[@(IBLLeftMenuSectionActionMineOrder)]  = [self mineOrderViewControllerWithIndex:[status integerValue] -1];
             
             [self.sideMenuViewController setContentViewController:self.actionViewControllers[@(IBLLeftMenuSectionActionMineOrder)]];
             break;
-        case 1:
+        case 2:
+            self.actionViewControllers[@(IBLLeftMenuSectionActionManagedOrder)] = [self managedOrderControllerWithIndex:[status integerValue]];
             [self.sideMenuViewController setContentViewController:self.actionViewControllers[@(IBLLeftMenuSectionActionManagedOrder)]];
             break;
         default:
