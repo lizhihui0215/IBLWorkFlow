@@ -7,7 +7,7 @@
 //
 
 #import "IBLNetworkServices.h"
-static NSString * const IBLAPIBaseURLString = @"http://115.28.0.62:8081/nodeibilling/services/";
+static NSString * const IBLAPIBaseURLString = @"http://115.28.157.117:8081/nodeibilling/services/";
 @implementation IBLSOAPMethod
 - (instancetype)initWithURLString:(NSString *)URLString
                          fileName:(NSString *)fileName
