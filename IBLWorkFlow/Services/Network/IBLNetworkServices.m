@@ -94,23 +94,16 @@ static __strong AFNetworkReachabilityManager *_reachabilityManager;
 
 + (void)setupURLWithURLString:(NSString *)URLString completeHandler:(void (^)(void))completeHandler {
     
+    if (!URLString) {
+        if(completeHandler) completeHandler();
+        return;
+    }
+    
     NSString *LANURL =[NSString stringWithFormat:@"http://%@/nodeibilling/services/",IBLNetworkServices.LANURL] ;
     
     NSString *WLANURL = [NSString stringWithFormat:@"http://%@/nodeibilling/services/",IBLNetworkServices.WLANURL];
-    
-    if ([NSString isNull:IBLNetworkServices.WLANURL]){
-        IBLAPIBaseURLString = LANURL;
-        if(completeHandler) completeHandler();
-        return;
-    }
-    
-    if ([NSString isNull:IBLNetworkServices.LANURL]){
-        IBLAPIBaseURLString = WLANURL;
-        if(completeHandler) completeHandler();
-        return;
-    }
-    
-    if ([NSString isNull:URLString]) IBLAPIBaseURLString = WLANURL;
+   
+    IBLAPIBaseURLString = [NSString stringWithFormat:@"http://%@/nodeibilling/services/",URLString];
     
     IBLNetworkServices.isCheckingNetworkStatus = YES;
     
