@@ -10,6 +10,9 @@
 #import "IBLWebServiceResponseSerializer.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+FOUNDATION_EXPORT NSString * IBLAPIBaseURLString;
+
 @interface IBLSOAPMethod : NSObject
 
 @property (nonatomic, copy) NSString *URLString;
@@ -34,7 +37,15 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface IBLNetworkServices : AFHTTPSessionManager
+
+@property (class, nonatomic, assign) NSString *LANURL;
+
+@property (class, nonatomic, assign) NSString *WLANURL;
+
 + (instancetype)networkServicesWithMethod:(IBLSOAPMethod *)method;
+
++ (void)setupURLWithURLString:(nullable NSString *)URLString
+              completeHandler:(nullable void (^)(void))completeHandler;
 
 - (nullable NSURLSessionDataTask *)POST:(nullable id)parameters
                                progress:(nullable void (^)(NSProgress *uploadProgress))uploadProgress

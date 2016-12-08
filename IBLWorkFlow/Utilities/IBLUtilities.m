@@ -25,4 +25,12 @@
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
     return [phoneTest evaluateWithObject:mobile];
 }
+
++ (BOOL)validateDomain:(NSString *)domain{
+    NSString *domainRegex = @"^[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\\.?(:\\d{0,5})?$";
+    
+    NSPredicate *domainTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",domainRegex];
+
+    return [domainTest evaluateWithObject:domain];
+}
 @end

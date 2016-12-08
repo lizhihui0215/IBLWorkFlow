@@ -8,10 +8,15 @@
 
 #import "IBLLoginViewModel.h"
 #import "IBLFetchUser.h"
+#import "IBLException.h"
 
 @interface IBLLoginViewModel ()
 
 @property (nonatomic, strong) IBLFetchUser *fetchUser;
+
+@property(nonatomic, copy) NSString *LAN;
+
+@property(nonatomic, copy) NSString *WLAN;
 
 @end
 
@@ -29,6 +34,17 @@
 - (void)loginWithUsername:(NSString *)username
                  password:(NSString *)password
           completeHandler:(IBLViewModelCompleteHandler)handler {
+
+    if ([NSString isNull:self.LAN] && [NSString isNull:self.WLAN]){
+        handler([NSError errorWithDomain:@""
+                                    code:0
+                                userInfo:@{kExceptionCode : @"-1",
+                                           kExceptionMessage: @"请输入服务器地址！"}]);
+        return;
+    }
+    
+    [self.fetchUser setupLAN:self.LAN WLAN:self.WLAN];
+
     
     [self.fetchUser startFetchWithUsername:username
                              password:password
@@ -43,5 +59,13 @@
 
 - (NSString *)lastPassword {
     return [self.fetchUser lastUser].password;
+}
+
+- (NSString *)lastLAN {
+    return [self.fetchUser lastLAN];
+}
+
+- (NSString *)lastWLAN {
+    return [self.fetchUser lastWLAN];
 }
 @end

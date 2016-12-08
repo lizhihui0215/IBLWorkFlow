@@ -10,6 +10,7 @@
 #import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 #import "UINavigationBar+IBLExtension.h"
 #import "UMessage.h"
+#import "IBLNetworkServices.h"
 
 
 
@@ -124,6 +125,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [IBLNetworkServices setupURLWithURLString:IBLAPIBaseURLString completeHandler:nil];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

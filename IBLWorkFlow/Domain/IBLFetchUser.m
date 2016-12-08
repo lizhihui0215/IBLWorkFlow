@@ -12,6 +12,11 @@
 
 @implementation IBLFetchUser
 
+- (void)setupLAN:(NSString *)LAN WLAN:(NSString *)WLAN{
+    [IBLNetworkServices setLANURL:LAN];
+    [IBLNetworkServices setWLANURL:WLAN];
+}
+
 - (NSError *)validateWithUsername:(NSString *)username
                          password:(NSString *)password{
     NSError *error = nil;
@@ -34,7 +39,7 @@
 }
 
 - (IBLUser *)lastUser{
-   return [NSKeyedUnarchiver unarchiveObjectWithFile:[IBLFileManager patchForUserCacheFile]];
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:[IBLFileManager patchForUserCacheFile]];
 }
 
 - (void)saveLastUser:(IBLUser *)user{
@@ -56,20 +61,37 @@
     
     if (error) { handler(nil, error); return; }
     
-    [user fetchWithUsername:username
-                   password:password
-            completeHandler:^(IBLUser *user, NSError *error) {
-                
-                if (error) { handler(nil, error); return; }
-                
-                IBLAppRepository *appRepository = [[IBLAppRepository alloc] init];
-                [appRepository fetchWithConfigurationWithCompleteHandler:^(IBLAppConfiguration *configuration, NSError *error) {
-                    [IBLUserRepository setUser:user];
-                    user.account = username;
-                    user.password = password;
-                    [self saveLastUser:user];
-                    handler(user, error);
-                }];                
-            }];
+    NSString *URLString = IBLNetworkServices.LANURL == nil ?  IBLNetworkServices.WLANURL : IBLNetworkServices.LANURL;
+    
+    [IBLNetworkServices setupURLWithURLString:URLString
+                              completeHandler:^{
+                                  [user fetchWithUsername:username
+                                                 password:password
+                                          completeHandler:^(IBLUser *user, NSError *error) {
+                                              
+                                              if (error) {
+                                                  handler(nil, error);
+                                                  return;
+                                              }
+                                              
+                                              IBLAppRepository *appRepository = [[IBLAppRepository alloc] init];
+                                              [appRepository fetchWithConfigurationWithCompleteHandler:^(IBLAppConfiguration *configuration, NSError *error) {
+                                                  [IBLUserRepository setUser:user];
+                                                  user.account = username;
+                                                  user.password = password;
+                                                  [self saveLastUser:user];
+                                                  handler(user, error);
+                                              }];
+                                          }];
+                                  
+                              }];
+}
+
+- (NSString *)lastLAN {
+    return IBLNetworkServices.LANURL;
+}
+
+- (NSString *)lastWLAN {
+    return IBLNetworkServices.WLANURL;
 }
 @end

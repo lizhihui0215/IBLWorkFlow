@@ -30,5 +30,6 @@
  */
 + (BOOL) validateMobile:(NSString *)mobile;
 
++ (BOOL)validateDomain:(NSString *)domain;
 
 @end

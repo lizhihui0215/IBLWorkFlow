@@ -11,9 +11,15 @@
 
 @interface IBLFetchUser : IBLUseCase
 
+- (void)setupLAN:(NSString *)LAN WLAN:(NSString *)WLAN;
+
 - (void)startFetchWithUsername:(NSString *)username
                       password:(NSString *)password
                completeHandler:(void (^)(IBLUser *, NSError *))handler;
 
 - (IBLUser *)lastUser;
+
+- (NSString *)lastLAN;
+
+- (NSString *)lastWLAN;
 @end
