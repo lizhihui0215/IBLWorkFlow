@@ -22,5 +22,7 @@ static NSString *const NavigationToCreateAccountIdentifier = @"NavigationToCreat
 
 @property (nonatomic, strong) IBLOrderViewModel *viewModel;
 
+@property (nonatomic, assign) IBLOrderStatus status;
+
 
 @end

@@ -67,6 +67,11 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
     self.segmentedControl.selectionIndicatorHeight = 2.0f;
     self.segmentedControl.selectionIndicatorColor = [UIColor colorWithHex:0x107BE0];
+    
+//    self.viewModel.index = [[self.viewModel statusDictionary] valueForKey:[@(self.status) stringValue]];
+    
+    [self.viewModel setStatus:self.status];
+    
     [self switchTableWithIndex:self.viewModel.index];
     self.segmentedControl.selectedSegmentIndex = self.viewModel.index;
     

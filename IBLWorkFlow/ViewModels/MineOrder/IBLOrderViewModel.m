@@ -44,8 +44,6 @@
 
 @implementation IBLOrderViewModel
 
-
-
 - (void)setDataSource:(NSMutableArray *)dataSource{
     _dataSource = dataSource;
 }
@@ -63,7 +61,9 @@
     self.dataSource = self.dataSourceMaps[@(index)];
 }
 
-- (NSDictionary *)statusDictionary{
+
+
+- (NSDictionary<NSNumber *, NSNumber *> *)statusDictionary{
     NSDictionary *statusMap = nil;
     switch (self.type) {
         case IBLOrderTypeMine: {
@@ -568,7 +568,7 @@
             }
             break;
         }
-        
+            
         case IBLOrderStatusHandling: {
             switch (action) {
                 case IBLOrderActionForward:
@@ -603,7 +603,7 @@
                 }
                 default: break;
             }
-
+            
             break;
         }
         default: break;
@@ -612,7 +612,7 @@
 
 
 - (void)finishedHandleOrderWithAction:(IBLOrderAction)action
-                  atIndexPath:(NSIndexPath *)indexPath {
+                          atIndexPath:(NSIndexPath *)indexPath {
     if (self.type == IBLOrderTypeMine) {
         [self finisedHandleMineWorkOrderStatusWithWithAction:action
                                                  atIndexPath:indexPath];
@@ -643,4 +643,28 @@
 }
 
 
+- (void)setStatus:(IBLOrderStatus)status {
+    NSDictionary *statusMap = nil;
+    switch (self.type) {
+        case IBLOrderTypeMine: {
+            statusMap = @{ @(IBLOrderStatusSended) : @(0),
+                           @(IBLOrderStatusHandling) : @(1),
+                           @(IBLOrderStatusForwarding) : @(2),
+                           @(IBLOrderStatusFinished) : @(3),
+                           @(IBLOrderStatusInvalid): @(4)} ;
+            break;
+        }
+        case IBLOrderTypeManage: {
+            statusMap = @{ @(IBLOrderStatusUnsend) : @(0),
+                           @(IBLOrderStatusSended) : @(1),
+                           @(IBLOrderStatusHandling) : @(2),
+                           @(IBLOrderStatusForwarding) : @(3),
+                           @(IBLOrderStatusFinished) : @(4),
+                           @(IBLOrderStatusInvalid): @(5)} ;
+            break;
+        }
+    }
+    
+    self.index = [statusMap[@(status)] integerValue];
+}
 @end

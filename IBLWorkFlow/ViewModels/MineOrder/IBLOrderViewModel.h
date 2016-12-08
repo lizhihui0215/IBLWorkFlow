@@ -72,4 +72,6 @@ typedef NS_ENUM(NSInteger, IBLOrderType) {
                   atIndexPath:(NSIndexPath *)indexPath;
 
 - (NSIndexPath *)indexPathWithOrder:(IBLOrder *)order;
+
+- (void)setStatus:(IBLOrderStatus)status;
 @end
