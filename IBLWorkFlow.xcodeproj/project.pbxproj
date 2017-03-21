@@ -1316,7 +1316,7 @@
 				TargetAttributes = {
 					264EBB5D1D2E023C00FF8373 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 5F56XN57QC;
+						DevelopmentTeam = 5R5G2D4E69;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1823,7 +1823,7 @@
 				CODE_SIGN_ENTITLEMENTS = IBLWorkFlow/IBLWorkFlow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5F56XN57QC;
+				DEVELOPMENT_TEAM = 5R5G2D4E69;
 				GCC_PREFIX_HEADER = "${SRCROOT}/IBLWorkFlow/IBLWorkFlow-prefix.pch";
 				INFOPLIST_FILE = IBLWorkFlow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1832,7 +1832,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pccw.IBLWorkFlow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1846,7 +1846,7 @@
 				CODE_SIGN_ENTITLEMENTS = IBLWorkFlow/IBLWorkFlow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5F56XN57QC;
+				DEVELOPMENT_TEAM = 5R5G2D4E69;
 				GCC_PREFIX_HEADER = "${SRCROOT}/IBLWorkFlow/IBLWorkFlow-prefix.pch";
 				INFOPLIST_FILE = IBLWorkFlow/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1855,7 +1855,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.pccw.IBLWorkFlow;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
