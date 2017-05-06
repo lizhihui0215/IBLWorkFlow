@@ -25,6 +25,11 @@
                                                        @"OFFER_ID" : @"offerId",
                                                        @"STATE_NAME" : @"state",
                                                        @"REMARK" : @"remark",
+                                                       @"CUST_TYPE": @"custType",
+                                                       @"COM_NAME": @"comName",
+                                                       @"COM_CONTACT_PHONE": @"comContactPhone",
+                                                       @"COM_CONTACT": @"comContact",
+                                                       @"COM_ADDR": @"comAddr",
                                                        }];
 }
 

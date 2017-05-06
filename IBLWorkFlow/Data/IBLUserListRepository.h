@@ -88,6 +88,7 @@
 @end
 
 @interface IBLCreateAccountInfo : NSObject
+
 //开户类型，0-默认，1-用户自助，2-账号卡开户（可选）
 @property(nonatomic, copy) NSString *type;
 //账号卡卡号（可选）
@@ -171,6 +172,13 @@
 @property(nonatomic, copy) NSString *contractCode;
 //票据号
 @property(nonatomic, copy) NSString *voiceCode;
+
+@property (nonatomic, assign) NSInteger custType;
+@property (nonatomic, copy) NSString *comName;
+@property (nonatomic, copy) NSString *comContact;
+@property (nonatomic, copy) NSString *comContactPhone;
+@property (nonatomic, copy) NSString *comAddr;
+
 @end
 
 @interface IBLFetchUserListInfo : IBLFetchList
@@ -188,6 +196,7 @@
 @property (nonatomic, copy) NSString *userIdentifier;
 /// 用户地址 （支持迷糊查询）
 @property (nonatomic, copy) NSString *address;
+
 
 + (instancetype)infoWithAccount:(NSString *)account
                        username:(NSString *)username

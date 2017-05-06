@@ -33,6 +33,11 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
     IBLCreateAccountTextFieldTypeAmmount,
 };
 
+typedef NS_ENUM(NSInteger, IBLCreateAccountUserType) {
+    IBLCreateAccountUserTypeDetault,
+    IBCreateAccountLUserTypeEnterprise
+};
+
 @protocol IBLCreateAccountTableViewControllerDataSource <NSObject>
 
 - (void)tableViewController:(IBLCreateAccountTableViewController *)controller
@@ -122,6 +127,19 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountTextFieldType) {
 
 /// 支付金额
 @property (nonatomic, assign) CGFloat pay;
+
+// 用户类型
+@property (nonatomic, assign) IBLCreateAccountUserType userType;
+
+@property (nonatomic, assign) NSString *companyName;
+
+@property (nonatomic, copy) NSString *companyPhone;
+
+@property (nonatomic, copy) NSString *companyContact;
+
+@property (nonatomic, copy) NSString *companyAddress;
+
+
 
 + (instancetype)infoWithResidentialIdentifier:(NSInteger)residentialIdentifier
                             productIdentifier:(NSInteger)productIdentifier

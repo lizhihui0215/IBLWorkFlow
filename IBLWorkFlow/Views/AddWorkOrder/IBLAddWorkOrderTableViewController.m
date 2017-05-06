@@ -188,6 +188,12 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     return 40;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+}
+
 
 
 - (NSDictionary<NSIndexPath *, NSNumber* > *)hiddenFieldsDictionaryWithWorkBizType:(IBLWorkOrderBizStatus)bizType{
@@ -486,7 +492,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     }else if ([segue.identifier isEqualToString:IBLSearchForRelateUserIdentifier]){
         IBLUserSearchViewController *userSearchViewController = [segue destinationViewController];
         userSearchViewController.viewModel = [[IBLUserSearchViewModel alloc] initWithSearchType:IBLUserSearchTypeAddWorkOrder];
-        //        searchViewController.searchDelegate = self;
+//                searchViewController.searchDelegate = self;
     }
 }
 

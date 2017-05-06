@@ -74,6 +74,12 @@
         parameters[@"payCost"] = @(QRPayInfo.payCost * 100); // 支付金额 900
         parameters[@"otherCost"] = @([QRPayInfo.otherCost doubleValue] * 100); // 优惠金额 - 值
         parameters[@"nodeId"] = QRPayInfo.nodeId;
+        parameters[@"custType"] = @(QRPayInfo.custType);
+        parameters[@"comName"] = QRPayInfo.comName;
+        parameters[@"comContact"] = QRPayInfo.comContact;
+        parameters[@"comContactPhone"] = QRPayInfo.comContactPhone;
+        parameters[@"comAddr"] = QRPayInfo.comAddr;
+        
         return parameters;
     }];
     

@@ -137,6 +137,12 @@
    createInfo.preCost = info.discount;
    createInfo.extraLength = info.give;
    createInfo.totalCost = info.pay;
+    createInfo.custType = info.userType;
+    createInfo.comName = info.companyName;
+    createInfo.comContact = info.companyContact;
+    createInfo.comContactPhone = info.companyPhone;
+    createInfo.comAddr = info.address;
+    
     
     
     [self.createAccount createAccountWithInfo:createInfo
@@ -195,6 +201,14 @@
     info.otherCost = [@(0 - createAccountInfo.discount) stringValue];
     
     info.nodeId = [@(createAccountInfo.residentialIdentifier) stringValue];
+    
+    info.custType = createAccountInfo.userType;
+    
+    info.comName = createAccountInfo.companyName;
+    info.comContact = createAccountInfo.companyContact;
+    info.comContactPhone = createAccountInfo.companyPhone;
+    info.comAddr = createAccountInfo.companyAddress;
+    
     
     
     [self.pay payWithQRPayInfo:info

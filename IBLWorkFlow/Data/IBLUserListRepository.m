@@ -204,6 +204,12 @@
         parameters[@"prompt"] = createAccountInfo.prompt;
         parameters[@"contractCode"] = createAccountInfo.contractCode;
         parameters[@"voiceCode"] = createAccountInfo.voiceCode;
+        parameters[@"custType"] = @(createAccountInfo.custType);
+        parameters[@"comName"] = createAccountInfo.comName;
+        parameters[@"comContact"] = createAccountInfo.comContact;
+        parameters[@"comContactPhone"] = createAccountInfo.comContactPhone;
+        parameters[@"comAddr"] = createAccountInfo.comAddr;
+
         return parameters;
     }];
     

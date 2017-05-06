@@ -22,6 +22,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *effectDateTextField;
 @property (weak, nonatomic) IBOutlet UITextField *expiryDateTextField;
 @property (weak, nonatomic) IBOutlet UILabel *backupLabel;
+@property (weak, nonatomic) IBOutlet UITextField *userTypeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *companyNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *companyContactTextField;
+@property (weak, nonatomic) IBOutlet UITextField *companyContactPhoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *companyAddressTextField;
 
 @property (nonatomic, strong) IBLFetchOrderRelatedUser *fetchOrderRelatedUser;
 
@@ -44,6 +49,45 @@
     self.effectDateTextField.text = self.orderRelateUser.exfDate;
     self.expiryDateTextField.text = self.orderRelateUser.expDate;
     self.backupLabel.text = self.orderRelateUser.remark;
+    
+    NSString *custName = @"默认";
+    
+    if (self.orderRelateUser.custType == 0) custName = @"企业";
+    
+    self.userTypeTextField.text = custName;
+    
+    self.companyNameTextField.text = self.orderRelateUser.comName;
+    
+    self.companyContactTextField.text = self.orderRelateUser.comContact;
+    
+    self.companyContactPhoneTextField.text = self.orderRelateUser.comContactPhone;
+    
+    self.companyAddressTextField.text = self.orderRelateUser.comAddr;
+    
+}
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.orderRelateUser.custType == 0) {
+        NSIndexPath *companyNameIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+        NSIndexPath *companyContactIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+        NSIndexPath *companyContactPhoneIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
+        NSIndexPath *companyAddressIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+        return [@[companyNameIndexPath,
+                  companyContactIndexPath,
+                  companyContactPhoneIndexPath,
+                  companyAddressIndexPath] containsObject:indexPath];
+
+    }else {
+        NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
+        NSIndexPath *userPhoneIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+        NSIndexPath *userAddressIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
+        
+        return [@[usernameIndexPath,
+                 userPhoneIndexPath,
+                  userAddressIndexPath] containsObject:indexPath];
+
+    }
+
 }
 
 - (void)viewDidLoad {
@@ -81,6 +125,9 @@
 //}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if ([self isHiddenAtIndexPath:indexPath]) return 0;
+
     UITableViewCell *cell =  [super tableView:tableView cellForRowAtIndexPath:indexPath];
     
     CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];

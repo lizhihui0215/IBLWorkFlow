@@ -68,6 +68,15 @@ typedef NS_ENUM(NSInteger, IBLOrderPayStatus) {
 @property (nonatomic, strong) NSString *otherCost;
 @property (nonatomic, strong) NSString *nodeId;
 
+@property (nonatomic, assign) NSInteger custType;
+@property (nonatomic, copy) NSString *comName;
+@property (nonatomic, copy) NSString *comContact;
+@property (nonatomic, copy) NSString *comContactPhone;
+@property (nonatomic, copy) NSString *comAddr;
+
+
+
+
 @end
 
 @interface IBLPayRepository : IBLBusinessRepository

@@ -41,7 +41,7 @@
         self.address = address;
         self.handleMark = handleMark;
     }
-
+    
     return self;
 }
 
@@ -113,6 +113,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *giveTextField;
 /// 优惠金额
 @property (weak, nonatomic) IBOutlet UITextField *discountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *userTypeTextField;
 /// 支付金额
 @property (weak, nonatomic) IBOutlet UITextField *payTextField;
 
@@ -122,6 +123,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *payLabel;
 @property (weak, nonatomic) IBOutlet UILabel *giveLabel;
 @property (weak, nonatomic) IBOutlet UILabel *salesCountLabel;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterprisesContactTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterprisesPhoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterprisesAddressTextField;
 
 @end
 
@@ -137,8 +142,36 @@
         self.createAccountInfo.effectDate = time;
         self.dateOfValidTextField.text = self.createAccountInfo.effectDate;
     };
+}
 
+- (NSDictionary <NSNumber *, NSString *> *)userTypeNames{
+    return @{@(IBLCreateAccountUserTypeDetault) : @"默认",
+             @(IBCreateAccountLUserTypeEnterprise) : @"企业"};
+}
 
+- (IBAction)userTypeTapped:(UITapGestureRecognizer *)sender {
+    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"默认"
+                                                         action:^(IBLButtonItem *item) {
+                                                             self.createAccountInfo.userType = IBLCreateAccountUserTypeDetault;
+                                                             self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+                                                             [self.tableView reloadData];
+                                                         }];
+    
+    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"企业"
+                                                 action:^(IBLButtonItem *item) {
+                                                     self.createAccountInfo.userType = IBCreateAccountLUserTypeEnterprise;
+                                                     self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    
+    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+    
+    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                    title:@"请选择用户类型"
+                                                                  message:nil
+                                                         cancleButtonItem:cancel
+                                                         otherButtonItems:beforeTheDate,first,nil];
+    [alert showInController:self];
 }
 
 - (IBAction)effectTypeTapped:(UITapGestureRecognizer *)sender {
@@ -158,7 +191,7 @@
                                                  }];
     
     IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-
+    
     
     IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
                                                                     title:@"请选择生效方式"
@@ -270,12 +303,12 @@
                                                         kExceptionMessage: @"订购数量必须大于0！"}];
             [self showAlertWithError:error];
             return NO;
-
+            
         }
         
         return YES;
     }
-
+    
     
     if ([[self priceTextFields] containsObject:textField]) return [self validatePriceWithTextField:textField];
     
@@ -424,7 +457,7 @@
 
 - (CGFloat)payWithDiscount:(CGFloat)aDiscount{
     // 支付金额 = 单个销售品金额（totalFee） ＊ 订购数量 - 优惠金额
-
+    
     // 单个销售品总额
     NSInteger unitPrice = self.productPrice.totalAmount;
     // 订购数量
@@ -531,7 +564,7 @@
     NSIndexPath *account = [NSIndexPath indexPathForRow:0 inSection:0];
     NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
     
-
+    
     return @{custNameIndexPath : self.usernameTextField,
              custPhone : self.phoneTextField,
              custIdCard : self.identifierTextField,
@@ -554,7 +587,7 @@
     NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
     NSIndexPath *account = [NSIndexPath indexPathForRow:0 inSection:0];
     NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
-
+    
     return @{custNameIndexPath : @"用户名不能为空！",
              custPhone : @"联系电话不能为空！",
              custIdCard : @"身份证号不能为空！",
@@ -592,12 +625,12 @@
     
     if (!isHiddenPassword && [NSString isNull:self.passwordTextField.text]) {
         notNullText = @"用户密码不能为空！";
-
+        
     }
     
     if ([NSString isNull:self.productTextField.text]) {
         notNullText = @"请选择销售品！";
-
+        
     }
     
     if ([NSString isNull:self.methodOfValidTextField.text]) {
@@ -645,6 +678,10 @@
     self.createAccountInfo.discount = [self.discountTextField.text doubleValue];
     self.createAccountInfo.pay = [self.payTextField.text doubleValue];
     self.createAccountInfo.username = self.usernameTextField.text;
+    self.createAccountInfo.companyName = self.enterpriseTextField.text;
+    self.createAccountInfo.companyPhone = self.enterprisesPhoneTextField.text;
+    self.createAccountInfo.companyContact = self.enterprisesContactTextField.text;
+    self.createAccountInfo.companyAddress = self.enterprisesContactTextField.text;
 }
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {
@@ -668,12 +705,40 @@
     BOOL isHidden = [self.tableViewDataSource isHiddenAtIndexPath:indexPath];
     
     if (isHidden) return 0;
-
-    if([indexPath isEqual:[NSIndexPath indexPathForRow:4 inSection:1]]) return 87;
+    
+    if([indexPath isEqual:[NSIndexPath indexPathForRow:8 inSection:1]]) return 87;
     
     if ([self isHiddenEffectDate] && [indexPath isEqual:[NSIndexPath indexPathForRow:6 inSection:0]]) return 0;
     
+    if ([self isHiddenAtIndexPath:indexPath]) return 0;
+    
     return 30;
+}
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.createAccountInfo.userType == IBLCreateAccountUserTypeDetault) {
+        NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:4 inSection:1];
+        NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
+        NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
+        NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
+        return [@[enterpriseNameIndexPath,
+                  enterpriseContactIndexPath,
+                  enterprisePhoneIndexPath,
+                  enterpriseAddressIndexPath] containsObject:indexPath];
+    }else{
+        NSIndexPath *userNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+        NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:1 inSection:1];
+        NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+        NSIndexPath *identifierIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
+        return [@[userNameIndexPath,
+                  phoneIndexPath,
+                  addressIndexPath,
+                  identifierIndexPath] containsObject:indexPath];
+
+    }
+    
+    
+    return YES;
 }
 
 - (BOOL)isHiddenEffectDate{
@@ -703,13 +768,13 @@
 - (void)searchViewController:(IBLSearchViewController *)searchViewController
            didSelectedResult:(id)searchResult {
     switch (searchViewController.viewModel.searchType) {
-        
+            
         case IBLSearchTypeCreateAccountArea: {
             IBLRegion *region = searchResult;
             self.createAccountInfo.regionName = region.name;
             self.createAccountInfo.residentialIdentifier = region.identifier;
             self.regionTextField.text = region.name;
-
+            
             break;
         }
         case IBLSearchTypeCreateAccountProduct: {
