@@ -210,5 +210,5 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
 @property (nonatomic, copy) NSString *simpleComName;
 
 
-
+@property(nonatomic) NSInteger certType;
 @end

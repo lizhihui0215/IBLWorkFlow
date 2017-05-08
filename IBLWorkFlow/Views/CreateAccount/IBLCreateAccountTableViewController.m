@@ -146,19 +146,53 @@
     };
 }
 - (IBAction)identifierTypeTapped:(UITapGestureRecognizer *)sender {
-    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"一般用户"
+    IBLButtonItem *menu1 = [IBLButtonItem itemWithLabel:@"身份证"
                                                          action:^(IBLButtonItem *item) {
-                                                             self.createAccountInfo.userType = IBLCreateAccountUserTypeDetault;
-                                                             self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+                                                             self.createAccountInfo.certType = 0;
+                                                             self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
                                                              [self.tableView reloadData];
                                                          }];
     
-    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"企业用户"
+    IBLButtonItem *menu2 = [IBLButtonItem itemWithLabel:@"驾照"
                                                  action:^(IBLButtonItem *item) {
-                                                     self.createAccountInfo.userType = IBCreateAccountLUserTypeEnterprise;
-                                                     self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+                                                     self.createAccountInfo.certType = 1;
+                                                     self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
                                                      [self.tableView reloadData];
                                                  }];
+    IBLButtonItem *menu3 = [IBLButtonItem itemWithLabel:@"护照"
+                                                         action:^(IBLButtonItem *item) {
+                                                             self.createAccountInfo.certType = 2;
+                                                             self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                             [self.tableView reloadData];
+                                                         }];
+
+    IBLButtonItem *menu4 = [IBLButtonItem itemWithLabel:@"回乡证"
+                                                 action:^(IBLButtonItem *item) {
+                                                     self.createAccountInfo.certType = 3;
+                                                     self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    IBLButtonItem *menu5 = [IBLButtonItem itemWithLabel:@"台胞证"
+                                                         action:^(IBLButtonItem *item) {
+                                                             self.createAccountInfo.certType = 4;
+                                                             self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                             [self.tableView reloadData];
+                                                         }];
+
+    IBLButtonItem *menu6 = [IBLButtonItem itemWithLabel:@"其它"
+                                                 action:^(IBLButtonItem *item) {
+                                                     self.createAccountInfo.certType = 5;
+                                                     self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    IBLButtonItem *menu7 = [IBLButtonItem itemWithLabel:@"营业执照"
+                                                         action:^(IBLButtonItem *item) {
+                                                             self.createAccountInfo.certType = 6;
+                                                             self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                             [self.tableView reloadData];
+                                                         }];
+
+
     
     IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
     
@@ -166,7 +200,7 @@
                                                                     title:@"请选择证件号码"
                                                                   message:nil
                                                          cancleButtonItem:cancel
-                                                         otherButtonItems:beforeTheDate,first,nil];
+                                                         otherButtonItems:menu1,menu2,menu3,menu4,menu5,menu6,menu7,nil];
     [alert showInController:self];
 
 }
@@ -238,6 +272,8 @@
     self.commentTextView.textContainerInset = UIEdgeInsetsZero;
     self.createAccountInfo = [self.tableViewDataSource createAccountInfoOfTableViewController:self];
     self.countTextField.text = @"1";
+    if (self.createAccountInfo.userType == IBCreateAccountLUserTypeEnterprise) self.createAccountInfo.certType = 6;
+    self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
     switch (createAccountType) {
         case IBLCreateAccountTypeFromOrder: {
             self.regionTextField.text = self.createAccountInfo.regionName;
@@ -249,15 +285,12 @@
             self.addressTextField.text = self.createAccountInfo.address;
             self.identifierTextField.text = self.createAccountInfo.identifierNumber;
             self.commentTextView.text = self.createAccountInfo.remark;
-            self.
             self.enterprisesPhoneTextField.text = self.createAccountInfo.companyPhone;
             self.enterpriseTextField.text = self.createAccountInfo.companyName;
             self.enterprisesAddressTextField.text = self.createAccountInfo.companyAddress;
             self.enterprisesContactTextField.text = self.createAccountInfo.companyContact;
             self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
             self.sampleEnterpiseNameTextField.text = self.createAccountInfo.simpleComName;
-
-            
             @weakify(self)
             [self.tableViewDataSource productPriceOfTableViewController:self
                                                         completeHandler:^(IBLProductPrice *productPrice) {
@@ -325,10 +358,9 @@
     BOOL isNumber = [self validateNumberWithText:textField.text];
     
     if (!isNumber) return NO;
-    
-    if (![self validateTextFields:textField]) return NO;
-    
-    return YES;
+
+    return ![self validateTextFields:textField] ? NO : YES;
+
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField;{
@@ -586,6 +618,16 @@
         self.discountTextField.text = [@([self discountWithPay:[self.payTextField.text doubleValue]]) stringValue];
 }
 
+- (NSDictionary<NSNumber *, NSString *> *)certTypeNames{
+    return @{@(0) : @"身份证",
+            @(1) : @"驾照",
+            @(2) : @"护照",
+            @(3) : @"回乡证",
+            @(4) : @"台胞证",
+            @(5) : @"其它",
+            @(6) : @"营业执照",};
+}
+
 //!!!: 优化将title 和 effect 提取到appConfig中
 - (NSDictionary<NSNumber *,NSString *> *)effectNames{
     return @{@(1) : @"指定日期",
@@ -783,14 +825,10 @@
         NSIndexPath *userNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
         NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:1 inSection:1];
         NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
-        NSIndexPath *identifierTypeIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
 
-        NSIndexPath *identifierIndexPath = [NSIndexPath indexPathForRow:4 inSection:1];
         return [@[userNameIndexPath,
                   phoneIndexPath,
-                  identifierTypeIndexPath,
-                  addressIndexPath,
-                  identifierIndexPath] containsObject:indexPath];
+                  addressIndexPath] containsObject:indexPath];
 
     }
     

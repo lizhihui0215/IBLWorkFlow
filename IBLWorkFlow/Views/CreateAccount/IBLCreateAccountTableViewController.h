@@ -141,7 +141,7 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountUserType) {
 @property (nonatomic, copy) NSString *simpleComName;
 
 
-
+@property(nonatomic) NSInteger certType;
 
 + (instancetype)infoWithResidentialIdentifier:(NSInteger)residentialIdentifier
                             productIdentifier:(NSInteger)productIdentifier

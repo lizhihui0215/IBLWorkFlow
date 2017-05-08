@@ -80,6 +80,7 @@
         parameters[@"comContactPhone"] = QRPayInfo.comContactPhone;
         parameters[@"comAddr"] = QRPayInfo.comAddr;
         parameters[@"simpleComName"] = QRPayInfo.simpleComName;
+        parameters[@"certType"] = @(QRPayInfo.certType);
 
         return parameters;
     }];

@@ -76,9 +76,7 @@ typedef NS_ENUM(NSInteger, IBLOrderPayStatus) {
 @property (nonatomic, copy) NSString *simpleComName;
 
 
-
-
-
+@property(nonatomic) NSInteger certType;
 @end
 
 @interface IBLPayRepository : IBLBusinessRepository

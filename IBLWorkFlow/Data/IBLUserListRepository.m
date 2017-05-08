@@ -209,7 +209,7 @@
         parameters[@"comContact"] = createAccountInfo.comContact;
         parameters[@"comContactPhone"] = createAccountInfo.comContactPhone;
         parameters[@"comAddr"] = createAccountInfo.comAddr;
-
+        parameters[@"certType"] = @(createAccountInfo.certType);
         return parameters;
     }];
     

@@ -180,6 +180,7 @@
 @property (nonatomic, copy) NSString *comAddr;
 @property (nonatomic, copy) NSString *simpleComName;
 
+@property(nonatomic) NSInteger certType;
 @end
 
 @interface IBLFetchUserListInfo : IBLFetchList
