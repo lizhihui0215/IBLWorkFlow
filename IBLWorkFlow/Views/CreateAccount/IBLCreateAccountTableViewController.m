@@ -117,6 +117,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *userTypeTextField;
 /// 支付金额
 @property (weak, nonatomic) IBOutlet UITextField *payTextField;
+@property (weak, nonatomic) IBOutlet UITextField *identifierTypeTextField;
 
 @property (nonatomic, strong) IBLProductPrice *productPrice;
 @property (weak, nonatomic) IBOutlet UILabel *salesLabel;
@@ -143,6 +144,31 @@
         self.createAccountInfo.effectDate = time;
         self.dateOfValidTextField.text = self.createAccountInfo.effectDate;
     };
+}
+- (IBAction)identifierTypeTapped:(UITapGestureRecognizer *)sender {
+    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"一般用户"
+                                                         action:^(IBLButtonItem *item) {
+                                                             self.createAccountInfo.userType = IBLCreateAccountUserTypeDetault;
+                                                             self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+                                                             [self.tableView reloadData];
+                                                         }];
+    
+    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"企业用户"
+                                                 action:^(IBLButtonItem *item) {
+                                                     self.createAccountInfo.userType = IBCreateAccountLUserTypeEnterprise;
+                                                     self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    
+    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+    
+    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                    title:@"请选择证件号码"
+                                                                  message:nil
+                                                         cancleButtonItem:cancel
+                                                         otherButtonItems:beforeTheDate,first,nil];
+    [alert showInController:self];
+
 }
 
 - (NSDictionary <NSNumber *, NSString *> *)userTypeNames{
@@ -229,6 +255,7 @@
             self.enterprisesAddressTextField.text = self.createAccountInfo.companyAddress;
             self.enterprisesContactTextField.text = self.createAccountInfo.companyContact;
             self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+            self.sampleEnterpiseNameTextField.text = self.createAccountInfo.simpleComName;
 
             
             @weakify(self)
@@ -741,21 +768,27 @@
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
     if (self.createAccountInfo.userType == IBLCreateAccountUserTypeDetault) {
-        NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:4 inSection:1];
-        NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
-        NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
-        NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
+        NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
+        NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
+        NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
+        NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
+        NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
+
         return [@[enterpriseNameIndexPath,
                   enterpriseContactIndexPath,
                   enterprisePhoneIndexPath,
-                  enterpriseAddressIndexPath] containsObject:indexPath];
+                  enterpriseAddressIndexPath,
+                  enterpriseSampleNameIndexPath] containsObject:indexPath];
     }else{
         NSIndexPath *userNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
         NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:1 inSection:1];
         NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
-        NSIndexPath *identifierIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
+        NSIndexPath *identifierTypeIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
+
+        NSIndexPath *identifierIndexPath = [NSIndexPath indexPathForRow:4 inSection:1];
         return [@[userNameIndexPath,
                   phoneIndexPath,
+                  identifierTypeIndexPath,
                   addressIndexPath,
                   identifierIndexPath] containsObject:indexPath];
 
