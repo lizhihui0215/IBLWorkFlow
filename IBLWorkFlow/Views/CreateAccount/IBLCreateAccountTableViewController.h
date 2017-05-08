@@ -138,6 +138,8 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountUserType) {
 @property (nonatomic, copy) NSString *companyContact;
 
 @property (nonatomic, copy) NSString *companyAddress;
+@property (nonatomic, copy) NSString *simpleComName;
+
 
 
 

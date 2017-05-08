@@ -45,4 +45,12 @@
 /// 状态
 @property (nonatomic, copy) NSString *state;
 
+@property (nonatomic, assign) NSInteger custType;
+
+@property (nonatomic, copy) NSString *comName;
+@property (nonatomic, copy) NSString *comContact;
+@property (nonatomic, copy) NSString *comContactPhone;
+@property (nonatomic, copy) NSString *comAddr;
+
+
 @end

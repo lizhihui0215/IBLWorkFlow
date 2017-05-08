@@ -79,7 +79,8 @@
         parameters[@"comContact"] = QRPayInfo.comContact;
         parameters[@"comContactPhone"] = QRPayInfo.comContactPhone;
         parameters[@"comAddr"] = QRPayInfo.comAddr;
-        
+        parameters[@"simpleComName"] = QRPayInfo.simpleComName;
+
         return parameters;
     }];
     

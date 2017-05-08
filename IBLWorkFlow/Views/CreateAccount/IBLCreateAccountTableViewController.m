@@ -109,6 +109,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *contractNumberTextField;
 /// 票据号
 @property (weak, nonatomic) IBOutlet UITextField *ticketNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *sampleEnterpiseNameTextField;
 /// 临时赠送
 @property (weak, nonatomic) IBOutlet UITextField *giveTextField;
 /// 优惠金额
@@ -145,19 +146,19 @@
 }
 
 - (NSDictionary <NSNumber *, NSString *> *)userTypeNames{
-    return @{@(IBLCreateAccountUserTypeDetault) : @"默认",
-             @(IBCreateAccountLUserTypeEnterprise) : @"企业"};
+    return @{@(IBLCreateAccountUserTypeDetault) : @"一般用户",
+             @(IBCreateAccountLUserTypeEnterprise) : @"企业用户"};
 }
 
 - (IBAction)userTypeTapped:(UITapGestureRecognizer *)sender {
-    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"默认"
+    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"一般用户"
                                                          action:^(IBLButtonItem *item) {
                                                              self.createAccountInfo.userType = IBLCreateAccountUserTypeDetault;
                                                              self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
                                                              [self.tableView reloadData];
                                                          }];
     
-    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"企业"
+    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"企业用户"
                                                  action:^(IBLButtonItem *item) {
                                                      self.createAccountInfo.userType = IBCreateAccountLUserTypeEnterprise;
                                                      self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
@@ -222,6 +223,14 @@
             self.addressTextField.text = self.createAccountInfo.address;
             self.identifierTextField.text = self.createAccountInfo.identifierNumber;
             self.commentTextView.text = self.createAccountInfo.remark;
+            self.
+            self.enterprisesPhoneTextField.text = self.createAccountInfo.companyPhone;
+            self.enterpriseTextField.text = self.createAccountInfo.companyName;
+            self.enterprisesAddressTextField.text = self.createAccountInfo.companyAddress;
+            self.enterprisesContactTextField.text = self.createAccountInfo.companyContact;
+            self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+
+            
             @weakify(self)
             [self.tableViewDataSource productPriceOfTableViewController:self
                                                         completeHandler:^(IBLProductPrice *productPrice) {
@@ -262,6 +271,8 @@
     self.identifierTextField.keyboardType = UIKeyboardTypeASCIICapable;
     
     self.phoneTextField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    self.enterprisesPhoneTextField.keyboardType = UIKeyboardTypeNumberPad;
     
 }
 
@@ -320,6 +331,18 @@
                                                     kExceptionMessage: @"您输入的手机格式不正确！"}];
         [self showAlertWithError:error];
         return NO;
+    }
+    
+    if ((textField == self.enterprisesPhoneTextField && ![NSString isNull:self.enterprisesPhoneTextField.text])) {
+        if ([IBLUtilities validateMobile:textField.text]) return YES;
+        NSError *error = [NSError errorWithDomain:@""
+                                             code:0
+                                         userInfo:@{kExceptionCode : @"-1",
+                                                    kExceptionMessage: @"您输入的手机格式不正确！"}];
+        [self showAlertWithError:error];
+        return NO;
+
+        
     }
     
     if (textField == self.identifierTextField && ![NSString isNull:self.identifierTextField.text]) {
@@ -682,6 +705,7 @@
     self.createAccountInfo.companyPhone = self.enterprisesPhoneTextField.text;
     self.createAccountInfo.companyContact = self.enterprisesContactTextField.text;
     self.createAccountInfo.companyAddress = self.enterprisesContactTextField.text;
+    self.createAccountInfo.simpleComName = self.sampleEnterpiseNameTextField.text;
 }
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {

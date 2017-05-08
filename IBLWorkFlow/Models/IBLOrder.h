@@ -200,4 +200,13 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
 /// 工单操作按钮
 @property (nonatomic, strong) NSMutableArray<NSNumber *> *actions;
 
+@property (nonatomic, assign) NSInteger custType;
+
+@property (nonatomic, copy) NSString *comName;
+@property (nonatomic, copy) NSString *comContact;
+@property (nonatomic, copy) NSString *comContactPhone;
+@property (nonatomic, copy) NSString *comAddr;
+
+
+
 @end

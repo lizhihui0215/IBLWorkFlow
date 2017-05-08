@@ -50,9 +50,9 @@
     self.expiryDateTextField.text = self.orderRelateUser.expDate;
     self.backupLabel.text = self.orderRelateUser.remark;
     
-    NSString *custName = @"默认";
+    NSString *custName = @"一般用户";
     
-    if (self.orderRelateUser.custType == 0) custName = @"企业";
+    if (self.orderRelateUser.custType == 0) custName = @"企业用户";
     
     self.userTypeTextField.text = custName;
     

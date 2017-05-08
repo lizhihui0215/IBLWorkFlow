@@ -73,6 +73,8 @@ typedef NS_ENUM(NSInteger, IBLOrderPayStatus) {
 @property (nonatomic, copy) NSString *comContact;
 @property (nonatomic, copy) NSString *comContactPhone;
 @property (nonatomic, copy) NSString *comAddr;
+@property (nonatomic, copy) NSString *simpleComName;
+
 
 
 

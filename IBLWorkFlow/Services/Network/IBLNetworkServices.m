@@ -94,7 +94,7 @@ static __strong AFNetworkReachabilityManager *_reachabilityManager;
 
 + (void)setupURLWithURLString:(NSString *)URLString completeHandler:(void (^)(void))completeHandler {
     
-    if (!URLString) {
+    if (![NSString isNull:URLString]) {
         if(completeHandler) completeHandler();
         return;
     }
