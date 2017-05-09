@@ -18,9 +18,9 @@ PODS:
     - AFNetworking/NSURLSession
   - CocoaSecurity (1.2.4)
   - DZNEmptyDataSet (1.8.1)
-  - EDColor (1.0.0)
+  - EDColor (1.0.1)
   - IQKeyboardManager (3.3.7)
-  - JSONModel (1.2.0)
+  - JSONModel (1.7.0)
   - KissXML (5.1.2):
     - KissXML/Core (= 5.1.2)
   - KissXML/Core (5.1.2)
@@ -59,15 +59,15 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
-  - Masonry (1.0.1)
-  - MBProgressHUD (0.9.2)
-  - MJRefresh (3.1.10)
+  - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
+  - MJRefresh (3.1.12)
   - RESideMenu (4.0.7)
-  - SDVersion (3.1)
-  - SDWebImage (3.8.1):
-    - SDWebImage/Core (= 3.8.1)
-  - SDWebImage/Core (3.8.1)
-  - SSKeychain (1.4.0)
+  - SDVersion (4.0.2)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SSKeychain (1.4.1)
   - UITableView+FDTemplateLayoutCell (1.4)
 
 DEPENDENCIES:
@@ -104,18 +104,18 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
+  EDColor: 91d127cd67d7c1d3862846fb11ef4b3851151bfa
   IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
-  JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   KissXML: 246c842586bb77110e04fb88e19376d96245c856
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
-  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MJRefresh: bb72948c985914b0b5cecac573a2c69a8915fb02
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
-  SDVersion: 1eb1509995f353302094612ea3a77df289157687
-  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
-  SSKeychain: c71293fa57216a40ab06c23f4085387583293de4
+  SDVersion: 7b472a749907c29fcba04dadb8ecb4eb9a9aeeab
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
 
 PODFILE CHECKSUM: 70f6862e556f8f01381e449bb54423d887bf78b8

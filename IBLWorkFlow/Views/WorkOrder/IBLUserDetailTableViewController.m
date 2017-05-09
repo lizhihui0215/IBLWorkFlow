@@ -27,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *companyContactTextField;
 @property (weak, nonatomic) IBOutlet UITextField *companyContactPhoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *companyAddressTextField;
+@property (weak, nonatomic) IBOutlet UITextField *certTextField;
+@property (weak, nonatomic) IBOutlet UITextField *identifierTextField;
+@property (weak, nonatomic) IBOutlet UITextField *companySampleNameTextField;
 
 @property (nonatomic, strong) IBLFetchOrderRelatedUser *fetchOrderRelatedUser;
 
@@ -35,6 +38,18 @@
 @end
 
 @implementation IBLUserDetailTableViewController
+
+
+- (NSDictionary<NSNumber *, NSString *> *)certTypeNames{
+    return @{@(0) : @"身份证",
+             @(1) : @"驾照",
+             @(2) : @"护照",
+             @(3) : @"回乡证",
+             @(4) : @"台胞证",
+             @(5) : @"其它",
+             @(6) : @"营业执照",};
+}
+
 
 - (void)setup{
     self.accountTextField.text = self.orderRelateUser.account;
@@ -49,10 +64,13 @@
     self.effectDateTextField.text = self.orderRelateUser.exfDate;
     self.expiryDateTextField.text = self.orderRelateUser.expDate;
     self.backupLabel.text = self.orderRelateUser.remark;
+    self.certTextField.text = [self certTypeNames][@(self.orderRelateUser.certType)];
+    self.identifierTextField.text = self.orderRelateUser.idNo;
+    self.companySampleNameTextField.text = self.orderRelateUser.sampleComName;
     
     NSString *custName = @"一般用户";
     
-    if (self.orderRelateUser.custType == 0) custName = @"企业用户";
+    if (self.orderRelateUser.custType == 1) custName = @"企业用户";
     
     self.userTypeTextField.text = custName;
     
@@ -64,23 +82,28 @@
     
     self.companyAddressTextField.text = self.orderRelateUser.comAddr;
     
+    [self.tableView reloadData];
+    
 }
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
     if (self.orderRelateUser.custType == 0) {
-        NSIndexPath *companyNameIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
-        NSIndexPath *companyContactIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
-        NSIndexPath *companyContactPhoneIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
-        NSIndexPath *companyAddressIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+        NSIndexPath *companyNameIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
+        NSIndexPath *companySampleNameIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+
+        NSIndexPath *companyContactIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+        NSIndexPath *companyContactPhoneIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+        NSIndexPath *companyAddressIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
         return [@[companyNameIndexPath,
+                  companySampleNameIndexPath,
                   companyContactIndexPath,
                   companyContactPhoneIndexPath,
                   companyAddressIndexPath] containsObject:indexPath];
 
     }else {
-        NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
-        NSIndexPath *userPhoneIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
-        NSIndexPath *userAddressIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
+        NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
+        NSIndexPath *userPhoneIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+        NSIndexPath *userAddressIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
         
         return [@[usernameIndexPath,
                  userPhoneIndexPath,

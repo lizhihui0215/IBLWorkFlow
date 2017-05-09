@@ -207,7 +207,7 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
 @property (nonatomic, copy) NSString *comContactPhone;
 @property (nonatomic, copy) NSString *comAddr;
 
-@property (nonatomic, copy) NSString *simpleComName;
+@property (nonatomic, copy) NSString *sampleComName;
 
 
 @property(nonatomic) NSInteger certType;

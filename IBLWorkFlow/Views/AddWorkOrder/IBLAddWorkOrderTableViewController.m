@@ -315,14 +315,6 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             title = @"请选择小区！";
         };
         
-        if([NSString isNull:self.productTextField.text]){
-            title = @"请选择销售品！";
-        };
-        
-        if([NSString isNull:self.productCountTextField.text]){
-            title = @"请选填写订购数量！";
-        };
-        
         if(![IBLUtilities validateMobile:self.phoneTextField.text]){
             title = @"您输入的手机格式不正确！";
         };

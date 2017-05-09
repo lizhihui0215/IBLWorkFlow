@@ -47,10 +47,13 @@
 
 @property (nonatomic, assign) NSInteger custType;
 
+@property (nonatomic, assign) NSInteger certType;
+
 @property (nonatomic, copy) NSString *comName;
 @property (nonatomic, copy) NSString *comContact;
 @property (nonatomic, copy) NSString *comContactPhone;
 @property (nonatomic, copy) NSString *comAddr;
+@property (nonatomic, copy) NSString *sampleComName;
 
 
 @end

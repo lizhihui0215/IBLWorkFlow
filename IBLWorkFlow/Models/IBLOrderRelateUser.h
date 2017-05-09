@@ -36,6 +36,10 @@
 @property (nonatomic, copy) NSString *comContactPhone;
 @property (nonatomic, copy) NSString *comAddr;
 
+@property (nonatomic, assign) NSInteger certType;
+
+@property (nonatomic, copy) NSString *sampleComName;
+
 
 
 @end

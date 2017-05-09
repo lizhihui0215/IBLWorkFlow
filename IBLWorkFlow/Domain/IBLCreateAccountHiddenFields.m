@@ -43,6 +43,12 @@
     NSIndexPath *custAddress = [NSIndexPath indexPathForRow:2 inSection:1];
     NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
     NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
+    NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
+    NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
+    NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
+    NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
+    NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
+
     return  @{@"custName" : custNameIndexPath,
               @"custPhone" : custPhone  ,
               @"custIdCard" : custIdCard,
@@ -51,7 +57,12 @@
               @"contractCode": contractCode,
               @"voiceCode" : voiceCode,
               @"contractCode_cfield" : contractCode,
-              @"voiceCode_cfield": voiceCode,};
+              @"voiceCode_cfield": voiceCode,
+              @"COM_NAME" :enterpriseNameIndexPath,
+              @"SIMPLE_COM_NAME" :enterpriseSampleNameIndexPath,
+              @"COM_CONTACT" :enterpriseContactIndexPath,
+              @"COM_CONTACT_PHONE" :enterprisePhoneIndexPath,
+              @"COM_ADDR" :enterpriseAddressIndexPath,};
 }
 
 - (NSDictionary *)exchangeProductAllFields{

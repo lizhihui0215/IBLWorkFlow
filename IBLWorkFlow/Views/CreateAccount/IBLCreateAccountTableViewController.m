@@ -109,7 +109,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *contractNumberTextField;
 /// 票据号
 @property (weak, nonatomic) IBOutlet UITextField *ticketNumberTextField;
-@property (weak, nonatomic) IBOutlet UITextField *sampleEnterpiseNameTextField;
 /// 临时赠送
 @property (weak, nonatomic) IBOutlet UITextField *giveTextField;
 /// 优惠金额
@@ -129,6 +128,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *enterprisesContactTextField;
 @property (weak, nonatomic) IBOutlet UITextField *enterprisesPhoneTextField;
 @property (weak, nonatomic) IBOutlet UITextField *enterprisesAddressTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterprisesSampleNameTextField;
+
 
 @end
 
@@ -149,46 +150,46 @@
     IBLButtonItem *menu1 = [IBLButtonItem itemWithLabel:@"身份证"
                                                          action:^(IBLButtonItem *item) {
                                                              self.createAccountInfo.certType = 0;
-                                                             self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                             self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
                                                              [self.tableView reloadData];
                                                          }];
     
     IBLButtonItem *menu2 = [IBLButtonItem itemWithLabel:@"驾照"
                                                  action:^(IBLButtonItem *item) {
                                                      self.createAccountInfo.certType = 1;
-                                                     self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                     self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
                                                      [self.tableView reloadData];
                                                  }];
     IBLButtonItem *menu3 = [IBLButtonItem itemWithLabel:@"护照"
                                                          action:^(IBLButtonItem *item) {
                                                              self.createAccountInfo.certType = 2;
-                                                             self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                             self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
                                                              [self.tableView reloadData];
                                                          }];
 
     IBLButtonItem *menu4 = [IBLButtonItem itemWithLabel:@"回乡证"
                                                  action:^(IBLButtonItem *item) {
                                                      self.createAccountInfo.certType = 3;
-                                                     self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                     self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
                                                      [self.tableView reloadData];
                                                  }];
     IBLButtonItem *menu5 = [IBLButtonItem itemWithLabel:@"台胞证"
                                                          action:^(IBLButtonItem *item) {
                                                              self.createAccountInfo.certType = 4;
-                                                             self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                             self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
                                                              [self.tableView reloadData];
                                                          }];
 
     IBLButtonItem *menu6 = [IBLButtonItem itemWithLabel:@"其它"
                                                  action:^(IBLButtonItem *item) {
                                                      self.createAccountInfo.certType = 5;
-                                                     self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                     self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
                                                      [self.tableView reloadData];
                                                  }];
     IBLButtonItem *menu7 = [IBLButtonItem itemWithLabel:@"营业执照"
                                                          action:^(IBLButtonItem *item) {
                                                              self.createAccountInfo.certType = 6;
-                                                             self.userTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                                                             self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
                                                              [self.tableView reloadData];
                                                          }];
 
@@ -290,7 +291,7 @@
             self.enterprisesAddressTextField.text = self.createAccountInfo.companyAddress;
             self.enterprisesContactTextField.text = self.createAccountInfo.companyContact;
             self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
-            self.sampleEnterpiseNameTextField.text = self.createAccountInfo.simpleComName;
+            self.enterprisesSampleNameTextField.text = self.createAccountInfo.sampleComName;
             @weakify(self)
             [self.tableViewDataSource productPriceOfTableViewController:self
                                                         completeHandler:^(IBLProductPrice *productPrice) {
@@ -404,7 +405,8 @@
         
     }
     
-    if (textField == self.identifierTextField && ![NSString isNull:self.identifierTextField.text]) {
+    if (textField == self.identifierTextField && ![NSString isNull:self.identifierTextField.text]
+         && self.createAccountInfo.certType == 0) {
         if ([IBLUtilities validateIdentityCard:self.identifierTextField.text]) return YES;
         
         NSError *error = [NSError errorWithDomain:@""
@@ -656,6 +658,25 @@
     NSIndexPath *account = [NSIndexPath indexPathForRow:0 inSection:0];
     NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
     
+    NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
+    NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
+    NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
+    NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
+    NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
+    
+    if (self.createAccountInfo.userType == IBCreateAccountLUserTypeEnterprise) {
+        return @{enterpriseNameIndexPath : self.enterpriseTextField,
+                 enterpriseContactIndexPath : self.enterprisesContactTextField,
+                 enterprisePhoneIndexPath : self.enterprisesPhoneTextField,
+                 enterpriseAddressIndexPath : self.enterprisesAddressTextField,
+                 enterpriseSampleNameIndexPath : self.enterprisesSampleNameTextField,
+                 contractCode : self.contractNumberTextField,
+                 voiceCode : self.ticketNumberTextField,
+                 account : self.accountTextField,
+                 password : self.passwordTextField,
+                 };
+    }
+    
     
     return @{custNameIndexPath : self.usernameTextField,
              custPhone : self.phoneTextField,
@@ -670,15 +691,24 @@
 }
 
 - (NSDictionary <NSIndexPath *, NSString *> *)notNullTitleDictionary{
-    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:1 inSection:1];
-    NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:3 inSection:1];
-    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:4 inSection:1];
-    NSIndexPath *custAddress = [NSIndexPath indexPathForRow:2 inSection:1];
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:3 inSection:1];
+    NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:4 inSection:1];
+    NSIndexPath *custAddress = [NSIndexPath indexPathForRow:6 inSection:1];
     NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
     NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
     NSIndexPath *account = [NSIndexPath indexPathForRow:0 inSection:0];
     NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:10 inSection:1];
+
+    
+    NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
+    NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
+
+    NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
+    NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
+    NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
+
     
     return @{custNameIndexPath : @"用户名不能为空！",
              custPhone : @"联系电话不能为空！",
@@ -689,7 +719,11 @@
              voiceCode : @"票据号不能为空！",
              account : @"账户不能为空！",
              password : @"密码不能为空！",
-             };
+             enterpriseNameIndexPath : @"企业名称不能为空！",
+             enterpriseContactIndexPath : @"企业联系人不能为空！",
+             enterprisePhoneIndexPath : @"企业联系电话不能为空！",
+             enterpriseAddressIndexPath : @"企业联系地址不能为空！",
+             enterpriseSampleNameIndexPath : @"企业简称不能为空！"};
 }
 
 - (BOOL)validateNotNullFields{
@@ -774,7 +808,7 @@
     self.createAccountInfo.companyPhone = self.enterprisesPhoneTextField.text;
     self.createAccountInfo.companyContact = self.enterprisesContactTextField.text;
     self.createAccountInfo.companyAddress = self.enterprisesContactTextField.text;
-    self.createAccountInfo.simpleComName = self.sampleEnterpiseNameTextField.text;
+    self.createAccountInfo.sampleComName = self.enterprisesSampleNameTextField.text;
 }
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {
@@ -799,7 +833,7 @@
     
     if (isHidden) return 0;
     
-    if([indexPath isEqual:[NSIndexPath indexPathForRow:8 inSection:1]]) return 87;
+    if([indexPath isEqual:[NSIndexPath indexPathForRow:10 inSection:1]]) return 87;
     
     if ([self isHiddenEffectDate] && [indexPath isEqual:[NSIndexPath indexPathForRow:6 inSection:0]]) return 0;
     
@@ -811,10 +845,10 @@
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
     if (self.createAccountInfo.userType == IBLCreateAccountUserTypeDetault) {
         NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
-        NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
-        NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
-        NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
-        NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
+        NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
+        NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
+        NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
+        NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
 
         return [@[enterpriseNameIndexPath,
                   enterpriseContactIndexPath,
@@ -822,9 +856,9 @@
                   enterpriseAddressIndexPath,
                   enterpriseSampleNameIndexPath] containsObject:indexPath];
     }else{
-        NSIndexPath *userNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-        NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:1 inSection:1];
-        NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+        NSIndexPath *userNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+        NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
+        NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:4 inSection:1];
 
         return [@[userNameIndexPath,
                   phoneIndexPath,

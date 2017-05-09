@@ -30,6 +30,8 @@
                                                        @"COM_CONTACT_PHONE": @"comContactPhone",
                                                        @"COM_CONTACT": @"comContact",
                                                        @"COM_ADDR": @"comAddr",
+                                                       @"CERT_TYPE": @"certType",
+                                                       @"SIMPLE_COM_NAME": @"sampleComName"
                                                        }];
 }
 

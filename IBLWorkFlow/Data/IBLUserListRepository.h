@@ -178,7 +178,7 @@
 @property (nonatomic, copy) NSString *comContact;
 @property (nonatomic, copy) NSString *comContactPhone;
 @property (nonatomic, copy) NSString *comAddr;
-@property (nonatomic, copy) NSString *simpleComName;
+@property (nonatomic, copy) NSString *sampleComName;
 
 @property(nonatomic) NSInteger certType;
 @end
