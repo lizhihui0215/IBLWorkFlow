@@ -11,6 +11,7 @@
 #import "HcdDateTimePickerView.h"
 #import "IBLSearchViewController.h"
 #import "IBLUserSearchViewController.h"
+#import "IBLAppRepository.h"
 
 static NSString *const IBLSearchForHandleUserIdentifier = @"SearchForHandleUser";
 
@@ -186,6 +187,9 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                                                          action:^(IBLButtonItem *item) {
                                                              [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType didEndEdit:@(0)];
                                                              self.custTypeTextField.text = [self userTypeNames][@(0)];
+                                                             [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(0)];
+                                                             self.certTypeTextField.text = [self certTypeNames][@(0)];
+
                                                              [self.tableView reloadData];
                                                          }];
     
@@ -193,6 +197,9 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                                                  action:^(IBLButtonItem *item) {
                                                      [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType didEndEdit:@(1)];
                                                      self.custTypeTextField.text = [self userTypeNames][@(1)];
+                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(6)];
+                                                     self.certTypeTextField.text = [self certTypeNames][@(6)];
+                                                     
                                                      [self.tableView reloadData];
                                                  }];
     
@@ -234,6 +241,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     return 40;
 }
+
 - (IBAction)certTypeTapped:(UITapGestureRecognizer *)sender {
     
     IBLButtonItem *menu1 = [IBLButtonItem itemWithLabel:@"身份证"
@@ -340,6 +348,12 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             [hiddenIndexPaths addEntriesFromDictionary:@{indexPathWorkOrderContent : @(YES),
                                                          indexPathRelateUser : @(YES)}];
             
+            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+            
+            if ([IBLAppRepository appConfiguration].showCustType == 0) {
+                [hiddenIndexPaths addEntriesFromDictionary:@{userTypeIndexPath : @(YES)}];
+            }
+            
             dic = hiddenIndexPaths;
             break;
         }
@@ -355,7 +369,8 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         case IBLWorkOrderBizStatusLineBarrier:
         case IBLWorkOrderBizStatusCableBreak:
         case IBLWorkOrderBizStatusOther: {
-            
+            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+
             NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
             NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
             NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
@@ -385,10 +400,13 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                     enterpriseSampleNameIndexPath: @(YES),
                     enterpriseContactIndexPath: @(YES),
                     enterprisePhoneIndexPath: @(YES),
-                    enterpriseAddressIndexPath: @(YES),};
+                    enterpriseAddressIndexPath: @(YES),
+                    userTypeIndexPath: @(YES)};
             break;
         }
         default:{
+            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+
             NSIndexPath *regionIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
             NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
             NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
@@ -418,7 +436,8 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                     enterprisePhoneIndexPath : @(YES),
                     enterpriseAddressIndexPath : @(YES),
                     certTypeIndexPath : @(YES),
-                    remarkIndexPath : @(YES)};
+                    remarkIndexPath : @(YES),
+                    userTypeIndexPath: @(YES)};
             break;
         }
     }
@@ -603,7 +622,9 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         return isVaidate;
     }];
     
-    
+//    self.custTypeTextField.text =
+    NSInteger custType = [[self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType] integerValue];
+    self.custTypeTextField.text = [self userTypeNames][@(custType)];
 }
 
 - (void)didReceiveMemoryWarning {

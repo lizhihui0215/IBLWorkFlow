@@ -158,14 +158,19 @@
         }
     }
     
-    return [IBLFetchOrderList initWithFetchType:orderType
-                              listWithDateRange:fetchResut.dateRange
-                                         status:status
-                                        account:fetchResut.account
-                                       username:fetchResut.username
-                                          phone:fetchResut.phone
-                                           type:fetchResut.type.status
-                                        bizType:fetchResut.bizType.status];
+    IBLFetchOrderList *fetchList = [IBLFetchOrderList initWithFetchType:orderType
+                                                     listWithDateRange:fetchResut.dateRange
+                                                                status:status
+                                                               account:fetchResut.account
+                                                              username:fetchResut.username
+                                                                 phone:fetchResut.phone
+                                                                  type:fetchResut.type.status
+                                                               bizType:fetchResut.bizType.status];
+    fetchList.custType = fetchResut.custType;
+    fetchList.comName = fetchResut.comName;
+    fetchList.comContact = fetchResut.comContact;
+    
+    return fetchList;
 }
 
 - (void)fetchOrderListWithIndex:(NSInteger)index

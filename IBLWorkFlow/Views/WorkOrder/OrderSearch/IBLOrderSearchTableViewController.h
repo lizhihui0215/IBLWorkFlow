@@ -19,12 +19,16 @@ typedef NS_ENUM(NSInteger, IBLOrderSearchFieldType) {
     IBLOrderSearchFieldTypeWorkOrderType,
     IBLOrderSearchFieldTypeStartDate,
     IBLOrderSearchFieldTypeEndDate,
+    IBLOrderSearchFieldTypeCustType,
+    IBLOrderSearchFieldTypeEnterpriseName,
+    IBLOrderSearchFieldTypeEnterpriseContact,
+    
 };
 
 @protocol IBLOrderSearchTableViewControllerDataSource <NSObject>
 
-- (NSString *)textOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller
-                               fieldType:(IBLOrderSearchFieldType)fieldType;
+- (id)textOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller
+                       fieldType:(IBLOrderSearchFieldType)fieldType;
 
 - (void)orderSearchTableView:(IBLOrderSearchTableViewController *)controller
                    fieldType:(IBLOrderSearchFieldType)type

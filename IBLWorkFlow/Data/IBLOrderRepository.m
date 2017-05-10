@@ -204,6 +204,10 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[kDateRange] = fetch.dateRange;
         parameters[kStart] = @(start * pageSize);
         parameters[kPageSize] = @(pageSize);
+        parameters[@"custType"] = @(fetch.custType);
+        parameters[@"comName"] = fetch.comName;
+        parameters[@"comContact"] = fetch.comContact;
+        
         return parameters;
     }];
     
@@ -354,6 +358,13 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[@"phone"] = info.phone;
         parameters[@"addr"] = info.address;
         parameters[@"remark"] = info.remark;
+        parameters[@"certType"] = @(info.certType);
+        parameters[@"custType"] = @(info.custType);
+        parameters[@"comName"] = info.comName;
+        parameters[@"comContact"] = info.comContact;
+        parameters[@"comContactPhone"] = info.comContactPhone;
+        parameters[@"sampleComName"] = info.sampleComName;
+        parameters[@"comAddress"] = info.comAddress;
         return parameters;
     }];
     [[IBLNetworkServices networkServicesWithMethod:self.addWorkOrderMethod] POST:parameters

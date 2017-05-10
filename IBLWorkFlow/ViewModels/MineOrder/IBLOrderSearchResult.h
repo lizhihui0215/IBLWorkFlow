@@ -21,6 +21,12 @@
 
 @property (nonatomic, copy) NSString *dateRange;
 
+@property (nonatomic, assign) NSInteger custType;
+
+@property (nonatomic, copy) NSString *comName;
+
+@property (nonatomic, copy) NSString *comContact;
+
 + (instancetype)defaultSearchResult;
 
 + (instancetype)searchResultWithStatus:(IBLOrderStatus)status

@@ -51,4 +51,16 @@
 - (NSString *)startDate;
 
 - (NSString *)endDate;
+
+- (void)setEnterpriseName:(NSString *)string;
+
+- (void)setEnterpriseContact:(NSString *)string;
+
+- (void)setCustType:(NSInteger)i;
+
+- (NSInteger)custType;
+
+- (NSString *)enterPriseName;
+
+- (NSString *)enterpriseContact;
 @end

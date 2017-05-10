@@ -63,6 +63,13 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
 /// 订购数，默认为1（仅适用于报装工单类型）
 @property (nonatomic, assign) NSInteger buyLength;
 
+@property(nonatomic) NSInteger custType;
+@property(nonatomic, copy) NSString *comName;
+@property(nonatomic) NSInteger certType;
+@property(nonatomic, copy) NSString *comContact;
+@property(nonatomic, copy) NSString *comContactPhone;
+@property(nonatomic, copy) NSString *comAddress;
+@property(nonatomic, copy) NSString *sampleComName;
 @end
 
 /**
@@ -85,6 +92,12 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
 @property (nonatomic, copy) NSString *dateRange;
 
 @property (nonatomic, assign) IBLFetchOrderType fetchType;
+
+@property(nonatomic) NSInteger custType;
+
+@property(nonatomic, copy) NSString *comName;
+
+@property(nonatomic, copy) NSString *comContact;
 
 /**
  *  create IBLFetchOrderList

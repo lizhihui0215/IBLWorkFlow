@@ -11,6 +11,7 @@
 #import "IBLSearchViewController.h"
 #import "IBLAlertController.h"
 #import "HcdDateTimePickerView.h"
+#import "IBLAppRepository.h"
 
 @implementation IBLCreateAccountTableViewInfo
 
@@ -216,6 +217,8 @@
                                                          action:^(IBLButtonItem *item) {
                                                              self.createAccountInfo.userType = IBLCreateAccountUserTypeDetault;
                                                              self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+                                                             self.createAccountInfo.certType = 0;
+                                                             self.identifierTypeTextField.text = [self certTypeNames][@(0)];
                                                              [self.tableView reloadData];
                                                          }];
     
@@ -223,6 +226,9 @@
                                                  action:^(IBLButtonItem *item) {
                                                      self.createAccountInfo.userType = IBCreateAccountLUserTypeEnterprise;
                                                      self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+                                                     self.createAccountInfo.certType = 6;
+                                                     self.identifierTypeTextField.text = [self certTypeNames][@(6)];
+
                                                      [self.tableView reloadData];
                                                  }];
     
@@ -306,6 +312,7 @@
             self.createAccountInfo.effectDate = [self.tableViewDataSource defaultEffectDateOfTableViewController:self];
             self.methodOfValidTextField.text = [self effectNames][@(self.createAccountInfo.effectType)];
             self.dateOfValidTextField.text = [[NSDate date] stringFromFormatter:@"yyyy-MM-dd"];
+            self.createAccountInfo.userType = [IBLAppRepository appConfiguration].custType;
             break;
         }
     }
@@ -335,6 +342,7 @@
     
     self.enterprisesPhoneTextField.keyboardType = UIKeyboardTypeNumberPad;
     
+    self.userTypeTextField.text = [self userTypeNames][@( self.createAccountInfo.userType)];
 }
 
 - (void)setPriceTextFieldsEnable:(BOOL)enable{
@@ -843,6 +851,8 @@
 }
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
+    NSMutableArray *hiddenIndexPaths = nil;
+    
     if (self.createAccountInfo.userType == IBLCreateAccountUserTypeDetault) {
         NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
         NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
@@ -850,24 +860,31 @@
         NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
         NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
 
-        return [@[enterpriseNameIndexPath,
+        hiddenIndexPaths = [@[enterpriseNameIndexPath,
                   enterpriseContactIndexPath,
                   enterprisePhoneIndexPath,
                   enterpriseAddressIndexPath,
-                  enterpriseSampleNameIndexPath] containsObject:indexPath];
+                  enterpriseSampleNameIndexPath] mutableCopy];
     }else{
         NSIndexPath *userNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
         NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
         NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:4 inSection:1];
 
-        return [@[userNameIndexPath,
+        hiddenIndexPaths = [@[userNameIndexPath,
                   phoneIndexPath,
-                  addressIndexPath] containsObject:indexPath];
+                  addressIndexPath] mutableCopy];
 
     }
     
+    NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
     
-    return YES;
+    if ([IBLAppRepository appConfiguration].showCustType == 0) {
+        [hiddenIndexPaths addObject:userTypeIndexPath];
+    }
+
+    
+    
+    return [hiddenIndexPaths containsObject:indexPath];
 }
 
 - (BOOL)isHiddenEffectDate{

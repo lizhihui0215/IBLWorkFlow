@@ -45,6 +45,12 @@ typedef NS_ENUM(NSInteger,IBLUserSearchType) {
 
 @property (nonatomic, copy) NSString *address;
 
+@property (nonatomic, assign) NSInteger custType;
+
+@property (nonatomic, copy) NSString *comName;
+
+@property (nonatomic, copy) NSString *comContact;
+
 + (instancetype)resultWithSearchType:(IBLUserSearchType)searchType
                               region:(IBLRegion *)region
                              account:(NSString *)account

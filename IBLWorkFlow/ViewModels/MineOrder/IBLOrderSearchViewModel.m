@@ -8,6 +8,7 @@
 
 #import "IBLOrderSearchViewModel.h"
 #import "IBLGenerateAppConfiguration.h"
+#import "IBLAppRepository.h"
 
 @interface IBLOrderSearchViewModel ()
 
@@ -30,7 +31,10 @@
 - (instancetype)initWithSearchResult:(IBLOrderSearchResult *)searchResult {
     self = [super init];
     if (self) {
+        IBLAppConfiguration *appConfiguration = [IBLAppRepository appConfiguration];
+
         self.searchResult = searchResult;
+        self.searchResult.custType = appConfiguration.custType;
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
     }
 
@@ -120,5 +124,29 @@
 - (NSString *)endDate {
     NSArray *dates = [self.searchResult.dateRange componentsSeparatedByString:@"-"];
     return dates.lastObject;
+}
+
+- (void)setEnterpriseName:(NSString *)string {
+    self.searchResult.comName = string;
+}
+
+- (void)setEnterpriseContact:(NSString *)string {
+    self.searchResult.comContact = string;
+}
+
+- (void)setCustType:(NSInteger)i {
+    self.searchResult.custType = i;
+}
+
+- (NSInteger)custType {
+    return self.searchResult.custType;
+}
+
+- (NSString *)enterPriseName {
+    return nil;
+}
+
+- (NSString *)enterpriseContact {
+    return nil;
 }
 @end

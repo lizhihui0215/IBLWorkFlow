@@ -98,4 +98,7 @@ typedef NS_ENUM(NSInteger, IBLOrderEffectType) {
 
 @property (nonatomic, strong) IBLGenarate *genarate;
 
+@property(nonatomic) NSInteger custType;
+
+@property (nonatomic, assign) NSInteger showCustType;
 @end

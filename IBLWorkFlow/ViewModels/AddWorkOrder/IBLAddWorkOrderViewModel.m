@@ -8,6 +8,7 @@
 
 #import "IBLAddWorkOrderViewModel.h"
 #import "IBLAddWorkOrder.h"
+#import "IBLAppRepository.h"
 
 @interface IBLAddWorkOrderViewModel ()
 
@@ -26,6 +27,7 @@
     self = [super init];
     if (self) {
         self.result = [[IBLAddWorkOrderResult alloc] init];
+        self.result.custType = [IBLAppRepository appConfiguration].custType;
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
         self.addWorkOrder = [[IBLAddWorkOrder alloc] init];
     }
@@ -131,6 +133,13 @@
     info.address = self.result.address;
     info.remark = self.result.remark;
     info.buyLength = self.result.count;
+    info.custType = self.result.custType;
+    info.comName = self.result.companyName;
+    info.certType = self.result.certType;
+    info.comContact = self.result.companyContact;
+    info.comContactPhone = self.result.companyPhone;
+    info.comAddress = self.result.companyAddress;
+    info.sampleComName = self.result.sampleComName;
     [self.addWorkOrder addWorkOrderWith:info
                         completeHandler:^(NSString *orderId, NSError *error) {
                             handler(error);

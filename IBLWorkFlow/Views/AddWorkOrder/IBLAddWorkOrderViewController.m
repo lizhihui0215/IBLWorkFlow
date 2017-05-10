@@ -122,18 +122,27 @@
         case IBLAddWorkOrderFieldTypeEnterpriseName:{
 
             [self.viewModel setEnterpriseName:obj];
+            break;
         }
         case IBLAddWorkOrderFieldTypeEnterpriseSampleName:{
             [self.viewModel setEnterpriseSample:obj];
+            break;
+
         }
         case IBLAddWorkOrderFieldTypeEnterpriseContact:{
             [self.viewModel setEnterpriseContact:obj];
+            break;
+
         }
         case IBLAddWorkOrderFieldTypeEnterpriseContactPhone:{
             [self.viewModel setEnterpriseContactPhone:obj];
+            break;
+
         }
         case IBLAddWorkOrderFieldTypeEnterpriseAddress:{
             [self.viewModel setEnterpriseAddress:obj];
+            break;
+
         }
     }
 }
@@ -152,14 +161,17 @@
         }
         case IBLAddWorkOrderFieldTypeRegion:{
             obj = self.viewModel.region;
+            break;
         }
         case IBLAddWorkOrderFieldTypeCustType: {
             NSInteger custType = [self.viewModel custType];
             obj = @(custType);
+            break;
         }
         case IBLAddWorkOrderFieldTypeCertType:{
             NSInteger certType = [self.viewModel certType];
             obj = @(certType);
+            break;
         }
         default:
             break;

@@ -7,6 +7,7 @@
 //
 
 #import "IBLOrderSearchViewController.h"
+#import "IBLOrderCell.h"
 
 @interface IBLOrderSearchViewController ()<IBLOrderSearchTableViewControllerDataSource>
 
@@ -37,8 +38,8 @@
     orderSearchTableViewController.searchDataSource = self;
 }
 
-- (NSString *)textOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller
-                               fieldType:(IBLOrderSearchFieldType)fieldType {
+- (id)textOfOrderSearchTableView:(IBLOrderSearchTableViewController *)controller
+                       fieldType:(IBLOrderSearchFieldType)fieldType {
     NSString *text = @"";
     switch (fieldType) {
         case IBLOrderSearchFieldTypeAccount: {
@@ -67,6 +68,17 @@
         }
         case IBLOrderSearchFieldTypeEndDate: {
             text = [self.viewModel endDate];
+            break;
+        }
+        case IBLOrderSearchFieldTypeCustType: {
+            return @([self.viewModel custType]);
+        }
+        case IBLOrderSearchFieldTypeEnterpriseName:{
+            text = [self.viewModel enterPriseName];
+            break;
+        }
+        case IBLOrderSearchFieldTypeEnterpriseContact:{
+            text = [self.viewModel enterpriseContact];
             break;
         }
     }
@@ -103,6 +115,19 @@
         }
         case IBLOrderSearchFieldTypeEndDate: {
             [self.viewModel setEndDate:object];
+            break;
+        }
+        case IBLOrderSearchFieldTypeEnterpriseName:{
+            [self.viewModel setEnterpriseName:object];
+            break;
+        }
+        case IBLOrderSearchFieldTypeEnterpriseContact: {
+            [self.viewModel setEnterpriseContact:object];
+            break;
+        }
+
+        case IBLOrderSearchFieldTypeCustType: {
+            [self.viewModel setCustType:[object integerValue]];
             break;
         }
     }

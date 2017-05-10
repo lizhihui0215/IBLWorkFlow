@@ -13,7 +13,8 @@
     
     return [[JSONKeyMapper alloc] initWithDictionary:@{@"orderTypeList" : @"workOrderTypes",
                                                        @"bizTypeList" : @"workOrderBizTypes",
-                                                       @"orderUrl" : @"orderURL"}];
+                                                       @"orderUrl" : @"orderURL",
+                                                       @"defaultCustType" : @"custType"}];
 }
 @end
 
