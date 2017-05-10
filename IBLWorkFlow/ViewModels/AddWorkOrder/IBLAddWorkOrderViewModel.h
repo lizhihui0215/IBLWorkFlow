@@ -54,4 +54,22 @@
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes;
 
 - (void)commitWithCompleteHandler:(IBLViewModelCompleteHandler)handler;
+
+- (NSInteger)custType;
+
+- (void)setCustType:(NSInteger)value;
+
+- (void)setCertType:(NSInteger)value;
+
+- (NSInteger)certType;
+
+- (void)setEnterpriseName:(NSString *)value;
+
+- (void)setEnterpriseSample:(NSString *)val;
+
+- (void)setEnterpriseContact:(NSString *)val;
+
+- (void)setEnterpriseContactPhone:(NSString *)val;
+
+- (void)setEnterpriseAddress:(NSString *)val;
 @end

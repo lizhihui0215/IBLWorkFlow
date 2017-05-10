@@ -45,4 +45,20 @@
 
 @property (nonatomic, copy) NSString *remark;
 
+// 用户类型
+@property (nonatomic, assign) NSInteger custType;
+
+@property (nonatomic, assign) NSString *companyName;
+
+@property (nonatomic, copy) NSString *companyPhone;
+
+@property (nonatomic, copy) NSString *companyContact;
+
+@property (nonatomic, copy) NSString *companyAddress;
+@property (nonatomic, copy) NSString *sampleComName;
+
+@property(nonatomic) NSInteger certType;
+
+
+
 @end

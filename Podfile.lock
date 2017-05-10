@@ -68,7 +68,7 @@ PODS:
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - SSKeychain (1.4.1)
-  - UITableView+FDTemplateLayoutCell (1.4)
+  - UITableView+FDTemplateLayoutCell (1.6)
 
 DEPENDENCIES:
   - AFNetworkActivityLogger (from `https://github.com/AFNetworking/AFNetworkActivityLogger.git`, branch `3_0_0`)
@@ -116,7 +116,7 @@ SPEC CHECKSUMS:
   SDVersion: 7b472a749907c29fcba04dadb8ecb4eb9a9aeeab
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
-  UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
+  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
 PODFILE CHECKSUM: 70f6862e556f8f01381e449bb54423d887bf78b8
 

@@ -111,6 +111,30 @@
             [self.viewModel setRemark:obj];
             break;
         }
+        case IBLAddWorkOrderFieldTypeCustType: {
+            [self.viewModel setCustType:[obj integerValue]];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeCertType: {
+            [self.viewModel setCertType:[obj integerValue]];
+            break;
+        }
+        case IBLAddWorkOrderFieldTypeEnterpriseName:{
+
+            [self.viewModel setEnterpriseName:obj];
+        }
+        case IBLAddWorkOrderFieldTypeEnterpriseSampleName:{
+            [self.viewModel setEnterpriseSample:obj];
+        }
+        case IBLAddWorkOrderFieldTypeEnterpriseContact:{
+            [self.viewModel setEnterpriseContact:obj];
+        }
+        case IBLAddWorkOrderFieldTypeEnterpriseContactPhone:{
+            [self.viewModel setEnterpriseContactPhone:obj];
+        }
+        case IBLAddWorkOrderFieldTypeEnterpriseAddress:{
+            [self.viewModel setEnterpriseAddress:obj];
+        }
     }
 }
 
@@ -128,6 +152,14 @@
         }
         case IBLAddWorkOrderFieldTypeRegion:{
             obj = self.viewModel.region;
+        }
+        case IBLAddWorkOrderFieldTypeCustType: {
+            NSInteger custType = [self.viewModel custType];
+            obj = @(custType);
+        }
+        case IBLAddWorkOrderFieldTypeCertType:{
+            NSInteger certType = [self.viewModel certType];
+            obj = @(certType);
         }
         default:
             break;

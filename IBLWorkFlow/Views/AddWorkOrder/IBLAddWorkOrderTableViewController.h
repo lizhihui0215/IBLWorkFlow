@@ -26,6 +26,14 @@ typedef NS_ENUM(NSInteger, IBLAddWorkOrderFieldType) {
     IBLAddWorkOrderFieldTypeRelateUser,
     IBLAddWorkOrderFieldTypeHandleUser,
     IBLAddWorkOrderFieldTypeRemark,
+    IBLAddWorkOrderFieldTypeCustType,
+    IBLAddWorkOrderFieldTypeCertType,
+    IBLAddWorkOrderFieldTypeEnterpriseName,
+    IBLAddWorkOrderFieldTypeEnterpriseSampleName,
+    IBLAddWorkOrderFieldTypeEnterpriseContact,
+    IBLAddWorkOrderFieldTypeEnterpriseContactPhone,
+    IBLAddWorkOrderFieldTypeEnterpriseAddress,
+
 };
 
 @class IBLAddWorkOrderTableViewController;

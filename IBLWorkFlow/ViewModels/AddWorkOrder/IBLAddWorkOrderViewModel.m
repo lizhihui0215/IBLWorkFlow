@@ -136,4 +136,41 @@
                             handler(error);
                         }];
 }
+
+- (NSInteger)custType {
+    return self.result.custType;
+}
+
+- (void)setCustType:(NSInteger)value {
+    self.result.custType = value;
+}
+
+- (void)setCertType:(NSInteger)value {
+    self.result.certType = value;
+
+}
+
+- (NSInteger)certType {
+    return self.result.certType;
+}
+
+- (void)setEnterpriseName:(NSString *)value {
+    self.result.companyName = value;
+}
+
+- (void)setEnterpriseSample:(NSString *)val {
+    self.result.sampleComName = val;
+}
+
+- (void)setEnterpriseContact:(NSString *)val {
+    self.result.companyContact = val;
+}
+
+- (void)setEnterpriseContactPhone:(NSString *)val {
+    self.result.companyPhone = val;
+}
+
+- (void)setEnterpriseAddress:(NSString *)val {
+    self.result.companyAddress = val;
+}
 @end

@@ -81,7 +81,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 /// 密码
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-/// 所属小区
+/// 所属区域
 @property (weak, nonatomic) IBOutlet UITextField *regionTextField;
 /// 销售品
 @property (weak, nonatomic) IBOutlet UITextField *productTextField;

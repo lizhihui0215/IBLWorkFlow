@@ -34,7 +34,13 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 @property (weak, nonatomic) IBOutlet UITextField *userIdentifierTextField;
 //@property (weak, nonatomic) IBOutlet UITextField *workOrderContentTextField;
 @property (weak, nonatomic) IBOutlet UITextView *workOrderContentTextView;
-
+@property (weak, nonatomic) IBOutlet UITextField *certTypeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *custTypeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseSampleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseContactTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseContactPhoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseAddressTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *relateUserTextField;
 @property (weak, nonatomic) IBOutlet UITextField *handleUserTextField;
@@ -175,17 +181,117 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                     [self.tableView reloadData];
                 }];
 }
+- (IBAction)custTypeTapped:(UITapGestureRecognizer *)sender {
+    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"一般用户"
+                                                         action:^(IBLButtonItem *item) {
+                                                             [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType didEndEdit:@(0)];
+                                                             self.custTypeTextField.text = [self userTypeNames][@(0)];
+                                                             [self.tableView reloadData];
+                                                         }];
+    
+    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"企业用户"
+                                                 action:^(IBLButtonItem *item) {
+                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType didEndEdit:@(1)];
+                                                     self.custTypeTextField.text = [self userTypeNames][@(1)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    
+    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+    
+    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                    title:@"请选择用户类型"
+                                                                  message:nil
+                                                         cancleButtonItem:cancel
+                                                         otherButtonItems:beforeTheDate,first,nil];
+    [alert showInController:self];
+
+
+}
+
+- (NSDictionary <NSNumber *, NSString *> *)userTypeNames{
+    return @{@(0) : @"一般用户",
+             @(1) : @"企业用户"};
+}
+
+- (NSDictionary<NSNumber *, NSString *> *)certTypeNames{
+    return @{@(0) : @"身份证",
+             @(1) : @"驾照",
+             @(2) : @"护照",
+             @(3) : @"回乡证",
+             @(4) : @"台胞证",
+             @(5) : @"其它",
+             @(6) : @"营业执照",};
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     IBLWorkOrderBussinessType *bizType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeBizType];
     
     if ([[self hiddenFieldsDictionaryWithWorkBizType:bizType.status][indexPath] boolValue]) return 0;
     
-    if ([indexPath isEqual:[NSIndexPath indexPathForRow:14 inSection:0]]) return 87;
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:21 inSection:0]]) return 87;
     
-    if ([indexPath isEqual:[NSIndexPath indexPathForRow:11 inSection:0]]) return 98;
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:18 inSection:0]]) return 98;
     
     return 40;
+}
+- (IBAction)certTypeTapped:(UITapGestureRecognizer *)sender {
+    
+    IBLButtonItem *menu1 = [IBLButtonItem itemWithLabel:@"身份证"
+                                                 action:^(IBLButtonItem *item) {
+                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(0)];
+                                                     self.certTypeTextField.text = [self certTypeNames][@(0)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    
+    IBLButtonItem *menu2 = [IBLButtonItem itemWithLabel:@"驾照"
+                                                 action:^(IBLButtonItem *item) {
+                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(1)];
+                                                     self.certTypeTextField.text = [self certTypeNames][@(1)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    IBLButtonItem *menu3 = [IBLButtonItem itemWithLabel:@"护照"
+                                                 action:^(IBLButtonItem *item) {
+                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(2)];
+                                                     self.certTypeTextField.text = [self certTypeNames][@(2)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    
+    IBLButtonItem *menu4 = [IBLButtonItem itemWithLabel:@"回乡证"
+                                                 action:^(IBLButtonItem *item) {
+                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(3)];
+                                                     self.certTypeTextField.text = [self certTypeNames][@(3)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    IBLButtonItem *menu5 = [IBLButtonItem itemWithLabel:@"台胞证"
+                                                 action:^(IBLButtonItem *item) {
+                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(4)];
+                                                     self.certTypeTextField.text = [self certTypeNames][@(4)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    
+    IBLButtonItem *menu6 = [IBLButtonItem itemWithLabel:@"其它"
+                                                 action:^(IBLButtonItem *item) {
+                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(5)];
+                                                     self.certTypeTextField.text = [self certTypeNames][@(5)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    IBLButtonItem *menu7 = [IBLButtonItem itemWithLabel:@"营业执照"
+                                                 action:^(IBLButtonItem *item) {
+                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(6)];
+                                                     self.certTypeTextField.text = [self certTypeNames][@(6)];
+                                                     [self.tableView reloadData];
+                                                 }];
+    
+    
+    
+    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
+    
+    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
+                                                                    title:@"请选择证件号码"
+                                                                  message:nil
+                                                         cancleButtonItem:cancel
+                                                         otherButtonItems:menu1,menu2,menu3,menu4,menu5,menu6,menu7,nil];
+    [alert showInController:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -198,29 +304,43 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 
 - (NSDictionary<NSIndexPath *, NSNumber* > *)hiddenFieldsDictionaryWithWorkBizType:(IBLWorkOrderBizStatus)bizType{
     NSDictionary *dic;
-    self.productTextField.hidden = NO;
-    self.productCountTextField.hidden = NO;
-    self.usernameTextField.hidden = NO;
-    self.phoneTextField.hidden = NO;
-    self.addressTextField.hidden = NO;
-    self.userIdentifierTextField.hidden = NO;
-    self.relateUserTextField.hidden = NO;
-    self.remarkTextView.hidden = NO;
-    self.workOrderContentTextView.hidden = NO;
-    self.regionTextField.hidden = NO;
-
     switch (bizType) {
         case IBLWorkOrderBizStatusUnknow: {
             break;
         }
             
         case IBLWorkOrderBizStatusInstall: {
-            self.workOrderContentTextView.hidden = YES;
-            self.relateUserTextField.hidden = YES;
-            NSIndexPath *indexPathWorkOrderContent = [NSIndexPath indexPathForRow:11 inSection:0];
-            NSIndexPath *indexPathRelateUser = [NSIndexPath indexPathForRow:12 inSection:0];
-            dic = @{indexPathWorkOrderContent : @(YES),
-                    indexPathRelateUser : @(YES)};
+            NSInteger custType = [[self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType] integerValue];
+            NSMutableDictionary *hiddenIndexPaths = [NSMutableDictionary dictionary];
+            
+            if (custType == 0){
+                NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+                NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+                NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
+                NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
+                NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
+                
+                [hiddenIndexPaths addEntriesFromDictionary:@{enterpriseNameIndexPath : @(YES),
+                                                             enterpriseSampleNameIndexPath : @(YES),
+                                                             enterpriseContactIndexPath : @(YES),
+                                                             enterprisePhoneIndexPath : @(YES),
+                                                             enterpriseAddressIndexPath : @(YES)}];
+                
+            }else {
+                NSIndexPath *usernameTextField = [NSIndexPath indexPathForRow:10 inSection:0];
+                NSIndexPath *userPhone = [NSIndexPath indexPathForRow:11 inSection:0];
+                NSIndexPath *userAddress = [NSIndexPath indexPathForRow:12 inSection:0];
+                [hiddenIndexPaths addEntriesFromDictionary:@{usernameTextField : @(YES),
+                                                             userPhone : @(YES),
+                                                             userAddress : @(YES),}];
+                
+            }
+            NSIndexPath *indexPathWorkOrderContent = [NSIndexPath indexPathForRow:18 inSection:0];
+            NSIndexPath *indexPathRelateUser = [NSIndexPath indexPathForRow:19 inSection:0];
+            [hiddenIndexPaths addEntriesFromDictionary:@{indexPathWorkOrderContent : @(YES),
+                                                         indexPathRelateUser : @(YES)}];
+            
+            dic = hiddenIndexPaths;
             break;
         }
             
@@ -235,22 +355,23 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         case IBLWorkOrderBizStatusLineBarrier:
         case IBLWorkOrderBizStatusCableBreak:
         case IBLWorkOrderBizStatusOther: {
+            
             NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
             NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
-            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
-            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
-            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
-            NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
-            NSIndexPath *relateUserIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
-            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
-            self.productTextField.hidden = YES;
-            self.productCountTextField.hidden = YES;
-            self.usernameTextField.hidden = YES;
-            self.phoneTextField.hidden = YES;
-            self.addressTextField.hidden = YES;
-            self.userIdentifierTextField.hidden = YES;
-            self.relateUserTextField.hidden = YES;
-            self.remarkTextView.hidden = YES;
+            NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
+            NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
+            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+            
+            NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+            NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+            NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
+            NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
+            NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
+            
+            NSIndexPath *relateUserIndexPath = [NSIndexPath indexPathForRow:19 inSection:0];
+            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:21 inSection:0];
             dic = @{productIndexPath : @(YES),
                     countIndexPath : @(YES),
                     usernameIndexPath : @(YES),
@@ -258,26 +379,31 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                     addressIndexPath : @(YES),
                     userIdentifierIndexPath : @(YES),
                     relateUserIndexPath : @(YES),
-                    remarkIndexPath : @(YES)};
+                    remarkIndexPath : @(YES),
+                    certTypeIndexPath: @(YES),
+                    enterpriseNameIndexPath: @(YES),
+                    enterpriseSampleNameIndexPath: @(YES),
+                    enterpriseContactIndexPath: @(YES),
+                    enterprisePhoneIndexPath: @(YES),
+                    enterpriseAddressIndexPath: @(YES),};
             break;
         }
         default:{
-            self.regionTextField.hidden = YES;
-            self.productTextField.hidden = YES;
-            self.productCountTextField.hidden = YES;
-            self.usernameTextField.hidden = YES;
-            self.phoneTextField.hidden = YES;
-            self.addressTextField.hidden = YES;
-            self.userIdentifierTextField.hidden = YES;
-            self.remarkTextView.hidden = YES;
             NSIndexPath *regionIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
             NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
             NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
-            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
-            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
-            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
-            NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
-            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
+            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+            
+            NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+            NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+            NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
+            NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
+            NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
+            NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
+            NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:21 inSection:0];
             
             dic = @{regionIndexPath : @(YES),
                     productIndexPath : @(YES),
@@ -286,6 +412,12 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                     phoneIndexPath : @(YES),
                     addressIndexPath : @(YES),
                     userIdentifierIndexPath : @(YES),
+                    enterpriseNameIndexPath : @(YES),
+                    enterpriseSampleNameIndexPath : @(YES),
+                    enterpriseContactIndexPath : @(YES),
+                    enterprisePhoneIndexPath : @(YES),
+                    enterpriseAddressIndexPath : @(YES),
+                    certTypeIndexPath : @(YES),
                     remarkIndexPath : @(YES)};
             break;
         }
@@ -364,6 +496,13 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     NSString *workOrderContent = [self validateContent:self.workOrderContentTextView.text];
     NSString *remark = [self validateContent:self.remarkTextView.text];
     
+    NSString *enterpriseName = [self validateContent:self.remarkTextView.text];
+    NSString *enterpriseSampleName = [self validateContent:self.remarkTextView.text];
+    NSString *enterpriseContact = [self validateContent:self.remarkTextView.text];
+    NSString *enterpriseContactPhone = [self validateContent:self.remarkTextView.text];
+    NSString *enterpriseAddress = [self validateContent:self.remarkTextView.text];
+    
+    
     [self.tableViewDelegate addWorkOrderTableView:self
                                         fieldType:IBLAddWorkOrderFieldTypeUsername
                                        didEndEdit:username];
@@ -382,6 +521,22 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     [self.tableViewDelegate addWorkOrderTableView:self
                                         fieldType:IBLAddWorkOrderFieldTypeRemark
                                        didEndEdit:remark];
+    
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeEnterpriseName
+                                       didEndEdit:enterpriseName];
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeEnterpriseSampleName
+                                       didEndEdit:enterpriseSampleName];
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeEnterpriseContact
+                                       didEndEdit:enterpriseContact];
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeEnterpriseContactPhone
+                                       didEndEdit:enterpriseContactPhone];
+    [self.tableViewDelegate addWorkOrderTableView:self
+                                        fieldType:IBLAddWorkOrderFieldTypeEnterpriseAddress
+                                       didEndEdit:enterpriseAddress];
 }
 
 - (void)viewDidLoad {
@@ -409,7 +564,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     [self.tableViewDelegate addWorkOrderTableView:self
                                         fieldType:IBLAddWorkOrderFieldTypePriority
                                        didEndEdit:@(IBLPriorityStatusGeneral)];
-
+    
     [self.tableView reloadData];
     self.productCountTextField.delegate = self;
     self.phoneTextField.keyboardType = UIKeyboardTypePhonePad;
@@ -444,7 +599,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                                                                  otherButtonItems:nil];
             [alert showInController:self];
         }
-
+        
         return isVaidate;
     }];
     
@@ -484,7 +639,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     }else if ([segue.identifier isEqualToString:IBLSearchForRelateUserIdentifier]){
         IBLUserSearchViewController *userSearchViewController = [segue destinationViewController];
         userSearchViewController.viewModel = [[IBLUserSearchViewModel alloc] initWithSearchType:IBLUserSearchTypeAddWorkOrder];
-//                searchViewController.searchDelegate = self;
+        //                searchViewController.searchDelegate = self;
     }
 }
 

@@ -51,7 +51,7 @@ static IBLUser *_user = nil;
           completeHandler:(void (^)(IBLUser *, NSError *))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
-        NSString *deviceModel = DeviceVersionNames[[SDVersion deviceVersion]];
+        NSString *deviceModel = [SDVersion deviceNameString];
         NSString *OSVersion = [[UIDevice currentDevice] systemVersion];
         [parameters addEntriesFromDictionary:@{kUsername : username,
                                                kPassword : password,

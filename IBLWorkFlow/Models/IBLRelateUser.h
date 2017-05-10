@@ -24,9 +24,9 @@
 @property (nonatomic, copy) NSString *address;
 /// 身份证号
 @property (nonatomic, copy) NSString *idNo;
-/// 所属小区
+/// 所属区域
 @property (nonatomic, copy) NSString *areaName;
-/// 所属小区ID
+/// 所属区域ID
 @property (nonatomic, copy) NSString *areaIdentifier;
 /// 订购套餐
 @property (nonatomic, copy) NSString *offerName;
