@@ -58,19 +58,19 @@
               @"voiceCode" : voiceCode,
               @"contractCode_cfield" : contractCode,
               @"voiceCode_cfield": voiceCode,
-              @"COM_NAME" :enterpriseNameIndexPath,
-              @"SIMPLE_COM_NAME" :enterpriseSampleNameIndexPath,
-              @"COM_CONTACT" :enterpriseContactIndexPath,
-              @"COM_CONTACT_PHONE" :enterprisePhoneIndexPath,
-              @"COM_ADDR" :enterpriseAddressIndexPath,};
+              @"comName" :enterpriseNameIndexPath,
+              @"simpleComName" :enterpriseSampleNameIndexPath,
+              @"comContact" :enterpriseContactIndexPath,
+              @"comContactPhone" :enterprisePhoneIndexPath,
+              @"comAddr" :enterpriseAddressIndexPath,};
 }
 
 - (NSDictionary *)exchangeProductAllFields{
-    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
-    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:3 inSection:0];
-    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:19 inSection:0];
-    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:13 inSection:0];
-    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:14 inSection:0];
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:5 inSection:0];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:25 inSection:0];
+    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:19 inSection:0];
+    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:20 inSection:0];
     return  @{@"custName" : custNameIndexPath,
               @"custPhone" : custPhone  ,
               @"custReserve" : custReserve,

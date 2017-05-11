@@ -80,10 +80,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *giveLabel;
 @property (nonatomic, strong) IBLProductPrice *productPrice;
 @property (weak, nonatomic) IBOutlet UILabel *productCountLabel;
+@property (weak, nonatomic) IBOutlet UITextField *custTypeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseContactPhoneTextField;
 
 @end
 
 @implementation IBLRenewTableViewController
+
+- (NSDictionary <NSNumber *, NSString *> *)userTypeNames{
+    return @{@(0) : @"一般用户",
+             @(1) : @"企业用户"};
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -120,6 +128,19 @@
                                                                           type:IBLRenewTextFieldTypePay];
     self.commentTextView.text = [self.tableViewDelegate textOfTableViewController:self
                                                                              type:IBLRenewTextFieldTypeComment];
+
+    NSNumber *custType = [self.tableViewDelegate textOfTableViewController:self type:IBLRenewTextFieldTypeCustType] ;
+
+    self.custTypeTextField.text = [self userTypeNames][custType];
+
+    NSString *enterpriseName = [self.tableViewDelegate textOfTableViewController:self type:IBLRenewTextFieldTypeEnterpriseName];
+
+    self.enterpriseNameTextField.text = enterpriseName;
+
+    NSString *enterpriseContactPhone = [self.tableViewDelegate textOfTableViewController:self type:IBLRenewTextFieldTypeEnterpriseContactPhone];
+
+    self.enterpriseContactPhoneTextField.text = enterpriseContactPhone;
+
     self.commentTextView.textContainerInset = UIEdgeInsetsZero;
     
     self.renewProductCount.text = @"1";
@@ -314,7 +335,7 @@
 #pragma mark - Table view data source
 
 - (BOOL)isSeparationAtIndexPath:(NSIndexPath *)indexPath{
-    NSIndexPath *separation1 = [NSIndexPath indexPathForRow:7 inSection:0];
+    NSIndexPath *separation1 = [NSIndexPath indexPathForRow:10 inSection:0];
     
     NSDictionary *separationDictionary = @{separation1 : @(YES),};
     
@@ -329,11 +350,35 @@
     
     if (isHidden) return 0;
     
-    NSIndexPath *remark = [NSIndexPath indexPathForRow:16 inSection:0];
+    NSIndexPath *remark = [NSIndexPath indexPathForRow:19 inSection:0];
     
     if ([indexPath isEqual:remark]) return 124;
     
+    if([self isHiddenAtIndexPath:indexPath]) return 0;
+    
     return 40;
+}
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)path {
+    NSInteger custType = [[self.tableViewDelegate textOfTableViewController:self type:IBLRenewTextFieldTypeCustType] integerValue];
+
+    NSMutableArray *hiddenIndexPaths = [NSMutableArray array];
+
+    if (custType == 0){
+        NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+        NSIndexPath *enterpriseContactPhoneIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
+        [hiddenIndexPaths addObject:enterpriseNameIndexPath];
+        [hiddenIndexPaths addObject:enterpriseContactPhoneIndexPath];
+    } else{
+        NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:3 inSection:0];
+        NSIndexPath *custPhoneIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
+
+        [hiddenIndexPaths addObject:custNameIndexPath];
+        [hiddenIndexPaths addObject:custPhoneIndexPath];
+    }
+
+
+    return [hiddenIndexPaths containsObject:path];
 }
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {

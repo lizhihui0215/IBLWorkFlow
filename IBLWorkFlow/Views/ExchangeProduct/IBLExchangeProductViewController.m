@@ -164,6 +164,18 @@
             text = [self.viewModel regionIdentifier];
             break;
         }
+        case IBLExchangeProductTextFieldTypeCustType:{
+            NSInteger custType = [self.viewModel custType];
+            return @(custType);
+        }
+        case IBLExchangeProductTextFieldTypeEnterpriseName:{
+            text = [self.viewModel enterpriseName];
+            break;
+        }
+        case IBLExchangeProductTextFieldTypeEnterpriseContactPhone:{
+            text = [self.viewModel enterpriseContactPhone];
+            break;
+        }
         default: break;
     }
     

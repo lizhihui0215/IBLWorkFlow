@@ -74,4 +74,9 @@
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
 
+- (NSInteger)custType;
+
+- (NSString *)enterpriseContactPhone;
+
+- (NSString *)enterpriseName;
 @end

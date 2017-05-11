@@ -156,7 +156,6 @@
 
 - (void)setCertType:(NSInteger)value {
     self.result.certType = value;
-
 }
 
 - (NSInteger)certType {

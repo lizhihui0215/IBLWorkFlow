@@ -226,4 +226,16 @@
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath {
     return [self.hiddenFields.renewHiddenFieldsDictionary[indexPath] boolValue];
 }
+
+- (NSInteger)custType {
+    return self.user.custType;
+}
+
+- (NSString *)enterpriseContactPhone {
+    return self.user.comContactPhone;
+}
+
+- (NSString *)enterpriseName {
+    return self.user.comName;
+}
 @end

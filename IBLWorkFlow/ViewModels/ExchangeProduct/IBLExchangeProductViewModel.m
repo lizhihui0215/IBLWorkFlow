@@ -190,4 +190,16 @@
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath {
     return [self.hiddenFields.exchangeProductHiddenFieldsDictionary[indexPath] boolValue];
 }
+
+- (NSInteger)custType {
+    return self.user.custType;
+}
+
+- (NSString *)enterpriseName {
+    return self.user.comName;
+}
+
+- (NSString *)enterpriseContactPhone {
+    return self.user.comContactPhone;
+}
 @end

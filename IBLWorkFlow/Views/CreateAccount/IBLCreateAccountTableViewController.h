@@ -131,7 +131,7 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountUserType) {
 // 用户类型
 @property (nonatomic, assign) IBLCreateAccountUserType userType;
 
-@property (nonatomic, assign) NSString *companyName;
+@property (nonatomic, copy) NSString *companyName;
 
 @property (nonatomic, copy) NSString *companyPhone;
 
@@ -140,8 +140,7 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountUserType) {
 @property (nonatomic, copy) NSString *companyAddress;
 @property (nonatomic, copy) NSString *sampleComName;
 
-
-@property(nonatomic) NSInteger certType;
+@property(nonatomic, assign) NSInteger certType;
 
 + (instancetype)infoWithResidentialIdentifier:(NSInteger)residentialIdentifier
                             productIdentifier:(NSInteger)productIdentifier

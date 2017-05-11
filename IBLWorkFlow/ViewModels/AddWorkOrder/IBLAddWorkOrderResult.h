@@ -48,7 +48,7 @@
 // 用户类型
 @property (nonatomic, assign) NSInteger custType;
 
-@property (nonatomic, assign) NSString *companyName;
+@property (nonatomic, copy) NSString *companyName;
 
 @property (nonatomic, copy) NSString *companyPhone;
 

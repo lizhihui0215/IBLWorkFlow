@@ -29,11 +29,15 @@ typedef NS_ENUM(NSInteger, IBLRenewTextFieldType) {
     IBLRenewTextFieldTypeGive,
     IBLRenewTextFieldTypePay,
     IBLRenewTextFieldTypeComment,
+    IBLRenewTextFieldTypeCustType,
+    IBLRenewTextFieldTypeEnterpriseName,
+    IBLRenewTextFieldTypeEnterpriseContactPhone,
+    
 };
 
 @protocol IBLRenewTableViewControllerDelegate <NSObject>
 
-- (NSString *)textOfTableViewController:(IBLRenewTableViewController *)controller type:(IBLRenewTextFieldType)type;
+- (id)textOfTableViewController:(IBLRenewTableViewController *)controller type:(IBLRenewTextFieldType)type;
 - (void)productPriceOfTableViewController:(IBLRenewTableViewController *)controller
                           completeHandler:(void (^)(IBLProductPrice *productPrice))completeHandler;
 

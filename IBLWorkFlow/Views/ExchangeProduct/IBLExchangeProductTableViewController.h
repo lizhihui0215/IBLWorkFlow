@@ -34,6 +34,10 @@ typedef NS_ENUM(NSInteger, IBLExchangeProductTextFieldType) {
     IBLExchangeProductTextFieldTypeGive,
     IBLExchangeProductTextFieldTypePay,
     IBLExchangeProductTextFieldTypeRemark,
+    IBLExchangeProductTextFieldTypeCustType,
+    IBLExchangeProductTextFieldTypeEnterpriseName,
+    IBLExchangeProductTextFieldTypeEnterpriseContactPhone,
+    
 };
 
 @protocol IBLExchangeProductTableViewControllerDelegate <NSObject>

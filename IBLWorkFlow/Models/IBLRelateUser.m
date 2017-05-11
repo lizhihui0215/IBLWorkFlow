@@ -26,6 +26,7 @@
                                                        @"STATE" : @"state",
                                                        @"USER_NAME" : @"username",
                                                        @"CUST_TYPE" : @"custType",
+                                                       @"COM_NAME" : @"comName",
                                                        @"SIMPLE_COM_NAME" : @"sampleComName",
                                                        @"COM_CONTACT" : @"comContact",
                                                        @"COM_CONTACT_PHONE" : @"comContactPhone",

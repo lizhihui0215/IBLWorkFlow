@@ -54,4 +54,10 @@
 
 - (void)commitWithResult:(IBLExchangeProductResult *)result
          completeHandler:(IBLViewModelCompleteHandler)handler;
+
+- (NSInteger)custType;
+
+- (NSString *)enterpriseName;
+
+- (NSString *)enterpriseContactPhone;
 @end

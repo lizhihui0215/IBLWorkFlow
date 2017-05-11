@@ -453,6 +453,9 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     NSString *title = nil;
     IBLWorkOrderBussinessType *type = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeBizType];
     
+   NSNumber *custType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self
+                                               fieldType:IBLAddWorkOrderFieldTypeCustType];
+    
     if([NSString isNull:self.workOrderTypeTextField.text]){
         title = @"请选择工单类型！";
     };
@@ -466,10 +469,16 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             title = @"请选择小区！";
         };
         
-        if(![IBLUtilities validateMobile:self.phoneTextField.text]){
-            title = @"您输入的手机格式不正确！";
-        };
         
+        if ([custType integerValue] == 0) {
+            if(![IBLUtilities validateMobile:self.phoneTextField.text]){
+                title = @"您输入的手机格式不正确！";
+            };
+        }else{
+            if(![IBLUtilities validateMobile:self.enterpriseContactPhoneTextField.text]){
+                title = @"您输入的手机格式不正确！";
+            };
+        }
     }else{
         if([NSString isNull:self.relateUserTextField.text]){
             title = @"请选择关联用户！";
@@ -515,11 +524,11 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     NSString *workOrderContent = [self validateContent:self.workOrderContentTextView.text];
     NSString *remark = [self validateContent:self.remarkTextView.text];
     
-    NSString *enterpriseName = [self validateContent:self.remarkTextView.text];
-    NSString *enterpriseSampleName = [self validateContent:self.remarkTextView.text];
-    NSString *enterpriseContact = [self validateContent:self.remarkTextView.text];
-    NSString *enterpriseContactPhone = [self validateContent:self.remarkTextView.text];
-    NSString *enterpriseAddress = [self validateContent:self.remarkTextView.text];
+    NSString *enterpriseName = [self validateContent:self.enterpriseNameTextField.text];
+    NSString *enterpriseSampleName = [self validateContent:self.enterpriseSampleTextField.text];
+    NSString *enterpriseContact = [self validateContent:self.enterpriseContactTextField.text];
+    NSString *enterpriseContactPhone = [self validateContent:self.enterpriseContactPhoneTextField.text];
+    NSString *enterpriseAddress = [self validateContent:self.enterpriseAddressTextField.text];
     
     
     [self.tableViewDelegate addWorkOrderTableView:self
@@ -587,6 +596,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     [self.tableView reloadData];
     self.productCountTextField.delegate = self;
     self.phoneTextField.keyboardType = UIKeyboardTypePhonePad;
+    self.enterpriseContactPhoneTextField.keyboardType = UIKeyboardTypePhonePad;
     self.userIdentifierTextField.keyboardType = UIKeyboardTypeASCIICapable;
     self.productCountTextField.keyboardType = UIKeyboardTypeNumberPad;
     
@@ -606,7 +616,40 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         return isVaidate;
     }];
     
+    [self.enterpriseContactPhoneTextField setShouldClearBlock:^BOOL(UITextField *textField) {
+        BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
+        if (!isVaidate) {
+            IBLButtonItem *item = [IBLButtonItem itemWithLabel:@"确定"];
+            
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                            title:@"电话号码格式不正确！"
+                                                                          message:nil
+                                                                 cancleButtonItem:item
+                                                                 otherButtonItems:nil];
+            [alert showInController:self];
+        }
+        
+        return isVaidate;
+
+    }];
+    
+    
+    
+//    self.custTypeTextField.text =
+    NSInteger custType = [[self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType] integerValue];
+    self.custTypeTextField.text = [self userTypeNames][@(custType)];
+    
+    
+   NSNumber *certType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType];
+    
+    self.certTypeTextField.text = [self certTypeNames][certType];
+    
+    
     [self.userIdentifierTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
+        NSNumber *certType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType];
+
+        if ([certType integerValue] != 0) return YES;
+        
         BOOL isVaidate = [IBLUtilities validateIdentityCard:textField.text];
         if (!isVaidate) {
             IBLButtonItem *item = [IBLButtonItem itemWithLabel:@"确定"];
@@ -621,10 +664,6 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         
         return isVaidate;
     }];
-    
-//    self.custTypeTextField.text =
-    NSInteger custType = [[self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType] integerValue];
-    self.custTypeTextField.text = [self userTypeNames][@(custType)];
 }
 
 - (void)didReceiveMemoryWarning {

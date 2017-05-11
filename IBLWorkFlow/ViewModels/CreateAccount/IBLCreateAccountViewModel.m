@@ -141,7 +141,7 @@
     createInfo.comName = info.companyName;
     createInfo.comContact = info.companyContact;
     createInfo.comContactPhone = info.companyPhone;
-    createInfo.comAddr = info.address;
+    createInfo.comAddr = info.companyAddress;
     createInfo.sampleComName = info.sampleComName;
     createInfo.certType = info.certType;
     

@@ -815,7 +815,7 @@
     self.createAccountInfo.companyName = self.enterpriseTextField.text;
     self.createAccountInfo.companyPhone = self.enterprisesPhoneTextField.text;
     self.createAccountInfo.companyContact = self.enterprisesContactTextField.text;
-    self.createAccountInfo.companyAddress = self.enterprisesContactTextField.text;
+    self.createAccountInfo.companyAddress = self.enterprisesAddressTextField.text;
     self.createAccountInfo.sampleComName = self.enterprisesSampleNameTextField.text;
 }
 

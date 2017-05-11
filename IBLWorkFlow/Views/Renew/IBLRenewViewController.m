@@ -43,8 +43,8 @@
     }
 }
 
-- (NSString *)textOfTableViewController:(IBLRenewTableViewController *)controller
-                                   type:(IBLRenewTextFieldType)type {
+- (id)textOfTableViewController:(IBLRenewTableViewController *)controller
+                           type:(IBLRenewTextFieldType)type {
     NSString  *text = @"";
     switch (type) {
         case IBLRenewTextFieldTypeAccount: {
@@ -109,6 +109,18 @@
         }
         case IBLRenewTextFieldTypeComment: {
             text = [self.viewModel comment];
+            break;
+        }
+        case IBLRenewTextFieldTypeCustType: {
+            NSInteger custType = [self.viewModel custType];
+            return @(custType);
+        }
+        case IBLRenewTextFieldTypeEnterpriseContactPhone:{
+            text = [self.viewModel enterpriseContactPhone];
+            break;
+        }
+        case IBLRenewTextFieldTypeEnterpriseName: {
+            text = [self.viewModel enterpriseName];
             break;
         }
     }

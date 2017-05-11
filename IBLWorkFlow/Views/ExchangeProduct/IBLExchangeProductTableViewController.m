@@ -35,6 +35,9 @@
 @property (nonatomic, strong) IBLExchangeProductResult *result;
 @property (weak, nonatomic) IBOutlet UILabel *giveLabel;
 @property (nonatomic, strong) IBLProductPrice *productPrice;
+@property (weak, nonatomic) IBOutlet UITextField *custTypeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseContactPhoneTextField;
 
 @end
 
@@ -44,6 +47,12 @@
 @end
 
 @implementation IBLExchangeProductTableViewController
+
+
+- (NSDictionary <NSNumber *, NSString *> *)userTypeNames{
+    return @{@(0) : @"一般用户",
+            @(1) : @"企业用户"};
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,6 +74,15 @@
     self.giveTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeGive];
     self.payTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypePay];
     self.remarkTextView.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeRemark];
+
+    NSNumber *custType = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeCustType];
+    
+    self.custTypeTextField.text = [self userTypeNames][custType];
+
+    self.enterpriseContactPhoneTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeEnterpriseContactPhone];
+
+    self.enterpriseNameTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeEnterpriseName];
+
     
     NSString *exchangeType = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeExchangeType];
     self.exchangeTypeTextField.text = [self exchangeTypeMap][exchangeType];
@@ -280,8 +298,8 @@
 #pragma mark - Table view data source
 
 - (BOOL)isSeparationAtIndexPath:(NSIndexPath *)indexPath{
-    NSIndexPath *separation1 = [NSIndexPath indexPathForRow:7 inSection:0];
-    NSIndexPath *separation2 = [NSIndexPath indexPathForRow:10 inSection:0];
+    NSIndexPath *separation1 = [NSIndexPath indexPathForRow:10 inSection:0];
+    NSIndexPath *separation2 = [NSIndexPath indexPathForRow:13 inSection:0];
     
     NSDictionary *separationDictionary = @{separation1 : @(YES),
                                            separation2 : @(YES)};
@@ -297,11 +315,35 @@
     
     if (isHidden) return 0;
 
-    NSIndexPath *remark = [NSIndexPath indexPathForRow:19 inSection:0];
+    NSIndexPath *remark = [NSIndexPath indexPathForRow:22 inSection:0];
     
     if ([indexPath isEqual:remark]) return 124;
     
+    if([self isHiddenAtIndexPath:indexPath]) return 0;
+    
     return 40;
+}
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)path {
+    NSInteger custType = [[self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeCustType] integerValue];
+    
+    NSMutableArray *hiddenIndexPaths = [NSMutableArray array];
+    
+    if (custType == 0){
+        NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+        NSIndexPath *enterpriseContactPhoneIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
+        [hiddenIndexPaths addObject:enterpriseNameIndexPath];
+        [hiddenIndexPaths addObject:enterpriseContactPhoneIndexPath];
+    } else{
+        NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:3 inSection:0];
+        NSIndexPath *custPhoneIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
+        
+        [hiddenIndexPaths addObject:custNameIndexPath];
+        [hiddenIndexPaths addObject:custPhoneIndexPath];
+    }
+    
+    
+    return [hiddenIndexPaths containsObject:path];
 }
 
 #pragma mark - Navigation
