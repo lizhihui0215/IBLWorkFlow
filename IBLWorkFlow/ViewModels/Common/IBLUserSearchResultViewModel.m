@@ -3,6 +3,7 @@
 // Copyright (c) 2016 IBL. All rights reserved.
 //
 
+#import "IBLListViewModel.h"
 #import "IBLUserSearchResultViewModel.h"
 #import "IBLUserListRepository.h"
 #import "IBLRelateUser.h"
@@ -78,6 +79,10 @@
                                                          areaIdentifier:self.searchResult.region.identifier
                                                          userIdentifier:self.searchResult.userIdentifier
                                                                 address:self.searchResult.address];
+    fetch.comName = self.searchResult.comName;
+    fetch.comContact = self.searchResult.comContact;
+    fetch.comContactPhone = self.searchResult.comContactPhone;
+    fetch.custType = self.searchResult.custType;
     
     [self.fetchUserList fetchUserListWithIsRefresh:isRefresh
                                        fetchResult:fetch

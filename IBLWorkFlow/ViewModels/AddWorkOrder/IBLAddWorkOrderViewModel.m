@@ -28,6 +28,9 @@
     if (self) {
         self.result = [[IBLAddWorkOrderResult alloc] init];
         self.result.custType = [IBLAppRepository appConfiguration].custType;
+        if (self.result.custType == 1) {
+            self.result.certType = 6;
+        }
         self.generateAppConfiguration = [[IBLGenerateAppConfiguration alloc] init];
         self.addWorkOrder = [[IBLAddWorkOrder alloc] init];
     }

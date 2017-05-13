@@ -200,6 +200,14 @@
 @property (nonatomic, copy) NSString *address;
 
 
+@property(nonatomic, copy) NSString *comName;
+
+@property(nonatomic, copy) NSString *comContact;
+
+@property(nonatomic, copy) NSString *comContactPhone;
+
+@property(nonatomic) NSInteger custType;
+
 + (instancetype)infoWithAccount:(NSString *)account
                        username:(NSString *)username
                           phone:(NSString *)phone

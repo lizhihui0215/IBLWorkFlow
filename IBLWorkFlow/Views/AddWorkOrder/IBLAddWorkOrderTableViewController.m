@@ -482,12 +482,14 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     }else{
         if([NSString isNull:self.relateUserTextField.text]){
             title = @"请选择关联用户！";
-        };
+        }
+        
+        if ([self.productCountTextField.text integerValue] <= 0) {
+            title = @"订购数量必须大于0！";
+        }
     }
     
-    if ([self.productCountTextField.text integerValue] <= 0) {
-        title = @"订购数量必须大于0！";
-    }
+    
     
     return title;
 }
@@ -643,6 +645,8 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
    NSNumber *certType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType];
     
     self.certTypeTextField.text = [self certTypeNames][certType];
+    
+    
     
     
     [self.userIdentifierTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {

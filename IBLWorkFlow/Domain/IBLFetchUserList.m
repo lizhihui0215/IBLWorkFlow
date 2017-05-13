@@ -7,6 +7,7 @@
 //
 
 #import "IBLFetchUserList.h"
+#import "IBLUserListRepository.h"
 
 @interface IBLFetchUserList ()
 

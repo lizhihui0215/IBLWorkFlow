@@ -10,6 +10,9 @@
 #import "IBLUserSearchResultViewController.h"
 #import "IBLSearchViewController.h"
 #import "IBLAppRepository.h"
+#import "IBLUserSearchViewModel.h"
+#import "IBLRegion.h"
+#import "IBLUserSearchResultViewModel.h"
 
 @interface IBLUserSearchTableViewController ()<IBLSearchViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
@@ -20,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *custTypeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *enterpriseNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *enterpriseContactTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseContactPhoneTextField;
 
 @property(nonatomic, strong) IBLRegion *region;
 
@@ -86,7 +90,11 @@
     self.searchResult.region = self.region;
     self.searchResult.account = account;
     self.searchResult.username = username;
+    self.searchResult.custType = [self.custTypeTextField.text integerValue];
+    self.searchResult.comName = self.enterpriseNameTextField.text;
+    self.searchResult.comContact = self.enterpriseContactTextField.text;
     self.searchResult.phone = phone;
+    self.searchResult.comContactPhone = self.enterpriseContactPhoneTextField.text;
     self.searchResult.userIdentifier = userIdentifier;
     self.searchResult.address = self.region.address;
     
@@ -140,13 +148,17 @@
     if (self.searchResult.custType == 0) {
         NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
         NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+        NSIndexPath *enterpriseContactPhoneIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
+        
         hiddenIndexPath = [@[enterpriseNameIndexPath,
-                enterpriseContactIndexPath] mutableCopy];
+                             enterpriseContactIndexPath,
+                             enterpriseContactPhoneIndexPath] mutableCopy];
+        
     }else{
         NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
         NSIndexPath *userPhoneIndexPath = [NSIndexPath indexPathForRow:3 inSection:0];
         hiddenIndexPath = [@[usernameIndexPath,
-                userPhoneIndexPath] mutableCopy];
+                             userPhoneIndexPath] mutableCopy];
     }
     
     NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];

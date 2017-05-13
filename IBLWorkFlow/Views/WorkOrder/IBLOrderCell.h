@@ -24,6 +24,7 @@ static NSString * const MineWorkFlowCellNibName = @"IBLOrderCell";
 //@property (weak, nonatomic) IBOutlet UILabel *orderUserLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *phoneButton;
 
 @property (weak, nonatomic) IBOutlet IBLSegmentControl *segmentControl;
 @property (weak, nonatomic) IBOutlet UIButton *orderUserButton;

@@ -206,6 +206,8 @@
     
     info.custType = createAccountInfo.userType;
     
+    info.idNo = createAccountInfo.identifierNumber;
+    
     info.comName = createAccountInfo.companyName;
     info.comContact = createAccountInfo.companyContact;
     info.comContactPhone = createAccountInfo.companyPhone;

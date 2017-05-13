@@ -6,9 +6,12 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
+#import "IBLStaticTableViewController.h"
 #import "IBLPayDetailViewController.h"
 #import "IBLFetchOrderDetail.h"
 #import "IBLHandleOrder.h"
+#import "IBLOrderDetail.h"
+#import "IBLAppRepository.h"
 
 @interface IBLPayDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *payCostTextField;
@@ -25,6 +28,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *idNoTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseSampleNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseContactTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseContactPhoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *enterpriseAddressTextField;
+@property (weak, nonatomic) IBOutlet UITextField *certTypeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *custTypeTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *payTypeTextField;
 @property (nonatomic, strong) IBLFetchOrderDetail *fetchOrderDetail;
@@ -36,6 +46,55 @@
 @end
 
 @implementation IBLPayDetailViewController
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if([self isHiddenAtIndexPath:indexPath]) return 0;
+    
+    if ([self isSepectorAtIndexPath:indexPath]) return 6;
+    
+    return 40;
+    
+    
+}
+
+- (BOOL)isSepectorAtIndexPath:(NSIndexPath *)path {
+    NSIndexPath *sepctorIndexPath1 = [NSIndexPath indexPathForRow:3 inSection:0];
+    NSIndexPath *sepctorIndexPath2 = [NSIndexPath indexPathForRow:19 inSection:0];
+    return [@[sepctorIndexPath1,sepctorIndexPath2] containsObject:path];
+}
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)path {
+    NSMutableArray *hiddenIndexPaths = [NSMutableArray array];
+    
+    if (self.order.custType == 0) {
+        NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+        NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
+        NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
+        NSIndexPath *enterpriseContactPhoneIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
+        NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
+        [hiddenIndexPaths addObject:enterpriseNameIndexPath];
+        [hiddenIndexPaths addObject:enterpriseSampleNameIndexPath];
+        [hiddenIndexPaths addObject:enterpriseContactIndexPath];
+        [hiddenIndexPaths addObject:enterpriseContactPhoneIndexPath];
+        [hiddenIndexPaths addObject:enterpriseAddressIndexPath];
+    }else {
+        NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
+        NSIndexPath *userPhoneIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+        NSIndexPath *userAddressIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+        [hiddenIndexPaths addObject:usernameIndexPath];
+        [hiddenIndexPaths addObject:userPhoneIndexPath];
+        [hiddenIndexPaths addObject:userAddressIndexPath];
+    }
+    
+    if ([IBLAppRepository appConfiguration].showCustType == 0){
+        NSIndexPath *custTypeIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
+        [hiddenIndexPaths addObject:custTypeIndexPath];
+    }
+    
+    
+    return hiddenIndexPaths;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -104,6 +163,30 @@
     self.userNameTextField.text = self.orderDetail.userName;
     self.idNoTextField.text = self.orderDetail.idNo;
     self.phoneTextField.text = self.orderDetail.phone;
+    
+    self.enterpriseNameTextField.text = self.order.comName;
+    self.enterpriseContactTextField.text = self.order.comContact;
+    self.enterpriseContactPhoneTextField.text = self.order.comContactPhone;
+    self.enterpriseSampleNameTextField.text = self.order.sampleComName;
+    self.enterpriseAddressTextField.text = self.order.comAddr;
+    
+    self.custTypeTextField.text = [self userTypeNames][@(self.order.custType)];
+    self.certTypeTextField.text = [self certTypeNames][@(self.order.certType)];
+}
+
+- (NSDictionary <NSNumber *, NSString *> *)userTypeNames{
+    return @{@(0) : @"一般用户",
+             @(1) : @"企业用户"};
+}
+
+- (NSDictionary<NSNumber *, NSString *> *)certTypeNames{
+    return @{@(0) : @"身份证",
+             @(1) : @"驾照",
+             @(2) : @"护照",
+             @(3) : @"回乡证",
+             @(4) : @"台胞证",
+             @(5) : @"其它",
+             @(6) : @"营业执照",};
 }
 
 - (void)didReceiveMemoryWarning {

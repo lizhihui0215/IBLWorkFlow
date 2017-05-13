@@ -672,4 +672,23 @@
     
     self.index = [statusMap[@(status)] integerValue];
 }
+
+- (BOOL)isHiddenPhoneAtIndexPath:(NSIndexPath *)indexPath {
+    IBLOrder *order = [self orderAtIndexPath:indexPath];
+
+    if (order.custType == 0) {
+        return [NSString isNull:order.phone];
+    }
+
+    return [NSString isNull:order.comContactPhone];
+}
+
+- (NSString *)phoneAtIndexPath:(NSIndexPath *)indexPath {
+    IBLOrder *order = [self orderAtIndexPath:indexPath];
+
+    if (order.custType == 0) {
+        return order.phone;
+    }
+    return order.comContactPhone;
+}
 @end

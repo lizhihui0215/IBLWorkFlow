@@ -74,4 +74,8 @@ typedef NS_ENUM(NSInteger, IBLOrderType) {
 - (NSIndexPath *)indexPathWithOrder:(IBLOrder *)order;
 
 - (void)setStatus:(IBLOrderStatus)status;
+
+- (BOOL)isHiddenPhoneAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSString *)phoneAtIndexPath:(NSIndexPath *)indexPath;
 @end

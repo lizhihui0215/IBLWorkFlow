@@ -168,7 +168,28 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
         @strongify(self);
         [self segmentControlTappedWithAction:[self.viewModel actionInIndexPath:indexPath atIndex:index] indexPath:indexPath];
     };
+    
+    cell.phoneButton.hidden = [self.viewModel isHiddenPhoneAtIndexPath:indexPath];
+
+
+    [cell.phoneButton addTarget:self
+                         action:@selector(phoneButtonPressed:)
+               forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
+}
+
+- (void)phoneButtonPressed:(UIButton *)button{
+    CGPoint location = [button.superview convertPoint:button.center toView:self.tableView];
+
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    
+    
+    NSString *phone = [self.viewModel phoneAtIndexPath:indexPath];
+    NSMutableString* str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",phone];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+
 }
 
 - (NSDictionary *)segueIdentifierMapForSearch{

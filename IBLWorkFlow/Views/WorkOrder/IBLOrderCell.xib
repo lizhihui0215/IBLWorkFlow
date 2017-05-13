@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6r6-bh-6bA" id="1Kr-kd-1xW">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="136.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCz-B2-o1z">
@@ -73,6 +73,17 @@
                                     <action selector="userOrderTapped:" destination="-2" eventType="touchUpInside" id="nTe-gA-wpt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7Y-zW-LYI">
+                                <rect key="frame" x="55" y="1" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="ij8-bv-NT9"/>
+                                    <constraint firstAttribute="height" constant="40" id="p3m-15-63e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <state key="normal" backgroundImage="phone">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -83,6 +94,7 @@
                             <constraint firstItem="cr2-Im-Nk8" firstAttribute="top" secondItem="yf7-DV-1KI" secondAttribute="bottom" constant="5" id="S4e-dJ-4HV"/>
                             <constraint firstAttribute="trailing" secondItem="kV3-aK-9EF" secondAttribute="trailing" constant="10" id="VPE-5h-aaE"/>
                             <constraint firstItem="TJh-8t-q3j" firstAttribute="centerY" secondItem="cCz-B2-o1z" secondAttribute="centerY" id="b7n-Qu-7Y0"/>
+                            <constraint firstItem="b7Y-zW-LYI" firstAttribute="centerY" secondItem="OIH-8r-Fd4" secondAttribute="centerY" id="ezU-o2-nIw"/>
                             <constraint firstItem="OIH-8r-Fd4" firstAttribute="top" secondItem="cCz-B2-o1z" secondAttribute="top" constant="1" id="fmC-t6-Wlq"/>
                             <constraint firstItem="yf7-DV-1KI" firstAttribute="top" secondItem="OIH-8r-Fd4" secondAttribute="bottom" constant="1" id="gf9-6C-vvk"/>
                             <constraint firstItem="cr2-Im-Nk8" firstAttribute="leading" secondItem="cCz-B2-o1z" secondAttribute="leading" constant="10" id="gst-ak-TGi"/>
@@ -92,6 +104,7 @@
                             <constraint firstAttribute="trailing" secondItem="XKE-Rq-gbR" secondAttribute="trailing" constant="10" id="ql3-ho-eyf"/>
                             <constraint firstAttribute="trailing" secondItem="RJd-xb-ybj" secondAttribute="trailing" constant="10" id="rC8-9a-CFI"/>
                             <constraint firstItem="TJh-8t-q3j" firstAttribute="leading" secondItem="cr2-Im-Nk8" secondAttribute="trailing" constant="5" id="w0l-GG-5Jx"/>
+                            <constraint firstItem="b7Y-zW-LYI" firstAttribute="leading" secondItem="OIH-8r-Fd4" secondAttribute="trailing" constant="5" id="wRb-si-49c"/>
                             <constraint firstItem="cr2-Im-Nk8" firstAttribute="centerY" secondItem="cCz-B2-o1z" secondAttribute="centerY" id="wg9-fd-6JI"/>
                             <constraint firstItem="kV3-aK-9EF" firstAttribute="top" secondItem="cr2-Im-Nk8" secondAttribute="bottom" constant="5" id="zcm-pr-fZ7"/>
                             <constraint firstItem="XKE-Rq-gbR" firstAttribute="centerY" secondItem="OIH-8r-Fd4" secondAttribute="centerY" id="znc-Cl-k7f"/>
@@ -109,6 +122,7 @@
             <connections>
                 <outlet property="dateLabel" destination="RJd-xb-ybj" id="CNx-1y-5ej"/>
                 <outlet property="orderUserButton" destination="TJh-8t-q3j" id="52F-xO-XnT"/>
+                <outlet property="phoneButton" destination="b7Y-zW-LYI" id="n9M-Vz-4a6"/>
                 <outlet property="priorityButton" destination="OIH-8r-Fd4" id="r5W-dU-IVf"/>
                 <outlet property="segmentControl" destination="XKE-Rq-gbR" id="4Ux-p0-Feu"/>
                 <outlet property="segmentControlWidthConstraint" destination="lC4-6T-xcm" id="suZ-RE-v0u"/>
@@ -118,6 +132,9 @@
             <point key="canvasLocation" x="552" y="374.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="phone" width="36" height="36"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

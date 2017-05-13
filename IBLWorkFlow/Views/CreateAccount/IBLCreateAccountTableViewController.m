@@ -313,6 +313,10 @@
             self.methodOfValidTextField.text = [self effectNames][@(self.createAccountInfo.effectType)];
             self.dateOfValidTextField.text = [[NSDate date] stringFromFormatter:@"yyyy-MM-dd"];
             self.createAccountInfo.userType = [IBLAppRepository appConfiguration].custType;
+            if (self.createAccountInfo.userType == 1) {
+                self.createAccountInfo.certType = 6;
+            }
+
             break;
         }
     }

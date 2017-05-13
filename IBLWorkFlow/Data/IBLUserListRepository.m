@@ -8,6 +8,7 @@
 
 #import "IBLUserListRepository.h"
 #import "IBLAppRepository.h"
+#import "IBLNetworkServices.h"
 
 @implementation IBLExchangeProductParameters
 
@@ -234,6 +235,10 @@
 //        parameters[@"areaName"] = result.areaName;
         parameters[@"idNo"] = result.userIdentifier;
         parameters[@"addr"] = result.address;
+        parameters[@"comName"] = result.comName;
+        parameters[@"comContact"] = result.comContact;
+        parameters[@"comContactPhone"] = result.comContactPhone;
+        parameters[@"custType"] = @(result.custType);
         parameters[kPageSize] = @(result.pageSize);
         parameters[kStart] = @(result.start * result.pageSize);
         return parameters;
