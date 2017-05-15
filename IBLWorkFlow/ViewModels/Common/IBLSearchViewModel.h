@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, IBLSearchType) {
      */
     IBLSearchTypeSend,
     /**
-     *  开户选择小区
+     *  开户选择区域
      */
     IBLSearchTypeCreateAccountArea,
     /**
@@ -33,11 +33,11 @@ typedef NS_ENUM(NSInteger, IBLSearchType) {
      */
     IBLSearchTypeCreateAccountProduct,
     /**
-     *  更换销售品选择小区
+     *  更换销售品选择区域
      */
     IBLSearchTypeExchangeProductArea,
     /**
-     *  续费选择小区
+     *  续费选择区域
      */
     IBLSearchTypeRenewArea,
     

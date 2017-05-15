@@ -66,7 +66,7 @@
     self.backupLabel.text = self.orderRelateUser.remark;
     self.certTextField.text = [self certTypeNames][@(self.orderRelateUser.certType)];
     self.identifierTextField.text = self.orderRelateUser.idNo;
-    self.companySampleNameTextField.text = self.orderRelateUser.sampleComName;
+    self.companySampleNameTextField.text = self.orderRelateUser.simpleComName;
     
     NSString *custName = @"一般用户";
     

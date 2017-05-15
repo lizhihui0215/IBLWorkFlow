@@ -31,7 +31,7 @@
                                                        @"COM_CONTACT": @"comContact",
                                                        @"COM_ADDR": @"comAddr",
                                                        @"CERT_TYPE": @"certType",
-                                                       @"SIMPLE_COM_NAME": @"sampleComName"
+                                                       @"SIMPLE_COM_NAME": @"simpleComName"
                                                        }];
 }
 

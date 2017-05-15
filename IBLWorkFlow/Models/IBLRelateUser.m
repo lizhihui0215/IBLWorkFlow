@@ -27,7 +27,7 @@
                                                        @"USER_NAME" : @"username",
                                                        @"CUST_TYPE" : @"custType",
                                                        @"COM_NAME" : @"comName",
-                                                       @"SIMPLE_COM_NAME" : @"sampleComName",
+                                                       @"SIMPLE_COM_NAME" : @"simpleComName",
                                                        @"COM_CONTACT" : @"comContact",
                                                        @"COM_CONTACT_PHONE" : @"comContactPhone",
                                                        @"COM_ADDR" : @"comAddr",

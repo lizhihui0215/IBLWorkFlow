@@ -55,7 +55,7 @@
 @property (nonatomic, copy) NSString *companyContact;
 
 @property (nonatomic, copy) NSString *companyAddress;
-@property (nonatomic, copy) NSString *sampleComName;
+@property (nonatomic, copy) NSString *simpleComName;
 
 @property(nonatomic) NSInteger certType;
 

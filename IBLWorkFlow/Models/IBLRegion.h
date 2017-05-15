@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, IBLRegionType) {
      */
     IBLRegionTypeBusinessHall,
     /**
-     *  小区
+     *  区域
      */
     IBLRegionTypeResidential,
 };
@@ -44,10 +44,10 @@ typedef NS_ENUM(NSInteger, IBLRegionType) {
 /// 区域名称
 @property (nonatomic, copy) NSString *name;
 
-/// 小区ID
+/// 区域ID
 @property (nonatomic, assign) NSInteger identifier;
 
-/// 小区父组织ID
+/// 区域父组织ID
 @property (nonatomic, assign) NSInteger parentIdentifier;
 
 /// 组织类型

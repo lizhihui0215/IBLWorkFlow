@@ -102,7 +102,7 @@
  type -- 账号密码生成方式
  0-	默认
  1-	根据前缀定制
- 2-	小区
+ 2-	区域
  typeval—type如果为0，该值为空，账号密码则由系统自动生成；如果为1，则需要填入前缀值；如果为2，需要填入区域的id，前提是区域有相应的账号生成规则
  accountLen – 账号长度
  pwdLen – 密码长度
@@ -152,7 +152,7 @@
 
 //其它金额，以分为单位（可选）
 @property(nonatomic, assign) NSInteger otherCost;
-//小区ID（必选）
+//区域ID（必选）
 @property(nonatomic, copy) NSString *nodeId;
 //登录方式：（可选）
 //1 – PPPOE
@@ -178,7 +178,7 @@
 @property (nonatomic, copy) NSString *comContact;
 @property (nonatomic, copy) NSString *comContactPhone;
 @property (nonatomic, copy) NSString *comAddr;
-@property (nonatomic, copy) NSString *sampleComName;
+@property (nonatomic, copy) NSString *simpleComName;
 
 @property(nonatomic) NSInteger certType;
 @end
@@ -190,9 +190,9 @@
 @property (nonatomic, copy) NSString *username;
 /// 用户电话 （支持迷糊查询）
 @property (nonatomic, copy) NSString *phone;
-/// 用户小区名称 （支持迷糊查询）
+/// 用户区域名称 （支持迷糊查询）
 @property (nonatomic, copy) NSString *areaName;
-/// 用户小区Id （支持迷糊查询）
+/// 用户区域Id （支持迷糊查询）
 @property (nonatomic, assign) NSInteger areaIdentifier;
 /// 用户身份证号 （支持迷糊查询）
 @property (nonatomic, copy) NSString *userIdentifier;

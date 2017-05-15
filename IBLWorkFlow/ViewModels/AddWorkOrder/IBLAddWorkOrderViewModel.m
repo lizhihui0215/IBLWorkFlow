@@ -142,7 +142,7 @@
     info.comContact = self.result.companyContact;
     info.comContactPhone = self.result.companyPhone;
     info.comAddress = self.result.companyAddress;
-    info.sampleComName = self.result.sampleComName;
+    info.simpleComName = self.result.simpleComName;
     [self.addWorkOrder addWorkOrderWith:info
                         completeHandler:^(NSString *orderId, NSError *error) {
                             handler(error);
@@ -170,7 +170,7 @@
 }
 
 - (void)setEnterpriseSample:(NSString *)val {
-    self.result.sampleComName = val;
+    self.result.simpleComName = val;
 }
 
 - (void)setEnterpriseContact:(NSString *)val {

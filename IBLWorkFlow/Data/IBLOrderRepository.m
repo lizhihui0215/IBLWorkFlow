@@ -363,7 +363,7 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         parameters[@"comName"] = info.comName;
         parameters[@"comContact"] = info.comContact;
         parameters[@"comContactPhone"] = info.comContactPhone;
-        parameters[@"sampleComName"] = info.sampleComName;
+        parameters[@"simpleComName"] = info.simpleComName;
         parameters[@"comAddress"] = info.comAddress;
         return parameters;
     }];

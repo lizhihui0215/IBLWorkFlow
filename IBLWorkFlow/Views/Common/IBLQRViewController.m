@@ -85,7 +85,6 @@
     [self.checkOrder checkOrderWithNumber:self.payResult.orderNo
                           completeHandler:^(IBLOrderPayStatus status, NSError *error) {
                               @strongify(self)
-                              
                               switch (status) {
                                   case IBLOrderPayStatusPayed:
                                   case IBLOrderPayStatusClosed:

@@ -17,7 +17,7 @@
 @property (nonatomic, copy) NSString *payType;
 /// 套餐
 @property (nonatomic, copy) NSString *offerName;
-/// 小区
+/// 区域
 @property (nonatomic, copy) NSString *nodeName;
 /// 账号
 @property (nonatomic, copy) NSString *account;
@@ -43,6 +43,16 @@
 @property (nonatomic, assign) NSInteger totalCost;
 /// 其它金额，如果为负数，则为优惠金额
 @property (nonatomic, copy) NSString *otherCost;
+
+@property (nonatomic, assign) NSInteger custType;
+
+@property (nonatomic, copy) NSString *comName;
+@property (nonatomic, copy) NSString *comAddr;
+@property (nonatomic, copy) NSString *comContact;
+@property (nonatomic, copy) NSString *comContactPhone;
+@property (nonatomic, copy) NSString *simpleComName;
+@property (nonatomic, assign) NSInteger certType;
+
 
 @property (nonatomic, copy) NSString *servId;
 

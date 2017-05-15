@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
 /// 订购销售品ID
 @property (nonatomic, assign) NSInteger offerId;
 
-/// 小区ID（仅适用于报装工单类型）
+/// 区域ID（仅适用于报装工单类型）
 @property (nonatomic, assign) NSInteger nodeId;
 
 /// 用户姓名（仅适用于报装工单类型）
@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, IBLFetchOrderType) {
 @property(nonatomic, copy) NSString *comContact;
 @property(nonatomic, copy) NSString *comContactPhone;
 @property(nonatomic, copy) NSString *comAddress;
-@property(nonatomic, copy) NSString *sampleComName;
+@property(nonatomic, copy) NSString *simpleComName;
 @end
 
 /**

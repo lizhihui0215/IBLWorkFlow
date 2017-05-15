@@ -236,7 +236,7 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
         createAccountInfo.companyPhone = order.comContactPhone;
         createAccountInfo.companyAddress = order.comAddr;
         createAccountInfo.companyContact = order.comContact;
-        createAccountInfo.sampleComName = order.sampleComName;
+        createAccountInfo.simpleComName = order.simpleComName;
         createAccountInfo.certType = order.certType;
         
     }else{

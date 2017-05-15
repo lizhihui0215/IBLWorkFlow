@@ -170,7 +170,7 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
 /// 用户姓名 （报装工单特有）
 @property (nonatomic, copy) NSString *username;
 
-/// 小区名称 (报装工单特有)
+/// 区域名称 (报装工单特有)
 @property (nonatomic, copy) NSString *regionName;
 
 /// 销售品名称 (报装工单特有)
@@ -207,7 +207,7 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
 @property (nonatomic, copy) NSString *comContactPhone;
 @property (nonatomic, copy) NSString *comAddr;
 
-@property (nonatomic, copy) NSString *sampleComName;
+@property (nonatomic, copy) NSString *simpleComName;
 
 
 @property(nonatomic) NSInteger certType;

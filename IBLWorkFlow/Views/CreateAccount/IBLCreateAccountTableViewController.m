@@ -219,6 +219,7 @@
                                                              self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
                                                              self.createAccountInfo.certType = 0;
                                                              self.identifierTypeTextField.text = [self certTypeNames][@(0)];
+                                                             [self cleanUserInfo];
                                                              [self.tableView reloadData];
                                                          }];
     
@@ -228,6 +229,7 @@
                                                      self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
                                                      self.createAccountInfo.certType = 6;
                                                      self.identifierTypeTextField.text = [self certTypeNames][@(6)];
+                                                     [self cleanUserInfo];
 
                                                      [self.tableView reloadData];
                                                  }];
@@ -240,6 +242,26 @@
                                                          cancleButtonItem:cancel
                                                          otherButtonItems:beforeTheDate,first,nil];
     [alert showInController:self];
+}
+
+- (void)cleanUserInfo{
+    self.usernameTextField.text = nil;
+    self.phoneTextField.text = nil;
+    self.addressTextField.text = nil;
+    self.enterpriseTextField.text = nil;
+    self.enterprisesPhoneTextField.text = nil;
+    self.enterprisesAddressTextField.text = nil;
+    self.enterprisesContactTextField.text = nil;
+    self.enterprisesSampleNameTextField.text = nil;
+    
+    self.createAccountInfo.username = nil;
+    self.createAccountInfo.phone = nil;
+    self.createAccountInfo.address = nil;
+    self.createAccountInfo.companyName = nil;
+    self.createAccountInfo.companyPhone = nil;
+    self.createAccountInfo.companyAddress = nil;
+    self.createAccountInfo.companyContact = nil;
+    self.createAccountInfo.simpleComName = nil;
 }
 
 - (IBAction)effectTypeTapped:(UITapGestureRecognizer *)sender {
@@ -295,7 +317,7 @@
             self.enterprisesAddressTextField.text = self.createAccountInfo.companyAddress;
             self.enterprisesContactTextField.text = self.createAccountInfo.companyContact;
             self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
-            self.enterprisesSampleNameTextField.text = self.createAccountInfo.sampleComName;
+            self.enterprisesSampleNameTextField.text = self.createAccountInfo.simpleComName;
             @weakify(self)
             [self.tableViewDataSource productPriceOfTableViewController:self
                                                         completeHandler:^(IBLProductPrice *productPrice) {
@@ -784,7 +806,7 @@
     }
     
     if ([NSString isNull:self.regionTextField.text]) {
-        notNullText = @"请选择小区！";
+        notNullText = @"请选择区域！";
     }
     
     if (notNullText) {
@@ -822,7 +844,7 @@
     self.createAccountInfo.companyPhone = self.enterprisesPhoneTextField.text;
     self.createAccountInfo.companyContact = self.enterprisesContactTextField.text;
     self.createAccountInfo.companyAddress = self.enterprisesAddressTextField.text;
-    self.createAccountInfo.sampleComName = self.enterprisesSampleNameTextField.text;
+    self.createAccountInfo.simpleComName = self.enterprisesSampleNameTextField.text;
 }
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {

@@ -37,7 +37,7 @@
 }
 
 - (NSString *)title{
-    return @"小区选择";
+    return @"区域选择";
 }
 
 - (void)fetchSearchContentWithSearchInfo:(id)searchInfo

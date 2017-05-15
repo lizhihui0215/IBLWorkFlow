@@ -67,7 +67,7 @@
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)path {
     NSMutableArray *hiddenIndexPaths = [NSMutableArray array];
     
-    if (self.order.custType == 0) {
+    if (self.orderDetail.custType == 0) {
         NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
         NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
         NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
@@ -164,14 +164,14 @@
     self.idNoTextField.text = self.orderDetail.idNo;
     self.phoneTextField.text = self.orderDetail.phone;
     
-    self.enterpriseNameTextField.text = self.order.comName;
-    self.enterpriseContactTextField.text = self.order.comContact;
-    self.enterpriseContactPhoneTextField.text = self.order.comContactPhone;
-    self.enterpriseSampleNameTextField.text = self.order.sampleComName;
-    self.enterpriseAddressTextField.text = self.order.comAddr;
+    self.enterpriseNameTextField.text = self.orderDetail.comName;
+    self.enterpriseContactTextField.text = self.orderDetail.comContact;
+    self.enterpriseContactPhoneTextField.text = self.orderDetail.comContactPhone;
+    self.enterpriseSampleNameTextField.text = self.orderDetail.simpleComName;
+    self.enterpriseAddressTextField.text = self.orderDetail.comAddr;
     
-    self.custTypeTextField.text = [self userTypeNames][@(self.order.custType)];
-    self.certTypeTextField.text = [self certTypeNames][@(self.order.certType)];
+    self.custTypeTextField.text = [self userTypeNames][@(self.orderDetail.custType)];
+    self.certTypeTextField.text = [self certTypeNames][@(self.orderDetail.certType)];
     [self.tableView reloadData];
 }
 

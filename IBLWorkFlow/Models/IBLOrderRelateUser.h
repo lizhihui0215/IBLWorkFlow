@@ -38,7 +38,7 @@
 
 @property (nonatomic, assign) NSInteger certType;
 
-@property (nonatomic, copy) NSString *sampleComName;
+@property (nonatomic, copy) NSString *simpleComName;
 
 
 

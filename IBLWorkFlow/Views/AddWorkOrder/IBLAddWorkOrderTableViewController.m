@@ -118,7 +118,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     IBLWorkOrderBussinessType *biz = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeBizType];
     if (!region && biz.status == IBLWorkOrderBizStatusInstall) {
         NSError *error = [NSError errorWithDomain:@"" code:0 userInfo:@{kExceptionCode : @(0),
-                                                                        kExceptionMessage : @"请选择小区!"}];
+                                                                        kExceptionMessage : @"请选择区域!"}];
         
         [self showAlertWithError:error];
         return;
@@ -189,6 +189,8 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                                                              self.custTypeTextField.text = [self userTypeNames][@(0)];
                                                              [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(0)];
                                                              self.certTypeTextField.text = [self certTypeNames][@(0)];
+                                                             
+                                                             [self cleanUserInfo];
 
                                                              [self.tableView reloadData];
                                                          }];
@@ -199,7 +201,8 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                                                      self.custTypeTextField.text = [self userTypeNames][@(1)];
                                                      [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(6)];
                                                      self.certTypeTextField.text = [self certTypeNames][@(6)];
-                                                     
+                                                     [self cleanUserInfo];
+
                                                      [self.tableView reloadData];
                                                  }];
     
@@ -213,6 +216,25 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     [alert showInController:self];
 
 
+}
+
+- (void)cleanUserInfo{
+    self.usernameTextField.text = nil;
+    self.phoneTextField.text = nil;
+    self.addressTextField.text = nil;
+    self.enterpriseNameTextField.text = nil;
+    self.enterpriseSampleTextField.text = nil;
+    self.enterpriseContactPhoneTextField.text = nil;
+    self.enterpriseContactTextField.text = nil;
+    self.enterpriseAddressTextField.text = nil;
+    [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeUsername didEndEdit:nil];
+    [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypePhone didEndEdit:nil];
+    [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeAddress didEndEdit:nil];
+    [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeEnterpriseName didEndEdit:nil];
+    [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeEnterpriseAddress didEndEdit:nil];
+    [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeEnterpriseContact didEndEdit:nil];
+    [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeEnterpriseSampleName didEndEdit:nil];
+    [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeEnterpriseContactPhone didEndEdit:nil];
 }
 
 - (NSDictionary <NSNumber *, NSString *> *)userTypeNames{
@@ -466,7 +488,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     if (type.status == IBLWorkOrderBizStatusInstall) {
         if([NSString isNull:self.regionTextField.text]){
-            title = @"请选择小区！";
+            title = @"请选择区域！";
         };
         
         

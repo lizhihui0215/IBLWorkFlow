@@ -142,7 +142,7 @@
     createInfo.comContact = info.companyContact;
     createInfo.comContactPhone = info.companyPhone;
     createInfo.comAddr = info.companyAddress;
-    createInfo.sampleComName = info.sampleComName;
+    createInfo.simpleComName = info.simpleComName;
     createInfo.certType = info.certType;
     
     
@@ -212,7 +212,7 @@
     info.comContact = createAccountInfo.companyContact;
     info.comContactPhone = createAccountInfo.companyPhone;
     info.comAddr = createAccountInfo.companyAddress;
-    info.sampleComName = createAccountInfo.sampleComName;
+    info.simpleComName = createAccountInfo.simpleComName;
     info.certType = createAccountInfo.certType;
     
     

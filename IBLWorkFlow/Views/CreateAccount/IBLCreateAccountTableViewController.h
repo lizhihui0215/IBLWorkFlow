@@ -62,7 +62,7 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountUserType) {
 
 @interface IBLCreateAccountTableViewInfo : NSObject
 
-/// 小区ID （报装工单特有）
+/// 区域ID （报装工单特有）
 @property (nonatomic, assign) NSInteger residentialIdentifier;
 
 /// 订购的销售品ID （报装工单特有）
@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountUserType) {
 /// 用户姓名 （报装工单特有）
 @property (nonatomic, copy) NSString *username;
 
-/// 小区名称 (报装工单特有)
+/// 区域名称 (报装工单特有)
 @property (nonatomic, copy) NSString *regionName;
 
 /// 销售品名称 (报装工单特有)
@@ -138,7 +138,7 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountUserType) {
 @property (nonatomic, copy) NSString *companyContact;
 
 @property (nonatomic, copy) NSString *companyAddress;
-@property (nonatomic, copy) NSString *sampleComName;
+@property (nonatomic, copy) NSString *simpleComName;
 
 @property(nonatomic, assign) NSInteger certType;
 
