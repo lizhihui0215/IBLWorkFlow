@@ -279,8 +279,6 @@
     self.commentTextView.textContainerInset = UIEdgeInsetsZero;
     self.createAccountInfo = [self.tableViewDataSource createAccountInfoOfTableViewController:self];
     self.countTextField.text = @"1";
-    if (self.createAccountInfo.userType == IBCreateAccountLUserTypeEnterprise) self.createAccountInfo.certType = 6;
-    self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
     switch (createAccountType) {
         case IBLCreateAccountTypeFromOrder: {
             self.regionTextField.text = self.createAccountInfo.regionName;
@@ -347,6 +345,10 @@
     self.enterprisesPhoneTextField.keyboardType = UIKeyboardTypeNumberPad;
     
     self.userTypeTextField.text = [self userTypeNames][@( self.createAccountInfo.userType)];
+    
+    if (self.createAccountInfo.userType == IBCreateAccountLUserTypeEnterprise) self.createAccountInfo.certType = 6;
+    self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+    
 }
 
 - (void)setPriceTextFieldsEnable:(BOOL)enable{
@@ -880,7 +882,7 @@
 
     }
     
-    NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+    NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
     
     if ([IBLAppRepository appConfiguration].showCustType == 0) {
         [hiddenIndexPaths addObject:userTypeIndexPath];

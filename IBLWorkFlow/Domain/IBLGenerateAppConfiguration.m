@@ -14,7 +14,6 @@ static NSString const * kMineOrderHandle = @"HANDLE";
 
 static NSString const * kMineOrderForward = @"TRAN";
 
-
 static NSString const * kManagedOrderSend = @"ISUUE";
 
 static NSString const * kManagedOrderForward = @"TRAN";

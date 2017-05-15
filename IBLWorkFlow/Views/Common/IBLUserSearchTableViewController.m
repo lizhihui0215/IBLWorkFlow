@@ -90,13 +90,13 @@
     self.searchResult.region = self.region;
     self.searchResult.account = account;
     self.searchResult.username = username;
-    self.searchResult.custType = [self.custTypeTextField.text integerValue];
     self.searchResult.comName = self.enterpriseNameTextField.text;
     self.searchResult.comContact = self.enterpriseContactTextField.text;
     self.searchResult.phone = phone;
     self.searchResult.comContactPhone = self.enterpriseContactPhoneTextField.text;
     self.searchResult.userIdentifier = userIdentifier;
     self.searchResult.address = self.region.address;
+    
     
     [self.tableViewDelegate userSearchTableViewController:self didEndSearch:self.searchResult];
     

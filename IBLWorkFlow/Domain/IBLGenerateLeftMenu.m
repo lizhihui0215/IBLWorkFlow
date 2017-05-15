@@ -20,6 +20,8 @@ static NSString const * kAddOrder = @"ADD_ORDER";
 static NSString const * kChangeProduct = @"CHANGE";
 
 static NSString const * kRenew = @"RENEW";
+
+static NSString const * kOnlinPay = @"USE_ONLINE_PAY";
 //
 //static NSString const * kMineWorkOrderManage = @"WORK_ORDER_MANAGE";
 

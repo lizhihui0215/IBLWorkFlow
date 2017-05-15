@@ -14,7 +14,7 @@
     return [[JSONKeyMapper alloc] initWithDictionary:@{@"resKey" : @"key",
                                                        @"resName" : @"name",
                                                        @"resDesc" : @"des",
-                                                       @"resType" : @"type"
+                                                       @"resType" : @"type",
                                                        }];
 }
 

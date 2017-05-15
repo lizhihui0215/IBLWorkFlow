@@ -9,6 +9,7 @@
 #import "IBLCreateAccountViewController.h"
 #import "IBLCreateAccountTableViewController.h"
 #import "IBLQRViewController.h"
+#import "IBLUserRepository.h"
 
 static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccountEmbedTableView";
 
@@ -94,7 +95,14 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 
 - (void)tableViewController:(IBLCreateAccountTableViewController *)controller
                      commit:(IBLCreateAccountTableViewInfo *)commit {
+    
+    
     IBLPayModel paymodel = commit.pay <= 0 ? IBLPayModelCash : [self.viewModel payModel];
+    if (![IBLUserRepository user].isOnlinePay) {
+        [self payWithCash:commit];
+        return;
+    }
+    
     switch (paymodel) {
         case IBLPayModelNet: {
             IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
@@ -135,27 +143,31 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
             break;
         }
         case IBLPayModelCash: {
-            [self showHUDWithMessage:@""];
-            [self.viewModel createAccountWith:commit completeHandler:^(NSError *error){
-                [self hidHUD];
-                if (![self showAlertWithError:error]) {
-                    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确定" action:^(IBLButtonItem *item) {
-                        if([self.delegate respondsToSelector:@selector(createAccountViewController:commit:)]){
-                            [self.delegate createAccountViewController:self commit:self.viewModel.order];
-                        }
-                    }];
-                    
-                    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                                    title:@"开户成功"
-                                                                                  message:nil
-                                                                         cancleButtonItem:cancel
-                                                                         otherButtonItems:nil];
-                    [alert showInController:self];
-                }
-            }];
+            [self payWithCash:commit];
             break;
         }
     }
+}
+
+- (void)payWithCash:(IBLCreateAccountTableViewInfo *)commit{
+    [self showHUDWithMessage:@""];
+    [self.viewModel createAccountWith:commit completeHandler:^(NSError *error){
+        [self hidHUD];
+        if (![self showAlertWithError:error]) {
+            IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确定" action:^(IBLButtonItem *item) {
+                if([self.delegate respondsToSelector:@selector(createAccountViewController:commit:)]){
+                    [self.delegate createAccountViewController:self commit:self.viewModel.order];
+                }
+            }];
+            
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                            title:@"开户成功"
+                                                                          message:nil
+                                                                 cancleButtonItem:cancel
+                                                                 otherButtonItems:nil];
+            [alert showInController:self];
+        }
+    }];
 }
 
 - (NSDictionary<NSIndexPath *, NSString *> *)notNullFieldsDictionary;{

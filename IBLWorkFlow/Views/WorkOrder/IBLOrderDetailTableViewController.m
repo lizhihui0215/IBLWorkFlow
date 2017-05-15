@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *handlerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *handlerPhoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastUpdateDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *regionLabel;
 
 @end
 
@@ -45,6 +47,15 @@
     self.creatorPhoneLabel.text = self.order.creatorPhone;
     self.createDateLabel.text = self.order.createTime;
     self.expireDateLabel.text = self.order.expireTime;
+    
+    if (self.order.custType == 0) {
+        self.phoneLabel.text = self.order.phone;
+    }else{
+        self.phoneLabel.text = self.order.comContactPhone;
+    }
+    
+    self.regionLabel.text = self.order.regionName;
+    
     //???: 内容那里来
 //    self.handlerLabel.text = self.order.
 //    self.handlerPhoneLabel.text = self.order.

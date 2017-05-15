@@ -10,6 +10,16 @@
 
 @implementation IBLUser
 
+- (BOOL)isOnlinePay{
+    for (IBLPremission *premission in self.permissions) {
+        if([premission.key isEqualToString:@"USE_ONLINE_PAY"]){
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 + (JSONKeyMapper *)keyMapper{
     return [[JSONKeyMapper alloc] initWithDictionary:@{@"allocId" : @"identifier",
                                                        @"resourceList" : @"permissions"}];

@@ -93,7 +93,7 @@
     }
     
     
-    return hiddenIndexPaths;
+    return [hiddenIndexPaths containsObject:path];
 }
 
 - (void)viewDidLoad {
@@ -172,6 +172,7 @@
     
     self.custTypeTextField.text = [self userTypeNames][@(self.order.custType)];
     self.certTypeTextField.text = [self certTypeNames][@(self.order.certType)];
+    [self.tableView reloadData];
 }
 
 - (NSDictionary <NSNumber *, NSString *> *)userTypeNames{

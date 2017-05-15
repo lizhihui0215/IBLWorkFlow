@@ -18,4 +18,6 @@
 
 @property (nonatomic, copy) NSString *type;
 
+
+
 @end

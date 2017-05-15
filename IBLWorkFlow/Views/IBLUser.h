@@ -26,4 +26,6 @@
 
 @property (nonatomic, strong) NSArray<IBLPremission> *permissions;
 
+@property (nonatomic, assign, readonly) BOOL isOnlinePay;
+
 @end
