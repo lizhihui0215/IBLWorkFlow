@@ -35,19 +35,19 @@
 }
 
 - (NSDictionary *)createAccountAllFields{
-    
-    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:1 inSection:1];
-    NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:3 inSection:1];
-    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:4 inSection:1];
-    NSIndexPath *custAddress = [NSIndexPath indexPathForRow:2 inSection:1];
+    NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:1 inSection:1];
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:3 inSection:1];
+    NSIndexPath *custAddress = [NSIndexPath indexPathForRow:4 inSection:1];
+
     NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
     NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
     NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
-    NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
-    NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
-    NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
-    NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
+    NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
+    NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
+    NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
+    NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:10 inSection:1];
 
     return  @{@"custName" : custNameIndexPath,
               @"custPhone" : custPhone  ,
@@ -108,7 +108,7 @@
         
         NSNumber *isNull = notNullIndexPath == nil ? @(NO) : @(YES);
         
-        notNullFields[field] = isNull;
+        notNullFields[notNullIndexPath] = isNull;
     }
     
     return notNullFields;
@@ -140,7 +140,7 @@
         
         NSNumber *isNull = notNullIndexPath == nil ? @(NO) : @(YES);
         
-        notNullFields[field] = isNull;
+        notNullFields[notNullIndexPath] = isNull;
     }
     
     return notNullFields;
@@ -195,7 +195,7 @@
         
         NSNumber *isNull = notNullIndexPath == nil ? @(NO) : @(YES);
         
-        notNullFields[field] = isNull;
+        notNullFields[notNullFields] = isNull;
     }
     
     return notNullFields;

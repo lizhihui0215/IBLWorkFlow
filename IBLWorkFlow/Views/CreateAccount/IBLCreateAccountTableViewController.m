@@ -684,46 +684,47 @@
 }
 
 - (NSDictionary <NSIndexPath *, UITextField *> *)test{
-    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:1 inSection:1];
-    NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:3 inSection:1];
-    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:4 inSection:1];
-    NSIndexPath *custAddress = [NSIndexPath indexPathForRow:2 inSection:1];
-    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
-    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
     NSIndexPath *account = [NSIndexPath indexPathForRow:0 inSection:0];
     NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
-    
+    NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:1 inSection:1];
+
+    NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+    NSIndexPath *custPhone = [NSIndexPath indexPathForRow:3 inSection:1];
+    NSIndexPath *custAddress = [NSIndexPath indexPathForRow:4 inSection:1];
+
     NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
     NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
     NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
     NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
     NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
     
+    NSIndexPath *custReserve = [NSIndexPath indexPathForRow:10 inSection:1];
+    NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
+    NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
+
+    NSMutableDictionary *notNullDictionary = [NSMutableDictionary dictionary];
     if (self.createAccountInfo.userType == IBCreateAccountLUserTypeEnterprise) {
-        return @{enterpriseNameIndexPath : self.enterpriseTextField,
-                 enterpriseContactIndexPath : self.enterprisesContactTextField,
-                 enterprisePhoneIndexPath : self.enterprisesPhoneTextField,
-                 enterpriseAddressIndexPath : self.enterprisesAddressTextField,
-                 enterpriseSampleNameIndexPath : self.enterprisesSampleNameTextField,
-                 contractCode : self.contractNumberTextField,
-                 voiceCode : self.ticketNumberTextField,
-                 account : self.accountTextField,
-                 password : self.passwordTextField,
-                 };
+        notNullDictionary[enterpriseNameIndexPath] = self.enterpriseTextField;
+        notNullDictionary[enterpriseContactIndexPath] = self.enterprisesContactTextField;
+        notNullDictionary[enterprisePhoneIndexPath] = self.enterprisesPhoneTextField;
+        notNullDictionary[enterpriseAddressIndexPath] = self.enterprisesAddressTextField;
+        notNullDictionary[enterpriseSampleNameIndexPath] = self.enterprisesSampleNameTextField;
+    }else {
+        notNullDictionary[custNameIndexPath] = self.usernameTextField;
+        notNullDictionary[custPhone] = self.phoneTextField;
+        notNullDictionary[custAddress] = self.addressTextField;
+
     }
+    notNullDictionary[custIdCard] = self.identifierTextField;
+    notNullDictionary[custReserve] = self.commentTextView;
+    notNullDictionary[contractCode] = self.contractNumberTextField;
+    notNullDictionary[voiceCode] = self.ticketNumberTextField;
+    notNullDictionary[account] = self.accountTextField;
+    notNullDictionary[password] = self.passwordTextField;
+
+
     
-    
-    return @{custNameIndexPath : self.usernameTextField,
-             custPhone : self.phoneTextField,
-             custIdCard : self.identifierTextField,
-             custReserve : self.commentTextView,
-             custAddress : self.addressTextField,
-             contractCode : self.contractNumberTextField,
-             voiceCode : self.ticketNumberTextField,
-             account : self.accountTextField,
-             password : self.passwordTextField,
-             };
+    return notNullDictionary;
 }
 
 - (NSDictionary <NSIndexPath *, NSString *> *)notNullTitleDictionary{
@@ -736,30 +737,38 @@
     NSIndexPath *account = [NSIndexPath indexPathForRow:0 inSection:0];
     NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
     NSIndexPath *custReserve = [NSIndexPath indexPathForRow:10 inSection:1];
+    
 
     
     NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
     NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
-
     NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
     NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
     NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
-
     
-    return @{custNameIndexPath : @"用户名不能为空！",
-             custPhone : @"联系电话不能为空！",
-             custIdCard : @"身份证号不能为空！",
-             custReserve : @"备注不能为空！",
-             custAddress : @"联系地址不能为空！",
-             contractCode : @"合同号不能为空！",
-             voiceCode : @"票据号不能为空！",
-             account : @"账户不能为空！",
-             password : @"密码不能为空！",
-             enterpriseNameIndexPath : @"企业名称不能为空！",
-             enterpriseContactIndexPath : @"企业联系人不能为空！",
-             enterprisePhoneIndexPath : @"企业联系电话不能为空！",
-             enterpriseAddressIndexPath : @"企业联系地址不能为空！",
-             enterpriseSampleNameIndexPath : @"企业简称不能为空！"};
+    
+    NSMutableDictionary *notNullDictionary = [NSMutableDictionary dictionary];
+    if (self.createAccountInfo.userType == IBLCreateAccountUserTypeDetault) {
+        notNullDictionary[custNameIndexPath] = @"用户名不能为空！";
+        notNullDictionary[custPhone] = @"联系电话不能为空！";
+        notNullDictionary[custAddress] = @"联系地址不能为空！";
+    }else {
+        notNullDictionary[enterpriseNameIndexPath] = @"企业名称不能为空！";
+        notNullDictionary[enterpriseContactIndexPath] = @"企业联系人不能为空！";
+        notNullDictionary[enterprisePhoneIndexPath] = @"企业联系电话不能为空！";
+        notNullDictionary[enterpriseAddressIndexPath] = @"企业联系地址不能为空！";
+        notNullDictionary[enterpriseSampleNameIndexPath] = @"企业简称不能为空！";
+    }
+
+    notNullDictionary[custIdCard] = @"证件号不能为空！";
+    notNullDictionary[custReserve] = @"备注不能为空！";
+    notNullDictionary[contractCode] = @"合同号不能为空！";
+    notNullDictionary[voiceCode] = @"票据号不能为空！";
+    notNullDictionary[account] = @"账户不能为空！";
+    notNullDictionary[password] = @"密码不能为空！";
+
+
+    return notNullDictionary;
 }
 
 - (BOOL)validateNotNullFields{
@@ -771,7 +780,7 @@
     
     for (NSIndexPath *indexPath in indexPaths) {
         UITextField *textField = [self test][indexPath];
-        if([NSString isNull:textField.text]) {
+        if([NSString isNull:textField.text] && textField != nil) {
             notNullText = [self notNullTitleDictionary][indexPath];
             break;
         }
