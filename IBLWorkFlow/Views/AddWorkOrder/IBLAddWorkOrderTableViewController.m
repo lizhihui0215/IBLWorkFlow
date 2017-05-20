@@ -426,6 +426,40 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                     userTypeIndexPath: @(YES)};
             break;
         }
+        case IBLWorkOrderBizStatusHandleAdvisory: {
+            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+            
+            NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+            NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
+            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
+            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+            
+            NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+            NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+            NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
+            NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
+            NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
+            NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+            NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
+            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:21 inSection:0];
+            dic = @{productIndexPath : @(YES),
+                    countIndexPath : @(YES),
+                    usernameIndexPath : @(YES),
+                    phoneIndexPath : @(YES),
+                    addressIndexPath : @(YES),
+                    userIdentifierIndexPath : @(YES),
+                    enterpriseNameIndexPath : @(YES),
+                    enterpriseSampleNameIndexPath : @(YES),
+                    enterpriseContactIndexPath : @(YES),
+                    enterprisePhoneIndexPath : @(YES),
+                    enterpriseAddressIndexPath : @(YES),
+                    certTypeIndexPath : @(YES),
+                    remarkIndexPath : @(YES),
+                    userTypeIndexPath: @(YES)};
+
+            break;
+        }
         default:{
             NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
 
@@ -501,6 +535,11 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                 title = @"您输入的手机格式不正确！";
             };
         }
+    }else if (type.status == IBLWorkOrderBizStatusHandleAdvisory){
+        if([NSString isNull:self.regionTextField.text] && ([NSString isNull:self.relateUserTextField.text])){
+            title = @"请选择区域或者关联用户！";
+        };
+
     }else{
         if([NSString isNull:self.relateUserTextField.text]){
             title = @"请选择关联用户！";
