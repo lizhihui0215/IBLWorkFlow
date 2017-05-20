@@ -8,6 +8,7 @@
 
 #import "IBLOrderDetailTableViewController.h"
 #import "IBLUserDetailTableViewController.h"
+#import "IBLWorkOrderBussinessType.h"
 
 @interface IBLOrderDetailTableViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *userAccountButton;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lastUpdateDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *regionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *adviceUserNameLabel;
 
 @end
 
@@ -47,6 +49,7 @@
     self.creatorPhoneLabel.text = self.order.creatorPhone;
     self.createDateLabel.text = self.order.createTime;
     self.expireDateLabel.text = self.order.expireTime;
+    self.adviceUserNameLabel.text = self.order.username;
     
     if (self.order.custType == 0) {
         self.phoneLabel.text = self.order.phone;
@@ -92,6 +95,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell =  [super tableView:tableView cellForRowAtIndexPath:indexPath];
     
+    if ([self isHiddenAtIndexPath:indexPath]) {
+        return 0;
+    }
+    
     CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     
     if (size.height < tableView.estimatedRowHeight) {
@@ -101,6 +108,15 @@
     NSLog(@"hight %f",size.height);
     
     return size.height + 0.5;
+}
+
+- (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.order.bizType == IBLWorkOrderBizStatusHandleAdvisory) {
+        return NO;
+    }
+    NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+
+    return [indexPath isEqual:adviceUserNameIndexPath];;
 }
 
 

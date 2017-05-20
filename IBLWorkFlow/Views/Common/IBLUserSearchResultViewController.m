@@ -104,7 +104,7 @@
         IBLUserDetailTableViewController *userDetailTableViewController = [segue destinationViewController];
         
         IBLOrder *order = [[IBLOrder alloc] init];
-        order.userIdentifier = [self.viewModel identifierAtIndexPath:sender];
+        order.userIdentifier = [@([self.viewModel identifierAtIndexPath:sender]) stringValue];
         order.userAccount = [self.viewModel accountAtIndexPath:sender];
         userDetailTableViewController.order = order;
     }else{

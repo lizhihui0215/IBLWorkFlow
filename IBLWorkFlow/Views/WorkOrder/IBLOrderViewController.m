@@ -306,8 +306,12 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 }
 
 - (IBAction)userOrderTapped:(UIButton *)sender {
+    CGPoint location = [sender.superview convertPoint:sender.center toView:self.tableView];
+
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
     
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender.superview.superview];
+    
+    
     
     IBLOrder *order = [self.viewModel orderAtIndexPath:indexPath];
     
