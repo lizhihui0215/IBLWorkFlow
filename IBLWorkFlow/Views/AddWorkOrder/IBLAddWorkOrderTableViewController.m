@@ -45,7 +45,9 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 
 @property (weak, nonatomic) IBOutlet UITextField *relateUserTextField;
 @property (weak, nonatomic) IBOutlet UITextField *handleUserTextField;
+@property (weak, nonatomic) IBOutlet UITextField *adviceUserNameTextField;
 @property (weak, nonatomic) IBOutlet UITextView *remarkTextView;
+@property (weak, nonatomic) IBOutlet UITextField *adviceUserPhoneTextField;
 
 @end
 
@@ -257,9 +259,9 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     if ([[self hiddenFieldsDictionaryWithWorkBizType:bizType.status][indexPath] boolValue]) return 0;
     
-    if ([indexPath isEqual:[NSIndexPath indexPathForRow:21 inSection:0]]) return 87;
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:23 inSection:0]]) return 87;
     
-    if ([indexPath isEqual:[NSIndexPath indexPathForRow:18 inSection:0]]) return 98;
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:20 inSection:0]]) return 98;
     
     return 40;
 }
@@ -326,7 +328,6 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
     [self.tableView reloadData];
 }
 
@@ -365,10 +366,16 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                                                              userAddress : @(YES),}];
                 
             }
-            NSIndexPath *indexPathWorkOrderContent = [NSIndexPath indexPathForRow:18 inSection:0];
-            NSIndexPath *indexPathRelateUser = [NSIndexPath indexPathForRow:19 inSection:0];
+            NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
+            NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:19 inSection:0];
+
+            
+            NSIndexPath *indexPathWorkOrderContent = [NSIndexPath indexPathForRow:20 inSection:0];
+            NSIndexPath *indexPathRelateUser = [NSIndexPath indexPathForRow:21 inSection:0];
             [hiddenIndexPaths addEntriesFromDictionary:@{indexPathWorkOrderContent : @(YES),
-                                                         indexPathRelateUser : @(YES)}];
+                                                         indexPathRelateUser : @(YES),
+                                                         adviceUserPhoneIndexPath : @(YES),
+                                                         adviceUserNameIndexPath: @(YES)}];
             
             NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
             
@@ -407,8 +414,11 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
             NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
             
-            NSIndexPath *relateUserIndexPath = [NSIndexPath indexPathForRow:19 inSection:0];
-            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:21 inSection:0];
+            NSIndexPath *relateUserIndexPath = [NSIndexPath indexPathForRow:21 inSection:0];
+            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:23 inSection:0];
+            NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
+            NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:19 inSection:0];
+
             dic = @{productIndexPath : @(YES),
                     countIndexPath : @(YES),
                     usernameIndexPath : @(YES),
@@ -423,7 +433,10 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                     enterpriseContactIndexPath: @(YES),
                     enterprisePhoneIndexPath: @(YES),
                     enterpriseAddressIndexPath: @(YES),
-                    userTypeIndexPath: @(YES)};
+                    userTypeIndexPath: @(YES),
+                    userTypeIndexPath: @(YES),
+                    adviceUserPhoneIndexPath : @(YES),
+                    adviceUserNameIndexPath: @(YES)};
             break;
         }
         case IBLWorkOrderBizStatusHandleAdvisory: {
@@ -442,7 +455,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
             NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
             NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
-            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:21 inSection:0];
+            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:23 inSection:0];
             dic = @{productIndexPath : @(YES),
                     countIndexPath : @(YES),
                     usernameIndexPath : @(YES),
@@ -477,7 +490,10 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
             NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
             NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
-            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:21 inSection:0];
+            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:23 inSection:0];
+            NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
+            NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:19 inSection:0];
+
             
             dic = @{regionIndexPath : @(YES),
                     productIndexPath : @(YES),
@@ -493,14 +509,13 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                     enterpriseAddressIndexPath : @(YES),
                     certTypeIndexPath : @(YES),
                     remarkIndexPath : @(YES),
-                    userTypeIndexPath: @(YES)};
+                    userTypeIndexPath: @(YES),
+                    adviceUserPhoneIndexPath : @(YES),
+                    adviceUserNameIndexPath: @(YES)};
             break;
         }
     }
-    
-    
     return dic;
-    
 }
 
 
@@ -593,13 +608,27 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     NSString *enterpriseContactPhone = [self validateContent:self.enterpriseContactPhoneTextField.text];
     NSString *enterpriseAddress = [self validateContent:self.enterpriseAddressTextField.text];
     
+    NSString *adviceUsername = [self validateContent:self.adviceUserNameTextField.text];
+    NSString *adviceUserPhone = [self validateContent:self.adviceUserPhoneTextField.text];
+
+    IBLWorkOrderBussinessType *type = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeBizType];
     
-    [self.tableViewDelegate addWorkOrderTableView:self
-                                        fieldType:IBLAddWorkOrderFieldTypeUsername
-                                       didEndEdit:username];
-    [self.tableViewDelegate addWorkOrderTableView:self
-                                        fieldType:IBLAddWorkOrderFieldTypePhone
-                                       didEndEdit:phone];
+    if (type.status == IBLWorkOrderBizStatusHandleAdvisory) {
+        [self.tableViewDelegate addWorkOrderTableView:self
+                                            fieldType:IBLAddWorkOrderFieldTypeUsername
+                                           didEndEdit:adviceUsername];
+        [self.tableViewDelegate addWorkOrderTableView:self
+                                            fieldType:IBLAddWorkOrderFieldTypePhone
+                                           didEndEdit:adviceUserPhone];
+    }else {
+        [self.tableViewDelegate addWorkOrderTableView:self
+                                            fieldType:IBLAddWorkOrderFieldTypeUsername
+                                           didEndEdit:username];
+        [self.tableViewDelegate addWorkOrderTableView:self
+                                            fieldType:IBLAddWorkOrderFieldTypePhone
+                                           didEndEdit:phone];
+    }
+    
     [self.tableViewDelegate addWorkOrderTableView:self
                                         fieldType:IBLAddWorkOrderFieldTypeAddress
                                        didEndEdit:address];
@@ -662,6 +691,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     self.enterpriseContactPhoneTextField.keyboardType = UIKeyboardTypePhonePad;
     self.userIdentifierTextField.keyboardType = UIKeyboardTypeASCIICapable;
     self.productCountTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.adviceUserPhoneTextField.keyboardType = UIKeyboardTypePhonePad;
     
     [self.phoneTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
         BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
@@ -679,7 +709,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         return isVaidate;
     }];
     
-    [self.enterpriseContactPhoneTextField setShouldClearBlock:^BOOL(UITextField *textField) {
+    [self.enterpriseContactPhoneTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
         BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
         if (!isVaidate) {
             IBLButtonItem *item = [IBLButtonItem itemWithLabel:@"确定"];
@@ -694,6 +724,22 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         
         return isVaidate;
 
+    }];
+    
+    [self.adviceUserPhoneTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
+        BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
+        if (!isVaidate) {
+            IBLButtonItem *item = [IBLButtonItem itemWithLabel:@"确定"];
+            
+            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
+                                                                            title:@"电话号码格式不正确！"
+                                                                          message:nil
+                                                                 cancleButtonItem:item
+                                                                 otherButtonItems:nil];
+            [alert showInController:self];
+        }
+        
+        return isVaidate;
     }];
     
     
