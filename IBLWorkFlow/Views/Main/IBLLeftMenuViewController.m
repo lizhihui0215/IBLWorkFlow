@@ -160,7 +160,10 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     
     [self setupViewControllers];
     
-    self.sideMenuViewController.contentViewController = self.actionViewControllers[@(IBLLeftMenuSectionActionMineOrder)];
+    
+    IBLSection *item = [self.viewModel sectionAt:0];
+    IBLLeftMenu *menu = item.info;
+    self.sideMenuViewController.contentViewController = self.actionViewControllers[@(menu.index)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationReviced:)
