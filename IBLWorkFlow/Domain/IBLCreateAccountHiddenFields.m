@@ -111,6 +111,13 @@
         notNullFields[notNullIndexPath] = isNull;
     }
     
+    if (app.genarate.type == nil || [app.genarate.type integerValue] == 5) {
+        NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
+        notNullFields[custNameIndexPath] = @(YES);
+        notNullFields[password] = @(YES);
+    }
+    
     return notNullFields;
 }
 
@@ -135,7 +142,7 @@
     
     NSMutableDictionary *notNullFields = [NSMutableDictionary dictionary];
     
-    for (NSString *field in app.notNullFields.createAccountFields) {
+    for (NSString *field in app.notNullFields.changeProductFields) {
         NSIndexPath *notNullIndexPath = self.exchangeProductAllFields[field];
         
         NSNumber *isNull = notNullIndexPath == nil ? @(NO) : @(YES);
@@ -151,7 +158,7 @@
     
     NSMutableDictionary *hiddenFields = [NSMutableDictionary dictionary];
     
-    for (NSString *field in app.hiddenFields.changeProductFields) {
+    for (NSString *field in app.hiddenFields.createAccountFields) {
         NSIndexPath *hiddenIndexPath = self.createAccountAllFields[field];
         
         NSNumber *isHidden = hiddenIndexPath == nil ? @(NO) : @(YES);
@@ -159,9 +166,7 @@
         hiddenFields[hiddenIndexPath] = isHidden;
     }
     
-    if (app.genarate.type
-//        || [app.genarate.type integerValue] != 5
-        ) {
+    if (!(app.genarate.type == nil || [app.genarate.type integerValue] == 5)) {
         NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
         hiddenFields[custNameIndexPath] = @(YES);
