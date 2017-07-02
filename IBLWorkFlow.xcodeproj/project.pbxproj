@@ -93,6 +93,7 @@
 		2684A3071D7EC5B9001B92B7 /* IBLInternetTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684A3061D7EC5B9001B92B7 /* IBLInternetTableViewController.m */; };
 		2684A30A1D7ECA21001B92B7 /* IBLInternetListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2684A3091D7ECA21001B92B7 /* IBLInternetListViewController.m */; };
 		2687D5C31DD954BD00458B78 /* IBLFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2687D5C21DD954BD00458B78 /* IBLFileManager.m */; };
+		26927A6B1F08C8A700123905 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 26927A6A1F08C8A700123905 /* libz.tbd */; };
 		269B7D581D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D571D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m */; };
 		269B7D5A1D33453200D52DF0 /* Test.xml in Resources */ = {isa = PBXBuildFile; fileRef = 269B7D591D33453200D52DF0 /* Test.xml */; };
 		269B7D5D1D335A9F00D52DF0 /* NSString+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 269B7D5C1D335A9F00D52DF0 /* NSString+IBLExtension.m */; };
@@ -119,6 +120,9 @@
 		26ADA5E71D438C75005CAEEC /* IBLAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26ADA5E61D438C75005CAEEC /* IBLAboutViewController.m */; };
 		26B549DB1D7538FC0011D0D0 /* IBLFetchOrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B549DA1D7538FC0011D0D0 /* IBLFetchOrderDetail.m */; };
 		26B549DE1D753A490011D0D0 /* IBLOrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B549DD1D753A490011D0D0 /* IBLOrderDetail.m */; };
+		26B885F41F08C428000C6FC9 /* BPushCerResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 26B885F11F08C428000C6FC9 /* BPushCerResource.bundle */; };
+		26B885F51F08C428000C6FC9 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B885F21F08C428000C6FC9 /* libBPush.a */; };
+		26B885F61F08C428000C6FC9 /* test.caf in Resources */ = {isa = PBXBuildFile; fileRef = 26B885F31F08C428000C6FC9 /* test.caf */; };
 		26C2597D1D42687300035F63 /* IBLRenewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C2597C1D42687300035F63 /* IBLRenewViewController.m */; };
 		26C259801D42688400035F63 /* IBLRenewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C2597F1D42688400035F63 /* IBLRenewTableViewController.m */; };
 		26C314F71DA920C10099721D /* IBLUserDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C314F61DA920C10099721D /* IBLUserDetailTableViewController.m */; };
@@ -363,6 +367,7 @@
 		2684A3091D7ECA21001B92B7 /* IBLInternetListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLInternetListViewController.m; sourceTree = "<group>"; };
 		2687D5C11DD954BD00458B78 /* IBLFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLFileManager.h; sourceTree = "<group>"; };
 		2687D5C21DD954BD00458B78 /* IBLFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFileManager.m; sourceTree = "<group>"; };
+		26927A6A1F08C8A700123905 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		269B7D561D333BA200D52DF0 /* IBLWebServiceResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLWebServiceResponseSerializer.h; sourceTree = "<group>"; };
 		269B7D571D333BA200D52DF0 /* IBLWebServiceResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLWebServiceResponseSerializer.m; sourceTree = "<group>"; };
 		269B7D591D33453200D52DF0 /* Test.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Test.xml; sourceTree = "<group>"; };
@@ -413,6 +418,10 @@
 		26B549DA1D7538FC0011D0D0 /* IBLFetchOrderDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLFetchOrderDetail.m; sourceTree = "<group>"; };
 		26B549DC1D753A490011D0D0 /* IBLOrderDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderDetail.h; sourceTree = "<group>"; };
 		26B549DD1D753A490011D0D0 /* IBLOrderDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLOrderDetail.m; sourceTree = "<group>"; };
+		26B885F01F08C428000C6FC9 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
+		26B885F11F08C428000C6FC9 /* BPushCerResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BPushCerResource.bundle; sourceTree = "<group>"; };
+		26B885F21F08C428000C6FC9 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
+		26B885F31F08C428000C6FC9 /* test.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.caf; sourceTree = "<group>"; };
 		26C2597B1D42687300035F63 /* IBLRenewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRenewViewController.h; sourceTree = "<group>"; };
 		26C2597C1D42687300035F63 /* IBLRenewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRenewViewController.m; sourceTree = "<group>"; };
 		26C2597E1D42688400035F63 /* IBLRenewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = IBLRenewTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -539,8 +548,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26927A6B1F08C8A700123905 /* libz.tbd in Frameworks */,
 				26788BDF1DF80B0200D59617 /* UserNotifications.framework in Frameworks */,
 				C29699C982E6C6E8F36F7C33 /* libPods-IBLWorkFlow.a in Frameworks */,
+				26B885F51F08C428000C6FC9 /* libBPush.a in Frameworks */,
 				5B875BF706873151551D3EEC /* libUMessage_Sdk_1.4.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,6 +693,17 @@
 				26A562AB1DAB3BBF00EAC200 /* IBLUtilities.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		26B885EF1F08C428000C6FC9 /* normalversion */ = {
+			isa = PBXGroup;
+			children = (
+				26B885F01F08C428000C6FC9 /* BPush.h */,
+				26B885F11F08C428000C6FC9 /* BPushCerResource.bundle */,
+				26B885F21F08C428000C6FC9 /* libBPush.a */,
+				26B885F31F08C428000C6FC9 /* test.caf */,
+			);
+			path = normalversion;
 			sourceTree = "<group>";
 		};
 		26EC5A381D45F21C00CB0F7C /* ExchangeProduct */ = {
@@ -1123,6 +1145,7 @@
 		5B875E71672CC838FC4F0449 /* SDKs */ = {
 			isa = PBXGroup;
 			children = (
+				26B885EF1F08C428000C6FC9 /* normalversion */,
 				5B8753DFB9FFE118FF9DD3FC /* UMessage_Sdk_1.4.0 */,
 			);
 			path = SDKs;
@@ -1219,6 +1242,7 @@
 		C6505BA9493FBCA3FC914E33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26927A6A1F08C8A700123905 /* libz.tbd */,
 				26788BDE1DF80B0200D59617 /* UserNotifications.framework */,
 				75ECACC7C53EB3B0DA024790 /* libPods-IBLWorkFlow.a */,
 				6E433358CA65938BCD45847C /* libPods-IBLWorkFlowTests.a */,
@@ -1366,11 +1390,13 @@
 				262BFF921D40D2400021F8EB /* ChannelInterface.xml in Resources */,
 				264EBB711D2E023D00FF8373 /* LaunchScreen.storyboard in Resources */,
 				26734FCF1D41135A0048DE97 /* ProductOfferInterface.xml in Resources */,
+				26B885F41F08C428000C6FC9 /* BPushCerResource.bundle in Resources */,
 				26A11D071D363A6900984B40 /* IBLBusinessAlertViewController.xib in Resources */,
 				26D56E421D3618870091A940 /* WorkOrder.xml in Resources */,
 				265A57AC1D5B0F21001DBFA0 /* PayInterface.xml in Resources */,
 				26846F6A1D34C1E9001F9C73 /* IBLOrderCell.xib in Resources */,
 				26846F751D34D2D5001F9C73 /* IBLLeftMenuTableHeaderView.xib in Resources */,
+				26B885F61F08C428000C6FC9 /* test.caf in Resources */,
 				262BFF781D4074050021F8EB /* IBLSectionHeaderView.xib in Resources */,
 				269B7D5A1D33453200D52DF0 /* Test.xml in Resources */,
 				26F6201A1D2FB6B500B49065 /* Operator.xml in Resources */,
@@ -1847,6 +1873,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
+					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/normalversion",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1871,6 +1898,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
+					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/normalversion",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -44,7 +44,7 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
 }
 
 - (NSString *)defaultEffectDate {
-    return [[NSDate date] stringFromFormatter:@"yyyy/MM/dd HH:mm:ss"];
+    return [[NSDate date] stringFromFormatter:@"yyyy-MM-dd HH:mm:ss"];
 }
 
 - (IBLOrderEffectType)defaultEffectType{
