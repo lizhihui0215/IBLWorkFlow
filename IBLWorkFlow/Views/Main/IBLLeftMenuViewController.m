@@ -19,6 +19,8 @@
 #import "IBLAboutViewController.h"
 #import "IBLUserSearchViewController.h"
 #import "IBLInternetTableViewController.h"
+#import "BPush.h"
+#import "IBLUserRepository.h"
 
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
@@ -223,6 +225,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 
 }
 - (IBAction)logoutTaped:(UITapGestureRecognizer *)sender {
+    [BPush delTag:[IBLUserRepository user].identifier withCompleteHandler:nil];
     [self performSegueWithIdentifier:NavigationToLoginIdentifier sender:nil];
 }
 

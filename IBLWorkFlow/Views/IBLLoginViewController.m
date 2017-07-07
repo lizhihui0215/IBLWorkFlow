@@ -8,6 +8,9 @@
 
 #import "IBLLoginViewController.h"
 #import "IBLException.h"
+#import "BPush.h"
+#import "IBLUserRepository.h"
+
 static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
 
 @interface IBLLoginViewController ()
@@ -77,6 +80,11 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
                       completeHandler:^(NSError *error){
                           [self hidHUD];
                           if (![self showAlertWithError:error]) {
+                              IBLUser *user = [IBLUserRepository user];
+                              [BPush setTag:user.identifier
+                        withCompleteHandler:^(id result, NSError *error) {
+                            NSLog(@"result %@ error %@",result,error);
+                        }];
                               [self performSegueWithIdentifier:NavigationToMainIdentifier sender:self];
                           }
                       }];
