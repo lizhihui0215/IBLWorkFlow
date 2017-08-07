@@ -7,6 +7,7 @@
 //
 
 #import "IBLUserRepository.h"
+#import "IBLAppDelegate.h"
 static NSString * const kUsername = @"loginName";
 
 static NSString * const kPassword = @"password";
@@ -56,7 +57,11 @@ static IBLUser *_user = nil;
         [parameters addEntriesFromDictionary:@{kUsername : username,
                                                kPassword : password,
                                                kPhoneModel : deviceModel,
-                                               kOSVersion : OSVersion}];
+                                               kOSVersion : OSVersion,
+                                               @"osType" : @"4"}];
+        
+        parameters[@"pushId"] = [[NSUserDefaults standardUserDefaults] stringForKey:@"channel_id"];
+        
         return parameters;
     }];
     

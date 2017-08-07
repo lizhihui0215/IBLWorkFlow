@@ -150,9 +150,6 @@
     }else{
         //应用处于前台时的本地推送接受
     }
-    
-    
-    
 }
 
 //iOS10新增：处理后台点击通知的代理方法
@@ -171,10 +168,23 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    NSLog(@"token %@",[[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding]);
+//    NSString * deviceTokenString = [[[[deviceToken description]
+//                                      stringByReplacingOccurrencesOfString: @"<" withString: @""]
+//                                     stringByReplacingOccurrencesOfString: @">" withString: @""]
+//                                    stringByReplacingOccurrencesOfString: @" " withString: @""];
+//    
+//    NSLog(@"token %@",deviceTokenString);
+//    
     
     [BPush registerDeviceToken:deviceToken];
     [BPush bindChannelWithCompleteHandler:^(id result, NSError *error) {
+        NSString * userId = result[@"channel_id"];
+        NSString * cachedUserId = [[NSUserDefaults standardUserDefaults] stringForKey:@"channel_id"];
+        if (![userId isEqualToString:cachedUserId]) {
+            [[NSUserDefaults standardUserDefaults] setObject:result[@"channel_id"] forKey:@"channel_id"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        
         NSLog(@"result %@ error %@",result,error);
     }];
 

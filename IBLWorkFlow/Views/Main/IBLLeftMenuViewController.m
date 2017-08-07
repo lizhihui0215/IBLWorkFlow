@@ -21,6 +21,7 @@
 #import "IBLInternetTableViewController.h"
 #import "BPush.h"
 #import "IBLUserRepository.h"
+#import "IBLAppRepository.h"
 
 
 static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
@@ -225,7 +226,24 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 
 }
 - (IBAction)logoutTaped:(UITapGestureRecognizer *)sender {
-    [BPush delTag:[IBLUserRepository user].identifier withCompleteHandler:nil];
+    
+//    IBLAppConfiguration *appConfiguration = [IBLAppRepository appConfiguration];
+//    IBLUser *user = [IBLUserRepository user];
+//    
+//    if (appConfiguration.ispTag) {
+//        NSString *tag1 = [NSString stringWithFormat:@"%@_%@",user.identifier,appConfiguration.ispTag];
+//        
+//        [BPush delTag:tag1 withCompleteHandler:nil];
+//        
+//        [BPush delTag:appConfiguration.ispTag withCompleteHandler:nil];
+//
+//    }else{
+//        [BPush delTag:user.identifier withCompleteHandler:nil];
+//    }
+    
+    
+
+    
     [self performSegueWithIdentifier:NavigationToLoginIdentifier sender:nil];
 }
 

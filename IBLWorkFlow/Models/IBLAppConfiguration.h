@@ -101,4 +101,6 @@ typedef NS_ENUM(NSInteger, IBLOrderEffectType) {
 @property(nonatomic) NSInteger custType;
 
 @property (nonatomic, assign) NSInteger showCustType;
+
+@property (nonatomic, copy) NSString *ispTag;
 @end

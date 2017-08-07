@@ -10,6 +10,7 @@
 #import "IBLException.h"
 #import "BPush.h"
 #import "IBLUserRepository.h"
+#import "IBLAppRepository.h"
 
 static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
 
@@ -80,11 +81,23 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
                       completeHandler:^(NSError *error){
                           [self hidHUD];
                           if (![self showAlertWithError:error]) {
-                              IBLUser *user = [IBLUserRepository user];
-                              [BPush setTag:user.identifier
-                        withCompleteHandler:^(id result, NSError *error) {
-                            NSLog(@"result %@ error %@",result,error);
-                        }];
+//                              IBLUser *user = [IBLUserRepository user];
+//                              IBLAppConfiguration *appConfiguration = [IBLAppRepository appConfiguration];
+//                              
+//                              NSString *tag1 = user.identifier;
+//                              
+//                              NSMutableArray *tags = [NSMutableArray array];
+//                              
+//                              if (appConfiguration.ispTag) {
+//                                  tag1 = [NSString stringWithFormat:@"%@_%@",user.identifier,appConfiguration.ispTag];
+//                                  [tags addObject:appConfiguration.ispTag];
+//
+//                              }
+//                              [tags addObject:tag1];
+//
+//                              
+//                              
+//                              [BPush setTags:tags withCompleteHandler:nil];
                               [self performSegueWithIdentifier:NavigationToMainIdentifier sender:self];
                           }
                       }];
