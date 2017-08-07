@@ -268,7 +268,11 @@
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[@"thirdId"] = exchangeProductParameters.thirdId;
         parameters[@"thirdType"] = exchangeProductParameters.thirdType;
-        parameters[@"servId"] = exchangeProductParameters.servId;
+//        parameters[@"servId"] = exchangeProductParameters.servId;
+        if([exchangeProductParameters.servId isEqualToString:@"0"]
+           || [NSString isNull:exchangeProductParameters.servId] )
+            parameters[@"servId"] = exchangeProductParameters.servId;
+
         parameters[@"account"] = exchangeProductParameters.account;
         parameters[@"cardNos"] = exchangeProductParameters.cardNos;
         parameters[@"buyLength"] = @(exchangeProductParameters.buyLength);
@@ -300,7 +304,9 @@
         NSMutableDictionary *parameters = [aParameters mutableCopy];
         parameters[@"thirdId"] = renewParameters.thirdId;
         parameters[@"thirdType"] = renewParameters.thirdType;
-        parameters[@"servId"] = @(renewParameters.servId);
+//        parameters[@"servId"] = @(renewParameters.servId);
+        if(renewParameters.servId != 0 ) parameters[@"servId"] = @(renewParameters.servId);
+
         parameters[@"account"] = renewParameters.account;
         parameters[@"cardNos"] = renewParameters.cardNos;
         parameters[@"buyLength"] = @(renewParameters.buyLength);
