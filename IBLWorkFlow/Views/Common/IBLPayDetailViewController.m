@@ -54,8 +54,6 @@
     if ([self isSepectorAtIndexPath:indexPath]) return 6;
     
     return 40;
-    
-    
 }
 
 - (BOOL)isSepectorAtIndexPath:(NSIndexPath *)path {

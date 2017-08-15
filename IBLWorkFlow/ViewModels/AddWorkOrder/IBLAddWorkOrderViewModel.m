@@ -111,8 +111,9 @@
 }
 
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypes {
-    IBLWorkOrderType *workOrderType = [self workOrderType];
-    return [self.generateAppConfiguration workOrderBizTypesWithStatus:workOrderType.status];
+//    IBLWorkOrderType *workOrderType = [self workOrderType];
+//    return [self.generateAppConfiguration workOrderBizTypesWithStatus:workOrderType.status];
+    return [self.generateAppConfiguration allWorkOrderBizTypes];
 }
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes {

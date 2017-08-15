@@ -209,6 +209,11 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
 
 @property (nonatomic, copy) NSString *simpleComName;
 
+@property (nonatomic, copy) NSString *serviceType;
+@property (nonatomic, copy) NSString *tvType;
+@property (nonatomic, copy) NSString *ftth;
+@property (nonatomic, copy) NSString *troubleType;
+
 
 @property(nonatomic) NSInteger certType;
 @end

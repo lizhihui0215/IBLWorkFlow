@@ -34,8 +34,8 @@
 
 - (NSString *)orderStatusNameWithStatus:(IBLOrderStatus)status{
     NSDictionary *workOrderStatus = @{@(IBLOrderStatusUnsend) : @"[未派单]",
-                                      @(IBLOrderStatusSended) : @"[已派单]",
-                                      @(IBLOrderStatusForwarding) : @"[转发中]",
+                                      @(IBLOrderStatusSended) : @"[未处理]",
+//                                      @(IBLOrderStatusForwarding) : @"[转发中]",
                                       @(IBLOrderStatusHandling) : @"[处理中]",
                                       @(IBLOrderStatusInvalid) : @"[作废]",
                                       @(IBLOrderStatusFinished) : @"[完成]",

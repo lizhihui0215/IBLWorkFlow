@@ -135,16 +135,16 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 
 - (IBAction)workOrderBizTypeTapped:(UITapGestureRecognizer *)sender {
     
-    IBLWorkOrderType *workOrderType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeWorkOrderType];
-    
-    if (!workOrderType) {
-        NSError *error = [NSError errorWithDomain:@""
-                                             code:0
-                                         userInfo:@{kExceptionCode : @"-1",
-                                                    kExceptionMessage: @"请选择工单类型！"}];
-        [self showAlertWithError:error];
-        return;
-    }
+//    IBLWorkOrderType *workOrderType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeWorkOrderType];
+//    
+//    if (!workOrderType) {
+//        NSError *error = [NSError errorWithDomain:@""
+//                                             code:0
+//                                         userInfo:@{kExceptionCode : @"-1",
+//                                                    kExceptionMessage: @"请选择工单类型！"}];
+//        [self showAlertWithError:error];
+//        return;
+//    }
     
     NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.tableViewDelegate workOrderBizTypesOfTableView:self ];
     
@@ -527,9 +527,9 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
    NSNumber *custType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self
                                                fieldType:IBLAddWorkOrderFieldTypeCustType];
     
-    if([NSString isNull:self.workOrderTypeTextField.text]){
-        title = @"请选择工单类型！";
-    };
+//    if([NSString isNull:self.workOrderTypeTextField.text]){
+//        title = @"请选择工单类型！";
+//    };
     
     if([NSString isNull:self.workOrderBizTypeTextField.text]){
         title = @"请选择业务类型！";

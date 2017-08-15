@@ -51,6 +51,10 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
     return [IBLAppRepository appConfiguration].effType;
 }
 
+- (NSArray<IBLWorkOrderBussinessType *> *)allWorkOrderBizTypes {
+    return [IBLAppRepository appConfiguration].workOrderBizTypes;
+}
+
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesWithStatus:(IBLWorkOrderStatus)status {
     
     NSString *string = [@(status) stringValue];

@@ -27,6 +27,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 @property (weak, nonatomic) IBOutlet UILabel *regionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *adviceUserNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *serviceTypeTextField;
+@property (weak, nonatomic) IBOutlet UILabel *tvTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ftthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *troubleTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addrLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneTitleLabel;
 
 @end
 
@@ -50,11 +58,23 @@
     self.createDateLabel.text = self.order.createTime;
     self.expireDateLabel.text = self.order.expireTime;
     self.adviceUserNameLabel.text = self.order.username;
+    self.serviceTypeTextField.text = self.order.serviceType;
+    self.tvTypeLabel.text = self.order.tvType;
+    self.ftthLabel.text = self.order.ftth;
+    self.troubleTypeLabel.text = self.order.ftth;
     
     if (self.order.custType == 0) {
+        self.nameTitleLabel.text = @"用户姓名:";
+        self.nameLabel.text = self.order.username;
+        self.phoneTitleLabel.text = @"用户电话:";
         self.phoneLabel.text = self.order.phone;
+        self.addrLabel.text = self.order.address;
     }else{
+        self.nameTitleLabel.text = @"企业名称:";
+        self.nameLabel.text = self.order.comName;
+        self.phoneTitleLabel.text = @"联系电话:";
         self.phoneLabel.text = self.order.comContactPhone;
+        self.addrLabel.text = self.order.comAddr;
     }
     
     self.regionLabel.text = self.order.regionName;
@@ -76,8 +96,8 @@
 }
 - (NSString *)orderStatusNameWithStatus:(IBLOrderStatus)status{
     NSDictionary *workOrderStatus = @{@(IBLOrderStatusUnsend) : @"未派单",
-                                     @(IBLOrderStatusSended) : @"已派单",
-                                     @(IBLOrderStatusForwarding) : @"转发中",
+                                     @(IBLOrderStatusSended) : @"未处理",
+//                                     @(IBLOrderStatusForwarding) : @"转发中",
                                      @(IBLOrderStatusHandling) : @"处理中",
                                      @(IBLOrderStatusInvalid) : @"作废",
                                      @(IBLOrderStatusFinished) : @"完成",
@@ -111,12 +131,44 @@
 }
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.order.bizType == IBLWorkOrderBizStatusHandleAdvisory) {
-        return NO;
-    }
-    NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+    
+    NSIndexPath *serviceTypeIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
+    NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
+    NSIndexPath *tvTypeIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+    NSIndexPath *ftthIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
+    NSIndexPath *troubleTypeIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
 
-    return [indexPath isEqual:adviceUserNameIndexPath];;
+    NSArray *repairIndexPath = @[serviceTypeIndexPath,
+                                 tvTypeIndexPath,
+                                 ftthIndexPath,
+                                 troubleTypeIndexPath];
+    
+    if (self.order.bizType == IBLWorkOrderBizStatusHandleAdvisory) {
+        if ([repairIndexPath containsObject:indexPath] ) {
+            return YES;
+        }
+        return NO;
+    }else if (self.order.bizType == IBLWorkOrderBizStatusRepair) {
+        if([NSString isNull:self.order.serviceType] && [indexPath isEqual:serviceTypeIndexPath]) {
+            return YES;
+        }else if ([NSString isNull:self.order.tvType] && [indexPath isEqual:tvTypeIndexPath]){
+            return YES;
+        }else if ([NSString isNull:self.order.ftth] && [indexPath isEqual:ftthIndexPath]){
+            return YES;
+        }else if ([NSString isNull:self.order.troubleType] && [indexPath isEqual:troubleTypeIndexPath]){
+            return YES;
+        }
+    }else {
+        if ([repairIndexPath containsObject:indexPath]) {
+            return YES;
+        }
+    }
+    
+    if ([indexPath isEqual:adviceUserNameIndexPath]) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 

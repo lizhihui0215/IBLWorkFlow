@@ -343,11 +343,11 @@
     NSArray<NSString *> *titles = nil;
     switch (self.type) {
         case IBLOrderTypeMine: {
-            titles = @[@"未处理",@"处理中",@"转发中",@"已完成",@"作废"];
+            titles = @[@"未处理",@"处理中",@"已完成",@"作废"];
             break;
         }
         case IBLOrderTypeManage: {
-            titles = @[@"未派单",@"已派单",@"处理中",@"转发中", @"已完成", @"作废"];
+            titles = @[@"未派单",@"未处理",@"处理中", @"已完成", @"作废"];
             break;
         }
     }

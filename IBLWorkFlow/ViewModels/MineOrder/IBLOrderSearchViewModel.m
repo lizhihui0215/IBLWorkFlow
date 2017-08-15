@@ -86,6 +86,10 @@
 - (void)setUserPhone:(NSString *)userPhone {
     self.searchResult.phone = userPhone;
 }
+- (NSArray<IBLWorkOrderBussinessType *> *)allWorkOrderBizTypes{
+    return [self.generateAppConfiguration allWorkOrderBizTypes];
+}
+
 
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesStatus:(IBLWorkOrderStatus)status {
     return [self.generateAppConfiguration workOrderBizTypesWithStatus:status];

@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *userStateTextField;
-@property (weak, nonatomic) IBOutlet UITextField *bussinessHallTextField;
+//@property (weak, nonatomic) IBOutlet UITextField *bussinessHallTextField;
 @property (weak, nonatomic) IBOutlet UITextField *regionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
@@ -56,7 +56,7 @@
     self.usernameTextField.text = self.orderRelateUser.userName;
     self.passwordTextField.text = self.orderRelateUser.password;
     self.userStateTextField.text = self.orderRelateUser.state;
-    self.bussinessHallTextField.text = self.orderRelateUser.bizStation;
+//    self.bussinessHallTextField.text = self.orderRelateUser.bizStation;
     self.regionTextField.text = self.orderRelateUser.areaName;
     self.phoneTextField.text = self.orderRelateUser.phone;
     self.addressTextField.text = self.orderRelateUser.addr;
@@ -88,12 +88,12 @@
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
     if (self.orderRelateUser.custType == 0) {
-        NSIndexPath *companyNameIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
-        NSIndexPath *companySampleNameIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+        NSIndexPath *companyNameIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+        NSIndexPath *companySampleNameIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
 
-        NSIndexPath *companyContactIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
-        NSIndexPath *companyContactPhoneIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
-        NSIndexPath *companyAddressIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
+        NSIndexPath *companyContactIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+        NSIndexPath *companyContactPhoneIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+        NSIndexPath *companyAddressIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
         return [@[companyNameIndexPath,
                   companySampleNameIndexPath,
                   companyContactIndexPath,
@@ -101,9 +101,9 @@
                   companyAddressIndexPath] containsObject:indexPath];
 
     }else {
-        NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
-        NSIndexPath *userPhoneIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
-        NSIndexPath *userAddressIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+        NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+        NSIndexPath *userPhoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
+        NSIndexPath *userAddressIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
         
         return [@[usernameIndexPath,
                  userPhoneIndexPath,
@@ -158,8 +158,6 @@
     if (size.height < tableView.estimatedRowHeight) {
         return tableView.estimatedRowHeight;
     }
-    
-    NSLog(@"hight %f",size.height);
     
     return size.height + 0.5;
 }

@@ -343,7 +343,7 @@ static NSString *const IBLMethodOfTrashOrderResponse = @"orderCancelResponse";
         completeHandler:(void (^)(NSString *, NSError *))handler {
     NSDictionary *parameters = [self signedParametersWithPatameters:^NSDictionary *(NSDictionary *aParameters) {
         NSMutableDictionary *parameters = [aParameters mutableCopy];
-        if (info.orderType != IBLWorkOrderStatusUnknow) parameters[@"orderType"] = @(info.orderType);
+//        if (info.orderType != IBLWorkOrderStatusUnknow) parameters[@"orderType"] = @(info.orderType);
         if (info.bizType != IBLWorkOrderBizStatusUnknow) parameters[@"bizType"] = @(info.bizType);
         if(info.servId != 0 ) parameters[@"servId"] = @(info.servId);
         if(info.offerId != 0) parameters[@"offerId"] = @(info.offerId);

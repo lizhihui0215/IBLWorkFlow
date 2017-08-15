@@ -45,7 +45,11 @@
                                                        @"COM_CONTACT" : @"comContact",
                                                        @"COM_CONTACT_PHONE" : @"comContactPhone",
                                                        @"COM_ADDR" : @"comAddr",
-                                                       @"CERT_TYPE" : @"certType"}];
+                                                       @"CERT_TYPE" : @"certType",
+                                                       @"SERVICE_TYPE" : @"serviceType",
+                                                       @"TV_TYPE" : @"tvType",
+                                                       @"FTTH" : @"ftth",
+                                                       @"TROUBLE_TYPE" : @"troubleType"}];
 }
 
 @end

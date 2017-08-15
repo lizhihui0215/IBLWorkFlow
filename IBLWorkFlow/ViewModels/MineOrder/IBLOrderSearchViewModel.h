@@ -63,4 +63,6 @@
 - (NSString *)enterPriseName;
 
 - (NSString *)enterpriseContact;
+
+- (NSArray<IBLWorkOrderBussinessType *> *)allWorkOrderBizTypes;
 @end
