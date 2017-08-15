@@ -259,9 +259,9 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     if ([[self hiddenFieldsDictionaryWithWorkBizType:bizType.status][indexPath] boolValue]) return 0;
     
-    if ([indexPath isEqual:[NSIndexPath indexPathForRow:23 inSection:0]]) return 87;
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:22 inSection:0]]) return 87;
     
-    if ([indexPath isEqual:[NSIndexPath indexPathForRow:20 inSection:0]]) return 98;
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:19 inSection:0]]) return 98;
     
     return 40;
 }
@@ -345,11 +345,11 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             NSMutableDictionary *hiddenIndexPaths = [NSMutableDictionary dictionary];
             
             if (custType == 0){
-                NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
-                NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
-                NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
-                NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
-                NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
+                NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+                NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+                NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+                NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
+                NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
                 
                 [hiddenIndexPaths addEntriesFromDictionary:@{enterpriseNameIndexPath : @(YES),
                                                              enterpriseSampleNameIndexPath : @(YES),
@@ -358,26 +358,26 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                                                              enterpriseAddressIndexPath : @(YES)}];
                 
             }else {
-                NSIndexPath *usernameTextField = [NSIndexPath indexPathForRow:10 inSection:0];
-                NSIndexPath *userPhone = [NSIndexPath indexPathForRow:11 inSection:0];
-                NSIndexPath *userAddress = [NSIndexPath indexPathForRow:12 inSection:0];
+                NSIndexPath *usernameTextField = [NSIndexPath indexPathForRow:9 inSection:0];
+                NSIndexPath *userPhone = [NSIndexPath indexPathForRow:10 inSection:0];
+                NSIndexPath *userAddress = [NSIndexPath indexPathForRow:11 inSection:0];
                 [hiddenIndexPaths addEntriesFromDictionary:@{usernameTextField : @(YES),
                                                              userPhone : @(YES),
                                                              userAddress : @(YES),}];
                 
             }
-            NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
-            NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:19 inSection:0];
+            NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
+            NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
 
             
-            NSIndexPath *indexPathWorkOrderContent = [NSIndexPath indexPathForRow:20 inSection:0];
-            NSIndexPath *indexPathRelateUser = [NSIndexPath indexPathForRow:21 inSection:0];
+            NSIndexPath *indexPathWorkOrderContent = [NSIndexPath indexPathForRow:19 inSection:0];
+            NSIndexPath *indexPathRelateUser = [NSIndexPath indexPathForRow:20 inSection:0];
             [hiddenIndexPaths addEntriesFromDictionary:@{indexPathWorkOrderContent : @(YES),
                                                          indexPathRelateUser : @(YES),
                                                          adviceUserPhoneIndexPath : @(YES),
                                                          adviceUserNameIndexPath: @(YES)}];
             
-            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
             
             if ([IBLAppRepository appConfiguration].showCustType == 0) {
                 [hiddenIndexPaths addEntriesFromDictionary:@{userTypeIndexPath : @(YES)}];
@@ -398,26 +398,26 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         case IBLWorkOrderBizStatusLineBarrier:
         case IBLWorkOrderBizStatusCableBreak:
         case IBLWorkOrderBizStatusOther: {
-            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
 
-            NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
-            NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
+            NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
+            NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+            NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
             NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
-            NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
-            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
-            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
-            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
             
-            NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
-            NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
-            NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
-            NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
-            NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
+            NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+            NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+            NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+            NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
+            NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
             
-            NSIndexPath *relateUserIndexPath = [NSIndexPath indexPathForRow:21 inSection:0];
-            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:23 inSection:0];
-            NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
-            NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:19 inSection:0];
+            NSIndexPath *relateUserIndexPath = [NSIndexPath indexPathForRow:20 inSection:0];
+            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:22 inSection:0];
+            NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
+            NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
 
             dic = @{productIndexPath : @(YES),
                     countIndexPath : @(YES),
@@ -440,22 +440,22 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             break;
         }
         case IBLWorkOrderBizStatusHandleAdvisory: {
-            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
             
-            NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
-            NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
-            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
-            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
-            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+            NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
+            NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
             
-            NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
-            NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
-            NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
-            NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
-            NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
-            NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
-            NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
-            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:23 inSection:0];
+            NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+            NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+            NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+            NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
+            NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
+            NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
+            NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:22 inSection:0];
             dic = @{productIndexPath : @(YES),
                     countIndexPath : @(YES),
                     usernameIndexPath : @(YES),
@@ -474,25 +474,26 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             break;
         }
         default:{
-            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+            NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
 
-            NSIndexPath *regionIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
-            NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
-            NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
-            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
-            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
-            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+            NSIndexPath *regionIndexPath = [NSIndexPath indexPathForRow:3 inSection:0];
+            NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
+            NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+            NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+            NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+            NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
             
-            NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
-            NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
-            NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
-            NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
-            NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
-            NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
-            NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
-            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:23 inSection:0];
-            NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
-            NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:19 inSection:0];
+            NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+            NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
+            NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
+            NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
+            NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
+            NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+
+            NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
+            NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:22 inSection:0];
+            NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
+            NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
 
             
             dic = @{regionIndexPath : @(YES),

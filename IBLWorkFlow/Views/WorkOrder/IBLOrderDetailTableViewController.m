@@ -133,10 +133,10 @@
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
     
     NSIndexPath *serviceTypeIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
-    NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
-    NSIndexPath *tvTypeIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
-    NSIndexPath *ftthIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
-    NSIndexPath *troubleTypeIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
+    NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
+    NSIndexPath *tvTypeIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+    NSIndexPath *ftthIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
+    NSIndexPath *troubleTypeIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
 
     NSArray *repairIndexPath = @[serviceTypeIndexPath,
                                  tvTypeIndexPath,
