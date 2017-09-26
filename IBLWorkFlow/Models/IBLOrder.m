@@ -49,7 +49,9 @@
                                                        @"SERVICE_TYPE" : @"serviceType",
                                                        @"TV_TYPE" : @"tvType",
                                                        @"FTTH" : @"ftth",
-                                                       @"TROUBLE_TYPE" : @"troubleType"}];
+                                                       @"TROUBLE_TYPE" : @"troubleType",
+                                                       @"CUR_OPER_NAME" : @"curOperName",
+                                                       @"CUR_OPER_PHONE" : @"curOperPhone"}];
 }
 
 @end

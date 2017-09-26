@@ -69,18 +69,20 @@
         case IBLOrderTypeMine: {
             statusMap = @{@(0) : @(IBLOrderStatusSended),
                           @(1) : @(IBLOrderStatusHandling) ,
-                          @(2) : @(IBLOrderStatusForwarding),
-                          @(3) : @(IBLOrderStatusFinished),
-                          @(4) : @(IBLOrderStatusInvalid)};
+                          @(2) : @(IBLOrderStatusFinished),
+                          @(3) : @(IBLOrderStatusInvalid),
+//                          @(4) : @(IBLOrderStatusInvalid)
+                          };
             break;
         }
         case IBLOrderTypeManage: {
             statusMap = @{@(0) : @(IBLOrderStatusUnsend),
                           @(1) : @(IBLOrderStatusSended) ,
                           @(2) : @(IBLOrderStatusHandling),
-                          @(3) : @(IBLOrderStatusForwarding),
-                          @(4) : @(IBLOrderStatusFinished),
-                          @(5) : @(IBLOrderStatusInvalid)};
+                          @(3) : @(IBLOrderStatusFinished),
+                          @(4) : @(IBLOrderStatusInvalid),
+//                          @(5) : @(IBLOrderStatusInvalid)
+                          };
             break;
         }
     }
@@ -654,18 +656,20 @@
         case IBLOrderTypeMine: {
             statusMap = @{ @(IBLOrderStatusSended) : @(0),
                            @(IBLOrderStatusHandling) : @(1),
-                           @(IBLOrderStatusForwarding) : @(2),
-                           @(IBLOrderStatusFinished) : @(3),
-                           @(IBLOrderStatusInvalid): @(4)} ;
+                           @(IBLOrderStatusFinished) : @(2),
+                           @(IBLOrderStatusInvalid) : @(3),
+//                           @(IBLOrderStatusInvalid): @(4)
+                           } ;
             break;
         }
         case IBLOrderTypeManage: {
             statusMap = @{ @(IBLOrderStatusUnsend) : @(0),
                            @(IBLOrderStatusSended) : @(1),
                            @(IBLOrderStatusHandling) : @(2),
-                           @(IBLOrderStatusForwarding) : @(3),
-                           @(IBLOrderStatusFinished) : @(4),
-                           @(IBLOrderStatusInvalid): @(5)} ;
+                           @(IBLOrderStatusFinished) : @(3),
+                           @(IBLOrderStatusInvalid) : @(4),
+//                           @(IBLOrderStatusInvalid): @(5)
+                           } ;
             break;
         }
     }
@@ -690,5 +694,14 @@
         return order.phone;
     }
     return order.comContactPhone;
+}
+
+- (NSString *)addressAtIndexPath:(NSIndexPath *)indexPath {
+    IBLOrder *order = [self orderAtIndexPath:indexPath];
+
+    if (order.custType == 0) {
+        return [NSString stringWithFormat:@"联系地址：%@",order.address];
+    }
+    return [NSString stringWithFormat:@"联系地址：%@",order.comAddr];
 }
 @end

@@ -24,4 +24,6 @@ typedef void (^OnButtonTouchUpInside)(IBLBusinessAlertViewController *alertView,
 
 - (void)show;
 
+- (void)close;
+
 @end

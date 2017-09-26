@@ -43,31 +43,7 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
         [self.viewModel setLAN:textField.text];
     }];
     
-    [self.LANTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
-        if ([NSString isNull:textField.text]) return YES;
-        BOOL isValidate = [IBLUtilities validateDomain:textField.text];
-        if (!isValidate){
-            NSError *error = [NSError errorWithDomain:@"" code:0 userInfo:@{kExceptionCode : @(0),
-                                                                            kExceptionMessage : @"请输入正确的域名!"}];
-            
-            [self showAlertWithError:error];
-        }
-        
-        return isValidate;
-    }];
-    
-    [self.WLANTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
-        if ([NSString isNull:textField.text]) return YES;
-        BOOL isValidate = [IBLUtilities validateDomain:textField.text];
-        if (!isValidate){
-            NSError *error = [NSError errorWithDomain:@"" code:0 userInfo:@{kExceptionCode : @(0),
-                                                                            kExceptionMessage : @"请输入正确的域名!"}];
-            
-            [self showAlertWithError:error];
-        }
-        
-        return isValidate;
-    }];
+   
     
     [self.WLANTextField setDidEndEditingBlock:^(UITextField *textField) {
         [self.viewModel setWLAN:textField.text];
@@ -76,6 +52,34 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
     [self showHUDWithMessage:@"登录中..."];
+    
+    
+//    [self.LANTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
+//        if ([NSString isNull:textField.text]) return YES;
+//        BOOL isValidate = [IBLUtilities validateDomain:textField.text];
+//        if (!isValidate){
+//            NSError *error = [NSError errorWithDomain:@"" code:0 userInfo:@{kExceptionCode : @(0),
+//                                                                            kExceptionMessage : @"请输入正确的域名!"}];
+//            
+//            [self showAlertWithError:error];
+//        }
+//        
+//        return isValidate;
+//    }];
+//    
+//    [self.WLANTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
+//        if ([NSString isNull:textField.text]) return YES;
+//        BOOL isValidate = [IBLUtilities validateDomain:textField.text];
+//        if (!isValidate){
+//            NSError *error = [NSError errorWithDomain:@"" code:0 userInfo:@{kExceptionCode : @(0),
+//                                                                            kExceptionMessage : @"请输入正确的域名!"}];
+//            
+//            [self showAlertWithError:error];
+//        }
+//        
+//        return isValidate;
+//    }];
+    
     [self.viewModel loginWithUsername:self.usernameTextField.text
                              password:self.passwordTextField.text
                       completeHandler:^(NSError *error){

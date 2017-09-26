@@ -139,7 +139,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 130;
+    return 156;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -159,7 +159,8 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     [cell setUserTitle:[self.viewModel usernameAtIndexPath:indexPath]];
     cell.dateLabel.text = [self.viewModel dateAtIndexPath:indexPath];
     [cell setPriority:[self.viewModel orderPriorityAtIndexPath:indexPath]];
-    
+
+    cell.addressLabel.text = [self.viewModel addressAtIndexPath:indexPath];
     NSArray *titles = [self.viewModel orderActionsTitlesAtIndexPath:indexPath];
     [cell setActionTitles:titles];
     cell.workOrderContentLabel.text = [self.viewModel orderContentAtIndexPath:indexPath];
@@ -232,7 +233,17 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                                                                                  image:image];
             @weakify(self)
             alertView.buttonTapped = ^(IBLBusinessAlertViewController *alert, NSInteger buttonIndex){
-                if (buttonIndex == 1) {[self hidHUD]; return ;}
+                if (buttonIndex == 1) {[self hidHUD]; [alert close]; return ;}
+                if ([NSString isNull:alert.contentTextField.text] && action == IBLOrderActionFinish) {
+                    [self hidHUD];
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请输入内容" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                    
+                    [alertView show];
+                    
+                    return ;
+                }
+                [alert close];
+
                 @strongify(self)
                 [self.viewModel handlerWithAction:action
                                           content:alert.contentTextField.text
@@ -351,7 +362,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                                                                                          image:[UIImage imageNamed:@"alert"]];
     @weakify(self)
     alertView.buttonTapped = ^(IBLBusinessAlertViewController *alert, NSInteger buttonIndex){
-        if (buttonIndex == 1) return ;
+        if (buttonIndex == 1) {[alert close]; return ;}
         @strongify(self)
         [self showHUDWithMessage:@"处理中..."];
         switch (searchViewController.viewModel.searchType) {
@@ -389,6 +400,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
             default:
                 break;
         }
+        [alert close];
     };
     [alertView show];
 }

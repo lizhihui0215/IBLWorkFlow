@@ -61,12 +61,12 @@
     self.serviceTypeTextField.text = self.order.serviceType;
     self.tvTypeLabel.text = self.order.tvType;
     self.ftthLabel.text = self.order.ftth;
-    self.troubleTypeLabel.text = self.order.ftth;
+    self.troubleTypeLabel.text = self.order.troubleType;
     
     if (self.order.custType == 0) {
         self.nameTitleLabel.text = @"用户姓名:";
         self.nameLabel.text = self.order.username;
-        self.phoneTitleLabel.text = @"用户电话:";
+        self.phoneTitleLabel.text = @"联系电话:";
         self.phoneLabel.text = self.order.phone;
         self.addrLabel.text = self.order.address;
     }else{
@@ -80,8 +80,8 @@
     self.regionLabel.text = self.order.regionName;
     
     //???: 内容那里来
-//    self.handlerLabel.text = self.order.
-//    self.handlerPhoneLabel.text = self.order.
+    self.handlerLabel.text = self.order.curOperName;
+    self.handlerPhoneLabel.text = self.order.curOperPhone;
     self.lastUpdateDateLabel.text = self.order.lastModifyTime;
     
 }
@@ -131,12 +131,11 @@
 }
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
-    
-    NSIndexPath *serviceTypeIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
-    NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
-    NSIndexPath *tvTypeIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
-    NSIndexPath *ftthIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
-    NSIndexPath *troubleTypeIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
+    NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+    NSIndexPath *serviceTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
+    NSIndexPath *tvTypeIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
+    NSIndexPath *ftthIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
+    NSIndexPath *troubleTypeIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
 
     NSArray *repairIndexPath = @[serviceTypeIndexPath,
                                  tvTypeIndexPath,

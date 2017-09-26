@@ -76,6 +76,10 @@
     if (self.buttonTapped) {
         self.buttonTapped(self,buttonIndex);
     }
+//    [self.alertView close];
+}
+
+- (void)close{
     [self.alertView close];
 }
 
