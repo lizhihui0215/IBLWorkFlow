@@ -42,12 +42,37 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
     [self.LANTextField setDidEndEditingBlock:^(UITextField *textField) {
         [self.viewModel setLAN:textField.text];
     }];
+   
     
    
     
     [self.WLANTextField setDidEndEditingBlock:^(UITextField *textField) {
         [self.viewModel setWLAN:textField.text];
     }];
+    
+    self.usernameTextField.shouldReturnBlock = ^BOOL(UITextField *textField) {
+        [textField resignFirstResponder];
+        return YES;
+    };
+    self.passwordTextField.shouldReturnBlock = ^BOOL(UITextField *textField) {
+        [textField resignFirstResponder];
+        return YES;
+    };
+    self.WLANTextField.shouldReturnBlock = ^BOOL(UITextField *textField) {
+        [textField resignFirstResponder];
+        return YES;
+    };
+    self.LANTextField.shouldReturnBlock = ^BOOL(UITextField *textField) {
+        [textField resignFirstResponder];
+        return YES;
+    };
+}
+
+- (IBAction)backgroundTapped:(UITapGestureRecognizer *)sender {
+    [self.usernameTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    [self.LANTextField resignFirstResponder];
+    [self.WLANTextField resignFirstResponder];
 }
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
