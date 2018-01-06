@@ -6,11 +6,11 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewCell.h"
+#import "PCCWTableViewCell.h"
 
 static NSString *const IBLSearchFieldCellIdentifier = @"IBLSearchFieldCell";
 
-@interface IBLSearchFieldCell : IBLTableViewCell
+@interface IBLSearchFieldCell : PCCWTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 

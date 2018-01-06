@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLStaticTableViewController.h"
+
 #import "IBLUserSearchViewModel.h"
 
 @class IBLUserSearchTableViewController;
@@ -22,7 +22,7 @@
 - (IBLUserSearchType)userSearchType;
 @end
 
-@interface IBLUserSearchTableViewController : IBLStaticTableViewController
+@interface IBLUserSearchTableViewController : PCCWStaticTableViewController
 
 @property  (nonatomic, weak) id<IBLUserSearchTableViewControllerDelegate> tableViewDelegate;
 

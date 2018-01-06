@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLListViewModel.h"
+#import "PCCWListViewModel.h"
 
 static NSString *const kSearchOperatorName = @"operatorName";
 static NSString *const kSearchAreaName = @"areaName";
@@ -59,12 +59,12 @@ typedef NS_ENUM(NSInteger, IBLSearchType) {
 @optional
 - (void)fetchSearchContentWithSearchInfo:(id)searchInfo
                                isRefresh:(BOOL)isRefresh
-                         completeHandler:(IBLViewModelCompleteHandler)handler;
+                         completeHandler:(PCCWViewModelCompleteHandler)handler;
 
 - (id)searchResultAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
-@interface IBLSearchViewModel : IBLListViewModel<IBLSearchViewModelDelegate>
+@interface IBLSearchViewModel : PCCWListViewModel<IBLSearchViewModelDelegate>
 
 @property (nonatomic, assign) IBLSearchType searchType;
 

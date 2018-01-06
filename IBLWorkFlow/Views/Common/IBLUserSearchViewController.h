@@ -6,11 +6,11 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewController.h"
+
 #import "IBLUserSearchViewModel.h"
 #import "RESideMenu.h"
 
-@interface IBLUserSearchViewController : IBLViewController
+@interface IBLUserSearchViewController : PCCWViewController
 
 @property (nonatomic, strong) IBLUserSearchViewModel *viewModel;
 

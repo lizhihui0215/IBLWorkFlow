@@ -6,10 +6,10 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewController.h"
+
 #import "IBLLoginViewModel.h"
 
-@interface IBLLoginViewController : IBLViewController
+@interface IBLLoginViewController : PCCWViewController
 
 @property (nonatomic, strong) IBLLoginViewModel *viewModel;
 

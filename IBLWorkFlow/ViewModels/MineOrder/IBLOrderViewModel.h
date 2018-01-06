@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLListViewModel.h"
+#import "PCCWListViewModel.h"
 #import "IBLFetchOrder.h"
 #import "IBLOrderSearchResult.h"
 @class IBLOperator;
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, IBLOrderType) {
     IBLOrderTypeManage
 };
 
-@interface IBLOrderViewModel : IBLListViewModel
+@interface IBLOrderViewModel : PCCWListViewModel
 
 @property (assign, nonatomic) IBLOrderType type;
 
@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, IBLOrderType) {
 
 - (IBLOrderStatus)status;
 
-- (void)fetchOrderListWithIndex:(NSInteger)index isRefresh:(BOOL)isRefresh completeHandler:(IBLViewModelCompleteHandler)handler;
+- (void)fetchOrderListWithIndex:(NSInteger)index isRefresh:(BOOL)isRefresh completeHandler:(PCCWViewModelCompleteHandler)handler;
 
 - (void)setSearchResult:(IBLOrderSearchResult *)searchResult;
 

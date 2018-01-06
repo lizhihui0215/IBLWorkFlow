@@ -6,8 +6,8 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewController.h"
 
-@interface IBLAboutViewController : IBLViewController
+
+@interface IBLAboutViewController : PCCWViewController
 
 @end

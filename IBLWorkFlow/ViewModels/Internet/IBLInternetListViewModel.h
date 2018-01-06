@@ -6,10 +6,10 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLListViewModel.h"
+#import "PCCWListViewModel.h"
 #import "IBLFetchOnlineRecord.h"
 
-@interface IBLInternetListViewModel : IBLListViewModel
+@interface IBLInternetListViewModel : PCCWListViewModel
 
 @property (nonatomic, copy, readonly) NSString *account;
 
@@ -18,7 +18,7 @@
 - (instancetype)initWithAccount:(NSString *)account date:(NSString *)date;
 
 - (void)fetchRecoredsWithIsRefresh:(BOOL)isRefresh
-                   completeHandler:(IBLViewModelCompleteHandler)handler;
+                   completeHandler:(PCCWViewModelCompleteHandler)handler;
 
 - (NSString *)scriptTypeAtIndexPath:(NSIndexPath *)indexPath;
 

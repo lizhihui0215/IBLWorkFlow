@@ -10,7 +10,6 @@
 #import "RESideMenu.h"
 #import "IBLOrder.h"
 #import "IBLProductPrice.h"
-#import "IBLStaticTableViewController.h"
 
 @class IBLCreateAccountTableViewController;
 @class IBLCreateAccountTableViewInfo;
@@ -158,7 +157,7 @@ typedef NS_ENUM(NSInteger, IBLCreateAccountUserType) {
 
 @end
 
-@interface IBLCreateAccountTableViewController : IBLStaticTableViewController
+@interface IBLCreateAccountTableViewController : PCCWStaticTableViewController
 
 @property (nonatomic, weak) id<IBLCreateAccountTableViewControllerDataSource> tableViewDataSource;
 

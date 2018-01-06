@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLListViewModel.h"
+#import "PCCWListViewModel.h"
 #import "IBLOrder.h"
 @class IBLFetchProductPriceInfo;
 @class IBLProductPrice;
@@ -14,7 +14,7 @@
 @class IBLCreateAccountTableViewInfo;
 @class IBLPayResult;
 
-@interface IBLCreateAccountViewModel : IBLListViewModel
+@interface IBLCreateAccountViewModel : PCCWListViewModel
 
 @property (nonatomic, assign, readonly) IBLCreateAccountType createAccountType;
 @property (nonatomic, strong, readonly) IBLOrder *order;
@@ -29,7 +29,7 @@
 
 - (NSString *)defaultEffectDate;
 
-- (void)fetchProductPrice:(IBLFetchProductPriceInfo *)fetchProductPrice completeHandler:(IBLViewModelCompleteHandler)handler;
+- (void)fetchProductPrice:(IBLFetchProductPriceInfo *)fetchProductPrice completeHandler:(PCCWViewModelCompleteHandler)handler;
 
 - (IBLProductPrice *)productPrice;
 
@@ -41,6 +41,6 @@
 
 - (void)payWithType:(NSString *)type
   createAccountInfo:(IBLCreateAccountTableViewInfo *)createAccountInfo
-    completeHandler:(IBLViewModelCompleteHandler)handler;
+    completeHandler:(PCCWViewModelCompleteHandler)handler;
 
 @end

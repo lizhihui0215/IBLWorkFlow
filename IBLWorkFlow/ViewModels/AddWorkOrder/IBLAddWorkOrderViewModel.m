@@ -120,7 +120,7 @@
     return [self.generateAppConfiguration workOrderTypes];
 }
 
-- (void)commitWithCompleteHandler:(IBLViewModelCompleteHandler)handler {
+- (void)commitWithCompleteHandler:(PCCWViewModelCompleteHandler)handler {
     IBLAddWorkOrderInfo *info = [[IBLAddWorkOrderInfo alloc] init];
     info.orderType = self.result.type.status;
     info.bizType = self.result.bizType.status;

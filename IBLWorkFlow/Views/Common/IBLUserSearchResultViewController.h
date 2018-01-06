@@ -6,12 +6,12 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewController.h"
+
 #import "IBLUserSearchResultViewModel.h"
 
 @class IBLUserSearchResultViewModel;
 
-@interface IBLUserSearchResultViewController : IBLTableViewController
+@interface IBLUserSearchResultViewController : PCCWTableViewController
 
 @property (nonatomic, strong) IBLUserSearchResultViewModel *viewModel;
 

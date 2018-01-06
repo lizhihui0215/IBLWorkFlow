@@ -28,7 +28,7 @@ static NSString * const kSessionID = @"sessionId";
 
 @end
 
-@interface IBLRepository : NSObject
+@interface IBLRepository : PCCWRepository
 
 @property (nonatomic, readonly, strong) NSString *SOAPFileName;
 

@@ -36,7 +36,7 @@ FOUNDATION_EXPORT NSString * IBLAPIBaseURLString;
 
 @end
 
-@interface IBLNetworkServices : AFHTTPSessionManager
+@interface IBLNetworkServices : PCCWNetworkServices
 
 @property (class, nonatomic, assign) NSString *LANURL;
 

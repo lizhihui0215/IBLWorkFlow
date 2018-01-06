@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IBLStaticTableViewController.h"
 
-@interface IBLInternetTableViewController : IBLStaticTableViewController
+
+@interface IBLInternetTableViewController : PCCWStaticTableViewController
 
 @end

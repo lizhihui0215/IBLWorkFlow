@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Roman Efimov. All rights reserved.
 //
 
-#import "IBLTableViewController.h"
+
 #import "RESideMenu.h"
 #import "IBLOrderViewModel.h"
 #import "IBLSearchViewController.h"
@@ -18,7 +18,7 @@ static NSString *const OrderActionSendIdentifier = @"SendForSearch";
 
 static NSString *const NavigationToCreateAccountIdentifier = @"NavigationToCreateAccount";
 
-@interface IBLOrderViewController : IBLTableViewController <IBLSearchViewControllerDelegate>
+@interface IBLOrderViewController : PCCWTableViewController <IBLSearchViewControllerDelegate>
 
 @property (nonatomic, strong) IBLOrderViewModel *viewModel;
 

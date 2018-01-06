@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewController.h"
+
 #import "IBLAddWorkOrderViewModel.h"
 
 @class IBLAddWorkOrderViewController;
@@ -18,7 +18,7 @@
 @end
 
 
-@interface IBLAddWorkOrderViewController : IBLViewController
+@interface IBLAddWorkOrderViewController : PCCWViewController
 
 @property (nonatomic, strong) IBLAddWorkOrderViewModel *viewModel;
 

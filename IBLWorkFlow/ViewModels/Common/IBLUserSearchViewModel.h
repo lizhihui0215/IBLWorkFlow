@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewModel.h"
+#import "PCCWViewModel.h"
 
 #import "IBLRegion.h"
 
@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger,IBLUserSearchType) {
 
 @end
 
-@interface IBLUserSearchViewModel : IBLViewModel
+@interface IBLUserSearchViewModel : PCCWViewModel
 
 @property (nonatomic, readonly) IBLUserSearchType searchType;
 

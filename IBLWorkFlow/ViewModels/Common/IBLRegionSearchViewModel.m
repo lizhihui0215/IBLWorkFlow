@@ -29,7 +29,7 @@
         
         self.fetchRegion = [[IBLFetchRegion alloc] init];
         
-        IBLSection *section = [IBLSection sectionWithInfo:nil items:nil];
+        PCCWSection *section = [PCCWSection sectionWithInfo:nil items:nil];
         
         [self.dataSource addObject:section];
     }
@@ -42,13 +42,13 @@
 
 - (void)fetchSearchContentWithSearchInfo:(id)searchInfo
                                isRefresh:(BOOL)isRefresh
-                         completeHandler:(IBLViewModelCompleteHandler)handler{
+                         completeHandler:(PCCWViewModelCompleteHandler)handler{
     NSString *regionName = searchInfo[kSearchAreaName];
     [self.fetchRegion fetchRegionWithIsRefresh:isRefresh
                                     regionname:regionName
                                completeHandler:^(NSArray<IBLRegion *> *regions, NSError *error){
-                                   IBLSection *section = [self sectionAt:0];
-                                   NSMutableArray<IBLSectionItem *> *sectionItems = [self sectionItemsWithRegions:regions];
+                                   PCCWSection *section = [self sectionAt:0];
+                                   NSMutableArray<PCCWSectionItem *> *sectionItems = [self sectionItemsWithRegions:regions];
                                    if (isRefresh) {
                                        section.items = sectionItems;
                                    }else{
@@ -58,12 +58,12 @@
                                }];
 }
 
-- (NSMutableArray<IBLSectionItem *> *)sectionItemsWithRegions:(NSArray<IBLRegion *> *)regions {
+- (NSMutableArray<PCCWSectionItem *> *)sectionItemsWithRegions:(NSArray<IBLRegion *> *)regions {
     
-    NSMutableArray<IBLSectionItem *> *sectionItems = [NSMutableArray array];
+    NSMutableArray<PCCWSectionItem *> *sectionItems = [NSMutableArray array];
     
     for (IBLRegion *region in regions) {
-        IBLSectionItem *item = [IBLSectionItem itemWithInfo:region selected:NO];
+        PCCWSectionItem *item = [PCCWSectionItem itemWithInfo:region selected:NO];
         [sectionItems addObject:item];
     }
     
@@ -81,7 +81,7 @@
 }
 
 - (IBLRegion *)regionAtIndexPath:(NSIndexPath *)indexPath {
-    IBLSectionItem  *item = [self sectionItemAtIndexPath:indexPath];
+    PCCWSectionItem  *item = [self sectionItemAtIndexPath:indexPath];
 
     return item.info;
 }

@@ -6,15 +6,15 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewModel.h"
+#import "PCCWViewModel.h"
 
-@interface IBLLoginViewModel : IBLViewModel
+@interface IBLLoginViewModel : PCCWViewModel
 
 
 
 - (void)loginWithUsername:(NSString *)username
                  password:(NSString *)password
-          completeHandler:(IBLViewModelCompleteHandler)handler;
+          completeHandler:(PCCWViewModelCompleteHandler)handler;
 
 - (NSString *)lastUsername;
 

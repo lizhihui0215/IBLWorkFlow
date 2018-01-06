@@ -6,10 +6,10 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewController.h"
+
 #import "IBLOrderFlowViewModel.h"
 
-@interface IBLOrderFlowViewController : IBLTableViewController
+@interface IBLOrderFlowViewController : PCCWTableViewController
 
 @property (nonatomic, strong) IBLOrderFlowViewModel *viewModel;
 

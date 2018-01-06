@@ -406,7 +406,7 @@
         if ( [self.countTextField.text integerValue] <= 0) {
             NSError *error = [NSError errorWithDomain:@""
                                                  code:0
-                                             userInfo:@{kExceptionCode : @"-1",
+                                             userInfo:@{kExceptionCode : @(-1),
                                                         kExceptionMessage: @"订购数量必须大于0！"}];
             [self showAlertWithError:error];
             return NO;
@@ -423,7 +423,7 @@
         if ([IBLUtilities validateMobile:textField.text]) return YES;
         NSError *error = [NSError errorWithDomain:@""
                                              code:0
-                                         userInfo:@{kExceptionCode : @"-1",
+                                         userInfo:@{kExceptionCode : @(-1),
                                                     kExceptionMessage: @"您输入的手机格式不正确！"}];
         [self showAlertWithError:error];
         return NO;
@@ -433,7 +433,7 @@
         if ([IBLUtilities validateMobile:textField.text]) return YES;
         NSError *error = [NSError errorWithDomain:@""
                                              code:0
-                                         userInfo:@{kExceptionCode : @"-1",
+                                         userInfo:@{kExceptionCode : @(-1),
                                                     kExceptionMessage: @"您输入的手机格式不正确！"}];
         [self showAlertWithError:error];
         return NO;
@@ -447,7 +447,7 @@
         
         NSError *error = [NSError errorWithDomain:@""
                                              code:0
-                                         userInfo:@{kExceptionCode : @"-1",
+                                         userInfo:@{kExceptionCode : @(-1),
                                                     kExceptionMessage: @"您输入的身份证号码格式不正确！"}];
         [self showAlertWithError:error];
         return NO;

@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewController.h"
+
 #import "IBLPayResult.h"
 #import "IBLOrder.h"
 
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, IBLQRType) {
 
 @end
 
-@interface IBLQRViewController : IBLViewController
+@interface IBLQRViewController : PCCWViewController
 
 @property (nonatomic, strong) IBLOrder *order;
 

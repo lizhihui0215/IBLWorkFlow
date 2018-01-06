@@ -6,14 +6,14 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewModel.h"
+#import "PCCWViewModel.h"
 #import "IBLRelateUser.h"
 #import "IBLFetchProductPrice.h"
 #import "IBLPay.h"
 
 @class IBLRenewResult;
 
-@interface IBLRenewViewModel : IBLViewModel
+@interface IBLRenewViewModel : PCCWViewModel
 
 @property (nonatomic, strong, readonly) IBLRelateUser *user;
 
@@ -57,12 +57,12 @@
 
 - (NSString *)productIdentifier;
 
-- (void)fetchProductPrice:(IBLFetchProductPriceInfo *)info completeHandler:(IBLViewModelCompleteHandler)handler;
+- (void)fetchProductPrice:(IBLFetchProductPriceInfo *)info completeHandler:(PCCWViewModelCompleteHandler)handler;
 
 - (IBLProductPrice *)productPrice;
 
 - (void)commitWithResult:(IBLRenewResult *)result
-         completeHandler:(IBLViewModelCompleteHandler)handler;
+         completeHandler:(PCCWViewModelCompleteHandler)handler;
 
 - (IBLPayModel)payModel;
 
@@ -70,7 +70,7 @@
 
 - (void)payWithType:(NSString *)type
              result:(IBLRenewResult *)result
-    completeHandler:(IBLViewModelCompleteHandler)handler;
+    completeHandler:(PCCWViewModelCompleteHandler)handler;
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath;
 

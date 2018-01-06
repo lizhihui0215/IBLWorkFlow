@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLStaticTableViewController.h"
+
 #import "IBLPayDetailViewController.h"
 #import "IBLFetchOrderDetail.h"
 #import "IBLHandleOrder.h"

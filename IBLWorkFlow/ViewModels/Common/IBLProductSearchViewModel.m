@@ -40,7 +40,7 @@
         self.productId = productId;
         self.regionId = regionId;
         self.fetchProduct = [[IBLFetchProduct alloc] init];
-        IBLSection *section = [IBLSection sectionWithInfo:nil items:nil];
+        PCCWSection *section = [PCCWSection sectionWithInfo:nil items:nil];
         
         [self.dataSource addObject:section];
     }
@@ -53,15 +53,15 @@
 
 - (void)fetchSearchContentWithSearchInfo:(id)searchInfo
                                isRefresh:(BOOL)isRefresh
-                         completeHandler:(IBLViewModelCompleteHandler)handler{
+                         completeHandler:(PCCWViewModelCompleteHandler)handler{
     NSString *productName = searchInfo[kSearchProductName];
     [self.fetchProduct fetchProductsWithIsRefresh:isRefresh
                                         productId:self.productId
                                          regionId:self.regionId
                                       productName:productName
                                   completeHandler:^(NSArray<IBLProduct *> *products, NSError *error){
-                                      IBLSection *section = [self sectionAt:0];
-                                      NSMutableArray<IBLSectionItem *> *sectionItems = [self sectionItemsWithProducts:products];
+                                      PCCWSection *section = [self sectionAt:0];
+                                      NSMutableArray<PCCWSectionItem *> *sectionItems = [self sectionItemsWithProducts:products];
                                       if (isRefresh) {
                                           section.items = sectionItems;
                                       }else{
@@ -71,12 +71,12 @@
                                   }];
 }
 
-- (NSMutableArray<IBLSectionItem *> *)sectionItemsWithProducts:(NSArray<IBLProduct *> *)products {
+- (NSMutableArray<PCCWSectionItem *> *)sectionItemsWithProducts:(NSArray<IBLProduct *> *)products {
     
-    NSMutableArray<IBLSectionItem *> *sectionItems = [NSMutableArray array];
+    NSMutableArray<PCCWSectionItem *> *sectionItems = [NSMutableArray array];
     
     for (IBLProduct *product in products) {
-        IBLSectionItem *item = [IBLSectionItem itemWithInfo:product selected:NO];
+        PCCWSectionItem *item = [PCCWSectionItem itemWithInfo:product selected:NO];
         [sectionItems addObject:item];
     }
     
@@ -84,7 +84,7 @@
 }
 
 - (IBLProduct *)productAtIndexPath:(NSIndexPath *)indexPath{
-    IBLSectionItem *item = [self sectionItemAtIndexPath:indexPath];
+    PCCWSectionItem *item = [self sectionItemAtIndexPath:indexPath];
     
     return item.info;
 }

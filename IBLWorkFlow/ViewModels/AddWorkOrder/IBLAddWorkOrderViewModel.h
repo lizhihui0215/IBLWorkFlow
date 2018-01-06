@@ -6,12 +6,12 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewModel.h"
+#import "PCCWViewModel.h"
 #import "IBLAddWorkOrderResult.h"
 #import "IBLGenerateAppConfiguration.h"
 
 
-@interface IBLAddWorkOrderViewModel : IBLViewModel
+@interface IBLAddWorkOrderViewModel : PCCWViewModel
 
 - (IBLWorkOrderType *)workOrderType;
 
@@ -53,7 +53,7 @@
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes;
 
-- (void)commitWithCompleteHandler:(IBLViewModelCompleteHandler)handler;
+- (void)commitWithCompleteHandler:(PCCWViewModelCompleteHandler)handler;
 
 - (NSInteger)custType;
 

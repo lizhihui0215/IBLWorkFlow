@@ -140,7 +140,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 //    if (!workOrderType) {
 //        NSError *error = [NSError errorWithDomain:@""
 //                                             code:0
-//                                         userInfo:@{kExceptionCode : @"-1",
+//                                         userInfo:@{kExceptionCode : @(-1),
 //                                                    kExceptionMessage: @"请选择工单类型！"}];
 //        [self showAlertWithError:error];
 //        return;

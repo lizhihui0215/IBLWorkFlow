@@ -128,7 +128,7 @@
 }
 
 - (void)fetchProductPrice:(IBLFetchProductPriceInfo *)info
-          completeHandler:(IBLViewModelCompleteHandler)handler {
+          completeHandler:(PCCWViewModelCompleteHandler)handler {
     [self.fetchProductPrice fetchProductPrice:info
                               completeHandler:^(IBLProductPrice *productPrice, NSError *error) {
                                   self.productPrices = productPrice;
@@ -142,7 +142,7 @@
 
 - (void)payWithType:(NSString *)type
              result:(IBLRenewResult *)result
-    completeHandler:(IBLViewModelCompleteHandler)handler {
+    completeHandler:(PCCWViewModelCompleteHandler)handler {
     
     IBLQRPayInfo *info = [[IBLQRPayInfo alloc] init];
     
@@ -195,7 +195,7 @@
 }
 
 - (void)commitWithResult:(IBLRenewResult *)result
-         completeHandler:(IBLViewModelCompleteHandler)handler{
+         completeHandler:(PCCWViewModelCompleteHandler)handler{
     IBLRenewParameters *info = [[IBLRenewParameters alloc] init];
     info.servId = self.user.servId;
     info.account = self.user.account;

@@ -6,14 +6,14 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLListViewModel.h"
+#import "PCCWListViewModel.h"
 #import "IBLFetchOrderFlow.h"
 
-@interface IBLOrderFlowViewModel : IBLListViewModel
+@interface IBLOrderFlowViewModel : PCCWListViewModel
 
 - (instancetype)initWithOrder:(IBLOrder *)order;
 
-- (void)startFetchWithCompleteHandler:(IBLViewModelCompleteHandler)handler;
+- (void)startFetchWithCompleteHandler:(PCCWViewModelCompleteHandler)handler;
 
 - (NSString *)statusAtIndexPath:(NSIndexPath *)indexPath;
 

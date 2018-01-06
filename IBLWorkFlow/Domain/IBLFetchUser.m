@@ -24,14 +24,14 @@
     if ([NSString isNull:username]) {
         error = [NSError errorWithDomain:@""
                                     code:0
-                                userInfo:@{kExceptionCode : @"-1",
+                                userInfo:@{kExceptionCode : @(-1),
                                            kExceptionMessage: @"用户名不能为空！"}];
     }
     
     if ([NSString isNull:password]) {
         error = [NSError errorWithDomain:@""
                                     code:0
-                                userInfo:@{kExceptionCode : @"-1",
+                                userInfo:@{kExceptionCode : @(-1),
                                            kExceptionMessage: @"密码不能为空！"}];
     }
     
@@ -39,16 +39,12 @@
 }
 
 - (IBLUser *)lastUser{
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:[IBLFileManager patchForUserCacheFile]];
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:[PCCWFileManager patchForLoginedUser]];
 }
 
 - (void)saveLastUser:(IBLUser *)user{
-    if([IBLFileManager itemExistsAtPath:[IBLFileManager patchForUserCacheFile]]){
-        [IBLFileManager removeItemAtPath:[IBLFileManager patchForUserCacheFile] error:nil];
-    }
-    
-    
-    [NSKeyedArchiver archiveRootObject:user toFile:[IBLFileManager patchForUserCacheFile]];
+    [PCCWFileManager removeItemAtPath:[PCCWFileManager patchForLoginedUser] error:nil];
+    [NSKeyedArchiver archiveRootObject:user toFile:[PCCWFileManager patchForLoginedUser]];
 }
 
 - (void)startFetchWithUsername:(NSString *)username

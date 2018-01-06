@@ -10,7 +10,7 @@
 
 @interface IBLOrderFlowViewModel()
 {
-    NSMutableArray<IBLSection *> *_dataSource;
+    NSMutableArray<PCCWSection *> *_dataSource;
 }
 @property (nonatomic, strong) IBLOrder *order;
 
@@ -20,11 +20,11 @@
 
 @implementation IBLOrderFlowViewModel
 
-- (void)setDataSource:(NSMutableArray<IBLSection *> *)dataSource{
+- (void)setDataSource:(NSMutableArray<PCCWSection *> *)dataSource{
     _dataSource = dataSource;
 }
 
-- (NSMutableArray<IBLSection *> *)dataSource{
+- (NSMutableArray<PCCWSection *> *)dataSource{
     return _dataSource;
 }
 
@@ -34,14 +34,14 @@
     if (self) {
         self.order = order;
         self.fetchOrderFlow = [[IBLFetchOrderFlow alloc] init];
-        IBLSection *section = [IBLSection sectionWithInfo:nil
+        PCCWSection *section = [PCCWSection sectionWithInfo:nil
                                                     items:nil];
         self.dataSource = [@[section] mutableCopy];
     }
     return self;
 }
 
-- (void)startFetchWithCompleteHandler:(IBLViewModelCompleteHandler)handler{
+- (void)startFetchWithCompleteHandler:(PCCWViewModelCompleteHandler)handler{
     [self.fetchOrderFlow fetchOrderFlowWithOrderIdentifier:self.order.identifier
                                            completeHandler:^(NSMutableArray<IBLOrderFlow *> *orderFlows, NSError *error) {
                                                [self sectionAt:0].items = [self sectionItemsWithOrderFlows:orderFlows];
@@ -49,11 +49,11 @@
                                            }];
 }
 
-- (NSMutableArray<IBLSectionItem *> *)sectionItemsWithOrderFlows:(NSArray<IBLOrderFlow *> *)orderFlows{
-    NSMutableArray<IBLSectionItem *> *items = [NSMutableArray array];
+- (NSMutableArray<PCCWSectionItem *> *)sectionItemsWithOrderFlows:(NSArray<IBLOrderFlow *> *)orderFlows{
+    NSMutableArray<PCCWSectionItem *> *items = [NSMutableArray array];
     
     for (IBLOrderFlow *orderFlow in orderFlows) {
-        IBLSectionItem *item = [IBLSectionItem itemWithInfo:orderFlow selected:NO];
+        PCCWSectionItem *item = [PCCWSectionItem itemWithInfo:orderFlow selected:NO];
         [items addObject:item];
     }
     
@@ -61,7 +61,7 @@
 }
 
 - (IBLOrderFlow *)orderFlowAtIndexPath:(NSIndexPath *)indexPath{
-    IBLSectionItem *item = [self sectionItemAtIndexPath:indexPath];
+    PCCWSectionItem *item = [self sectionItemAtIndexPath:indexPath];
     IBLOrderFlow *orderFlow = item.info;
     return orderFlow;
 }

@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Roman Efimov. All rights reserved.
 //
 
-#import "IBLTableViewController.h"
+
 #import "RESideMenu.h"
 #import "IBLLeftMenuViewModel.h"
 
-@interface IBLLeftMenuViewController : IBLTableViewController <RESideMenuDelegate>
+@interface IBLLeftMenuViewController : PCCWTableViewController <RESideMenuDelegate>
 
 @property (nonatomic, strong) IBLLeftMenuViewModel *viewModel;
 

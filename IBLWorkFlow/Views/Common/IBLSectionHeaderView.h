@@ -7,9 +7,9 @@
 //
 
 
-#import "IBLTableViewHeaderFooterView.h"
+#import "PCCWTableViewHeaderFooterView.h"
 
-@interface IBLSectionHeaderView : IBLTableViewHeaderFooterView
+@interface IBLSectionHeaderView : PCCWTableViewHeaderFooterView
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 

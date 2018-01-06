@@ -6,9 +6,9 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewCell.h"
+#import "PCCWTableViewCell.h"
 
-@interface IBLInternetListCell : IBLTableViewCell
+@interface IBLInternetListCell : PCCWTableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *scriptTypeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *handleResultLabel;

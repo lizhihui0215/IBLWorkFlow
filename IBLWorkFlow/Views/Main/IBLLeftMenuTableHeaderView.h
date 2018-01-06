@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewHeaderFooterView.h"
+#import "PCCWTableViewHeaderFooterView.h"
 
 static NSString * const IBLLeftMenuTableHeaderNibName = @"IBLLeftMenuTableHeaderView";
 
@@ -20,7 +20,7 @@ static NSString * const IBLLeftMenuTableHeaderIdentifier = @"IBLLeftMenuTableHea
 
 @end
 
-@interface IBLLeftMenuTableHeaderView : IBLTableViewHeaderFooterView
+@interface IBLLeftMenuTableHeaderView : PCCWTableViewHeaderFooterView
 
 @property (nonatomic, assign) NSInteger sectionIndex;
 

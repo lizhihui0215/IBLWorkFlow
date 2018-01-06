@@ -107,17 +107,17 @@ static __strong AFNetworkReachabilityManager *_reachabilityManager;
     
     IBLNetworkServices.isCheckingNetworkStatus = YES;
     
-    [[AFHTTPSessionManager manager] HEAD:IBLAPIBaseURLString
-                              parameters:nil
-                                 success:^(NSURLSessionDataTask * _Nonnull task) {
-                                     IBLNetworkServices.isCheckingNetworkStatus = NO;
-                                     if(completeHandler) completeHandler();
-                                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                     if ([IBLAPIBaseURLString isEqualToString:WLANURL])
-                                         IBLAPIBaseURLString = LANURL;
-                                     IBLNetworkServices.isCheckingNetworkStatus = NO;
-                                     if(completeHandler) completeHandler();
-                                 }];
+    [[IBLNetworkServices defaultServices] HEAD:IBLAPIBaseURLString
+                                    parameters:nil
+                                       success:^(NSURLSessionDataTask * _Nonnull task) {
+                                           IBLNetworkServices.isCheckingNetworkStatus = NO;
+                                           if(completeHandler) completeHandler();
+                                       } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                           if ([IBLAPIBaseURLString isEqualToString:WLANURL])
+                                               IBLAPIBaseURLString = LANURL;
+                                           IBLNetworkServices.isCheckingNetworkStatus = NO;
+                                           if(completeHandler) completeHandler();
+                                       }];
 }
 
 + (instancetype)networkServicesWithMethod:(IBLSOAPMethod *)method {
@@ -143,10 +143,7 @@ static __strong AFNetworkReachabilityManager *_reachabilityManager;
                                 success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
                                 failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure{
     if (IBLNetworkServices.isCheckingNetworkStatus) {
-        NSError *err = [NSError errorWithDomain:@""
-                                           code:0
-                                       userInfo:@{kExceptionCode : @"0",
-                                                  kExceptionMessage: @"检查网络中，请稍后再试..."}];
+        NSError *err = errorWithCode(0, @"检查网络中，请稍后再试...");
         failure(nil,err);
         return nil;
     }
@@ -168,7 +165,7 @@ static __strong AFNetworkReachabilityManager *_reachabilityManager;
                   
                   NSError *err = [NSError errorWithDomain:@""
                                                      code:error.code
-                                                 userInfo:@{kExceptionCode : [@(error.code) stringValue],
+                                                 userInfo:@{kExceptionCode : @(error.code),
                                                             kExceptionMessage: description}];
                   failure(task, err);
               }];
@@ -197,11 +194,7 @@ static __strong AFNetworkReachabilityManager *_reachabilityManager;
                                                              failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                                  IBLAPIBaseURLString = previousURL;
                                                                  NSString *description = error.userInfo[NSLocalizedDescriptionKey];
-                                                                 
-                                                                 NSError *err = [NSError errorWithDomain:@""
-                                                                                                    code:error.code
-                                                                                                userInfo:@{kExceptionCode : [@(error.code) stringValue],
-                                                                                                           kExceptionMessage: description}];
+                                                                 NSError *err = errorWithCode(error.code, description);
                                                                  failure(task, err);
                                                              }];
 }

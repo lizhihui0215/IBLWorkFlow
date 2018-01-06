@@ -15,6 +15,6 @@
 
 @end
 
-@interface IBLUseCase : NSObject<IBLUseCaseProtocol>
+@interface IBLUseCase : PCCWDomain<IBLUseCaseProtocol>
 
 @end

@@ -6,9 +6,8 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLStaticTableViewController.h"
 #import "IBLOrder.h"
 
-@interface IBLUserDetailTableViewController : IBLStaticTableViewController
+@interface IBLUserDetailTableViewController : PCCWStaticTableViewController
 @property (nonatomic, strong) IBLOrder *order;
 @end

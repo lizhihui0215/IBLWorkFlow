@@ -6,10 +6,9 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLStaticTableViewController.h"
 #import "IBLOrderFlow.h"
 
-@interface IBLOrderFlowDetailViewController : IBLStaticTableViewController
+@interface IBLOrderFlowDetailViewController : PCCWStaticTableViewController
 
 @property (nonatomic, strong) IBLOrderFlow *orderFlow;
 

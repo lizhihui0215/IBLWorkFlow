@@ -6,11 +6,11 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewController.h"
+
 
 #import "IBLInternetListViewModel.h"
 
-@interface IBLInternetListViewController : IBLTableViewController
+@interface IBLInternetListViewController : PCCWTableViewController
 
 @property (nonatomic, strong) IBLInternetListViewModel *viewModel;
 

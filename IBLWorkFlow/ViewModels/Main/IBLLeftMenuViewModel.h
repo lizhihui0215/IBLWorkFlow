@@ -6,12 +6,12 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLListViewModel.h"
+#import "PCCWListViewModel.h"
 #import "IBLGenerateLeftMenu.h"
 
 
 
-@interface IBLLeftMenuViewModel : IBLListViewModel
+@interface IBLLeftMenuViewModel : PCCWListViewModel
 
 - (NSString *)titleAtIndexPath:(NSIndexPath *)indexPath;
 

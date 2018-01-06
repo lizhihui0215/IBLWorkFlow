@@ -9,8 +9,6 @@
 #import "IBLRenewTableViewController.h"
 #import "IBLProductPrice.h"
 #import "IBLCreateAccountTableViewController.h"
-#import "IBLException.h"
-
 
 @implementation IBLRenewResult
 - (instancetype)initWithRenewProductCount:(NSInteger)renewProductCount
@@ -268,7 +266,7 @@
         if ([self.renewProductCount.text integerValue] <= 0) {
             NSError *error = [NSError errorWithDomain:@""
                                                  code:0
-                                             userInfo:@{kExceptionCode : @"-1",
+                                             userInfo:@{kExceptionCode : @(-1),
                                                         kExceptionMessage: @"订购数量必须大于0！"}];
             [self showAlertWithError:error];
             return NO;

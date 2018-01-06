@@ -10,7 +10,7 @@
 
 @interface IBLInternetListViewModel ()
 {
-    NSMutableArray<IBLSection *> *_dataSource;
+    NSMutableArray<PCCWSection *> *_dataSource;
 }
 @property (nonatomic, copy, readwrite) NSString *account;
 
@@ -30,28 +30,28 @@
         self.account = account;
         self.date = date;
         self.fetchOnlineRecords = [[IBLFetchOnlineRecord alloc] init];
-        IBLSection *section = [IBLSection sectionWithInfo:nil items:nil];
+        PCCWSection *section = [PCCWSection sectionWithInfo:nil items:nil];
         
         self.dataSource = [@[section] mutableCopy];
     }
     return self;
 }
 
-- (void)setDataSource:(NSMutableArray<IBLSection *> *)dataSource{
+- (void)setDataSource:(NSMutableArray<PCCWSection *> *)dataSource{
     _dataSource = dataSource;
 }
 
-- (NSMutableArray<IBLSection *> *)dataSource{
+- (NSMutableArray<PCCWSection *> *)dataSource{
     return _dataSource;
 }
 
 - (void)fetchRecoredsWithIsRefresh:(BOOL)isRefresh
-                   completeHandler:(IBLViewModelCompleteHandler)handler{
+                   completeHandler:(PCCWViewModelCompleteHandler)handler{
     [self.fetchOnlineRecords fetchOnlineWithAccount:self.account
                                                date:self.date
                                           isRefresh:isRefresh
                                     completeHandler:^(NSArray<IBLNetworkRecord *> *records, NSError *error) {
-                                        NSMutableArray<IBLSectionItem *> *items = [self itemsWithRecords:records];
+                                        NSMutableArray<PCCWSectionItem *> *items = [self itemsWithRecords:records];
                                         if (isRefresh)
                                             [self sectionAt:0].items = items;
                                         else
@@ -60,10 +60,10 @@
                                     }];
 }
 
-- (NSMutableArray<IBLSectionItem *> *)itemsWithRecords:(NSArray<IBLNetworkRecord *> *)records{
-    NSMutableArray<IBLSectionItem *> *items = [NSMutableArray array];
+- (NSMutableArray<PCCWSectionItem *> *)itemsWithRecords:(NSArray<IBLNetworkRecord *> *)records{
+    NSMutableArray<PCCWSectionItem *> *items = [NSMutableArray array];
     for (IBLNetworkRecord *networkRecord in records) {
-        IBLSectionItem *item = [IBLSectionItem itemWithInfo:networkRecord selected:NO];
+        PCCWSectionItem *item = [PCCWSectionItem itemWithInfo:networkRecord selected:NO];
         [items addObject:item];
     }
     
@@ -71,7 +71,7 @@
 }
 
 - (IBLNetworkRecord *)networkRecordAtIndexPath:(NSIndexPath *)indexPath{
-    IBLSectionItem *sectionItem = [self sectionItemAtIndexPath:indexPath];
+    PCCWSectionItem *sectionItem = [self sectionItemAtIndexPath:indexPath];
     return sectionItem.info;
 }
 

@@ -86,7 +86,7 @@
 }
 
 - (void)fetchProductPrice:(IBLFetchProductPriceInfo *)fetchProductPrice
-          completeHandler:(IBLViewModelCompleteHandler)handler {
+          completeHandler:(PCCWViewModelCompleteHandler)handler {
     [self.fetchProductPrice fetchProductPrice:fetchProductPrice
                               completeHandler:^(IBLProductPrice *productPrice, NSError *error){
                                   self.productPrices = productPrice;
@@ -164,7 +164,7 @@
                               }];
 }
 
-- (void)payWithType:(NSString *)type createAccountInfo:(IBLCreateAccountTableViewInfo *)createAccountInfo completeHandler:(IBLViewModelCompleteHandler)handler {
+- (void)payWithType:(NSString *)type createAccountInfo:(IBLCreateAccountTableViewInfo *)createAccountInfo completeHandler:(PCCWViewModelCompleteHandler)handler {
     
     IBLQRPayInfo *info = [[IBLQRPayInfo alloc] init];
     

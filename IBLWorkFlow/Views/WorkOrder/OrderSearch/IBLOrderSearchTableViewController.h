@@ -6,8 +6,8 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewController.h"
-#import "IBLStaticTableViewController.h"
+
+
 
 @class IBLOrderSearchTableViewController;
 
@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, IBLOrderSearchFieldType) {
 @end
 
 
-@interface IBLOrderSearchTableViewController : IBLStaticTableViewController
+@interface IBLOrderSearchTableViewController : PCCWStaticTableViewController
 
 @property (nonatomic, weak) id<IBLOrderSearchTableViewControllerDataSource> searchDataSource;
 

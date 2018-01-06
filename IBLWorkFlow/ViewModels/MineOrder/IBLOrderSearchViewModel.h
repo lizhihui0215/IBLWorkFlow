@@ -6,12 +6,12 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLListViewModel.h"
+#import "PCCWListViewModel.h"
 #import "IBLOrder.h"
 #include "IBLOrderSearchResult.h"
 
 
-@interface IBLOrderSearchViewModel : IBLListViewModel
+@interface IBLOrderSearchViewModel : PCCWListViewModel
 
 @property(nonatomic, strong, readonly) IBLOrderSearchResult *searchResult;
 

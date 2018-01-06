@@ -28,7 +28,7 @@
         
         self.fetchOperator = [[IBLFetchOperatorList alloc] init];
         
-        IBLSection *section = [IBLSection sectionWithInfo:nil items:nil];
+        PCCWSection *section = [PCCWSection sectionWithInfo:nil items:nil];
         
         [self.dataSource addObject:section];
     }
@@ -45,14 +45,14 @@
 
 - (void)fetchSearchContentWithSearchInfo:(id)searchInfo
                                isRefresh:(BOOL)isRefresh
-                         completeHandler:(IBLViewModelCompleteHandler)handler{
+                         completeHandler:(PCCWViewModelCompleteHandler)handler{
     NSString *operatorName = searchInfo[kSearchOperatorName];
     
     [self.fetchOperator fetchOperatorsWithIsRefresh:isRefresh
                                        operatorName:operatorName
                                     completeHandler:^(NSArray<IBLOperator *> *operators, NSError *error) {
-                                        IBLSection *section = [self sectionAt:0];
-                                        NSMutableArray<IBLSectionItem *> * sectionItems =[self sectionItemsWithOperators:operators];
+                                        PCCWSection *section = [self sectionAt:0];
+                                        NSMutableArray<PCCWSectionItem *> * sectionItems =[self sectionItemsWithOperators:operators];
 
                                         if (isRefresh) {
                                             section.items = sectionItems;
@@ -69,12 +69,12 @@
     return [self operatorAtIndexPath:indexPath];;
 }
 
-- (NSMutableArray<IBLSectionItem *> *)sectionItemsWithOperators:(NSArray<IBLOperator *> *)operators {
+- (NSMutableArray<PCCWSectionItem *> *)sectionItemsWithOperators:(NSArray<IBLOperator *> *)operators {
     
-    NSMutableArray<IBLSectionItem *> *sectionItems = [NSMutableArray array];
+    NSMutableArray<PCCWSectionItem *> *sectionItems = [NSMutableArray array];
     
     for (IBLOperator *operator in operators) {
-        IBLSectionItem *item = [IBLSectionItem itemWithInfo:operator selected:NO];
+        PCCWSectionItem *item = [PCCWSectionItem itemWithInfo:operator selected:NO];
         [sectionItems addObject:item];
     }
     
@@ -82,7 +82,7 @@
 }
 
 - (IBLOperator *)operatorAtIndexPath:(NSIndexPath *)indexPath{
-    IBLSectionItem *sectionItem = [self sectionItemAtIndexPath:indexPath];
+    PCCWSectionItem *sectionItem = [self sectionItemAtIndexPath:indexPath];
     
     return sectionItem.info;
 }

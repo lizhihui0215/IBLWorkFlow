@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IBLStaticTableViewController.h"
+
 #import "IBLOrder.h"
 
-@interface IBLOrderDetailTableViewController : IBLStaticTableViewController
+@interface IBLOrderDetailTableViewController : PCCWStaticTableViewController
 
 @property (nonatomic, strong) IBLOrder *order;
 

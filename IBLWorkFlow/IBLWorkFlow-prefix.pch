@@ -19,8 +19,8 @@
 #import "IBLAlertController.h"
 #import "IBLAppConfiguration.h"
 #import "IBLUtilities.h"
-#import "IBLFileManager.h"
 #import "UITextField+Blocks.h"
+#import <PCCWFoundation/PCCWFoundation.h>
 
 typedef NS_ENUM(NSInteger, IBLCreateAccountType) {
     IBLCreateAccountTypeFromOrder,

@@ -6,11 +6,11 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewCell.h"
+
 
 static NSString * const LeftMenuCellIdentifier = @"IBLLeftMenuCell";
 
-@interface IBLLeftMenuCell : IBLTableViewCell
+@interface IBLLeftMenuCell : PCCWTableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 

@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewController.h"
+
 #import "IBLSearchViewModel.h"
 #import "IBLOperatorSearchViewModel.h"
 #import "IBLRegionSearchViewModel.h"
@@ -21,7 +21,7 @@
 
 @end
 
-@interface IBLSearchViewController : IBLTableViewController
+@interface IBLSearchViewController : PCCWTableViewController
 
 @property (nonatomic, weak) id<IBLSearchViewControllerDelegate> searchDelegate;
 

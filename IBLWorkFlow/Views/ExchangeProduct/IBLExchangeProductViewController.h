@@ -6,10 +6,10 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewController.h"
+
 #import "IBLExchangeProductViewModel.h"
 
-@interface IBLExchangeProductViewController : IBLViewController
+@interface IBLExchangeProductViewController : PCCWViewController
 
 @property (nonatomic, strong) IBLExchangeProductViewModel *viewModel;
 

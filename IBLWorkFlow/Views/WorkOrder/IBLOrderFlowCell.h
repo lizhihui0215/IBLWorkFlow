@@ -6,9 +6,9 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewCell.h"
+#import "PCCWTableViewCell.h"
 
-@interface IBLOrderFlowCell : IBLTableViewCell
+@interface IBLOrderFlowCell : PCCWTableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *orderStatusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *operatorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *suggestLabel;

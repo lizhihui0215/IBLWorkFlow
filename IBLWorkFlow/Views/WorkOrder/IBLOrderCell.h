@@ -6,7 +6,7 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLTableViewCell.h"
+#import "PCCWTableViewCell.h"
 #import "IBLSegmentControl.h"
 #import "IBLOrder.h"
 
@@ -15,7 +15,7 @@ static NSString * const MineWorkFlowCellIdentifier = @"IBLOrderCell";
 
 static NSString * const MineWorkFlowCellNibName = @"IBLOrderCell";
 
-@interface IBLOrderCell : IBLTableViewCell
+@interface IBLOrderCell : PCCWTableViewCell
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *segmentControlWidthConstraint;
 

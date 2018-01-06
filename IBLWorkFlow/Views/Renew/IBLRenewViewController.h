@@ -6,10 +6,10 @@
 //  Copyright © 2016 IBL. All rights reserved.
 //
 
-#import "IBLViewController.h"
+
 #import "IBLRenewViewModel.h"
 
-@interface IBLRenewViewController : IBLViewController
+@interface IBLRenewViewController : PCCWViewController
 
 @property (nonatomic, strong) IBLRenewViewModel *viewModel;
 

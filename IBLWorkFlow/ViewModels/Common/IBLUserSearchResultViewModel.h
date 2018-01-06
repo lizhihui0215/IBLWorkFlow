@@ -3,11 +3,11 @@
 // Copyright (c) 2016 IBL. All rights reserved.
 //
 
-#import "IBLListViewModel.h"
+#import "PCCWListViewModel.h"
 #import "IBLUserSearchViewModel.h"
 
 
-@interface IBLUserSearchResultViewModel : IBLListViewModel
+@interface IBLUserSearchResultViewModel : PCCWListViewModel
 
 @property (nonatomic, assign) IBLUserSearchType searchType;
 

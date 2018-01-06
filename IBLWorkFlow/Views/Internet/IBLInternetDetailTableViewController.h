@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "IBLNetworkRecord.h"
-#import "IBLStaticTableViewController.h"
 
-@interface IBLInternetDetailTableViewController : IBLStaticTableViewController
+@interface IBLInternetDetailTableViewController : PCCWStaticTableViewController
 
 @property (nonatomic, strong) IBLNetworkRecord *networkRecord;
 

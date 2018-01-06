@@ -164,7 +164,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     [self setupViewControllers];
     
     
-    IBLSection *item = [self.viewModel sectionAt:0];
+    PCCWSection *item = [self.viewModel sectionAt:0];
     IBLLeftMenu *menu = item.info;
     self.sideMenuViewController.contentViewController = self.actionViewControllers[@(menu.index)];
     
@@ -201,7 +201,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    IBLSectionItem *item = [self.viewModel sectionItemAtIndexPath:indexPath];
+    PCCWSectionItem *item = [self.viewModel sectionItemAtIndexPath:indexPath];
     IBLLeftMenu *menu = item.info;
     self.sideMenuViewController.contentViewController = self.actionViewControllers[@(menu.index)];
     [self.sideMenuViewController hideMenuViewController];
@@ -215,7 +215,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex{
-    IBLSection *section = [self.viewModel sectionAt:sectionIndex];
+    PCCWSection *section = [self.viewModel sectionAt:sectionIndex];
     IBLLeftMenu *menu = section.info;
     
     if (menu.index == 2 || menu.index == 4) {
@@ -250,7 +250,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex{
     IBLLeftMenuTableHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:IBLLeftMenuTableHeaderIdentifier];
     
-    IBLSection *section = [self.viewModel sectionAt:sectionIndex];
+    PCCWSection *section = [self.viewModel sectionAt:sectionIndex];
     
     IBLLeftMenu *menu = section.info;
     
@@ -270,7 +270,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 }
 
 - (void)headerView:(IBLLeftMenuTableHeaderView *)headerView tappedAtSection:(NSInteger)sectionIndex {
-    IBLSection *section = [self.viewModel sectionAt:sectionIndex];
+    PCCWSection *section = [self.viewModel sectionAt:sectionIndex];
     IBLLeftMenu *menu = section.info;
     if (menu.index == IBLLeftMenuSectionActionBusinessManaged) return;
     self.sideMenuViewController.contentViewController = self.actionViewControllers[@(menu.index)];

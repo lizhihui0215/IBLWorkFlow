@@ -7,7 +7,7 @@
 //
 
 #import "IBLAppDelegate.h"
-#import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
+#import <PCCWFoundation/PCCWFoundation.h>
 #import "UINavigationBar+IBLExtension.h"
 //#import "UMessage.h"
 #import "BPush.h"
@@ -34,7 +34,9 @@
     
     [UINavigationBar setupAppearance];
     
-    [IBLFileManager setup];
+    [[UIViewController appearance] setErrorOkTitle:@"OK"];
+    
+//    [PCCWFileManager setup];
     
     
 //    [self setupNotificationWithLaunchOptions:launchOptions];

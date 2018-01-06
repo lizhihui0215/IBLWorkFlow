@@ -3,7 +3,7 @@
 // Copyright (c) 2016 IBL. All rights reserved.
 //
 
-#import "IBLListViewModel.h"
+#import "PCCWListViewModel.h"
 #import "IBLUserSearchResultViewModel.h"
 #import "IBLUserListRepository.h"
 #import "IBLRelateUser.h"
@@ -34,7 +34,7 @@
         self.searchType = searchType;
         self.searchResult = searchResult;
         self.fetchUserList = [[IBLFetchUserList alloc] init];
-        IBLSection *section = [IBLSection sectionWithInfo:nil items:nil];
+        PCCWSection *section = [PCCWSection sectionWithInfo:nil items:nil];
         
         [self.dataSource addObject:section];
 
@@ -64,7 +64,7 @@
 }
 
 - (IBLRelateUser *)relateUserAtIndexPath:(NSIndexPath *)indexPath{
-    IBLSectionItem *sectionItem = [self sectionItemAtIndexPath:indexPath];
+    PCCWSectionItem *sectionItem = [self sectionItemAtIndexPath:indexPath];
     
     return sectionItem.info;
 }
@@ -87,8 +87,8 @@
     [self.fetchUserList fetchUserListWithIsRefresh:isRefresh
                                        fetchResult:fetch
                                    completeHandler:^(NSArray<IBLRelateUser *> *users, NSError *error){
-                                       IBLSection *section = [self sectionAt:0];
-                                       NSMutableArray<IBLSectionItem *> * sectionItems =[self sectionItemsWithRelateUsers:users];
+                                       PCCWSection *section = [self sectionAt:0];
+                                       NSMutableArray<PCCWSectionItem *> * sectionItems =[self sectionItemsWithRelateUsers:users];
 
                                        if (isRefresh) {
                                            section.items = sectionItems;
@@ -100,11 +100,11 @@
                                    }];
 }
 
-- (NSMutableArray<IBLSectionItem *> *)sectionItemsWithRelateUsers:(NSArray<IBLRelateUser *> *)relateUsers{
-    NSMutableArray<IBLSectionItem *> *sectionItems = [NSMutableArray array];
+- (NSMutableArray<PCCWSectionItem *> *)sectionItemsWithRelateUsers:(NSArray<IBLRelateUser *> *)relateUsers{
+    NSMutableArray<PCCWSectionItem *> *sectionItems = [NSMutableArray array];
     
     for (IBLRelateUser *relateUser in relateUsers) {
-        IBLSectionItem *item = [IBLSectionItem itemWithInfo:relateUser selected:NO];
+        PCCWSectionItem *item = [PCCWSectionItem itemWithInfo:relateUser selected:NO];
         [sectionItems addObject:item];
     }
     

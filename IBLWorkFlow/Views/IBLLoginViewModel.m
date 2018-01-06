@@ -8,7 +8,6 @@
 
 #import "IBLLoginViewModel.h"
 #import "IBLFetchUser.h"
-#import "IBLException.h"
 
 @interface IBLLoginViewModel ()
 
@@ -33,12 +32,12 @@
 
 - (void)loginWithUsername:(NSString *)username
                  password:(NSString *)password
-          completeHandler:(IBLViewModelCompleteHandler)handler {
+          completeHandler:(PCCWViewModelCompleteHandler)handler {
 
     if ([NSString isNull:self.LAN] && [NSString isNull:self.WLAN]){
         handler([NSError errorWithDomain:@""
                                     code:0
-                                userInfo:@{kExceptionCode : @"-1",
+                                userInfo:@{kExceptionCode : @(-1),
                                            kExceptionMessage: @"请输入服务器地址！"}]);
         return;
     }
