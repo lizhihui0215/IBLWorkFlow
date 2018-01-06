@@ -37,18 +37,13 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 }
 
 - (void)backButtonPressed:(UIBarButtonItem *)button{
-    IBLButtonItem *confirm = [IBLButtonItem itemWithLabel:@"确认" action:^(IBLButtonItem *item) {
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
-    
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                    title:@"返回将丢失所有填写信息。"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                         otherButtonItems:confirm,nil];
-    [alert showInController:self];
+    [self showConfirmWithTitle:@"返回将丢失所有填写信息。"
+                       message:@""
+               completeHandler:^(BOOL isCancel) {
+                   if (!isCancel) {
+                       [self.navigationController popViewControllerAnimated:YES];
+                   }
+               }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,41 +100,28 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
     
     switch (paymodel) {
         case IBLPayModelNet: {
-            IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
-                                                           action:^(IBLButtonItem *item) {
-                                                               [self showHUDWithMessage:@""];
-                                                               [self.viewModel payWithType:@"1"
-                                                                         createAccountInfo:commit
-                                                                           completeHandler:^(NSError *error) {
-                                                                               [self hidHUD];
-                                                                               if (![self showAlertWithError:error]) {
-                                                                                   [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeAilPay)];
-                                                                               }
-                                                               }];
-                                                           }];
-            
-            IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
-                                                               action:^(IBLButtonItem *item) {
-                                                                   [self showHUDWithMessage:@""];
-                                                                   [self.viewModel payWithType:@"0"
-                                                                             createAccountInfo:commit
-                                                                               completeHandler:^(NSError *error) {
-                                                                                   [self hidHUD];
-                                                                                   if (![self showAlertWithError:error]) {
-                                                                                       [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeWeChat)];
-                                                                                   }
-                                                                   }];
-                                                               }];
-            
-            IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-            
-            
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                            title:@"请选择支付方式"
-                                                                          message:nil
-                                                                 cancleButtonItem:cancel
-                                                                 otherButtonItems:general,noEmergency,nil];
-            [alert showInController:self];
+            [UIAlertController showAlertInViewController:self
+                                               withTitle:@"请选择支付方式"
+                                                 message:nil
+                                       cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:@[@"支付宝支付", @"微信支付"]
+                                                tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                    NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                                                    NSInteger index = buttonIndex - firstOtherIndex;
+                                                    IBLQRPayType payType = index == 0 ? IBLQRPayTypeAilPay : IBLQRPayTypeWeChat;
+                                                    NSString *type = index == 0 ? @"1" : @"0";
+                                                    [self showHUDWithMessage:@""];
+                                                    [self.viewModel payWithType:type
+                                                              createAccountInfo:commit
+                                                                completeHandler:^(NSError *error) {
+                                                                    [self hidHUD];
+                                                                    if (![self showAlertWithError:error]) {
+                                                                        [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(payType)];
+                                                                    }
+                                                                }];
+                                                    
+                                                }];
             break;
         }
         case IBLPayModelCash: {
@@ -154,18 +136,12 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
     [self.viewModel createAccountWith:commit completeHandler:^(NSError *error){
         [self hidHUD];
         if (![self showAlertWithError:error]) {
-            IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确定" action:^(IBLButtonItem *item) {
+            [self showAlertWithError:errorWithCode(0, @"开户成功")
+                     completeHandler:^(BOOL isShowError, NSError * _Nonnull error) {
                 if([self.delegate respondsToSelector:@selector(createAccountViewController:commit:)]){
                     [self.delegate createAccountViewController:self commit:self.viewModel.order];
                 }
             }];
-            
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                            title:@"开户成功"
-                                                                          message:nil
-                                                                 cancleButtonItem:cancel
-                                                                 otherButtonItems:nil];
-            [alert showInController:self];
         }
     }];
 }

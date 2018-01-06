@@ -142,33 +142,22 @@
 }
 
 - (IBAction)custTypeTapped:(UITapGestureRecognizer *)sender {
-    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"一般用户"
-                                                         action:^(IBLButtonItem *item) {
-                                                             [self.searchDataSource orderSearchTableView:self
-                                                                                               fieldType:IBLOrderSearchFieldTypeCustType
-                                                                                              didEndEdit:@(0)];
-                                                             self.custTypeTextField.text = [self userTypeNames][@(0)];
-                                                             [self.tableView reloadData];
-                                                         }];
-    
-    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"企业用户"
-                                                 action:^(IBLButtonItem *item) {
-                                                     [self.searchDataSource orderSearchTableView:self
-                                                                                       fieldType:IBLOrderSearchFieldTypeCustType
-                                                                                      didEndEdit:@(1)];
-                                                     self.custTypeTextField.text = [self userTypeNames][@(1)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                    title:@"请选择用户类型"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                         otherButtonItems:beforeTheDate,first,nil];
-    [alert showInController:self];
-
+    [UIAlertController showActionSheetInViewController:self
+                                             withTitle:@"请选择用户类型"
+                                               message:nil
+                                     cancelButtonTitle:@"取消"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:@[@"一般用户", @"企业用户"]
+                    popoverPresentationControllerBlock:nil
+                                              tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                  NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                                                  NSInteger index = buttonIndex - firstOtherIndex;
+                                                  [self.searchDataSource orderSearchTableView:self
+                                                                                    fieldType:IBLOrderSearchFieldTypeCustType
+                                                                                   didEndEdit:@(index)];
+                                                  self.custTypeTextField.text = [self userTypeNames][@(index)];
+                                                  [self.tableView reloadData];
+                                              }];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{

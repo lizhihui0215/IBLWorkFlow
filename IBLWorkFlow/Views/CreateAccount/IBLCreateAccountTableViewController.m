@@ -9,7 +9,6 @@
 #import "IBLCreateAccountTableViewController.h"
 #import "IBLSectionHeaderView.h"
 #import "IBLSearchViewController.h"
-#import "IBLAlertController.h"
 #import "HcdDateTimePickerView.h"
 #import "IBLAppRepository.h"
 
@@ -148,63 +147,21 @@
     };
 }
 - (IBAction)identifierTypeTapped:(UITapGestureRecognizer *)sender {
-    IBLButtonItem *menu1 = [IBLButtonItem itemWithLabel:@"身份证"
-                                                         action:^(IBLButtonItem *item) {
-                                                             self.createAccountInfo.certType = 0;
-                                                             self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
-                                                             [self.tableView reloadData];
-                                                         }];
-    
-    IBLButtonItem *menu2 = [IBLButtonItem itemWithLabel:@"驾照"
-                                                 action:^(IBLButtonItem *item) {
-                                                     self.createAccountInfo.certType = 1;
-                                                     self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    IBLButtonItem *menu3 = [IBLButtonItem itemWithLabel:@"护照"
-                                                         action:^(IBLButtonItem *item) {
-                                                             self.createAccountInfo.certType = 2;
-                                                             self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
-                                                             [self.tableView reloadData];
-                                                         }];
-
-    IBLButtonItem *menu4 = [IBLButtonItem itemWithLabel:@"回乡证"
-                                                 action:^(IBLButtonItem *item) {
-                                                     self.createAccountInfo.certType = 3;
-                                                     self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    IBLButtonItem *menu5 = [IBLButtonItem itemWithLabel:@"台胞证"
-                                                         action:^(IBLButtonItem *item) {
-                                                             self.createAccountInfo.certType = 4;
-                                                             self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
-                                                             [self.tableView reloadData];
-                                                         }];
-
-    IBLButtonItem *menu6 = [IBLButtonItem itemWithLabel:@"其它"
-                                                 action:^(IBLButtonItem *item) {
-                                                     self.createAccountInfo.certType = 5;
-                                                     self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    IBLButtonItem *menu7 = [IBLButtonItem itemWithLabel:@"营业执照"
-                                                         action:^(IBLButtonItem *item) {
-                                                             self.createAccountInfo.certType = 6;
-                                                             self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
-                                                             [self.tableView reloadData];
-                                                         }];
-
-
-    
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                    title:@"请选择证件号码"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                         otherButtonItems:menu1,menu2,menu3,menu4,menu5,menu6,menu7,nil];
-    [alert showInController:self];
-
+    [UIAlertController showActionSheetInViewController:self
+                                             withTitle:@"请选择证件号码"
+                                               message:nil
+                                     cancelButtonTitle:@"取消"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:@[@"身份证", @"驾照", @"护照", @"回乡证", @"台胞证", @"其它", @"营业执照"]
+                    popoverPresentationControllerBlock:^(UIPopoverPresentationController * _Nonnull popover) {
+                        
+                    } tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                        NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                        NSInteger index = buttonIndex - firstOtherIndex;
+                        self.createAccountInfo.certType = index;
+                        self.identifierTypeTextField.text = [self certTypeNames][@(self.createAccountInfo.certType)];
+                        [self.tableView reloadData];
+                    }];
 }
 
 - (NSDictionary <NSNumber *, NSString *> *)userTypeNames{
@@ -212,36 +169,26 @@
              @(IBCreateAccountLUserTypeEnterprise) : @"企业用户"};
 }
 
-- (IBAction)userTypeTapped:(UITapGestureRecognizer *)sender {
-    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"一般用户"
-                                                         action:^(IBLButtonItem *item) {
-                                                             self.createAccountInfo.userType = IBLCreateAccountUserTypeDetault;
-                                                             self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
-                                                             self.createAccountInfo.certType = 0;
-                                                             self.identifierTypeTextField.text = [self certTypeNames][@(0)];
-                                                             [self cleanUserInfo];
-                                                             [self.tableView reloadData];
-                                                         }];
-    
-    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"企业用户"
-                                                 action:^(IBLButtonItem *item) {
-                                                     self.createAccountInfo.userType = IBCreateAccountLUserTypeEnterprise;
-                                                     self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
-                                                     self.createAccountInfo.certType = 6;
-                                                     self.identifierTypeTextField.text = [self certTypeNames][@(6)];
-                                                     [self cleanUserInfo];
-
-                                                     [self.tableView reloadData];
-                                                 }];
-    
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                    title:@"请选择用户类型"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                         otherButtonItems:beforeTheDate,first,nil];
-    [alert showInController:self];
+- (IBAction)userTypeTapped:(UITapGestureRecognizer *)sender { 
+    [UIAlertController showActionSheetInViewController:self
+                                             withTitle:@"请选择用户类型"
+                                               message:nil
+                                     cancelButtonTitle:@"取消"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:@[@"一般用户", @"企业用户"]
+                    popoverPresentationControllerBlock:nil
+                                              tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                        NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                        NSInteger index = buttonIndex - firstOtherIndex;
+                        IBLCreateAccountUserType createAccountType = index == 0 ? IBLCreateAccountUserTypeDetault : IBCreateAccountLUserTypeEnterprise;
+                        NSInteger cerType = index == 0 ? 0 : 6;
+                        self.createAccountInfo.userType = createAccountType;
+                        self.createAccountInfo.certType = cerType;
+                        self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+                        self.identifierTypeTextField.text = [self certTypeNames][@(cerType)];
+                        [self cleanUserInfo];
+                        [self.tableView reloadData];
+                    }];
 }
 
 - (void)cleanUserInfo{
@@ -266,29 +213,22 @@
 
 - (IBAction)effectTypeTapped:(UITapGestureRecognizer *)sender {
     //!!!: 优化将title 和 effect 提取到appConfig中
-    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"指定日期"
-                                                         action:^(IBLButtonItem *item) {
-                                                             self.createAccountInfo.effectType = IBLOrderEffectTypeBeforeTheDate;
-                                                             self.methodOfValidTextField.text = [self effectNames][@(self.createAccountInfo.effectType)];
-                                                             [self.tableView reloadData];
-                                                         }];
-    
-    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"首次上线"
-                                                 action:^(IBLButtonItem *item) {
-                                                     self.createAccountInfo.effectType = IBLOrderEffectTypeFirst;
-                                                     self.methodOfValidTextField.text = [self effectNames][@(self.createAccountInfo.effectType)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-    
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                    title:@"请选择生效方式"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                         otherButtonItems:beforeTheDate,first,nil];
-    [alert showInController:self];
+    [UIAlertController showActionSheetInViewController:self
+                                             withTitle:@"请选择生效方式"
+                                               message:nil
+                                     cancelButtonTitle:@"取消"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:@[@"指定日期", @"首次上线"]
+                    popoverPresentationControllerBlock:^(UIPopoverPresentationController * _Nonnull popover) {
+                        
+                    } tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                        NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                        NSInteger index = buttonIndex - firstOtherIndex;
+                        IBLOrderEffectType effType = index == 0 ? IBLOrderEffectTypeBeforeTheDate : IBLOrderEffectTypeFirst;
+                        self.createAccountInfo.effectType = effType;
+                        self.methodOfValidTextField.text = [self effectNames][@(self.createAccountInfo.effectType)];
+                        [self.tableView reloadData];
+                    }];
 }
 
 - (void)viewDidLoad {
@@ -509,13 +449,7 @@
     
     
     if (!isValidate) {
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:title
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
+        [self showAlertWithError:errorWithCode(0, title)];
     }
     
     return  isValidate;
@@ -531,13 +465,7 @@
     BOOL isNumber = [predicate evaluateWithObject:text];
     
     if (!isNumber) {
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:@"请输入大于0的数字！"
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
+        [self showAlertWithError:errorWithCode(0, @"请输入大于0的数字！")];
     }
     
     return isNumber;
@@ -819,13 +747,7 @@
     }
     
     if (notNullText) {
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:notNullText
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
+        [self showAlertWithError:errorWithCode(0, notNullText)];
         return NO;
     }
     

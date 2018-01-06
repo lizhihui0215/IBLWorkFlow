@@ -35,6 +35,9 @@
     [UINavigationBar setupAppearance];
     
     [[UIViewController appearance] setErrorOkTitle:@"OK"];
+    [[UIViewController appearance] setConfirmOKTitle:@"OK"];
+
+    
     
 //    [PCCWFileManager setup];
     

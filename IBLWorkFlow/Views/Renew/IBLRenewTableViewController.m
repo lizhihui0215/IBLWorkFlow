@@ -177,13 +177,7 @@
     BOOL isNumber = [predicate evaluateWithObject:text];
     
     if (!isNumber) {
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:@"请输入正确的金额！"
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
+        [self showAlertWithError:errorWithCode(0, @"请输入正确的金额！")];
     }
     
     return isNumber;
@@ -247,13 +241,7 @@
     
     
     if (!isValidate) {
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:title
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
+        [self showAlertWithError:errorWithCode(0, title)];
     }
     
     return  isValidate;
@@ -395,13 +383,7 @@
     }
     
     if (notNullText) {
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:notNullText
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
+        [self showAlertWithError:errorWithCode(0, notNullText)];
     }else{
         IBLRenewResult *result = [IBLRenewResult resultWithRenewProductCount:[self.renewProductCount.text integerValue]
                                                           productPriceAmount:[self sales]

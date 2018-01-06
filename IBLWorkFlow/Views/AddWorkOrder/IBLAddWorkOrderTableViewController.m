@@ -54,43 +54,32 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 @implementation IBLAddWorkOrderTableViewController
 
 - (IBAction)priorityTapped:(UITapGestureRecognizer *)sender {
-    
-    IBLButtonItem *emergency = [IBLButtonItem itemWithLabel:@"紧急"
-                                                     action:^(IBLButtonItem *item) {
-                                                         self.priorityTextField.text = item.label;
-                                                         [self.tableViewDelegate addWorkOrderTableView:self
-                                                                                             fieldType:IBLAddWorkOrderFieldTypePriority
-                                                                                            didEndEdit:@(IBLPriorityStatusEmergency)];
-                                                         
-                                                     }];
-    
-    IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"一般"
-                                                   action:^(IBLButtonItem *item) {
-                                                       self.priorityTextField.text = item.label;
-                                                       [self.tableViewDelegate addWorkOrderTableView:self
-                                                                                           fieldType:IBLAddWorkOrderFieldTypePriority
-                                                                                          didEndEdit:@(IBLPriorityStatusGeneral)];
-                                                       
-                                                   }];
-    
-    IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"不紧急"
-                                                       action:^(IBLButtonItem *item) {
-                                                           self.priorityTextField.text = item.label;
-                                                           [self.tableViewDelegate addWorkOrderTableView:self
-                                                                                               fieldType:IBLAddWorkOrderFieldTypePriority
-                                                                                              didEndEdit:@(IBLPriorityStatusNoEmergency)];
-                                                           
-                                                       }];
-    
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-    
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                    title:@"请选择生效方式"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                         otherButtonItems:emergency,general,noEmergency,nil];
-    [alert showInController:self];
+    NSArray *options = @[@"紧急", @"一般", @"不紧急"];
+    [UIAlertController showActionSheetInViewController:self
+                                             withTitle:@"请选择生效方式"
+                                               message:nil
+                                     cancelButtonTitle:@"取消"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:options
+                    popoverPresentationControllerBlock:nil
+                                              tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                  NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                                                  NSInteger index = buttonIndex - firstOtherIndex;
+                                                  if (index == 0) {
+                                                      [self.tableViewDelegate addWorkOrderTableView:self
+                                                                                          fieldType:IBLAddWorkOrderFieldTypePriority
+                                                                                         didEndEdit:@(IBLPriorityStatusEmergency)];
+                                                  }else if (index == 1) {
+                                                      [self.tableViewDelegate addWorkOrderTableView:self
+                                                                                          fieldType:IBLAddWorkOrderFieldTypePriority
+                                                                                         didEndEdit:@(IBLPriorityStatusGeneral)];
+                                                  }else if (index == 2) {
+                                                      [self.tableViewDelegate addWorkOrderTableView:self
+                                                                                          fieldType:IBLAddWorkOrderFieldTypePriority
+                                                                                         didEndEdit:@(IBLPriorityStatusNoEmergency)];
+                                                  }
+                                                  self.priorityTextField.text = options[index];
+                                              }];
 }
 - (IBAction)handleUserTapped:(UITapGestureRecognizer *)sender {
     [self performSegueWithIdentifier:IBLSearchForHandleUserIdentifier sender:self];
@@ -135,16 +124,16 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 
 - (IBAction)workOrderBizTypeTapped:(UITapGestureRecognizer *)sender {
     
-//    IBLWorkOrderType *workOrderType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeWorkOrderType];
-//    
-//    if (!workOrderType) {
-//        NSError *error = [NSError errorWithDomain:@""
-//                                             code:0
-//                                         userInfo:@{kExceptionCode : @(-1),
-//                                                    kExceptionMessage: @"请选择工单类型！"}];
-//        [self showAlertWithError:error];
-//        return;
-//    }
+    //    IBLWorkOrderType *workOrderType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeWorkOrderType];
+    //
+    //    if (!workOrderType) {
+    //        NSError *error = [NSError errorWithDomain:@""
+    //                                             code:0
+    //                                         userInfo:@{kExceptionCode : @(-1),
+    //                                                    kExceptionMessage: @"请选择工单类型！"}];
+    //        [self showAlertWithError:error];
+    //        return;
+    //    }
     
     NSArray<IBLWorkOrderBussinessType *> *businessTypes = [self.tableViewDelegate workOrderBizTypesOfTableView:self ];
     
@@ -185,39 +174,34 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                 }];
 }
 - (IBAction)custTypeTapped:(UITapGestureRecognizer *)sender {
-    IBLButtonItem *beforeTheDate = [IBLButtonItem itemWithLabel:@"一般用户"
-                                                         action:^(IBLButtonItem *item) {
-                                                             [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType didEndEdit:@(0)];
-                                                             self.custTypeTextField.text = [self userTypeNames][@(0)];
-                                                             [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(0)];
-                                                             self.certTypeTextField.text = [self certTypeNames][@(0)];
-                                                             
-                                                             [self cleanUserInfo];
-
-                                                             [self.tableView reloadData];
-                                                         }];
+    NSArray *options = @[@"一般用户", @"企业用户"];
+    [UIAlertController showActionSheetInViewController:self
+                                             withTitle:@"请选择生效方式"
+                                               message:nil
+                                     cancelButtonTitle:@"取消"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:options
+                    popoverPresentationControllerBlock:nil
+                                              tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                  NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                                                  NSInteger index = buttonIndex - firstOtherIndex;
+                                                  if (index == 0) {
+                                                      [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType didEndEdit:@(0)];
+                                                      self.custTypeTextField.text = [self userTypeNames][@(0)];
+                                                      [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(0)];
+                                                      self.certTypeTextField.text = [self certTypeNames][@(0)];
+                                                  }else if (index == 1) {
+                                                      [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType didEndEdit:@(1)];
+                                                      self.custTypeTextField.text = [self userTypeNames][@(1)];
+                                                      [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(6)];
+                                                      self.certTypeTextField.text = [self certTypeNames][@(6)];
+                                                  }
+                                                  [self cleanUserInfo];
+                                                  
+                                                  [self.tableView reloadData];
+                                              }];
     
-    IBLButtonItem *first = [IBLButtonItem itemWithLabel:@"企业用户"
-                                                 action:^(IBLButtonItem *item) {
-                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType didEndEdit:@(1)];
-                                                     self.custTypeTextField.text = [self userTypeNames][@(1)];
-                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(6)];
-                                                     self.certTypeTextField.text = [self certTypeNames][@(6)];
-                                                     [self cleanUserInfo];
-
-                                                     [self.tableView reloadData];
-                                                 }];
     
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                    title:@"请选择用户类型"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                         otherButtonItems:beforeTheDate,first,nil];
-    [alert showInController:self];
-
-
 }
 
 - (void)cleanUserInfo{
@@ -267,63 +251,21 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 }
 
 - (IBAction)certTypeTapped:(UITapGestureRecognizer *)sender {
+    [UIAlertController showActionSheetInViewController:self
+                                             withTitle:@"请选择证件号码"
+                                               message:nil
+                                     cancelButtonTitle:@"取消"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:@[@"身份证", @"驾照", @"护照", @"回乡证", @"台胞证", @"其它", @"营业执照"]
+                    popoverPresentationControllerBlock:nil
+                                              tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                  NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                                                  NSInteger index = buttonIndex - firstOtherIndex;
+                                                  [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(index)];
+                                                  self.certTypeTextField.text = [self certTypeNames][@(index)];
+                                                  [self.tableView reloadData];
+                                              }];
     
-    IBLButtonItem *menu1 = [IBLButtonItem itemWithLabel:@"身份证"
-                                                 action:^(IBLButtonItem *item) {
-                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(0)];
-                                                     self.certTypeTextField.text = [self certTypeNames][@(0)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    
-    IBLButtonItem *menu2 = [IBLButtonItem itemWithLabel:@"驾照"
-                                                 action:^(IBLButtonItem *item) {
-                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(1)];
-                                                     self.certTypeTextField.text = [self certTypeNames][@(1)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    IBLButtonItem *menu3 = [IBLButtonItem itemWithLabel:@"护照"
-                                                 action:^(IBLButtonItem *item) {
-                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(2)];
-                                                     self.certTypeTextField.text = [self certTypeNames][@(2)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    
-    IBLButtonItem *menu4 = [IBLButtonItem itemWithLabel:@"回乡证"
-                                                 action:^(IBLButtonItem *item) {
-                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(3)];
-                                                     self.certTypeTextField.text = [self certTypeNames][@(3)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    IBLButtonItem *menu5 = [IBLButtonItem itemWithLabel:@"台胞证"
-                                                 action:^(IBLButtonItem *item) {
-                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(4)];
-                                                     self.certTypeTextField.text = [self certTypeNames][@(4)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    
-    IBLButtonItem *menu6 = [IBLButtonItem itemWithLabel:@"其它"
-                                                 action:^(IBLButtonItem *item) {
-                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(5)];
-                                                     self.certTypeTextField.text = [self certTypeNames][@(5)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    IBLButtonItem *menu7 = [IBLButtonItem itemWithLabel:@"营业执照"
-                                                 action:^(IBLButtonItem *item) {
-                                                     [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(6)];
-                                                     self.certTypeTextField.text = [self certTypeNames][@(6)];
-                                                     [self.tableView reloadData];
-                                                 }];
-    
-    
-    
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                    title:@"请选择证件号码"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                         otherButtonItems:menu1,menu2,menu3,menu4,menu5,menu6,menu7,nil];
-    [alert showInController:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -368,7 +310,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             }
             NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
             NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
-
+            
             
             NSIndexPath *indexPathWorkOrderContent = [NSIndexPath indexPathForRow:19 inSection:0];
             NSIndexPath *indexPathRelateUser = [NSIndexPath indexPathForRow:20 inSection:0];
@@ -399,7 +341,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         case IBLWorkOrderBizStatusCableBreak:
         case IBLWorkOrderBizStatusOther: {
             NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
-
+            
             NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
             NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
             NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
@@ -418,7 +360,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:22 inSection:0];
             NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
             NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
-
+            
             dic = @{productIndexPath : @(YES),
                     countIndexPath : @(YES),
                     usernameIndexPath : @(YES),
@@ -470,12 +412,12 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                     certTypeIndexPath : @(YES),
                     remarkIndexPath : @(YES),
                     userTypeIndexPath: @(YES)};
-
+            
             break;
         }
         default:{
             NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:6 inSection:0];
-
+            
             NSIndexPath *regionIndexPath = [NSIndexPath indexPathForRow:3 inSection:0];
             NSIndexPath *productIndexPath = [NSIndexPath indexPathForRow:4 inSection:0];
             NSIndexPath *countIndexPath = [NSIndexPath indexPathForRow:5 inSection:0];
@@ -489,12 +431,12 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
             NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:15 inSection:0];
             NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:16 inSection:0];
             NSIndexPath *certTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
-
+            
             NSIndexPath *userIdentifierIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
             NSIndexPath *remarkIndexPath = [NSIndexPath indexPathForRow:22 inSection:0];
             NSIndexPath *adviceUserNameIndexPath = [NSIndexPath indexPathForRow:17 inSection:0];
             NSIndexPath *adviceUserPhoneIndexPath = [NSIndexPath indexPathForRow:18 inSection:0];
-
+            
             
             dic = @{regionIndexPath : @(YES),
                     productIndexPath : @(YES),
@@ -525,12 +467,12 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     NSString *title = nil;
     IBLWorkOrderBussinessType *type = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeBizType];
     
-   NSNumber *custType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self
-                                               fieldType:IBLAddWorkOrderFieldTypeCustType];
+    NSNumber *custType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self
+                                                                    fieldType:IBLAddWorkOrderFieldTypeCustType];
     
-//    if([NSString isNull:self.workOrderTypeTextField.text]){
-//        title = @"请选择工单类型！";
-//    };
+    //    if([NSString isNull:self.workOrderTypeTextField.text]){
+    //        title = @"请选择工单类型！";
+    //    };
     
     if([NSString isNull:self.workOrderBizTypeTextField.text]){
         title = @"请选择业务类型！";
@@ -555,7 +497,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         if([NSString isNull:self.regionTextField.text] && ([NSString isNull:self.relateUserTextField.text])){
             title = @"请选择区域或者关联用户！";
         };
-
+        
     }else{
         if([NSString isNull:self.relateUserTextField.text]){
             title = @"请选择关联用户！";
@@ -574,17 +516,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 - (IBAction)commitTapped:(UIButton *)sender {
     NSString *title = [self validateContents];
     if (![NSString isNull:title]) {
-        
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
-        
-        
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:title
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
-        
+        [self showAlertWithError:errorWithCode(0, title)];
         return;
     }
     [self saveWorkOrder];
@@ -611,7 +543,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     NSString *adviceUsername = [self validateContent:self.adviceUserNameTextField.text];
     NSString *adviceUserPhone = [self validateContent:self.adviceUserPhoneTextField.text];
-
+    
     IBLWorkOrderBussinessType *type = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeBizType];
     
     if (type.status == IBLWorkOrderBizStatusHandleAdvisory) {
@@ -697,14 +629,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     [self.phoneTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
         BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
         if (!isVaidate) {
-            IBLButtonItem *item = [IBLButtonItem itemWithLabel:@"确定"];
-            
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                            title:@"电话号码格式不正确！"
-                                                                          message:nil
-                                                                 cancleButtonItem:item
-                                                                 otherButtonItems:nil];
-            [alert showInController:self];
+            [self showAlertWithError:errorWithCode(0, @"电话号码格式不正确！")];
         }
         
         return isVaidate;
@@ -713,31 +638,15 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     [self.enterpriseContactPhoneTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
         BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
         if (!isVaidate) {
-            IBLButtonItem *item = [IBLButtonItem itemWithLabel:@"确定"];
-            
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                            title:@"电话号码格式不正确！"
-                                                                          message:nil
-                                                                 cancleButtonItem:item
-                                                                 otherButtonItems:nil];
-            [alert showInController:self];
+            [self showAlertWithError:errorWithCode(0, @"电话号码格式不正确！")];
         }
-        
         return isVaidate;
-
     }];
     
     [self.adviceUserPhoneTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
         BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
         if (!isVaidate) {
-            IBLButtonItem *item = [IBLButtonItem itemWithLabel:@"确定"];
-            
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                            title:@"电话号码格式不正确！"
-                                                                          message:nil
-                                                                 cancleButtonItem:item
-                                                                 otherButtonItems:nil];
-            [alert showInController:self];
+            [self showAlertWithError:errorWithCode(0, @"电话号码格式不正确！")];
         }
         
         return isVaidate;
@@ -745,12 +654,12 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     
     
-//    self.custTypeTextField.text =
+    //    self.custTypeTextField.text =
     NSInteger custType = [[self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCustType] integerValue];
     self.custTypeTextField.text = [self userTypeNames][@(custType)];
     
     
-   NSNumber *certType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType];
+    NSNumber *certType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType];
     
     self.certTypeTextField.text = [self certTypeNames][certType];
     
@@ -759,19 +668,12 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     [self.userIdentifierTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
         NSNumber *certType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType];
-
+        
         if ([certType integerValue] != 0) return YES;
         
         BOOL isVaidate = [IBLUtilities validateIdentityCard:textField.text];
         if (!isVaidate) {
-            IBLButtonItem *item = [IBLButtonItem itemWithLabel:@"确定"];
-            
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                            title:@"身份证号码格式不正确！"
-                                                                          message:nil
-                                                                 cancleButtonItem:item
-                                                                 otherButtonItems:nil];
-            [alert showInController:self];
+            [self showAlertWithError:errorWithCode(0, @"身份证号码格式不正确！")];
         }
         
         return isVaidate;

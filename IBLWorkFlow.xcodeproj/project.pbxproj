@@ -76,10 +76,8 @@
 		267622D11D3CE10600B4E2F3 /* IBLSearchRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 267622D01D3CE10600B4E2F3 /* IBLSearchRepository.m */; };
 		26788BDF1DF80B0200D59617 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26788BDE1DF80B0200D59617 /* UserNotifications.framework */; };
 		26846F4D1D34935B001F9C73 /* UIDevice+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F4C1D34935B001F9C73 /* UIDevice+IBLExtension.m */; };
-		26846F531D34A2F6001F9C73 /* IBLAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F521D34A2F6001F9C73 /* IBLAlertController.m */; };
 		26846F561D34A34A001F9C73 /* IBLButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F551D34A34A001F9C73 /* IBLButtonItem.m */; };
 		26846F611D34A405001F9C73 /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F5E1D34A405001F9C73 /* UIActionSheet+Blocks.m */; };
-		26846F621D34A405001F9C73 /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F601D34A405001F9C73 /* UIAlertView+Blocks.m */; };
 		26846F651D34BB35001F9C73 /* IBLHUDHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F641D34BB35001F9C73 /* IBLHUDHandler.m */; };
 		26846F681D34BC3F001F9C73 /* UIViewController+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26846F671D34BC3F001F9C73 /* UIViewController+IBLExtension.m */; };
 		26846F6A1D34C1E9001F9C73 /* IBLOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26846F691D34C1E9001F9C73 /* IBLOrderCell.xib */; };
@@ -328,14 +326,10 @@
 		26788BDE1DF80B0200D59617 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		26846F4B1D34935B001F9C73 /* UIDevice+IBLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IBLExtension.h"; sourceTree = "<group>"; };
 		26846F4C1D34935B001F9C73 /* UIDevice+IBLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IBLExtension.m"; sourceTree = "<group>"; };
-		26846F511D34A2F6001F9C73 /* IBLAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAlertController.h; sourceTree = "<group>"; };
-		26846F521D34A2F6001F9C73 /* IBLAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAlertController.m; sourceTree = "<group>"; };
 		26846F541D34A34A001F9C73 /* IBLButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLButtonItem.h; sourceTree = "<group>"; };
 		26846F551D34A34A001F9C73 /* IBLButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLButtonItem.m; sourceTree = "<group>"; };
 		26846F5D1D34A405001F9C73 /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		26846F5E1D34A405001F9C73 /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		26846F5F1D34A405001F9C73 /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		26846F601D34A405001F9C73 /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		26846F631D34BB35001F9C73 /* IBLHUDHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLHUDHandler.h; sourceTree = "<group>"; };
 		26846F641D34BB35001F9C73 /* IBLHUDHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLHUDHandler.m; sourceTree = "<group>"; };
 		26846F661D34BC3F001F9C73 /* UIViewController+IBLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IBLExtension.h"; sourceTree = "<group>"; };
@@ -967,8 +961,6 @@
 				269CDC541DF51B6300679173 /* UITextField+Blocks.m */,
 				26846F5D1D34A405001F9C73 /* UIActionSheet+Blocks.h */,
 				26846F5E1D34A405001F9C73 /* UIActionSheet+Blocks.m */,
-				26846F5F1D34A405001F9C73 /* UIAlertView+Blocks.h */,
-				26846F601D34A405001F9C73 /* UIAlertView+Blocks.m */,
 				2612E1601D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.h */,
 				2612E1611D2E9C4300CA76BC /* IBLWebServiceRequestSerializer.m */,
 				269B7D561D333BA200D52DF0 /* IBLWebServiceResponseSerializer.h */,
@@ -1102,8 +1094,6 @@
 				26846F641D34BB35001F9C73 /* IBLHUDHandler.m */,
 				26846F541D34A34A001F9C73 /* IBLButtonItem.h */,
 				26846F551D34A34A001F9C73 /* IBLButtonItem.m */,
-				26846F511D34A2F6001F9C73 /* IBLAlertController.h */,
-				26846F521D34A2F6001F9C73 /* IBLAlertController.m */,
 				26588EAA1D3CD61E0095F9C3 /* IBLSearchViewController.h */,
 				26588EAB1D3CD61E0095F9C3 /* IBLSearchViewController.m */,
 				267622C61D3CDE3F00B4E2F3 /* IBLSearchFieldCell.h */,
@@ -1596,7 +1586,6 @@
 				2615BED41D38D314002FE7A7 /* IBLPickerView.m in Sources */,
 				264EBBA21D2E2C1300FF8373 /* IBLFetchUser.m in Sources */,
 				26D56E481D361A7E0091A940 /* IBLBusinessRepository.m in Sources */,
-				26846F621D34A405001F9C73 /* UIAlertView+Blocks.m in Sources */,
 				26108FFA1D3E2136008B0B4C /* IBLDeleteOrder.m in Sources */,
 				264EBB9C1D2E2BD400FF8373 /* IBLUserRepository.m in Sources */,
 				26846F4D1D34935B001F9C73 /* UIDevice+IBLExtension.m in Sources */,
@@ -1630,7 +1619,6 @@
 				261F40221D3720D50068F502 /* IBLOrder.m in Sources */,
 				269CDC551DF51B6300679173 /* UITextField+Blocks.m in Sources */,
 				261524C51D7FBFAE007BF989 /* IBLFetchOnlineRecord.m in Sources */,
-				26846F531D34A2F6001F9C73 /* IBLAlertController.m in Sources */,
 				26846F611D34A405001F9C73 /* UIActionSheet+Blocks.m in Sources */,
 				26108FFD1D3E245F008B0B4C /* IBLFinishOrder.m in Sources */,
 				26FCA0911D5C57E3004B8E2C /* IBLCheckOrder.m in Sources */,

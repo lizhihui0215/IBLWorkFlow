@@ -68,16 +68,7 @@
     [NSThread sleepForTimeInterval:10];
     if ([isStop boolValue]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认" action:^(IBLButtonItem *item) {
-                [self.navigationController popViewControllerAnimated:YES];
-            }];
-            
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                            title:@"支付超时，请重新支付！"
-                                                                          message:nil
-                                                                 cancleButtonItem:cancel
-                                                                 otherButtonItems:nil];
-            [alert showInController:self];
+            [self showAlertWithError:errorWithCode(0, @"支付超时，请重新支付！")];
         });
         return;
     }
@@ -89,18 +80,14 @@
                                   case IBLOrderPayStatusPayed:
                                   case IBLOrderPayStatusClosed:
                                   case IBLOrderPayStatusFaild:{
-                                      IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认" action:^(IBLButtonItem *item) {
-                                          [self.navigationController popViewControllerAnimated:YES];
-                                      }];
-                                      
-                                      IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                                                      title:@"支付失败，请联系管理员！"
-                                                                                                    message:nil
-                                                                                           cancleButtonItem:cancel
-                                                                                           otherButtonItems:nil];
-                                      [alert showInController:self];
+                                      [UIAlertController showAlertInViewController:self
+                                                                         withTitle:@"支付失败，请联系管理员！"
+                                                                           message:nil cancelButtonTitle:@"OK"
+                                                            destructiveButtonTitle:nil otherButtonTitles:nil
+                                                                          tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                                             [self.navigationController popViewControllerAnimated:YES];
+                                                                         }];
                                       return ;
-
                                   }
                                   case IBLOrderPayStatusFinished:{
                                       [self performSegueWithIdentifier:@"NavigationToOrderDetail" sender:nil];

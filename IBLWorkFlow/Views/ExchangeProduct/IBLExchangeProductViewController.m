@@ -49,41 +49,28 @@
     
     switch (paymodel) {
         case IBLPayModelNet: {
-            IBLButtonItem *general = [IBLButtonItem itemWithLabel:@"支付宝支付"
-                                                           action:^(IBLButtonItem *item) {
-                                                               [self showHUDWithMessage:@""];
-                                                               [self.viewModel payWithType:@"1"
-                                                                                    result:result
-                                                                           completeHandler:^(NSError *error) {
-                                                                               [self hidHUD];
-                                                                               if (![self showAlertWithError:error]) {
-                                                                                   [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeAilPay)];
-                                                                               }
-                                                                           }];
-                                                           }];
-            
-            IBLButtonItem *noEmergency = [IBLButtonItem itemWithLabel:@"微信支付"
-                                                               action:^(IBLButtonItem *item) {
-                                                                   [self showHUDWithMessage:@""];
-                                                                   [self.viewModel payWithType:@"0"
-                                                                                        result:result
-                                                                               completeHandler:^(NSError *error) {
-                                                                                   [self hidHUD];
-                                                                                   if (![self showAlertWithError:error]) {
-                                                                                       [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(IBLQRPayTypeWeChat)];
-                                                                                   }
-                                                                               }];
-                                                               }];
-            
-            IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-            
-            
-            IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleActionSheet
-                                                                            title:@"请选择支付方式"
-                                                                          message:nil
-                                                                 cancleButtonItem:cancel
-                                                                 otherButtonItems:general,noEmergency,nil];
-            [alert showInController:self];
+            [UIAlertController showAlertInViewController:self
+                                               withTitle:@"请选择支付方式"
+                                                 message:nil
+                                       cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:nil
+                                       otherButtonTitles:@[@"支付宝支付", @"微信支付"]
+                                                tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                    NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                                                    NSInteger index = buttonIndex - firstOtherIndex;
+                                                    IBLQRPayType payType = index == 0 ? IBLQRPayTypeAilPay : IBLQRPayTypeWeChat;
+                                                    NSString *type = index == 0 ? @"1" : @"0";
+                                                    [self showHUDWithMessage:@""];
+                                                    [self.viewModel payWithType:type
+                                                                         result:result
+                                                                completeHandler:^(NSError *error) {
+                                                                    [self hidHUD];
+                                                                    if (![self showAlertWithError:error]) {
+                                                                        [self performSegueWithIdentifier:@"IBLQRViewController" sender:@(payType)];
+                                                                    }
+                                                                }];
+                                                    
+                                                }];
             break;
         }
         case IBLPayModelCash: {
@@ -166,7 +153,7 @@
         }
         case IBLExchangeProductTextFieldTypeCustType:{
             NSInteger custType = [self.viewModel custType];
-            return @(custType);
+            return [@(custType) stringValue];
         }
         case IBLExchangeProductTextFieldTypeEnterpriseName:{
             text = [self.viewModel enterpriseName];

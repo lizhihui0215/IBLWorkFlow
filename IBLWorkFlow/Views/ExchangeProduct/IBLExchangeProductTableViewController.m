@@ -114,27 +114,25 @@
 
 
 - (IBAction)exchangeTypeTapped:(UITapGestureRecognizer *)sender {
-    IBLButtonItem *now = [IBLButtonItem itemWithLabel:@"立即更换"
-                                                   action:^(IBLButtonItem *item) {
-                                                       self.exchangeTypeTextField.text = @"立即更换";
-                                                       self.result.exchangeType = @"1";
-                                                   }];
-    
-    IBLButtonItem *broadband = [IBLButtonItem itemWithLabel:@"宽带提速"
-                                                       action:^(IBLButtonItem *item) {
-                                                           self.exchangeTypeTextField.text = @"宽带提速";
-                                                           self.result.exchangeType = @"3";
-                                                       }];
-    
-    IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"取消"];
-    
-    
-    IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                    title:@"请选择生效方式"
-                                                                  message:nil
-                                                         cancleButtonItem:cancel
-                                                         otherButtonItems:now,broadband,nil];
-    [alert showInController:self];
+    [UIAlertController showActionSheetInViewController:self
+                                             withTitle:@"请选择证件号码"
+                                               message:nil
+                                     cancelButtonTitle:@"取消"
+                                destructiveButtonTitle:nil
+                                     otherButtonTitles:@[@"身份证", @"驾照", @"护照", @"回乡证", @"台胞证", @"其它", @"营业执照"]
+                    popoverPresentationControllerBlock:^(UIPopoverPresentationController * _Nonnull popover) {
+                        
+                    } tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                        NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                        NSInteger index = buttonIndex - firstOtherIndex;
+                        if (index == 0) {
+                            self.exchangeTypeTextField.text = @"立即更换";
+                            self.result.exchangeType = @"1";
+                        }else if (index == 1) {
+                            self.exchangeTypeTextField.text = @"宽带提速";
+                            self.result.exchangeType = @"3";
+                        }
+                    }];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
@@ -265,15 +263,7 @@
 
 - (IBAction)commitButtonPressed:(UIButton *)sender {
     if([NSString isNull:self.exchangeProductTextField.text]){
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确定"];
-        
-        
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:@"请选择销售品"
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
+        [self showAlertWithError:errorWithCode(0, @"请选择销售品")];
         return;
     };
     
@@ -411,16 +401,9 @@
         }
         
     }
-    
 
     if (!isValidate) {
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:title
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
+        [self showAlertWithError:errorWithCode(0, title)];
     }
     
     return  isValidate;
@@ -436,13 +419,7 @@
     BOOL isNumber = [predicate evaluateWithObject:text];
     
     if (!isNumber) {
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确认"];
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:@"请输入大于0的数字！"
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
+        [self showAlertWithError:errorWithCode(0, @"请输入大于0的数字！")];
     }
     
     return isNumber;

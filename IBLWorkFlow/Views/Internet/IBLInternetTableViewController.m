@@ -42,15 +42,7 @@
 - (IBAction)searchButtonPressed:(UIButton *)sender {
 //    IBLINternetListViewController *internetViewController = [IBLINternetListViewController]
     if ([NSString isNull:self.accountTextField.text]){
-        IBLButtonItem *cancel = [IBLButtonItem itemWithLabel:@"确定"];
-        
-        
-        IBLAlertController *alert = [[IBLAlertController alloc] initWithStyle:IBLAlertStyleAlert
-                                                                        title:@"请输入账号！"
-                                                                      message:nil
-                                                             cancleButtonItem:cancel
-                                                             otherButtonItems:nil];
-        [alert showInController:self];
+        [self showAlertWithError:errorWithCode(0, @"请输入账号！")];
         return;
     }
     [self performSegueWithIdentifier:@"NavigationToInternetList" sender:nil];
