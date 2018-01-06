@@ -21,7 +21,7 @@
 }
 
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"allocId" : @"identifier",
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"allocId" : @"identifier",
                                                        @"resourceList" : @"permissions"}];
 }
 

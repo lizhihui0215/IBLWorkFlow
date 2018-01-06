@@ -10,7 +10,7 @@
 
 @implementation IBLRelateUser
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"ACCOUNT" : @"account",
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"ACCOUNT" : @"account",
                                                        @"ADDR" : @"address",
                                                        @"AREA_NAME" : @"areaName",
                                                        @"COMMENTS" : @"comments",

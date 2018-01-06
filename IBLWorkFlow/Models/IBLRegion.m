@@ -10,7 +10,7 @@
 
 @implementation IBLRegion
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"CHANNEL_NUM" : @"phone",
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"CHANNEL_NUM" : @"phone",
                                                        @"CHANNEL_DESC" : @"desc",
                                                        @"CHANNEL_ADDRESS" : @"address",
                                                        @"NAME" : @"name",

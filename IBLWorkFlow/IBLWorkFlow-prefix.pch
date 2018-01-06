@@ -18,8 +18,9 @@
 #import "NSDate+IBLExtension.h"
 #import "IBLAppConfiguration.h"
 #import "IBLUtilities.h"
-#import "UITextField+Blocks.h"
 #import <PCCWFoundation/PCCWFoundation.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
+
 
 typedef NS_ENUM(NSInteger, IBLCreateAccountType) {
     IBLCreateAccountTypeFromOrder,

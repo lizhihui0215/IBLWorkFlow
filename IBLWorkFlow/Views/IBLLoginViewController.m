@@ -10,6 +10,7 @@
 #import "BPush.h"
 #import "IBLUserRepository.h"
 #import "IBLAppRepository.h"
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
 
@@ -38,11 +39,12 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
     [self.viewModel setWLAN:self.WLANTextField.text];
     self.LANTextField.keyboardType = UIKeyboardTypeURL;
     self.WLANTextField.keyboardType = UIKeyboardTypeURL;
-    [self.LANTextField setDidEndEditingBlock:^(UITextField *textField) {
+   
+    [self.LANTextField setBk_didEndEditingBlock:^(UITextField *textField) {
         [self.viewModel setLAN:textField.text];
     }];
    
-    [self.WLANTextField setDidEndEditingBlock:^(UITextField *textField) {
+    [self.WLANTextField setBk_didEndEditingBlock:^(UITextField *textField) {
         [self.viewModel setWLAN:textField.text];
     }];
     

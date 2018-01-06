@@ -33,7 +33,7 @@
     self.loadingView = view;
     view.userInteractionEnabled = NO;
     self.hudView = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    self.hudView.labelText = message;
+    self.hudView.label.text = message;
 }
 - (void)showHUDWithMessage:(NSString *)message{
     self.loadingView = self.loadingHandler.view;

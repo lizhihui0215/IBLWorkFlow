@@ -4,6 +4,7 @@ platform :ios, '8.0'
 target 'IBLWorkFlow' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
   use_frameworks!
+  inhibit_all_warnings!
 
   # Pods for IBLWorkFlow
   pod 'PCCWFoundation'

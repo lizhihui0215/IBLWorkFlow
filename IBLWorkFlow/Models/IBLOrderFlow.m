@@ -11,7 +11,7 @@
 @implementation IBLOrderFlow
 
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"STATE" : @"state",
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"STATE" : @"state",
                                                        @"OP_NAME" : @"operatorName",
                                                        @"OP_PHONE" : @"operatorPhone",
                                                        @"CREATE_TIME" : @"creatorTime",

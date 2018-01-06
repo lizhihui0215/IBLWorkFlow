@@ -626,7 +626,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     self.productCountTextField.keyboardType = UIKeyboardTypeNumberPad;
     self.adviceUserPhoneTextField.keyboardType = UIKeyboardTypePhonePad;
     
-    [self.phoneTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
+    [self.phoneTextField setBk_shouldEndEditingBlock:^BOOL(UITextField *textField) {
         BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
         if (!isVaidate) {
             [self showAlertWithError:errorWithCode(0, @"电话号码格式不正确！")];
@@ -635,7 +635,8 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         return isVaidate;
     }];
     
-    [self.enterpriseContactPhoneTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
+    
+    [self.enterpriseContactPhoneTextField setBk_shouldEndEditingBlock:^BOOL(UITextField *textField) {
         BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
         if (!isVaidate) {
             [self showAlertWithError:errorWithCode(0, @"电话号码格式不正确！")];
@@ -643,7 +644,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
         return isVaidate;
     }];
     
-    [self.adviceUserPhoneTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
+    [self.adviceUserPhoneTextField setBk_shouldEndEditingBlock:^BOOL(UITextField *textField) {
         BOOL isVaidate = [IBLUtilities validateMobile:textField.text];
         if (!isVaidate) {
             [self showAlertWithError:errorWithCode(0, @"电话号码格式不正确！")];
@@ -666,7 +667,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
     
     
     
-    [self.userIdentifierTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {
+    [self.userIdentifierTextField setBk_shouldEndEditingBlock:^BOOL(UITextField *textField) {
         NSNumber *certType = [self.tableViewDelegate fieldOfAddWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType];
         
         if ([certType integerValue] != 0) return YES;

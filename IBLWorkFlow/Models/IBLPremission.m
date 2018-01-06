@@ -11,7 +11,7 @@
 @implementation IBLPremission
 
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"resKey" : @"key",
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"resKey" : @"key",
                                                        @"resName" : @"name",
                                                        @"resDesc" : @"des",
                                                        @"resType" : @"type",

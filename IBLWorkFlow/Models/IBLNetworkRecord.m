@@ -10,7 +10,7 @@
 
 @implementation IBLNetworkRecord
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"USER_NAME" : @"username",
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"USER_NAME" : @"username",
                                                        @"FRAMED_IP" : @"userIP",
                                                        @"MAC_ADDR" : @"MACAddress",
                                                        @"NAS_IP" : @"NASIP",

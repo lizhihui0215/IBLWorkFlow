@@ -10,7 +10,7 @@
 
 @implementation IBLWorkOrderType
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"NAME" : @"name",
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"NAME" : @"name",
                                                        @"VALUE" : @"status"}];
 }
 @end

@@ -75,9 +75,9 @@
     self.payTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypePay];
     self.remarkTextView.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeRemark];
 
-    NSNumber *custType = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeCustType];
+    NSString *custType = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeCustType];
     
-    self.custTypeTextField.text = [self userTypeNames][custType];
+    self.custTypeTextField.text = [self userTypeNames][@([custType integerValue])];
 
     self.enterpriseContactPhoneTextField.text = [self.tableViewDelegate exchangeProductText:IBLExchangeProductTextFieldTypeEnterpriseContactPhone];
 

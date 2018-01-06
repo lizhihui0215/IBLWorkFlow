@@ -11,7 +11,7 @@
 @implementation IBLAppConfiguration
 + (JSONKeyMapper *)keyMapper{
     
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"orderTypeList" : @"workOrderTypes",
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"orderTypeList" : @"workOrderTypes",
                                                        @"bizTypeList" : @"workOrderBizTypes",
                                                        @"orderUrl" : @"orderURL",
                                                        @"defaultCustType" : @"custType"}];
