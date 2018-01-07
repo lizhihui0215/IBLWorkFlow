@@ -11,11 +11,11 @@
 @implementation IBLPremission
 
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"resKey" : @"key",
-                                                       @"resName" : @"name",
-                                                       @"resDesc" : @"des",
-                                                       @"resType" : @"type",
-                                                       }];
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"key" : @"resKey",
+                                                                  @"name" : @"resName",
+                                                                  @"des" : @"resDesc",
+                                                                  @"type" : @"resType",
+                                                                  }];
 }
 
 @end

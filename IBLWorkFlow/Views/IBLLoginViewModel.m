@@ -35,10 +35,8 @@
           completeHandler:(PCCWViewModelCompleteHandler)handler {
 
     if ([NSString isNull:self.LAN] && [NSString isNull:self.WLAN]){
-        handler([NSError errorWithDomain:@""
-                                    code:0
-                                userInfo:@{kExceptionCode : @(-1),
-                                           kExceptionMessage: @"请输入服务器地址！"}]);
+        NSString  *lanOrWLANNotNull = NSLocalizedStringFromTable(@"IBLLoginViewModel.LANWOrLANNotNull", @"Main", "not found");
+        handler(errorWithCode(0, lanOrWLANNotNull));
         return;
     }
     

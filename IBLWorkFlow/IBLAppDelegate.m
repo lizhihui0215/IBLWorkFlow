@@ -13,6 +13,7 @@
 #import "BPush.h"
 #import <UserNotifications/UserNotifications.h>
 #import "IBLNetworkServices.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 
 
@@ -37,7 +38,7 @@
     [[UIViewController appearance] setErrorOkTitle:@"OK"];
     [[UIViewController appearance] setConfirmOKTitle:@"OK"];
 
-    
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     
 //    [PCCWFileManager setup];
     

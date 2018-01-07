@@ -8,7 +8,7 @@
 
 #import "IBLOrderCell.h"
 
-static NSInteger const IBLOrderSegmentControlTitleWidth = 40;
+static NSInteger const IBLOrderSegmentControlTitleWidth = 80;
 
 @interface IBLOrderCell ()
 
@@ -30,17 +30,17 @@ static NSInteger const IBLOrderSegmentControlTitleWidth = 40;
     switch (priority) {
         case IBLPriorityStatusEmergency: {
             backgroundImage = [UIImage imageNamed:@"emergency"];
-            title = @"紧急";
+            title= NSLocalizedStringFromTable(@"IBLOrderLevel.high", @"Main", "not found");
             break;
         }
         case IBLPriorityStatusGeneral: {
             backgroundImage = [UIImage imageNamed:@"general"];
-            title = @"一般";
+            title = NSLocalizedStringFromTable(@"IBLOrderLevel.normal", @"Main", "not found");
             break;
         }
         case IBLPriorityStatusNoEmergency: {
             backgroundImage = [UIImage imageNamed:@"noEmergency"];
-            title = @"不紧急";
+            title = NSLocalizedStringFromTable(@"IBLOrderLevel.low", @"Main", "not found");
             break;
         }
     }
@@ -56,6 +56,9 @@ static NSInteger const IBLOrderSegmentControlTitleWidth = 40;
 //    self.segmentControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationNone;
 //    self.segmentControl.sectionTitles = titles;
 //    self.segmentControl.selectedIndexTouchable = YES;
+    
+    
+    
     self.segmentControlWidthConstraint.constant = [titles count] * IBLOrderSegmentControlTitleWidth;
     self.segmentControl.width = [titles count] * IBLOrderSegmentControlTitleWidth;
     [self.segmentControl setActionTitles:titles];

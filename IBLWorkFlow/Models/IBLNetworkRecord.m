@@ -10,13 +10,13 @@
 
 @implementation IBLNetworkRecord
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"USER_NAME" : @"username",
-                                                       @"FRAMED_IP" : @"userIP",
-                                                       @"MAC_ADDR" : @"MACAddress",
-                                                       @"NAS_IP" : @"NASIP",
-                                                       @"SCRIPT_TYPE" : @"scriptType",
-                                                       @"ERROR_CODE" : @"errorCode",
-                                                       @"ERROR_MSG" : @"errorMessage",
-                                                       @"LAST_MODIFY_TIMESTAMP" : @"lastModifyDate",}];
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"username" : @"USER_NAME",
+                                                                  @"userIP" : @"FRAMED_IP",
+                                                                  @"MACAddress" : @"MAC_ADDR",
+                                                                  @"NASIP" : @"NAS_IP",
+                                                                  @"scriptType" : @"SCRIPT_TYPE",
+                                                                  @"errorCode" : @"ERROR_CODE",
+                                                                  @"errorMessage" : @"ERROR_MSG",
+                                                                  @"lastModifyDate" : @"LAST_MODIFY_TIMESTAMP",}];
 }
 @end

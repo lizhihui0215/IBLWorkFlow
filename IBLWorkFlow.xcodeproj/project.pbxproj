@@ -38,6 +38,7 @@
 		262BFF901D40D0040021F8EB /* IBLRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 262BFF8F1D40D0040021F8EB /* IBLRegion.m */; };
 		262BFF921D40D2400021F8EB /* ChannelInterface.xml in Resources */ = {isa = PBXBuildFile; fileRef = 262BFF911D40D2400021F8EB /* ChannelInterface.xml */; };
 		262BFF951D40D3510021F8EB /* IBLRegionRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 262BFF941D40D3510021F8EB /* IBLRegionRepository.m */; };
+		262F86D120021DFA00757B7B /* IBLNetworkServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 262F86D020021DFA00757B7B /* IBLNetworkServices.m */; };
 		26469BE11D3882A40000285D /* NSDate+IBLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26469BE01D3882A40000285D /* NSDate+IBLExtension.m */; };
 		26469BE31D388F880000285D /* Configuration.xml in Resources */ = {isa = PBXBuildFile; fileRef = 26469BE21D388F880000285D /* Configuration.xml */; };
 		26469BE61D38B9F40000285D /* IBLWorkOrderBussinessType.m in Sources */ = {isa = PBXBuildFile; fileRef = 26469BE51D38B9F40000285D /* IBLWorkOrderBussinessType.m */; };
@@ -50,7 +51,6 @@
 		264EBB711D2E023D00FF8373 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 264EBB6F1D2E023D00FF8373 /* LaunchScreen.storyboard */; };
 		264EBB7C1D2E023D00FF8373 /* IBLWorkFlowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB7B1D2E023D00FF8373 /* IBLWorkFlowTests.m */; };
 		264EBB871D2E023D00FF8373 /* IBLWorkFlowUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB861D2E023D00FF8373 /* IBLWorkFlowUITests.m */; };
-		264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB951D2E2A3600FF8373 /* IBLNetworkServices.m */; };
 		264EBB991D2E2BC200FF8373 /* IBLRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB981D2E2BC200FF8373 /* IBLRepository.m */; };
 		264EBB9C1D2E2BD400FF8373 /* IBLUserRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB9B1D2E2BD400FF8373 /* IBLUserRepository.m */; };
 		264EBB9F1D2E2BE200FF8373 /* IBLUseCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 264EBB9E1D2E2BE200FF8373 /* IBLUseCase.m */; };
@@ -249,6 +249,8 @@
 		262BFF911D40D2400021F8EB /* ChannelInterface.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ChannelInterface.xml; sourceTree = "<group>"; };
 		262BFF931D40D3510021F8EB /* IBLRegionRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRegionRepository.h; sourceTree = "<group>"; };
 		262BFF941D40D3510021F8EB /* IBLRegionRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRegionRepository.m; sourceTree = "<group>"; };
+		262F86CF20021DF900757B7B /* IBLNetworkServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLNetworkServices.h; sourceTree = "<group>"; };
+		262F86D020021DFA00757B7B /* IBLNetworkServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLNetworkServices.m; sourceTree = "<group>"; };
 		26469BDF1D3882A40000285D /* NSDate+IBLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+IBLExtension.h"; sourceTree = "<group>"; };
 		26469BE01D3882A40000285D /* NSDate+IBLExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+IBLExtension.m"; sourceTree = "<group>"; };
 		26469BE21D388F880000285D /* Configuration.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Configuration.xml; sourceTree = "<group>"; };
@@ -272,8 +274,6 @@
 		264EBB821D2E023D00FF8373 /* IBLWorkFlowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IBLWorkFlowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		264EBB861D2E023D00FF8373 /* IBLWorkFlowUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBLWorkFlowUITests.m; sourceTree = "<group>"; };
 		264EBB881D2E023D00FF8373 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		264EBB941D2E2A3600FF8373 /* IBLNetworkServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLNetworkServices.h; sourceTree = "<group>"; };
-		264EBB951D2E2A3600FF8373 /* IBLNetworkServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLNetworkServices.m; sourceTree = "<group>"; };
 		264EBB971D2E2BC200FF8373 /* IBLRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLRepository.h; sourceTree = "<group>"; };
 		264EBB981D2E2BC200FF8373 /* IBLRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRepository.m; sourceTree = "<group>"; };
 		264EBB9A1D2E2BD400FF8373 /* IBLUserRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUserRepository.h; sourceTree = "<group>"; };
@@ -366,6 +366,10 @@
 		26A11D021D363A6900984B40 /* IBLBusinessAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLBusinessAlertViewController.h; sourceTree = "<group>"; };
 		26A11D031D363A6900984B40 /* IBLBusinessAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLBusinessAlertViewController.m; sourceTree = "<group>"; };
 		26A11D041D363A6900984B40 /* IBLBusinessAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IBLBusinessAlertViewController.xib; sourceTree = "<group>"; };
+		26A5208F20020EF200DA9C2E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		26A5209020020EF400DA9C2E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		26A5209120020F0900DA9C2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		26A5209220020F0900DA9C2E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		26A562AA1DAB3BBF00EAC200 /* IBLUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUtilities.h; sourceTree = "<group>"; };
 		26A562AB1DAB3BBF00EAC200 /* IBLUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLUtilities.m; sourceTree = "<group>"; };
 		26A9D1341D2E7E3E000950F6 /* IBLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLLoginViewController.h; sourceTree = "<group>"; };
@@ -1039,8 +1043,8 @@
 		5B875D7A6750DCFD07DEE941 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				264EBB941D2E2A3600FF8373 /* IBLNetworkServices.h */,
-				264EBB951D2E2A3600FF8373 /* IBLNetworkServices.m */,
+				262F86CF20021DF900757B7B /* IBLNetworkServices.h */,
+				262F86D020021DFA00757B7B /* IBLNetworkServices.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1273,7 +1277,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = 264EBB551D2E023C00FF8373;
@@ -1580,7 +1583,6 @@
 				265A57B21D5B1330001DBFA0 /* IBLPay.m in Sources */,
 				26C97D671D41C8C3001EFA6F /* IBLProductPrice.m in Sources */,
 				26EC5A311D45E7C300CB0F7C /* IBLRenewUserSearchViewModel.m in Sources */,
-				264EBB961D2E2A3600FF8373 /* IBLNetworkServices.m in Sources */,
 				26EC5A2E1D45E6D700CB0F7C /* IBLUserSearchViewModel.m in Sources */,
 				26734FD51D4118F70048DE97 /* IBLFetchProduct.m in Sources */,
 				26734FCD1D4112300048DE97 /* IBLProductSearchViewModel.m in Sources */,
@@ -1610,6 +1612,7 @@
 				26A9D13C1D2E8458000950F6 /* IBLLoginViewModel.m in Sources */,
 				264EBB991D2E2BC200FF8373 /* IBLRepository.m in Sources */,
 				26EC5A341D45EEC200CB0F7C /* IBLRenewViewModel.m in Sources */,
+				262F86D120021DFA00757B7B /* IBLNetworkServices.m in Sources */,
 				269E15A11D3DB754004D497B /* IBLOperator.m in Sources */,
 				262BFF951D40D3510021F8EB /* IBLRegionRepository.m in Sources */,
 				26469BE11D3882A40000285D /* NSDate+IBLExtension.m in Sources */,
@@ -1703,6 +1706,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				264EBB6B1D2E023D00FF8373 /* Base */,
+				26A5208F20020EF200DA9C2E /* zh-Hans */,
+				26A5209120020F0900DA9C2E /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1711,6 +1716,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				264EBB701D2E023D00FF8373 /* Base */,
+				26A5209020020EF400DA9C2E /* zh-Hans */,
+				26A5209220020F0900DA9C2E /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1722,6 +1729,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1775,6 +1783,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

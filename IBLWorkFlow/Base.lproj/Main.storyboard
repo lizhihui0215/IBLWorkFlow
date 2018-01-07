@@ -236,19 +236,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="APPNameLabel" destination="ej8-mG-8bf" id="ej2-14-ish"/>
                         <outlet property="LANTextField" destination="M7r-0K-QCX" id="qmV-40-Gqy"/>
                         <outlet property="WLANTextField" destination="OKU-GR-pbA" id="KhE-2E-Fhr"/>
+                        <outlet property="loginButton" destination="Jjl-u3-L9W" id="a70-1R-IWn"/>
                         <outlet property="passwordTextField" destination="8is-ts-MMi" id="Oz8-UJ-1ST"/>
                         <outlet property="usernameTextField" destination="qYy-hi-YwR" id="FFg-ST-JQw"/>
                         <segue destination="xc2-h6-c5p" kind="custom" identifier="NavigationToMain" customClass="IBLExchangeRootSegue" id="xl4-EH-3rs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1W-8A-dFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="N9T-lx-PZM">
-                    <connections>
-                        <action selector="backgroundTapped:" destination="lBX-nn-gOA" id="Yhm-in-FF1"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="N9T-lx-PZM"/>
             </objects>
             <point key="canvasLocation" x="411.5" y="389.5"/>
         </scene>
@@ -1073,6 +1071,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="logoutLabel" destination="Qbs-QA-tZZ" id="jbB-fM-qut"/>
                         <outlet property="nameLabel" destination="U5N-P3-Y7x" id="tbV-w6-Did"/>
                         <outlet property="roleLabel" destination="QUJ-i3-RqA" id="mbX-1W-1lO"/>
                         <outletCollection property="tableViews" destination="Ruv-mc-gWm" id="F56-u2-3FM"/>
@@ -2938,28 +2937,48 @@
                     <navigationItem key="navigationItem" title="工单详情" id="zW3-8x-uT1"/>
                     <connections>
                         <outlet property="addrLabel" destination="W1p-65-i1P" id="qf9-rq-hHi"/>
+                        <outlet property="addressTitleLabel" destination="fuI-hX-9zf" id="wQF-ex-wZ5"/>
                         <outlet property="adviceUserNameLabel" destination="Mfq-od-J6X" id="Jia-Oi-uIJ"/>
+                        <outlet property="adviceUserTitleLabel" destination="OIP-bE-T3K" id="YuN-Ak-WyJ"/>
+                        <outlet property="bizTypeTitleLabel" destination="64B-Lm-xJQ" id="Q6U-it-Ct1"/>
                         <outlet property="contentLabel" destination="En0-Oi-uNg" id="aHl-YA-TnL"/>
                         <outlet property="createDateLabel" destination="tX9-Z7-Xku" id="olH-zy-EaC"/>
+                        <outlet property="createDateTitleLabel" destination="pAz-fK-qgX" id="IKS-fD-l84"/>
                         <outlet property="creatorLabel" destination="Cn2-b0-aTD" id="EVE-eL-BE8"/>
                         <outlet property="creatorPhoneLabel" destination="idf-hR-H4u" id="N0M-Td-dhb"/>
+                        <outlet property="creatorPhoneTitleLabel" destination="Cf1-i6-B8m" id="hor-yS-br5"/>
+                        <outlet property="creatorTitleLabel" destination="Tqc-RA-MdU" id="kNG-Ft-4KE"/>
+                        <outlet property="expDateTitleLabel" destination="l3K-ZM-zUD" id="jdE-uF-gbJ"/>
                         <outlet property="expireDateLabel" destination="QEK-Mr-4Tp" id="Q1e-sQ-UVq"/>
+                        <outlet property="ffthTitleLabel" destination="YYg-kH-tuL" id="IJG-eq-qvl"/>
                         <outlet property="ftthLabel" destination="wGD-cb-G5o" id="8cA-5i-X6g"/>
+                        <outlet property="handleNameTitleLabel" destination="MSN-jE-M4u" id="zlV-R4-M2W"/>
+                        <outlet property="handlePhoneTitleLabel" destination="0re-uU-ev1" id="nje-v8-KKf"/>
                         <outlet property="handlerLabel" destination="GxI-PR-3YL" id="CpT-il-dic"/>
                         <outlet property="handlerPhoneLabel" destination="gdt-QD-ahE" id="Z9t-6A-75k"/>
                         <outlet property="lastUpdateDateLabel" destination="CGs-bu-Dfx" id="km2-HE-Xfu"/>
+                        <outlet property="lastUpdateDateTitleLabel" destination="tyX-Be-1wJ" id="UVP-tS-R9K"/>
                         <outlet property="nameLabel" destination="uAX-jF-rff" id="t7B-IF-y17"/>
                         <outlet property="nameTitleLabel" destination="jWQ-i1-LNj" id="gEj-4O-aPW"/>
                         <outlet property="orderBizTypeLabel" destination="ro0-hQ-yMo" id="dR0-h1-CQh"/>
+                        <outlet property="orderContentTitleLabel" destination="Oby-eh-Z46" id="Nn9-XR-ug6"/>
                         <outlet property="orderStatusLabel" destination="Bd4-aw-9IO" id="S12-Jf-7tD"/>
+                        <outlet property="orderStatusTitleLabel" destination="9Cj-4c-kg9" id="40r-FP-pwl"/>
                         <outlet property="phoneLabel" destination="gGa-gN-7Xx" id="Nf7-y5-ix7"/>
-                        <outlet property="phoneTitleLabel" destination="2gH-qE-j4d" id="jAa-bc-T5h"/>
+                        <outlet property="phoneTitleLabel" destination="2gH-qE-j4d" id="7Hc-GF-Zcp"/>
                         <outlet property="proirtyLabel" destination="MSZ-3e-WFA" id="atJ-ZK-PeA"/>
+                        <outlet property="proirtyTitleLabel" destination="ERt-TT-8jp" id="0pD-AR-qsc"/>
                         <outlet property="regionLabel" destination="LXc-4o-iM5" id="ktU-pD-3NZ"/>
+                        <outlet property="regionTitleLabel" destination="lZJ-Ju-l6q" id="x9T-aA-xOt"/>
+                        <outlet property="relateUserTitleLabel" destination="pQM-g0-zmK" id="ATr-eC-Y39"/>
                         <outlet property="serviceTypeTextField" destination="wb5-yK-Dz7" id="6Sb-Lf-iWv"/>
+                        <outlet property="serviceTypeTitleLabel" destination="8fT-pJ-bBp" id="HLX-yy-x6F"/>
                         <outlet property="troubleTypeLabel" destination="Idc-nh-cAQ" id="eGm-lq-4Ih"/>
+                        <outlet property="troubleTypeTitleLabel" destination="uwm-2S-rL1" id="Xgb-nG-tsb"/>
                         <outlet property="tvTypeLabel" destination="jmK-hp-Dw1" id="hkt-Vm-D9g"/>
+                        <outlet property="tvTypeTitleLabel" destination="DuU-lk-bbo" id="s14-fo-HqY"/>
                         <outlet property="userAccountButton" destination="fjM-1X-mdh" id="W9g-PI-bwX"/>
+                        <outlet property="usernameTitleLabel" destination="jWQ-i1-LNj" id="Mos-pI-9LH"/>
                         <segue destination="qdM-sV-B78" kind="push" identifier="NavigationToUserDetail" id="zz9-vl-537"/>
                     </connections>
                 </tableViewController>
@@ -2972,7 +2991,7 @@
             <objects>
                 <tableViewController id="qdM-sV-B78" customClass="IBLUserDetailTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bzl-AS-wQn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="396"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -6451,13 +6470,23 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="accountLabel" destination="GQ0-GK-LzE" id="TAa-dh-H2K"/>
+                        <outlet property="bisTypeLabel" destination="N2F-rj-wiI" id="0nS-v5-AVM"/>
                         <outlet property="custTypeTextField" destination="XlK-Bn-2e0" id="X0c-yv-H4S"/>
+                        <outlet property="endDateLabel" destination="Ecy-Tn-wyF" id="RF0-ER-6eZ"/>
                         <outlet property="endDateTextField" destination="bfx-JZ-eD5" id="gMC-3T-lps"/>
+                        <outlet property="enterpriseContact" destination="Cq5-VB-p40" id="TGt-TV-bbd"/>
                         <outlet property="enterpriseContactTextField" destination="4EU-Rp-t9E" id="iNC-D8-XeS"/>
+                        <outlet property="enterpriseLabel" destination="D2C-uK-Y3E" id="2iV-OT-bE4"/>
                         <outlet property="enterpriseNameTextField" destination="hND-0a-7iR" id="Lv6-UK-zPc"/>
+                        <outlet property="phoneLabel" destination="8UY-Ac-Liu" id="qCx-qm-dPJ"/>
+                        <outlet property="searchButton" destination="emh-S6-FdD" id="U66-yc-SYo"/>
+                        <outlet property="startDateLabel" destination="F1M-7U-WZS" id="PWa-o1-ILB"/>
                         <outlet property="startDateTextField" destination="9cr-IZ-9JU" id="SHi-HO-D41"/>
                         <outlet property="userAccountTextField" destination="CLs-Sp-vyG" id="5uA-Rn-PCx"/>
                         <outlet property="userPhoneTextField" destination="oc9-qh-Byn" id="w6Z-JW-PgZ"/>
+                        <outlet property="userTypeLabel" destination="G3K-ri-WMc" id="rO8-ic-mEH"/>
+                        <outlet property="usernameLabel" destination="UaT-vm-zEZ" id="nPJ-sS-B1J"/>
                         <outlet property="usernameTextField" destination="pbM-HA-FOr" id="p59-6q-qZ7"/>
                         <outlet property="workOrderBizTypeTextField" destination="bL9-A6-YW7" id="nTd-rT-qBW"/>
                     </connections>
@@ -10823,8 +10852,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="U3E-X6-uY2"/>
-        <segue reference="AF4-FF-MmR"/>
+        <segue reference="zz9-vl-537"/>
         <segue reference="k1Z-ey-jNe"/>
-        <segue reference="dRA-cf-8mL"/>
+        <segue reference="YFb-RD-Ut0"/>
     </inferredMetricsTieBreakers>
 </document>

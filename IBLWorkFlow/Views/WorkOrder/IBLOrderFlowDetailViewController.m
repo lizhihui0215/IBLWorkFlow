@@ -33,13 +33,20 @@
 }
 
 - (NSString *)orderStatusNameWithStatus:(IBLOrderStatus)status{
-    NSDictionary *workOrderStatus = @{@(IBLOrderStatusUnsend) : @"[未派单]",
-                                      @(IBLOrderStatusSended) : @"[未处理]",
+    NSString *orderStatusUnsend = NSLocalizedStringFromTable(@"IBLOrderStatus.unsend", @"Main", "not found");
+    NSString *orderStatusSended = NSLocalizedStringFromTable(@"IBLOrderStatus.sended", @"Main", "not found");
+    NSString *orderStatusHandling = NSLocalizedStringFromTable(@"IBLOrderStatus.handling", @"Main", "not found");
+    NSString *orderStatusInvalid = NSLocalizedStringFromTable(@"IBLOrderStatus.invalid", @"Main", "not found");
+    NSString *orderStatusFinished = NSLocalizedStringFromTable(@"IBLOrderStatus.finished", @"Main", "not found");
+    NSString *orderStatusFeedback = NSLocalizedStringFromTable(@"IBLOrderStatus.feedback", @"Main", "not found");
+
+    NSDictionary *workOrderStatus = @{@(IBLOrderStatusUnsend) : [NSString stringWithFormat:@"[%@]",orderStatusUnsend],
+                                      @(IBLOrderStatusSended) : [NSString stringWithFormat:@"[%@]",orderStatusSended],
 //                                      @(IBLOrderStatusForwarding) : @"[转发中]",
-                                      @(IBLOrderStatusHandling) : @"[处理中]",
-                                      @(IBLOrderStatusInvalid) : @"[作废]",
-                                      @(IBLOrderStatusFinished) : @"[完成]",
-                                      @(IBLOrderStatusFeedback) : @"[反馈中]"};
+                                      @(IBLOrderStatusHandling) : [NSString stringWithFormat:@"[%@]",orderStatusHandling],
+                                      @(IBLOrderStatusInvalid) : [NSString stringWithFormat:@"[%@]",orderStatusInvalid],
+                                      @(IBLOrderStatusFinished) : [NSString stringWithFormat:@"[%@]",orderStatusFinished],
+                                      @(IBLOrderStatusFeedback) : [NSString stringWithFormat:@"[%@]",orderStatusFeedback]};
     return workOrderStatus[@(status)];
 }
 

@@ -22,17 +22,15 @@
     NSError *error = nil;
     
     if ([NSString isNull:username]) {
-        error = [NSError errorWithDomain:@""
-                                    code:0
-                                userInfo:@{kExceptionCode : @(-1),
-                                           kExceptionMessage: @"用户名不能为空！"}];
+        NSString  *usernameNotNull = NSLocalizedStringFromTable(@"IBLFetchUser.usernameNotNull", @"Main", "not found");
+        error = errorWithCode(0, usernameNotNull);
     }
     
     if ([NSString isNull:password]) {
-        error = [NSError errorWithDomain:@""
-                                    code:0
-                                userInfo:@{kExceptionCode : @(-1),
-                                           kExceptionMessage: @"密码不能为空！"}];
+        NSString  *passwordNotNull = NSLocalizedStringFromTable(@"IBLFetchUser.passwordNotNull", @"Main", "not found");
+
+        error = errorWithCode(0, passwordNotNull);
+
     }
     
     return error;

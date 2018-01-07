@@ -236,10 +236,11 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                 if (buttonIndex == 1) {[self hidHUD]; [alert close]; return ;}
                 if ([NSString isNull:alert.contentTextField.text] && action == IBLOrderActionFinish) {
                     [self hidHUD];
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请输入内容" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                    
-                    [alertView show];
-                    
+                    NSString *title = NSLocalizedStringFromTable(@"IBLOrderViewController.alert.mustInputContent.title", @"Main", "not found");
+                    [UIAlertController showAlertInViewController:self
+                                                       withTitle:title
+                                                         message:nil
+                                               cancelButtonTitle:@"OK" destructiveButtonTitle:nil otherButtonTitles:nil tapBlock:nil];
                     return ;
                 }
                 [alert close];
@@ -289,12 +290,12 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
         orderSearchViewController.viewModel = [[IBLOrderSearchViewModel alloc] initWithSearchResult:result];
     }else if ([segue.identifier isEqualToString:OrderActionForwardIdentifier]){
         IBLSearchViewController *forwardSearchViewController = [segue destinationViewController];
-        forwardSearchViewController.title = @"转发";
+        forwardSearchViewController.title = NSLocalizedStringFromTable(@"IBLOrderViewController.controller.title.forward", @"Main", "not found");;
         forwardSearchViewController.viewModel = [IBLOperatorSearchViewModel operatorSearchModelWithOrder:[self.viewModel orderAtIndexPath:sender] searchType:IBLSearchTypeForward];
         forwardSearchViewController.searchDelegate = self;
     }else if ([segue.identifier isEqualToString:OrderActionSendIdentifier]){
         IBLSearchViewController *forwardSearchViewController = [segue destinationViewController];
-        forwardSearchViewController.title = @"派发";
+        forwardSearchViewController.title = NSLocalizedStringFromTable(@"IBLOrderViewController.controller.title.send", @"Main", "not found");;
         forwardSearchViewController.viewModel = [IBLOperatorSearchViewModel operatorSearchModelWithOrder:[self.viewModel orderAtIndexPath:sender] searchType:IBLSearchTypeSend];
         forwardSearchViewController.searchDelegate = self;
     }else if ([segue.identifier isEqualToString:NavigationToCreateAccountIdentifier]){
@@ -345,13 +346,18 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     
     switch (searchViewController.viewModel.searchType) {
         case IBLSearchTypeForward: {
-            title = [NSString stringWithFormat:@"转发给：%@", operator.name];
-            placeholder = @"转发说明";
+            title = NSLocalizedStringFromTable(@"IBLOrderViewController.modal.title.forward", @"Main", "not found");
+            placeholder = NSLocalizedStringFromTable(@"IBLOrderViewController.modal.placeholder.forward", @"Main", "not found");
+
+
+            title = [NSString stringWithFormat:@"%@：%@",title, operator.name];
             break;
         }
         case IBLSearchTypeSend:{
-            title = [NSString stringWithFormat:@"派发给：%@", operator.name];
-            placeholder = @"派发说明";
+            title = NSLocalizedStringFromTable(@"IBLOrderViewController.modal.title.send", @"Main", "not found");
+            placeholder = NSLocalizedStringFromTable(@"IBLOrderViewController.modal.placeholder.send", @"Main", "not found");
+
+            title = [NSString stringWithFormat:@"%@：%@", title,operator.name];
             break;
         }
         default: break;
@@ -364,7 +370,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
     alertView.buttonTapped = ^(IBLBusinessAlertViewController *alert, NSInteger buttonIndex){
         if (buttonIndex == 1) {[alert close]; return ;}
         @strongify(self)
-        [self showHUDWithMessage:@"处理中..."];
+        [self showHUDWithMessage:@""];
         switch (searchViewController.viewModel.searchType) {
             case IBLSearchTypeForward:
             {

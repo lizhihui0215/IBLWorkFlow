@@ -33,6 +33,7 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
 @property (weak, nonatomic) IBOutlet UILabel *roleLabel;
 
 @property (nonatomic, strong) NSMutableDictionary *actionViewControllers;
+@property (weak, nonatomic) IBOutlet UILabel *logoutLabel;
 
 @end
 
@@ -94,6 +95,11 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
    IBLAboutViewController *aboutViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"IBLAboutViewController"];
     
     return [[UINavigationController alloc] initWithRootViewController:aboutViewController];
+}
+
+-(void)languageDidChanged:(NSNotification *)notification{
+    self.logoutLabel.text = NSLocalizedStringFromTable(@"IBLLeftMenuViewController.logoutLabel.text", @"Main", "not found");
+
 }
 
 - (UINavigationController *)exchangeProductViewController {

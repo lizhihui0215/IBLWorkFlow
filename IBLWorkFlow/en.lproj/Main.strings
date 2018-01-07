@@ -1,0 +1,116 @@
+/* Class = "UITextField"; placeholder = "指定日期"; ObjectID = "06C-Hy-3zM"; */
+"IBLLoginViewController.APPNameLabel.title" = "Operation Assistant";
+"IBLLoginViewController.loginButton.title" = "Log in";
+"IBLGenerateLeftMenu.menuMaps.myOrderTitle" = "My Workflow";
+"IBLGenerateLeftMenu.menuMaps.mangedOrderTitle" = "Workflow Manager";
+"IBLLeftMenuViewController.logoutLabel.text" = "Log out";
+"IBLFetchUser.usernameNotNull" = "Account field is required！";
+"IBLFetchUser.passwordNotNull" = "Password field is required！";
+"IBLLoginViewModel.LANWOrLANNotNull" = "LAN or WAN is not empty！";
+"IBLOrderStatus.unsend" = "Not Send";
+"IBLOrderStatus.sended" = "Not Process";
+"IBLOrderStatus.handling" = "Processing";
+"IBLOrderStatus.invalid"= "Disabled";
+"IBLOrderStatus.finished" = "Finished";
+"IBLOrderStatus.feedback" = "反馈中";
+"IBLOrderSearchViewController.title" = "Workflow Searching";
+"IBLOrderSearchTableViewController.searchButton.title" = "Search";
+"IBLOrderSearchTableViewController.endDateLabel.title"= "End Date";
+"IBLOrderSearchTableViewController.startDateLabel.title" = "Start Date";
+"IBLOrderSearchTableViewController.bisTypeLabel.title" = "Business Type";
+"IBLOrderSearchTableViewController.enterpriseContact.title" = "Phone";
+"IBLOrderSearchTableViewController.enterpriseLabel.title" = "Name";
+"IBLOrderSearchTableViewController.phoneLabel.title" = "Phone";
+"IBLOrderSearchTableViewController.usernameLabel.title" = "Name";
+"IBLOrderSearchTableViewController.accountLabel.title" = "Account";
+"IBLOrderSearchTableViewController.userTypeLabel.title" = "Customer Type";
+"IBLOrderOperator.trash" = "Disabled";
+"IBLOrderOperator.forward" = "Forward";
+"IBLOrderOperator.delete" = "Delete";
+"IBLOrderOperator.send" = "Send";
+"IBLOrderOperator.create" = "开户";
+"IBLOrderOperator.view" = "View";
+"IBLOrderOperator.finish" = "Finish";
+"IBLOrderOperator.viewSingle" = "View";
+"IBLOrderOperator.handling" = "Process";
+"IBLOrderLevel.high" = "High";
+"IBLOrderLevel.normal" = "Normal";
+"IBLOrderLevel.low"= "Low";
+"IBLOrder.bizType.unknow" = "Unknow";
+"IBLOrder.bizType.repair" = "报修";
+"IBLOrder.bizType.install" = "报装";
+"IBLOrder.bizType.stop" = "停复机";
+"IBLOrder.bizType.return" = "退网";
+"IBLOrder.bizType.move" = "移网";
+"IBLOrder.bizType.handleMalfunction" = "故障处理";
+"IBLOrder.bizType.handleComplaints" = "投诉处理";
+"IBLOrder.bizType.handleAdvisory" = "咨询处理";
+"IBLOrder.bizType.handleReply" = "回访处理";
+"IBLOrder.bizType.electrical" = "接电";
+"IBLOrder.bizType.addBox" = "加箱";
+"IBLOrder.bizType.changeBox" = "改箱";
+"IBLOrder.bizType.addLock" = "加锁";
+"IBLOrder.bizType.flyLine" = "飞线";
+"IBLOrder.bizType.splice" = "熔纤";
+"IBLOrder.bizType.throughCable" = "穿光缆";
+"IBLOrder.bizType.lightBarrier" = "光不通";
+"IBLOrder.bizType.lineBarrier" = "线不通穿线";
+"IBLOrder.bizType.cableBreak" = "光缆断";
+"IBLOrder.bizType.other" = "其他";
+"IBLOrder.type.project" = "工程";
+"IBLOrder.type.malfunction" = "故障";
+"IBLOrder.type.complainn" = "投诉";
+"IBLOrder.type.advisory" = "咨询";
+"IBLOrder.type.reply" = "回访";
+"IBLOrder.type.repair" = "抢修";
+"IBLOrderViewModel.cell.address" = "Address";
+"IBLOrderViewController.modal.title.forward" = "转发给";
+"IBLOrderViewController.modal.placeholder.forward" = "转发说明";
+"IBLOrderViewController.modal.title.send" = "派发给";
+"IBLOrderViewController.modal.placeholder.send" = "派发说明";
+"IBLOrderViewController.controller.title.forward" = "转发";
+"IBLOrderViewController.controller.title.send" = "派发";
+"IBLOrderViewController.alert.mustInputContent.title" = "请输入内容";
+"IBLOrderViewModel.action.title.delete" = "Are you sure delete this workflow?";
+"IBLOrderViewModel.action.title.trash" = "Are you sure trash this workflow?";
+"IBLOrderViewModel.action.title.finish" = "Are you sure finish this workflow?";
+"IBLOrderViewModel.action.title.handle" = "Workflow Process";
+"IBLOrderViewModel.action.placeholder.delete" = "Note";
+"IBLOrderViewModel.action.placeholder.trash" = "Note";
+"IBLOrderViewModel.action.placeholder.finish" = "Note";
+"IBLOrderViewModel.action.placeholder.handle" = "Note";
+"IBLOrderViewModel.controller.title.mine" = "My Workflow";
+"IBLOrderViewModel.controller.title.managed" = "Workflow Manager";
+"IBLOrderDetailTableViewController.nameTitleLabel.text" = "Username";
+"IBLOrderDetailTableViewController.phoneTitleLabel.text" = "Phone";
+"IBLOrderDetailTableViewController.comTitle.text" = "企业名称:";
+"IBLOrderDetailTableViewController.comPhone.text" = "联系电话:";
+"IBLOrderDetailTableViewController.relateUserTitleLabel.text" = "Account";
+"IBLOrderDetailTableViewController.adviceUserTitleLabel.text" = "咨询姓名";
+"IBLOrderDetailTableViewController.usernameTitleLabel.text" = "Name";
+"IBLOrderDetailTableViewController.addressTitleLabel.text" = "Phone";
+"IBLOrderDetailTableViewController.regionTitleLabel.text" = "Area";
+"IBLOrderDetailTableViewController.bizTypeTitleLabel.text" = "Business Type";
+"IBLOrderDetailTableViewController.serviceTypeTitleLabel.text" = "服务类型";
+"IBLOrderDetailTableViewController.tvTypeTitleLabel.text" = "电视类型";
+"IBLOrderDetailTableViewController.ffthTitleLabel.text" = "光纤入户";
+"IBLOrderDetailTableViewController.troubleTypeTitleLabel.text" = "故障类型";
+"IBLOrderDetailTableViewController.orderStatusTitleLabel.text" = "Status";
+"IBLOrderDetailTableViewController.proirtyTitleLabel.text" = "Priority";
+"IBLOrderDetailTableViewController.orderContentTitleLabel.text" = "Content";
+"IBLOrderDetailTableViewController.creatorTitleLabel.text" = "Create Staff";
+"IBLOrderDetailTableViewController.creatorPhoneTitleLabel.text" = "Create Staff Phone";
+"IBLOrderDetailTableViewController.createDateTitleLabel.text" = "Created Time";
+"IBLOrderDetailTableViewController.expDateTitleLabel.text" = "Expiration Time";
+"IBLOrderDetailTableViewController.handleNameTitleLabel.text" = "Current Staff";
+"IBLOrderDetailTableViewController.handlePhoneTitleLabel.text" = "Current Staff Phone";
+"IBLOrderDetailTableViewController.lastUpdateDateTitleLabel.text" = "Last Update Time";
+
+
+
+
+
+
+
+
+

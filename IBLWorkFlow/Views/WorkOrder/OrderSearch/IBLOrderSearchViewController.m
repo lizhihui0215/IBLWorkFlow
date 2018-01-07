@@ -85,6 +85,10 @@
     return text;
 }
 
+-(void)languageDidChanged:(NSNotification *)notification{
+    self.title = NSLocalizedStringFromTable(@"IBLOrderSearchViewController.title", @"Main", "not found");
+}
+
 - (void)orderSearchTableView:(IBLOrderSearchTableViewController *)controller
                    fieldType:(IBLOrderSearchFieldType)type
                   didEndEdit:(id)object {

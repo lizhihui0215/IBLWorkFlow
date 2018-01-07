@@ -11,6 +11,7 @@
 #import "IBLUserRepository.h"
 #import "IBLAppRepository.h"
 #import <BlocksKit/BlocksKit+UIKit.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
 
@@ -23,6 +24,8 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
 @property (weak, nonatomic) IBOutlet UITextField *LANTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *WLANTextField;
+@property (weak, nonatomic) IBOutlet UILabel *APPNameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -48,29 +51,36 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
         [self.viewModel setWLAN:textField.text];
     }];
     
-//    self.usernameTextField.shouldReturnBlock = ^BOOL(UITextField *textField) {
-//        [textField resignFirstResponder];
-//        return YES;
-//    };
-//    self.passwordTextField.shouldReturnBlock = ^BOOL(UITextField *textField) {
-//        [textField resignFirstResponder];
-//        return YES;
-//    };
-//    self.WLANTextField.shouldReturnBlock = ^BOOL(UITextField *textField) {
-//        [textField resignFirstResponder];
-//        return YES;
-//    };
-//    self.LANTextField.shouldReturnBlock = ^BOOL(UITextField *textField) {
-//        [textField resignFirstResponder];
-//        return YES;
-//    };
+    self.usernameTextField.bk_shouldReturnBlock = ^BOOL(UITextField *textField) {
+        [textField resignFirstResponder];
+        return YES;
+    };
+    self.passwordTextField.bk_shouldReturnBlock = ^BOOL(UITextField *textField) {
+        [textField resignFirstResponder];
+        return YES;
+    };
+    self.WLANTextField.bk_shouldReturnBlock = ^BOOL(UITextField *textField) {
+        [textField resignFirstResponder];
+        return YES;
+    };
+    self.LANTextField.bk_shouldReturnBlock = ^BOOL(UITextField *textField) {
+        [textField resignFirstResponder];
+        return YES;
+    };
+    
+    [self.view bk_whenTapped:^{
+        [self.LANTextField resignFirstResponder];
+        [self.WLANTextField resignFirstResponder];
+        [self.passwordTextField resignFirstResponder];
+        [self.usernameTextField resignFirstResponder];
+    }];
+    
 }
 
-- (IBAction)backgroundTapped:(UITapGestureRecognizer *)sender {
-//    [self.usernameTextField resignFirstResponder];
-//    [self.passwordTextField resignFirstResponder];
-//    [self.LANTextField resignFirstResponder];
-//    [self.WLANTextField resignFirstResponder];
+- (void)languageDidChanged:(NSNotification *)notification{
+    self.APPNameLabel.text = NSLocalizedStringFromTable(@"IBLLoginViewController.APPNameLabel.title", @"Main", "not found");
+    NSString *loginButtonTitle = NSLocalizedStringFromTable(@"IBLLoginViewController.loginButton.title", @"Main", "not found");
+    [self.loginButton setTitle:loginButtonTitle forState:UIControlStateNormal];
 }
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {

@@ -21,7 +21,6 @@
     for (UIView *view in self.subviews) {
         [view removeFromSuperview];
     }
-    
 
     for (NSString *title in titles) {
         UIButton *button = [[UIButton alloc] init];

@@ -76,13 +76,15 @@ static NSString const * kOnlinPay = @"USE_ONLINE_PAY";
 }
 
 - (NSDictionary *)menuMaps{
-    
-    IBLLeftMenu *menu1 = [IBLLeftMenu menuWithTitle:@"我的工单"
+    NSString  *myOrderTitle = NSLocalizedStringFromTable(@"IBLGenerateLeftMenu.menuMaps.myOrderTitle", @"Main", "not found");
+    NSString  *mangedOrderTitle = NSLocalizedStringFromTable(@"IBLGenerateLeftMenu.menuMaps.mangedOrderTitle", @"Main", "not found");
+
+    IBLLeftMenu *menu1 = [IBLLeftMenu menuWithTitle:myOrderTitle
                                                icon:[UIImage imageNamed:@"my-order"]
                                         parentIndex:NSNotFound
                                               index:IBLLeftMenuSectionActionMineOrder];
     
-    IBLLeftMenu *menu2 = [IBLLeftMenu menuWithTitle:@"工单管理"
+    IBLLeftMenu *menu2 = [IBLLeftMenu menuWithTitle:mangedOrderTitle
                                                icon:[UIImage imageNamed:@"work-order"]
                                         parentIndex:NSNotFound
                                               index:IBLLeftMenuSectionActionManagedOrder];

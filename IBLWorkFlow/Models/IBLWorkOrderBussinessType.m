@@ -11,8 +11,8 @@
 @implementation IBLWorkOrderBussinessType
 
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"NAME" : @"name",
-                                                       @"VALUE" : @"status"}];
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"name" : @"NAME",
+                                                       @"status" : @"VALUE"}];
 }
 
 - (NSComparisonResult)compare:(IBLWorkOrderBussinessType *)other

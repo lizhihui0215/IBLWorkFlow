@@ -10,29 +10,29 @@
 
 @implementation IBLOrderRelateUser
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"ACCOUNT" : @"account",
-                                                       @"PASSWORD" : @"password",
-                                                       @"USER_NAME" : @"userName",
-                                                       @"PHONE" : @"phone",
-                                                       @"EMAIL" : @"email",
-                                                       @"ADDR" : @"addr",
-                                                       @"ID_NO" : @"idNo",
-                                                       @"AREA_NAME" : @"areaName",
-                                                       @"BIZ_STATION" : @"bizStation",
-                                                       @"OFFER_NAME" : @"offerName",
-                                                       @"EFF_DATE" : @"exfDate",
-                                                       @"EXP_DATE" : @"expDate",
-                                                       @"OFFER_ID" : @"offerId",
-                                                       @"STATE_NAME" : @"state",
-                                                       @"REMARK" : @"remark",
-                                                       @"CUST_TYPE": @"custType",
-                                                       @"COM_NAME": @"comName",
-                                                       @"COM_CONTACT_PHONE": @"comContactPhone",
-                                                       @"COM_CONTACT": @"comContact",
-                                                       @"COM_ADDR": @"comAddr",
-                                                       @"CERT_TYPE": @"certType",
-                                                       @"SIMPLE_COM_NAME": @"simpleComName"
-                                                       }];
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"account" : @"ACCOUNT",
+                                                                  @"password" : @"PASSWORD",
+                                                                  @"userName" : @"USER_NAME",
+                                                                  @"phone" : @"PHONE",
+                                                                  @"email" : @"EMAIL",
+                                                                  @"addr" : @"ADDR",
+                                                                  @"idNo" : @"ID_NO",
+                                                                  @"areaName" : @"AREA_NAME",
+                                                                  @"bizStation" : @"BIZ_STATION",
+                                                                  @"offerName" : @"OFFER_NAME",
+                                                                  @"exfDate" : @"EFF_DATE",
+                                                                  @"expDate" : @"EXP_DATE",
+                                                                  @"offerId" : @"OFFER_ID",
+                                                                  @"state" : @"STATE_NAME",
+                                                                  @"remark" : @"REMARK",
+                                                                  @"custType": @"CUST_TYPE",
+                                                                  @"comName": @"COM_NAME",
+                                                                  @"comContactPhone": @"COM_CONTACT_PHONE",
+                                                                  @"comContact": @"COM_CONTACT",
+                                                                  @"comAddr": @"COM_ADDR",
+                                                                  @"certType": @"CERT_TYPE",
+                                                                  @"simpleComName": @"SIMPLE_COM_NAME"
+                                                                  }];
 }
 
 @end

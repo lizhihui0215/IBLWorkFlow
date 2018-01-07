@@ -32,6 +32,17 @@
 @property (weak, nonatomic) IBOutlet UITextField *enterpriseNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *enterpriseContactTextField;
 
+@property (weak, nonatomic) IBOutlet UILabel *userTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *accountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *enterpriseLabel;
+@property (weak, nonatomic) IBOutlet UILabel *enterpriseContact;
+@property (weak, nonatomic) IBOutlet UILabel *bisTypeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endDateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
+
 @end
 
 @implementation IBLOrderSearchTableViewController
@@ -77,6 +88,20 @@
                                                                  fieldType:IBLOrderSearchFieldTypeCustType];
     
     self.custTypeTextField.text = [self userTypeNames][custType];
+}
+
+- (void)languageDidChanged:(NSNotification *)notification{
+    self.userTypeLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.userTypeLabel.title", @"Main", "not found");
+    self.accountLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewControlleraccountLabel.title", @"Main", "not found");
+    self.usernameLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.usernameLabel.title", @"Main", "not found");
+    self.phoneLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.phoneLabel.title", @"Main", "not found");
+    self.enterpriseLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.enterpriseLabel.title", @"Main", "not found");
+    self.enterpriseContact.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.enterpriseContact.title", @"Main", "not found");
+    self.bisTypeLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.bisTypeLabel.title", @"Main", "not found");
+    self.startDateLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.startDateLabel.title", @"Main", "not found");
+    self.endDateLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.endDateLabel.title", @"Main", "not found");
+    
+    [self.searchButton setTitle:NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.searchButton.title", @"Main", "not found") forState:UIControlStateNormal];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -202,6 +227,12 @@
         hiddenIndexPath = [@[usernameIndexPath,
                             userPhoneIndexPath] mutableCopy];
     }
+    
+    if (![[PCCWLocalized defaultLocalized].preferredLanguage isEqualToString:@"zh"]) {
+        NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [hiddenIndexPath addObject:userTypeIndexPath];
+    }
+    
     
     NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     

@@ -11,13 +11,13 @@
 @implementation IBLOrderFlow
 
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"STATE" : @"state",
-                                                       @"OP_NAME" : @"operatorName",
-                                                       @"OP_PHONE" : @"operatorPhone",
-                                                       @"CREATE_TIME" : @"creatorTime",
-                                                       @"FINISH_TIME" : @"finishedTime",
-                                                       @"OP_SUGGEST" : @"handleSuggest",
-                                                       @"OP_NOTE" : @"handleNote"}];
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"state" : @"STATE",
+                                                                  @"operatorName" : @"OP_NAME",
+                                                                  @"operatorPhone" : @"OP_PHONE",
+                                                                  @"creatorTime" : @"CREATE_TIME",
+                                                                  @"finishedTime" : @"FINISH_TIME",
+                                                                  @"handleSuggest" : @"OP_SUGGEST",
+                                                                  @"handleNote" : @"OP_NOTE"}];
 }
 
 @end

@@ -1,0 +1,116 @@
+
+/* Class = "UITextField"; placeholder = "指定日期"; ObjectID = "06C-Hy-3zM"; */
+"IBLLoginViewController.APPNameLabel.title" = "运营助手";
+"IBLLoginViewController.loginButton.title" = "登录";
+"IBLGenerateLeftMenu.menuMaps.myOrderTitle" = "我的工单";
+"IBLGenerateLeftMenu.menuMaps.mangedOrderTitle" = "工单管理";
+"IBLLeftMenuViewController.logoutLabel.text" = "退出登录";
+"IBLFetchUser.usernameNotNull" = "用户名不能为空！";
+"IBLFetchUser.passwordNotNull" = "密码不能为空！";
+"IBLLoginViewModel.LANWOrLANNotNull" = "LAN或者WAN不为空！";
+"IBLOrderStatus.unsend" = "未派单";
+"IBLOrderStatus.sended" = "未处理";
+"IBLOrderStatus.handling" = "处理中";
+"IBLOrderStatus.invalid"= "作废";
+"IBLOrderStatus.finished" = "已完成";
+"IBLOrderStatus.feedback" = "反馈中";
+"IBLOrderSearchViewController.title" = "工单检索";
+"IBLOrderSearchTableViewController.searchButton.title" = "提交";
+"IBLOrderSearchTableViewController.endDateLabel.title"= "结束时间";
+"IBLOrderSearchTableViewController.startDateLabel.title" = "起始时间";
+"IBLOrderSearchTableViewController.bisTypeLabel.title" = "业务类型";
+"IBLOrderSearchTableViewController.enterpriseContact.title" = "企业联系人";
+"IBLOrderSearchTableViewController.enterpriseLabel.title" = "企业名称";
+"IBLOrderSearchTableViewController.phoneLabel.title" = "用户电话";
+"IBLOrderSearchTableViewController.usernameLabel.title" = "用户姓名";
+"IBLOrderSearchTableViewController.accountLabel.title" = "用户账号";
+"IBLOrderSearchTableViewController.userTypeLabel.title" = "用户类型";
+"IBLOrderOperator.trash" = "作废";
+"IBLOrderOperator.forward" = "转发";
+"IBLOrderOperator.delete" = "删除";
+"IBLOrderOperator.send" = "派单";
+"IBLOrderOperator.create" = "开户";
+"IBLOrderOperator.view" = "查看";
+"IBLOrderOperator.finish" = "完成";
+"IBLOrderOperator.viewSingle" = "查看";
+"IBLOrderOperator.handling" = "处理";
+"IBLOrderLevel.high" = "紧急";
+"IBLOrderLevel.normal" = "一般";
+"IBLOrderLevel.low"= "不紧急";
+"IBLOrder.bizType.unknow" = "未知";
+"IBLOrder.bizType.repair" = "报修";
+"IBLOrder.bizType.install" = "报装";
+"IBLOrder.bizType.stop" = "停复机";
+"IBLOrder.bizType.return" = "退网";
+"IBLOrder.bizType.move" = "移网";
+"IBLOrder.bizType.handleMalfunction" = "故障处理";
+"IBLOrder.bizType.handleComplaints" = "投诉处理";
+"IBLOrder.bizType.handleAdvisory" = "咨询处理";
+"IBLOrder.bizType.handleReply" = "回访处理";
+"IBLOrder.bizType.electrical" = "接电";
+"IBLOrder.bizType.addBox" = "加箱";
+"IBLOrder.bizType.changeBox" = "改箱";
+"IBLOrder.bizType.addLock" = "加锁";
+"IBLOrder.bizType.flyLine" = "飞线";
+"IBLOrder.bizType.splice" = "熔纤";
+"IBLOrder.bizType.throughCable" = "穿光缆";
+"IBLOrder.bizType.lightBarrier" = "光不通";
+"IBLOrder.bizType.lineBarrier" = "线不通穿线";
+"IBLOrder.bizType.cableBreak" = "光缆断";
+"IBLOrder.bizType.other" = "其他";
+"IBLOrder.type.project" = "工程";
+"IBLOrder.type.malfunction" = "故障";
+"IBLOrder.type.complainn" = "投诉";
+"IBLOrder.type.advisory" = "咨询";
+"IBLOrder.type.reply" = "回访";
+"IBLOrder.type.repair" = "抢修";
+"IBLOrderDetailTableViewController.nameTitleLabel.text" = "用户姓名:";
+"IBLOrderDetailTableViewController.phoneTitleLabel.text" = "联系电话:";
+"IBLOrderDetailTableViewController.comTitle.text" = "企业名称:";
+"IBLOrderDetailTableViewController.comPhone.text" = "联系电话:";
+"IBLOrderViewModel.cell.address" = "联系地址";
+"IBLOrderViewController.modal.title.forward" = "转发给";
+"IBLOrderViewController.modal.placeholder.forward" = "转发说明";
+"IBLOrderViewController.modal.title.send" = "派发给";
+"IBLOrderViewController.modal.placeholder.send" = "派发说明";
+"IBLOrderViewController.controller.title.forward" = "转发";
+"IBLOrderViewController.controller.title.send" = "派发";
+"IBLOrderViewController.alert.mustInputContent.title" = "请输入内容";
+"IBLOrderViewModel.action.title.delete" = "确定删除工单？";
+"IBLOrderViewModel.action.title.trash" = "确定作废工单？";
+"IBLOrderViewModel.action.title.finish" = "完成工单";
+"IBLOrderViewModel.action.title.handle" = "工单处理";
+"IBLOrderViewModel.action.placeholder.delete" = "删除说明";
+"IBLOrderViewModel.action.placeholder.trash" = "作废说明";
+"IBLOrderViewModel.action.placeholder.finish" = "完成说明";
+"IBLOrderViewModel.action.placeholder.handle" = "处理说明";
+"IBLOrderViewModel.controller.title.mine" = "我的工单";
+"IBLOrderViewModel.controller.title.managed" = "工单管理";
+"IBLOrderDetailTableViewController.relateUserTitleLabel.text" = "关联用户";
+"IBLOrderDetailTableViewController.adviceUserTitleLabel.text" = "咨询姓名";
+"IBLOrderDetailTableViewController.usernameTitleLabel.text" = "用户姓名";
+"IBLOrderDetailTableViewController.addressTitleLabel.text" = "联系地址";
+"IBLOrderDetailTableViewController.regionTitleLabel.text" = "所属区域";
+"IBLOrderDetailTableViewController.bizTypeTitleLabel.text" = "业务类型";
+"IBLOrderDetailTableViewController.serviceTypeTitleLabel.text" = "服务类型";
+"IBLOrderDetailTableViewController.tvTypeTitleLabel.text" = "电视类型";
+"IBLOrderDetailTableViewController.ffthTitleLabel.text" = "光纤入户";
+"IBLOrderDetailTableViewController.troubleTypeTitleLabel.text" = "故障类型";
+"IBLOrderDetailTableViewController.orderStatusTitleLabel.text" = "工单状态";
+"IBLOrderDetailTableViewController.proirtyTitleLabel.text" = "工单优先级";
+"IBLOrderDetailTableViewController.orderContentTitleLabel.text" = "工单内容";
+"IBLOrderDetailTableViewController.creatorTitleLabel.text" = "创建人员";
+"IBLOrderDetailTableViewController.creatorPhoneTitleLabel.text" = "创建人员电话";
+"IBLOrderDetailTableViewController.createDateTitleLabel.text" = "创建时间";
+"IBLOrderDetailTableViewController.expDateTitleLabel.text" = "到期时间";
+"IBLOrderDetailTableViewController.handleNameTitleLabel.text" = "处理人员";
+"IBLOrderDetailTableViewController.handlePhoneTitleLabel.text" = "处理人员电话";
+"IBLOrderDetailTableViewController.lastUpdateDateTitleLabel.text" = "最近更新时间";
+
+
+
+
+
+
+
+

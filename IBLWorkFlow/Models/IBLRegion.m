@@ -10,12 +10,12 @@
 
 @implementation IBLRegion
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"CHANNEL_NUM" : @"phone",
-                                                       @"CHANNEL_DESC" : @"desc",
-                                                       @"CHANNEL_ADDRESS" : @"address",
-                                                       @"NAME" : @"name",
-                                                       @"ID" : @"identifier",
-                                                       @"PARENTID" : @"parentIdentifier",
-                                                       @"CTYPE" : @"type",}];
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"phone" : @"CHANNEL_NUM",
+                                                                  @"desc" : @"CHANNEL_DESC",
+                                                                  @"address" : @"CHANNEL_ADDRESS",
+                                                                  @"name" : @"NAME",
+                                                                  @"identifier" : @"ID",
+                                                                  @"parentIdentifier" : @"PARENTID",
+                                                                  @"type" : @"CTYPE",}];
 }
 @end

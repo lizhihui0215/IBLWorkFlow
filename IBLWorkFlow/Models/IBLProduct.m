@@ -8,7 +8,7 @@
 
 @implementation IBLProduct
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"OFFER_ID" : @"identifier",
-                                                       @"OFFER_NAME" : @"name"}];
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"identifier" : @"OFFER_ID",
+                                                       @"name" : @"OFFER_NAME"}];
 }
 @end

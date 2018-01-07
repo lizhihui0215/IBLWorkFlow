@@ -10,10 +10,10 @@
 
 @implementation IBLOperator
 + (JSONKeyMapper *)keyMapper{
-    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"OP_ID" : @"identifier",
-                                                       @"NAME" : @"name",
-                                                       @"LOGIN_NAME" : @"account",
-                                                       @"ROLE_NAME" : @"role",
-                                                       @"TELEPHONE" : @"phone"}];
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"identifier" : @"OP_ID",
+                                                       @"name" : @"NAME",
+                                                       @"account" : @"LOGIN_NAME",
+                                                       @"role" : @"ROLE_NAME",
+                                                       @"phone" : @"TELEPHONE"}];
 }
 @end
