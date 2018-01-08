@@ -40,7 +40,7 @@
 
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]} forState:UIControlStateNormal];
+//    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor clearColor]} forState:UIControlStateNormal];
     
 //    [PCCWFileManager setup];
     

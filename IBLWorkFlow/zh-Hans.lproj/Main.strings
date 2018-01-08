@@ -120,6 +120,14 @@
 "IBLOrderSearchTableViewController.enterpriseContactTextField.placeholder" = "检索企业联系人";
 "IBLBusinessAlertViewController.confirm.title" = "确认";
 "IBLBusinessAlertViewController.cancel.title" = "取消";
+"IBLPickerView.toolBar.finish.title" = "完成";
+
+"HdcDateTimePickerView.year" = "年";
+"HdcDateTimePickerView.month" = "月";
+"HdcDateTimePickerView.day" = "日";
+"HdcDateTimePickerView.hr" = "时";
+"HdcDateTimePickerView.min" = "分";
+"HdcDateTimePickerView.sec" = "秒";
 
 
 

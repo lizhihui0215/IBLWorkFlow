@@ -119,6 +119,14 @@
 "IBLOrderSearchTableViewController.enterpriseContactTextField.placeholder" = "Phone";
 "IBLBusinessAlertViewController.confirm.title" = "OK";
 "IBLBusinessAlertViewController.cancel.title" = "Cancel";
+"IBLPickerView.toolBar.finish.title" = "Finish";
+
+"HdcDateTimePickerView.year" = "year";
+"HdcDateTimePickerView.month" = "month";
+"HdcDateTimePickerView.day" = "day";
+"HdcDateTimePickerView.hr" = "hr";
+"HdcDateTimePickerView.min" = "min";
+"HdcDateTimePickerView.sec" = "sec";
 
 
 

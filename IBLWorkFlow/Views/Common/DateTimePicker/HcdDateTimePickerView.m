@@ -421,39 +421,46 @@
 {
     UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, scrollView.bounds.size.width, scrollView.bounds.size.height/5)];
     l.tag = index+1;
+    NSString  *year = NSLocalizedStringFromTable(@"HdcDateTimePickerView.year", @"Main", "not found");
+    NSString  *month = NSLocalizedStringFromTable(@"HdcDateTimePickerView.month", @"Main", "not found");
+    NSString  *day = NSLocalizedStringFromTable(@"HdcDateTimePickerView.day", @"Main", "not found");
+    NSString  *hour = NSLocalizedStringFromTable(@"HdcDateTimePickerView.hr", @"Main", "not found");
+    NSString  *min = NSLocalizedStringFromTable(@"HdcDateTimePickerView.min", @"Main", "not found");
+    NSString  *sec = NSLocalizedStringFromTable(@"HdcDateTimePickerView.sec", @"Main", "not found");
+
     if (scrollView == yearScrollView) {
-        l.text = [NSString stringWithFormat:@"%ld年",(long)(_minYear+index)];
+        l.text = [NSString stringWithFormat:@"%ld%@",(long)(_minYear+index),year];
     }
     else if (scrollView == monthScrollView)
     {
-        l.text = [NSString stringWithFormat:@"%ld月",(long)(1+index)];
+        l.text = [NSString stringWithFormat:@"%ld%@",(long)(1+index),month];
     }
     else if (scrollView == dayScrollView)
     {
-        l.text = [NSString stringWithFormat:@"%ld日",(long)(1+index)];
+        l.text = [NSString stringWithFormat:@"%ld%@",(long)(1+index),day];
     }
     else if (scrollView == hourScrollView)
     {
         if (index < 10) {
-            l.text = [NSString stringWithFormat:@"0%ld时",(long)index];
+            l.text = [NSString stringWithFormat:@"0%ld%@",(long)index,hour];
         }
         else
-            l.text = [NSString stringWithFormat:@"%ld时",(long)index];
+            l.text = [NSString stringWithFormat:@"%ld%@",(long)index,hour];
     }
     else if (scrollView == minuteScrollView)
     {
         if (index < 10) {
-            l.text = [NSString stringWithFormat:@"0%ld分",(long)index];
+            l.text = [NSString stringWithFormat:@"0%ld%@",(long)index,min];
         }
         else
-            l.text = [NSString stringWithFormat:@"%ld分",(long)index];
+            l.text = [NSString stringWithFormat:@"%ld%@",(long)index,min];
     }
     else
         if (index < 10) {
-            l.text = [NSString stringWithFormat:@"0%ld秒",(long)index];
+            l.text = [NSString stringWithFormat:@"0%ld%@",(long)index,sec];
         }
         else
-            l.text = [NSString stringWithFormat:@"%ld秒",(long)index];
+            l.text = [NSString stringWithFormat:@"%ld%@",(long)index,sec];
     
     l.font = [UIFont systemFontOfSize:12];
     l.textAlignment = NSTextAlignmentCenter;

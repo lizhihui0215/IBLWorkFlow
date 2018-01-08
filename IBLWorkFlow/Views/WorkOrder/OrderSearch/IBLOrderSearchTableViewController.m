@@ -242,10 +242,10 @@
                             userPhoneIndexPath] mutableCopy];
     }
     
-    if (![[PCCWLocalized defaultLocalized].preferredLanguage isEqualToString:@"zh"]) {
-        NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [hiddenIndexPath addObject:userTypeIndexPath];
-    }
+//    if (![[PCCWLocalized defaultLocalized].preferredLanguage isEqualToString:@"zh"]) {
+//        NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+//        [hiddenIndexPath addObject:userTypeIndexPath];
+//    }
     
     
     NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
