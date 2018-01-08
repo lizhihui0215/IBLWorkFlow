@@ -9,13 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class IBLSegmentControl;
+static CGFloat const IBLOrderSegmentControlTitleWidth = 10;
 
 typedef void (^IndexChangeBlock)(NSInteger index);
 typedef NSAttributedString *(^IBLTitleFormatterBlock)(IBLSegmentControl *segmentedControl, NSString *title, NSUInteger index, BOOL selected);
 
 @interface IBLSegmentControl : UIView
-
-@property (nonatomic, assign) CGFloat  width;
 
 @property (nonatomic, copy) IndexChangeBlock indexChangeBlock;
 

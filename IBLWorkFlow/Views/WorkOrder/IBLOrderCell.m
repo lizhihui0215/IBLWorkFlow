@@ -8,7 +8,6 @@
 
 #import "IBLOrderCell.h"
 
-static NSInteger const IBLOrderSegmentControlTitleWidth = 80;
 
 @interface IBLOrderCell ()
 
@@ -57,10 +56,16 @@ static NSInteger const IBLOrderSegmentControlTitleWidth = 80;
 //    self.segmentControl.sectionTitles = titles;
 //    self.segmentControl.selectedIndexTouchable = YES;
     
+    CGFloat width = 0;
+    for (NSString *title in titles) {
+        CGSize size = [title sizeWithAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13]}];
+        width += size.width;
+    }
+    
+    width += (([titles count] -1) * IBLOrderSegmentControlTitleWidth);
     
     
-    self.segmentControlWidthConstraint.constant = [titles count] * IBLOrderSegmentControlTitleWidth;
-    self.segmentControl.width = [titles count] * IBLOrderSegmentControlTitleWidth;
+    self.segmentControlWidthConstraint.constant = width;
     [self.segmentControl setActionTitles:titles];
 }
 

@@ -42,16 +42,18 @@
         
         self.contentTextField.placeholder = placeholder;
         
-        self.titleContainerWidthConstraint.constant = CGRectGetWidth(self.titleLabel.frame) + CGRectGetWidth(self.iconImageView.frame) + 10;
         
         // Modify the parameters
-        [self.alertView setButtonTitles:@[@"确认", @"取消"]];
+        NSString *confirm = NSLocalizedStringFromTable(@"IBLBusinessAlertViewController.confirm.title", @"Main", "not found");
+        
+        NSString *cancel = NSLocalizedStringFromTable(@"IBLBusinessAlertViewController.cancel.title", @"Main", "not found");
+        
+        [self.alertView setButtonTitles:@[confirm, cancel]];
         
         // You may use a Block, rather than a delegate.
         
         [self.alertView setUseMotionEffects:false];
         
-////
 ////        self.buttonTapped = ^(IBLBusinessAlertViewController *alertView, NSInteger buttonIndex){
 ////            @strongify(self)
 //            @weakify(self)

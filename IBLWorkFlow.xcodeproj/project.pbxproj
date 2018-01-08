@@ -934,7 +934,6 @@
 				5B875FB5811336EE05248DB0 /* IBLRootViewController.m */,
 				26A9D1341D2E7E3E000950F6 /* IBLLoginViewController.h */,
 				26A9D1351D2E7E3E000950F6 /* IBLLoginViewController.m */,
-				5B875E4CC1EFDA34428374D3 /* Base */,
 				5B875BCCE75E905BA2CBDEC5 /* Main */,
 				5B8751CB1BB061B531EF2030 /* WorkOrder */,
 				5B875135C2C0645AA45CAB6D /* Segues */,
@@ -1047,13 +1046,6 @@
 				262F86D020021DFA00757B7B /* IBLNetworkServices.m */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		5B875E4CC1EFDA34428374D3 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		5B875E71672CC838FC4F0449 /* SDKs */ = {

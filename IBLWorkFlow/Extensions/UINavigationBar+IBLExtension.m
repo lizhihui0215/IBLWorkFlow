@@ -24,8 +24,8 @@
     
     [UIBarButtonItem appearance].tintColor = [UIColor whiteColor];
     
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -50)
-                                                         forBarMetrics:UIBarMetricsDefault];
+//    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -50)
+//                                                         forBarMetrics:UIBarMetricsDefault];
 }
 
 @end

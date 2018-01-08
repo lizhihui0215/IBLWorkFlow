@@ -92,7 +92,7 @@
 
 - (void)languageDidChanged:(NSNotification *)notification{
     self.userTypeLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.userTypeLabel.title", @"Main", "not found");
-    self.accountLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewControlleraccountLabel.title", @"Main", "not found");
+    self.accountLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.accountLabel.title", @"Main", "not found");
     self.usernameLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.usernameLabel.title", @"Main", "not found");
     self.phoneLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.phoneLabel.title", @"Main", "not found");
     self.enterpriseLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.enterpriseLabel.title", @"Main", "not found");
@@ -102,6 +102,20 @@
     self.endDateLabel.text = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.endDateLabel.title", @"Main", "not found");
     
     [self.searchButton setTitle:NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.searchButton.title", @"Main", "not found") forState:UIControlStateNormal];
+    
+    
+    
+    
+    self.userAccountTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.userAccountTextField.placeholder", @"Main", "not found");
+    self.usernameTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.usernameTextField.placeholder", @"Main", "not found");
+    self.userPhoneTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.userPhoneTextField.placeholder", @"Main", "not found");
+    self.workOrderBizTypeTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.workOrderBizTypeTextField.placeholder", @"Main", "not found");
+    self.workOrderTypeTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.workOrderTypeTextField.placeholder", @"Main", "not found");
+    self.startDateTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.startDateTextField.placeholder", @"Main", "not found");
+    self.endDateTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.endDateTextField.placeholder", @"Main", "not found");
+    self.custTypeTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.custTypeTextField.placeholder", @"Main", "not found");
+    self.enterpriseNameTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.enterpriseNameTextField.placeholder", @"Main", "not found");
+    self.enterpriseContactTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.enterpriseContactTextField.placeholder", @"Main", "not found");
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

@@ -106,6 +106,20 @@
 "IBLOrderDetailTableViewController.handlePhoneTitleLabel.text" = "Current Staff Phone";
 "IBLOrderDetailTableViewController.lastUpdateDateTitleLabel.text" = "Last Update Time";
 
+"IBLOperatorSearchViewModel.title" = "Staff";
+"IBLOrderSearchTableViewController.userAccountTextField.placeholder" = "Account";
+"IBLOrderSearchTableViewController.usernameTextField.placeholder" = "Name";
+"IBLOrderSearchTableViewController.userPhoneTextField.placeholder" = "Phone";
+"IBLOrderSearchTableViewController.workOrderBizTypeTextField.placeholder" = "Select";
+"IBLOrderSearchTableViewController.workOrderTypeTextField.placeholder" = "Select";
+"IBLOrderSearchTableViewController.startDateTextField.placeholder" = "Start Date";
+"IBLOrderSearchTableViewController.endDateTextField.placeholder" = "End Date";
+"IBLOrderSearchTableViewController.custTypeTextField.placeholder" = "Select";
+"IBLOrderSearchTableViewController.enterpriseNameTextField.placeholder" = "Name";
+"IBLOrderSearchTableViewController.enterpriseContactTextField.placeholder" = "Phone";
+"IBLBusinessAlertViewController.confirm.title" = "OK";
+"IBLBusinessAlertViewController.cancel.title" = "Cancel";
+
 
 
 

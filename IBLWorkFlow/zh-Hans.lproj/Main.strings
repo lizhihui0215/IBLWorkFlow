@@ -107,6 +107,20 @@
 "IBLOrderDetailTableViewController.handlePhoneTitleLabel.text" = "处理人员电话";
 "IBLOrderDetailTableViewController.lastUpdateDateTitleLabel.text" = "最近更新时间";
 
+"IBLOperatorSearchViewModel.title" = "操作员";
+"IBLOrderSearchTableViewController.userAccountTextField.placeholder" = "检索用户账号";
+"IBLOrderSearchTableViewController.usernameTextField.placeholder" = "检索用户姓名";
+"IBLOrderSearchTableViewController.userPhoneTextField.placeholder" = "检索用户电话";
+"IBLOrderSearchTableViewController.workOrderBizTypeTextField.placeholder" = "请选择";
+"IBLOrderSearchTableViewController.workOrderTypeTextField.placeholder" = "请选择";
+"IBLOrderSearchTableViewController.startDateTextField.placeholder" = "指定日期";
+"IBLOrderSearchTableViewController.endDateTextField.placeholder" = "指定日期";
+"IBLOrderSearchTableViewController.custTypeTextField.placeholder" = "请选择";
+"IBLOrderSearchTableViewController.enterpriseNameTextField.placeholder" = "检索企业名称";
+"IBLOrderSearchTableViewController.enterpriseContactTextField.placeholder" = "检索企业联系人";
+"IBLBusinessAlertViewController.confirm.title" = "确认";
+"IBLBusinessAlertViewController.cancel.title" = "取消";
+
 
 
 
