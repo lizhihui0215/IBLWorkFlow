@@ -66,7 +66,7 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
     self.LANTextField.bk_shouldReturnBlock = ^BOOL(UITextField *textField) {
         [textField resignFirstResponder];
         return YES;
-    };    
+    };
 }
 
 - (IBAction)backgroundTapped:(UITapGestureRecognizer *)sender {
