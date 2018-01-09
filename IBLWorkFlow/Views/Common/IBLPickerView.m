@@ -240,7 +240,9 @@ NSString * const CMCCtoolbarBackgroundImage = @"toolbarBackgroundImage";
   
   UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
   
-  _pickerViewBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+    NSString  *title = NSLocalizedStringFromTable(@"IBLPickerView.toolBar.finish.title", @"Main", "not found");
+
+  _pickerViewBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
     
     
   _pickerViewToolBar.items = @[flexibleSpace, _pickerViewBarButtonItem];

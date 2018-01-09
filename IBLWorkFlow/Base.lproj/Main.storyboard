@@ -47,7 +47,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="N9T-lx-PZM" appends="YES" id="gTr-Nv-AZ2"/>
+                                    <outletCollection property="gestureRecognizers" destination="c8E-Wh-Upp" appends="YES" id="jPJ-QB-Hy3"/>
                                 </connections>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFT-Eg-L2m">
@@ -246,7 +246,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K1W-8A-dFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="N9T-lx-PZM"/>
+                <tapGestureRecognizer id="c8E-Wh-Upp">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="lBX-nn-gOA" id="XJs-cK-7hh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="411.5" y="389.5"/>
         </scene>

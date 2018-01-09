@@ -66,15 +66,14 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
     self.LANTextField.bk_shouldReturnBlock = ^BOOL(UITextField *textField) {
         [textField resignFirstResponder];
         return YES;
-    };
-    
-    [self.view bk_whenTapped:^{
-        [self.LANTextField resignFirstResponder];
-        [self.WLANTextField resignFirstResponder];
-        [self.passwordTextField resignFirstResponder];
-        [self.usernameTextField resignFirstResponder];
-    }];
-    
+    };    
+}
+
+- (IBAction)backgroundTapped:(UITapGestureRecognizer *)sender {
+    [self.LANTextField resignFirstResponder];
+    [self.WLANTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
+    [self.usernameTextField resignFirstResponder];
 }
 
 - (void)languageDidChanged:(NSNotification *)notification{
@@ -120,20 +119,14 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
                           if (![self showAlertWithError:error]) {
 //                              IBLUser *user = [IBLUserRepository user];
 //                              IBLAppConfiguration *appConfiguration = [IBLAppRepository appConfiguration];
-//                              
 //                              NSString *tag1 = user.identifier;
-//                              
 //                              NSMutableArray *tags = [NSMutableArray array];
-//                              
 //                              if (appConfiguration.ispTag) {
 //                                  tag1 = [NSString stringWithFormat:@"%@_%@",user.identifier,appConfiguration.ispTag];
 //                                  [tags addObject:appConfiguration.ispTag];
 //
 //                              }
 //                              [tags addObject:tag1];
-//
-//                              
-//                              
 //                              [BPush setTags:tags withCompleteHandler:nil];
                               [self performSegueWithIdentifier:NavigationToMainIdentifier sender:self];
                           }

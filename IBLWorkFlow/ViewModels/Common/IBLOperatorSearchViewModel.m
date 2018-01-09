@@ -37,9 +37,9 @@
 
 - (NSString *)title{
     
-    NSString  *usernameNotNull = NSLocalizedStringFromTable(@"IBLOperatorSearchViewModel.title", @"Main", "not found");
+    NSString  *title = NSLocalizedStringFromTable(@"IBLOperatorSearchViewModel.title", @"Main", "not found");
 
-    return @"操作员";
+    return title;
 }
 
 + (instancetype)operatorSearchModelWithOrder:(IBLOrder *)order searchType:(IBLSearchType)searchType {
