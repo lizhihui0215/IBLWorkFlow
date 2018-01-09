@@ -1,4 +1,5 @@
 /* Class = "UITextField"; placeholder = "指定日期"; ObjectID = "06C-Hy-3zM"; */
+"CFBundleDisplayName" = "Operation Assistant";
 "IBLLoginViewController.APPNameLabel.title" = "Operation Assistant";
 "IBLLoginViewController.loginButton.title" = "Log in";
 "IBLGenerateLeftMenu.menuMaps.myOrderTitle" = "My Workflow";

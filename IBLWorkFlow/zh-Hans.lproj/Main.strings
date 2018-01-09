@@ -1,5 +1,6 @@
 
 /* Class = "UITextField"; placeholder = "指定日期"; ObjectID = "06C-Hy-3zM"; */
+"CFBundleDisplayName" = "运营助手";
 "IBLLoginViewController.APPNameLabel.title" = "运营助手";
 "IBLLoginViewController.loginButton.title" = "登录";
 "IBLGenerateLeftMenu.menuMaps.myOrderTitle" = "我的工单";
