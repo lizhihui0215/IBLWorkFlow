@@ -13,6 +13,9 @@
 
 - (void)setupLAN:(NSString *)LAN WLAN:(NSString *)WLAN;
 
+- (NSError *)validateWithUsername:(NSString *)username
+                         password:(NSString *)password;
+
 - (void)startFetchWithUsername:(NSString *)username
                       password:(NSString *)password
                completeHandler:(void (^)(IBLUser *, NSError *))handler;

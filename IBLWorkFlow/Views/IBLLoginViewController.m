@@ -83,7 +83,7 @@ static NSString * const NavigationToMainIdentifier = @"NavigationToMain";
 }
 
 - (IBAction)loginButtonPressed:(UIButton *)sender {
-    [self showHUDWithMessage:@"登录中..."];
+    [self showHUDWithMessage:@""];
     
     
 //    [self.LANTextField setShouldEndEditingBlock:^BOOL(UITextField *textField) {

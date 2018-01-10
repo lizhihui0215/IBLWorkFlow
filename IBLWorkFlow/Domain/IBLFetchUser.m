@@ -51,9 +51,7 @@
     IBLUserRepository *user = [[IBLUserRepository alloc] init];
     
     
-    NSError *error = [self validateWithUsername:username password:password];
     
-    if (error) { handler(nil, error); return; }
     
     NSString *URLString = IBLNetworkServices.LANURL == nil ?  IBLNetworkServices.WLANURL : IBLNetworkServices.LANURL;
     

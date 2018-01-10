@@ -143,6 +143,7 @@ static __strong AFNetworkReachabilityManager *_reachabilityManager;
                                 success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
                                 failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure{
     if (IBLNetworkServices.isCheckingNetworkStatus) {
+        
         NSError *err = [NSError errorWithDomain:@""
                                            code:0
                                        userInfo:@{kExceptionCode : @"0",

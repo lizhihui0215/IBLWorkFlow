@@ -1,5 +1,4 @@
 /* Class = "UITextField"; placeholder = "指定日期"; ObjectID = "06C-Hy-3zM"; */
-"CFBundleDisplayName" = "Operation Assistant";
 "IBLLoginViewController.APPNameLabel.title" = "Operation Assistant";
 "IBLLoginViewController.loginButton.title" = "Log in";
 "IBLGenerateLeftMenu.menuMaps.myOrderTitle" = "My Workflow";
@@ -7,7 +6,7 @@
 "IBLLeftMenuViewController.logoutLabel.text" = "Log out";
 "IBLFetchUser.usernameNotNull" = "Account field is required！";
 "IBLFetchUser.passwordNotNull" = "Password field is required！";
-"IBLLoginViewModel.LANWOrLANNotNull" = "LAN or WAN is not empty！";
+"IBLLoginViewModel.LANWOrLANNotNull" = "Please input the LAN address or WAN address！";
 "IBLOrderStatus.unsend" = "Not Send";
 "IBLOrderStatus.sended" = "Not Process";
 "IBLOrderStatus.handling" = "Processing";
@@ -37,39 +36,12 @@
 "IBLOrderLevel.high" = "High";
 "IBLOrderLevel.normal" = "Normal";
 "IBLOrderLevel.low"= "Low";
-"IBLOrder.bizType.unknow" = "Unknow";
-"IBLOrder.bizType.repair" = "报修";
-"IBLOrder.bizType.install" = "报装";
-"IBLOrder.bizType.stop" = "停复机";
-"IBLOrder.bizType.return" = "退网";
-"IBLOrder.bizType.move" = "移网";
-"IBLOrder.bizType.handleMalfunction" = "故障处理";
-"IBLOrder.bizType.handleComplaints" = "投诉处理";
-"IBLOrder.bizType.handleAdvisory" = "咨询处理";
-"IBLOrder.bizType.handleReply" = "回访处理";
-"IBLOrder.bizType.electrical" = "接电";
-"IBLOrder.bizType.addBox" = "加箱";
-"IBLOrder.bizType.changeBox" = "改箱";
-"IBLOrder.bizType.addLock" = "加锁";
-"IBLOrder.bizType.flyLine" = "飞线";
-"IBLOrder.bizType.splice" = "熔纤";
-"IBLOrder.bizType.throughCable" = "穿光缆";
-"IBLOrder.bizType.lightBarrier" = "光不通";
-"IBLOrder.bizType.lineBarrier" = "线不通穿线";
-"IBLOrder.bizType.cableBreak" = "光缆断";
-"IBLOrder.bizType.other" = "其他";
-"IBLOrder.type.project" = "工程";
-"IBLOrder.type.malfunction" = "故障";
-"IBLOrder.type.complainn" = "投诉";
-"IBLOrder.type.advisory" = "咨询";
-"IBLOrder.type.reply" = "回访";
-"IBLOrder.type.repair" = "抢修";
 "IBLOrderViewModel.cell.address" = "Address";
-"IBLOrderViewController.modal.title.forward" = "转发给";
-"IBLOrderViewController.modal.placeholder.forward" = "转发说明";
-"IBLOrderViewController.modal.title.send" = "派发给";
-"IBLOrderViewController.modal.placeholder.send" = "派发说明";
-"IBLOrderViewController.controller.title.forward" = "转发";
+"IBLOrderViewController.modal.title.forward" = "Send to";
+"IBLOrderViewController.modal.placeholder.forward" = "Note";
+"IBLOrderViewController.modal.title.send" = "Send to";
+"IBLOrderViewController.modal.placeholder.send" = "Note";
+"IBLOrderViewController.controller.title.forward" = "Forward";
 "IBLOrderViewController.controller.title.send" = "派发";
 "IBLOrderViewController.alert.mustInputContent.title" = "请输入内容";
 "IBLOrderViewModel.action.title.delete" = "Are you sure delete this workflow?";
@@ -95,7 +67,7 @@
 "IBLOrderDetailTableViewController.serviceTypeTitleLabel.text" = "服务类型";
 "IBLOrderDetailTableViewController.tvTypeTitleLabel.text" = "电视类型";
 "IBLOrderDetailTableViewController.ffthTitleLabel.text" = "光纤入户";
-"IBLOrderDetailTableViewController.troubleTypeTitleLabel.text" = "故障类型";
+"IBLOrderDetailTableViewController.troubleTypeTitleLabel.text" = "Trouble Type";
 "IBLOrderDetailTableViewController.orderStatusTitleLabel.text" = "Status";
 "IBLOrderDetailTableViewController.proirtyTitleLabel.text" = "Priority";
 "IBLOrderDetailTableViewController.orderContentTitleLabel.text" = "Content";
@@ -128,6 +100,39 @@
 "HdcDateTimePickerView.hr" = "hr";
 "HdcDateTimePickerView.min" = "min";
 "HdcDateTimePickerView.sec" = "sec";
+
+"HcdDateTimePickerView.toolBar.comfirm.title" = "OK";
+"HcdDateTimePickerView.toolBar.comfirm.cancel" = "Cancel";
+"IBLSubmit.success" = "提交成功！";
+"IBLNetworkServices.checkingNetworking" = "检查网络中，请稍后再试...";
+"IBLUserDetailTableViewController.accountTitleLabel.title" = "Accout";
+"IBLUserDetailTableViewController.passwordTitleLabel.title" = "Password";
+"IBLUserDetailTableViewController.userStatusTitleLabel.title" = "State";
+"IBLUserDetailTableViewController.userTypeTitleLabel.title" = "Customer Type";
+"IBLUserDetailTableViewController.regionTitleLabel.title" = "Area";
+"IBLUserDetailTableViewController.certTitleLabel.title" = "Certificate Type";
+"IBLUserDetailTableViewController.certNumTitleLabel.title" = "Certificate NO";
+"IBLUserDetailTableViewController.userNameTitleLabel.title" = "Name";
+"IBLUserDetailTableViewController.phoneTitleLabel.title" = "Phone";
+"IBLUserDetailTableViewController.addressTitleLabel.title" = "Address";
+"IBLUserDetailTableViewController.comNameTitleLabel.title" = "企业名称";
+"IBLUserDetailTableViewController.comSimpNameTitleLabel.title" = "企业简介";
+"IBLUserDetailTableViewController.comContactTitleLabel.title" = "企业联系人";
+"IBLUserDetailTableViewController.comPhoneTitleLabel.title" = "联系人电话";
+"IBLUserDetailTableViewController.comAddressTitleLabel.title" = "企业地址";
+"IBLUserDetailTableViewController.productTitleLabel.title" = "Package";
+"IBLUserDetailTableViewController.effDateTitleLabel.title" = "Activation Date";
+"IBLUserDetailTableViewController.expiryDateTitleLabel.title" = "Expiration Date";
+"IBLUserDetailTableViewController.backupTitleLabel.title" = "Remark";
+
+"IBLUserDetailTableViewController.title" = "Customer Information";
+"IBLOrderFlowViewController.title" = "Workflow";
+"IBLOrderFlowDetailViewController.handleUserTitleLabel.text" = "Handle Staff";
+"IBLOrderFlowDetailViewController.phoneTitleLabel.text" = "Phone";
+"IBLOrderFlowDetailViewController.handleCommentTitleLabel.text" = "Note";
+"IBLOrderFlowDetailViewController.handleDateTitleLabel.text" = "Handle Time";
+"IBLOrderFlowDetailViewController.title" = "Workflow Detail";
+
 
 
 

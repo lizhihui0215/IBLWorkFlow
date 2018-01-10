@@ -25,6 +25,10 @@
     [self.tableView.mj_header beginRefreshing];
 }
 
+- (void)languageDidChanged:(NSNotification *)notification {
+    self.title = NSLocalizedStringFromTable(@"IBLOrderFlowViewController.title", @"Main", "not found");
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [self.viewModel numberOfSections];

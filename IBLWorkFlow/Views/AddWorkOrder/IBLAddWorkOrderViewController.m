@@ -180,15 +180,17 @@
 }
 
 - (void)addWorkOrderTableDidCommit:(IBLAddWorkOrderTableViewController *)controller {
-    [self showHUDWithMessage:@"提交中..."];
+    [self showHUDWithMessage:@""];
     @weakify(self)
     [self.viewModel commitWithCompleteHandler:^(NSError *error){
         @strongify(self)
         [self hidHUD];
         if (![self showAlertWithError:error]) {
+            NSString *submitSuccess = NSLocalizedStringFromTable(@"IBLSubmit.success", @"Main", "not found");
+            
             NSError *error = [NSError errorWithDomain:@""
                                                  code:0 userInfo:@{kExceptionCode : @(0),
-                                                                   kExceptionMessage : @"新增成功！"}];
+                                                                   kExceptionMessage : submitSuccess}];
             [self showAlertWithError:error
                      completeHandler:^(BOOL isShowError, NSError *error) {
                          [self.delegate addWorkOrderTableDidCommit:self];

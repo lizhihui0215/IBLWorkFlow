@@ -152,7 +152,10 @@
     [okBtn setTitleColor:_buttonTitleColor forState:UIControlStateNormal];
     okBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [okBtn setBackgroundColor:[UIColor clearColor]];
-    [okBtn setTitle:@"确定" forState:UIControlStateNormal];
+    NSString  *confirm = NSLocalizedStringFromTable(@"HcdDateTimePickerView.toolBar.comfirm.title", @"Main", "not found");
+    NSString  *cancel = NSLocalizedStringFromTable(@"HcdDateTimePickerView.toolBar.comfirm.cancel", @"Main", "not found");
+
+    [okBtn setTitle:confirm forState:UIControlStateNormal];
     [okBtn addTarget:self action:@selector(selectedButtons:) forControlEvents:UIControlEventTouchUpInside];
     okBtn.tag = kOKBtnTag;
     [self addSubview:okBtn];
@@ -161,7 +164,7 @@
     cancleBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [cancleBtn setTitleColor:_buttonTitleColor forState:UIControlStateNormal];
     [cancleBtn setBackgroundColor:[UIColor clearColor]];
-    [cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [cancleBtn setTitle:cancel forState:UIControlStateNormal];
     [cancleBtn addTarget:self action:@selector(selectedButtons:) forControlEvents:UIControlEventTouchUpInside];
     cancleBtn.tag = kCancleBtnTag;
     [self addSubview:cancleBtn];

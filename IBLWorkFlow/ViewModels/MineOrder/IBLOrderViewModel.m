@@ -16,6 +16,7 @@
 #import "IBLTrashOrder.h"
 #import "IBLHandleOrder.h"
 #import "IBLSendOrder.h"
+#import "IBLAppRepository.h"
 
 @interface IBLOrderViewModel ()
 {
@@ -253,59 +254,67 @@
 }
 
 - (NSString *)workOrderBizTypeNameWithStatus:(IBLWorkOrderBizStatus)status{
-    NSString  *orderBizUnknow= NSLocalizedStringFromTable(@"IBLOrder.bizType.unknow", @"Main", "not found");
-
-    NSString  *orderBizRepair = NSLocalizedStringFromTable(@"IBLOrder.bizType.repair", @"Main", "not found");
-    NSString  *orderBizInstall = NSLocalizedStringFromTable(@"IBLOrder.bizType.install", @"Main", "not found");
 
     
-    NSString  *orderBizStop = NSLocalizedStringFromTable(@"IBLOrder.bizType.stop", @"Main", "not found");
-
-    NSString  *orderBizReturn = NSLocalizedStringFromTable(@"IBLOrder.bizType.return", @"Main", "not found");
-    NSString  *orderBizMove = NSLocalizedStringFromTable(@"IBLOrder.bizType.move", @"Main", "not found");
-
-    NSString  *orderBizHandleMalfunction = NSLocalizedStringFromTable(@"IBLOrder.bizType.handleMalfunction", @"Main", "not found");
-
-    NSString  *orderBizHandleComplaints = NSLocalizedStringFromTable(@"IBLOrder.bizType.handleComplaints", @"Main", "not found");
-    NSString  *orderBizHandleAdvisory = NSLocalizedStringFromTable(@"IBLOrder.bizType.handleAdvisory", @"Main", "not found");
-    NSString  *orderBizHandleReply = NSLocalizedStringFromTable(@"IBLOrder.bizType.handleReply", @"Main", "not found");
-    NSString  *orderBizElectrical = NSLocalizedStringFromTable(@"IBLOrder.bizType.electrical", @"Main", "not found");
-    NSString  *orderBizAddBox = NSLocalizedStringFromTable(@"IBLOrder.bizType.addBox", @"Main", "not found");
-    NSString  *orderBizChangeBox = NSLocalizedStringFromTable(@"IBLOrder.bizType.changeBox", @"Main", "not found");
-
-    NSString  *orderBizAddLock = NSLocalizedStringFromTable(@"IBLOrder.bizType.addLock", @"Main", "not found");
-    NSString  *orderBizFlyLine = NSLocalizedStringFromTable(@"IBLOrder.bizType.flyLine", @"Main", "not found");
-    NSString  *orderBizSplice = NSLocalizedStringFromTable(@"IBLOrder.bizType.splice", @"Main", "not found");
-
-    NSString  *orderBizThroughCable = NSLocalizedStringFromTable(@"IBLOrder.bizType.throughCable", @"Main", "not found");
-    NSString  *orderBizLightBarrier = NSLocalizedStringFromTable(@"IBLOrder.bizType.lightBarrier", @"Main", "not found");
-    NSString  *orderBizLineBarrier = NSLocalizedStringFromTable(@"IBLOrder.bizType.lineBarrier", @"Main", "not found");
-    NSString  *orderBizCableBreak = NSLocalizedStringFromTable(@"IBLOrder.bizType.cableBreak", @"Main", "not found");
-    NSString  *orderBizOther = NSLocalizedStringFromTable(@"IBLOrder.bizType.other", @"Main", "not found");
+    for (IBLWorkOrderBussinessType *bizType in [IBLAppRepository appConfiguration].workOrderBizTypes) {
+        if (status == bizType.status) {
+            return [NSString stringWithFormat:@"[ %@ ]", bizType.name];
+        }
+    }
     
-    NSDictionary *workOrderBizTypes = @{@(IBLWorkOrderBizStatusUnknow) : [NSString stringWithFormat:@"[ %@ ]",orderBizUnknow],
-                                        @(IBLWorkOrderBizStatusRepair) : [NSString stringWithFormat:@"[ %@ ]",orderBizRepair],
-                                        @(IBLWorkOrderBizStatusInstall) : [NSString stringWithFormat:@"[ %@ ]",orderBizInstall],
-                                        @(IBLWorkOrderBizStatusStop) : [NSString stringWithFormat:@"[ %@ ]",orderBizStop],
-                                        @(IBLWorkOrderBizStatusReturn) : [NSString stringWithFormat:@"[ %@ ]",orderBizReturn],
-                                        @(IBLWorkOrderBizStatusMove) : [NSString stringWithFormat:@"[ %@ ]",orderBizMove],
-                                        @(IBLWorkOrderBizStatusHandleMalfunction) : [NSString stringWithFormat:@"[ %@ ]",orderBizHandleMalfunction],
-                                        @(IBLWorkOrderBizStatusHandleComplaints) : [NSString stringWithFormat:@"[ %@ ]",orderBizHandleComplaints],
-                                        @(IBLWorkOrderBizStatusHandleAdvisory) : [NSString stringWithFormat:@"[ %@ ]",orderBizHandleAdvisory],
-                                        @(IBLWorkOrderBizStatusHandleReply) : [NSString stringWithFormat:@"[ %@ ]",orderBizHandleReply],
-                                        @(IBLWorkOrderBizStatusElectrical) : [NSString stringWithFormat:@"[ %@ ]",orderBizElectrical],
-                                        @(IBLWorkOrderBizStatusAddBox) : [NSString stringWithFormat:@"[ %@ ]",orderBizAddBox],
-                                        @(IBLWorkOrderBizStatusChangeBox) : [NSString stringWithFormat:@"[ %@ ]",orderBizChangeBox],
-                                        @(IBLWorkOrderBizStatusAddLock) : [NSString stringWithFormat:@"[ %@ ]",orderBizAddLock],
-                                        @(IBLWorkOrderBizStatusFlyLine) : [NSString stringWithFormat:@"[ %@ ]",orderBizFlyLine],
-                                        @(IBLWorkOrderBizStatusSplice) : [NSString stringWithFormat:@"[ %@ ]",orderBizSplice],
-                                        @(IBLWorkOrderBizStatusThroughCable) : [NSString stringWithFormat:@"[ %@ ]",orderBizThroughCable],
-                                        @(IBLWorkOrderBizStatusLightBarrier) : [NSString stringWithFormat:@"[ %@ ]",orderBizLightBarrier],
-                                        @(IBLWorkOrderBizStatusLineBarrier) : [NSString stringWithFormat:@"[ %@ ]",orderBizLineBarrier],
-                                        @(IBLWorkOrderBizStatusCableBreak) : [NSString stringWithFormat:@"[ %@ ]",orderBizCableBreak],
-                                        @(IBLWorkOrderBizStatusOther) : [NSString stringWithFormat:@"[ %@ ]",orderBizOther]};
-    
-    return workOrderBizTypes[@(status)];
+    return @"";
+    //    NSString  *orderBizUnknow= NSLocalizedStringFromTable(@"IBLOrder.bizType.unknow", @"Main", "not found");
+    //
+    //    NSString  *orderBizRepair = NSLocalizedStringFromTable(@"IBLOrder.bizType.repair", @"Main", "not found");
+    //    NSString  *orderBizInstall = NSLocalizedStringFromTable(@"IBLOrder.bizType.install", @"Main", "not found");
+    //
+    //
+    //    NSString  *orderBizStop = NSLocalizedStringFromTable(@"IBLOrder.bizType.stop", @"Main", "not found");
+    //
+    //    NSString  *orderBizReturn = NSLocalizedStringFromTable(@"IBLOrder.bizType.return", @"Main", "not found");
+    //    NSString  *orderBizMove = NSLocalizedStringFromTable(@"IBLOrder.bizType.move", @"Main", "not found");
+    //
+    //    NSString  *orderBizHandleMalfunction = NSLocalizedStringFromTable(@"IBLOrder.bizType.handleMalfunction", @"Main", "not found");
+    //
+    //    NSString  *orderBizHandleComplaints = NSLocalizedStringFromTable(@"IBLOrder.bizType.handleComplaints", @"Main", "not found");
+    //    NSString  *orderBizHandleAdvisory = NSLocalizedStringFromTable(@"IBLOrder.bizType.handleAdvisory", @"Main", "not found");
+    //    NSString  *orderBizHandleReply = NSLocalizedStringFromTable(@"IBLOrder.bizType.handleReply", @"Main", "not found");
+    //    NSString  *orderBizElectrical = NSLocalizedStringFromTable(@"IBLOrder.bizType.electrical", @"Main", "not found");
+    //    NSString  *orderBizAddBox = NSLocalizedStringFromTable(@"IBLOrder.bizType.addBox", @"Main", "not found");
+    //    NSString  *orderBizChangeBox = NSLocalizedStringFromTable(@"IBLOrder.bizType.changeBox", @"Main", "not found");
+    //
+    //    NSString  *orderBizAddLock = NSLocalizedStringFromTable(@"IBLOrder.bizType.addLock", @"Main", "not found");
+    //    NSString  *orderBizFlyLine = NSLocalizedStringFromTable(@"IBLOrder.bizType.flyLine", @"Main", "not found");
+    //    NSString  *orderBizSplice = NSLocalizedStringFromTable(@"IBLOrder.bizType.splice", @"Main", "not found");
+    //
+    //    NSString  *orderBizThroughCable = NSLocalizedStringFromTable(@"IBLOrder.bizType.throughCable", @"Main", "not found");
+    //    NSString  *orderBizLightBarrier = NSLocalizedStringFromTable(@"IBLOrder.bizType.lightBarrier", @"Main", "not found");
+    //    NSString  *orderBizLineBarrier = NSLocalizedStringFromTable(@"IBLOrder.bizType.lineBarrier", @"Main", "not found");
+    //    NSString  *orderBizCableBreak = NSLocalizedStringFromTable(@"IBLOrder.bizType.cableBreak", @"Main", "not found");
+    //    NSString  *orderBizOther = NSLocalizedStringFromTable(@"IBLOrder.bizType.other", @"Main", "not found");
+//    NSDictionary *workOrderBizTypes = @{@(IBLWorkOrderBizStatusUnknow) : [NSString stringWithFormat:@"[ %@ ]",orderBizUnknow],
+//                                        @(IBLWorkOrderBizStatusRepair) : [NSString stringWithFormat:@"[ %@ ]",orderBizRepair],
+//                                        @(IBLWorkOrderBizStatusInstall) : [NSString stringWithFormat:@"[ %@ ]",orderBizInstall],
+//                                        @(IBLWorkOrderBizStatusStop) : [NSString stringWithFormat:@"[ %@ ]",orderBizStop],
+//                                        @(IBLWorkOrderBizStatusReturn) : [NSString stringWithFormat:@"[ %@ ]",orderBizReturn],
+//                                        @(IBLWorkOrderBizStatusMove) : [NSString stringWithFormat:@"[ %@ ]",orderBizMove],
+//                                        @(IBLWorkOrderBizStatusHandleMalfunction) : [NSString stringWithFormat:@"[ %@ ]",orderBizHandleMalfunction],
+//                                        @(IBLWorkOrderBizStatusHandleComplaints) : [NSString stringWithFormat:@"[ %@ ]",orderBizHandleComplaints],
+//                                        @(IBLWorkOrderBizStatusHandleAdvisory) : [NSString stringWithFormat:@"[ %@ ]",orderBizHandleAdvisory],
+//                                        @(IBLWorkOrderBizStatusHandleReply) : [NSString stringWithFormat:@"[ %@ ]",orderBizHandleReply],
+//                                        @(IBLWorkOrderBizStatusElectrical) : [NSString stringWithFormat:@"[ %@ ]",orderBizElectrical],
+//                                        @(IBLWorkOrderBizStatusAddBox) : [NSString stringWithFormat:@"[ %@ ]",orderBizAddBox],
+//                                        @(IBLWorkOrderBizStatusChangeBox) : [NSString stringWithFormat:@"[ %@ ]",orderBizChangeBox],
+//                                        @(IBLWorkOrderBizStatusAddLock) : [NSString stringWithFormat:@"[ %@ ]",orderBizAddLock],
+//                                        @(IBLWorkOrderBizStatusFlyLine) : [NSString stringWithFormat:@"[ %@ ]",orderBizFlyLine],
+//                                        @(IBLWorkOrderBizStatusSplice) : [NSString stringWithFormat:@"[ %@ ]",orderBizSplice],
+//                                        @(IBLWorkOrderBizStatusThroughCable) : [NSString stringWithFormat:@"[ %@ ]",orderBizThroughCable],
+//                                        @(IBLWorkOrderBizStatusLightBarrier) : [NSString stringWithFormat:@"[ %@ ]",orderBizLightBarrier],
+//                                        @(IBLWorkOrderBizStatusLineBarrier) : [NSString stringWithFormat:@"[ %@ ]",orderBizLineBarrier],
+//                                        @(IBLWorkOrderBizStatusCableBreak) : [NSString stringWithFormat:@"[ %@ ]",orderBizCableBreak],
+//                                        @(IBLWorkOrderBizStatusOther) : [NSString stringWithFormat:@"[ %@ ]",orderBizOther]};
+//
+//    return workOrderBizTypes[@(status)];
 }
 
 - (NSString *)workOrderTypAtIndexPath:(NSIndexPath *)indexPath {
@@ -392,7 +401,7 @@
 
     switch (self.type) {
         case IBLOrderTypeMine: {
-            titles = @[orderStatusUnsend,orderStatusHandling,orderStatusFinished,orderStatusInvalid];
+            titles = @[orderStatusSended,orderStatusHandling,orderStatusFinished,orderStatusInvalid];
             break;
         }
         case IBLOrderTypeManage: {

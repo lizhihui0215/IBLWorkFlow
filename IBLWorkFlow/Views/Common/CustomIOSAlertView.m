@@ -257,11 +257,16 @@ CGFloat buttonSpacerHeight = 0;
         [closeButton addTarget:self action:@selector(customIOS7dialogButtonTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         [closeButton setTag:i];
         
-        if ([[buttonTitles objectAtIndex:i] isEqualToString:@"确认"]) {
+        NSString *confirm = NSLocalizedStringFromTable(@"IBLBusinessAlertViewController.confirm.title", @"Main", "not found");
+        
+        NSString *cancel = NSLocalizedStringFromTable(@"IBLBusinessAlertViewController.cancel.title", @"Main", "not found");
+
+        
+        if ([[buttonTitles objectAtIndex:i] isEqualToString:confirm]) {
             [closeButton setBackgroundImage:[UIImage imageNamed:@"alertConfirm"] forState:UIControlStateNormal];
         }
         
-        if ([[buttonTitles objectAtIndex:i] isEqualToString:@"取消"]) {
+        if ([[buttonTitles objectAtIndex:i] isEqualToString:cancel]) {
             [closeButton setBackgroundImage:[UIImage imageNamed:@"alertCancel"] forState:UIControlStateNormal];
         }
 

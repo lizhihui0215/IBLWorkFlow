@@ -1361,6 +1361,9 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWm-84-DNm">
                                                     <rect key="frame" x="10" y="5" width="40" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="sf7-M4-TyP"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1723,9 +1726,13 @@
                     <navigationItem key="navigationItem" title="工单流信息" id="Lgg-pN-zcv"/>
                     <connections>
                         <outlet property="handleCommentLabel" destination="4cb-Xc-iYv" id="Qqe-tX-ctl"/>
+                        <outlet property="handleCommentTitleLabel" destination="HfN-Zi-ezb" id="r4g-Z6-9Rb"/>
                         <outlet property="handleDateLabel" destination="zfh-oe-wjm" id="dHe-aI-MwC"/>
+                        <outlet property="handleDateTitleLabel" destination="AZ4-qj-waw" id="tBa-VL-FlJ"/>
                         <outlet property="handleUserLabel" destination="8F5-eC-QDD" id="rWD-Ep-YAb"/>
+                        <outlet property="handleUserTitleLabel" destination="20f-7G-3WL" id="h1W-oP-ipt"/>
                         <outlet property="phoneLabel" destination="lI7-Yo-HCR" id="nU1-qt-VGN"/>
+                        <outlet property="phoneTitleLabel" destination="obT-L0-9zv" id="pBa-mu-5hY"/>
                         <outlet property="statusLabel" destination="SBb-Gs-iXf" id="sZy-0d-5m8"/>
                     </connections>
                 </tableViewController>
@@ -3812,23 +3819,42 @@
                     <navigationItem key="navigationItem" title="用户详情" id="q04-QA-Eba"/>
                     <connections>
                         <outlet property="accountTextField" destination="6dR-EJ-f9D" id="J9q-QH-AbY"/>
+                        <outlet property="accountTitleLabel" destination="E7k-zs-12h" id="Xmv-iv-Rws"/>
                         <outlet property="addressTextField" destination="N9v-u8-Lev" id="A52-1Y-stk"/>
+                        <outlet property="addressTitleLabel" destination="W8T-J6-fz8" id="ofC-GD-rhp"/>
                         <outlet property="backupLabel" destination="We2-eb-hRQ" id="Cbx-hI-Qk1"/>
+                        <outlet property="backupTitleLabel" destination="f2o-R4-BQR" id="Ofu-0q-whW"/>
+                        <outlet property="certNumTitleLabel" destination="72S-SD-YWy" id="uQG-U0-tI8"/>
                         <outlet property="certTextField" destination="7Ku-0V-QQO" id="bsh-oM-Zpi"/>
+                        <outlet property="certTitleLabel" destination="Kdi-MR-0CI" id="uPx-Ik-dQm"/>
+                        <outlet property="comAddressTitleLabel" destination="jnL-bt-hzO" id="yuh-HN-UNB"/>
+                        <outlet property="comContactTitleLabel" destination="5dB-3N-sBf" id="TNN-9Z-wb7"/>
+                        <outlet property="comNameTitleLabel" destination="YCP-1i-RLU" id="eT5-ro-ZIR"/>
+                        <outlet property="comPhoneTitleLabel" destination="QbZ-Ja-R3W" id="cfc-tf-4Qx"/>
+                        <outlet property="comSimpNameTitleLabel" destination="oSF-Vl-Pwl" id="jEw-xM-FYj"/>
                         <outlet property="companyAddressTextField" destination="5ij-lV-KWS" id="XCj-wA-n1Q"/>
                         <outlet property="companyContactPhoneTextField" destination="cbY-SA-173" id="gJ3-Gy-oeK"/>
                         <outlet property="companyContactTextField" destination="BMM-v8-Q39" id="LJP-Qc-qb7"/>
                         <outlet property="companyNameTextField" destination="IMX-dC-nb3" id="xs7-7w-7wP"/>
                         <outlet property="companySampleNameTextField" destination="AWB-s2-2FN" id="jIC-ve-hfk"/>
+                        <outlet property="effDateTitleLabel" destination="Gmn-c1-XGM" id="t42-Pc-uqf"/>
                         <outlet property="effectDateTextField" destination="Vkb-7j-HFL" id="aVW-Go-YbU"/>
                         <outlet property="expiryDateTextField" destination="bp9-5a-Wcb" id="1be-a9-SPf"/>
+                        <outlet property="expiryDateTitleLabel" destination="HaZ-2A-gvm" id="GuV-YZ-DoX"/>
                         <outlet property="identifierTextField" destination="ww8-qH-bOF" id="olo-P4-dN8"/>
                         <outlet property="passwordTextField" destination="btu-Pk-Tyk" id="tbT-hP-1mX"/>
+                        <outlet property="passwordTitleLabel" destination="4Gk-Ud-IwP" id="y6U-Wx-HPj"/>
                         <outlet property="phoneTextField" destination="PpI-Ki-cTA" id="CgE-Dy-w0g"/>
+                        <outlet property="phoneTitleLabel" destination="Wyn-Fm-CVY" id="xPB-tK-wEJ"/>
                         <outlet property="productTextField" destination="bkJ-iF-qJC" id="6sN-G9-lsx"/>
+                        <outlet property="productTitleLabel" destination="G5U-yi-Q5d" id="7G3-up-6Bj"/>
                         <outlet property="regionTextField" destination="JcZ-Xp-W2N" id="Pzm-36-mgc"/>
+                        <outlet property="regionTitleLabel" destination="fCF-ls-sqx" id="Wvp-3K-XO6"/>
+                        <outlet property="userNameTitleLabel" destination="yxL-kj-1u7" id="AMX-qa-hgt"/>
                         <outlet property="userStateTextField" destination="rBs-cV-lyP" id="BAW-YJ-5Y6"/>
+                        <outlet property="userStatusTitleLabel" destination="Ndj-51-pCQ" id="qaP-mF-SgX"/>
                         <outlet property="userTypeTextField" destination="H1V-GI-OUD" id="KFX-Kw-ELo"/>
+                        <outlet property="userTypeTitleLabel" destination="E4T-dP-Rys" id="naQ-j8-zDy"/>
                         <outlet property="usernameTextField" destination="vgX-2p-dJ3" id="MXD-Kd-J1o"/>
                     </connections>
                 </tableViewController>

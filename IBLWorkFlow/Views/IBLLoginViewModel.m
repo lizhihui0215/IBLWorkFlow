@@ -34,6 +34,10 @@
                  password:(NSString *)password
           completeHandler:(PCCWViewModelCompleteHandler)handler {
 
+    NSError *error = [self.fetchUser validateWithUsername:username password:password];
+    
+    if (error) { handler(error); return; }
+    
     if ([NSString isNull:self.LAN] && [NSString isNull:self.WLAN]){
         NSString  *lanOrWLANNotNull = NSLocalizedStringFromTable(@"IBLLoginViewModel.LANWOrLANNotNull", @"Main", "not found");
         handler(errorWithCode(0, lanOrWLANNotNull));

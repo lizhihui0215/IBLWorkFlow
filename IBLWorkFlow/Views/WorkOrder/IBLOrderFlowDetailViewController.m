@@ -15,6 +15,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *handleDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *handleCommentLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *handleUserTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *handleCommentTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *handleDateTitleLabel;
+
+
 @end
 
 @implementation IBLOrderFlowDetailViewController
@@ -32,6 +38,15 @@
     [self.tableView reloadData];
 }
 
+- (void)languageDidChanged:(NSNotification *)notification {
+    self.handleUserTitleLabel.text = NSLocalizedStringFromTable(@"IBLOrderFlowDetailViewController.handleUserTitleLabel.text", @"Main", "not found");
+    self.phoneTitleLabel.text = NSLocalizedStringFromTable(@"IBLOrderFlowDetailViewController.phoneTitleLabel.text", @"Main", "not found");
+    self.handleCommentTitleLabel.text = NSLocalizedStringFromTable(@"IBLOrderFlowDetailViewController.handleCommentTitleLabel.text", @"Main", "not found");
+    self.handleDateTitleLabel.text = NSLocalizedStringFromTable(@"IBLOrderFlowDetailViewController.handleDateTitleLabel.text", @"Main", "not found");
+    self.title = NSLocalizedStringFromTable(@"IBLOrderFlowDetailViewController.title", @"Main", "not found");
+
+}
+
 - (NSString *)orderStatusNameWithStatus:(IBLOrderStatus)status{
     NSString *orderStatusUnsend = NSLocalizedStringFromTable(@"IBLOrderStatus.unsend", @"Main", "not found");
     NSString *orderStatusSended = NSLocalizedStringFromTable(@"IBLOrderStatus.sended", @"Main", "not found");
@@ -39,7 +54,7 @@
     NSString *orderStatusInvalid = NSLocalizedStringFromTable(@"IBLOrderStatus.invalid", @"Main", "not found");
     NSString *orderStatusFinished = NSLocalizedStringFromTable(@"IBLOrderStatus.finished", @"Main", "not found");
     NSString *orderStatusFeedback = NSLocalizedStringFromTable(@"IBLOrderStatus.feedback", @"Main", "not found");
-
+    
     NSDictionary *workOrderStatus = @{@(IBLOrderStatusUnsend) : [NSString stringWithFormat:@"[%@]",orderStatusUnsend],
                                       @(IBLOrderStatusSended) : [NSString stringWithFormat:@"[%@]",orderStatusSended],
 //                                      @(IBLOrderStatusForwarding) : @"[转发中]",
@@ -47,6 +62,7 @@
                                       @(IBLOrderStatusInvalid) : [NSString stringWithFormat:@"[%@]",orderStatusInvalid],
                                       @(IBLOrderStatusFinished) : [NSString stringWithFormat:@"[%@]",orderStatusFinished],
                                       @(IBLOrderStatusFeedback) : [NSString stringWithFormat:@"[%@]",orderStatusFeedback]};
+    
     return workOrderStatus[@(status)];
 }
 

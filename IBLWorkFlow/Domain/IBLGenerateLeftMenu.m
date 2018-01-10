@@ -66,11 +66,11 @@ static NSString const * kOnlinPay = @"USE_ONLINE_PAY";
                                               index:IBLLeftMenuItemActionInternet];
     [menus addObject:menu7];
 
-    IBLLeftMenu *about = [IBLLeftMenu menuWithTitle:@"关于我们"
-                                               icon:[UIImage imageNamed:@"about1"]
-                                        parentIndex:NSNotFound
-                                              index:IBLLeftMenuSectionActionAbout];
-    [menus addObject:about];
+//    IBLLeftMenu *about = [IBLLeftMenu menuWithTitle:@"关于我们"
+//                                               icon:[UIImage imageNamed:@"about1"]
+//                                        parentIndex:NSNotFound
+//                                              index:IBLLeftMenuSectionActionAbout];
+//    [menus addObject:about];
     
     return menus;
 }

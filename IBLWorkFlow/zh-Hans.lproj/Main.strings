@@ -1,6 +1,5 @@
 
 /* Class = "UITextField"; placeholder = "指定日期"; ObjectID = "06C-Hy-3zM"; */
-"CFBundleDisplayName" = "运营助手";
 "IBLLoginViewController.APPNameLabel.title" = "运营助手";
 "IBLLoginViewController.loginButton.title" = "登录";
 "IBLGenerateLeftMenu.menuMaps.myOrderTitle" = "我的工单";
@@ -38,33 +37,6 @@
 "IBLOrderLevel.high" = "紧急";
 "IBLOrderLevel.normal" = "一般";
 "IBLOrderLevel.low"= "不紧急";
-"IBLOrder.bizType.unknow" = "未知";
-"IBLOrder.bizType.repair" = "报修";
-"IBLOrder.bizType.install" = "报装";
-"IBLOrder.bizType.stop" = "停复机";
-"IBLOrder.bizType.return" = "退网";
-"IBLOrder.bizType.move" = "移网";
-"IBLOrder.bizType.handleMalfunction" = "故障处理";
-"IBLOrder.bizType.handleComplaints" = "投诉处理";
-"IBLOrder.bizType.handleAdvisory" = "咨询处理";
-"IBLOrder.bizType.handleReply" = "回访处理";
-"IBLOrder.bizType.electrical" = "接电";
-"IBLOrder.bizType.addBox" = "加箱";
-"IBLOrder.bizType.changeBox" = "改箱";
-"IBLOrder.bizType.addLock" = "加锁";
-"IBLOrder.bizType.flyLine" = "飞线";
-"IBLOrder.bizType.splice" = "熔纤";
-"IBLOrder.bizType.throughCable" = "穿光缆";
-"IBLOrder.bizType.lightBarrier" = "光不通";
-"IBLOrder.bizType.lineBarrier" = "线不通穿线";
-"IBLOrder.bizType.cableBreak" = "光缆断";
-"IBLOrder.bizType.other" = "其他";
-"IBLOrder.type.project" = "工程";
-"IBLOrder.type.malfunction" = "故障";
-"IBLOrder.type.complainn" = "投诉";
-"IBLOrder.type.advisory" = "咨询";
-"IBLOrder.type.reply" = "回访";
-"IBLOrder.type.repair" = "抢修";
 "IBLOrderDetailTableViewController.nameTitleLabel.text" = "用户姓名:";
 "IBLOrderDetailTableViewController.phoneTitleLabel.text" = "联系电话:";
 "IBLOrderDetailTableViewController.comTitle.text" = "企业名称:";
@@ -129,7 +101,38 @@
 "HdcDateTimePickerView.hr" = "时";
 "HdcDateTimePickerView.min" = "分";
 "HdcDateTimePickerView.sec" = "秒";
+"HcdDateTimePickerView.toolBar.comfirm.title" = "确定";
+"HcdDateTimePickerView.toolBar.comfirm.cancel" = "取消";
+"IBLSubmit.success" = "提交成功！";
+"IBLNetworkServices.checkingNetworking" = "检查网络中，请稍后再试...";
 
+"IBLUserDetailTableViewController.accountTitleLabel.title" = "用户账号";
+"IBLUserDetailTableViewController.passwordTitleLabel.title" = "用户密码";
+"IBLUserDetailTableViewController.userStatusTitleLabel.title" = "用户状态";
+"IBLUserDetailTableViewController.userTypeTitleLabel.title" = "用户类型";
+"IBLUserDetailTableViewController.regionTitleLabel.title" = "所属区域";
+"IBLUserDetailTableViewController.certTitleLabel.title" = "证件类型";
+"IBLUserDetailTableViewController.certNumTitleLabel.title" = "证件号码";
+"IBLUserDetailTableViewController.userNameTitleLabel.title" = "用户姓名";
+"IBLUserDetailTableViewController.phoneTitleLabel.title" = "联系电话";
+"IBLUserDetailTableViewController.addressTitleLabel.title" = "联系地址";
+"IBLUserDetailTableViewController.comNameTitleLabel.title" = "企业名称";
+"IBLUserDetailTableViewController.comSimpNameTitleLabel.title" = "企业简介";
+"IBLUserDetailTableViewController.comContactTitleLabel.title" = "企业联系人";
+"IBLUserDetailTableViewController.comPhoneTitleLabel.title" = "联系人电话";
+"IBLUserDetailTableViewController.comAddressTitleLabel.title" = "企业地址";
+"IBLUserDetailTableViewController.productTitleLabel.title" = "订购套餐";
+"IBLUserDetailTableViewController.effDateTitleLabel.title" = "生效日期";
+"IBLUserDetailTableViewController.expiryDateTitleLabel.title" = "失效日期";
+"IBLUserDetailTableViewController.backupTitleLabel.title" = "备注";
+
+"IBLUserDetailTableViewController.title" = "用户详情";
+"IBLOrderFlowViewController.title" = "工单流";
+"IBLOrderFlowDetailViewController.handleUserTitleLabel.text" = "处理人员";
+"IBLOrderFlowDetailViewController.phoneTitleLabel.text" = "联系电话";
+"IBLOrderFlowDetailViewController.handleCommentTitleLabel.text" = "处理说明";
+"IBLOrderFlowDetailViewController.handleDateTitleLabel.text" = "处理时间";
+"IBLOrderFlowDetailViewController.title" = "工单流信息";
 
 
 

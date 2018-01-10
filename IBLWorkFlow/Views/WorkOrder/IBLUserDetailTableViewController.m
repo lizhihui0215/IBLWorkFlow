@@ -31,6 +31,27 @@
 @property (weak, nonatomic) IBOutlet UITextField *identifierTextField;
 @property (weak, nonatomic) IBOutlet UITextField *companySampleNameTextField;
 
+@property (weak, nonatomic) IBOutlet UILabel *accountTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *passwordTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userStatusTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userTypeTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *regionTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *certTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *certNumTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userNameTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *comNameTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *comSimpNameTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *comContactTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *comPhoneTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *comAddressTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *productTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *effDateTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *expiryDateTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *backupTitleLabel;
+
+
 @property (nonatomic, strong) IBLFetchOrderRelatedUser *fetchOrderRelatedUser;
 
 @property (nonatomic, strong) IBLOrderRelateUser *orderRelateUser;
@@ -84,6 +105,30 @@
     
     [self.tableView reloadData];
     
+}
+
+- (void)languageDidChanged:(NSNotification *)notification {
+    
+    self.accountTitleLabel.text = NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.accountTitleLabel.title", @"Main", "not found");
+    self.passwordTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.passwordTitleLabel.title", @"Main", "not found");
+    self.userStatusTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.userStatusTitleLabel.title", @"Main", "not found");
+    self.userTypeTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.userTypeTitleLabel.title", @"Main", "not found");
+    self.regionTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.regionTitleLabel.title", @"Main", "not found");
+    self.certTitleLabel.text =    NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.certTitleLabel.title", @"Main", "not found");
+    self.certNumTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.certNumTitleLabel.title", @"Main", "not found");
+    self.userNameTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.userNameTitleLabel.title", @"Main", "not found");
+    self.phoneTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.phoneTitleLabel.title", @"Main", "not found");
+    self.addressTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.addressTitleLabel.title", @"Main", "not found");
+    self.comNameTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.comNameTitleLabel.title", @"Main", "not found");
+    self.comSimpNameTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.comSimpNameTitleLabel.title", @"Main", "not found");
+    self.comContactTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.comContactTitleLabel.title", @"Main", "not found");
+    self.comPhoneTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.comPhoneTitleLabel.title", @"Main", "not found");
+    self.comAddressTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.comAddressTitleLabel.title", @"Main", "not found");
+    self.productTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.productTitleLabel.title", @"Main", "not found");
+    self.effDateTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.effDateTitleLabel.title", @"Main", "not found");
+    self.expiryDateTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.expiryDateTitleLabel.title", @"Main", "not found");
+    self.backupTitleLabel.text =     NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.backupTitleLabel.title", @"Main", "not found");
+    self.title = NSLocalizedStringFromTable(@"IBLUserDetailTableViewController.title", @"Main", "not found");
 }
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
