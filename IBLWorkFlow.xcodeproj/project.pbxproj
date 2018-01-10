@@ -465,6 +465,9 @@
 		26ED4BD4200662DC005396A3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/alertConfirm@2x.png"; sourceTree = "<group>"; };
 		26ED4BD7200662ED005396A3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/alertConfirm@3x.png"; sourceTree = "<group>"; };
 		26ED4BD920066318005396A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/alertCancel@2x.png"; sourceTree = "<group>"; };
+		26ED4BDA20066586005396A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/alertCancel@3x.png"; sourceTree = "<group>"; };
+		26ED4BDB200665A0005396A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/alertConfirm@2x.png"; sourceTree = "<group>"; };
+		26ED4BDC200665B4005396A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/alertConfirm@3x.png"; sourceTree = "<group>"; };
 		26F620191D2FB6B500B49065 /* Operator.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Operator.xml; sourceTree = "<group>"; };
 		26FCA08C1D5C3297004B8E2C /* IBLQRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLQRViewController.h; sourceTree = "<group>"; };
 		26FCA08D1D5C3297004B8E2C /* IBLQRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLQRViewController.m; sourceTree = "<group>"; };
@@ -1768,6 +1771,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				26ED4BD1200662C4005396A3 /* zh-Hans */,
+				26ED4BDA20066586005396A3 /* en */,
 			);
 			name = "alertCancel@3x.png";
 			sourceTree = "<group>";
@@ -1776,6 +1780,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				26ED4BD4200662DC005396A3 /* zh-Hans */,
+				26ED4BDB200665A0005396A3 /* en */,
 			);
 			name = "alertConfirm@2x.png";
 			sourceTree = "<group>";
@@ -1784,6 +1789,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				26ED4BD7200662ED005396A3 /* zh-Hans */,
+				26ED4BDC200665B4005396A3 /* en */,
 			);
 			name = "alertConfirm@3x.png";
 			sourceTree = "<group>";
