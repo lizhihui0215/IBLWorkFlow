@@ -139,7 +139,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 156;
+    return 170;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
