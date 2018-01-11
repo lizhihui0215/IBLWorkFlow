@@ -73,11 +73,12 @@
     NSString *orderStatusInvalid = NSLocalizedStringFromTable(@"IBLOrderStatus.invalid", @"Main", "not found");
     NSString *orderStatusFinished = NSLocalizedStringFromTable(@"IBLOrderStatus.finished", @"Main", "not found");
     NSString *orderStatusFeedback = NSLocalizedStringFromTable(@"IBLOrderStatus.feedback", @"Main", "not found");
+    NSString *orderStatusForward = NSLocalizedStringFromTable(@"IBLOrderStatus.forward", @"Main", "not found");
 
     
     NSDictionary *workOrderStatus = @{@(IBLOrderStatusUnsend) : [NSString stringWithFormat:@"[%@]",orderStatusUnsend],
                                       @(IBLOrderStatusSended) : [NSString stringWithFormat:@"[%@]",orderStatusSended],
-//                                      @(IBLOrderStatusForwarding) : @"[转发中]",
+                                      @(IBLOrderStatusForwarding) : [NSString stringWithFormat:@"[%@]",orderStatusForward],
                                       @(IBLOrderStatusHandling) : [NSString stringWithFormat:@"[%@]",orderStatusHandling],
                                       @(IBLOrderStatusInvalid) : [NSString stringWithFormat:@"[%@]",orderStatusInvalid],
                                       @(IBLOrderStatusFinished) : [NSString stringWithFormat:@"[%@]",orderStatusFinished],

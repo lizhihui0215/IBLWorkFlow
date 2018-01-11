@@ -44,7 +44,7 @@
 "IBLOrderViewController.modal.placeholder.send" = "Note";
 "IBLOrderViewController.controller.title.forward" = "Forward";
 "IBLOrderViewController.controller.title.send" = "派发";
-"IBLOrderViewController.alert.mustInputContent.title" = "请输入内容";
+"IBLOrderViewController.alert.mustInputContent.title" = "please input";
 "IBLOrderViewModel.action.title.delete" = "Are you sure delete this workflow?";
 "IBLOrderViewModel.action.title.trash" = "Are you sure trash this workflow?";
 "IBLOrderViewModel.action.title.finish" = "Are you sure finish this workflow?";
@@ -60,7 +60,7 @@
 "IBLOrderDetailTableViewController.comTitle.text" = "企业名称:";
 "IBLOrderDetailTableViewController.comPhone.text" = "联系电话:";
 "IBLOrderDetailTableViewController.relateUserTitleLabel.text" = "Account";
-"IBLOrderDetailTableViewController.adviceUserTitleLabel.text" = "咨询姓名";
+"IBLOrderDetailTableViewController.adviceUserTitleLabel.text" = "Name";
 "IBLOrderDetailTableViewController.usernameTitleLabel.text" = "Name";
 "IBLOrderDetailTableViewController.addressTitleLabel.text" = "Address";
 "IBLOrderDetailTableViewController.regionTitleLabel.text" = "Area";
@@ -104,8 +104,8 @@
 
 "HcdDateTimePickerView.toolBar.comfirm.title" = "OK";
 "HcdDateTimePickerView.toolBar.comfirm.cancel" = "Cancel";
-"IBLSubmit.success" = "提交成功！";
-"IBLNetworkServices.checkingNetworking" = "检查网络中，请稍后再试...";
+"IBLSubmit.success" = "Operation Done！";
+"IBLNetworkServices.checkingNetworking" = "Please try again later...";
 "IBLUserDetailTableViewController.accountTitleLabel.title" = "Accout";
 "IBLUserDetailTableViewController.passwordTitleLabel.title" = "Password";
 "IBLUserDetailTableViewController.userStatusTitleLabel.title" = "State";
@@ -125,7 +125,6 @@
 "IBLUserDetailTableViewController.effDateTitleLabel.title" = "Activation Date";
 "IBLUserDetailTableViewController.expiryDateTitleLabel.title" = "Expiration Date";
 "IBLUserDetailTableViewController.backupTitleLabel.title" = "Remark";
-
 "IBLUserDetailTableViewController.title" = "Customer Information";
 "IBLOrderFlowViewController.title" = "Workflow";
 "IBLOrderFlowDetailViewController.handleUserTitleLabel.text" = "Handle Staff";
@@ -133,11 +132,10 @@
 "IBLOrderFlowDetailViewController.handleCommentTitleLabel.text" = "Note";
 "IBLOrderFlowDetailViewController.handleDateTitleLabel.text" = "Handle Time";
 "IBLOrderFlowDetailViewController.title" = "Workflow Detail";
-
-
-
-
 "IBLOrderDetailTableViewController.title" = "Workflow Detail";
+"IBLUserType.normal" = "一般用户";
+"IBLUserType.company" = "企业用户";
+
 
 
 

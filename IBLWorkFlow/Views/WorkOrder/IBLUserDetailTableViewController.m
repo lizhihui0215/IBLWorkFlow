@@ -134,38 +134,38 @@
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:0 inSection:3];
+   
     
-    if ([IBLAppRepository appConfiguration].showCustType == 0) {
-        return [userTypeIndexPath isEqual:indexPath];
-    }
+    NSMutableArray *hiddenIndexPaths = [NSMutableArray array];
     
     if (self.orderRelateUser.custType == 0) {
         NSIndexPath *companyNameIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
         NSIndexPath *companySampleNameIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
-
         NSIndexPath *companyContactIndexPath = [NSIndexPath indexPathForRow:12 inSection:0];
         NSIndexPath *companyContactPhoneIndexPath = [NSIndexPath indexPathForRow:13 inSection:0];
         NSIndexPath *companyAddressIndexPath = [NSIndexPath indexPathForRow:14 inSection:0];
-        return [@[companyNameIndexPath,
-                  companySampleNameIndexPath,
-                  companyContactIndexPath,
-                  companyContactPhoneIndexPath,
-                  companyAddressIndexPath] containsObject:indexPath];
-
+        [hiddenIndexPaths addObject:companyNameIndexPath];
+        [hiddenIndexPaths addObject:companySampleNameIndexPath];
+        [hiddenIndexPaths addObject:companyContactIndexPath];
+        [hiddenIndexPaths addObject:companyContactPhoneIndexPath];
+        [hiddenIndexPaths addObject:companyAddressIndexPath];
     }else {
         NSIndexPath *usernameIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
         NSIndexPath *userPhoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:0];
         NSIndexPath *userAddressIndexPath = [NSIndexPath indexPathForRow:9 inSection:0];
-        
-        return [@[usernameIndexPath,
-                 userPhoneIndexPath,
-                  userAddressIndexPath] containsObject:indexPath];
-
+        [hiddenIndexPaths addObject:usernameIndexPath];
+        [hiddenIndexPaths addObject:userPhoneIndexPath];
+        [hiddenIndexPaths addObject:userAddressIndexPath];
     }
     
     
-
+    if ([IBLAppRepository appConfiguration].showCustType == 0) {
+        NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:3 inSection:0];
+        [hiddenIndexPaths addObject:userTypeIndexPath];
+    }
+    
+    
+    return [hiddenIndexPaths containsObject:indexPath];
 }
 
 - (void)viewDidLoad {
