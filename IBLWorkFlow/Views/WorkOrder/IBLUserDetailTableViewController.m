@@ -8,6 +8,7 @@
 
 #import "IBLUserDetailTableViewController.h"
 #import "IBLFetchOrderRelatedUser.h"
+#import "IBLAppRepository.h"
 
 @interface IBLUserDetailTableViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
@@ -89,9 +90,9 @@
     self.identifierTextField.text = self.orderRelateUser.idNo;
     self.companySampleNameTextField.text = self.orderRelateUser.simpleComName;
     
-    NSString *custName = @"一般用户";
+    NSString *custName = NSLocalizedStringFromTable(@"IBLUserType.normal", @"Main", "not found");;
     
-    if (self.orderRelateUser.custType == 1) custName = @"企业用户";
+    if (self.orderRelateUser.custType == 1) custName = NSLocalizedStringFromTable(@"IBLUserType.company", @"Main", "not found");;
     
     self.userTypeTextField.text = custName;
     
@@ -132,6 +133,13 @@
 }
 
 - (BOOL)isHiddenAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:0 inSection:3];
+    
+    if ([IBLAppRepository appConfiguration].showCustType == 0) {
+        return [userTypeIndexPath isEqual:indexPath];
+    }
+    
     if (self.orderRelateUser.custType == 0) {
         NSIndexPath *companyNameIndexPath = [NSIndexPath indexPathForRow:10 inSection:0];
         NSIndexPath *companySampleNameIndexPath = [NSIndexPath indexPathForRow:11 inSection:0];
@@ -155,6 +163,8 @@
                   userAddressIndexPath] containsObject:indexPath];
 
     }
+    
+    
 
 }
 

@@ -12,7 +12,7 @@
 
 static NSString const * kMineOrderHandle = @"HANDLE";
 
-static NSString const * kMineOrderForward = @"TRAN";
+static NSString const * kMineOrderForward = @"TRAN_MY_ORDER";
 
 static NSString const * kManagedOrderSend = @"ISUUE";
 
@@ -112,13 +112,16 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
              kManagedOrderDelete : @(IBLOrderActionDelete)};
 }
 
-- (NSArray<NSNumber *> *)mineOrderActionsWithStatus:(IBLOrderStatus)status
-                                            bizType:(IBLWorkOrderBizStatus)bizType {
+- (NSArray<NSNumber *> *)mineOrderActionsWithStatus:(IBLOrderStatus)status bizType:(IBLWorkOrderBizStatus)bizType handleUser:(NSInteger)handleUser {
     
     IBLUser *user = [IBLUserRepository user];
     
     NSMutableArray<NSNumber *> *actions = [NSMutableArray array];
-    
+    if ([user.identifier integerValue] == handleUser) {
+         [actions addObject:[self mineOrderHandleForwardUnHandleMaps][kMineOrderView]] ;
+        return actions;
+    }
+
     for (IBLPremission *premission in user.permissions) {
         switch (status) {
             case IBLOrderStatusSended:

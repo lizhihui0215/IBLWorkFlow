@@ -21,16 +21,19 @@
 
 - (void)setUsername:(NSString *)username;
 
-
 - (void)setUserAccount:(NSString *)userAccount;
+
+- (void)setStartDate:(NSString *)startDate;
+
+- (NSString *)startDate;
+
+- (NSString *)endDate;
+
+- (void)setEndDate:(NSString *)endDate;
 
 - (void)setWorkOrderBizType:(IBLWorkOrderBussinessType *)businessType;
 
 - (void)setWorkOrderType:(IBLWorkOrderType *)workOrderType;
-
-- (void)setStartDate:(NSString *)startDate;
-
-- (void)setEndDate:(NSString *)endDate;
 
 - (void)setUserPhone:(NSString *)userPhone;
 
@@ -47,10 +50,6 @@
 - (NSString *)workOrderType;
 
 - (NSString *)workOrderBizType;
-
-- (NSString *)startDate;
-
-- (NSString *)endDate;
 
 - (void)setEnterpriseName:(NSString *)string;
 

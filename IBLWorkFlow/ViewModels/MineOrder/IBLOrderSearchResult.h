@@ -19,6 +19,10 @@
 
 @property (nonatomic, strong) IBLWorkOrderBussinessType *bizType;
 
+@property (nonatomic, copy) NSString *startDate;
+
+@property (nonatomic, copy) NSString *endDate;
+
 @property (nonatomic, copy) NSString *dateRange;
 
 @property (nonatomic, assign) NSInteger custType;

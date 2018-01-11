@@ -22,7 +22,7 @@ typedef void (^OnButtonTouchUpInside)(IBLBusinessAlertViewController *alertView,
                    placeholder:(NSString *)placeholder
                          image:(UIImage *)image;
 
-- (void)show;
+- (void)showInViewController:(UIViewController *)viewController;
 
 - (void)close;
 

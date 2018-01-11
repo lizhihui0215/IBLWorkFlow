@@ -9,6 +9,7 @@
 "IBLLoginViewModel.LANWOrLANNotNull" = "Please input the LAN address or WAN address！";
 "IBLOrderStatus.unsend" = "Not Send";
 "IBLOrderStatus.sended" = "Not Process";
+"IBLOrderStatus.forward" = "Processing";
 "IBLOrderStatus.handling" = "Processing";
 "IBLOrderStatus.invalid"= "Disabled";
 "IBLOrderStatus.finished" = "Finished";
@@ -61,12 +62,12 @@
 "IBLOrderDetailTableViewController.relateUserTitleLabel.text" = "Account";
 "IBLOrderDetailTableViewController.adviceUserTitleLabel.text" = "咨询姓名";
 "IBLOrderDetailTableViewController.usernameTitleLabel.text" = "Name";
-"IBLOrderDetailTableViewController.addressTitleLabel.text" = "Phone";
+"IBLOrderDetailTableViewController.addressTitleLabel.text" = "Address";
 "IBLOrderDetailTableViewController.regionTitleLabel.text" = "Area";
 "IBLOrderDetailTableViewController.bizTypeTitleLabel.text" = "Business Type";
-"IBLOrderDetailTableViewController.serviceTypeTitleLabel.text" = "服务类型";
-"IBLOrderDetailTableViewController.tvTypeTitleLabel.text" = "电视类型";
-"IBLOrderDetailTableViewController.ffthTitleLabel.text" = "光纤入户";
+"IBLOrderDetailTableViewController.serviceTypeTitleLabel.text" = "Service Type";
+"IBLOrderDetailTableViewController.tvTypeTitleLabel.text" = "TV Type";
+"IBLOrderDetailTableViewController.ffthTitleLabel.text" = "FTTH";
 "IBLOrderDetailTableViewController.troubleTypeTitleLabel.text" = "Trouble Type";
 "IBLOrderDetailTableViewController.orderStatusTitleLabel.text" = "Status";
 "IBLOrderDetailTableViewController.proirtyTitleLabel.text" = "Priority";
@@ -136,6 +137,7 @@
 
 
 
+"IBLOrderDetailTableViewController.title" = "Workflow Detail";
 
 
 

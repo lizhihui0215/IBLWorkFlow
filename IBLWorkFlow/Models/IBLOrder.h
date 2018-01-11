@@ -216,5 +216,6 @@ typedef NS_ENUM(NSInteger, IBLOrderAction) {
 @property (nonatomic, copy) NSString *curOperName;
 @property (nonatomic, copy) NSString *curOperPhone;
 @property(nonatomic) NSInteger certType;
+@property (nonatomic) NSInteger curOperId;
 
 @end

@@ -25,8 +25,7 @@
  *
  *  @return 按钮操作
  */
-- (NSArray<NSNumber *> *)mineOrderActionsWithStatus:(IBLOrderStatus)status
-                                            bizType:(IBLWorkOrderBizStatus)bizType;
+- (NSArray<NSNumber *> *)mineOrderActionsWithStatus:(IBLOrderStatus)status bizType:(IBLWorkOrderBizStatus)bizType handleUser:(NSInteger)handleUser;
 
 /**
  *  获取工单管理按钮操作

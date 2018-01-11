@@ -147,6 +147,15 @@
 }
 
 - (void)orderSearchTableviewDidEndSearch:(IBLOrderSearchTableViewController *)controller {
+    NSString *dataRange = self.viewModel.searchResult.startDate == nil ? @"" : self.viewModel.searchResult.startDate;
+    
+    NSString *endDate = self.viewModel.searchResult.endDate == nil ? @"" : self.viewModel.searchResult.endDate;
+    if (![NSString isNull:endDate]) {
+        dataRange = [dataRange stringByAppendingFormat:@"-%@",endDate];
+    }
+    
+    self.viewModel.searchResult.dateRange = dataRange;
+    
     [self.delegate orderSearchViewController:self didSearchResult:self.viewModel.searchResult];
 }
 

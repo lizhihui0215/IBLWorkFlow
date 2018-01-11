@@ -258,7 +258,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
                 alertView = nil;
             };
             
-            [alertView show];
+            [alertView showInViewController:self.navigationController];
             break;
         }
         case IBLOrderActionView:
@@ -408,7 +408,7 @@ static NSString *const NavigationToOrderSearchIdentifier = @"NavigationToOrderSe
         }
         [alert close];
     };
-    [alertView show];
+    [alertView showInViewController:self.navigationController];
 }
 
 @end

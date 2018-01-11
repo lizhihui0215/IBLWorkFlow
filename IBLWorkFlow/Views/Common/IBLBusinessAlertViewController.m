@@ -109,8 +109,8 @@
     [super updateViewConstraints];
 }
 
-- (void)show{
-    [self.alertView show];
+- (void)showInViewController:(UIViewController *)viewController{
+    [self.alertView showInController:viewController];
 }
 
 - (void)didReceiveMemoryWarning {

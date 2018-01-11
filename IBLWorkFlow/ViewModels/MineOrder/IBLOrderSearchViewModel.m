@@ -61,28 +61,6 @@
     self.searchResult.type = workOrderType;
 }
 
-- (void)setStartDate:(NSString *)startDate {
-    NSMutableArray *components = [[self.searchResult.dateRange componentsSeparatedByString:@"-"] mutableCopy];
-    
-    if (![NSString isNull:[components lastObject]]) {
-        components[0] = startDate;
-        self.searchResult.dateRange = [components componentsJoinedByString:@"-"];
-    }else{
-        self.searchResult.dateRange = [NSString stringWithFormat:@"%@-",startDate];
-    }
-}
-
-- (void)setEndDate:(NSString *)endDate {
-    NSMutableArray *components = [[self.searchResult.dateRange componentsSeparatedByString:@"-"] mutableCopy];
-    
-    if (![NSString isNull:[components lastObject]]) {
-        components[1] = endDate;
-        self.searchResult.dateRange = [components componentsJoinedByString:@"-"];
-    }else{
-        self.searchResult.dateRange = [NSString stringWithFormat:@"-%@",endDate];
-    }
-}
-
 - (void)setUserPhone:(NSString *)userPhone {
     self.searchResult.phone = userPhone;
 }
@@ -90,13 +68,28 @@
     return [self.generateAppConfiguration allWorkOrderBizTypes];
 }
 
-
 - (NSArray<IBLWorkOrderBussinessType *> *)workOrderBizTypesStatus:(IBLWorkOrderStatus)status {
     return [self.generateAppConfiguration workOrderBizTypesWithStatus:status];
 }
 
 - (NSArray<IBLWorkOrderType *> *)workOrderTypes {
     return [self.generateAppConfiguration workOrderTypes];
+}
+
+- (void)setStartDate:(NSString *)startDate {
+    self.searchResult.startDate = startDate;
+}
+
+- (void)setEndDate:(NSString *)endDate {
+    self.searchResult.endDate = endDate;
+}
+
+- (NSString *)startDate{
+    return self.searchResult.startDate;
+}
+
+- (NSString *)endDate{
+    return self.searchResult.endDate;
 }
 
 - (NSString *)userAccount {
@@ -117,17 +110,6 @@
 
 - (NSString *)workOrderBizType {
     return self.searchResult.bizType.name;
-}
-
-- (NSString *)startDate {
-    NSArray *dates = [self.searchResult.dateRange componentsSeparatedByString:@"-"];
-    
-    return dates.firstObject;
-}
-
-- (NSString *)endDate {
-    NSArray *dates = [self.searchResult.dateRange componentsSeparatedByString:@"-"];
-    return dates.lastObject;
 }
 
 - (void)setEnterpriseName:(NSString *)string {

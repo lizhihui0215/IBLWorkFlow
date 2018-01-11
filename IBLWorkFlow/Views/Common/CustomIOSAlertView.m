@@ -57,7 +57,7 @@ CGFloat buttonSpacerHeight = 0;
 }
 
 // Create the dialog view, and animate opening the dialog
-- (void)show
+- (void)showInController:(UIViewController *)viewController
 {
     dialogView = [self createContainerView];
   
@@ -118,8 +118,7 @@ CGFloat buttonSpacerHeight = 0;
             dialogView.frame = CGRectMake((screenSize.width - dialogSize.width) / 2, (screenSize.height - keyboardSize.height - dialogSize.height) / 2, dialogSize.width, dialogSize.height);
 
         }
-
-        [[[[UIApplication sharedApplication] windows] firstObject] addSubview:self];
+        [viewController.view addSubview:self];
     }
 
     dialogView.layer.opacity = 0.5f;

@@ -86,19 +86,17 @@
     self.ftthLabel.text = self.order.ftth;
     self.troubleTypeLabel.text = self.order.troubleType;
     
-//    if (self.order.custType == 0) {
-//        self.nameTitleLabel.text = @"用户姓名:";
-//        self.nameLabel.text = self.order.username;
-//        self.phoneTitleLabel.text = @"联系电话:";
-//        self.phoneLabel.text = self.order.phone;
-//        self.addrLabel.text = self.order.address;
-//    }else{
-//        self.nameTitleLabel.text = @"企业名称:";
-//        self.nameLabel.text = self.order.comName;
-//        self.phoneTitleLabel.text = @"联系电话:";
-//        self.phoneLabel.text = self.order.comContactPhone;
-//        self.addrLabel.text = self.order.comAddr;
-//    }
+    if (self.order.custType == 0) {
+        self.nameLabel.text = self.order.username;
+        self.phoneLabel.text = self.order.phone;
+        self.addrLabel.text = self.order.address;
+    }else{
+        self.nameLabel.text = self.order.comName;
+        self.phoneLabel.text = self.order.comContactPhone;
+        self.addrLabel.text = self.order.comAddr;
+    }
+    
+
     
     self.regionLabel.text = self.order.regionName;
     
@@ -147,6 +145,8 @@
     self.handleNameTitleLabel.text = NSLocalizedStringFromTable(@"IBLOrderDetailTableViewController.handleNameTitleLabel.text", @"Main", "not found");
     self.handlePhoneTitleLabel.text = NSLocalizedStringFromTable(@"IBLOrderDetailTableViewController.handlePhoneTitleLabel.text", @"Main", "not found");
     self.lastUpdateDateTitleLabel.text = NSLocalizedStringFromTable(@"IBLOrderDetailTableViewController.lastUpdateDateTitleLabel.text", @"Main", "not found");
+    
+    self.title = NSLocalizedStringFromTable(@"IBLOrderDetailTableViewController.title", @"Main", "not found");
 }
 
 - (NSString *)orderProirtyNameWithProirty:(IBLPriorityStatus)status{
@@ -165,6 +165,8 @@
 - (NSString *)orderStatusNameWithStatus:(IBLOrderStatus)status{
     NSString *orderStatusUnsend = NSLocalizedStringFromTable(@"IBLOrderStatus.unsend", @"Main", "not found");
     NSString *orderStatusSended = NSLocalizedStringFromTable(@"IBLOrderStatus.sended", @"Main", "not found");
+    NSString *orderStatusForward = NSLocalizedStringFromTable(@"IBLOrderStatus.forward", @"Main", "not found");
+
     NSString *orderStatusHandling = NSLocalizedStringFromTable(@"IBLOrderStatus.handling", @"Main", "not found");
     NSString *orderStatusInvalid = NSLocalizedStringFromTable(@"IBLOrderStatus.invalid", @"Main", "not found");
     NSString *orderStatusFinished = NSLocalizedStringFromTable(@"IBLOrderStatus.finished", @"Main", "not found");
@@ -172,7 +174,7 @@
 
     NSDictionary *workOrderStatus = @{@(IBLOrderStatusUnsend) : orderStatusUnsend,
                                      @(IBLOrderStatusSended) : orderStatusSended,
-//                                     @(IBLOrderStatusForwarding) : @"转发中",
+                                     @(IBLOrderStatusForwarding) : orderStatusForward,
                                      @(IBLOrderStatusHandling) : orderStatusHandling,
                                      @(IBLOrderStatusInvalid) : orderStatusInvalid,
                                      @(IBLOrderStatusFinished) : orderStatusFinished,

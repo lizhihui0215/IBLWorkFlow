@@ -204,8 +204,7 @@
     NSMutableArray<PCCWSectionItem *> *items = [NSMutableArray array];
     
     for (IBLOrder *order in orders) {
-        order.actions = [[self orderActionsWithStatus:order.status
-                                              bizType:order.bizType] mutableCopy];
+        order.actions = [[self orderActionsWithStatus:order.status bizType:order.bizType handleUser:order.curOperId] mutableCopy];
         
         if ([order.handleMark isEqualToString:@"1"]) [order.actions removeObject:@(IBLOrderActionCreate)];
         
@@ -217,10 +216,11 @@
 }
 
 - (NSArray<NSNumber *> *)orderActionsWithStatus:(IBLOrderStatus)status
-                                        bizType:(IBLWorkOrderBizStatus)bizType {
+                                        bizType:(IBLWorkOrderBizStatus)bizType
+                                     handleUser:(NSInteger)handleUser {
     switch (self.type) {
         case IBLOrderTypeMine: {
-            return [self mineOrderActionsWithStatus:status bizType:bizType];
+            return [self mineOrderActionsWithStatus:status bizType:bizType handleUser:handleUser];
             break;
         }
         case IBLOrderTypeManage: {
@@ -235,9 +235,9 @@
     return [configuration managedOrderActionsWithStatus:status bizType:bizType];
 }
 
-- (NSArray<NSNumber *> *)mineOrderActionsWithStatus:(IBLOrderStatus)status bizType:(IBLWorkOrderBizStatus)bizType {
+- (NSArray<NSNumber *> *)mineOrderActionsWithStatus:(IBLOrderStatus)status bizType:(IBLWorkOrderBizStatus)bizType handleUser:(NSInteger)handleUser {
     IBLGenerateAppConfiguration *configuration = [[IBLGenerateAppConfiguration alloc] init];
-    return  [configuration mineOrderActionsWithStatus:status bizType:bizType];
+    return [configuration mineOrderActionsWithStatus:status bizType:bizType handleUser:handleUser];
 }
 
 - (void)setSearchResult:(IBLOrderSearchResult *)searchResult{

@@ -103,9 +103,6 @@
     
     [self.searchButton setTitle:NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.searchButton.title", @"Main", "not found") forState:UIControlStateNormal];
     
-    
-    
-    
     self.userAccountTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.userAccountTextField.placeholder", @"Main", "not found");
     self.usernameTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.usernameTextField.placeholder", @"Main", "not found");
     self.userPhoneTextField.placeholder = NSLocalizedStringFromTable(@"IBLOrderSearchTableViewController.userPhoneTextField.placeholder", @"Main", "not found");
@@ -207,7 +204,7 @@
     
     HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateMode defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setDateFormat:@"yyyy/MM/dd"];
     datePicker.formatter = formatter;
     [datePicker showHcdDateTimePicker];
     datePicker.clickedOkBtn = ^(NSString *time){
@@ -260,7 +257,7 @@
 - (IBAction)endDateTaped:(UITapGestureRecognizer *)sender {
     HcdDateTimePickerView *datePicker = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateMode defaultDateTime:[NSDate dateWithTimeIntervalSinceNow:0]];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+    [formatter setDateFormat:@"yyyy/MM/dd"];
     datePicker.formatter = formatter;
     [datePicker showHcdDateTimePicker];
     datePicker.clickedOkBtn = ^(NSString *time){

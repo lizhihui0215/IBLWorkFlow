@@ -10,6 +10,7 @@
 "IBLLoginViewModel.LANWOrLANNotNull" = "LAN或者WAN不为空！";
 "IBLOrderStatus.unsend" = "未派单";
 "IBLOrderStatus.sended" = "未处理";
+"IBLOrderStatus.forward" = "转发中";
 "IBLOrderStatus.handling" = "处理中";
 "IBLOrderStatus.invalid"= "作废";
 "IBLOrderStatus.finished" = "已完成";
@@ -105,7 +106,6 @@
 "HcdDateTimePickerView.toolBar.comfirm.cancel" = "取消";
 "IBLSubmit.success" = "提交成功！";
 "IBLNetworkServices.checkingNetworking" = "检查网络中，请稍后再试...";
-
 "IBLUserDetailTableViewController.accountTitleLabel.title" = "用户账号";
 "IBLUserDetailTableViewController.passwordTitleLabel.title" = "用户密码";
 "IBLUserDetailTableViewController.userStatusTitleLabel.title" = "用户状态";
@@ -125,7 +125,6 @@
 "IBLUserDetailTableViewController.effDateTitleLabel.title" = "生效日期";
 "IBLUserDetailTableViewController.expiryDateTitleLabel.title" = "失效日期";
 "IBLUserDetailTableViewController.backupTitleLabel.title" = "备注";
-
 "IBLUserDetailTableViewController.title" = "用户详情";
 "IBLOrderFlowViewController.title" = "工单流";
 "IBLOrderFlowDetailViewController.handleUserTitleLabel.text" = "处理人员";
@@ -133,6 +132,11 @@
 "IBLOrderFlowDetailViewController.handleCommentTitleLabel.text" = "处理说明";
 "IBLOrderFlowDetailViewController.handleDateTitleLabel.text" = "处理时间";
 "IBLOrderFlowDetailViewController.title" = "工单流信息";
+
+"IBLOrderDetailTableViewController.title" = "工单详情";
+"IBLUserType.normal" = "一般用户";
+"IBLUserType.company" = "企业用户";
+
 
 
 
