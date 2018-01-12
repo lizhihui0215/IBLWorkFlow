@@ -86,7 +86,7 @@
     self.effectDateTextField.text = self.orderRelateUser.exfDate;
     self.expiryDateTextField.text = self.orderRelateUser.expDate;
     self.backupLabel.text = self.orderRelateUser.remark;
-    self.certTextField.text = [self certTypeNames][@(self.orderRelateUser.certType)];
+    self.certTextField.text = self.orderRelateUser.certTypeName;
     self.identifierTextField.text = self.orderRelateUser.idNo;
     self.companySampleNameTextField.text = self.orderRelateUser.simpleComName;
     

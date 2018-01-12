@@ -9,7 +9,7 @@
 "IBLLoginViewModel.LANWOrLANNotNull" = "Please input the LAN address or WAN address！";
 "IBLOrderStatus.unsend" = "Not Send";
 "IBLOrderStatus.sended" = "Not Process";
-"IBLOrderStatus.forward" = "Processing";
+"IBLOrderStatus.forward" = "Forwarding";
 "IBLOrderStatus.handling" = "Processing";
 "IBLOrderStatus.invalid"= "Disabled";
 "IBLOrderStatus.finished" = "Finished";

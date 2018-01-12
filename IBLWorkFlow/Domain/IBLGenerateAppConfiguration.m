@@ -117,7 +117,7 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
     IBLUser *user = [IBLUserRepository user];
     
     NSMutableArray<NSNumber *> *actions = [NSMutableArray array];
-    if ([user.identifier integerValue] == handleUser) {
+    if ([user.identifier integerValue] != handleUser) {
          [actions addObject:[self mineOrderHandleForwardUnHandleMaps][kMineOrderView]] ;
         return actions;
     }

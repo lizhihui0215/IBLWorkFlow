@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.statusLabel.text = [self orderStatusNameWithStatus:self.orderFlow.state];
+    self.statusLabel.text =  [self orderStatusNameWithStatus:self.orderFlow.state];
     self.handleUserLabel.text = self.orderFlow.operatorName;
     self.phoneLabel.text = self.orderFlow.operatorPhone;
     self.handleDateLabel.text = self.orderFlow.creatorTime;

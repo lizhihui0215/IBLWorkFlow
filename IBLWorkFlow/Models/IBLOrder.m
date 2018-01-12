@@ -52,7 +52,7 @@
                                                        @"TROUBLE_TYPE" : @"troubleType",
                                                        @"CUR_OPER_NAME" : @"curOperName",
                                                        @"CUR_OPER_PHONE" : @"curOperPhone",
-    @"CUR_OPER_ID" : @"curOperId"}];
+                                                       @"CUR_OPER_ID" : @"curOperId", @"STATE_NAME" : @"stateName"}];
 }
 
 @end

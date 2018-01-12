@@ -38,6 +38,8 @@
 
 @property (nonatomic, assign) NSInteger certType;
 
+@property (nonatomic, copy) NSString *certTypeName;
+
 @property (nonatomic, copy) NSString *simpleComName;
 
 

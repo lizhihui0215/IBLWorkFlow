@@ -73,7 +73,7 @@
     [self.userAccountButton setTitle:self.order.userAccount forState:UIControlStateNormal];
     self.orderTypeLabel.text = [self workOrderTypeNameWithStatus:self.order.type];
     self.orderBizTypeLabel.text = [self workOrderBizTypeNameWithStatus:self.order.bizType];
-    self.orderStatusLabel.text = [self orderStatusNameWithStatus:self.order.status];
+    self.orderStatusLabel.text = self.order.stateName;// [self orderStatusNameWithStatus:self.order.status];
     self.proirtyLabel.text = [self orderProirtyNameWithProirty:self.order.priority];
     self.contentLabel.text = self.order.content;
     self.creatorLabel.text = self.order.creatorName;
