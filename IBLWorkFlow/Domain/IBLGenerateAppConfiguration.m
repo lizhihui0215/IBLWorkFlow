@@ -30,6 +30,8 @@ static NSString const * kMineOrderView = @"VIEW_SINGLE_ORDER";
 
 static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
 
+static NSString const * kMineOrderOpenUser = @"OPEN_USER";
+
 
 
 
@@ -78,7 +80,8 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
     return @{kMineOrderHandle : @(IBLOrderActionHandling),
              kMineOrderView : @(IBLOrderActionViewSingle),
              kMineOrderFinished : @(IBLOrderActionFinish),
-             kMineOrderForward : @(IBLOrderActionForward)};
+             kMineOrderForward : @(IBLOrderActionForward),
+             kMineOrderOpenUser : @(IBLOrderActionCreate)};
 }
 
 - (NSDictionary *)mineOrderFinishedMaps{
@@ -123,6 +126,9 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
     }
 
     for (IBLPremission *premission in user.permissions) {
+        if ([kMineOrderOpenUser isEqualToString:premission.key] && bizType != IBLWorkOrderBizStatusInstall) {
+            continue;
+        }
         switch (status) {
             case IBLOrderStatusSended:
             case IBLOrderStatusForwarding:
@@ -152,15 +158,15 @@ static NSString const * kMineOrderFinished = @"FINISH_MY_ORDER";
         }
     }
     
-    switch (status) {
-        case IBLOrderStatusSended:
-        case IBLOrderStatusForwarding:
-        case IBLOrderStatusHandling: {
-            if (bizType == IBLWorkOrderBizStatusInstall) [actions addObject:@(IBLOrderActionCreate)];
-        }
-        default:
-            break;
-    }
+//    switch (status) {
+//        case IBLOrderStatusSended:
+//        case IBLOrderStatusForwarding:
+//        case IBLOrderStatusHandling: {
+//            if (bizType == IBLWorkOrderBizStatusInstall) [actions addObject:@(IBLOrderActionCreate)];
+//        }
+//        default:
+//            break;
+//    }
     
     return [actions sortedArrayUsingSelector:@selector(compare:)];;
 }
