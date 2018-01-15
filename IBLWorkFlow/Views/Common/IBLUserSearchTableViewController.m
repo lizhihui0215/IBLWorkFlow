@@ -53,6 +53,7 @@
                                      otherButtonTitles:@[@"一般用户", @"企业用户"]
                     popoverPresentationControllerBlock:nil
                                               tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                  if (buttonIndex == [controller cancelButtonIndex]) return;
                                                   NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
                                                   NSInteger index = buttonIndex - firstOtherIndex;
                                                   self.searchResult.custType = index;

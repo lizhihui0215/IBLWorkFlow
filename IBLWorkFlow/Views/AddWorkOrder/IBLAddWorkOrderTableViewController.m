@@ -13,6 +13,7 @@
 #import "IBLUserSearchViewController.h"
 #import "IBLAppRepository.h"
 
+
 static NSString *const IBLSearchForHandleUserIdentifier = @"SearchForHandleUser";
 
 static NSString *const IBLSearchForProductIdentifier = @"SearchForProduct";
@@ -56,15 +57,18 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 - (IBAction)priorityTapped:(UITapGestureRecognizer *)sender {
     NSArray *options = @[@"紧急", @"一般", @"不紧急"];
     [UIAlertController showActionSheetInViewController:self
-                                             withTitle:@"请选择生效方式"
+                                             withTitle:@"请选择优先级"
                                                message:nil
                                      cancelButtonTitle:@"取消"
                                 destructiveButtonTitle:nil
                                      otherButtonTitles:options
                     popoverPresentationControllerBlock:nil
                                               tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                  if (buttonIndex == [controller cancelButtonIndex]) return;
                                                   NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
                                                   NSInteger index = buttonIndex - firstOtherIndex;
+                                                  
+                                                  
                                                   if (index == 0) {
                                                       [self.tableViewDelegate addWorkOrderTableView:self
                                                                                           fieldType:IBLAddWorkOrderFieldTypePriority
@@ -176,13 +180,14 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
 - (IBAction)custTypeTapped:(UITapGestureRecognizer *)sender {
     NSArray *options = @[@"一般用户", @"企业用户"];
     [UIAlertController showActionSheetInViewController:self
-                                             withTitle:@"请选择生效方式"
+                                             withTitle:@"请选择用户类型"
                                                message:nil
                                      cancelButtonTitle:@"取消"
                                 destructiveButtonTitle:nil
                                      otherButtonTitles:options
                     popoverPresentationControllerBlock:nil
                                               tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                  if (buttonIndex == [controller cancelButtonIndex]) return;
                                                   NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
                                                   NSInteger index = buttonIndex - firstOtherIndex;
                                                   if (index == 0) {
@@ -259,6 +264,7 @@ static NSString *const IBLSearchForRelateUserIdentifier = @"SearchForRelateUser"
                                      otherButtonTitles:@[@"身份证", @"驾照", @"护照", @"回乡证", @"台胞证", @"其它", @"营业执照"]
                     popoverPresentationControllerBlock:nil
                                               tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                                                  if (buttonIndex == [controller cancelButtonIndex]) return;
                                                   NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
                                                   NSInteger index = buttonIndex - firstOtherIndex;
                                                   [self.tableViewDelegate addWorkOrderTableView:self fieldType:IBLAddWorkOrderFieldTypeCertType didEndEdit:@(index)];

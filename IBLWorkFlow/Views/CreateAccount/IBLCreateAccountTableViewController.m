@@ -156,6 +156,7 @@
                     popoverPresentationControllerBlock:^(UIPopoverPresentationController * _Nonnull popover) {
                         
                     } tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                        if (buttonIndex == [controller cancelButtonIndex]) return;
                         NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
                         NSInteger index = buttonIndex - firstOtherIndex;
                         self.createAccountInfo.certType = index;
@@ -178,17 +179,19 @@
                                      otherButtonTitles:@[@"一般用户", @"企业用户"]
                     popoverPresentationControllerBlock:nil
                                               tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
-                        NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
-                        NSInteger index = buttonIndex - firstOtherIndex;
-                        IBLCreateAccountUserType createAccountType = index == 0 ? IBLCreateAccountUserTypeDetault : IBCreateAccountLUserTypeEnterprise;
-                        NSInteger cerType = index == 0 ? 0 : 6;
-                        self.createAccountInfo.userType = createAccountType;
-                        self.createAccountInfo.certType = cerType;
-                        self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
-                        self.identifierTypeTextField.text = [self certTypeNames][@(cerType)];
-                        [self cleanUserInfo];
-                        [self.tableView reloadData];
-                    }];
+                                                  if (buttonIndex == [controller cancelButtonIndex]) return;
+                                                  
+                                                  NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
+                                                  NSInteger index = buttonIndex - firstOtherIndex;
+                                                  IBLCreateAccountUserType createAccountType = index == 0 ? IBLCreateAccountUserTypeDetault : IBCreateAccountLUserTypeEnterprise;
+                                                  NSInteger cerType = index == 0 ? 0 : 6;
+                                                  self.createAccountInfo.userType = createAccountType;
+                                                  self.createAccountInfo.certType = cerType;
+                                                  self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
+                                                  self.identifierTypeTextField.text = [self certTypeNames][@(cerType)];
+                                                  [self cleanUserInfo];
+                                                  [self.tableView reloadData];
+                                              }];
 }
 
 - (void)cleanUserInfo{
@@ -222,6 +225,7 @@
                     popoverPresentationControllerBlock:^(UIPopoverPresentationController * _Nonnull popover) {
                         
                     } tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                        if (buttonIndex == [controller cancelButtonIndex]) return;
                         NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
                         NSInteger index = buttonIndex - firstOtherIndex;
                         IBLOrderEffectType effType = index == 0 ? IBLOrderEffectTypeBeforeTheDate : IBLOrderEffectTypeFirst;
@@ -276,7 +280,7 @@
             if (self.createAccountInfo.userType == 1) {
                 self.createAccountInfo.certType = 6;
             }
-
+            
             break;
         }
     }
@@ -335,9 +339,9 @@
     BOOL isNumber = [self validateNumberWithText:textField.text];
     
     if (!isNumber) return NO;
-
+    
     return ![self validateTextFields:textField] ? NO : YES;
-
+    
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField;{
@@ -377,12 +381,12 @@
                                                     kExceptionMessage: @"您输入的手机格式不正确！"}];
         [self showAlertWithError:error];
         return NO;
-
+        
         
     }
     
     if (textField == self.identifierTextField && ![NSString isNull:self.identifierTextField.text]
-         && self.createAccountInfo.certType == 0) {
+        && self.createAccountInfo.certType == 0) {
         if ([IBLUtilities validateIdentityCard:self.identifierTextField.text]) return YES;
         
         NSError *error = [NSError errorWithDomain:@""
@@ -586,12 +590,12 @@
 
 - (NSDictionary<NSNumber *, NSString *> *)certTypeNames{
     return @{@(0) : @"身份证",
-            @(1) : @"驾照",
-            @(2) : @"护照",
-            @(3) : @"回乡证",
-            @(4) : @"台胞证",
-            @(5) : @"其它",
-            @(6) : @"营业执照",};
+             @(1) : @"驾照",
+             @(2) : @"护照",
+             @(3) : @"回乡证",
+             @(4) : @"台胞证",
+             @(5) : @"其它",
+             @(6) : @"营业执照",};
 }
 
 //!!!: 优化将title 和 effect 提取到appConfig中
@@ -615,11 +619,11 @@
     NSIndexPath *account = [NSIndexPath indexPathForRow:0 inSection:0];
     NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
     NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:1 inSection:1];
-
+    
     NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
     NSIndexPath *custPhone = [NSIndexPath indexPathForRow:3 inSection:1];
     NSIndexPath *custAddress = [NSIndexPath indexPathForRow:4 inSection:1];
-
+    
     NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
     NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
     NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
@@ -629,7 +633,7 @@
     NSIndexPath *custReserve = [NSIndexPath indexPathForRow:10 inSection:1];
     NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
     NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
-
+    
     NSMutableDictionary *notNullDictionary = [NSMutableDictionary dictionary];
     if (self.createAccountInfo.userType == IBCreateAccountLUserTypeEnterprise) {
         notNullDictionary[enterpriseNameIndexPath] = self.enterpriseTextField;
@@ -641,7 +645,7 @@
         notNullDictionary[custNameIndexPath] = self.usernameTextField;
         notNullDictionary[custPhone] = self.phoneTextField;
         notNullDictionary[custAddress] = self.addressTextField;
-
+        
     }
     notNullDictionary[custIdCard] = self.identifierTextField;
     notNullDictionary[custReserve] = self.commentTextView;
@@ -649,8 +653,8 @@
     notNullDictionary[voiceCode] = self.ticketNumberTextField;
     notNullDictionary[account] = self.accountTextField;
     notNullDictionary[password] = self.passwordTextField;
-
-
+    
+    
     
     return notNullDictionary;
 }
@@ -666,7 +670,7 @@
     NSIndexPath *password = [NSIndexPath indexPathForRow:1 inSection:0];
     NSIndexPath *custReserve = [NSIndexPath indexPathForRow:10 inSection:1];
     
-
+    
     
     NSIndexPath *enterpriseNameIndexPath = [NSIndexPath indexPathForRow:5 inSection:1];
     NSIndexPath *enterpriseSampleNameIndexPath = [NSIndexPath indexPathForRow:6 inSection:1];
@@ -687,15 +691,15 @@
         notNullDictionary[enterpriseAddressIndexPath] = @"企业联系地址不能为空！";
         notNullDictionary[enterpriseSampleNameIndexPath] = @"企业简称不能为空！";
     }
-
+    
     notNullDictionary[custIdCard] = @"证件号不能为空！";
     notNullDictionary[custReserve] = @"备注不能为空！";
     notNullDictionary[contractCode] = @"合同号不能为空！";
     notNullDictionary[voiceCode] = @"票据号不能为空！";
     notNullDictionary[account] = @"账户不能为空！";
     notNullDictionary[password] = @"密码不能为空！";
-
-
+    
+    
     return notNullDictionary;
 }
 
@@ -818,21 +822,21 @@
         NSIndexPath *enterpriseContactIndexPath = [NSIndexPath indexPathForRow:7 inSection:1];
         NSIndexPath *enterprisePhoneIndexPath = [NSIndexPath indexPathForRow:8 inSection:1];
         NSIndexPath *enterpriseAddressIndexPath = [NSIndexPath indexPathForRow:9 inSection:1];
-
+        
         hiddenIndexPaths = [@[enterpriseNameIndexPath,
-                  enterpriseContactIndexPath,
-                  enterprisePhoneIndexPath,
-                  enterpriseAddressIndexPath,
-                  enterpriseSampleNameIndexPath] mutableCopy];
+                              enterpriseContactIndexPath,
+                              enterprisePhoneIndexPath,
+                              enterpriseAddressIndexPath,
+                              enterpriseSampleNameIndexPath] mutableCopy];
     }else{
         NSIndexPath *userNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
         NSIndexPath *phoneIndexPath = [NSIndexPath indexPathForRow:3 inSection:1];
         NSIndexPath *addressIndexPath = [NSIndexPath indexPathForRow:4 inSection:1];
-
+        
         hiddenIndexPaths = [@[userNameIndexPath,
-                  phoneIndexPath,
-                  addressIndexPath] mutableCopy];
-
+                              phoneIndexPath,
+                              addressIndexPath] mutableCopy];
+        
     }
     
     NSIndexPath *userTypeIndexPath = [NSIndexPath indexPathForRow:7 inSection:0];
@@ -840,7 +844,7 @@
     if ([IBLAppRepository appConfiguration].showCustType == 0) {
         [hiddenIndexPaths addObject:userTypeIndexPath];
     }
-
+    
     
     
     return [hiddenIndexPaths containsObject:indexPath];

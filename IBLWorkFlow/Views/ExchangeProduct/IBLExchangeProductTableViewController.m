@@ -123,6 +123,8 @@
                     popoverPresentationControllerBlock:^(UIPopoverPresentationController * _Nonnull popover) {
                         
                     } tapBlock:^(UIAlertController * _Nonnull controller, UIAlertAction * _Nonnull action, NSInteger buttonIndex) {
+                        if (buttonIndex == [controller cancelButtonIndex]) return;
+                        
                         NSInteger firstOtherIndex = [controller firstOtherButtonIndex];
                         NSInteger index = buttonIndex - firstOtherIndex;
                         if (index == 0) {
