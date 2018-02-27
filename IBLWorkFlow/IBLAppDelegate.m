@@ -35,8 +35,13 @@
     
     [UINavigationBar setupAppearance];
     
+    
+    
+    NSString *cancel = NSLocalizedStringFromTable(@"UIViewController.appearance.setConfirmCancelTitle", @"Main", "not found");
+    NSString *OK = NSLocalizedStringFromTable(@"UIViewController.appearance.setConfirmOKTitle", @"Main", "not found");
     [[UIViewController appearance] setErrorOkTitle:@"OK"];
-    [[UIViewController appearance] setConfirmOKTitle:@"OK"];
+    [[UIViewController appearance] setConfirmOKTitle:OK];
+    [[UIViewController appearance] setConfirmCancelTitle:cancel];
 
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     

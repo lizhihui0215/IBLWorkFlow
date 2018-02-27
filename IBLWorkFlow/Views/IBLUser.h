@@ -28,4 +28,10 @@
 
 @property (nonatomic, assign, readonly) BOOL isOnlinePay;
 
+@property (nonatomic, assign, readonly) BOOL isHiddenPreferential;
+
+@property (nonatomic, assign, readonly) BOOL isHiddenExtraMonthLength;
+
+
+
 @end

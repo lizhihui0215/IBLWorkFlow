@@ -138,10 +138,13 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
         if (![self showAlertWithError:error]) {
             [self showAlertWithError:errorWithCode(0, @"开户成功")
                      completeHandler:^(BOOL isShowError, NSError * _Nonnull error) {
-                if([self.delegate respondsToSelector:@selector(createAccountViewController:commit:)]){
-                    [self.delegate createAccountViewController:self commit:self.viewModel.order];
-                }
-            }];
+                         if (self.viewModel.createAccountType == IBLCreateAccountTypeFromOrder) {
+                             [self.navigationController popViewControllerAnimated:YES];
+                         }
+                         if([self.delegate respondsToSelector:@selector(createAccountViewController:commit:)]){
+                             [self.delegate createAccountViewController:self commit:self.viewModel.order];
+                         }
+                     }];
         }
     }];
 }
@@ -169,7 +172,9 @@ static NSString *const IBLCreateAccountEmbedTableViewIdentifier = @"CreateAccoun
 
 - (void)productPriceOfTableViewController:(IBLCreateAccountTableViewController *)controller
                           completeHandler:(void (^)(IBLProductPrice *productPrice))completeHandler {
+    
     NSInteger productId = controller.createAccountInfo.productIdentifier;
+    
     IBLFetchProductPriceInfo *fetchProductPrice = [IBLFetchProductPriceInfo priceWithProductId:productId
                                                                                    discountIds:@""
                                                                                          renew:NO];

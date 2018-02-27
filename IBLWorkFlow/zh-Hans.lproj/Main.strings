@@ -132,10 +132,11 @@
 "IBLOrderFlowDetailViewController.handleCommentTitleLabel.text" = "处理说明";
 "IBLOrderFlowDetailViewController.handleDateTitleLabel.text" = "处理时间";
 "IBLOrderFlowDetailViewController.title" = "工单流信息";
-
 "IBLOrderDetailTableViewController.title" = "工单详情";
 "IBLUserType.normal" = "一般用户";
 "IBLUserType.company" = "企业用户";
+"UIViewController.appearance.setConfirmCancelTitle" = "取消";
+"UIViewController.appearance.setConfirmOKTitle" = "确定";
 
 
 

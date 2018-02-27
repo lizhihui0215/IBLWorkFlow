@@ -11,6 +11,7 @@
 #import "IBLSearchViewController.h"
 #import "HcdDateTimePickerView.h"
 #import "IBLAppRepository.h"
+#import "IBLUserRepository.h"
 
 @implementation IBLCreateAccountTableViewInfo
 
@@ -262,13 +263,16 @@
             self.enterprisesContactTextField.text = self.createAccountInfo.companyContact;
             self.userTypeTextField.text = [self userTypeNames][@(self.createAccountInfo.userType)];
             self.enterprisesSampleNameTextField.text = self.createAccountInfo.simpleComName;
-            @weakify(self)
-            [self.tableViewDataSource productPriceOfTableViewController:self
-                                                        completeHandler:^(IBLProductPrice *productPrice) {
-                                                            @strongify(self)
-                                                            self.productPrice = productPrice;
-                                                            [self setupPriceWithProductPrice];
-                                                        }];
+            
+            if (self.createAccountInfo.productIdentifier != 0) {
+                @weakify(self)
+                [self.tableViewDataSource productPriceOfTableViewController:self
+                                                            completeHandler:^(IBLProductPrice *productPrice) {
+                                                                @strongify(self)
+                                                                self.productPrice = productPrice;
+                                                                [self setupPriceWithProductPrice];
+                                                            }];
+            }           
             break;
         }
         case IBLCreateAccountTypeFromLeftMenu: {
@@ -845,7 +849,12 @@
         [hiddenIndexPaths addObject:userTypeIndexPath];
     }
     
-    
+    if ([IBLUserRepository user].isHiddenPreferential) {
+        [hiddenIndexPaths addObject:[NSIndexPath indexPathForRow:4 inSection:2]];
+    }
+    if ([IBLUserRepository user].isHiddenExtraMonthLength) {
+        [hiddenIndexPaths addObject:[NSIndexPath indexPathForRow:5 inSection:2]];
+    }
     
     return [hiddenIndexPaths containsObject:indexPath];
 }

@@ -135,6 +135,8 @@
 "IBLOrderDetailTableViewController.title" = "Workflow Detail";
 "IBLUserType.normal" = "一般用户";
 "IBLUserType.company" = "企业用户";
+"UIViewController.appearance.setConfirmCancelTitle" = "Cancel";
+"UIViewController.appearance.setConfirmOKTitle" = "OK";
 
 
 

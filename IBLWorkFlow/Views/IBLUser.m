@@ -20,6 +20,30 @@
     return NO;
 }
 
+// 优惠金额
+- (BOOL)isHiddenPreferential {
+//    preferentialPayment_cfield
+    for (IBLPremission *premission in self.permissions) {
+        if ([[premission.key uppercaseString] isEqualToString:@"PREFERENTIALPAYMENT_CFIELD"]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+- (BOOL)isHiddenExtraMonthLength {
+    //    extraMonthLength_cfield
+    for (IBLPremission *premission in self.permissions) {
+        if ([[premission.key uppercaseString] isEqualToString:@"EXTRAMONTHLENGTH_CFIELD"]) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+
+
+
 + (JSONKeyMapper *)keyMapper{
     return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{@"identifier" : @"allocId",
                                                                   @"permissions" : @"resourceList"}];
