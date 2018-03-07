@@ -73,16 +73,31 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     
     UINavigationController *internetViewController = [self internetViewController];
     
-    //FIXME: 添加功能
     self.actionViewControllers = [@{@(IBLLeftMenuSectionActionMineOrder) : mineOrderContentViewController,
                                     @(IBLLeftMenuSectionActionManagedOrder) : managedOrderContentViewController,
-                                    @(IBLLeftMenuSectionActionBusinessManaged) : @"",
+                                    @(IBLLeftMenuSectionActionBusinessManaged) : [NSNull null],
                                     @(IBLLeftMenuSectionActionAbout) : aboutViewController,
                                     @(IBLLeftMenuItemActionAddOrder) : addWorkOrderViewController,
                                     @(IBLLeftMenuItemActionAddCreateAccount) : createAccountViewController,
                                     @(IBLLeftMenuItemActionAddRenew) : renewViewController,
                                     @(IBLLeftMenuItemActionAddChangeProduct) : exchangeProductViewController,
                                     @(IBLLeftMenuItemActionInternet) : internetViewController} mutableCopy];
+
+    for (PCCWSection *section in self.viewModel.dataSource) {
+        IBLLeftMenu *menu = section.info;
+        if (menu.index == 3) {
+            PCCWSectionItem *sectionItem = section.items.firstObject;
+            IBLLeftMenu *defaultBusinessManagedMenu = sectionItem.info;
+           UIViewController *defaultBusinessManagedController = self.actionViewControllers[@(defaultBusinessManagedMenu.index)];
+            self.actionViewControllers[@(IBLLeftMenuSectionActionBusinessManaged)] = defaultBusinessManagedController;
+        }
+    }
+
+    //FIXME: 添加功能
+    PCCWSection *item = [self.viewModel sectionAt:0];
+    IBLLeftMenu *menu = item.info;
+    
+    self.sideMenuViewController.contentViewController = self.actionViewControllers[@(menu.index)];
 }
 
 - (UINavigationController *)internetViewController{
@@ -170,9 +185,6 @@ static NSString *const NavigationToLoginIdentifier = @"NavigationToLogin";
     [self setupViewControllers];
     
     
-    PCCWSection *item = [self.viewModel sectionAt:0];
-    IBLLeftMenu *menu = item.info;
-    self.sideMenuViewController.contentViewController = self.actionViewControllers[@(menu.index)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationReviced:)

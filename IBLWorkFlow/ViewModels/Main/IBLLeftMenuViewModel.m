@@ -117,4 +117,6 @@
 - (NSString *)roleOfUser {
     return [self.generateLeftMenu roleOfUser];
 }
+
+
 @end

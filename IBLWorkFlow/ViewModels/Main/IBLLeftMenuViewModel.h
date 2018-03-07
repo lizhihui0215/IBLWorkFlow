@@ -17,6 +17,8 @@
 
 - (UIImage *)imageAtIndexPath:(NSIndexPath *)idnexPath;
 
+- (UIViewController *)defaultBusinessManagedController;
+
 - (NSString *)username;
 
 - (NSString *)roleOfUser;
