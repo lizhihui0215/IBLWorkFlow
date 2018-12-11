@@ -666,7 +666,7 @@
 - (NSDictionary <NSIndexPath *, NSString *> *)notNullTitleDictionary{
     NSIndexPath *custNameIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
     NSIndexPath *custPhone = [NSIndexPath indexPathForRow:3 inSection:1];
-    NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:4 inSection:1];
+    NSIndexPath *custIdCard = [NSIndexPath indexPathForRow:1 inSection:1];
     NSIndexPath *custAddress = [NSIndexPath indexPathForRow:6 inSection:1];
     NSIndexPath *contractCode = [NSIndexPath indexPathForRow:2 inSection:2];
     NSIndexPath *voiceCode = [NSIndexPath indexPathForRow:3 inSection:2];
