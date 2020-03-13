@@ -16,6 +16,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *scriptTextField;
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextField;
 @property (weak, nonatomic) IBOutlet UITextField *handleDateTextField;
+@property (weak, nonatomic) IBOutlet UILabel *accountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *IPLabel;
+@property (weak, nonatomic) IBOutlet UILabel *MACAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *BASLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scriptLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *handleDateLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
 
 @end
 
@@ -37,12 +45,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (void)languageDidChanged:(NSNotification *)notification {
+    self.navigationItem.title = NSLocalizedStringFromTable(@"IBLInternetDetailTableViewController.title", @"Main", "not found");
+    self.accountLabel.text = NSLocalizedStringFromTable(@"IBLInternetDetailTableViewController.accountLabel.text", @"Main", "not found");
+    self.IPLabel.text = NSLocalizedStringFromTable(@"IBLInternetDetailTableViewController.IPLabel.text", @"Main", "not found");
+    self.MACAddressLabel.text = NSLocalizedStringFromTable(@"IBLInternetDetailTableViewController.MACAddressLabel.text", @"Main", "not found");
+    self.BASLabel.text = NSLocalizedStringFromTable(@"IBLInternetDetailTableViewController.BASLabel.text", @"Main", "not found");
+    self.scriptLabel.text = NSLocalizedStringFromTable(@"IBLInternetDetailTableViewController.scriptLabel.text", @"Main", "not found");
+    self.descriptionLabel.text = NSLocalizedStringFromTable(@"IBLInternetDetailTableViewController.descriptionLabel.text", @"Main", "not found");
+    self.handleDateLabel.text = NSLocalizedStringFromTable(@"IBLInternetDetailTableViewController.handleDateLabel.text", @"Main", "not found");
+}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
+ 
     // Configure the cell...
     
     return cell;

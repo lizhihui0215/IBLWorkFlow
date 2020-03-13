@@ -53,14 +53,18 @@ static NSString const * kOnlinPay = @"USE_ONLINE_PAY";
     NSArray *secondLevel = [menus filteredArrayUsingPredicate:predicate];
     
     if (secondLevel.count > 0) {
-        IBLLeftMenu *menu = [IBLLeftMenu menuWithTitle:@"营业管理"
+        NSString *management = NSLocalizedStringFromTable(@"IBLGenerateLeftMenu.menuMaps.management", @"Main", "not found");
+
+        IBLLeftMenu *menu = [IBLLeftMenu menuWithTitle:management
                                                    icon:[UIImage imageNamed:@"management"]
                                             parentIndex:NSNotFound
                                                   index:IBLLeftMenuSectionActionBusinessManaged];
         [menus addObject:menu];
     }
     
-    IBLLeftMenu *menu7 = [IBLLeftMenu menuWithTitle:@"上网记录查询"
+    NSString *netRecordSearch = NSLocalizedStringFromTable(@"IBLGenerateLeftMenu.menuMaps.netRecordSearch", @"Main", "not found");
+
+    IBLLeftMenu *menu7 = [IBLLeftMenu menuWithTitle:netRecordSearch
                                                icon:[UIImage imageNamed:@"Internet"]
                                         parentIndex:IBLLeftMenuSectionActionBusinessManaged
                                               index:IBLLeftMenuItemActionInternet];

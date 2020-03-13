@@ -13,8 +13,13 @@
 
 @interface IBLInternetTableViewController ()
 
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItemView;
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *dateTextField;
+@property (weak, nonatomic) IBOutlet UILabel *accountLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *mounthLabel;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @end
 
@@ -37,6 +42,17 @@
         self.dateTextField.text = time;//[aDate stringFromFormatter:@"yyyy-MM"];
     };
 
+}
+
+- (void)languageDidChanged:(NSNotification *)notification {
+    self.title = NSLocalizedStringFromTable(@"IBLInternetTableViewController.title", @"Main", "not found");
+    self.accountLabel.text = NSLocalizedStringFromTable(@"IBLInternetTableViewController.accountLabel.text", @"Main", "not found");
+
+    self.mounthLabel.text = NSLocalizedStringFromTable(@"IBLInternetTableViewController.mounthLabel.text", @"Main", "not found");
+    NSString *searchButtonText = NSLocalizedStringFromTable(@"IBLInternetTableViewController.searchButton.text", @"Main", "not found");
+
+    [self.searchButton setTitle:searchButtonText forState:UIControlStateNormal];
+    [self.searchButton setTitle:searchButtonText forState:UIControlStateHighlighted];
 }
 
 - (IBAction)searchButtonPressed:(UIButton *)sender {

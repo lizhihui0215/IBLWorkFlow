@@ -155,7 +155,7 @@
 		26FDA1E51D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FDA1E41D49BD1000BB8C3D /* IBLAddWorkOrderViewModel.m */; };
 		26FDA1E81D49BDF100BB8C3D /* IBLAddWorkOrderResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FDA1E71D49BDF100BB8C3D /* IBLAddWorkOrderResult.m */; };
 		26FFA9251D36936200DF8D4E /* IBLAppRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FFA9241D36936200DF8D4E /* IBLAppRepository.m */; };
-		4F4A90A3CE882C7B15193725 /* Pods_IBLWorkFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A9C9146E9C03DA1EA7B241 /* Pods_IBLWorkFlow.framework */; };
+		4D43246CDF723D3116ED07E3 /* Pods_IBLWorkFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A01E35E3137EEC29A84015B /* Pods_IBLWorkFlow.framework */; };
 		5B87503752F56F0A4773B64D /* IBLTrashOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B875C50B051C41CC76D45C6 /* IBLTrashOrder.m */; };
 		5B8750822A767DB06CDBA96F /* IBLOrderSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8755847289098046B8A1DF /* IBLOrderSearchViewController.m */; };
 		5B87535E8802AC01CF38AC05 /* IBLOrderSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B87572D0E5321EAE857C5B3 /* IBLOrderSearchTableViewController.m */; };
@@ -171,8 +171,8 @@
 		5B875EBA6916E043812870AB /* IBLFetchProductPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8754F50FC733C78D974141 /* IBLFetchProductPrice.m */; };
 		5B875F35EE4AEFAF69A69881 /* IBLLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8751CAFFA7986835FA0B93 /* IBLLeftMenuViewController.m */; };
 		5B875F608C49341C02D1E7F4 /* IBLOrderSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8758B18A41A5D65E5AA2E0 /* IBLOrderSearchResult.m */; };
-		ACA9358B429161DB1DCF4778 /* Pods_IBLWorkFlowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34261989C16A992FEC0C9557 /* Pods_IBLWorkFlowUITests.framework */; };
-		AF8E6F0FE6CB45AC6CD33A30 /* Pods_IBLWorkFlowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3BE837174144E4B85C22B38 /* Pods_IBLWorkFlowTests.framework */; };
+		BF6ADA6AB5C92524D662C06F /* Pods_IBLWorkFlowUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69CDF4DB8F7695D0C34BD717 /* Pods_IBLWorkFlowUITests.framework */; };
+		E383338FBF98F595AD143B7D /* Pods_IBLWorkFlowTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8175B218380CDE434185005D /* Pods_IBLWorkFlowTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -480,8 +480,7 @@
 		26FDA1E71D49BDF100BB8C3D /* IBLAddWorkOrderResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAddWorkOrderResult.m; sourceTree = "<group>"; };
 		26FFA9231D36936200DF8D4E /* IBLAppRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLAppRepository.h; sourceTree = "<group>"; };
 		26FFA9241D36936200DF8D4E /* IBLAppRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLAppRepository.m; sourceTree = "<group>"; };
-		31A9C9146E9C03DA1EA7B241 /* Pods_IBLWorkFlow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IBLWorkFlow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		34261989C16A992FEC0C9557 /* Pods_IBLWorkFlowUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IBLWorkFlowUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		316936C0901C0D7E11D69133 /* Pods-IBLWorkFlow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.debug.xcconfig"; path = "Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.debug.xcconfig"; sourceTree = "<group>"; };
 		5B87506EA97E96D86DEB0D3B /* IBLUserSearchResultViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLUserSearchResultViewModel.h; sourceTree = "<group>"; };
 		5B8750A5CF7DB26B48CD2007 /* libUMessage_Sdk_1.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.4.0.a; sourceTree = "<group>"; };
 		5B8751501161A3D21DFE40EF /* IBLOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLOrderViewController.h; sourceTree = "<group>"; };
@@ -512,13 +511,14 @@
 		5B875F49C01D81C5D5902304 /* IBLMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLMainViewController.h; sourceTree = "<group>"; };
 		5B875FB5811336EE05248DB0 /* IBLRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBLRootViewController.m; sourceTree = "<group>"; };
 		5B875FCE8E5C33A137830DB8 /* IBLExchangeProductViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBLExchangeProductViewModel.h; sourceTree = "<group>"; };
-		711FE65C961448B5464A5E82 /* Pods-IBLWorkFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.release.xcconfig"; sourceTree = "<group>"; };
-		737F434E4A1BA49DC2F05CBC /* Pods-IBLWorkFlowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		8955DAF815F4028B80D2C0F0 /* Pods-IBLWorkFlowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowTests/Pods-IBLWorkFlowTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AEA4E04EFB23BBF55D580386 /* Pods-IBLWorkFlowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.release.xcconfig"; sourceTree = "<group>"; };
-		B3BE837174144E4B85C22B38 /* Pods_IBLWorkFlowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IBLWorkFlowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C206BD7F2A21F552E022DF91 /* Pods-IBLWorkFlowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlowTests/Pods-IBLWorkFlowTests.release.xcconfig"; sourceTree = "<group>"; };
-		D9DD6E83669AEEEC4715DB6C /* Pods-IBLWorkFlow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.debug.xcconfig"; sourceTree = "<group>"; };
+		69CDF4DB8F7695D0C34BD717 /* Pods_IBLWorkFlowUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IBLWorkFlowUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76BF9B9D083A333B1C2BC57D /* Pods-IBLWorkFlowUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.debug.xcconfig"; path = "Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8175B218380CDE434185005D /* Pods_IBLWorkFlowTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IBLWorkFlowTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		839F5232B9290CC91FE8D64B /* Pods-IBLWorkFlowTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowTests.release.xcconfig"; path = "Target Support Files/Pods-IBLWorkFlowTests/Pods-IBLWorkFlowTests.release.xcconfig"; sourceTree = "<group>"; };
+		8EF954A037C2FC6FEF79F40B /* Pods-IBLWorkFlow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlow.release.xcconfig"; path = "Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow.release.xcconfig"; sourceTree = "<group>"; };
+		9A01E35E3137EEC29A84015B /* Pods_IBLWorkFlow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IBLWorkFlow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDA48F2FD81A8CE84D9A359A /* Pods-IBLWorkFlowUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowUITests.release.xcconfig"; path = "Target Support Files/Pods-IBLWorkFlowUITests/Pods-IBLWorkFlowUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FE6A464F407FEC43CEDBFEA7 /* Pods-IBLWorkFlowTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IBLWorkFlowTests.debug.xcconfig"; path = "Target Support Files/Pods-IBLWorkFlowTests/Pods-IBLWorkFlowTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -530,7 +530,7 @@
 				26788BDF1DF80B0200D59617 /* UserNotifications.framework in Frameworks */,
 				26B885F51F08C428000C6FC9 /* libBPush.a in Frameworks */,
 				5B875BF706873151551D3EEC /* libUMessage_Sdk_1.4.0.a in Frameworks */,
-				4F4A90A3CE882C7B15193725 /* Pods_IBLWorkFlow.framework in Frameworks */,
+				4D43246CDF723D3116ED07E3 /* Pods_IBLWorkFlow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +538,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF8E6F0FE6CB45AC6CD33A30 /* Pods_IBLWorkFlowTests.framework in Frameworks */,
+				E383338FBF98F595AD143B7D /* Pods_IBLWorkFlowTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +546,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACA9358B429161DB1DCF4778 /* Pods_IBLWorkFlowUITests.framework in Frameworks */,
+				BF6ADA6AB5C92524D662C06F /* Pods_IBLWorkFlowUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +570,7 @@
 				264EBB851D2E023D00FF8373 /* IBLWorkFlowUITests */,
 				264EBB5F1D2E023C00FF8373 /* Products */,
 				C6505BA9493FBCA3FC914E33 /* Frameworks */,
-				AABCA38CB7302AB0017A8C7D /* Pods */,
+				651866373B69656BDACDC437 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1170,17 +1170,17 @@
 			path = Renew;
 			sourceTree = "<group>";
 		};
-		AABCA38CB7302AB0017A8C7D /* Pods */ = {
+		651866373B69656BDACDC437 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D9DD6E83669AEEEC4715DB6C /* Pods-IBLWorkFlow.debug.xcconfig */,
-				711FE65C961448B5464A5E82 /* Pods-IBLWorkFlow.release.xcconfig */,
-				8955DAF815F4028B80D2C0F0 /* Pods-IBLWorkFlowTests.debug.xcconfig */,
-				C206BD7F2A21F552E022DF91 /* Pods-IBLWorkFlowTests.release.xcconfig */,
-				737F434E4A1BA49DC2F05CBC /* Pods-IBLWorkFlowUITests.debug.xcconfig */,
-				AEA4E04EFB23BBF55D580386 /* Pods-IBLWorkFlowUITests.release.xcconfig */,
+				316936C0901C0D7E11D69133 /* Pods-IBLWorkFlow.debug.xcconfig */,
+				8EF954A037C2FC6FEF79F40B /* Pods-IBLWorkFlow.release.xcconfig */,
+				FE6A464F407FEC43CEDBFEA7 /* Pods-IBLWorkFlowTests.debug.xcconfig */,
+				839F5232B9290CC91FE8D64B /* Pods-IBLWorkFlowTests.release.xcconfig */,
+				76BF9B9D083A333B1C2BC57D /* Pods-IBLWorkFlowUITests.debug.xcconfig */,
+				BDA48F2FD81A8CE84D9A359A /* Pods-IBLWorkFlowUITests.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		C6505BA9493FBCA3FC914E33 /* Frameworks */ = {
@@ -1189,9 +1189,9 @@
 				26AE94E320B1D31600326F8C /* libxml2.tbd */,
 				26927A6A1F08C8A700123905 /* libz.tbd */,
 				26788BDE1DF80B0200D59617 /* UserNotifications.framework */,
-				31A9C9146E9C03DA1EA7B241 /* Pods_IBLWorkFlow.framework */,
-				B3BE837174144E4B85C22B38 /* Pods_IBLWorkFlowTests.framework */,
-				34261989C16A992FEC0C9557 /* Pods_IBLWorkFlowUITests.framework */,
+				9A01E35E3137EEC29A84015B /* Pods_IBLWorkFlow.framework */,
+				8175B218380CDE434185005D /* Pods_IBLWorkFlowTests.framework */,
+				69CDF4DB8F7695D0C34BD717 /* Pods_IBLWorkFlowUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1203,11 +1203,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 264EBB8B1D2E023D00FF8373 /* Build configuration list for PBXNativeTarget "IBLWorkFlow" */;
 			buildPhases = (
-				770722AA6C42857D8DB71FFF /* [CP] Check Pods Manifest.lock */,
+				FAC873CA67379BA59FB0B15D /* [CP] Check Pods Manifest.lock */,
 				264EBB5A1D2E023C00FF8373 /* Sources */,
 				264EBB5B1D2E023C00FF8373 /* Frameworks */,
 				264EBB5C1D2E023C00FF8373 /* Resources */,
-				7CAB013AFB043314705C545D /* [CP] Embed Pods Frameworks */,
+				7C0C9F85F2BD1E63DEBCEBA1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1222,7 +1222,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 264EBB8E1D2E023D00FF8373 /* Build configuration list for PBXNativeTarget "IBLWorkFlowTests" */;
 			buildPhases = (
-				1157B924C4D50D01298E3E89 /* [CP] Check Pods Manifest.lock */,
+				8503EB4ED7BBE8DB51414A9C /* [CP] Check Pods Manifest.lock */,
 				264EBB731D2E023D00FF8373 /* Sources */,
 				264EBB741D2E023D00FF8373 /* Frameworks */,
 				264EBB751D2E023D00FF8373 /* Resources */,
@@ -1241,7 +1241,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 264EBB911D2E023D00FF8373 /* Build configuration list for PBXNativeTarget "IBLWorkFlowUITests" */;
 			buildPhases = (
-				BDC68569F8764D655DBE31B3 /* [CP] Check Pods Manifest.lock */,
+				5B8A6A3BA5996AB3604F7C24 /* [CP] Check Pods Manifest.lock */,
 				264EBB7E1D2E023D00FF8373 /* Sources */,
 				264EBB7F1D2E023D00FF8373 /* Frameworks */,
 				264EBB801D2E023D00FF8373 /* Resources */,
@@ -1268,8 +1268,8 @@
 				TargetAttributes = {
 					264EBB5D1D2E023C00FF8373 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = T8YB936E2Q;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 5R5G2D4E69;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1294,6 +1294,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				Base,
 				"zh-Hans",
 				en,
@@ -1357,46 +1358,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1157B924C4D50D01298E3E89 /* [CP] Check Pods Manifest.lock */ = {
+		5B8A6A3BA5996AB3604F7C24 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IBLWorkFlowTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-IBLWorkFlowUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		770722AA6C42857D8DB71FFF /* [CP] Check Pods Manifest.lock */ = {
+		7C0C9F85F2BD1E63DEBCEBA1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IBLWorkFlow-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7CAB013AFB043314705C545D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow-frameworks.sh",
@@ -1423,6 +1412,8 @@
 				"${BUILT_PRODUCTS_DIR}/libextobjc/libextobjc.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlocksKit.framework",
@@ -1451,18 +1442,44 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IBLWorkFlow/Pods-IBLWorkFlow-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BDC68569F8764D655DBE31B3 /* [CP] Check Pods Manifest.lock */ = {
+		8503EB4ED7BBE8DB51414A9C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IBLWorkFlowUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-IBLWorkFlowTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAC873CA67379BA59FB0B15D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IBLWorkFlow-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1820,15 +1837,15 @@
 		};
 		264EBB8C1D2E023D00FF8373 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D9DD6E83669AEEEC4715DB6C /* Pods-IBLWorkFlow.debug.xcconfig */;
+			baseConfigurationReference = 316936C0901C0D7E11D69133 /* Pods-IBLWorkFlow.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IBLWorkFlow/IBLWorkFlow.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = T8YB936E2Q;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5R5G2D4E69;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
@@ -1863,6 +1880,7 @@
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/normalversion",
 				);
+				MARKETING_VERSION = 1.3.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1911,22 +1929,22 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ibilling.IBLWorkFlow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "XC Ad Hoc: *";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		264EBB8D1D2E023D00FF8373 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 711FE65C961448B5464A5E82 /* Pods-IBLWorkFlow.release.xcconfig */;
+			baseConfigurationReference = 8EF954A037C2FC6FEF79F40B /* Pods-IBLWorkFlow.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IBLWorkFlow/IBLWorkFlow.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5R5G2D4E69;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
@@ -1961,6 +1979,7 @@
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/UMessage_Sdk_1.4.0",
 					"$(PROJECT_DIR)/IBLWorkFlow/SDKs/normalversion",
 				);
+				MARKETING_VERSION = 1.3.6;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2016,7 +2035,7 @@
 		};
 		264EBB8F1D2E023D00FF8373 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8955DAF815F4028B80D2C0F0 /* Pods-IBLWorkFlowTests.debug.xcconfig */;
+			baseConfigurationReference = FE6A464F407FEC43CEDBFEA7 /* Pods-IBLWorkFlowTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = IBLWorkFlowTests/Info.plist;
@@ -2029,7 +2048,7 @@
 		};
 		264EBB901D2E023D00FF8373 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C206BD7F2A21F552E022DF91 /* Pods-IBLWorkFlowTests.release.xcconfig */;
+			baseConfigurationReference = 839F5232B9290CC91FE8D64B /* Pods-IBLWorkFlowTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = IBLWorkFlowTests/Info.plist;
@@ -2042,7 +2061,7 @@
 		};
 		264EBB921D2E023D00FF8373 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 737F434E4A1BA49DC2F05CBC /* Pods-IBLWorkFlowUITests.debug.xcconfig */;
+			baseConfigurationReference = 76BF9B9D083A333B1C2BC57D /* Pods-IBLWorkFlowUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = IBLWorkFlowUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2054,7 +2073,7 @@
 		};
 		264EBB931D2E023D00FF8373 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEA4E04EFB23BBF55D580386 /* Pods-IBLWorkFlowUITests.release.xcconfig */;
+			baseConfigurationReference = BDA48F2FD81A8CE84D9A359A /* Pods-IBLWorkFlowUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = IBLWorkFlowUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

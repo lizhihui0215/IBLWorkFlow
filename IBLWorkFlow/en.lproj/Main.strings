@@ -138,6 +138,24 @@
 "UIViewController.appearance.setConfirmCancelTitle" = "Cancel";
 "UIViewController.appearance.setConfirmOKTitle" = "OK";
 
+"IBLGenerateLeftMenu.menuMaps.management" = "Others";
+"IBLGenerateLeftMenu.menuMaps.netRecordSearch" = "Online Records";
+"IBLInternetTableViewController.title" = "Online Records";
+"IBLInternetListViewController.title" = "Online Records";
+
+"IBLInternetTableViewController.accountLabel.text" = "Account*";
+"IBLInternetTableViewController.mounthLabel.text" = "Month*";
+"IBLInternetTableViewController.searchButton.text" = "Search";
+"IBLInternetDetailTableViewController.title" = "Details";
+"IBLInternetDetailTableViewController.accountLabel.text"= "Account";
+"IBLInternetDetailTableViewController.IPLabel.text"= "IP";
+"IBLInternetDetailTableViewController.MACAddressLabel.text"= "MAC";
+"IBLInternetDetailTableViewController.BASLabel.text"= "BAS IP";
+"IBLInternetDetailTableViewController.scriptLabel.text"= "Status";
+"IBLInternetDetailTableViewController.descriptionLabel.text"= "Description";
+"IBLInternetDetailTableViewController.handleDateLabel.text" = "Handle Time";
+
+
 
 
 

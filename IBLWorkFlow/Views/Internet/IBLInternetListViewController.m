@@ -86,6 +86,11 @@
     [self performSegueWithIdentifier:@"NavigationToOnlineDetail" sender:indexPath];
 }
 
+- (void)languageDidChanged:(NSNotification *)notification {
+    self.title = NSLocalizedStringFromTable(@"IBLInternetListViewController.title", @"Main", "not found");
+}
+
+
 
 #pragma mark - Navigation
 

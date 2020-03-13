@@ -436,8 +436,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="accountLabel" destination="qBa-LZ-UaI" id="xOd-9n-yyr"/>
                         <outlet property="accountTextField" destination="OfL-1k-os7" id="3uF-df-7QF"/>
                         <outlet property="dateTextField" destination="LHR-pJ-0H1" id="Nli-pl-53N"/>
+                        <outlet property="mounthLabel" destination="qZc-1I-UbB" id="fk5-ve-qWV"/>
+                        <outlet property="navigationItemView" destination="yyD-Gu-0HR" id="Bht-fS-UcH"/>
+                        <outlet property="searchButton" destination="rNb-ZA-3VG" id="Ye9-lD-qMW"/>
                         <segue destination="fFT-OM-zdP" kind="push" identifier="NavigationToInternetList" id="hWc-Zj-mlv"/>
                     </connections>
                 </tableViewController>
@@ -936,11 +940,19 @@
                     <navigationItem key="navigationItem" title="记录详情" id="jaC-UB-icn"/>
                     <connections>
                         <outlet property="BASAddressTextField" destination="KkX-AR-ocD" id="0AL-M1-wTw"/>
+                        <outlet property="BASLabel" destination="YUV-2G-Ijf" id="oKW-UK-2ld"/>
+                        <outlet property="IPLabel" destination="m0m-Pp-n5y" id="YrA-DA-Xdj"/>
                         <outlet property="IPTextField" destination="YtM-ah-ALw" id="mZf-mX-Cjb"/>
+                        <outlet property="MACAddressLabel" destination="eGG-rG-vlg" id="LfW-TU-eDc"/>
                         <outlet property="MACAddressTextField" destination="CFr-Zj-iVK" id="p8D-Kw-q2m"/>
+                        <outlet property="accountLabel" destination="lUh-WS-746" id="Ntb-dx-8zV"/>
                         <outlet property="accountTextField" destination="ahk-hl-Sn5" id="C8d-cD-AgZ"/>
+                        <outlet property="descriptionLabel" destination="eg4-vF-vHg" id="Wgr-bf-1hJ"/>
                         <outlet property="descriptionTextField" destination="nXB-4c-sOC" id="eBS-CE-EzK"/>
+                        <outlet property="handleDateLabel" destination="0Ry-3j-N2L" id="9m5-J5-r5p"/>
                         <outlet property="handleDateTextField" destination="Xm9-uv-kbb" id="YvM-dH-kqY"/>
+                        <outlet property="navigationItem" destination="jaC-UB-icn" id="4fy-wg-LjN"/>
+                        <outlet property="scriptLabel" destination="ecJ-vo-HKw" id="Uhk-6m-NUd"/>
                         <outlet property="scriptTextField" destination="4xc-fv-dXH" id="4Ke-zt-0yy"/>
                     </connections>
                 </tableViewController>

@@ -139,6 +139,30 @@
 "UIViewController.appearance.setConfirmOKTitle" = "确定";
 
 
+"IBLGenerateLeftMenu.menuMaps.management" = "营业管理";
+"IBLGenerateLeftMenu.menuMaps.netRecordSearch" = "上网记录查询";
+"IBLInternetTableViewController.title" = "上网记录查询";
+"IBLInternetListViewController.title" = "上网记录查询";
+
+"IBLInternetTableViewController.accountLabel.text" = "用户账号*";
+"IBLInternetTableViewController.mounthLabel.text" = "查询月份*";
+"IBLInternetTableViewController.searchButton.text" = "搜索";
+"IBLInternetDetailTableViewController.title" = "记录详情";
+"IBLInternetDetailTableViewController.accountLabel.text"= "用户账号";
+"IBLInternetDetailTableViewController.IPLabel.text"= "用户IP地址";
+"IBLInternetDetailTableViewController.MACAddressLabel.text"= "MAC地址";
+"IBLInternetDetailTableViewController.BASLabel.text"= "BAS地址";
+"IBLInternetDetailTableViewController.scriptLabel.text"= "会话状态";
+"IBLInternetDetailTableViewController.descriptionLabel.text"= "描述";
+"IBLInternetDetailTableViewController.handleDateLabel.text" = "处理时间";
+
+
+
+
+
+
+
+
 
 
 
